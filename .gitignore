@@ -2,6 +2,5 @@
 /debian/system.spoje.net/
 /debian/system.spoje.net.debhelper.log
 /debian/system.spoje.net.substvars
-/src/includes/config.php
 /build-stamp
 /testing/PHPUnit/build/
