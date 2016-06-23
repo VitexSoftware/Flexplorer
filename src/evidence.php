@@ -17,7 +17,8 @@ $oPage->onlyForLogged();
 
 $evidence = $oPage->getRequestValue('evidence');
 if (is_null($evidence)) {
-    $oPage->redirect('evidencies.php');
+    $oPage->redirect('index.php');
+    exit();
 }
 
 $oPage->addItem(new ui\PageTop(_('Přehled vlastností evidence')));
