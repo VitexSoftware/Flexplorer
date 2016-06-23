@@ -1,9 +1,14 @@
 Flexplorer
 ==========
 
-![Flexplorer Logo](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/src/images/flexplorer-logo.png "Project Logo")
+![Flexplorer Logo](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/src/images/flexplorer-logo.png "Project Logo")
 
-Vývojářský nástroj pro FlexiBee API/JSON
+Vývojářský nástroj pro FlexiBee API/JSON. Napsáný s využitím knihovny [FlexiPeeHP](https://github.com/Spoje-NET/FlexiPeeHP)
+Umožňuje:
+
+  * zobrazovat obsah všech dostpných evidencí ve všech firmách
+  * zobrazovat strukturu evidence
+  * odesílat přímé požadavky na server a zobrazovat výsledky  
 
 [![Source Code](http://img.shields.io/badge/source/Spoje-NET/Flexplorer-blue.svg?style=flat-square)](https://github.com/Spoje-NET/Flexplorer)
 [![Latest Version](https://img.shields.io/github/release/Spoje-NET/Flexplorer.svg?style=flat-square)](https://github.com/Spoje-NET/Flexplorer/releases)
@@ -15,10 +20,9 @@ Demo: http://flexibee-dev.spoje.net/
 
 #Poděkování
 Vznik tohoto nástroje by nebyl možný bez laskavé podpory společnosti [Spoje.Net](http://www.spoje.net), 
-která hradila vývoj řešení pro propojení LMS / FlexiBee a importu skladu.
 
 U společnosti Spoje.Net, je možné si objednat komerční podporu pro integraci
-knihovny do vašich projektů. 
+knihovny FlexiPeeHP do vašich projektů. 
 
 ![Spoje.Net](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/spoje-net_logo.gif "Spoje.Net")
 
