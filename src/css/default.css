@@ -1,0 +1,110 @@
+.mpicon { width: 150px; height: 150px; }
+
+.mpicon:hover { width: 150px; height: 150px; 
+
+                -moz-box-shadow:    3px 3px 5px 6px #ccc;
+                -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+                box-shadow:         3px 3px 5px 6px #ccc;
+                -moz-border-radius: 20px;
+                -webkit-border-radius: 20px;
+                -khtml-border-radius: 20px;
+                border-radius: 20px; 
+
+}
+
+.navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 4px;
+}
+
+.container {
+    width: auto;
+}
+
+#StatusMessages.well .alert {
+    margin: 2px;
+    padding: 2px;
+}
+
+#StatusMessages {
+    margin: 2px;
+    padding: 2px;
+    overflow-y: auto;
+}
+
+#smdrag { height: 8px; 
+          background-image:  url( ../images/slidehandle.png ); 
+          background-color: #ccc; 
+          background-repeat: no-repeat; 
+          background-position: top center; 
+          cursor: ns-resize;
+}
+
+#smdrag:hover { background-color: #f5ad66; }
+
+.error { color: red; }
+
+.tt-input, 
+.tt-hint {
+
+    height: 30px;
+    padding: 8px 12px;
+    font-size: 10px;
+    line-height: 30px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+.tt-input { 
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+    color: #999;
+}
+
+.tt-menu { 
+    margin-top: 12px;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+.tt-suggestion {
+    padding: 3px 20px;
+    line-height: 24px;
+}
+
+.tt-suggestion.tt-cursor { 
+    color: #fff;
+    background-color: #0097cf;
+    cursor: pointer;
+}
+
+.tt-suggestion p {
+    margin: 0;
+}
+
+.well .checkbox { 
+    padding: 5px;
+}
+
+.well .checkbox:hover { 
+    background-color: #d2e3ec; 
+    border-radius: 8px;
+    padding: 5px;
+    width: 100%;
+}
+
+.navbar-text > a:nth-child(1)  {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}

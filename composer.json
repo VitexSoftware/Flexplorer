@@ -1,0 +1,33 @@
+{
+    "name": "spoje.net/flexplorer",
+    "description": "Průzkumník a editor evidencí FlexiBee",
+    "authors": [
+        {
+            "name": "Vítězslav Dvořák",
+            "email": "vitex@arachne.cz"
+        }
+    ],
+    "require": {
+        "php": ">= 5.5.9",
+        "spoje.net/flexipeehp": "dev-master",
+        "vitexsoftware/ease-framework": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Flexplorer\\": "src/classes/",
+            "Flexplorer\\ui\\": "src/classes/ui/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\Flexplorer\\": "testing/PHPUnit/src/classes/"
+        }
+    },
+    "require-dev": {
+        "phpunit/php-token-stream": "~1.2",
+        "robmorgan/phinx": "dev-master",
+        "phpunit/phpunit": "5.3.*",
+        "phpunit/phpunit-skeleton-generator": "*"
+    }
+
+}
