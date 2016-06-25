@@ -34,7 +34,9 @@ $method = $oPage->getRequestValue('method');
 $body   = $oPage->getRequestValue('body');
 
 
-$requestTabs->addTab(_('Požadavek'), new ui\SendForm($url, $method, $body));
+$requestTabs->addTab(_('Požadavek'),
+    new \Ease\TWB\Panel(_('Uživatelský požadavek'), 'warning',
+    new ui\SendForm($url, $method, $body)));
 
 
 $oPage->container->addItem($requestTabs);

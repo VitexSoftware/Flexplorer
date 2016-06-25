@@ -18,6 +18,22 @@ Umožňuje:
 
 Demo: http://flexibee-dev.spoje.net/
 
+Instalace
+------------
+
+Pro Debian debian prosím použijte [repozitář](http://vitexsoftware.cz/repos.php):
+
+    wget -O - http://v.s.cz/info@vitexsoftware.cz.gpg.key|sudo apt-key add -
+    echo deb http://v.s.cz/ stable main > /etc/apt/sources.list.d/vitexsoftware.list
+    aptitude update
+    aptitude install flexplorer
+
+po instalaci balíčku a reloadu webserveru bude aplikace nainstalována do složky 
+/usr/share/flexplorer a dostupná jako http://localhost/flexplorer/ 
+( konfigurováno v  /etc/apache2/conf-enabled/flexplorer.conf ) 
+Pokud je nainstalován démon avahi, bude tento propagovat aplikaci jako službu.
+
+
 #Poděkování
 Vznik tohoto nástroje by nebyl možný bez laskavé podpory společnosti [Spoje.Net](http://www.spoje.net), 
 

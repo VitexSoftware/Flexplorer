@@ -40,7 +40,9 @@ if ($evidence) {
 }
 
 
-$tabs->addTab(_('Dotaz'), new ui\SendForm($url));
+$tabs->addTab(_('Dotaz'),
+    new \Ease\TWB\Panel(_('Uživatelský požadavek'), 'warning',
+    new ui\SendForm($url)));
 
 
 $oPage->container->addItem($tabs);
