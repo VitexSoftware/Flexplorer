@@ -43,7 +43,7 @@ apache_install() {
 
 
 cd /usr/share/flexplorer
-composer install
+composer --no-dev -o install
 
 #DEBHELPER#
 
