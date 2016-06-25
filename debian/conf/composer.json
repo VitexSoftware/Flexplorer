@@ -9,6 +9,10 @@
             "email": "vitex@arachne.cz"
         }
     ],
+    "minimum-stability": "dev",
+    "config": {
+	"vendor-dir": "/var/lib/flexipeehp"
+    },
     "require": {
         "php": ">= 5.5.9",
         "spoje.net/flexipeehp": "dev-master",
@@ -16,8 +20,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Flexplorer\\": "web/classes/",
-            "Flexplorer\\ui\\": "web/classes/ui/"
+            "Flexplorer\\": "classes/",
+            "Flexplorer\\ui\\": "classes/ui/"
         }
     },
     "repositories": [

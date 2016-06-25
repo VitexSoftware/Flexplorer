@@ -1,14 +1,13 @@
-src/*.php                       usr/share/flexplorer/web
-src/*.ico                       usr/share/flexplorer/web
-src/css/*.css                   usr/share/flexplorer/web/css
-src/css/images/*                usr/share/flexplorer/web/css/images
-src/js/*.js                     usr/share/flexplorer/web/js
-src/images/*                    usr/share/flexplorer/web/images
-src/includes/*.php		usr/share/flexplorer/web/includes
-src/classes/*.php		usr/share/flexplorer/web/classes
-src/classes/ui/*.php		usr/share/flexplorer/web/classes/ui
-debian/conf/flexplorer.conf	etc/apache2/conf-available
-debian/conf/flexplorer.service  etc/avahi/services
-debian/composer.json            usr/share/flexplorer/
-
-
+README.md			usr/share/flexplorer/
+src/*.php                       usr/share/flexplorer/
+src/*.ico                       usr/share/flexplorer/
+src/css/*.css                   usr/share/flexplorer/css/
+src/css/images/*                usr/share/flexplorer/css/images/
+src/js/*.js                     usr/share/flexplorer/js/
+src/images/*                    usr/share/flexplorer/images/
+src/includes/*.php		usr/share/flexplorer/includes/
+src/classes/*.php		usr/share/flexplorer/classes/
+src/classes/ui/*.php		usr/share/flexplorer/classes/ui/
+debian/conf/flexplorer.conf	etc/apache2/conf-available/
+debian/conf/flexplorer.service  etc/avahi/services/
+debian/conf/composer.json       usr/share/flexplorer/
