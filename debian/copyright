@@ -1,0 +1,14 @@
+Format-Specification: http://wiki.debian.org/Proposals/CopyrightFormat?action=recall&rev=143
+Upstream-Name: Ease-Framework
+Upstream-Source: http://v.s.cz/download/Ease.tar.bz2
+
+Files: *
+Homepage: http://v.s.cz/ease.php
+Copyright:
+  (c) 2013 Vítězslav Dvořák (v.s.cz)
+License: GPL-2 
+
+License: GPL-2
+ On Debian systems the full text of the GNU General Public License can be found
+ in the `/usr/share/common-licenses/GPL-2' file.
+

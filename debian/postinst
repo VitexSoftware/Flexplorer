@@ -1,0 +1,50 @@
+#!/bin/sh
+# postinst script for flexplorer
+
+set -e
+
+apache_install() {
+	COMMON_STATE=$(dpkg-query -f '${Status}' -W 'apache2.2-common' 2>/dev/null | awk '{print $3}' || true)
+
+	if [ -e /usr/share/apache2/apache2-maintscript-helper ] ; then
+		. /usr/share/apache2/apache2-maintscript-helper
+		apache2_invoke enconf flexplorer
+	elif [ "$COMMON_STATE" = "installed" ] || [ "$COMMON_STATE" = "unpacked" ] ; then
+		[ -d /etc/apache2/conf.d/ ] && [ ! -L /etc/apache2/conf.d/flexplorer.conf ] && ln -s ../conf-available/flexplorer.conf /etc/apache2/conf.d/flexplorer.conf
+	fi
+}
+
+
+    if [ "$1" = "configure" ]; then
+
+    . /usr/share/debconf/confmodule
+
+            apache_install $1
+                    # Reload webserver in any case, configuration might have changed
+                    # Redirection of 3 is needed because Debconf uses it and it might 
+                    # be inherited by webserver. See bug #446324.
+            if [ -f /etc/init.d/apache2 ] ; then
+                if [ -x /usr/sbin/invoke-rc.d ]; then
+                    invoke-rc.d apache2 reload 3>/dev/null || true
+                else
+                    /etc/init.d/apache2 reload 3>/dev/null || true
+                fi
+            fi
+
+            if [ -f /etc/init.d/avahi ] ; then
+                if [ -x /usr/sbin/invoke-rc.d ]; then
+                    invoke-rc.d avahi reload 3>/dev/null || true
+                else
+                    /etc/init.d/avahi reload 3>/dev/null || true
+                fi
+            fi
+
+    fi
+
+
+cd /usr/share/flexplorer
+composer install
+
+#DEBHELPER#
+
+exit 0

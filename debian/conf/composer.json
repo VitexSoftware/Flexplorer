@@ -16,20 +16,25 @@
     },
     "autoload": {
         "psr-4": {
-            "Flexplorer\\": "src/classes/",
-            "Flexplorer\\ui\\": "src/classes/ui/"
+            "Flexplorer\\": "web/classes/",
+            "Flexplorer\\ui\\": "web/classes/ui/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Test\\Flexplorer\\": "testing/PHPUnit/src/classes/"
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/usr/share/php/Ease",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "/usr/share/php/FlexiPeeHP",
+            "options": {
+                "symlink": true
+            }
         }
-    },
-    "require-dev": {
-        "phpunit/php-token-stream": "~1.2",
-        "robmorgan/phinx": "dev-master",
-        "phpunit/phpunit": "5.3.*",
-        "phpunit/phpunit-skeleton-generator": "*"
-    }
+    ]
 
 }

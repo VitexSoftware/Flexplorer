@@ -1,0 +1,18 @@
+Source: flexplorer
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.8.4
+Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
+Uploaders: Vitex <vitex@hippy.cz>
+Priority: optional
+Homepage: https://github.com/Spoje-NET/Flexplorer
+
+Package: flexplorer
+Depends: ${misc:Depends},flexipeehp,composer
+Recommends: flexibee
+Architecture: all
+Section: web
+Priority: optional
+Description: Vývojářský nástroj pro FlexiBee API/JSON.
+ Zobrazuje obsah všech dostpných evidencí ve všech firmách
+ Zobrazuje strukturu evidence
+ odesílá přímé požadavky na server a zobrazuje výsledky
