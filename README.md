@@ -18,6 +18,12 @@ Umožňuje:
 
 Demo: http://flexibee-dev.spoje.net/
 
+![Mobilní přihlášení](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-mobile_login.png "Screenshot přihlášení")
+![Odpověď serveru](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-response_serveru.png "Screenshot odpovědi")
+![Výpis evidence](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-vypis_evidence.png "Screenshot výpisu evidence")
+  
+
+
 Instalace
 ------------
 
