@@ -21,7 +21,7 @@ Demo: http://flexibee-dev.spoje.net/
 Instalace
 ------------
 
-Pro Debian debian prosím použijte [repozitář](http://vitexsoftware.cz/repos.php):
+Pro Debian prosím použijte [repozitář](http://vitexsoftware.cz/repos.php):
 
     wget -O - http://v.s.cz/info@vitexsoftware.cz.gpg.key|sudo apt-key add -
     echo deb http://v.s.cz/ stable main > /etc/apt/sources.list.d/vitexsoftware.list
@@ -38,7 +38,7 @@ Pokud je nainstalován démon avahi, bude tento propagovat aplikaci jako službu
 Vznik tohoto nástroje by nebyl možný bez laskavé podpory společnosti [Spoje.Net](http://www.spoje.net), 
 
 U společnosti Spoje.Net, je možné si objednat komerční podporu pro integraci
-knihovny FlexiPeeHP do vašich projektů. 
+knihovny [FlexiPeeHP](https://github.com/Spoje-NET/FlexiPeeHP) do vašich projektů. 
 
 ![Spoje.Net](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/spoje-net_logo.gif "Spoje.Net")
 

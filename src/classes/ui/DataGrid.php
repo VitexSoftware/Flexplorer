@@ -108,16 +108,9 @@ class DataGrid extends \Ease\DataGrid
                     'warning');
                 $this->dataSource->keywordsInfo[$keyword]['title'] = $keyword;
             }
-            if (strstr($type, 'VARCHAR') || strstr($type, 'STRING') || strstr($type,
-                    'TEXT') || strstr($type, 'SELECT') || strstr($type,
-                    'PLATFORM') || strstr($type, 'IDLIST') || strstr($type,
-                    'BOOL') || strstr($type, 'DATE')) {
-                $this->setColumn($keyword,
-                    $this->dataSource->keywordsInfo[$keyword]['title'], true);
-            } else {
-                $this->setColumn($keyword,
-                    $this->dataSource->keywordsInfo[$keyword]['title'], false);
-            }
+
+            $this->setColumn($keyword,
+                $this->dataSource->keywordsInfo[$keyword]['title'], true);
         }
     }
 

@@ -1,5 +1,12 @@
-flexplorer (0.1-24) UNRELEASED; urgency=medium
+flexplorer (0.1-2) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
+  * Debian package composer inir update
+  * Apache Config Fix
+  * Debian package build is almost perfect
+  * Formulář pro odeslání uživatelského dotazu již nezačíná na pozici
+    x=0 Doplněna závislos debianího balíčku pro php5-intl z důvodu
+    zamýšlené podpory lokalizace Doplněno info jak nainstalovat z
+    balíčků na debianu.
 
- -- Cybervitexus <vitex@novolen.jinonice.czf>  Sat, 25 Jun 2016 17:51:25 +0200
+ -- Cybervitexus <vitex@novolen.jinonice.czf>  Sat, 25 Jun 2016 22:42:19 +0200

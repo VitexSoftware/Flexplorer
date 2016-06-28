@@ -13,5 +13,8 @@ require_once 'includes/Init.php';
 $oPage->onlyForLogged();
 
 $evidence = $oPage->getRequestValue('evidence');
-$commands = new DataSource(new Flexplorer($evidence));
-$commands->output();
+if (is_null($evidence)) {
+    die('?!?!?');
+}
+$datasource = new DataSource(new Flexplorer($evidence));
+$datasource->output();

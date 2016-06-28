@@ -190,17 +190,6 @@ class DataSource extends \Ease\Brick
         return $total;
     }
 
-    function getListingQueryWhere()
-    {
-        $where = '';
-        $query = isset($_REQUEST['query']) ? $_REQUEST['query'] : false;
-        $qtype = isset($_REQUEST['qtype']) ? $_REQUEST['qtype'] : false;
-        if ($query && $qtype) {
-            $where = ' WHERE `'.$this->handledObejct->dblink->EaseAddSlashes($_REQUEST['qtype'])."` LIKE  '%".$this->handledObejct->dblink->EaseAddSlashes($_REQUEST['query'])."%'";
-        }
-        return $where;
-    }
-
     /**
      *
      * @param string $queryRaw
@@ -209,18 +198,22 @@ class DataSource extends \Ease\Brick
      */
     public function getListing($queryRaw, $transform = 'html')
     {
-        $conditions = ['add-row-count' => 'true'];
-        $page       = isset($_REQUEST['page']) ? $_REQUEST['page'] : 1;
-        $rp         = isset($_REQUEST['rp']) ? $_REQUEST['rp'] : 10;
-        $sortname   = isset($_REQUEST['sortname']) ? $_REQUEST['sortname'] : $this->handledObejct->getmyKeyColumn();
-        $sortorder  = isset($_REQUEST['sortorder']) ? $_REQUEST['sortorder'] : 'desc';
-        $where      = $this->getWhere();
+        $page                        = isset($_REQUEST['page']) ? $_REQUEST['page']
+                : 1;
+        $rp                          = isset($_REQUEST['rp']) ? $_REQUEST['rp'] : 10;
+        $sortname                    = isset($_REQUEST['sortname']) ? $_REQUEST['sortname']
+                : $this->handledObejct->getmyKeyColumn();
+        $sortorder                   = isset($_REQUEST['sortorder']) ? $_REQUEST['sortorder']
+                : 'desc';
+        $conditions                  = $this->getWhere();
+        $conditions['add-row-count'] = 'true';
 
-        $start      = (($page - 1) * $rp);
+        $start = (($page - 1) * $rp);
 
-        $conditions['limit'] = $rp;
-        $conditions['start'] = $start;
+        $conditions['limit']  = $rp;
+        $conditions['start']  = $start;
         $conditions['sort']   = $sortname;
+        $conditions['dir']    = strtoupper($sortorder);
         $conditions['detail'] = 'full';
 
         $query = null;
@@ -309,7 +302,6 @@ class DataSource extends \Ease\Brick
         $this->pdfInit($this->title);
         $this->getPDFFile($transactions, array_values($this->columns));
     }
-
 
     /**
      * Vypíše výsledek SQL dotazu v požadovaném tvaru
@@ -486,10 +478,11 @@ class DataSource extends \Ease\Brick
      */
     public function getWhere()
     {
-        $where = '';
-        if (is_object($this->handledObejct) && method_exists($this->handledObejct,
-                'getWhere')) {
-            $where = ' WHERE '.$this->handledObejct->getWhere();
+        $where = [];
+        $query = isset($_REQUEST['query']) ? $_REQUEST['query'] : false;
+        $qtype = isset($_REQUEST['qtype']) ? $_REQUEST['qtype'] : false;
+        if (($qtype != 'id') && ($query != '')) {
+            $where = [$qtype => $query];
         }
         return $where;
     }
