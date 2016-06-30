@@ -3,12 +3,13 @@ Flexplorer
 
 ![Flexplorer Logo](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/src/images/flexplorer-logo.png "Project Logo")
 
-Vývojářský nástroj pro FlexiBee API/JSON. Napsáný s využitím knihovny [FlexiPeeHP](https://github.com/Spoje-NET/FlexiPeeHP)
+Vývojářský nástroj pro FlexiBee API/JSON. Napsaný s využitím knihovny [FlexiPeeHP](https://github.com/Spoje-NET/FlexiPeeHP)
 Umožňuje:
 
   * zobrazovat obsah všech dostpných evidencí ve všech firmách
   * zobrazovat strukturu evidence
-  * odesílat přímé požadavky na server a zobrazovat výsledky  
+  * odesílat přímé požadavky na server a zobrazovat výsledky
+  * Nastavovat ChangesAPI a přidávat WebHooks  
 
 [![Source Code](http://img.shields.io/badge/source/Spoje-NET/Flexplorer-blue.svg?style=flat-square)](https://github.com/Spoje-NET/Flexplorer)
 [![Latest Version](https://img.shields.io/github/release/Spoje-NET/Flexplorer.svg?style=flat-square)](https://github.com/Spoje-NET/Flexplorer/releases)
@@ -25,7 +26,7 @@ Demo: http://flexibee-dev.spoje.net/
 
 
 Instalace
-------------
+---------
 
 Pro Debian prosím použijte [repozitář](http://vitexsoftware.cz/repos.php):
 
@@ -39,6 +40,14 @@ po instalaci balíčku a reloadu webserveru bude aplikace nainstalována do slo�
 ( konfigurováno v  /etc/apache2/conf-enabled/flexplorer.conf ) 
 Pokud je nainstalován démon avahi, bude tento propagovat aplikaci jako službu.
 
+Závislosti
+----------
+ 
+ * [FlexiBee](https://www.flexibee.eu/)
+ * [EaseFramework](https://github.com/VitexSoftware/EaseFramework)
+ * [FlexiPeeHP](https://github.com/Spoje-NET/FlexiPeeHP)
+ * [Twitter Bootstrap](http://getbootstrap.com/)
+ * [Bootstrap Switch](http://www.bootstrap-switch.org/)
 
 #Poděkování
 Vznik tohoto nástroje by nebyl možný bez laskavé podpory společnosti [Spoje.Net](http://www.spoje.net), 

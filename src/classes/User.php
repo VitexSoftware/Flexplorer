@@ -46,6 +46,7 @@ class User extends \Ease\User
     public function tryToLogin($creds)
     {
         $loginStatus              = false;
+        $this->flexiBee->disconnect();
         $this->flexiBee->user     = $creds['login'];
         $this->flexiBee->password = $creds['password'];
         $this->flexiBee->url      = $creds['server'];
@@ -53,7 +54,7 @@ class User extends \Ease\User
         $this->flexiBee->prefix   = null;
         $this->flexiBee->curlInit();
         $companies                = $this->flexiBee->performRequest('c.json');
-        if (count($companies)) {
+        if (isset($companies['companies'])) {
             $this->flexiBee->company = $companies['companies']['company'][0]['dbNazev'];
             $this->setMyKey(true);
             $loginStatus             = $this->loginSuccess();

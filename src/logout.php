@@ -13,6 +13,12 @@ namespace Flexplorer;
 
 require_once 'includes/Init.php';
 
+unset($_SESSION['login']);
+unset($_SESSION['password']);
+unset($_SESSION['server']);
+unset($_SESSION['company']);
+
+
 if ($oUser->getUserID()) {
     $oUser->logout();
     $messagesBackup = $oUser->getStatusMessages(true);

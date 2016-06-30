@@ -19,17 +19,23 @@ $oPage->addItem(new ui\PageTop(_('Flexplorer')));
 
 $requestTabs = new \Ease\TWB\Tabs('Request');
 
-$url      = constant('FLEXIBEE_URL').'/c/'.constant('FLEXIBEE_COMPANY');
-$evidence = $oPage->getRequestValue('evidence');
-if ($evidence) {
-    $url.='/'.$evidence;
-}
-$url.='.json';
 
 
 $requestTabs->addTab(_('Odpověď'), new ui\RecieveResponse());
 
-$url    = $oPage->getRequestValue('url');
+$url = $oPage->getRequestValue('url');
+if (!strlen($url)) {
+    $url = constant('FLEXIBEE_URL').'/c/';
+    if (defined('FLEXIBEE_COMPANY')) {
+        $url .= constant('FLEXIBEE_COMPANY');
+    }
+
+    $evidence = $oPage->getRequestValue('evidence');
+    if ($evidence) {
+        $url.='/'.$evidence;
+    }
+    $url.='.json';
+}
 $method = $oPage->getRequestValue('method');
 $body   = $oPage->getRequestValue('body');
 

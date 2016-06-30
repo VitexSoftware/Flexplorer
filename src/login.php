@@ -61,7 +61,7 @@ $loginPanel->addItem(new \Ease\TWB\FormGroup(_('FlexiBee'),
     new \Ease\Html\InputTextTag('server',
     $server ? $server : constant('DEFAULT_FLEXIBEE_URL') ),
     constant('DEFAULT_FLEXIBEE_URL'),
-    _('URL FlexiBee serveru. Např: https://flexibee-dev.spoje.net:5434')));
+    _('URL FlexiBee serveru. Např: https://localhost:5434')));
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('Uživatelské jméno'),
     new \Ease\Html\InputTextTag('login',
     $login ? $login : constant('DEFAULT_FLEXIBEE_LOGIN')

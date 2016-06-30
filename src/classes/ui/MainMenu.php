@@ -54,9 +54,13 @@ class MainMenu extends \Ease\Html\Div
 
         $userID = \Ease\Shared::user()->getUserID();
         if ($userID) { //Authenticated user
+            $companer = new \FlexiPeeHP\Company();
+
             $infoLabel = str_replace('://',
                 '://'.constant('FLEXIBEE_LOGIN').'@',
-                constant('FLEXIBEE_URL').'/c/'.constant('FLEXIBEE_COMPANY'));
+                $companer->getEvidenceURL());
+
+            $infoLabel.= '/'.constant('FLEXIBEE_COMPANY');
 
             $evidence = $this->webPage->getRequestValue('evidence');
             if ($evidence) {
@@ -72,32 +76,37 @@ class MainMenu extends \Ease\Html\Div
             $companer        = new \FlexiPeeHP\Company();
             $companies       = $companer->getFlexiData();
 
-            if (count($companies)) {
+            if (isset($companies['company']) && count($companies['company'])) {
                 foreach ($companies['company'] as $company) {
                     $companiesToMenu['?company='.$company['dbNazev']] = $company['nazev'];
                 }
                 asort($companiesToMenu);
-            }
 
+                $nav->addDropDownMenu(_('Firmy'), $companiesToMenu);
 
-            $nav->addDropDownMenu(_('Firmy'), $companiesToMenu);
-
-            $lister    = new \FlexiPeeHP\EvidenceList();
-            $flexidata = $lister->getFlexiData();
-
-            if (count($flexidata)) {
-                foreach ($flexidata['evidences']['evidence'] as $evidence) {
-                    $evidenciesToMenu['evidence.php?evidence='.$evidence['evidencePath']]
-                        = $evidence['evidenceName'];
+                if (!isset($_SESSION['company'])) { //Automaticky volíme první firmu
+                    $_SESSION['company'] = $companies['company'][0]['dbNazev'];
+                    define('FLEXIBEE_COMPANY', $_SESSION['company']);
                 }
-                asort($evidenciesToMenu);
+
+
+                $lister    = new \FlexiPeeHP\EvidenceList();
+                $flexidata = $lister->getFlexiData();
+
+                if (count($flexidata)) {
+                    foreach ($flexidata['evidences']['evidence'] as $evidence) {
+                        $evidenciesToMenu['evidence.php?evidence='.$evidence['evidencePath']]
+                            = $evidence['evidenceName'];
+                    }
+                    asort($evidenciesToMenu);
+                }
+
+
+                $nav->addDropDownMenu(_('Evidence'), $evidenciesToMenu);
             }
 
-
-            $nav->addDropDownMenu(_('Evidence'), $evidenciesToMenu);
-
-//            $nav->addMenuItem(new \Ease\TWB\LinkButton('invoice.php',
-//                _('Faktura')));
+            $nav->addDropDownMenu(_('Nástroje'),
+                ['changesapi.php' => _('Changes API')]);
         }
     }
 
