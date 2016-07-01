@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Flexplorer - Objekt uživatele.
  *
@@ -16,7 +15,6 @@ namespace Flexplorer;
  */
 class User extends \Ease\User
 {
-
     public $flexiBee = null;
 
     /**
@@ -47,17 +45,22 @@ class User extends \Ease\User
     {
         $loginStatus              = false;
         $this->flexiBee->disconnect();
-        $this->flexiBee->user     = $creds['login'];
+        $this->flexiBee->user     = trim($creds['login']);
         $this->flexiBee->password = $creds['password'];
-        $this->flexiBee->url      = $creds['server'];
+        $this->flexiBee->url      = trim($creds['server']);
         $this->flexiBee->company  = null;
         $this->flexiBee->prefix   = null;
         $this->flexiBee->curlInit();
         $companies                = $this->flexiBee->performRequest('c.json');
         if (isset($companies['companies'])) {
-            $this->flexiBee->company = $companies['companies']['company'][0]['dbNazev'];
+            if (isset($companies['companies']['company'][0]['dbNazev'])) {
+                $this->flexiBee->company = $companies['companies']['company'][0]['dbNazev'];
+            } else {
+                $this->flexiBee->company = $companies['companies']['company']['dbNazev'];
+            }
+
             $this->setMyKey(true);
-            $loginStatus             = $this->loginSuccess();
+            $loginStatus = $this->loginSuccess();
         }
         return $loginStatus;
     }
