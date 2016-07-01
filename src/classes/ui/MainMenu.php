@@ -106,7 +106,9 @@ class MainMenu extends \Ease\Html\Div
             }
 
             $nav->addDropDownMenu(_('Nástroje'),
-                ['changesapi.php' => _('Changes API')]);
+                ['changesapi.php' => _('Changes API'),
+                'ucetniobdobi.php' => _('Účetní období')
+            ]);
         }
     }
 

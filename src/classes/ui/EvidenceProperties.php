@@ -1,12 +1,13 @@
 <?php
+/**
+ * Flexplorer - Přehled vlastností evidence.
+ *
+ * @author     Vítězslav Dvořák <vitex@arachne.cz>
+ * @copyright  2016 Vitex Software
+ */
 
 namespace Flexplorer\ui;
 
-/**
- * Description of EvidenceProperties
- *
- * @author vitex
- */
 class EvidenceProperties extends \Ease\Html\TableTag
 {
 

@@ -357,7 +357,7 @@ class DataGrid extends \Ease\DataGrid
             $this->options['onDoubleClick'] = 'function(g) {
                     var id = $(g).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\''.$this->dataSource->keyword.'.php?'.$this->dataSource->getMyKeyColumn().'=\' +id);
+                    $(location).attr(\'href\',\'editor.php?evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
 
             }';
         }
