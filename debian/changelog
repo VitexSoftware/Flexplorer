@@ -1,4 +1,4 @@
-flexplorer (0.1-6) UNRELEASED; urgency=medium
+flexplorer (0.1-7) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -13,5 +13,6 @@ flexplorer (0.1-6) UNRELEASED; urgency=medium
     přihlašování
   * Doplněn nástroj pro hromadné zakládání účetních období
   * Doplněn nástroj pro hromadné zakládání účetních období
+  * Oprava přihlášení pokud je vedena pouze jedna firma.
 
- -- Cybervitexus <vitex@novolen.jinonice.czf>  Fri, 01 Jul 2016 11:15:50 +0200
+ -- Cybervitexus <vitex@novolen.jinonice.czf>  Fri, 01 Jul 2016 12:55:21 +0200

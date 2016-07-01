@@ -48,7 +48,7 @@ if ($oPage->isPosted()) {
             $hooker->setDataValue('skipUrlTest', 'false');
         }
         $lastversion = $oPage->getRequestValue('lastVersion', 'int');
-        if (!is_null($lastversion)) {
+        if (!is_null($lastversion) && $lastversion) {
             $hooker->setDataValue('lastVersion', $lastversion);
         }
 
