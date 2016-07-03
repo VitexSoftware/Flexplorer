@@ -23,7 +23,9 @@ Demo: http://flexibee-dev.spoje.net/
 ![Mobilní přihlášení](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-mobile_login.png "Screenshot přihlášení")
 ![Odpověď serveru](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-response_serveru.png "Screenshot odpovědi")
 ![Výpis evidence](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-vypis_evidence.png "Screenshot výpisu evidence")
-  
+![Editor Evidence](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-editor-evidence.png "Screenshot Editoru Evidence")
+![JSON Editor](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-json-editor.png "Screenshot JSON Editoru")
+![Potvrzení před smazáním](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-potvrzeni-pred-smazanim.png "Přehledu a potvrzení před smazáním záznamu")
 
 
 Instalace
@@ -40,6 +42,40 @@ po instalaci balíčku a reloadu webserveru bude aplikace nainstalována do slo�
 /usr/share/flexplorer a dostupná jako http://localhost/flexplorer/ 
 ( konfigurováno v  /etc/apache2/conf-enabled/flexplorer.conf ) 
 Pokud je nainstalován démon avahi, bude tento propagovat aplikaci jako službu.
+
+Konfigurace
+-----------
+
+Konfigurační soubor config.php se náchází ve složce src/includes. Výchozí konfigurace vypadá takto:
+
+    define('LOG_NAME', 'Flexplorer'); //Identifikace logu
+    define('LOG_TYPE', 'syslog'); //Možné hodnoty: memory, syslog, file
+
+    /*
+     * Výchozí odesilatel zpráv
+     */
+    define('EMAIL_FROM', 'flexplorer@localhost');
+
+    /*
+     * URL Flexibee API
+     */
+    define('DEFAULT_FLEXIBEE_URL', 'https://demo.flexibee.eu');
+    /*
+     * Uživatel FlexiBee API
+     */
+    define('DEFAULT_FLEXIBEE_LOGIN', 'winstrom');
+    /*
+     * Heslo FlexiBee API
+     */
+
+    define('DEFAULT_FLEXIBEE_PASSWORD', 'winstrom');
+    /*
+     * Společnost v FlexiBee
+     */
+
+    define('DEFAULT_FLEXIBEE_COMPANY', 'demo');
+
+
 
 Závislosti
 ----------

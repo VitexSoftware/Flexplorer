@@ -93,16 +93,26 @@ class DataGrid extends \Ease\DataGrid
 
     function setUpButtons()
     {
-//        $this->addAddButton(_('Přidat'));
-//        $this->addEditButton(_('Upravit'));
-//        $this->addDeleteButton(_('Smazat'));
+        $this->addAddButton(_('Přidat'));
+        $this->addEditButton(_('Upravit'));
+        $this->addDeleteButton(_('Smazat'));
     }
 
+    /**
+     * Nastaví vlastností sloupečků datagridu
+     */
     function setUpColumns()
     {
 
         foreach ($this->dataSource->keywordsInfo as $keyword => $properties) {
+            $colProperties = [];
             $type = $properties['type'];
+            if ($properties['isSortable'] == 'true') {
+                $colProperties['sortable'] = 'true';
+            } else {
+                $colProperties['sortable'] = 'false';
+            }
+
 
             if (!isset($this->dataSource->keywordsInfo[$keyword]['title']) || !strlen(trim($this->dataSource->keywordsInfo[$keyword]['title']))) {
                 $this->addStatusMessage(_('Chybi titulek').' '.$this->dataSource->keyword.': '.$keyword,
@@ -111,7 +121,8 @@ class DataGrid extends \Ease\DataGrid
             }
 
             $this->setColumn($keyword,
-                $this->dataSource->keywordsInfo[$keyword]['title'], true);
+                $this->dataSource->keywordsInfo[$keyword]['title'], true,
+                $colProperties);
         }
     }
 
@@ -144,14 +155,19 @@ class DataGrid extends \Ease\DataGrid
             $target = $this->options['url'];
         }
         $this->addButton($title, 'add', 'addRecord');
+
+        $this->addCSS('.flexigrid div.fbutton .add {
+background: url(images/add.png) no-repeat center left;
+}');
+
         $this->addJavaScript('function addRecord(com, grid) {
-              $(location).attr(\'href\',\''.$this->dataSource->keyword.'.php\');
+              $(location).attr(\'href\',\'editor.php?evidence='.$this->dataSource->getEvidence().'\');
             }
         ', null, true);
     }
 
     /**
-     * Vloží editační tlačítko
+     * Vloží tlačítko výběru všech zobrazených záznamů
      *
      * @param type $title
      * @param type $target
@@ -175,6 +191,12 @@ class DataGrid extends \Ease\DataGrid
     function addEditButton($title, $target = null)
     {
         $this->addButton($title, 'edit', 'editRecord');
+
+        $this->addCss('.flexigrid div.fbutton .edit {
+background: url(images/edit.png) no-repeat center left;
+}
+');
+
         $this->addJavaScript('function editRecord(com, grid) {
 
         var numItems = $(\'.trSelected\').length
@@ -183,14 +205,14 @@ class DataGrid extends \Ease\DataGrid
                 $(\'.trSelected\', grid).each(function() {
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\''.$this->dataSource->keyword.'.php?'.$this->dataSource->getMyKeyColumn().'=\' +id);
+                    $(location).attr(\'href\',\'editor.php?evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
                 });
 
             } else {
                 $(\'.trSelected\', grid).each(function() {
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    var url =\''.$this->dataSource->keyword.'.php?'.$this->dataSource->getMyKeyColumn().'=\' +id;
+                    var url =\'editor.php?evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id;
                     var win = window.open(url, \'_blank\');
                     win.focus();
                 });
@@ -215,6 +237,11 @@ class DataGrid extends \Ease\DataGrid
             $target = $this->options['url'];
         }
         $this->addButton($title, 'delete', 'deleteRecord');
+
+        $this->addCss('.flexigrid div.fbutton .delete {
+background: url(images/delete.png) no-repeat center left;
+}');
+
         $this->addJavaScript('function deleteRecord(com, grid) {
 
         var numItems = $(\'.trSelected\').length
@@ -223,14 +250,14 @@ class DataGrid extends \Ease\DataGrid
                 $(\'.trSelected\', grid).each(function() {
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\''.$this->dataSource->keyword.'.php?action=delete&'.$this->dataSource->getMyKeyColumn().'=\' +id);
+                    $(location).attr(\'href\',\'delete.php?evidence='.$this->dataSource->getEvidence().'&action=delete&'.$this->dataSource->getMyKeyColumn().'=\' +id);
                 });
 
             } else {
                 $(\'.trSelected\', grid).each(function() {
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    var url =\''.$this->dataSource->keyword.'.php?action=delete&'.$this->dataSource->getMyKeyColumn().'=\' +id;
+                    var url =\'delete.php?evidence='.$this->dataSource->getEvidence().'&action=delete&'.$this->dataSource->getMyKeyColumn().'=\' +id;
                     var win = window.open(url, \'_blank\');
                     win.focus();
                 });
@@ -238,7 +265,6 @@ class DataGrid extends \Ease\DataGrid
         } else {
             alert("'._('Je třeba označit nějaké řádky').'");
         }
-
 
             }
         ', null, true);
