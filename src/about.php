@@ -11,7 +11,7 @@ namespace Flexplorer;
 
 require_once 'includes/Init.php';
 
-$oPage->addItem(new ui\PageTop(_('Odhlášení')));
+$oPage->addItem(new ui\PageTop(_('O Aplikaci')));
 
 $oPage->container->addItem('<br/><br/><br/><br/>');
 $oPage->container->addItem(new \Ease\Html\Div(nl2br(file_get_contents('../README.md')),

@@ -31,12 +31,31 @@ class SendForm extends \Ease\TWB\Form
             $url,
             new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/urls',
             _('Sestavování URL')));
-        $this->addInput(new \Ease\TWB\Textarea('body'), _('Tělo dotazu'));
+        $this->addInput(new \Ease\TWB\Textarea('body', $body,
+            ['id' => 'editor', 'class' => 'animated']), _('Tělo dotazu'));
         $this->addInput(new \Ease\Html\Select('method',
-            ['get' => 'GET', 'post' => 'POST', 'put' => 'PUT', 'patch' => 'PATCH',
-            'delete' => 'DELETE'], $method), _('Metoda'), null,
+            ['GET' => 'GET', 'POST' => 'POST', 'PUT' => 'PUT', 'PATCH' => 'PATCH',
+            'DELETE' => 'DELETE'], $method), _('Metoda'), null,
             new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/http-operations',
             _('Podporované HTTP Operace')));
         $this->addItem(new \Ease\TWB\SubmitButton(_('Odeslat'), 'success'));
+    }
+
+    /**
+     * TODO:  https://ace.c9.io/
+     */
+    function finalize()
+    {
+        \Ease\Shared::webPage()->includeJavaScript('js/jquery.autosize.min.js');
+        \Ease\Shared::webPage()->addJavaScript('
+         var textarea = $("textarea[name=\'body\']");
+         textarea.autosize();
+         var unformated = textarea.val();
+         var formated = JSON.stringify($.parseJSON( unformated ),undefined, 4);
+         textarea.val(formated)
+//         textarea.autosize.update();
+        ');
+
+        parent::finalize();
     }
 }

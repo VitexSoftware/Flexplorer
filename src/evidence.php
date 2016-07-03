@@ -28,8 +28,8 @@ $oPage->addItem(new ui\PageTop(_('Přehled vlastností evidence')));
 $evobj = new Flexplorer($evidence);
 
 $tabs = new \Ease\TWB\Tabs('EviTabs');
-$tabs->addTab(_('Výpis'), new ui\DataGrid(_('Evidence'),
- new DataSource($evobj)));
+$tabs->addTab(_('Výpis'),
+    new ui\DataGrid(_('Evidence'), new DataSource($evobj)));
 $tabs->addTab(_('Struktura'), new ui\EvidenceProperties($evobj));
 
 
@@ -39,10 +39,15 @@ if ($evidence) {
     $url.='/'.$evidence;
 }
 
+$method = $oPage->getRequestValue('method');
+$body   = $oPage->getRequestValue('body');
+if (is_null($body)) {
+    $body = $evobj->jsonizeData([]);
+}
 
 $tabs->addTab(_('Dotaz'),
     new \Ease\TWB\Panel(_('Uživatelský požadavek'), 'warning',
-    new ui\SendForm($url)));
+    new ui\SendForm($url, $method, $body)));
 
 
 $oPage->container->addItem($tabs);

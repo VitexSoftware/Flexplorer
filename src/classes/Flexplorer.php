@@ -11,6 +11,11 @@ namespace Flexplorer;
 class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
 {
     /**
+     * @var array Pole HTTP hlaviček odesílaných s každým požadavkem
+     */
+    public $defaultHttpHeaders = ['User-Agent' => 'Flexplorer 0.1 (using FlexiPeeHP library)'];
+
+    /**
      * Struktura evidence
      * @var array
      */
@@ -29,15 +34,22 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
 
     public function getColumnsInfo()
     {
-        $useKeywords = [];
-        $flexinfo    = $this->performRequest($this->evidence.'/properties.json');
-        if (count($flexinfo)) {
-            foreach ($flexinfo['properties']['property'] as $evidenceProperty) {
-                $key                       = $evidenceProperty['propertyName'];
-                $useKeywords[$key]         = $evidenceProperty;
-                $useKeywords[$key]['name'] = $evidenceProperty['name'];
-                $useKeywords[$key]['type'] = $evidenceProperty['type'];
+        $structFile = sys_get_temp_dir().'/flexplorer-'.$this->evidence.'.struct';
+        if (file_exists($structFile)) {
+            $useKeywords = unserialize(file_get_contents($structFile));
+        } else {
+            $useKeywords = [];
+            $flexinfo    = $this->performRequest($this->evidence.'/properties.json');
+            if (count($flexinfo)) {
+                foreach ($flexinfo['properties']['property'] as $evidenceProperty) {
+                    $key                       = $evidenceProperty['propertyName'];
+                    $useKeywords[$key]         = $evidenceProperty;
+                    $useKeywords[$key]['name'] = $evidenceProperty['name'];
+                    $useKeywords[$key]['type'] = $evidenceProperty['type'];
+                }
             }
+
+            file_put_contents($structFile, serialize($useKeywords));
         }
         return $useKeywords;
     }
@@ -162,5 +174,47 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
             }
         }
         return $row;
+    }
+
+    /**
+     * Vrací vyhledávací výraz pro řetězec
+     *
+     * @param string $what co hledat
+     * @return string vyhledávací výraz
+     */
+    public function searchString($what)
+    {
+        $query = '';
+        $conds = [];
+        foreach ($this->evidenceStructure as $columnInfo) {
+            if ($columnInfo['type'] === 'string') {
+                if ($columnInfo['propertyName'] == 'stitky') {
+                    continue;
+                }
+                if ($columnInfo['propertyName'] == 'faNazev2') {
+                    continue;
+                }
+
+                $conds[$columnInfo['propertyName']] = $columnInfo['propertyName']." like '".$what."'";
+            }
+        }
+        return $this->getColumnsFromFlexibee(array_keys($conds),
+                implode(' or ', $conds));
+    }
+
+    /**
+     * Převezme pouze známe sloupečky
+     *
+     * @param array $data vstupní data
+     * @return array políčka evidence
+     */
+    public function takeData($data)
+    {
+        foreach ($data as $key => $value) {
+            if (!array_key_exists($key, $this->evidenceStructure)) {
+                unset($data[$key]);
+            }
+        }
+        return parent::takeData($data);
     }
 }

@@ -9,7 +9,8 @@ Umožňuje:
   * zobrazovat obsah všech dostpných evidencí ve všech firmách
   * zobrazovat strukturu evidence
   * odesílat přímé požadavky na server a zobrazovat výsledky
-  * Nastavovat ChangesAPI a přidávat WebHooks  
+  * Nastavovat ChangesAPI a přidávat WebHooks
+  * Hromadně zakládat účetní období   
 
 [![Source Code](http://img.shields.io/badge/source/Spoje-NET/Flexplorer-blue.svg?style=flat-square)](https://github.com/Spoje-NET/Flexplorer)
 [![Latest Version](https://img.shields.io/github/release/Spoje-NET/Flexplorer.svg?style=flat-square)](https://github.com/Spoje-NET/Flexplorer/releases)

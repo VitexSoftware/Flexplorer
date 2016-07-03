@@ -47,8 +47,10 @@ class EvidenceProperties extends \Ease\Html\TableTag
                             }
                             break;
                         case 'evidenceVariants':
-                            $props[$value] = implode(', ',
+                            if (is_array($propValues[$value]['evidenceVariant'])) {
+                                $props[$value] = implode(', ',
                                 $propValues[$value]['evidenceVariant']);
+                            }
                             break;
                         case 'url':
                             $props[$value] = '<a href="'.$propValues[$value].'">'.$propValues[$value].'</a>';

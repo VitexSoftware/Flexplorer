@@ -32,7 +32,14 @@ if ($login) {
         $oUser->addStatusMessage(_('Přihlášen jako: ').$oUser->getUserLogin(),
             'success');
         \Ease\Shared::user()->loginSuccess();
-        $oPage->redirect('main.php');
+
+        $backurl = $oPage->getRequestValue('backurl');
+        if (!is_null($backurl)) {
+            $oPage->redirect($backurl);
+        } else {
+            $oPage->redirect('main.php');
+        }
+
         exit;
     } else {
         $oPage->addStatusMessage(_('Prosím potvrďte vaše přihlašovací udaje'));

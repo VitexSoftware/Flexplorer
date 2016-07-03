@@ -7,7 +7,7 @@ Priority: optional
 Homepage: https://github.com/Spoje-NET/Flexplorer
 
 Package: flexplorer
-Depends: ${misc:Depends},flexipeehp,composer,php5-intl,libjs-twitter-bootstrap-switch
+Depends: ${misc:Depends},flexipeehp,composer,php5-intl,libjs-twitter-bootstrap-switch,libjs-font-awesome
 Recommends: flexibee
 Architecture: all
 Section: web

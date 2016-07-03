@@ -54,6 +54,7 @@ class MainMenu extends \Ease\Html\Div
 
         $userID = \Ease\Shared::user()->getUserID();
         if ($userID) { //Authenticated user
+//            $nav->addMenuItem(new NavBarSearchBox('search', 'search.php'));
             $companer = new \FlexiPeeHP\Company();
 
             $infoLabel = str_replace('://',
@@ -105,10 +106,10 @@ class MainMenu extends \Ease\Html\Div
                             = $evidence['evidenceName'];
                     }
                     asort($evidenciesToMenu);
+                    $nav->addDropDownMenu(_('Evidence'), $evidenciesToMenu);
                 }
 
 
-                $nav->addDropDownMenu(_('Evidence'), $evidenciesToMenu);
             }
 
             $nav->addDropDownMenu(_('Nástroje'),

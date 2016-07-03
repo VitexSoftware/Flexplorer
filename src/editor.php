@@ -13,14 +13,49 @@ require_once 'includes/Init.php';
 $oPage->onlyForLogged();
 
 $evidence = $oPage->getRequestValue('evidence');
+$id       = $oPage->getRequestValue('id');
 
 $engine = new Flexplorer($evidence);
-$engine->loadFromFlexiBee($oPage->getRequestValue('id', 'int'));
+
+if ($oPage->isPosted()) {
+    $engine->takeData($_POST);
+
+    if (!is_null($oPage->getRequestValue('toFlexiBee'))) {
+        $engine->insertToFlexiBee();
+        if ($engine->lastResponseCode != 400) {
+            $id = $engine->getLastInsertedId();
+            $engine->addStatusMessage(_('Záznam byl uložen'), 'success');
+        } else {
+            $engine->addStatusMessage(_('Záznam nebyl uložen'), 'warning');
+        }
+    }
+}
+
+if (!is_null($id)) {
+    $engine->loadFromFlexiBee($id);
+    $recordInfo = $engine->__toString();
+} else {
+    $recordInfo = _('Nový záznam');
+}
 
 $oPage->addItem(new ui\PageTop(_('Editor')));
 
-$oPage->container->addItem(new \Ease\TWB\Panel($evidence.' '.$engine, 'info',
-    new ui\Editor($engine)));
+
+
+if ($oPage->isPosted() && is_null($oPage->getRequestValue('toFlexiBee'))) {
+
+    $url = $engine->getEvidenceURL();
+
+    $method = 'POST';
+    $body   = $engine->jsonizeData($engine->getData());
+
+    $oPage->container->addItem(new \Ease\TWB\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence='.$evidence.'">'.$evidence.'</a> '.$recordInfo),
+        'info', new ui\SendForm($url, $method, $body)));
+
+} else {
+    $oPage->container->addItem(new \Ease\TWB\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence='.$evidence.'">'.$evidence.'</a> '.$recordInfo),
+        'info', new ui\Editor($engine)));
+}
 
 $oPage->addItem(new ui\PageBottom());
 
