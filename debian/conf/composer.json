@@ -11,12 +11,12 @@
     ],
     "minimum-stability": "dev",
     "config": {
-	"vendor-dir": "/var/lib/flexipeehp"
+	"vendor-dir": "/var/lib/flexplorer"
     },
     "require": {
         "php": ">= 5.5.9",
-        "spoje.net/flexipeehp": "dev-master",
-        "vitexsoftware/ease-framework": "dev-master"
+        "flexipeehp": "*",
+        "ease-framework": "*"
     },
     "autoload": {
         "psr-4": {

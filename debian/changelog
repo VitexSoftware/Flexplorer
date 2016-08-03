@@ -1,4 +1,4 @@
-flexplorer (0.2-8) UNRELEASED; urgency=medium
+flexplorer (0.2-13) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -16,5 +16,33 @@ flexplorer (0.2-8) UNRELEASED; urgency=medium
   * Oprava přihlášení pokud je vedena pouze jedna firma.
   * Doplněn editor záznamů Přidána možnost voložit nový záznam Přidána
     možnost smazat záznam drobnéopravy a úpravy
+  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
+    potvrzení mazání Doplněn před tím necommitnutý DataGrid
+  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
+    potvrzení mazání Doplněn před tím necommitnutý DataGrid
+  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
+    potvrzení mazání Doplněn před tím necommitnutý DataGrid
+  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
+    potvrzení mazání Doplněn před tím necommitnutý DataGrid
+  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
+    potvrzení mazání Doplněn před tím necommitnutý DataGrid
+  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
+    potvrzení mazání Doplněn před tím necommitnutý DataGrid
+  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
+    potvrzení mazání Doplněn před tím necommitnutý DataGrid
+  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
+    potvrzení mazání Doplněn před tím necommitnutý DataGrid
+  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
+    potvrzení mazání Doplněn před tím necommitnutý DataGrid
+  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
+    potvrzení mazání Doplněn před tím necommitnutý DataGrid
 
- -- Cybervitexus <vitex@novolen.jinonice.czf>  Sun, 03 Jul 2016 23:38:45 +0200
+  [ vitex ]
+  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
+    potvrzení mazání Doplněn před tím necommitnutý DataGrid
+  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
+    potvrzení mazání Doplněn před tím necommitnutý DataGrid
+  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
+    potvrzení mazání Doplněn před tím necommitnutý DataGrid
+
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 03 Aug 2016 21:25:10 +0200
