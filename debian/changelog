@@ -1,4 +1,4 @@
-flexplorer (0.2-13) UNRELEASED; urgency=medium
+flexplorer (0.2-2) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -44,5 +44,6 @@ flexplorer (0.2-13) UNRELEASED; urgency=medium
     potvrzení mazání Doplněn před tím necommitnutý DataGrid
   * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
     potvrzení mazání Doplněn před tím necommitnutý DataGrid
+  * Added tool for probing WebHooks
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 03 Aug 2016 21:25:10 +0200
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Mon, 29 Aug 2016 16:02:00 +0200
