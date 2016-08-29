@@ -108,12 +108,11 @@ class MainMenu extends \Ease\Html\Div
                     asort($evidenciesToMenu);
                     $nav->addDropDownMenu(_('Evidence'), $evidenciesToMenu);
                 }
-
-
             }
 
             $nav->addDropDownMenu(_('Nástroje'),
                 ['changesapi.php' => _('Changes API'),
+                'fakechange.php' => _('Test WebHooku'),
                 'ucetniobdobi.php' => _('Účetní období')
             ]);
         }

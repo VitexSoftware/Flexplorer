@@ -75,17 +75,18 @@ class BootstrapMenu extends \Ease\TWB\Navbar
     }
 
     /**
-     * Vypíše stavové zprávy.
+     * Show status messages
      */
     public function draw()
     {
         $statusMessages = $this->webPage->getStatusMessagesAsHtml();
         if ($statusMessages) {
             $this->addItem(new \Ease\Html\Div($statusMessages,
-                ['id' => 'StatusMessages', 'class' => 'well', 'title' => _('kliknutím skryjete zprávy')]));
+                ['id' => 'StatusMessages', 'class' => 'well', 'title' => _('Click to hide messages'),
+                'data-state' => 'down']));
             $this->addItem(new \Ease\Html\Div(null, ['id' => 'smdrag']));
+            $this->webPage->cleanMessages();
         }
-        $this->webPage->cleanMessages();
         parent::draw();
     }
 

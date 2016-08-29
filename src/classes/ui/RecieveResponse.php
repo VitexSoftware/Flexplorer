@@ -27,7 +27,7 @@ class RecieveResponse extends \Ease\Html\Div
 
             if (strlen($sender->lastCurlResponse)) {
                 $this->addItem('<pre><code class="'.$format.'">'.
-                    $this->jsonpp($sender->lastCurlResponse)
+                    self::jsonpp($sender->lastCurlResponse)
                     .'</code></pre>');
             }
 
@@ -57,7 +57,7 @@ class RecieveResponse extends \Ease\Html\Div
      *
      * @return string
      */
-    function jsonpp($json, $istr = '  ')
+    static function jsonpp($json, $istr = '  ')
     {
         $result = '';
         for ($p = $q      = $i      = 0; isset($json[$p]); $p++) {

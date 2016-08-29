@@ -26,6 +26,8 @@ class RecordShow extends \Ease\TWB\Panel
             $evidence.' '.$recordObject)
             ), 'warning', null, $bottom);
 
+        $this->addItem('ExtID:'.$recordObject->getExternalID());
+
         $row = new \Ease\TWB\Row();
 
         $recordObject->setData($recordObject->htmlizeRow($recordObject->getData()));

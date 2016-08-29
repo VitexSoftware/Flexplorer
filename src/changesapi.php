@@ -75,8 +75,18 @@ if (!is_null($linkdel)) {
     } else {
         $hooker->addStatusMessage(_('Hook nebyl odregistrován'), 'warning');
     }
+    $oPage->redirect('changesapi.php');
 }
 
+$linkrefresh = $oPage->getRequestValue('refresh', 'int');
+if (!is_null($linkrefresh)) {
+    if ($hooker->refresh($linkrefresh)) {
+        $hooker->addStatusMessage(_('Hook refreshed'), 'success');
+    } else {
+        $hooker->addStatusMessage(_('Hook refresh failed'), 'warning');
+    }
+    $oPage->redirect('changesapi.php');
+}
 
 $oPage->addItem(new ui\PageTop(_('Nastavení rozhraní sledování změn')));
 $toolRow      = new \Ease\TWB\Row();
@@ -100,11 +110,10 @@ $settingsForm->addInput(new ui\TWBSwitch('hookurltest', true, 'skip'),
     _('Přeskočit test URL'), null, _('Potlačení testu funkčnosti předaného URL'));
 
 
-    $settingsForm->addInput(new \Ease\Html\InputNumberTag('lastVersion', null,
-        ['min' => 0, 'max' => $globalVersion]), _('Poslední verze'),
-        $globalVersion,
-        sprintf(_('Verze od které započne posílání následujích změn, tj. od nejbližší vyšší verze. Defaultní hodnota je rovna aktuální globální verzi (globalVersion) v momentě registrace hooku. Přípustné hodnoty jsou z intervalu: [0, %s]'),
-            $globalVersion));
+$settingsForm->addInput(new \Ease\Html\InputNumberTag('lastVersion', null,
+    ['min' => 0, 'max' => $globalVersion]), _('Poslední verze'), $globalVersion,
+    sprintf(_('Verze od které započne posílání následujích změn, tj. od nejbližší vyšší verze. Defaultní hodnota je rovna aktuální globální verzi (globalVersion) v momentě registrace hooku. Přípustné hodnoty jsou z intervalu: [0, %s]'),
+        $globalVersion));
 
 $randstr = \Ease\Sand::randomString(30);
 $settingsForm->addInput(new \Ease\Html\InputTextTag('secKey'),
@@ -116,22 +125,29 @@ $settingsForm->addInput(new \Ease\Html\InputTextTag('secKey'),
 
 $settingsForm->addItem(new \Ease\TWB\SubmitButton(_('Provést operaci'),
     'warning'));
-$toolRow->addColumn(6, new \Ease\TWB\Well($settingsForm));
+$toolRow->addColumn(4, new \Ease\TWB\Well($settingsForm));
 
-$hooks = $hooker->getFlexiData();
-if (!isset($hooks['message']) && count($hooks)) {
-    $hooksTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
-    $hooksTable->addRowHeaderColumns(array_keys(current($hooks)));
-    foreach ($hooks as $hookinfo) {
-        $hookinfo[] = new \Ease\TWB\LinkButton('?linkdel='.$hookinfo['id'],
-            new \Ease\TWB\GlyphIcon('remove'), 'warning');
-        $hooksTable->addRowColumns($hookinfo);
+if ($chapistatus) {
+    $hooks = $hooker->getFlexiData();
+    if (!isset($hooks['message']) && count($hooks)) {
+        $hooksTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
+        $hooksTable->addRowHeaderColumns(array_keys(current($hooks)));
+        foreach ($hooks as $hookinfo) {
+            $hookinfo[] = new \Ease\TWB\LinkButton('?refresh='.$hookinfo['id'],
+                new \Ease\TWB\GlyphIcon('refresh'), 'success');
+            $hookinfo[] = new \Ease\TWB\LinkButton('fakechange.php?hookurl='.$hookinfo['url'],
+                new \Ease\TWB\GlyphIcon('export'), 'info',
+                ['title' => _('Test')]);
+            $hookinfo[] = new \Ease\TWB\LinkButton('?linkdel='.$hookinfo['id'],
+                new \Ease\TWB\GlyphIcon('remove'), 'danger');
+            $hooksTable->addRowColumns($hookinfo);
+        }
+
+        $toolRow->addColumn(8,
+            new \Ease\TWB\Panel(_('Zaregistrované webhooks'), 'info',
+            $hooksTable));
     }
-
-    $toolRow->addColumn(6,
-        new \Ease\TWB\Panel(_('Zaregistrované webhooks'), 'info', $hooksTable));
 }
-
 $oPage->container->addItem(new \Ease\TWB\Panel(_('ChangesAPI a WebHooks'),
     'info', $toolRow));
 

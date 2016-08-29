@@ -61,6 +61,8 @@ class User extends \Ease\User
 
             $this->setMyKey(true);
             $loginStatus = $this->loginSuccess();
+        } else {
+            $this->addStatusMessage(_('Login Failed'), 'warning');
         }
         return $loginStatus;
     }
