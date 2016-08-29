@@ -7,6 +7,8 @@ REVISION=`cat debian/revison | perl -ne 'chomp; print join(".", splice(@{[split/
 CHANGES=`git log -n 1 | tail -n+5`
 dch -b -v $VERSION-$REVISION --package $PACKAGE $CHANGES
 
+sed -i '/"version":/c\    "version": "'$VERSION.$REVISION'",' debian/conf/composer.json
+
 debuild -i -us -uc -b
 
 
@@ -19,6 +21,7 @@ else
     echo $VERSION > debian/lastversion
 fi
 
+rm -rf debian/$PACKAGE
 
 cd ..
 ls *.deb

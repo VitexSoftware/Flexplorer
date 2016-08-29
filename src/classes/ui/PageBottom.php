@@ -17,6 +17,14 @@ class PageBottom extends \Ease\TWB\Container
         $this->SetTagID('footer');
         $this->addItem('<hr>');
 
+        $composer = 'composer.json';
+        if (!file_exists($composer)) {
+            $composer = '../'.$composer;
+        }
+
+        $appInfo = json_decode(file_get_contents($composer));
+
+
         $rowFluid1 = new \Ease\TWB\Row();
         $colA      = $rowFluid1->addItem(new \Ease\TWB\Col(2));
         $listA1    = $colA->addItem(new \Ease\Html\UlTag(_('FlexiPeeHP'),
@@ -61,8 +69,10 @@ class PageBottom extends \Ease\TWB\Container
         $rowFluid2 = new \Ease\TWB\Row();
 
         $rowFluid2->addItem(new \Ease\TWB\Col(12,
-            [new \Ease\TWB\Col(8, ''), new \Ease\TWB\Col(4,
-                _('&copy; 2016 VitexSoftware'))]));
+            [new \Ease\TWB\Col(8,
+                'Flex<strong>plorer</strong> v.: '.$appInfo->version
+            ), new \Ease\TWB\Col(4,
+        _('&copy; 2016 Vítězslav "Vitex" Dvořák'))]));
 
         $this->addItem($rowFluid2);
     }
