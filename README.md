@@ -51,7 +51,7 @@ Při testování WebHooku pomůže tento nástroj, který sestaví maketu zázna
 
 Správná je prázdná odpověď. Ačkoliv funguje, tak by se tento skript FlexiBee nelíbil. Zde vidíme co vrací:
 
-![WebHook Response](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-webhook-request.png "Screenshot Odpovědi webhooku")
+![WebHook Response](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-webhook-response.png "Screenshot Odpovědi webhooku")
 
 
 Instalace
