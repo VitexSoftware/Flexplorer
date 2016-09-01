@@ -29,9 +29,27 @@ if (strlen($query) > 1) {
 
     foreach ($results as $rectype => $records) {
         foreach ($records as $recid => $record) {
-            $found[] = ['id' => $record['id'], 'url' => 'evidence.php?evidence='.$rectype.'&amp;id='.$record['id'],
-                'name' => $record[$record['what']],
-                'type' => $rectype, 'what' => $record['what']];
+            if (isset($record['url'])) {
+                $url = $record['url'];
+            } else {
+                $url = 'evidence.php?evidence='.$rectype.'&amp;id='.$record['id'];
+            }
+            if (isset($record['name'])) {
+                $name = $record['name'];
+            } else {
+                $name = $record[$record['what']];
+            }
+
+            if (isset($record['what'])) {
+                $what = $record['what'];
+            } else {
+                $what = $record[$record['what']];
+            }
+
+            $found[] = ['id' => $record['id'], 'url' => $url,
+                'name' => $name,
+                'type' => $rectype,
+                'what' => $what];
         }
     }
 }

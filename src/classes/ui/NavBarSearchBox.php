@@ -35,18 +35,18 @@ class NavBarSearchBox extends \Ease\TWB\Form
             'search', $term,
             [
             'class' => 'form-control pull-right typeahead input-sm',
-            'style' => 'width: 150px; margin-right: 35px, border: 1px solid black; background-color: #e5e5e5; height: 27px',
-            'placeholder' => _('Hledání'),
+            'style' => 'width: 300px; margin-right: 35px, border: 1px solid black; background-color: #e5e5e5; height: 27px',
+            'placeholder' => _('Search'),
             ]), ['class' => 'input-group'])
         );
         $buttons = $group->addItem(new \Ease\Html\SpanTag(null, null,
             ['class' => 'input-group-btn']));
         $buttons->addItem(new \Ease\Html\ButtonTag(new \Ease\Html\SpanTag(null,
-            new \Ease\Html\SpanTag(null, _('Zavřít'), ['class' => 'sr-only']),
+            new \Ease\Html\SpanTag(null, _('Close'), ['class' => 'sr-only']),
             ['class' => 'glyphicon glyphicon-remove']),
             ['type' => 'reset', 'class' => 'btn btn-default btn-sm']));
         $buttons->addItem(new \Ease\Html\ButtonTag(new \Ease\Html\SpanTag(null,
-            new \Ease\Html\SpanTag(null, _('Hledat'), ['class' => 'sr-only']),
+            new \Ease\Html\SpanTag(null, _('Search'), ['class' => 'sr-only']),
             ['class' => 'glyphicon glyphicon-search']),
             ['type' => 'submit', 'class' => 'btn btn-default btn-sm ']));
     }

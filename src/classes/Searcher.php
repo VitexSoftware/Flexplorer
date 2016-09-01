@@ -39,6 +39,7 @@ class Searcher extends \Ease\Atom
     public function __construct($evidence = null)
     {
         if (is_null($evidence)) {
+            $this->sysClasses['evidencies'] = new Evidencer();
 //            $lister    = new \FlexiPeeHP\EvidenceList();
 //            $flexidata = $lister->getFlexiData();
 //            foreach ($flexidata['evidences']['evidence'] as $evidence) {
@@ -82,16 +83,20 @@ class Searcher extends \Ease\Atom
 
             if (count($found)) {
                 foreach ($found as $lineNo => $values) {
-                    $found[$lineNo]['what'] = current(array_keys(array_filter($values,
-                                function($var) use ($term) {
-                                return preg_match("/\b$term\b/i", $var);
-                            })));
+                    if (isset($values['what'])) {
+                        $found[$lineNo]['what'] = $values['what'];
+                    } else {
+                        $found[$lineNo]['what'] = current(array_keys(array_filter($values,
+                                    function($var) use ($term) {
+                                    return preg_match("/\b$term\b/i", $var);
+                                })));
 
-                    if ($found[$lineNo]['what'] == false) {
-                        foreach ($values as $column => $value) {
-                            if (stristr($value, $term)) {
-                                $found[$lineNo]['what'] = $column;
-                                break;
+                        if ($found[$lineNo]['what'] == false) {
+                            foreach ($values as $column => $value) {
+                                if (stristr($value, $term)) {
+                                    $found[$lineNo]['what'] = $column;
+                                    break;
+                                }
                             }
                         }
                     }
@@ -102,4 +107,5 @@ class Searcher extends \Ease\Atom
 
         return $results;
     }
+
 }

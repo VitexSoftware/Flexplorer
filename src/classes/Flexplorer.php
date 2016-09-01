@@ -25,8 +25,11 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
      *
      * @param type $evidence
      */
-    public function __construct($evidence)
+    public function __construct($evidence = null)
     {
+        if (is_null($evidence)) {
+            $evidence = $this->getEvidence();
+        }
         $this->setEvidence($evidence);
         parent::__construct();
         $this->evidenceStructure = $this->getColumnsInfo();
@@ -40,7 +43,7 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
         } else {
             $useKeywords = [];
             $flexinfo    = $this->performRequest($this->evidence.'/properties.json');
-            if (count($flexinfo)) {
+            if (count($flexinfo) && array_key_exists('properties', $flexinfo)) {
                 foreach ($flexinfo['properties']['property'] as $evidenceProperty) {
                     $key                       = $evidenceProperty['propertyName'];
                     $useKeywords[$key]         = $evidenceProperty;

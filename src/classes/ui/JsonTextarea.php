@@ -30,7 +30,6 @@ class JsonTextarea extends \Ease\TWB\Textarea
             var formated = JSON.stringify($.parseJSON( unformated ),undefined, 4);
             textarea.val(formated)
          }
-         textarea.autosize.update();
         ');
     }
 }
