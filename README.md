@@ -53,6 +53,15 @@ Správná je prázdná odpověď. Ačkoliv funguje, tak by se tento skript Flexi
 
 ![WebHook Response](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-webhook-response.png "Screenshot Odpovědi webhooku")
 
+Pro hledání v evidencích je k dispozici vyhledávací políčko:
+
+![WebHook Response](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-hinter_evidence.png "Našeptávač evidencí")
+
+Po stisku entru se zobrazí podrobnější výsledky:
+
+![WebHook Response](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-nalezene_evidence.png "Nalezené evidence")
+
+
 
 Instalace
 ---------

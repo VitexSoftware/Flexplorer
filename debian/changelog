@@ -1,4 +1,4 @@
-flexplorer (0.3-1) UNRELEASED; urgency=medium
+flexplorer (0.4-2) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -48,5 +48,6 @@ flexplorer (0.3-1) UNRELEASED; urgency=medium
   * Oprava Screenshotu Odpovědi WebHooku
   * Release Verze 0.3
   * Release Verze 0.3
+  * Release 0.4 Main menu switched to english
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Mon, 29 Aug 2016 17:29:49 +0200
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Thu, 01 Sep 2016 12:41:03 +0200
