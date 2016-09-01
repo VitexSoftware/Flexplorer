@@ -1,6 +1,6 @@
 <?php
 /**
- * Flexplorer - Menu aplikace.
+ * Flexplorer - Application Menu.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2016 Vitex Software
@@ -89,9 +89,9 @@ class MainMenu extends \Ease\Html\Div
                 }
                 asort($companiesToMenu);
 
-                $nav->addDropDownMenu(_('Firmy'), $companiesToMenu);
+                $nav->addDropDownMenu(_('Companies'), $companiesToMenu);
 
-                if (!isset($_SESSION['company'])) { //Automaticky volíme první firmu
+                if (!isset($_SESSION['company'])) { //Auto choose first company
                     $_SESSION['company'] = $companies['company'][0]['dbNazev'];
                     define('FLEXIBEE_COMPANY', $_SESSION['company']);
                 }
@@ -110,10 +110,10 @@ class MainMenu extends \Ease\Html\Div
                 }
             }
 
-            $nav->addDropDownMenu(_('Nástroje'),
+            $nav->addDropDownMenu(_('Tools'),
                 ['changesapi.php' => _('Changes API'),
-                'fakechange.php' => _('Test WebHooku'),
-                'ucetniobdobi.php' => _('Účetní období')
+                'fakechange.php' => _('WebHook test'),
+                'ucetniobdobi.php' => _('Accounting period')
             ]);
         }
     }
@@ -134,4 +134,5 @@ class MainMenu extends \Ease\Html\Div
             null, true);
         $this->includeJavaScript('js/slideupmessages.js');
     }
+
 }
