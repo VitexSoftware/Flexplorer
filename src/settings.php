@@ -13,7 +13,7 @@ require_once 'includes/Init.php';
 $oPage->onlyForLogged();
 
 if ($oPage->getRequestValue('refresh') == 'evidencies') {
-    $evidencer = new Evidencer();
+    $evidencer = new Columner();
     $evidencer->refreshStructure();
 }
 

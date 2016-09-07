@@ -78,6 +78,7 @@ class Columner extends Flexplorer
     public function obtainWholeStructure()
     {
         $structure  = [];
+        $this->setEvidence('evidence-list');
         $evidencies = $this->getColumnsFromFlexibee(['evidencePath', 'evidenceName']);
         foreach ($evidencies['evidences']['evidence'] as $evidenceID => $evidence) {
             $structure[$evidence['evidencePath']] = $this->getColumnsInfo($evidence['evidencePath']);
