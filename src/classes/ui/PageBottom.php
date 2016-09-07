@@ -27,30 +27,36 @@ class PageBottom extends \Ease\TWB\Container
 
         $rowFluid1 = new \Ease\TWB\Row();
         $colA      = $rowFluid1->addItem(new \Ease\TWB\Col(2));
-        $listA1    = $colA->addItem(new \Ease\Html\UlTag(_('FlexiPeeHP'),
+        $listA1    = $colA->addItem(new \Ease\Html\UlTag(_('Sources'),
             ['style' => 'list-style-type: none']));
+        $listA1->addItemSmart(new \Ease\Html\ATag('https://github.com/Spoje-NET/Flexplorer',
+            'Flexiplorer'));
         $listA1->addItemSmart(new \Ease\Html\ATag('https://github.com/Spoje-NET/FlexiPeeHP',
-            'PHP Knihovna FlexiPeeHP'));
+            'FlexiPeeHP'));
+        $listA1->addItemSmart(new \Ease\Html\ATag('https://github.com/VitexSoftware/EaseFramework',
+            'PHP Ease Framework'));
 
         $colB   = $rowFluid1->addItem(new \Ease\TWB\Col(2));
-        $listB1 = $colB->addItem(new \Ease\Html\UlTag(_('Podpora'),
+        $listB1 = $colB->addItem(new \Ease\Html\UlTag(_('Support'),
             ['style' => 'list-style-type: none']));
         $listB1->addItemSmart(new \Ease\Html\ATag('https://www.flexibee.eu/podpora/Tickets/ViewList',
-            'Mé požadavky'));
+            'My issues'));
         $listB1->addItemSmart(new \Ease\Html\ATag('https://www.flexibee.eu/podpora/Tickets/Submit',
-            'Vložit požadavek'));
+            'Enter issue'));
 
         $colC   = $rowFluid1->addItem(new \Ease\TWB\Col(2));
-        $listC1 = $colC->addItem(new \Ease\Html\UlTag(_('Služby'),
+        $listC1 = $colC->addItem(new \Ease\Html\UlTag(_('Services'),
             ['style' => 'list-style-type: none']));
         $listC1->addItemSmart(new \Ease\Html\ATag('https://www.flexibee.eu/podpora/stazeni-flexibee/',
-            'Stažení'));
+            'Download'));
+        $listC1->addItemSmart(new \Ease\Html\ATag('https://www.flexibee.eu/api/licence-pro-vyvojare/zadost-o-vyvojarskou-licenci/',
+            'Deverloper License request'));
 
         $colD   = $rowFluid1->addItem(new \Ease\TWB\Col(2));
-        $listD1 = $colD->addItem(new \Ease\Html\UlTag(_('Dokumentace'),
+        $listD1 = $colD->addItem(new \Ease\Html\UlTag(_('Docs'),
             ['style' => 'list-style-type: none']));
         $listD1->addItemSmart(new \Ease\Html\ATag('https://demo.flexibee.eu/devdoc/',
-            'Referenční příručka REST API'));
+            'REST API'));
 
         $colE   = $rowFluid1->addItem(new \Ease\TWB\Col(2));
         $listE1 = $colE->addItem(new \Ease\Html\UlTag(_('Autor'),
@@ -59,7 +65,7 @@ class PageBottom extends \Ease\TWB\Container
             _('Vitex Software')));
 
         $colF   = $rowFluid1->addItem(new \Ease\TWB\Col(2));
-        $listF1 = $colF->addItem(new \Ease\Html\UlTag(_('Sponzor'),
+        $listF1 = $colF->addItem(new \Ease\Html\UlTag(_('Sponsored by'),
             ['style' => 'list-style-type: none']));
         $listF1->addItemSmart(new \Ease\Html\ATag('http://www.spoje.net/firma/o-nas/',
             _('Spoje.Net')));

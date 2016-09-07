@@ -183,11 +183,7 @@ class DataSource extends \Ease\Brick
      */
     public function getTotal()
     {
-        $total = 0;
-        if (isset($this->handledObejct->lastResult['@rowCount'])) {
-            $total = (int) $this->handledObejct->lastResult['@rowCount'];
-        }
-        return $total;
+        return $this->handledObejct->rowCount;
     }
 
     /**

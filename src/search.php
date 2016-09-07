@@ -26,8 +26,8 @@ $oPage->addItem(new ui\PageTop(_('Search results')));
 if (strlen($query) > 1) {
     $searcher = new Searcher($evidence);
     $results  = $searcher->searchAll($query);
-
-    $resultTables = [];
+    if (count($results)) {
+        $resultTables = [];
     foreach ($results as $evidenceName => $evidenceResults) {
         $resultTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
         $columnNames = array_keys(current($evidenceResults));
@@ -48,6 +48,7 @@ if (strlen($query) > 1) {
     }
     $oPage->container->addItem(new \Ease\TWB\Panel(sprintf(_('Search for %s results in %s'),
             "<strong>$query</strong>", $evidenceName), 'info', $resultTables));
+    }
 }
 
 

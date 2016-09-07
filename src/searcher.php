@@ -18,6 +18,8 @@ if (is_null($query)) {
     die('?!?!?');
 }
 
+$_SESSION['searchQuery'] = $query;
+
 $found = [];
 
 $searcher = new Searcher($evidence);

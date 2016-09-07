@@ -54,7 +54,13 @@ class MainMenu extends \Ease\Html\Div
 
         $userID = \Ease\Shared::user()->getUserID();
         if ($userID) { //Authenticated user
-            $nav->addMenuItem(new NavBarSearchBox('search', 'search.php'));
+            if (isset($_SESSION['searchQuery'])) {
+                $term = $_SESSION['searchQuery'];
+            } else {
+                $term = null;
+            }
+
+            $nav->addMenuItem(new NavBarSearchBox('search', 'search.php', $term));
             $companer = new \FlexiPeeHP\Company();
 
             $infoLabel = str_replace('://',
@@ -89,7 +95,7 @@ class MainMenu extends \Ease\Html\Div
                 }
                 asort($companiesToMenu);
 
-                $nav->addDropDownMenu(_('Companies'), $companiesToMenu);
+                $nav->addDropDownMenu(_('Company'), $companiesToMenu);
 
                 if (!isset($_SESSION['company'])) { //Auto choose first company
                     $_SESSION['company'] = $companies['company'][0]['dbNazev'];

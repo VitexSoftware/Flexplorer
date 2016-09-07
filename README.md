@@ -61,6 +61,9 @@ Po stisku entru se zobrazí podrobnější výsledky:
 
 ![WebHook Response](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-nalezene_evidence.png "Nalezené evidence")
 
+Vyhledávat je také možné v názvech sloupců jednotlivých evidencí a jejich popiscích:
+
+![WebHook Response](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-nalezene_sloupce.png "Nalezené sloupce")
 
 
 Instalace

@@ -22,12 +22,10 @@ class NavBarSearchBox extends \Ease\TWB\Form
      *                              array('enctype' => 'multipart/form-data')
      */
     public function __construct($formName, $formAction = null,
-                                $formMethod = 'post', $formContents = null,
+                                $term = null,
                                 $tagProperties = null)
     {
-        parent::__construct($formName, $formAction, $formMethod, $formContents,
-            $tagProperties);
-        $term = \Ease\Shared::webPage()->getRequestValue('search', 'string');
+        parent::__construct($formName, $formAction, 'post', null, $tagProperties);
 
         $this->setTagProperties(['class' => 'navbar-form', 'role' => 'search']);
         $group   = $this->addItem(

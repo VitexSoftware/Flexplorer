@@ -8,6 +8,9 @@
 
 namespace Flexplorer;
 
+/**
+ * Flexplorer main data handling class
+ */
 class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
 {
     /**
@@ -35,14 +38,23 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
         $this->evidenceStructure = $this->getColumnsInfo();
     }
 
-    public function getColumnsInfo()
+    /**
+     * Obtain structure for given (or default) evidence
+     *
+     * @param string $evidence
+     * @return array Evidence structure
+     */
+    public function getColumnsInfo($evidence = null)
     {
-        $structFile = sys_get_temp_dir().'/flexplorer-'.$this->evidence.'.struct';
+        if (is_null($evidence)) {
+            $evidence = $this->getEvidence();
+        }
+        $structFile = sys_get_temp_dir().'/flexplorer-'.$evidence.'.struct';
         if (file_exists($structFile)) {
             $useKeywords = unserialize(file_get_contents($structFile));
         } else {
             $useKeywords = [];
-            $flexinfo    = $this->performRequest($this->evidence.'/properties.json');
+            $flexinfo    = $this->performRequest($evidence.'/properties.json');
             if (count($flexinfo) && array_key_exists('properties', $flexinfo)) {
                 foreach ($flexinfo['properties']['property'] as $evidenceProperty) {
                     $key                       = $evidenceProperty['propertyName'];
@@ -220,4 +232,25 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
         }
         return parent::takeData($data);
     }
+
+    /**
+     * Checks to see of a string contains a particular substring
+     *
+     * @param $substring the substring to match
+     * @param $string the string to search
+     * @return true if $substring is found in $string, false otherwise
+     */
+    function contains($substring, $string)
+    {
+        $pos = strpos(strtolower($string), strtolower($substring));
+
+        if ($pos === false) {
+            // string needle NOT found in haystack
+            return false;
+        } else {
+            // string needle found in haystack
+            return true;
+        }
+    }
+
 }

@@ -11,9 +11,16 @@ namespace Flexplorer\ui;
 class EvidenceProperties extends \Ease\Html\TableTag
 {
 
-    public function __construct($evidence)
+    /**
+     * Show evidence columns properties
+     *
+     * @param string $evidence to describe
+     * @param string $hlcolumn to highlight
+     */
+    public function __construct($evidence, $hlcolumn = null)
     {
         parent::__construct(null, ['class' => 'table table-hover']);
+        $this->setTagId('structOf'.$evidence->getEvidence());
         if (is_string($evidence)) {
             $properter     = new \FlexiPeeHP\FlexiBeeRO();
             $properter->setEvidence($evidence.'/properties');
@@ -49,7 +56,7 @@ class EvidenceProperties extends \Ease\Html\TableTag
                         case 'evidenceVariants':
                             if (is_array($propValues[$value]['evidenceVariant'])) {
                                 $props[$value] = implode(', ',
-                                $propValues[$value]['evidenceVariant']);
+                                    $propValues[$value]['evidenceVariant']);
                             }
                             break;
                         case 'url':
@@ -75,7 +82,14 @@ class EvidenceProperties extends \Ease\Html\TableTag
                                     $props[$value] = \Ease\TWB\Part::glyphIcon('check')->__toString();
                                     break;
                                 default :
-                                    $props[$value] = $propValues[$value];
+                                    if (isset($_SESSION['searchQuery'])) {
+                                        $term          = $_SESSION['searchQuery'];
+                                        $props[$value] = str_ireplace($term,
+                                            "<strong>$term</strong>",
+                                            $propValues[$value]);
+                                    } else {
+                                        $props[$value] = $propValues[$value];
+                                    }
                                     break;
                             }
 
@@ -87,7 +101,25 @@ class EvidenceProperties extends \Ease\Html\TableTag
                     $props[$value] = '';
                 }
             }
-            $this->addRowColumns($props);
+            if ($propName == $hlcolumn) {
+                $this->addRowColumns($props,
+                    ['style' => 'background-color: yellow']);
+            } else {
+                $this->addRowColumns($props);
+            }
         }
     }
+
+    public function finalize()
+    {
+        $this->includeJavaScript('js/jquery.fixedheadertable.min.js');
+        $this->includeCss('css/defaultTheme.css');
+        $this->addJavaScript('$("#'.$this->getTagID().'").fixedHeaderTable({
+        height: $( window ).height()-100,
+	autoShow: true
+}); ');
+
+        return parent::finalize();
+    }
+
 }

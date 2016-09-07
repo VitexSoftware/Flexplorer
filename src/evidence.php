@@ -3,7 +3,7 @@
 namespace Flexplorer;
 
 /**
- * Flexplorer - Hlavní strana.
+ * Flexplorer - An evidence page.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2016 Vitex Software
@@ -16,6 +16,7 @@ require_once 'includes/Init.php';
 $oPage->onlyForLogged();
 
 $evidence = $oPage->getRequestValue('evidence');
+$column   = $oPage->getRequestValue('column');
 if (is_null($evidence)) {
     $oPage->redirect('index.php');
     exit();
@@ -30,7 +31,8 @@ $evobj = new Flexplorer($evidence);
 $tabs = new \Ease\TWB\Tabs('EviTabs');
 $tabs->addTab(_('Výpis'),
     new ui\DataGrid(_('Evidence'), new DataSource($evobj)));
-$tabs->addTab(_('Struktura'), new ui\EvidenceProperties($evobj));
+$tabs->addTab(_('Struktura'), new ui\EvidenceProperties($evobj, $column),
+    isset($column));
 
 
 $url      = constant('FLEXIBEE_URL').'/c/'.constant('FLEXIBEE_COMPANY');
@@ -45,8 +47,8 @@ if (is_null($body)) {
     $body = $evobj->jsonizeData([]);
 }
 
-$tabs->addTab(_('Dotaz'),
-    new \Ease\TWB\Panel(_('Uživatelský požadavek'), 'warning',
+$tabs->addTab(_('Query'),
+    new \Ease\TWB\Panel(_('User Query'), 'warning',
     new ui\SendForm($url, $method, $body)));
 
 

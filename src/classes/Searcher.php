@@ -3,7 +3,7 @@
 namespace Flexplorer;
 
 /**
- * Flexplorer - Vyhledávací třída.
+ * Flexplorer - Search class.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2016 Vitex Software
@@ -40,6 +40,7 @@ class Searcher extends \Ease\Atom
     {
         if (is_null($evidence)) {
             $this->sysClasses['evidencies'] = new Evidencer();
+            $this->sysClasses['column']     = new Columner();
 //            $lister    = new \FlexiPeeHP\EvidenceList();
 //            $flexidata = $lister->getFlexiData();
 //            foreach ($flexidata['evidences']['evidence'] as $evidence) {
@@ -104,7 +105,9 @@ class Searcher extends \Ease\Atom
                 $results[$searched->evidence] = $found;
             }
         }
-
+        if (!count($results)) {
+            $this->addStatusMessage(_('No search results'));
+        }
         return $results;
     }
 

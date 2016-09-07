@@ -58,7 +58,6 @@ class User extends \Ease\User
             } else {
                 $this->flexiBee->company = $companies['companies']['company']['dbNazev'];
             }
-
             $this->setMyKey(true);
             $loginStatus = $this->loginSuccess();
         } else {
