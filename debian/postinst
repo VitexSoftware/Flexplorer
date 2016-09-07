@@ -43,6 +43,9 @@ apache_install() {
 
 
 cd /usr/share/flexplorer
+if [ -f composer.lock ] ; then
+    rm -f composer.lock
+fi
 composer --no-dev -o install
 
 #DEBHELPER#
