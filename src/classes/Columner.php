@@ -125,4 +125,14 @@ class Columner extends Flexplorer
         return file_put_contents($this->structFile, serialize($structure));
     }
 
+    /**
+     * Obtain no evidence structure
+     *
+     * @param string $evidence
+     * @return array Evidence structure
+     */
+    public function getColumnsInfo($evidence = null)
+    {
+        return [];
+    }
 }
