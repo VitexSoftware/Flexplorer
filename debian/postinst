@@ -3,6 +3,13 @@
 
 set -e
 
+desktop_install() {
+	if [ -d /usr/share/applications/ -a ! -e /usr/share/applications/flexplorer.desktop -a ! -L /usr/share/applications/flexplorer.desktop ] ; then
+		ln -s /etc/flexplorer/flexplorer.desktop /usr/share/applications/
+	fi
+}
+
+
 apache_install() {
 	COMMON_STATE=$(dpkg-query -f '${Status}' -W 'apache2.2-common' 2>/dev/null | awk '{print $3}' || true)
 
@@ -39,10 +46,14 @@ apache_install() {
                 fi
             fi
 
+	    desktop_install
     fi
 
 
 cd /usr/share/flexplorer
+if [ -f composer.lock ] ; then
+    rm -f composer.lock
+fi
 composer --no-dev -o install
 
 #DEBHELPER#
