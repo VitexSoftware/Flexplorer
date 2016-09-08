@@ -21,7 +21,7 @@ $requestTabs = new \Ease\TWB\Tabs('Request');
 
 
 
-$requestTabs->addTab(_('Odpověď'), new ui\RecieveResponse());
+$requestTabs->addTab(_('Response'), new ui\RecieveResponse());
 
 $url = $oPage->getRequestValue('url');
 if (!strlen($url)) {
@@ -40,8 +40,8 @@ $method = $oPage->getRequestValue('method');
 $body   = $oPage->getRequestValue('body');
 
 
-$requestTabs->addTab(_('Požadavek'),
-    new \Ease\TWB\Panel(_('Uživatelský požadavek'), 'warning',
+$requestTabs->addTab(_('Request'),
+    new \Ease\TWB\Panel(_('Custom request'), 'warning',
     new ui\SendForm($url, $method, $body)));
 
 

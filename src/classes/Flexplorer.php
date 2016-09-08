@@ -16,7 +16,7 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
     /**
      * @var array Pole HTTP hlaviček odesílaných s každým požadavkem
      */
-    public $defaultHttpHeaders = ['User-Agent' => 'Flexplorer 0.1 (using FlexiPeeHP library)'];
+    public $defaultHttpHeaders = ['User-Agent' => 'Flexplorer 0.5 (using FlexiPeeHP library)'];
 
     /**
      * Struktura evidence

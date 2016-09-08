@@ -1,6 +1,6 @@
 <?php
 /**
- * Flexplorer - zdroj dat.
+ * Flexplorer - data source class.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2016 Vitex Software
@@ -12,7 +12,7 @@ define('K_PATH_IMAGES', dirname(__DIR__).'/img/');
 #require_once 'tcpdf/tcpdf.php';
 
 /**
- * Description of DBFDataSource
+ * Description of DataSource
  *
  * @author vitex
  */
@@ -107,7 +107,7 @@ class DataSource extends \Ease\Brick
         return $this->handledObejct->getEvidence();
     }
 
-    function setOrder($order)
+    public function setOrder($order)
     {
         $this->order = $order;
     }
@@ -117,7 +117,7 @@ class DataSource extends \Ease\Brick
      *
      * @param type $url
      */
-    function setBackUrl($url)
+    public function setBackUrl($url)
     {
         $this->fallBackUrl = $url;
     }
@@ -125,7 +125,7 @@ class DataSource extends \Ease\Brick
     /**
      * řešení
      */
-    function ajaxify()
+    public function ajaxify()
     {
         $action = $this->webPage->getRequestValue('action');
 
@@ -168,7 +168,7 @@ class DataSource extends \Ease\Brick
                 }
             }
             if ($this->fallBackUrl) {
-                $this->webPage->redirect(EasePage::arrayToUrlParams($this->fallBackData,
+                $this->webPage->redirect(\Ease\Page::arrayToUrlParams($this->fallBackData,
                         $this->fallBackUrl));
                 exit();
             }
@@ -251,7 +251,7 @@ class DataSource extends \Ease\Brick
                 $rows = substr($rows, 0, -1);
             }
             if ($this->order) {
-                $order = ' ORDER BY '.$this->order;
+                $order = ''.$this->order; //Sort
             } else {
                 $order = '';
             }

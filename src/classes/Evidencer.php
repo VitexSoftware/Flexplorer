@@ -67,4 +67,15 @@ class Evidencer extends Flexplorer
         }
         return $results;
     }
+
+    /**
+     * Obtain no evidence structure
+     *
+     * @param string $evidence
+     * @return array Evidence structure
+     */
+    public function getColumnsInfo($evidence = null)
+    {
+        return [];
+    }
 }

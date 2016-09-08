@@ -2,6 +2,7 @@
     "name": "spoje.net/flexplorer",
     "description": "Průzkumník a editor evidencí FlexiBee",
     "version": "0.5",
+    "license": "GPL2",
     "type": "project",
     "authors": [
         {
@@ -27,7 +28,6 @@
     },
     "require-dev": {
         "phpunit/php-token-stream": "~1.2",
-        "robmorgan/phinx": "dev-master",
         "phpunit/phpunit": "5.3.*",
         "phpunit/phpunit-skeleton-generator": "*"
     }

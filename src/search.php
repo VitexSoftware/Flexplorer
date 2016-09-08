@@ -28,26 +28,30 @@ if (strlen($query) > 1) {
     $results  = $searcher->searchAll($query);
     if (count($results)) {
         $resultTables = [];
-    foreach ($results as $evidenceName => $evidenceResults) {
-        $resultTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
-        $columnNames = array_keys(current($evidenceResults));
-        array_pop($columnNames);
-        array_pop($columnNames);
-        array_pop($columnNames);
-        $resultTable->addRowHeaderColumns($columnNames);
-        foreach ($evidenceResults as $key => $values) {
-            foreach ($values as $vkey => $vvalue) {
-                $values[$vkey] = '<a href="'.$values['url'].'">'.$vvalue.'</a>';
+        foreach ($results as $evidenceName => $evidenceResults) {
+            $resultTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
+            $columnNames = array_keys(current($evidenceResults));
+            if (count($columnNames) > 4) {
+                array_pop($columnNames);
+                array_pop($columnNames);
+                array_pop($columnNames);
             }
-            unset($values['what']);
-            unset($values['url']);
-            unset($values['name']);
-            $resultTable->addRowColumns($values);
+            $resultTable->addRowHeaderColumns($columnNames);
+            foreach ($evidenceResults as $key => $values) {
+                foreach ($values as $vkey => $vvalue) {
+                    $values[$vkey] = '<a href="'.$values['url'].'">'.$vvalue.'</a>';
+                }
+                if (count($columnNames) > 4) {
+                    unset($values['what']);
+                    unset($values['url']);
+                    unset($values['name']);
+                }
+                $resultTable->addRowColumns($values);
+            }
+            $resultTables[] = $resultTable;
         }
-        $resultTables[] = $resultTable;
-    }
-    $oPage->container->addItem(new \Ease\TWB\Panel(sprintf(_('Search for %s results in %s'),
-            "<strong>$query</strong>", $evidenceName), 'info', $resultTables));
+        $oPage->container->addItem(new \Ease\TWB\Panel(sprintf(_('Search for %s results in %s'),
+                "<strong>$query</strong>", $evidenceName), 'info', $resultTables));
     }
 }
 
