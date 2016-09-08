@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Flexplorer
+Comment="FlexiBee REST API developer's tool"
+Exec=sensible-browser http://localhost/flexplorer/
+Terminal=false
+Icon=flexplorer
+Type=Application
+Categories=Development;Database;

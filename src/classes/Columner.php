@@ -81,7 +81,7 @@ class Columner extends Flexplorer
         $this->setEvidence('evidence-list');
         $evidencies = $this->getColumnsFromFlexibee(['evidencePath', 'evidenceName']);
         foreach ($evidencies['evidences']['evidence'] as $evidenceID => $evidence) {
-            $structure[$evidence['evidencePath']] = $this->getColumnsInfo($evidence['evidencePath']);
+            $structure[$evidence['evidencePath']] = parent::getColumnsInfo($evidence['evidencePath']);
         }
         return $structure;
     }
