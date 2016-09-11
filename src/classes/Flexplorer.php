@@ -49,28 +49,13 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
         if (is_null($evidence)) {
             $evidence = $this->getEvidence();
         }
-        $structFile = sys_get_temp_dir().'/flexplorer-'.$evidence.'.struct';
-        if (file_exists($structFile)) {
-            $useKeywords = unserialize(file_get_contents($structFile));
-        } else {
-            $useKeywords = [];
-            $flexinfo    = $this->performRequest($evidence.'/properties.json');
-            if (count($flexinfo) && array_key_exists('properties', $flexinfo)) {
-                foreach ($flexinfo['properties']['property'] as $evidenceProperty) {
-                    $key                       = $evidenceProperty['propertyName'];
-                    $useKeywords[$key]         = $evidenceProperty;
-                    $useKeywords[$key]['name'] = $evidenceProperty['name'];
-                    $useKeywords[$key]['type'] = $evidenceProperty['type'];
-                }
-            }
-
-            file_put_contents($structFile, serialize($useKeywords));
-        }
-        return $useKeywords;
+        $propsName = lcfirst(\FlexiPeeHP\FlexiBeeRO::evidenceToClassName($evidence));
+        return \FlexiPeeHP\Structure::$$propsName;
     }
 
     /**
-     * Vrací všechny záznamy jako html
+     * Return all records as html]
+     *
      * @param array $data
      * @return array
      */
@@ -240,17 +225,9 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
      * @param $string the string to search
      * @return true if $substring is found in $string, false otherwise
      */
-    function contains($substring, $string)
+    public static function contains($substring, $string)
     {
         $pos = strpos(strtolower($string), strtolower($substring));
-
-        if ($pos === false) {
-            // string needle NOT found in haystack
-            return false;
-        } else {
-            // string needle found in haystack
-            return true;
-        }
+        return !($pos === false);
     }
-
 }

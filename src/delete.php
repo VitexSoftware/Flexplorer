@@ -17,12 +17,10 @@ $id       = $oPage->getRequestValue('id');
 
 if (is_null($evidence)) {
     $oPage->redirect('index.php');
-    exit();
 }
 
 if (is_null($id)) {
     $oPage->redirect('evidence.php?evidence='.$evidence);
-    exit;
 }
 
 $engine = new Flexplorer($evidence);

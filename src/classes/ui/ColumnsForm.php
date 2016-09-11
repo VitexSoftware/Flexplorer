@@ -11,45 +11,45 @@ namespace Flexplorer\ui;
 class ColumnsForm extends \Ease\TWB\Form
 {
     /**
-     * Šířka sloupce.
+     * Column width.
      *
      * @var int
      */
     public $colsize = 4;
 
     /**
-     * Řádek.
+     * Row.
      *
      * @var \Ease\TWB\Row
      */
     public $row = null;
 
     /**
-     * Počet položek na řádek.
+     * Number of items in row.
      *
      * @var int
      */
     public $itemsPerRow = 4;
 
     /**
-     * @var SysEngine
+     * @var \Flexplorer\Flexplorer
      */
     public $engine = null;
 
     /**
-     * Odesílací tlačítka.
+     * Send buttons.
      *
      * @var \Ease\Html\Div
      */
     public $savers = null;
 
     /**
-     * Formulář Bootstrapu.
+     * Bootstrapu form.
      *
-     * @param SysEngine $engine        jméno formuláře
-     * @param mixed     $formContents  prvky uvnitř formuláře
-     * @param array     $tagProperties vlastnosti tagu například:
-     *                                 array('enctype' => 'multipart/form-data')
+     * @param SysEngine $engine        form contents source
+     * @param mixed     $formContents  form contents
+     * @param array     $tagProperties tag properties ex.:
+     *                                 ['enctype' => 'multipart/form-data']
      */
     public function __construct($engine, $formContents = null,
                                 $tagProperties = null)
@@ -99,7 +99,7 @@ class ColumnsForm extends \Ease\TWB\Form
      */
     public function addSubmitSave()
     {
-        $this->savers->addItem(new EaseTWSubmitButton(_('Uložit'), 'default'),
+        $this->savers->addItem(new \Ease\TWB\SubmitButton(_('Save'), 'default'),
             ['style' => 'text-align: right']);
     }
 
@@ -109,7 +109,7 @@ class ColumnsForm extends \Ease\TWB\Form
     public function addSubmitSaveAndList()
     {
         $this->savers->addItem(new \Ease\Html\InputSubmitTag('gotolist',
-            _('Uložit a zpět na přehled'), ['class' => 'btn btn-info']));
+            _('Save & go to listing'), ['class' => 'btn btn-info']));
     }
 
     /**
@@ -118,7 +118,7 @@ class ColumnsForm extends \Ease\TWB\Form
     public function addSubmitSaveAndNext()
     {
         $this->savers->addItem(new \Ease\Html\InputSubmitTag('gotonew',
-            _('Uložit a další'), ['class' => 'btn btn-success']));
+            _('Save and next'), ['class' => 'btn btn-success']));
     }
 
     /**
@@ -155,13 +155,14 @@ class ColumnsForm extends \Ease\TWB\Form
 
             switch ($type) {
                 case 'BOOL':
-                    $input_widget = new YesNoSwitch($col_name, $value);
+                    $input_widget = new TWBSwitch($col_name, $value);
                     break;
                 case 'INT':
-                    $input_widget = new SpinBox($col_name, $value);
+                    $input_widget = new \Ease\Html\InputTextTag($col_name,
+                        $value, ['type' => 'number']);
                     break;
                 case 'DATE':
-                    $input_widget = new DatePicker($col_name, $value);
+                    $input_widget = new DateTimePicker($col_name, $value);
                     break;
                 case 'TEXT':
                     $input_widget = new \Ease\Html\TextareaTag($col_name,

@@ -1,6 +1,6 @@
 <?php
 /**
- * Flexplorer - menu.
+ * Flexplorer - DataGrid.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2016 Vitex Software
@@ -9,7 +9,7 @@
 namespace Flexplorer\ui;
 
 /**
- * Description of DBFDataGrid
+ * Description of DataGrid
  *
  * @author vitex
  */
@@ -22,13 +22,13 @@ class DataGrid extends \Ease\DataGrid
     public $select;
 
     /**
-     * Výchozí nastavení sloupečků
+     * Default column settings
      * @var array
      */
     public $defaultColProp = ['sortable' => true];
 
     /**
-     * Nastavení
+     * Options
      * @var array
      */
     public $options       = [
@@ -73,7 +73,7 @@ class DataGrid extends \Ease\DataGrid
      * @param string $datasource URL
      * @param array $properties vlastnosti elementu
      */
-    function __construct($name, $datasource, $properties = null)
+    public function __construct($name, $datasource, $properties = null)
     {
         $this->dataSource       = $datasource;
         $this->options['title'] = $name;
@@ -91,17 +91,17 @@ class DataGrid extends \Ease\DataGrid
         $this->setUpColumns();
     }
 
-    function setUpButtons()
+    public function setUpButtons()
     {
-        $this->addAddButton(_('Přidat'));
-        $this->addEditButton(_('Upravit'));
-        $this->addDeleteButton(_('Smazat'));
+        $this->addAddButton(_('Add'));
+        $this->addEditButton(_('Edit'));
+        $this->addDeleteButton(_('Delete'));
     }
 
     /**
      * Nastaví vlastností sloupečků datagridu
      */
-    function setUpColumns()
+    public function setUpColumns()
     {
 
         foreach ($this->dataSource->keywordsInfo as $keyword => $properties) {
@@ -115,7 +115,7 @@ class DataGrid extends \Ease\DataGrid
 
 
             if (!isset($this->dataSource->keywordsInfo[$keyword]['title']) || !strlen(trim($this->dataSource->keywordsInfo[$keyword]['title']))) {
-                $this->addStatusMessage(_('Chybi titulek').' '.$this->dataSource->keyword.': '.$keyword,
+                $this->addStatusMessage(_('Title missing').' '.$this->dataSource->keyword.': '.$keyword,
                     'warning');
                 $this->dataSource->keywordsInfo[$keyword]['title'] = $keyword;
             }
@@ -132,7 +132,7 @@ class DataGrid extends \Ease\DataGrid
      * @param string $title Popisek tlačítka
      * @param string $class CSS třída tlačítka
      */
-    function addButton($title, $class, $onpress = null)
+    public function addButton($title, $class, $onpress = null)
     {
         if ($onpress) {
             $this->options['buttons'][] = ['name' => $title, 'bclass' => $class,
@@ -148,7 +148,7 @@ class DataGrid extends \Ease\DataGrid
      * @param string $title  Nadpis gridu
      * @param string $target Url
      */
-    function addAddButton($title, $target = null)
+    public function addAddButton($title, $target = null)
     {
         $show = false;
         if (is_null($target)) {
@@ -172,7 +172,7 @@ background: url(images/add.png) no-repeat center left;
      * @param type $title
      * @param type $target
      */
-    function addSelectAllButton($title, $target = null)
+    public function addSelectAllButton($title, $target = null)
     {
         $this->addButton($title, 'selectAll', 'selectAll');
         $this->addJavaScript('function selectAll(com, grid) {
@@ -188,7 +188,7 @@ background: url(images/add.png) no-repeat center left;
      * @param type $title
      * @param type $target
      */
-    function addEditButton($title, $target = null)
+    public function addEditButton($title, $target = null)
     {
         $this->addButton($title, 'edit', 'editRecord');
 
@@ -231,7 +231,7 @@ background: url(images/edit.png) no-repeat center left;
      * @param string $title  popisek tlačítka
      * @param string $target výkonný skript
      */
-    function addDeleteButton($title, $target = null)
+    public function addDeleteButton($title, $target = null)
     {
         if (is_null($target)) {
             $target = $this->options['url'];
@@ -278,7 +278,8 @@ background: url(images/delete.png) no-repeat center left;
      * @param boolean $search           nabídnout pro sloupec vyhledávání
      * @param array   $columnProperties další vlastnosti v poli
      */
-    function setColumn($name, $title, $search = false, $columnProperties = null)
+    public function setColumn($name, $title, $search = false,
+                              $columnProperties = null)
     {
         if (!isset($this->options['colModel'])) {
             $this->options['colModel'] = [];
@@ -322,7 +323,7 @@ background: url(images/delete.png) no-repeat center left;
     /**
      * Vložení skriptu
      */
-    function finalize()
+    public function finalize()
     {
         $grid_id = $this->getTagID();
         if ($this->getTagProperty('columnsAutoSize')) {
@@ -341,7 +342,7 @@ background: url(images/delete.png) no-repeat center left;
             });';
             $grid_js .='
             //Keep track of all grid elements and current sizes
-            function addGrid($table, grid) {
+            public function addGrid($table, grid) {
                 var $grid = $table.closest(\'.flexigrid\');
                 var data = {$table:$table, $grid:$grid, grid:grid, width:$grid.width()};
                 grids.push(data);
@@ -349,7 +350,7 @@ background: url(images/delete.png) no-repeat center left;
             }';
             $grid_js .='
             //Make all cols with auto size fill remaining width..
-            function sizeGrid(data) {
+            public function sizeGrid(data) {
                 //Auto size the middle col.
                 var totalWidth = data.$grid.outerWidth()-15; //15 padding - not found where this is set
 

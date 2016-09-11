@@ -9,7 +9,6 @@
 namespace Flexplorer;
 
 define('K_PATH_IMAGES', dirname(__DIR__).'/img/');
-#require_once 'tcpdf/tcpdf.php';
 
 /**
  * Description of DataSource
@@ -66,17 +65,16 @@ class DataSource extends \Ease\Brick
     public $handledObejct = null;
 
     /**
-     * Vrací data pro Grid
+     * Obtaing data for Grid
      *
-     * @param Flexplorer $handledObejct objekt poskytující data
+     * @param Flexplorer $handledObejct data providing object
      * @param type $fallBackUrl
      */
     public function __construct($handledObejct, $fallBackUrl = null)
     {
         $this->handledObejct = $handledObejct;
-        $this->useKeywords   = $handledObejct->evidenceStructure;
         $this->keyword       = $handledObejct->evidence;
-        $this->keywordsInfo  = $handledObejct->evidenceStructure;
+        $this->keywordsInfo  = $handledObejct->getColumnsInfo();
 
         parent::__construct();
         $this->setBackUrl($fallBackUrl);
@@ -170,7 +168,6 @@ class DataSource extends \Ease\Brick
             if ($this->fallBackUrl) {
                 $this->webPage->redirect(\Ease\Page::arrayToUrlParams($this->fallBackData,
                         $this->fallBackUrl));
-                exit();
             }
         }
     }
@@ -329,7 +326,7 @@ class DataSource extends \Ease\Brick
         $this->filename .= $title;
 
 // pdf object
-        $this->pdf = new TCPDF($orientation);
+        $this->pdf = new \TCPDF($orientation);
 
 // set document information
         $this->pdf->SetCreator(PDF_CREATOR);
@@ -482,4 +479,5 @@ class DataSource extends \Ease\Brick
         }
         return $where;
     }
+
 }

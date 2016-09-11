@@ -1,6 +1,6 @@
 <?php
 /**
- * Flexplorer - stránka aplikace.
+ * Flexplorer - Appplication menu.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2016 Vitex Software
@@ -11,14 +11,14 @@ namespace Flexplorer\ui;
 class WebPage extends \Ease\TWB\WebPage
 {
     /**
-     * Hlavní blok stránky.
+     * Main block of page.
      *
      * @var \Ease\Html\DivTag
      */
     public $container = null;
 
     /**
-     * První sloupec.
+     * First column.
      *
      * @var \Ease\Html\DivTag
      */
@@ -49,27 +49,26 @@ class WebPage extends \Ease\TWB\WebPage
             $userObject = \Ease\Shared::user();
         }
         parent::__construct($pageTitle, $userObject);
-        $this->IncludeCss('css/default.css');
+        $this->includeCss('css/default.css');
         $this->head->addItem('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
-        $this->head->addItem('<link rel="shortcut icon" type="image/svg+xml" href="images/logo.png">');
-        $this->head->addItem('<link rel="apple-touch-icon-precomposed"  type="image/svg+xml" href="images/logo.png">');
+        $this->head->addItem('<link rel="shortcut icon" type="image/png" href="images/logo.png">');
+        $this->head->addItem('<link rel="apple-touch-icon-precomposed"  type="image/png" href="images/logo.png">');
         $this->head->addItem('<link rel="stylesheet" href="/javascript/font-awesome/css/font-awesome.min.css">');
 
         $this->container = $this->addItem(new \Ease\TWB\Container());
     }
 
     /**
-     * Pouze pro admina.
+     * Only for admin.
      *
      * @param string $loginPage
      */
     public function onlyForAdmin($loginPage = 'login.php')
     {
         if (!$this->user->getSettingValue('admin')) {
-            \Ease\Shared::user()->addStatusMessage(_('Nejprve se prosím přihlašte jako admin'),
+            \Ease\Shared::user()->addStatusMessage(_('Please sign in as admin first'),
                 'warning');
             $this->redirect($loginPage);
-            exit;
         }
     }
 

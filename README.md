@@ -80,6 +80,7 @@ po instalaci balíčku a reloadu webserveru bude aplikace nainstalována do slo�
 /usr/share/flexplorer a dostupná jako http://localhost/flexplorer/ 
 ( konfigurováno v  /etc/apache2/conf-enabled/flexplorer.conf ) 
 Pokud je nainstalován démon avahi, bude tento propagovat aplikaci jako službu.
+Aplikaci je pak možné spustit z nabídky programů v sekci "programování"
 
 Konfigurace
 -----------
