@@ -35,14 +35,7 @@ class Evidencer extends Flexplorer
     public function __construct($evidence = null)
     {
         parent::__construct($evidence);
-
-        $structFile = \sys_get_temp_dir().'/flexplorer-flexibee-evidencies.struct';
-        if (file_exists($structFile)) {
-            $this->evidencies = unserialize(file_get_contents($structFile));
-        } else {
-            $this->evidencies = $this->getColumnsFromFlexibee(['evidencePath', 'evidenceName']);
-            file_put_contents($structFile, serialize($this->evidencies));
-        }
+        $this->evidencies = \FlexiPeeHP\Structure::$evidence;
     }
 
     /**
@@ -54,14 +47,14 @@ class Evidencer extends Flexplorer
     public function searchString($what)
     {
         $results    = [];
-        foreach ($this->evidencies['evidences']['evidence'] as $evidenceID => $evidence) {
-            if ($this->contains($what, $evidence['evidenceName']) || $this->contains($what,
-                    $evidence['evidencePath'])) {
-                $evidence['id']   = $evidenceID;
-                $evidence['name'] = $evidence['evidenceName'];
-                $evidence['what'] = $evidence['evidencePath'];
-                $evidence['url']  = 'evidence.php?evidence='.$evidence['evidencePath'];
-                unset($evidence['evidenceType']);
+        $evidenceID = 0;
+        foreach ($this->evidencies as $evidencePath => $evidenceName) {
+            if ($this->contains($what, $evidenceName) || $this->contains($what,
+                    $evidencePath)) {
+                $evidence['id']   = $evidenceID++;
+                $evidence['name'] = $evidenceName;
+                $evidence['what'] = $evidencePath;
+                $evidence['url']  = 'evidence.php?evidence='.$evidencePath;
                 $results[]        = $evidence;
             }
         }

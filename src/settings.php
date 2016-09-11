@@ -12,16 +12,11 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-if ($oPage->getRequestValue('refresh') == 'evidencies') {
-    $evidencer = new Columner();
-    $evidencer->refreshStructure();
-}
 
 
 $oPage->addItem(new ui\PageTop(_('Settings')));
 
-$oPage->container->addItem(new \Ease\TWB\LinkButton('?refresh=evidencies',
-    _('Refresh Evidencies structure'), 'success'));
+$oPage->container->addItem(_('Nothig here yet'));
 
 
 

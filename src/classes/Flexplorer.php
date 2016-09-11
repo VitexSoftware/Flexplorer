@@ -46,11 +46,15 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
      */
     public function getColumnsInfo($evidence = null)
     {
+        $columnsInfo = [];
         if (is_null($evidence)) {
             $evidence = $this->getEvidence();
         }
         $propsName = lcfirst(\FlexiPeeHP\FlexiBeeRO::evidenceToClassName($evidence));
-        return \FlexiPeeHP\Structure::$$propsName;
+        if (isset(\FlexiPeeHP\Structure::$$propsName)) {
+            $columnsInfo = \FlexiPeeHP\Structure::$$propsName;
+        }
+        return $columnsInfo;
     }
 
     /**
@@ -222,11 +226,15 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
      *
      * @param $substring the substring to match
      * @param $string the string to search
-     * @return true if $substring is found in $string, false otherwise
+     * @return boolean true if $substring is found in $string, false otherwise
      */
     public static function contains($substring, $string)
     {
-        $pos = strpos(strtolower($string), strtolower($substring));
-        return !($pos === false);
+        $found = true;
+        $pos   = strpos(strtolower($string), strtolower($substring));
+        if ($pos === false) {
+            $found = false;
+        }
+        return $found;
     }
 }
