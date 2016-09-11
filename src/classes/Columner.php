@@ -44,7 +44,7 @@ class Columner extends Flexplorer
      * @param string $what
      * @return array
      */
-    function searchString($what)
+    public function searchString($what)
     {
         $results = [];
         if (file_exists($this->structFile)) {

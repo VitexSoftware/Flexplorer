@@ -6,3 +6,4 @@
 /testing/PHPUnit/build/
 /debian/flexplorer/
 /vendor/
+/composer.lock

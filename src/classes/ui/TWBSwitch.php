@@ -25,21 +25,21 @@ class TWBSwitch extends \Ease\Html\CheckboxTag
     {
         parent::__construct($name, $checked, $value, $properties);
         if (!isset($properties['onText'])) {
-            $properties['onText'] = _('Ano');
+            $properties['onText'] = _('Yes');
         }
         if (!isset($properties['offText'])) {
-            $properties['offText'] = _('Ne');
+            $properties['offText'] = _('No');
         }
 
         $this->setProperties($properties);
     }
 
-    function setProperties($properties)
+    public function setProperties($properties)
     {
         $this->properties = array_merge($this->properties, $properties);
     }
 
-    function finalize()
+    public function finalize()
     {
         \Ease\TWB\Part::twBootstrapize();
         $this->includeCss('/javascript/twitter-bootstrap/css/bootstrap-switch.css');

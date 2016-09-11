@@ -92,7 +92,7 @@ class Searcher extends \Ease\Atom
                                     return preg_match("/\b$term\b/i", $var);
                                 })));
 
-                        if ($found[$lineNo]['what'] == false) {
+                        if ($found[$lineNo]['what'] === false) {
                             foreach ($values as $column => $value) {
                                 if (stristr($value, $term)) {
                                     $found[$lineNo]['what'] = $column;

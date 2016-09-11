@@ -308,7 +308,7 @@ class DataSource extends \Ease\Brick
         }
         switch (\Ease\Shared::webPage()->getRequestValue('export')) {
             default:
-                // header("Content-type: application/json");
+                header("Content-type: application/json");
 
                 echo $this->getJson($queryRaw);
                 break;

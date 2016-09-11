@@ -62,7 +62,6 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
     public function htmlizeData($data)
     {
         if (is_array($data) && count($data)) {
-            $usedCache = [];
             foreach ($data as $rowId => $row) {
                 $htmlized = $this->htmlizeRow($row);
 

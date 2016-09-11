@@ -19,7 +19,7 @@ class JsonTextarea extends \Ease\TWB\Textarea
     /**
      * Add scripts
      */
-    function finalize()
+    public function finalize()
     {
         \Ease\Shared::webPage()->includeJavaScript('js/jquery.autosize.min.js');
         \Ease\Shared::webPage()->addJavaScript('

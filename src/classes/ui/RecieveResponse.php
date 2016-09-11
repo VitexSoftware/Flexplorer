@@ -57,7 +57,7 @@ class RecieveResponse extends \Ease\Html\Div
      *
      * @return string
      */
-    static function jsonpp($json, $istr = '  ')
+    static public function jsonpp($json, $istr = '  ')
     {
         $result = '';
         for ($p = $q      = $i      = 0; isset($json[$p]); $p++) {
