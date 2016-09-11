@@ -13,9 +13,9 @@ namespace Flexplorer;
 
 require_once 'includes/Init.php';
 
-unset($_SESSION['login']);
+unset($_SESSION['user']);
 unset($_SESSION['password']);
-unset($_SESSION['server']);
+unset($_SESSION['url']);
 unset($_SESSION['company']);
 
 

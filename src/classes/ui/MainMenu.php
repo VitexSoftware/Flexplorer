@@ -63,9 +63,7 @@ class MainMenu extends \Ease\Html\Div
             $nav->addMenuItem(new NavBarSearchBox('search', 'search.php', $term));
             $companer = new \FlexiPeeHP\Company();
 
-            $infoLabel = str_replace('://',
-                '://'.constant('FLEXIBEE_LOGIN').'@',
-                $companer->getEvidenceURL());
+            $infoLabel = $companer->getEvidenceURL();
 
             $infoLabel.= '/'.constant('FLEXIBEE_COMPANY');
 
@@ -102,19 +100,13 @@ class MainMenu extends \Ease\Html\Div
                     define('FLEXIBEE_COMPANY', $_SESSION['company']);
                 }
 
+                $evidenciesToMenu = $_SESSION['evidence-menu'];
 
-                $lister    = new \FlexiPeeHP\EvidenceList();
-                $flexidata = $lister->getFlexiData();
-
-                if (count($flexidata)) {
-                    foreach ($flexidata['evidences']['evidence'] as $evidence) {
-                        $evidenciesToMenu['evidence.php?evidence='.$evidence['evidencePath']]
-                            = $evidence['evidenceName'];
-                    }
-                    asort($evidenciesToMenu);
+                if (count($evidenciesToMenu)) {
                     $nav->addDropDownMenu(_('Evidence'), $evidenciesToMenu);
                 }
             }
+
 
             $nav->addDropDownMenu(_('Tools'),
                 ['changesapi.php' => _('Changes API'),

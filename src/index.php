@@ -19,6 +19,8 @@ $oPage->addItem(new ui\PageTop(_('Flexplorer')));
 
 $requestTabs = new \Ease\TWB\Tabs('Request');
 
+$requestTabs->addTab(_('FlexiBee info'),
+    new ui\LicenseInfo($_SESSION['license']));
 
 
 $requestTabs->addTab(_('Response'), new ui\RecieveResponse());

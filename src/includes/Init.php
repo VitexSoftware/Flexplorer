@@ -38,14 +38,14 @@ textdomain('Flexplorer');
 
 session_start();
 
-if (isset($_SESSION['login'])) {
-    define('FLEXIBEE_LOGIN', $_SESSION['login']);
+if (isset($_SESSION['user'])) {
+    define('FLEXIBEE_LOGIN', $_SESSION['user']);
 }
 if (isset($_SESSION['password'])) {
     define('FLEXIBEE_PASSWORD', $_SESSION['password']);
 }
-if (isset($_SESSION['server'])) {
-    define('FLEXIBEE_URL', $_SESSION['server']);
+if (isset($_SESSION['url'])) {
+    define('FLEXIBEE_URL', $_SESSION['url']);
 }
 
 if (isset($_REQUEST['company'])) {

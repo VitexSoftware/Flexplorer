@@ -73,11 +73,31 @@ class User extends \Ease\User
      */
     public function loginSuccess()
     {
-        $this->setDataValue($this->loginColumn, $this->flexiBee->user);
-        $_SESSION['login']    = $this->flexiBee->user;
+        $_SESSION['user']     = $this->flexiBee->user;
         $_SESSION['password'] = $this->flexiBee->password;
         $_SESSION['company']  = $this->flexiBee->company;
-        $_SESSION['server']   = $this->flexiBee->url;
+        $_SESSION['url']   = $this->flexiBee->url;
+
+        $this->flexiBee->setEvidence('');
+        $this->flexiBee->setCompany('');
+        $licenseInfo         = $this->flexiBee->performRequest('default-license.json');
+        $_SESSION['license'] = $licenseInfo['license'];
+
+        $lister    = new \FlexiPeeHP\EvidenceList(null, $_SESSION);
+        $flexidata = $lister->getFlexiData();
+
+        if (count($flexidata)) {
+            foreach ($flexidata['evidences']['evidence'] as $evidence) {
+                $evidenciesToMenu['evidence.php?evidence='.$evidence['evidencePath']]
+                    = $evidence['evidenceName'];
+            }
+            asort($evidenciesToMenu);
+            $_SESSION['evidence-menu'] = $evidenciesToMenu;
+        } else {
+            $lister->addStatusMessage(_('Loading evidence list failed'), 'error');
+        }
+
+
         return parent::loginSuccess();
     }
 }
