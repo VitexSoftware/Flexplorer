@@ -17,7 +17,7 @@ class JsonTextarea extends \Ease\TWB\Textarea
 {
 
     /**
-     * TODO:  https://ace.c9.io/
+     * Add scripts
      */
     function finalize()
     {

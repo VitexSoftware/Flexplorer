@@ -19,19 +19,18 @@ $evidence = $oPage->getRequestValue('evidence');
 $column   = $oPage->getRequestValue('column');
 if (is_null($evidence)) {
     $oPage->redirect('index.php');
-    exit();
 }
 
-$oPage->addItem(new ui\PageTop(_('Přehled vlastností evidence')));
+$oPage->addItem(new ui\PageTop(_('Evidence properties overview')));
 
 //$oPage->container->addItem(new );
 
 $evobj = new Flexplorer($evidence);
 
 $tabs = new \Ease\TWB\Tabs('EviTabs');
-$tabs->addTab(_('Výpis'),
+$tabs->addTab(_('Listing'),
     new ui\DataGrid(_('Evidence'), new DataSource($evobj)));
-$tabs->addTab(_('Struktura'), new ui\EvidenceProperties($evobj, $column),
+$tabs->addTab(_('Structure'), new ui\EvidenceProperties($evobj, $column),
     isset($column));
 
 

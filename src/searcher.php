@@ -14,45 +14,44 @@ $oPage->onlyForLogged();
 
 $evidence = $oPage->getRequestValue('evidence');
 $query    = $oPage->getRequestValue('q');
-if (is_null($query)) {
-    die('?!?!?');
-}
+if (strlen($query)) {
+    $_SESSION['searchQuery'] = $query;
 
-$_SESSION['searchQuery'] = $query;
+    $found = [];
 
-$found = [];
+    $searcher = new Searcher($evidence);
 
-$searcher = new Searcher($evidence);
+    header('ContentType: text/json');
 
-header('ContentType: text/json');
+    if (strlen($query) > 1) {
+        $results = $searcher->searchAll($query);
 
-if (strlen($query) > 1) {
-    $results = $searcher->searchAll($query);
+        foreach ($results as $rectype => $records) {
+            foreach ($records as $recid => $record) {
+                if (isset($record['url'])) {
+                    $url = $record['url'];
+                } else {
+                    $url = 'evidence.php?evidence='.$rectype.'&amp;id='.$record['id'];
+                }
+                if (isset($record['name'])) {
+                    $name = $record['name'];
+                } else {
+                    $name = $record[$record['what']];
+                }
 
-    foreach ($results as $rectype => $records) {
-        foreach ($records as $recid => $record) {
-            if (isset($record['url'])) {
-                $url = $record['url'];
-            } else {
-                $url = 'evidence.php?evidence='.$rectype.'&amp;id='.$record['id'];
+                if (isset($record['what'])) {
+                    $what = $record['what'];
+                } else {
+                    $what = $record[$record['what']];
+                }
+
+                $found[] = ['id' => $record['id'], 'url' => $url,
+                    'name' => $name,
+                    'type' => $rectype,
+                    'what' => $what];
             }
-            if (isset($record['name'])) {
-                $name = $record['name'];
-            } else {
-                $name = $record[$record['what']];
-            }
-
-            if (isset($record['what'])) {
-                $what = $record['what'];
-            } else {
-                $what = $record[$record['what']];
-            }
-
-            $found[] = ['id' => $record['id'], 'url' => $url,
-                'name' => $name,
-                'type' => $rectype,
-                'what' => $what];
         }
     }
+    echo json_encode($found);
 }
-echo json_encode($found);
+

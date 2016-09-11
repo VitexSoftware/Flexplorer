@@ -68,7 +68,6 @@ class DataGrid extends \Ease\DataGrid
     /**
      * Zdroj dat pro flexigrid
      *
-     * @todo Move to http://www.pontikis.net/labs/bs_grid/docs/
      * @param string $name ID elementu
      * @param string $datasource URL
      * @param array $properties vlastnosti elementu

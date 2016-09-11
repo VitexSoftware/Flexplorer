@@ -10,8 +10,8 @@ namespace Flexplorer;
 
 require_once 'includes/Init.php';
 
-if (!is_object($oUser)) {
-    die(_('Cookies requied'));
+if (is_object($oUser)) {
+    $oPage->addStatusMessage(_('Cookies requied'), 'warning');
 }
 
 $login    = $oPage->getRequestValue('login');
@@ -21,7 +21,6 @@ if ($login) {
     $oUser = \Ease\Shared::user(new User());
     if ($oUser->tryToLogin($_POST)) {
         $oPage->redirect('index.php');
-        exit;
     }
 } else {
     $forceID = $oPage->getRequestValue('force_id', 'int');
@@ -38,8 +37,6 @@ if ($login) {
         } else {
             $oPage->redirect('main.php');
         }
-
-        exit;
     } else {
         $oPage->addStatusMessage(_('Please confirm your login credentials'));
     }

@@ -29,28 +29,27 @@ $engine = new Flexplorer($evidence);
 $delete = $oPage->getGetValue('delete', 'bool');
 if ($delete == true) {
     if ($engine->deleteFromFlexiBee($id)) {
-        $engine->addStatusMessage(_('Záznam byl smazán'), 'success');
+        $engine->addStatusMessage(_('Record was deleted'), 'success');
         $oPage->redirect('evidence.php?evidence='.$evidence);
-        exit;
     } else {
-        $engine->addStatusMessage(_('Záznam nebyl smazán'), 'warning');
+        $engine->addStatusMessage(_('Record was not deleted'), 'warning');
     }
 } else {
     $engine->loadFromFlexiBee($id);
     $recordInfo = $engine->__toString();
 }
 
-$oPage->addItem(new ui\PageTop(_('Smazání záznamu')));
+$oPage->addItem(new ui\PageTop(_('Record Delete')));
 
 $buttonRow = new \Ease\TWB\Row();
 $buttonRow->addColumn(4);
 $buttonRow->addColumn(4,
     new \Ease\TWB\LinkButton('evidence.php?evidence='.$evidence,
-    _('Nemazat záznam').' '.new \Ease\TWB\GlyphIcon('ok-sign'), 'info',
+    _('Keep record').' '.new \Ease\TWB\GlyphIcon('ok-sign'), 'info',
     ['class' => 'btn btn-default clearfix pull-right']));
 $buttonRow->addColumn(4,
     new \Ease\TWB\LinkButton('delete.php?evidence='.$evidence.'&delete=true&id='.$id,
-    _('Smazat záznam').' '.new \Ease\TWB\GlyphIcon('remove-sign'), 'danger'));
+    _('Delete record').' '.new \Ease\TWB\GlyphIcon('remove-sign'), 'danger'));
 
 $oPage->container->addItem(new ui\RecordShow($engine, $buttonRow));
 
