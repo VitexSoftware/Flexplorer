@@ -43,9 +43,10 @@ class User extends \Ease\User
      */
     public function tryToLogin($creds)
     {
-        $loginStatus              = false;
+        $loginStatus          = false;
         $this->flexiBee->disconnect();
-        $this->flexiBee->user     = trim($creds['login']);
+        $this->flexiBee->user = trim($creds['login']);
+
         $this->flexiBee->password = $creds['password'];
         $this->flexiBee->url      = trim($creds['server']);
         $this->flexiBee->company  = null;
@@ -76,7 +77,7 @@ class User extends \Ease\User
         $_SESSION['user']     = $this->flexiBee->user;
         $_SESSION['password'] = $this->flexiBee->password;
         $_SESSION['company']  = $this->flexiBee->company;
-        $_SESSION['url']   = $this->flexiBee->url;
+        $_SESSION['url']      = $this->flexiBee->url;
 
         $this->flexiBee->setEvidence('');
         $this->flexiBee->setCompany('');
@@ -86,7 +87,7 @@ class User extends \Ease\User
         $lister    = new \FlexiPeeHP\EvidenceList(null, $_SESSION);
         $flexidata = $lister->getFlexiData();
 
-        if (count($flexidata)) {
+        if (count($flexidata) && isset($flexidata['evidences']['evidence'])) {
             foreach ($flexidata['evidences']['evidence'] as $evidence) {
                 $evidenciesToMenu['evidence.php?evidence='.$evidence['evidencePath']]
                     = $evidence['evidenceName'];
@@ -96,7 +97,6 @@ class User extends \Ease\User
         } else {
             $lister->addStatusMessage(_('Loading evidence list failed'), 'error');
         }
-
 
         return parent::loginSuccess();
     }
