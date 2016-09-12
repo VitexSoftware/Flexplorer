@@ -1,7 +1,7 @@
 Flexplorer
 ==========
 
-![Flexplorer Logo](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/src/images/flexplorer-logo.png "Project Logo")
+![Flexplorer Logo](https://raw.githubusercontent.com/VitexSofware/Flexplorer/master/src/images/flexplorer-logo.png "Project Logo")
 
 Vývojářský nástroj pro FlexiBee API/JSON. Napsaný s využitím knihovny [FlexiPeeHP](https://github.com/Spoje-NET/FlexiPeeHP)
 Umožňuje:
@@ -13,57 +13,57 @@ Umožňuje:
   * Test odpovědi WebHook skriptu zpracovávajícího změny z FlexiBee
   * Hromadně zakládat účetní období   
 
-[![Source Code](http://img.shields.io/badge/source/Spoje-NET/Flexplorer-blue.svg?style=flat-square)](https://github.com/Spoje-NET/Flexplorer)
-[![Latest Version](https://img.shields.io/github/release/Spoje-NET/Flexplorer.svg?style=flat-square)](https://github.com/Spoje-NET/Flexplorer/releases)
-[![Software License](https://img.shields.io/badge/license-GNU-brightgreen.svg?style=flat-square)](https://github.com/Spoje-NET/Flexplorer/blob/master/LICENSE)
-[![Build Status](https://img.shields.io/travis/Spoje-NET/Flexplorer/master.svg?style=flat-square)](https://travis-ci.org/Spoje-NET/Flexplorer)
-[![Coverage Status](https://img.shields.io/coveralls/Spoje-NET/Flexplorer/master.svg?style=flat-square)](https://coveralls.io/r/Spoje-NET/Flexplorer?branch=master)
+[![Source Code](http://img.shields.io/badge/source/VitexSofware/Flexplorer-blue.svg?style=flat-square)](https://github.com/VitexSofware/Flexplorer)
+[![Latest Version](https://img.shields.io/github/release/VitexSofware/Flexplorer.svg?style=flat-square)](https://github.com/VitexSofware/Flexplorer/releases)
+[![Software License](https://img.shields.io/badge/license-GNU-brightgreen.svg?style=flat-square)](https://github.com/VitexSofware/Flexplorer/blob/master/LICENSE)
+[![Build Status](https://img.shields.io/travis/VitexSofware/Flexplorer/master.svg?style=flat-square)](https://travis-ci.org/VitexSofware/Flexplorer)
+[![Coverage Status](https://img.shields.io/coveralls/VitexSofware/Flexplorer/master.svg?style=flat-square)](https://coveralls.io/r/VitexSofware/Flexplorer?branch=master)
 
 Demo: http://flexibee-dev.spoje.net/
 
 Pro přihlášení se používá jména a hesla uživatele aplikace s oprávněním používat REST API:
 
-![Mobilní přihlášení](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-mobile_login.png "Screenshot přihlášení")
+![Mobilní přihlášení](https://raw.githubusercontent.com/VitexSofware/Flexplorer/master/flexplorer-mobile_login.png "Screenshot přihlášení")
 
 FlexPlorer zobrazuje odpověď požadavku:
 
-![Odpověď serveru](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-response_serveru.png "Screenshot odpovědi")
+![Odpověď serveru](https://raw.githubusercontent.com/VitexSofware/Flexplorer/master/flexplorer-response_serveru.png "Screenshot odpovědi")
 
 Je možné si zvolit libovolnou evidenci FlexiBee a její obsah si vypsat:
 
-![Výpis evidence](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-vypis_evidence.png "Screenshot výpisu evidence")
+![Výpis evidence](https://raw.githubusercontent.com/VitexSofware/Flexplorer/master/flexplorer-vypis_evidence.png "Screenshot výpisu evidence")
 
 Data můžeme editovat a uložit, pokud k tomu má přihlášený uživatel práva:
 
-![Editor Evidence](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-editor-evidence.png "Screenshot Editoru Evidence")
+![Editor Evidence](https://raw.githubusercontent.com/VitexSofware/Flexplorer/master/flexplorer-editor-evidence.png "Screenshot Editoru Evidence")
 
 Nad otevřenou evidencí je možné snadno provádět dotazy:
 
-![JSON Editor](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-json-editor.png "Screenshot JSON Editoru")
+![JSON Editor](https://raw.githubusercontent.com/VitexSofware/Flexplorer/master/flexplorer-json-editor.png "Screenshot JSON Editoru")
 
 Smazání záznamu z evidence je třeba potvrdit:
 
-![Potvrzení před smazáním](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-potvrzeni-pred-smazanim.png "Přehledu a potvrzení před smazáním záznamu")
+![Potvrzení před smazáním](https://raw.githubusercontent.com/VitexSofware/Flexplorer/master/flexplorer-potvrzeni-pred-smazanim.png "Přehledu a potvrzení před smazáním záznamu")
 
 Při testování WebHooku pomůže tento nástroj, který sestaví maketu záznamu ChangesAPI a odešle jí na zvolený WebHook:
 
-![WebHook Request](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-webhook-request.png "Screenshot Požadavku na webhook")
+![WebHook Request](https://raw.githubusercontent.com/VitexSofware/Flexplorer/master/flexplorer-webhook-request.png "Screenshot Požadavku na webhook")
 
 Správná je prázdná odpověď. Ačkoliv funguje, tak by se tento skript FlexiBee nelíbil. Zde vidíme co vrací:
 
-![WebHook Response](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-webhook-response.png "Screenshot Odpovědi webhooku")
+![WebHook Response](https://raw.githubusercontent.com/VitexSofware/Flexplorer/master/flexplorer-webhook-response.png "Screenshot Odpovědi webhooku")
 
 Pro hledání v evidencích je k dispozici vyhledávací políčko:
 
-![WebHook Response](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-hinter_evidence.png "Našeptávač evidencí")
+![WebHook Response](https://raw.githubusercontent.com/VitexSofware/Flexplorer/master/flexplorer-hinter_evidence.png "Našeptávač evidencí")
 
 Po stisku entru se zobrazí podrobnější výsledky:
 
-![WebHook Response](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-nalezene_evidence.png "Nalezené evidence")
+![WebHook Response](https://raw.githubusercontent.com/VitexSofware/Flexplorer/master/flexplorer-nalezene_evidence.png "Nalezené evidence")
 
 Vyhledávat je také možné v názvech sloupců jednotlivých evidencí a jejich popiscích:
 
-![Columns Search](https://raw.githubusercontent.com/Spoje-NET/Flexplorer/master/flexplorer-nalezene_sloupce.png "Nalezené sloupce")
+![Columns Search](https://raw.githubusercontent.com/VitexSofware/Flexplorer/master/flexplorer-nalezene_sloupce.png "Nalezené sloupce")
 
 
 Instalace

@@ -29,7 +29,7 @@ class PageBottom extends \Ease\TWB\Container
         $colA      = $rowFluid1->addItem(new \Ease\TWB\Col(2));
         $listA1    = $colA->addItem(new \Ease\Html\UlTag(_('Sources'),
             ['style' => 'list-style-type: none']));
-        $listA1->addItemSmart(new \Ease\Html\ATag('https://github.com/Spoje-NET/Flexplorer',
+        $listA1->addItemSmart(new \Ease\Html\ATag('https://github.com/VitexSofware/Flexplorer',
             'Flexiplorer'));
         $listA1->addItemSmart(new \Ease\Html\ATag('https://github.com/Spoje-NET/FlexiPeeHP',
             'FlexiPeeHP'));
