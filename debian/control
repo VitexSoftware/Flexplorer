@@ -4,7 +4,7 @@ Standards-Version: 3.8.4
 Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
 Uploaders: Vitex <vitex@hippy.cz>
 Priority: optional
-Homepage: https://github.com/VitexSofware/Flexplorer
+Homepage: https://github.com/VitexSoftware/Flexplorer
 
 Package: flexplorer
 Depends: ${misc:Depends},flexipeehp,composer,php5-intl,libjs-twitter-bootstrap-switch,libjs-font-awesome
