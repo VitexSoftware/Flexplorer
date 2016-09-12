@@ -134,17 +134,17 @@ class DataSource extends \Ease\Brick
                         if ($this->controlDeleteColumns()) {
                             $this->fallBackUrl = false;
                             if ($this->deleteFromSQL()) {
-                                $this->webPage->addStatusMessage(_('Smazáno'));
+                                $this->webPage->addStatusMessage(_('Deleted'));
                             }
                         }
                         break;
                     case 'add':
                         if ($this->controlAddColumns()) {
                             if ($this->insertToSQL()) {
-                                $this->webPage->addStatusMessage(_('Záznam byl přidán'),
+                                $this->webPage->addStatusMessage(_('Record was added'),
                                     'success');
                             } else {
-                                $this->webPage->addStatusMessage(_('Záznam nebyl přidám'),
+                                $this->webPage->addStatusMessage(_('Record was not added'),
                                     'error');
                             }
                         }
@@ -152,10 +152,10 @@ class DataSource extends \Ease\Brick
                     case 'edit':
                         if ($this->controlEditColumns()) {
                             if ($this->saveToSQL()) {
-                                $this->webPage->addStatusMessage(_('Záznam byl upraven'),
+                                $this->webPage->addStatusMessage(_('Record was updated'),
                                     'success');
                             } else {
-                                $this->webPage->addStatusMessage(_('Záznam nebyl upravn'),
+                                $this->webPage->addStatusMessage(_('Record update failed'),
                                     'error');
                             }
                         }

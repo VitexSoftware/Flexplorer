@@ -14,9 +14,7 @@ class PageBottom extends \Ease\TWB\Container
     public function __construct($content = null)
     {
         parent::__construct($content);
-        $this->SetTagID('footer');
-        $this->addItem('<hr>');
-
+        $this->setTagID('footer');
         $composer = 'composer.json';
         if (!file_exists($composer)) {
             $composer = '../'.$composer;
@@ -59,7 +57,7 @@ class PageBottom extends \Ease\TWB\Container
             'REST API'));
 
         $colE   = $rowFluid1->addItem(new \Ease\TWB\Col(2));
-        $listE1 = $colE->addItem(new \Ease\Html\UlTag(_('Autor'),
+        $listE1 = $colE->addItem(new \Ease\Html\UlTag(_('Author'),
             ['style' => 'list-style-type: none']));
         $listE1->addItemSmart(new \Ease\Html\ATag('http://vitexsoftware.cz',
             _('Vitex Software')));

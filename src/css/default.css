@@ -137,3 +137,8 @@ th {
     -webkit-box-shadow: 0 60px 50px -30px rgba(255, 255, 255, .5) inset;
     box-shadow: 0 60px 50px -30px rgba(255, 255, 255, .5) inset;	
 }	
+
+#footer {
+    background-color: #fff;
+    padding: 10px;
+}	

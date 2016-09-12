@@ -1,0 +1,606 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Flexplorer\n"
+"POT-Creation-Date: 2016-09-12 22:57+0100\n"
+"PO-Revision-Date: 2016-09-12 23:05+0100\n"
+"Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
+"Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-Basepath: ../../\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ../src\n"
+"X-Poedit-SearchPathExcluded-0: ../vendor\n"
+
+#: ../src/about.php:14
+msgid "About application"
+msgstr "About application"
+
+#: ../src/changesapi.php:26
+msgid "ChangesAPI was enabled"
+msgstr "ChangesAPI was enabled"
+
+#: ../src/changesapi.php:32
+msgid "ChangesAPI was disabled"
+msgstr "ChangesAPI was disabled"
+
+#: ../src/changesapi.php:62
+#, php-format
+msgid "Hook %s was registered"
+msgstr "Hook %s was registered"
+
+#: ../src/changesapi.php:65
+#, php-format
+msgid "Hook %s not registered"
+msgstr "Hook %s not registered"
+
+#: ../src/changesapi.php:74
+msgid "Hook was unregistered"
+msgstr "Hook was unregistered"
+
+#: ../src/changesapi.php:76
+msgid "Hook was not unregistered"
+msgstr "Hook was not unregistered"
+
+#: ../src/changesapi.php:84
+msgid "Hook refreshed"
+msgstr "Hook refreshed"
+
+#: ../src/changesapi.php:86
+msgid "Hook refresh failed"
+msgstr "Hook refresh failed"
+
+#: ../src/changesapi.php:91
+msgid "ChangesAPI Tool"
+msgstr "ChangesAPI Tool"
+
+#: ../src/changesapi.php:95
+msgid "Enable"
+msgstr "Enable"
+
+#: ../src/changesapi.php:95
+msgid "Disable"
+msgstr "Disable"
+
+#: ../src/changesapi.php:95 ../src/classes/ui/MainMenu.php:112
+msgid "Changes API"
+msgstr "Changes API"
+
+#: ../src/changesapi.php:98
+msgid ""
+"Je-li to zapnuto, FlexiBee zaznamenává všechny změny provedené v databázi "
+"firmy do changelogu a umožňuje seznam změn zpětně získat"
+msgstr ""
+
+#: ../src/changesapi.php:100 ../src/fakechange.php:91
+msgid "Web Hook"
+msgstr "Web Hook"
+
+#: ../src/changesapi.php:103 ../src/fakechange.php:94
+msgid ""
+"Když dojde v databázi FlexiBee ke změně, je odeslán POST HTTP request na "
+"všechna zaregistrovaná URL"
+msgstr ""
+
+#: ../src/changesapi.php:107
+msgid "Data format"
+msgstr "Data format"
+
+#: ../src/changesapi.php:110
+msgid "Přeskočit test URL"
+msgstr ""
+
+#: ../src/changesapi.php:110
+msgid "Suppress URL functionality test"
+msgstr ""
+
+#: ../src/changesapi.php:114
+msgid "Last version"
+msgstr "Last version"
+
+#: ../src/changesapi.php:115
+#, php-format
+msgid ""
+"Verze od které započne posílání následujích změn, tj. od nejbližší vyšší "
+"verze. Defaultní hodnota je rovna aktuální globální verzi (globalVersion) v "
+"momentě registrace hooku. Přípustné hodnoty jsou z intervalu: [0, %s]"
+msgstr ""
+
+#: ../src/changesapi.php:120
+msgid "Bezpečnostní kód"
+msgstr ""
+
+#: ../src/changesapi.php:121
+#, php-format
+msgid ""
+"Libovolný řetězec, (např. %s) který bude odesílán s každou notifikací změn v "
+"HTTP hlavičce. Slouží k jednoduchému ověření, zda patří příchozí notifikace "
+"Vámi registrovanému hooku. Název klíče v HTTP hlavičce je X-FB-Hook-SecKey."
+msgstr ""
+
+#: ../src/changesapi.php:126
+msgid "Perform operation"
+msgstr "Perform operation"
+
+#: ../src/changesapi.php:140
+msgid "Test"
+msgstr "Test"
+
+#: ../src/changesapi.php:147
+msgid "Webhooks registered"
+msgstr "Webhooks registered"
+
+#: ../src/changesapi.php:150
+msgid "ChangesAPI & WebHooks"
+msgstr "ChangesAPI & WebHooks"
+
+#: ../src/classes/DataSource.php:137
+msgid "Deleted"
+msgstr "Deleted"
+
+#: ../src/classes/DataSource.php:144
+msgid "Record was added"
+msgstr "Record was added"
+
+#: ../src/classes/DataSource.php:147
+msgid "Record was not added"
+msgstr "Record was not added"
+
+#: ../src/classes/DataSource.php:155
+msgid "Record was updated"
+msgstr "Record was updated"
+
+#: ../src/classes/DataSource.php:158
+msgid "Record update failed"
+msgstr "Record update failed"
+
+#: ../src/classes/Flexplorer.php:125
+#, php-format
+msgid "Chyba unserializace %s #%s "
+msgstr ""
+
+#: ../src/classes/Searcher.php:109
+msgid "No search results"
+msgstr "No search results"
+
+#: ../src/classes/User.php:65
+msgid "Login Failed"
+msgstr "Login Failed"
+
+#: ../src/classes/User.php:98
+msgid "Loading evidence list failed"
+msgstr "Loading evidence list failed"
+
+#: ../src/classes/ui/BootstrapMenu.php:43
+#: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:41
+#: ../src/login.php:55
+msgid "Sign in"
+msgstr "Sign in"
+
+#: ../src/classes/ui/BootstrapMenu.php:46
+msgid "Server"
+msgstr "Server"
+
+#: ../src/classes/ui/BootstrapMenu.php:47
+msgid "login"
+msgstr "login"
+
+#: ../src/classes/ui/BootstrapMenu.php:48 ../src/login.php:68
+msgid "Password"
+msgstr "Password"
+
+#: ../src/classes/ui/BootstrapMenu.php:50
+msgid "zapamatuj si mne"
+msgstr ""
+
+#: ../src/classes/ui/BootstrapMenu.php:59 ../src/settings.php:17
+msgid "Settings"
+msgstr "Settings"
+
+#: ../src/classes/ui/BootstrapMenu.php:63
+msgid "About"
+msgstr "About"
+
+#: ../src/classes/ui/BootstrapMenu.php:65
+msgid "Sign off"
+msgstr "Sign off"
+
+#: ../src/classes/ui/BootstrapMenu.php:80
+msgid "Click to hide messages"
+msgstr "Click to hide messages"
+
+#: ../src/classes/ui/ColumnsForm.php:102
+msgid "Save"
+msgstr "Save"
+
+#: ../src/classes/ui/ColumnsForm.php:112
+msgid "Save & go to listing"
+msgstr "Save & go to listing"
+
+#: ../src/classes/ui/ColumnsForm.php:121
+msgid "Save and next"
+msgstr "Save and next"
+
+#: ../src/classes/ui/DataGrid.php:95
+msgid "Add"
+msgstr "Add"
+
+#: ../src/classes/ui/DataGrid.php:96
+msgid "Edit"
+msgstr "Edit"
+
+#: ../src/classes/ui/DataGrid.php:97
+msgid "Delete"
+msgstr "Delete"
+
+#: ../src/classes/ui/DataGrid.php:117
+msgid "Title missing"
+msgstr "Title missing"
+
+#: ../src/classes/ui/DataGrid.php:220 ../src/classes/ui/DataGrid.php:265
+msgid "Je třeba označit nějaké řádky"
+msgstr ""
+
+#: ../src/classes/ui/Editor.php:30
+msgid "Uložit do FlexiBee"
+msgstr ""
+
+#: ../src/classes/ui/Editor.php:30
+msgid "Zobrazit v editoru"
+msgstr ""
+
+#: ../src/classes/ui/Editor.php:31
+msgid "OK"
+msgstr ""
+
+#: ../src/classes/ui/Editor.php:45
+msgid "Povinný"
+msgstr ""
+
+#: ../src/classes/ui/Editor.php:88
+msgid "Uprav odkazovaný záznam"
+msgstr ""
+
+#: ../src/classes/ui/Editor.php:112
+#, php-format
+msgid "Neznámý druh dat %s"
+msgstr ""
+
+#: ../src/classes/ui/Editor.php:122 ../src/classes/ui/Editor.php:124
+msgid "Typ"
+msgstr ""
+
+#: ../src/classes/ui/MainMenu.php:96
+msgid "Company"
+msgstr "Company"
+
+#: ../src/classes/ui/MainMenu.php:106 ../src/evidence.php:32
+#: ../src/fakechange.php:71
+msgid "Evidence"
+msgstr "Evidence"
+
+#: ../src/classes/ui/MainMenu.php:111
+msgid "Tools"
+msgstr "Tools"
+
+#: ../src/classes/ui/MainMenu.php:113
+msgid "WebHook test"
+msgstr "WebHook test"
+
+#: ../src/classes/ui/MainMenu.php:114
+msgid "Accounting period"
+msgstr "Accounting period"
+
+#: ../src/classes/ui/NavBarSearchBox.php:37
+#: ../src/classes/ui/NavBarSearchBox.php:47
+msgid "Search"
+msgstr "Search"
+
+#: ../src/classes/ui/NavBarSearchBox.php:43
+msgid "Close"
+msgstr "Close"
+
+#: ../src/classes/ui/PageBottom.php:28
+msgid "Sources"
+msgstr "Sources"
+
+#: ../src/classes/ui/PageBottom.php:38
+msgid "Support"
+msgstr "Support"
+
+#: ../src/classes/ui/PageBottom.php:46
+msgid "Services"
+msgstr "Services"
+
+#: ../src/classes/ui/PageBottom.php:54
+msgid "Docs"
+msgstr "Docs"
+
+#: ../src/classes/ui/PageBottom.php:60
+msgid "Author"
+msgstr "Author"
+
+#: ../src/classes/ui/PageBottom.php:63
+msgid "Vitex Software"
+msgstr "Vitex Software"
+
+#: ../src/classes/ui/PageBottom.php:66
+msgid "Sponsored by"
+msgstr "Sponsored by"
+
+#: ../src/classes/ui/PageBottom.php:69
+msgid "Spoje.Net"
+msgstr "Spoje.Net"
+
+#: ../src/classes/ui/PageBottom.php:79
+msgid "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
+msgstr "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
+
+#: ../src/classes/ui/RecieveResponse.php:41
+msgid "Dotaz nebyl zatím odeslán"
+msgstr "Dotaz nebyl zatím odeslán"
+
+#: ../src/classes/ui/SendForm.php:30
+msgid "URL"
+msgstr "URL"
+
+#: ../src/classes/ui/SendForm.php:33
+msgid "URL Compositon"
+msgstr "URL Compositon"
+
+#: ../src/classes/ui/SendForm.php:35
+msgid "Query body"
+msgstr "Query body"
+
+#: ../src/classes/ui/SendForm.php:38
+msgid "Method"
+msgstr "Method"
+
+#: ../src/classes/ui/SendForm.php:40
+msgid "Supported HTTP Operations"
+msgstr "Supported HTTP Operations"
+
+#: ../src/classes/ui/SendForm.php:41
+msgid "Send"
+msgstr "Send"
+
+#: ../src/classes/ui/TWBSwitch.php:28
+msgid "Yes"
+msgstr "Yes"
+
+#: ../src/classes/ui/TWBSwitch.php:31
+msgid "No"
+msgstr "No"
+
+#: ../src/classes/ui/WebPage.php:69
+msgid "Please sign in as admin first"
+msgstr "Please sign in as admin first"
+
+#: ../src/delete.php:32
+msgid "Record was deleted"
+msgstr "Record was deleted"
+
+#: ../src/delete.php:35
+msgid "Record was not deleted"
+msgstr "Record was not deleted"
+
+#: ../src/delete.php:42
+msgid "Record Delete"
+msgstr "Record Delete"
+
+#: ../src/delete.php:48
+msgid "Keep record"
+msgstr "Keep record"
+
+#: ../src/delete.php:52
+msgid "Delete record"
+msgstr "Delete record"
+
+#: ../src/editor.php:27
+msgid "Záznam byl uložen"
+msgstr ""
+
+#: ../src/editor.php:29
+msgid "Záznam nebyl uložen"
+msgstr ""
+
+#: ../src/editor.php:38
+msgid "Nový záznam"
+msgstr ""
+
+#: ../src/editor.php:41
+msgid "Editor"
+msgstr "Editor"
+
+#: ../src/evidence.php:24
+msgid "Evidence properties overview"
+msgstr "Evidence properties overview"
+
+#: ../src/evidence.php:31
+msgid "Listing"
+msgstr "Listing"
+
+#: ../src/evidence.php:33
+msgid "Structure"
+msgstr "Structure"
+
+#: ../src/evidence.php:49
+msgid "Query"
+msgstr "Query"
+
+#: ../src/evidence.php:50
+msgid "User Query"
+msgstr "User Query"
+
+#: ../src/fakechange.php:36
+msgid "WebHook successfully triggered"
+msgstr "WebHook successfully triggered"
+
+#: ../src/fakechange.php:38
+msgid "WebHook returns non empty response"
+msgstr "WebHook returns non empty response"
+
+#: ../src/fakechange.php:53
+msgid "Test Web Hooku"
+msgstr ""
+
+#: ../src/fakechange.php:64
+msgid "Formát dat"
+msgstr ""
+
+#: ../src/fakechange.php:67
+msgid "Poslední verze"
+msgstr ""
+
+#: ../src/fakechange.php:68
+msgid "Verze od které započne posílání následujích změn"
+msgstr ""
+
+#: ../src/fakechange.php:76
+msgid "Operace"
+msgstr ""
+
+#: ../src/fakechange.php:79
+msgid "Číslo záznamu"
+msgstr ""
+
+#: ../src/fakechange.php:79
+msgid "Interní číslo editovaného záznamu"
+msgstr ""
+
+#: ../src/fakechange.php:82
+msgid "Ext. Číslo záznamu"
+msgstr ""
+
+#: ../src/fakechange.php:82
+msgid "Externí číslo editovaného záznamu"
+msgstr ""
+
+#: ../src/fakechange.php:85
+msgid "Sestavit změnu"
+msgstr ""
+
+#: ../src/fakechange.php:92
+msgid "Choose Registered"
+msgstr "Choose Registered"
+
+#: ../src/fakechange.php:98
+msgid "Odeslat"
+msgstr ""
+
+#: ../src/fakechange.php:120 ../src/index.php:26
+msgid "Response"
+msgstr "Response"
+
+#: ../src/fakechange.php:122 ../src/index.php:46
+msgid "Request"
+msgstr "Request"
+
+#: ../src/fakechange.php:124
+msgid "WebHook probe"
+msgstr "WebHook probe"
+
+#: ../src/index.php:18
+msgid "Flexplorer"
+msgstr "Flexplorer"
+
+#: ../src/index.php:22
+msgid "FlexiBee info"
+msgstr "FlexiBee info"
+
+#: ../src/index.php:47
+msgid "Custom request"
+msgstr "Custom request"
+
+#: ../src/login.php:26
+msgid "Signed in as: "
+msgstr "Signed in as: "
+
+#: ../src/login.php:37
+msgid "Please confirm your login credentials"
+msgstr "Please confirm your login credentials"
+
+#: ../src/login.php:51
+msgid "Welcome"
+msgstr "Welcome"
+
+#: ../src/login.php:59
+msgid "FlexiBee"
+msgstr "FlexiBee"
+
+#: ../src/login.php:63
+msgid "FlexiBee server URL. ex.: https://localhost:5434"
+msgstr "FlexiBee server URL. ex.: https://localhost:5434"
+
+#: ../src/login.php:64
+msgid "User name"
+msgstr "User name"
+
+#: ../src/login.php:67
+msgid "Login name"
+msgstr "Login name"
+
+#: ../src/login.php:71
+msgid "User's password"
+msgstr "User's password"
+
+#: ../src/logout.php:29
+msgid "Odhlášení"
+msgstr ""
+
+#: ../src/logout.php:32
+msgid "Děkujeme za vaši přízeň a těšíme se na další návštěvu"
+msgstr ""
+
+#: ../src/main.php:19
+msgid "Main Page"
+msgstr "Main Page"
+
+#: ../src/search.php:24
+msgid "Search results"
+msgstr "Search results"
+
+#: ../src/search.php:53
+#, php-format
+msgid "Search for %s results in %s"
+msgstr "Search for %s results in %s"
+
+#: ../src/settings.php:19
+msgid "Nothig here yet"
+msgstr "Nothig here yet"
+
+#: ../src/ucetniobdobi.php:29
+msgid "Rok byl odregistrován"
+msgstr ""
+
+#: ../src/ucetniobdobi.php:31
+msgid "Rok nebyl odregistrován"
+msgstr ""
+
+#: ../src/ucetniobdobi.php:37
+msgid "Účetní období"
+msgstr ""
+
+#: ../src/ucetniobdobi.php:43
+msgid "Od Roku"
+msgstr ""
+
+#: ../src/ucetniobdobi.php:46
+msgid "Do Roku"
+msgstr ""
+
+#: ../src/ucetniobdobi.php:50
+msgid "Provést operaci"
+msgstr ""
+
+#: ../src/ucetniobdobi.php:66
+msgid "Zaregistrované ucetniObdobi"
+msgstr ""
+
+#: ../src/ucetniobdobi.php:70
+msgid "Nástroj pro hromadné zakládání účetních období"
+msgstr ""

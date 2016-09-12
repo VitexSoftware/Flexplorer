@@ -23,7 +23,8 @@ $requestTabs->addTab(_('FlexiBee info'),
     new ui\LicenseInfo($_SESSION['license']));
 
 
-$requestTabs->addTab(_('Response'), new ui\RecieveResponse());
+$requestTabs->addTab(_('Response'), new ui\RecieveResponse(),
+    $oPage->isPosted());
 
 $url = $oPage->getRequestValue('url');
 if (!strlen($url)) {

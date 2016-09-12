@@ -30,14 +30,14 @@ class SendForm extends \Ease\TWB\Form
         $this->addInput(new \Ease\Html\InputTextTag('url', $url), _('URL'),
             $url,
             new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/urls',
-            _('Sestavování URL')));
+            _('URL Compositon')));
         $this->addInput(new JsonTextarea('body', $body,
-            ['id' => 'editor', 'class' => 'animated']), _('Tělo dotazu'));
+            ['id' => 'editor', 'class' => 'animated']), _('Query body'));
         $this->addInput(new \Ease\Html\Select('method',
             ['GET' => 'GET', 'POST' => 'POST', 'PUT' => 'PUT', 'PATCH' => 'PATCH',
-            'DELETE' => 'DELETE'], $method), _('Metoda'), null,
+            'DELETE' => 'DELETE'], $method), _('Method'), null,
             new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/http-operations',
-            _('Podporované HTTP Operace')));
-        $this->addItem(new \Ease\TWB\SubmitButton(_('Odeslat'), 'success'));
+            _('Supported HTTP Operations')));
+        $this->addItem(new \Ease\TWB\SubmitButton(_('Send'), 'success'));
     }
 }

@@ -3,7 +3,7 @@
 namespace Flexplorer;
 
 /**
- * Flexplorer - Odhlašovací stránka.
+ * Flexplorer - Changes API.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2016 Vitex Software
@@ -23,13 +23,13 @@ if ($oPage->isPosted()) {
     if ($oPage->getRequestValue('changesapi') === 'enable') {
         if ($chapistatus === FALSE) {
             $changer->enable();
-            $changer->addStatusMessage(_('ChangesAPI bylo povoleno'), 'success');
+            $changer->addStatusMessage(_('ChangesAPI was enabled'), 'success');
             $chapistatus = true;
         }
     } else {
         if ($chapistatus === TRUE) {
             $changer->disable();
-            $changer->addStatusMessage(_('ChangesAPI bylo zakázáno'), 'warning');
+            $changer->addStatusMessage(_('ChangesAPI was disabled'), 'warning');
             $chapistatus = false;
         }
     }
@@ -59,10 +59,10 @@ if ($oPage->isPosted()) {
 
         $hookResult = $hooker->register($hookurl, $format);
         if ($hookResult) {
-            $hooker->addStatusMessage(sprintf(_('Hook %s byl zaregistrován'),
+            $hooker->addStatusMessage(sprintf(_('Hook %s was registered'),
                     $hookurl), 'success');
         } else {
-            $hooker->addStatusMessage(sprintf(_('Hook %s nebyl zaregistrován'),
+            $hooker->addStatusMessage(sprintf(_('Hook %s not registered'),
                     $hookurl), 'warning');
         }
     }
@@ -71,9 +71,9 @@ if ($oPage->isPosted()) {
 $linkdel = $oPage->getRequestValue('linkdel', 'int');
 if (!is_null($linkdel)) {
     if ($hooker->unregister($linkdel)) {
-        $hooker->addStatusMessage(_('Hook byl odregistrován'), 'success');
+        $hooker->addStatusMessage(_('Hook was unregistered'), 'success');
     } else {
-        $hooker->addStatusMessage(_('Hook nebyl odregistrován'), 'warning');
+        $hooker->addStatusMessage(_('Hook was not unregistered'), 'warning');
     }
     $oPage->redirect('changesapi.php');
 }
@@ -88,11 +88,11 @@ if (!is_null($linkrefresh)) {
     $oPage->redirect('changesapi.php');
 }
 
-$oPage->addItem(new ui\PageTop(_('Nastavení rozhraní sledování změn')));
+$oPage->addItem(new ui\PageTop(_('ChangesAPI Tool')));
 $toolRow      = new \Ease\TWB\Row();
 $settingsForm = new \Ease\TWB\Form('settings');
 $settingsForm->addInput(new ui\TWBSwitch('changesapi', $chapistatus, 'enable',
-    ['onText' => _('Zapnuto'), 'offText' => _('Vypnuto')]), _('Changes API'),
+    ['onText' => _('Enable'), 'offText' => _('Disable')]), _('Changes API'),
     null,
     new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/changes-api/',
     _('Je-li to zapnuto, FlexiBee zaznamenává všechny změny provedené v databázi firmy do changelogu a umožňuje seznam změn zpětně získat')));
@@ -104,14 +104,14 @@ $settingsForm->addInput(new \Ease\Html\InputTextTag('hookurl'), _('Web Hook'),
 );
 
 $settingsForm->addInput(new ui\TWBSwitch('changesformat', true, 'JSON',
-    ['onText' => 'JSON', 'offText' => 'XML']), _('Formát dat'));
+    ['onText' => 'JSON', 'offText' => 'XML']), _('Data format'));
 
 $settingsForm->addInput(new ui\TWBSwitch('hookurltest', true, 'skip'),
-    _('Přeskočit test URL'), null, _('Potlačení testu funkčnosti předaného URL'));
+    _('Přeskočit test URL'), null, _('Suppress URL functionality test'));
 
 
 $settingsForm->addInput(new \Ease\Html\InputNumberTag('lastVersion', null,
-    ['min' => 0, 'max' => $globalVersion]), _('Poslední verze'), $globalVersion,
+    ['min' => 0, 'max' => $globalVersion]), _('Last version'), $globalVersion,
     sprintf(_('Verze od které započne posílání následujích změn, tj. od nejbližší vyšší verze. Defaultní hodnota je rovna aktuální globální verzi (globalVersion) v momentě registrace hooku. Přípustné hodnoty jsou z intervalu: [0, %s]'),
         $globalVersion));
 
@@ -123,7 +123,7 @@ $settingsForm->addInput(new \Ease\Html\InputTextTag('secKey'),
 );
 
 
-$settingsForm->addItem(new \Ease\TWB\SubmitButton(_('Provést operaci'),
+$settingsForm->addItem(new \Ease\TWB\SubmitButton(_('Perform operation'),
     'warning'));
 $toolRow->addColumn(4, new \Ease\TWB\Well($settingsForm));
 
@@ -144,11 +144,10 @@ if ($chapistatus) {
         }
 
         $toolRow->addColumn(8,
-            new \Ease\TWB\Panel(_('Zaregistrované webhooks'), 'info',
-            $hooksTable));
+            new \Ease\TWB\Panel(_('Webhooks registered'), 'info', $hooksTable));
     }
 }
-$oPage->container->addItem(new \Ease\TWB\Panel(_('ChangesAPI a WebHooks'),
+$oPage->container->addItem(new \Ease\TWB\Panel(_('ChangesAPI & WebHooks'),
     'info', $toolRow));
 
 
