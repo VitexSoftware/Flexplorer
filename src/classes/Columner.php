@@ -45,21 +45,23 @@ class Columner extends Flexplorer
      */
     public function searchString($what)
     {
-        $results   = [];
-        $structure = $this->getColumnsInfo();
-        foreach ($structure as $evidencePath => $evidenceProperties) {
-            $columnNames = array_keys($evidenceProperties);
-            foreach ($columnNames as $columnId => $columnName) {
-                if ($this->contains($what, $columnName) || $this->contains($what,
-                        $evidenceProperties[$columnName]['name']) || $this->contains($what,
-                        $evidenceProperties[$columnName]['title'])) { //Column names
-                    $results[] = ['id' => $columnId, 'name' => $columnName,
-                        'what' => $evidencePath,
-                        'url' => 'evidence.php?evidence='.$evidencePath.'&column='.$columnName];
+        $results = [];
+        foreach (\FlexiPeeHP\Structure::$evidence as $evidencePath => $evidenceName) {
+            $evidenceProperties = $this->getColumnsInfo($evidencePath);
+            if (count($evidenceProperties)) {
+                $columnNames = array_keys($evidenceProperties);
+                foreach ($columnNames as $columnId => $columnName) {
+                    if ($this->contains($what, $columnName) || $this->contains($what,
+                            $evidenceProperties[$columnName]['name']) || $this->contains($what,
+                            $evidenceProperties[$columnName]['title'])) { //Column names
+                        $results[] = ['id' => $columnId, 'name' => $columnName.' @ '.$evidencePath,
+                            'what' => $evidenceProperties[$columnName]['name'].' / '.$evidenceName,
+                            'url' => 'evidence.php?evidence='.$evidencePath.'&column='.$columnName];
+                    }
                 }
             }
         }
-
         return $results;
     }
+
 }

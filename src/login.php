@@ -10,10 +10,6 @@ namespace Flexplorer;
 
 require_once 'includes/Init.php';
 
-if (is_object($oUser)) {
-    $oPage->addStatusMessage(_('Cookies requied'), 'warning');
-}
-
 $login    = $oPage->getRequestValue('login');
 $password = $oPage->getRequestValue('password');
 $server   = $oPage->getRequestValue('server');

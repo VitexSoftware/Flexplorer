@@ -39,25 +39,6 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
     }
 
     /**
-     * Obtain structure for given (or default) evidence
-     *
-     * @param string $evidence
-     * @return array Evidence structure
-     */
-    public function getColumnsInfo($evidence = null)
-    {
-        $columnsInfo = [];
-        if (is_null($evidence)) {
-            $evidence = $this->getEvidence();
-        }
-        $propsName = lcfirst(\FlexiPeeHP\FlexiBeeRO::evidenceToClassName($evidence));
-        if (isset(\FlexiPeeHP\Structure::$$propsName)) {
-            $columnsInfo = \FlexiPeeHP\Structure::$$propsName;
-        }
-        return $columnsInfo;
-    }
-
-    /**
      * Return all records as html]
      *
      * @param array $data

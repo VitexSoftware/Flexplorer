@@ -12,8 +12,8 @@
     ],
     "require": {
         "php": ">= 5.5.9",
-        "spoje.net/flexipeehp": ">= 1.4",
-        "vitexsoftware/ease-framework": ">= 1.1.3"
+        "spoje.net/flexipeehp": "*",
+        "vitexsoftware/ease-framework": "*"
     },
     "autoload": {
         "psr-4": {
@@ -23,7 +23,9 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Test\\Flexplorer\\": "testing/PHPUnit/src/classes/"
+            "Test\\Flexplorer\\": "testing/PHPUnit/src/classes/",
+            "Test\\Ease\\": "vendor/vitexsoftware/ease-framework/tests/src/Ease",
+            "Test\\FlexiPeeHP\\": "vendor/spoje.net/flexipeehp/testing/src/FlexiPeeHP/"
         }
     },
     "require-dev": {

@@ -41,7 +41,7 @@ class BootstrapMenu extends \Ease\TWB\Navbar
 <li class="divider-vertical"></li>
 <li class="dropdown">
 <a class="dropdown-toggle" href="login.php" data-toggle="dropdown"><i class="icon-circle-arrow-left"></i> '._('Sign in').'<strong class="caret"></strong></a>
-<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px; left: -120px;">
+<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px; left: -160px;">
 <form method="post" class="navbar-form navbar-left" action="login.php" accept-charset="UTF-8">
 <input style="margin-bottom: 15px;" type="text" placeholder="'._('Server').'" id="server" name="server">
 <input style="margin-bottom: 15px;" type="text" placeholder="'._('login').'" id="username" name="login">
