@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-09-12 22:57+0100\n"
-"PO-Revision-Date: 2016-09-12 23:05+0100\n"
+"POT-Creation-Date: 2016-09-12 23:05+0100\n"
+"PO-Revision-Date: 2016-09-12 23:33+0100\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: en\n"
@@ -91,8 +91,9 @@ msgid "Data format"
 msgstr "Data format"
 
 #: ../src/changesapi.php:110
+#, fuzzy
 msgid "Přeskočit test URL"
-msgstr ""
+msgstr "Test"
 
 #: ../src/changesapi.php:110
 msgid "Suppress URL functionality test"
@@ -159,9 +160,9 @@ msgid "Record update failed"
 msgstr "Record update failed"
 
 #: ../src/classes/Flexplorer.php:125
-#, php-format
+#, fuzzy, php-format
 msgid "Chyba unserializace %s #%s "
-msgstr ""
+msgstr "Search for %s results in %s"
 
 #: ../src/classes/Searcher.php:109
 msgid "No search results"
@@ -246,8 +247,9 @@ msgid "Je třeba označit nějaké řádky"
 msgstr ""
 
 #: ../src/classes/ui/Editor.php:30
+#, fuzzy
 msgid "Uložit do FlexiBee"
-msgstr ""
+msgstr "FlexiBee"
 
 #: ../src/classes/ui/Editor.php:30
 msgid "Zobrazit v editoru"
@@ -255,7 +257,7 @@ msgstr ""
 
 #: ../src/classes/ui/Editor.php:31
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: ../src/classes/ui/Editor.php:45
 msgid "Povinný"
@@ -405,8 +407,9 @@ msgid "Záznam byl uložen"
 msgstr ""
 
 #: ../src/editor.php:29
+#, fuzzy
 msgid "Záznam nebyl uložen"
-msgstr ""
+msgstr "Dotaz nebyl zatím odeslán"
 
 #: ../src/editor.php:38
 msgid "Nový záznam"
@@ -445,8 +448,9 @@ msgid "WebHook returns non empty response"
 msgstr "WebHook returns non empty response"
 
 #: ../src/fakechange.php:53
+#, fuzzy
 msgid "Test Web Hooku"
-msgstr ""
+msgstr "Test"
 
 #: ../src/fakechange.php:64
 msgid "Formát dat"
@@ -578,8 +582,9 @@ msgid "Rok byl odregistrován"
 msgstr ""
 
 #: ../src/ucetniobdobi.php:31
+#, fuzzy
 msgid "Rok nebyl odregistrován"
-msgstr ""
+msgstr "Dotaz nebyl zatím odeslán"
 
 #: ../src/ucetniobdobi.php:37
 msgid "Účetní období"

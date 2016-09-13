@@ -1,7 +1,7 @@
 {
     "name": "spoje.net/flexplorer",
     "description": "Průzkumník a editor evidencí FlexiBee",
-    "version": "0.5",
+    "version": "0.6",
     "license": "GPL-2.0",
     "type": "project",
     "authors": [
@@ -12,7 +12,7 @@
     ],
     "require": {
         "php": ">= 5.5.9",
-        "spoje.net/flexipeehp": "*",
+        "spoje.net/flexipeehp": "dev-master",
         "vitexsoftware/ease-framework": "*"
     },
     "autoload": {

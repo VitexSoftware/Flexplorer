@@ -92,9 +92,28 @@ class DataGrid extends \Ease\DataGrid
 
     public function setUpButtons()
     {
-        $this->addAddButton(_('Add'));
-        $this->addEditButton(_('Edit'));
-        $this->addDeleteButton(_('Delete'));
+        $actions = $this->dataSource->handledObejct->getActionsInfo();
+
+        foreach ($actions as $action => $actionInfo) {
+
+            switch ($action) {
+                case 'new':
+                case 'add':
+                    $this->addAddButton(_('Add'));
+                    break;
+                case 'edit':
+                    $this->addEditButton(_('Edit'));
+                    break;
+                case 'delete':
+                    $this->addDeleteButton(_('Delete'));
+                    break;
+                default:
+                    $this->addButton($actionInfo['actionName'], $action,
+                        'action');
+                    break;
+            }
+        }
+
     }
 
     /**
@@ -140,6 +159,7 @@ class DataGrid extends \Ease\DataGrid
             $this->options['buttons'][] = ['name' => $title, 'bclass' => $class];
         }
     }
+
 
     /**
      * Vloží přidávací tlačítko
@@ -217,7 +237,7 @@ background: url(images/edit.png) no-repeat center left;
                 });
             }
         } else {
-            alert("'._('Je třeba označit nějaké řádky').'");
+            alert("'._('Please select some rows').'");
         }
 
             }
@@ -262,7 +282,7 @@ background: url(images/delete.png) no-repeat center left;
                 });
             }
         } else {
-            alert("'._('Je třeba označit nějaké řádky').'");
+            alert("'._('Please select some rows').'");
         }
 
             }

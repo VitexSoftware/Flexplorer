@@ -1,4 +1,4 @@
-flexplorer (0.5-8) UNRELEASED; urgency=medium
+flexplorer (0.6-4) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -63,4 +63,13 @@ flexplorer (0.5-8) UNRELEASED; urgency=medium
   * Oprava aktualizace knihoven composerem při instalaci balíčku
   * Searching optimized
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Mon, 12 Sep 2016 10:14:33 +0200
+  [ Vítězslav Dvořák ]
+  * Footer white Some English translations
+  * Footer white Some English translations
+  * Footer white Some English translations
+  * Footer white Some English translations
+  * Footer white Some English translations
+  * Footer white Some English translations
+  * Footer white Some English translations
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Tue, 13 Sep 2016 00:15:54 +0200
