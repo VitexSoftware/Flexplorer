@@ -1,4 +1,4 @@
-flexplorer (0.6-4) UNRELEASED; urgency=medium
+flexplorer (0.6-5) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -72,4 +72,7 @@ flexplorer (0.6-4) UNRELEASED; urgency=medium
   * Footer white Some English translations
   * Footer white Some English translations
 
- -- Vítězslav Dvořák <info@vitexsoftware.cz>  Tue, 13 Sep 2016 00:15:54 +0200
+  [ vitex ]
+  * Jump back to original url after session expire and reloign fixed
+
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 14 Sep 2016 12:48:53 +0200

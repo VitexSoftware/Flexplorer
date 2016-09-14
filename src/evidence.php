@@ -54,6 +54,11 @@ $tabs->addTab(_('Query'),
     new \Ease\TWB\Panel(_('User Query'), 'warning',
     new ui\SendForm($url, $method, $body)));
 
+$overviewUrl = $evobj->getEvidenceUrl().'/properties.html?inDesktopApp=true';
+
+$tabs->addTab(_('Items overview'),
+    new \Ease\Html\IframeTag($overviewUrl,
+    ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
 
 $oPage->container->addItem($tabs);
 

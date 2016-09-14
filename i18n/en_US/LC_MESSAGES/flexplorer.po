@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-09-14 12:35+0100\n"
-"PO-Revision-Date: 2016-09-14 12:36+0100\n"
+"POT-Creation-Date: 2016-09-14 16:41+0100\n"
+"PO-Revision-Date: 2016-09-14 16:42+0100\n"
 "Last-Translator: Vítězslav Dvořák <vitex@arachne.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: en\n"
@@ -188,8 +188,8 @@ msgid "Loading evidence list failed"
 msgstr "Loading evidence list failed"
 
 #: ../src/classes/ui/BootstrapMenu.php:43
-#: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:41
-#: ../src/login.php:55
+#: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:46
+#: ../src/login.php:60
 msgid "Sign in"
 msgstr "Sign in"
 
@@ -201,7 +201,7 @@ msgstr "Server"
 msgid "login"
 msgstr "login"
 
-#: ../src/classes/ui/BootstrapMenu.php:48 ../src/login.php:68
+#: ../src/classes/ui/BootstrapMenu.php:48 ../src/login.php:73
 msgid "Password"
 msgstr "Password"
 
@@ -393,7 +393,7 @@ msgstr "Yes"
 msgid "No"
 msgstr "No"
 
-#: ../src/classes/ui/WebPage.php:69
+#: ../src/classes/ui/WebPage.php:68
 msgid "Please sign in as admin first"
 msgstr "Please sign in as admin first"
 
@@ -448,6 +448,10 @@ msgstr "Structure"
 #: ../src/evidence.php:54
 msgid "User Query"
 msgstr "User Query"
+
+#: ../src/evidence.php:59
+msgid "Items overview"
+msgstr "Items overview"
 
 #: ../src/fakechange.php:36
 msgid "WebHook successfully triggered"
@@ -517,35 +521,35 @@ msgstr "Flexplorer"
 msgid "FlexiBee info"
 msgstr "FlexiBee info"
 
-#: ../src/login.php:26
+#: ../src/login.php:32
 msgid "Signed in as: "
 msgstr "Signed in as: "
 
-#: ../src/login.php:37
+#: ../src/login.php:42
 msgid "Please confirm your login credentials"
 msgstr "Please confirm your login credentials"
 
-#: ../src/login.php:51
+#: ../src/login.php:56
 msgid "Welcome"
 msgstr "Welcome"
 
-#: ../src/login.php:59
+#: ../src/login.php:64
 msgid "FlexiBee"
 msgstr "FlexiBee"
 
-#: ../src/login.php:63
+#: ../src/login.php:68
 msgid "FlexiBee server URL. ex.: https://localhost:5434"
 msgstr "FlexiBee server URL. ex.: https://localhost:5434"
 
-#: ../src/login.php:64
+#: ../src/login.php:69
 msgid "User name"
 msgstr "User name"
 
-#: ../src/login.php:67
+#: ../src/login.php:72
 msgid "Login name"
 msgstr "Login name"
 
-#: ../src/login.php:71
+#: ../src/login.php:76
 msgid "User's password"
 msgstr "User's password"
 

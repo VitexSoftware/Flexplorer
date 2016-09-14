@@ -19,7 +19,10 @@ Umožňuje:
 [![Build Status](https://img.shields.io/travis/VitexSoftware/Flexplorer/master.svg?style=flat-square)](https://travis-ci.org/VitexSoftware/Flexplorer)
 [![Coverage Status](https://img.shields.io/coveralls/VitexSoftware/Flexplorer/master.svg?style=flat-square)](https://coveralls.io/r/VitexSoftware/Flexplorer?branch=master)
 
-Vyzkoušejte: https://vitexsoftware.cz/flexplorer/ http://flexibee-dev.spoje.net/ 
+Vyzkoušejte: 
+
+  * Vývojová verze: https://vitexsoftware.cz/flexplorer/ 
+  * Stabilní verze: http://flexibee-dev.spoje.net/ 
 
 Pro přihlášení se používá jména a hesla uživatele aplikace s oprávněním používat REST API:
 

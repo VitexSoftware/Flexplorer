@@ -93,28 +93,28 @@ class DataGrid extends \Ease\DataGrid
     public function setUpButtons()
     {
         $actions = $this->dataSource->handledObejct->getActionsInfo();
+        if (count($actions)) {
+            foreach ($actions as $action => $actionInfo) {
 
-        foreach ($actions as $action => $actionInfo) {
-
-            switch ($action) {
-                case 'new':
-                case 'add':
-                    $this->addAddButton(_('Add'));
-                    break;
-                case 'edit':
-                    $this->addEditButton(_('Edit'));
-                    break;
-                case 'delete':
-                    $this->addDeleteButton(_('Delete'));
-                    break;
-                default:
-                    $this->addActionButton($actionInfo['actionName'], $action);
-                    break;
+                switch ($action) {
+                    case 'new':
+                    case 'add':
+                        $this->addAddButton(_('Add'));
+                        break;
+                    case 'edit':
+                        $this->addEditButton(_('Edit'));
+                        break;
+                    case 'delete':
+                        $this->addDeleteButton(_('Delete'));
+                        break;
+                    default:
+                        $this->addActionButton($actionInfo['actionName'],
+                            $action);
+                        break;
+                }
             }
         }
-
     }
-
 
     /**
      * Add an Action button
@@ -167,7 +167,7 @@ class DataGrid extends \Ease\DataGrid
 
         foreach ($this->dataSource->keywordsInfo as $keyword => $properties) {
             $colProperties = [];
-            $type = $properties['type'];
+            $type          = $properties['type'];
             if ($properties['isSortable'] == 'true') {
                 $colProperties['sortable'] = 'true';
             } else {
@@ -202,7 +202,6 @@ class DataGrid extends \Ease\DataGrid
             $this->options['buttons'][] = ['name' => $title, 'bclass' => $class];
         }
     }
-
 
     /**
      * Vloží přidávací tlačítko
@@ -456,4 +455,5 @@ background: url(images/delete.png) no-repeat center left;
             .'$(\'#'.$grid_id.'\').flexigrid({ '.\Ease\JQuery\Part::partPropertiesToString($this->options).' }); '.$grid_js,
             null, true);
     }
+
 }

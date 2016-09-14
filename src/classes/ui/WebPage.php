@@ -51,10 +51,9 @@ class WebPage extends \Ease\TWB\WebPage
         parent::__construct($pageTitle, $userObject);
         $this->includeCss('css/default.css');
         $this->head->addItem('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
-        $this->head->addItem('<link rel="shortcut icon" type="image/png" href="images/logo.png">');
-        $this->head->addItem('<link rel="apple-touch-icon-precomposed"  type="image/png" href="images/logo.png">');
+        $this->head->addItem('<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="favicon.ico">');
+        $this->head->addItem('<link rel="apple-touch-icon-precomposed"  type="image/png" href="images/flexplorer-logo.png">');
         $this->head->addItem('<link rel="stylesheet" href="/javascript/font-awesome/css/font-awesome.min.css">');
-
         $this->container = $this->addItem(new \Ease\TWB\Container());
     }
 
@@ -81,4 +80,5 @@ class WebPage extends \Ease\TWB\WebPage
     {
         return parent::onlyForLogged($loginPage.'?backurl='.urlencode($_SERVER['REQUEST_URI']));
     }
+
 }
