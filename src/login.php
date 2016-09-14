@@ -13,10 +13,16 @@ require_once 'includes/Init.php';
 $login    = $oPage->getRequestValue('login');
 $password = $oPage->getRequestValue('password');
 $server   = $oPage->getRequestValue('server');
+$backurl  = $oPage->getRequestValue('backurl');
+
 if ($login) {
     $oUser = \Ease\Shared::user(new User());
     if ($oUser->tryToLogin($_POST)) {
-        $oPage->redirect('index.php');
+        if (!is_null($backurl)) {
+            $oPage->redirect($backurl);
+        } else {
+            $oPage->redirect('index.php');
+        }
     }
 } else {
     $forceID = $oPage->getRequestValue('force_id', 'int');
@@ -27,11 +33,10 @@ if ($login) {
             'success');
         \Ease\Shared::user()->loginSuccess();
 
-        $backurl = $oPage->getRequestValue('backurl');
         if (!is_null($backurl)) {
             $oPage->redirect($backurl);
         } else {
-            $oPage->redirect('main.php');
+            $oPage->redirect('index.php');
         }
     } else {
         $oPage->addStatusMessage(_('Please confirm your login credentials'));
