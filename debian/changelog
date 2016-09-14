@@ -1,4 +1,4 @@
-flexplorer (0.6-5) UNRELEASED; urgency=medium
+flexplorer (0.7-1) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -74,5 +74,7 @@ flexplorer (0.6-5) UNRELEASED; urgency=medium
 
   [ vitex ]
   * Jump back to original url after session expire and reloign fixed
+  * Release 0.7
+  * Release 0.7
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 14 Sep 2016 12:48:53 +0200
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 14 Sep 2016 16:53:22 +0200
