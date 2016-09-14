@@ -25,7 +25,7 @@ class SendForm extends \Ease\TWB\Form
      */
     public function __construct($url, $method = 'GET', $body = '')
     {
-        parent::__construct('Req', 'index.php');
+        parent::__construct('Req', 'query.php');
 
         $this->addInput(new \Ease\Html\InputTextTag('url', $url), _('URL'),
             $url,

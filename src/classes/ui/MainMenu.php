@@ -109,7 +109,9 @@ class MainMenu extends \Ease\Html\Div
 
 
             $nav->addDropDownMenu(_('Tools'),
-                ['changesapi.php' => _('Changes API'),
+                [
+                'query.php' => _('Query'),
+                'changesapi.php' => _('Changes API'),
                 'fakechange.php' => _('WebHook test'),
                 'ucetniobdobi.php' => _('Accounting period')
             ]);

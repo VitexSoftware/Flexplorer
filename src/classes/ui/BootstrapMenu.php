@@ -47,7 +47,7 @@ class BootstrapMenu extends \Ease\TWB\Navbar
 <input style="margin-bottom: 15px;" type="text" placeholder="'._('login').'" id="username" name="login">
 <input style="margin-bottom: 15px;" type="password" placeholder="'._('Password').'" id="password" name="password">
 <!-- input style="float: left; margin-right: 10px;" type="checkbox" name="remember-me" id="remember-me" value="1">
-<label class="string optional" for="remember-me"> '._('zapamatuj si mne').'</label -->
+<label class="string optional" for="remember-me"> '._('Remeber me').'</label -->
 <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="'._('Sign in').'">
 </form>
 </div>', 'right'

@@ -122,7 +122,7 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
                                 $values = ['0' => $value];
                             }
                             if (!is_array($values)) {
-                                $this->addStatusMessage(sprintf(_('Chyba unserializace %s #%s '),
+                                $this->addStatusMessage(sprintf(_('Unserialization error %s #%s '),
                                         $value, $key));
                             }
                             if (isset($this->keywordsInfo[$key]['refdata'])) {

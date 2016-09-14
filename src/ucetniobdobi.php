@@ -26,28 +26,24 @@ if (!is_null($od)) {
 $yeardel = $oPage->getRequestValue('yeardel', 'int');
 if (!is_null($yeardel)) {
     if ($uo->deleteFromFlexiBee($yeardel)) {
-        $uo->addStatusMessage(_('Rok byl odregistrován'), 'success');
+        $uo->addStatusMessage(_('Year was unregistred'), 'success');
     } else {
-        $uo->addStatusMessage(_('Rok nebyl odregistrován'), 'warning');
+        $uo->addStatusMessage(_('Yeas was not unregistred'), 'warning');
     }
 }
 
-
-
-$oPage->addItem(new ui\PageTop(_('Účetní období')));
+$oPage->addItem(new ui\PageTop(_('Accounting period')));
 
 $toolRow      = new \Ease\TWB\Row();
 $settingsForm = new \Ease\TWB\Form('settings');
 
 $settingsForm->addInput(new \Ease\Html\InputNumberTag('od', null,
-    ['min' => 1980]), _('Od Roku'), date('Y') - 2);
+    ['min' => 1980]), _('From Year'), date('Y') - 2);
 
 $settingsForm->addInput(new \Ease\Html\InputNumberTag('od', date('Y'),
-    ['min' => 1980]), _('Do Roku'), date('Y') + 2);
+    ['min' => 1980]), _('To Year'), date('Y') + 2);
 
-
-
-$settingsForm->addItem(new \Ease\TWB\SubmitButton(_('Provést operaci'),
+$settingsForm->addItem(new \Ease\TWB\SubmitButton(_('Perform operation'),
     'warning'));
 $toolRow->addColumn(6, new \Ease\TWB\Well($settingsForm));
 
@@ -63,13 +59,12 @@ if (!isset($ucetniObdobi['message']) && count($ucetniObdobi)) {
     }
 
     $toolRow->addColumn(6,
-        new \Ease\TWB\Panel(_('Zaregistrované ucetniObdobi'), 'info',
+        new \Ease\TWB\Panel(_('Registered Accounting periods'), 'info',
         $ucetniObdobiTable));
 }
 
-$oPage->container->addItem(new \Ease\TWB\Panel(_('Nástroj pro hromadné zakládání účetních období'),
+$oPage->container->addItem(new \Ease\TWB\Panel(_('Tool for massive creating Accounting periods'),
     'info', $toolRow));
-
 
 $oPage->addItem(new ui\PageBottom());
 

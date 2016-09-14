@@ -3,7 +3,7 @@
 namespace Flexplorer;
 
 /**
- * Flexplorer - Odhlašovací stránka.
+ * Flexplorer - Fake Change.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2016 Vitex Software
@@ -50,7 +50,7 @@ if (count($flexidata)) {
     asort($evidenciesToMenu);
 }
 
-$oPage->addItem(new ui\PageTop(_('Test Web Hooku')));
+$oPage->addItem(new ui\PageTop(_('WebHook test')));
 
 $changeTabs = new \Ease\TWB\Tabs('changetabs');
 
@@ -61,11 +61,11 @@ $settingsForm = new \Ease\TWB\Form('settings');
 
 $settingsForm->addInput(new ui\TWBSwitch('changesformat', true, 'JSON',
     ['onText' => 'JSON', 'offText' => 'XML', 'disabled' => true]),
-    _('Formát dat'));
+    _('Data format'));
 
 $settingsForm->addInput(new \Ease\Html\InputNumberTag('lastversion',
-    $lastversion, ['min' => 0]), _('Poslední verze'), $lastversion,
-    _('Verze od které započne posílání následujích změn'));
+    $lastversion, ['min' => 0]), _('Last version'), $lastversion,
+    _('Which version of the changes will begin sending following changes'));
 
 $settingsForm->addInput(new \Ease\Html\Select('evidence', $evidenciesToMenu,
     $evidence), _('Evidence'));
@@ -73,16 +73,16 @@ $settingsForm->addInput(new \Ease\Html\Select('evidence', $evidenciesToMenu,
 
 $settingsForm->addInput(new \Ease\Html\Select('operation',
     ['create' => 'Create', 'update' => 'Update', 'delete' => 'Delete'],
-    $operation), _('Operace'), null);
+    $operation), _('Operation'), null);
 
 $settingsForm->addInput(new \Ease\Html\InputNumberTag('id', $id, ['min' => 0]),
-    _('Číslo záznamu'), $id, _('Interní číslo editovaného záznamu'));
+    _('Record number'), $id, _('Internal number of record edited'));
 
 $settingsForm->addInput(new \Ease\Html\InputTextTag('extid', $extid),
-    _('Ext. Číslo záznamu'), $extid, _('Externí číslo editovaného záznamu'));
+    _('External number'), $extid, _('External number of record edited'));
 
 
-$settingsForm->addItem(new \Ease\TWB\SubmitButton(_('Sestavit změnu'), 'warning'));
+$settingsForm->addItem(new \Ease\TWB\SubmitButton(_('Build change'), 'warning'));
 $toolRow->addColumn(4, new \Ease\TWB\Well($settingsForm));
 
 
@@ -91,11 +91,11 @@ $hookForm->addInput(new \Ease\Html\InputTextTag('hookurl', $hookurl),
     _('Web Hook'), 'http://server/getchanges.php',
     [new \Ease\TWB\LinkButton('changesapi.php', _('Choose Registered')),
     new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/web-hooks',
-        _('Když dojde v databázi FlexiBee ke změně, je odeslán POST HTTP request na všechna zaregistrovaná URL'))]
+        _('When the database FlexiBee is changed the POST HTTP request sent to all registered URL'))]
 );
 
 $hookForm->addInput(new ui\JsonTextarea('code', json_encode($change)));
-$hookForm->addItem(new \Ease\TWB\SubmitButton(_('Odeslat'), 'success'));
+$hookForm->addItem(new \Ease\TWB\SubmitButton(_('Send'), 'success'));
 
 $toolRow->addColumn(8, new \Ease\TWB\Well($hookForm));
 
@@ -103,7 +103,6 @@ if (strlen($responseBody)) {
 
     $responseBlock = new \Ease\TWB\Panel(new \Ease\Html\H1Tag($prober->lastResponseCode),
         'info');
-
 
     $responseBlock->addItem('<pre><code class="'.$format.'">'.
         nl2br(htmlentities($prober->lastCurlResponse))
@@ -123,8 +122,6 @@ $changeTabs->addTab(_('Request'), $toolRow);
 
 $oPage->container->addItem(new \Ease\TWB\Panel(_('WebHook probe'), 'info',
     $changeTabs));
-
-
 
 
 $oPage->addItem(new ui\PageBottom());

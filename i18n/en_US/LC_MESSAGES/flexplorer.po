@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-09-12 23:05+0100\n"
-"PO-Revision-Date: 2016-09-12 23:33+0100\n"
-"Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
+"POT-Creation-Date: 2016-09-14 12:35+0100\n"
+"PO-Revision-Date: 2016-09-14 12:36+0100\n"
+"Last-Translator: Vítězslav Dvořák <vitex@arachne.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -66,64 +66,75 @@ msgstr "Enable"
 msgid "Disable"
 msgstr "Disable"
 
-#: ../src/changesapi.php:95 ../src/classes/ui/MainMenu.php:112
+#: ../src/changesapi.php:95 ../src/classes/ui/MainMenu.php:114
 msgid "Changes API"
 msgstr "Changes API"
 
 #: ../src/changesapi.php:98
 msgid ""
-"Je-li to zapnuto, FlexiBee zaznamenává všechny změny provedené v databázi "
-"firmy do changelogu a umožňuje seznam změn zpětně získat"
+"If it is turned on , FlexiBee records all changes made ​​to the database "
+"company in the changelog and provides a list of changes recovered"
 msgstr ""
+"If it is turned on , FlexiBee records all changes made ​​to the database "
+"company in the changelog and provides a list of changes recovered"
 
 #: ../src/changesapi.php:100 ../src/fakechange.php:91
 msgid "Web Hook"
 msgstr "Web Hook"
 
-#: ../src/changesapi.php:103 ../src/fakechange.php:94
+#: ../src/changesapi.php:103
 msgid ""
-"Když dojde v databázi FlexiBee ke změně, je odeslán POST HTTP request na "
-"všechna zaregistrovaná URL"
+"When the database FlexiBee to change the POST HTTP request sent to all "
+"registered URL"
 msgstr ""
+"When the database FlexiBee to change the POST HTTP request sent to all "
+"registered URL"
 
-#: ../src/changesapi.php:107
+#: ../src/changesapi.php:107 ../src/fakechange.php:64
 msgid "Data format"
 msgstr "Data format"
 
 #: ../src/changesapi.php:110
-#, fuzzy
-msgid "Přeskočit test URL"
-msgstr "Test"
+msgid "Skip URL test"
+msgstr "Skip URL test"
 
 #: ../src/changesapi.php:110
 msgid "Suppress URL functionality test"
-msgstr ""
+msgstr "Suppress URL functionality test"
 
-#: ../src/changesapi.php:114
+#: ../src/changesapi.php:114 ../src/fakechange.php:67
 msgid "Last version"
 msgstr "Last version"
 
 #: ../src/changesapi.php:115
 #, php-format
 msgid ""
-"Verze od které započne posílání následujích změn, tj. od nejbližší vyšší "
-"verze. Defaultní hodnota je rovna aktuální globální verzi (globalVersion) v "
-"momentě registrace hooku. Přípustné hodnoty jsou z intervalu: [0, %s]"
+"Version of which will begin sending FOLLOW changes , ie. The next higher "
+"version . The default value is equal to the current global version "
+"( globalVersion ) at the moment of registration Hook. Permissible values ​​are "
+"in the range [ 0 , % s ]"
 msgstr ""
+"Version of which will begin sending FOLLOW changes , ie. The next higher "
+"version . The default value is equal to the current global version "
+"( globalVersion ) at the moment of registration Hook. Permissible values ​​are "
+"in the range [ 0 , % s ]"
 
 #: ../src/changesapi.php:120
-msgid "Bezpečnostní kód"
-msgstr ""
+msgid "Secutity Code"
+msgstr "Secutity Code"
 
 #: ../src/changesapi.php:121
 #, php-format
 msgid ""
-"Libovolný řetězec, (např. %s) který bude odesílán s každou notifikací změn v "
-"HTTP hlavičce. Slouží k jednoduchému ověření, zda patří příchozí notifikace "
-"Vámi registrovanému hooku. Název klíče v HTTP hlavičce je X-FB-Hook-SecKey."
+"Any string (eg. %s) that will be sent with each change notifications in the "
+"HTTP header. Used to easily verify that include incoming notifications you "
+"registered Hook. Key name is in the HTTP header X-FB-Hook-SecKey ."
 msgstr ""
+"Any string (eg. %s) that will be sent with each change notifications in the "
+"HTTP header. Used to easily verify that include incoming notifications you "
+"registered Hook. Key name is in the HTTP header X-FB-Hook-SecKey ."
 
-#: ../src/changesapi.php:126
+#: ../src/changesapi.php:126 ../src/ucetniobdobi.php:46
 msgid "Perform operation"
 msgstr "Perform operation"
 
@@ -160,9 +171,9 @@ msgid "Record update failed"
 msgstr "Record update failed"
 
 #: ../src/classes/Flexplorer.php:125
-#, fuzzy, php-format
-msgid "Chyba unserializace %s #%s "
-msgstr "Search for %s results in %s"
+#, php-format
+msgid "Unserialization error %s #%s "
+msgstr "Unserialization error %s #%s "
 
 #: ../src/classes/Searcher.php:109
 msgid "No search results"
@@ -195,8 +206,8 @@ msgid "Password"
 msgstr "Password"
 
 #: ../src/classes/ui/BootstrapMenu.php:50
-msgid "zapamatuj si mne"
-msgstr ""
+msgid "Remeber me"
+msgstr "Remeber me"
 
 #: ../src/classes/ui/BootstrapMenu.php:59 ../src/settings.php:17
 msgid "Settings"
@@ -226,61 +237,60 @@ msgstr "Save & go to listing"
 msgid "Save and next"
 msgstr "Save and next"
 
-#: ../src/classes/ui/DataGrid.php:95
+#: ../src/classes/ui/DataGrid.php:102
 msgid "Add"
 msgstr "Add"
 
-#: ../src/classes/ui/DataGrid.php:96
+#: ../src/classes/ui/DataGrid.php:105
 msgid "Edit"
 msgstr "Edit"
 
-#: ../src/classes/ui/DataGrid.php:97
+#: ../src/classes/ui/DataGrid.php:108
 msgid "Delete"
 msgstr "Delete"
 
-#: ../src/classes/ui/DataGrid.php:117
+#: ../src/classes/ui/DataGrid.php:179
 msgid "Title missing"
 msgstr "Title missing"
 
-#: ../src/classes/ui/DataGrid.php:220 ../src/classes/ui/DataGrid.php:265
-msgid "Je třeba označit nějaké řádky"
-msgstr ""
+#: ../src/classes/ui/DataGrid.php:283 ../src/classes/ui/DataGrid.php:328
+msgid "Please mark some rows"
+msgstr "Please mark some rows"
 
 #: ../src/classes/ui/Editor.php:30
-#, fuzzy
-msgid "Uložit do FlexiBee"
-msgstr "FlexiBee"
+msgid "Save to FlexiBee"
+msgstr "Save to FlexiBee"
 
 #: ../src/classes/ui/Editor.php:30
-msgid "Zobrazit v editoru"
-msgstr ""
+msgid "Show in editor"
+msgstr "Show in editor"
 
 #: ../src/classes/ui/Editor.php:31
 msgid "OK"
 msgstr "OK"
 
 #: ../src/classes/ui/Editor.php:45
-msgid "Povinný"
-msgstr ""
+msgid "Required"
+msgstr "Required"
 
 #: ../src/classes/ui/Editor.php:88
-msgid "Uprav odkazovaný záznam"
-msgstr ""
+msgid "Edit targeted record"
+msgstr "Edit targeted record"
 
 #: ../src/classes/ui/Editor.php:112
 #, php-format
-msgid "Neznámý druh dat %s"
-msgstr ""
+msgid "Unknown type of data %s"
+msgstr "Unknown type of data %s"
 
 #: ../src/classes/ui/Editor.php:122 ../src/classes/ui/Editor.php:124
-msgid "Typ"
-msgstr ""
+msgid "Type"
+msgstr "Type"
 
 #: ../src/classes/ui/MainMenu.php:96
 msgid "Company"
 msgstr "Company"
 
-#: ../src/classes/ui/MainMenu.php:106 ../src/evidence.php:32
+#: ../src/classes/ui/MainMenu.php:106 ../src/evidence.php:43
 #: ../src/fakechange.php:71
 msgid "Evidence"
 msgstr "Evidence"
@@ -289,11 +299,16 @@ msgstr "Evidence"
 msgid "Tools"
 msgstr "Tools"
 
-#: ../src/classes/ui/MainMenu.php:113
+#: ../src/classes/ui/MainMenu.php:113 ../src/evidence.php:53
+#: ../src/query.php:39 ../src/viewevidence.php:46
+msgid "Query"
+msgstr "Query"
+
+#: ../src/classes/ui/MainMenu.php:115 ../src/fakechange.php:53
 msgid "WebHook test"
 msgstr "WebHook test"
 
-#: ../src/classes/ui/MainMenu.php:114
+#: ../src/classes/ui/MainMenu.php:116 ../src/ucetniobdobi.php:35
 msgid "Accounting period"
 msgstr "Accounting period"
 
@@ -366,7 +381,7 @@ msgstr "Method"
 msgid "Supported HTTP Operations"
 msgstr "Supported HTTP Operations"
 
-#: ../src/classes/ui/SendForm.php:41
+#: ../src/classes/ui/SendForm.php:41 ../src/fakechange.php:98
 msgid "Send"
 msgstr "Send"
 
@@ -403,39 +418,34 @@ msgid "Delete record"
 msgstr "Delete record"
 
 #: ../src/editor.php:27
-msgid "Záznam byl uložen"
-msgstr ""
+msgid "Record was saved"
+msgstr "Record was saved"
 
 #: ../src/editor.php:29
-#, fuzzy
-msgid "Záznam nebyl uložen"
-msgstr "Dotaz nebyl zatím odeslán"
+msgid "Record was not saved"
+msgstr "Record was not saved"
 
 #: ../src/editor.php:38
-msgid "Nový záznam"
-msgstr ""
+msgid "New record"
+msgstr "New record"
 
 #: ../src/editor.php:41
 msgid "Editor"
 msgstr "Editor"
 
-#: ../src/evidence.php:24
+#: ../src/evidence.php:35
 msgid "Evidence properties overview"
 msgstr "Evidence properties overview"
 
-#: ../src/evidence.php:31
+#: ../src/evidence.php:42 ../src/viewevidence.php:31
 msgid "Listing"
 msgstr "Listing"
 
-#: ../src/evidence.php:33
+#: ../src/evidence.php:44 ../src/viewevidence.php:32
 msgid "Structure"
 msgstr "Structure"
 
-#: ../src/evidence.php:49
-msgid "Query"
-msgstr "Query"
-
-#: ../src/evidence.php:50
+#: ../src/evidence.php:54
 msgid "User Query"
 msgstr "User Query"
 
@@ -447,64 +457,55 @@ msgstr "WebHook successfully triggered"
 msgid "WebHook returns non empty response"
 msgstr "WebHook returns non empty response"
 
-#: ../src/fakechange.php:53
-#, fuzzy
-msgid "Test Web Hooku"
-msgstr "Test"
-
-#: ../src/fakechange.php:64
-msgid "Formát dat"
-msgstr ""
-
-#: ../src/fakechange.php:67
-msgid "Poslední verze"
-msgstr ""
-
 #: ../src/fakechange.php:68
-msgid "Verze od které započne posílání následujích změn"
-msgstr ""
+msgid "Which version of the changes will begin sending following changes"
+msgstr "Which version of the changes will begin sending following changes"
 
 #: ../src/fakechange.php:76
-msgid "Operace"
-msgstr ""
+msgid "Operation"
+msgstr "Operation"
 
 #: ../src/fakechange.php:79
-msgid "Číslo záznamu"
-msgstr ""
+msgid "Record number"
+msgstr "Record number"
 
 #: ../src/fakechange.php:79
-msgid "Interní číslo editovaného záznamu"
-msgstr ""
+msgid "Internal number of record edited"
+msgstr "Internal number of record edited"
 
 #: ../src/fakechange.php:82
-msgid "Ext. Číslo záznamu"
-msgstr ""
+msgid "External number"
+msgstr "External number"
 
 #: ../src/fakechange.php:82
-msgid "Externí číslo editovaného záznamu"
-msgstr ""
+msgid "External number of record edited"
+msgstr "External number of record edited"
 
 #: ../src/fakechange.php:85
-msgid "Sestavit změnu"
-msgstr ""
+msgid "Build change"
+msgstr "Build change"
 
 #: ../src/fakechange.php:92
 msgid "Choose Registered"
 msgstr "Choose Registered"
 
-#: ../src/fakechange.php:98
-msgid "Odeslat"
+#: ../src/fakechange.php:94
+msgid ""
+"When the database FlexiBee is changed the POST HTTP request sent to all "
+"registered URL"
 msgstr ""
+"When the database FlexiBee is changed the POST HTTP request sent to all "
+"registered URL"
 
-#: ../src/fakechange.php:120 ../src/index.php:26
+#: ../src/fakechange.php:119 ../src/query.php:49
 msgid "Response"
 msgstr "Response"
 
-#: ../src/fakechange.php:122 ../src/index.php:46
+#: ../src/fakechange.php:121 ../src/query.php:43
 msgid "Request"
 msgstr "Request"
 
-#: ../src/fakechange.php:124
+#: ../src/fakechange.php:123
 msgid "WebHook probe"
 msgstr "WebHook probe"
 
@@ -512,13 +513,9 @@ msgstr "WebHook probe"
 msgid "Flexplorer"
 msgstr "Flexplorer"
 
-#: ../src/index.php:22
+#: ../src/index.php:20
 msgid "FlexiBee info"
 msgstr "FlexiBee info"
-
-#: ../src/index.php:47
-msgid "Custom request"
-msgstr "Custom request"
 
 #: ../src/login.php:26
 msgid "Signed in as: "
@@ -553,16 +550,20 @@ msgid "User's password"
 msgstr "User's password"
 
 #: ../src/logout.php:29
-msgid "Odhlášení"
-msgstr ""
+msgid "Sign out"
+msgstr "Sign out"
 
-#: ../src/logout.php:32
-msgid "Děkujeme za vaši přízeň a těšíme se na další návštěvu"
-msgstr ""
+#: ../src/logout.php:33
+msgid "Thank you for your patronage and look forward to another visit"
+msgstr "Thank you for your patronage and look forward to another visit"
 
 #: ../src/main.php:19
 msgid "Main Page"
 msgstr "Main Page"
+
+#: ../src/query.php:44
+msgid "Custom request"
+msgstr "Custom request"
 
 #: ../src/search.php:24
 msgid "Search results"
@@ -578,34 +579,69 @@ msgid "Nothig here yet"
 msgstr "Nothig here yet"
 
 #: ../src/ucetniobdobi.php:29
-msgid "Rok byl odregistrován"
-msgstr ""
+msgid "Year was unregistred"
+msgstr "Year was unregistred"
 
 #: ../src/ucetniobdobi.php:31
-#, fuzzy
-msgid "Rok nebyl odregistrován"
-msgstr "Dotaz nebyl zatím odeslán"
+msgid "Yeas was not unregistred"
+msgstr "Yeas was not unregistred"
 
-#: ../src/ucetniobdobi.php:37
-msgid "Účetní období"
-msgstr ""
+#: ../src/ucetniobdobi.php:41
+msgid "From Year"
+msgstr "From Year"
 
-#: ../src/ucetniobdobi.php:43
-msgid "Od Roku"
-msgstr ""
+#: ../src/ucetniobdobi.php:44
+msgid "To Year"
+msgstr "To Year"
 
-#: ../src/ucetniobdobi.php:46
-msgid "Do Roku"
-msgstr ""
-
-#: ../src/ucetniobdobi.php:50
-msgid "Provést operaci"
-msgstr ""
+#: ../src/ucetniobdobi.php:62
+msgid "Registered Accounting periods"
+msgstr "Registered Accounting periods"
 
 #: ../src/ucetniobdobi.php:66
-msgid "Zaregistrované ucetniObdobi"
-msgstr ""
+msgid "Tool for massive creating Accounting periods"
+msgstr "Tool for massive creating Accounting periods"
 
-#: ../src/ucetniobdobi.php:70
-msgid "Nástroj pro hromadné zakládání účetních období"
-msgstr ""
+#: ../src/viewevidence.php:24
+msgid "Evidence proprties overview"
+msgstr "Evidence proprties overview"
+
+#: ../src/viewevidence.php:47
+msgid "Custom query"
+msgstr "Custom query"
+
+#, fuzzy
+#~ msgid "Záznam nebyl uložen"
+#~ msgstr "Dotaz nebyl zatím odeslán"
+
+#, fuzzy
+#~ msgid "Struktura"
+#~ msgstr "Structure"
+
+#, fuzzy
+#~ msgid "Rok nebyl odregistrován"
+#~ msgstr "Dotaz nebyl zatím odeslán"
+
+#, fuzzy
+#~ msgid "Přeskočit test URL"
+#~ msgstr "Test"
+
+#, fuzzy
+#~ msgid "Evidence [roprties overview"
+#~ msgstr "Evidence properties overview"
+
+#, fuzzy
+#~ msgid "Test Web Hooku"
+#~ msgstr "Test"
+
+#, fuzzy
+#~ msgid "Přehled vlastností evidence"
+#~ msgstr "Evidence"
+
+#, fuzzy
+#~ msgid "Dotaz"
+#~ msgstr "Dotaz nebyl zatím odeslán"
+
+#, fuzzy
+#~ msgid "Uložit do FlexiBee"
+#~ msgstr "FlexiBee"

@@ -27,7 +27,7 @@ class Editor extends ColumnsForm
             $this->addFlexiInput($column);
         }
         $this->addItem(new TWBSwitch('toFlexiBee', false, 'on',
-            ['onText' => _('Uložit do FlexiBee'), 'offText' => _('Zobrazit v editoru')]));
+            ['onText' => _('Save to FlexiBee'), 'offText' => _('Show in editor')]));
         $this->addItem(new \Ease\TWB\SubmitButton(_('OK').' '.new \Ease\TWB\GlyphIcon('save')));
     }
 
@@ -42,7 +42,7 @@ class Editor extends ColumnsForm
         $inputProperties = [];
         if ($colProperties['mandatory'] === 'true') {
             $inputProperties[] = 'required';
-            $note .= '<span class="error">'._('Povinný').'</span> ';
+            $note .= '<span class="error">'._('Required').'</span> ';
         }
         if (isset($colProperties['isWritable']) && ($colProperties['isWritable']
             === 'false')) {
@@ -85,7 +85,7 @@ class Editor extends ColumnsForm
 
                 if (strlen($value)) {
                     $note[] = new \Ease\Html\ATag('editor.php?evidence='.$evidence.'&id='.urlencode($value),
-                        new \Ease\TWB\GlyphIcon('edit').' '._('Uprav odkazovaný záznam'));
+                        new \Ease\TWB\GlyphIcon('edit').' '._('Edit targeted record'));
                 }
                 break;
 
@@ -109,8 +109,8 @@ class Editor extends ColumnsForm
                     $value, $inputProperties);
                 break;
             default:
-                $this->addStatusMessage(sprintf(_('Neznámý druh dat %s'), $type),
-                    'warning');
+                $this->addStatusMessage(sprintf(_('Unknown type of data %s'),
+                        $type), 'warning');
                 $widget                         = new \Ease\Html\InputTag($propertyName,
                     $value, $inputProperties);
                 $note                           = '?: '.$type;
@@ -119,9 +119,9 @@ class Editor extends ColumnsForm
 
 
         if (is_array($note)) {
-            $note[] = ' '._('Typ').': '.$type;
+            $note[] = ' '._('Type').': '.$type;
         } else {
-            $note .= ' '._('Typ').': '.$type;
+            $note .= ' '._('Type').': '.$type;
         }
 
         $this->addInput($widget, $name, $placeholder, $note);

@@ -108,12 +108,55 @@ class DataGrid extends \Ease\DataGrid
                     $this->addDeleteButton(_('Delete'));
                     break;
                 default:
-                    $this->addButton($actionInfo['actionName'], $action,
-                        'action');
+                    $this->addActionButton($actionInfo['actionName'], $action);
                     break;
             }
         }
 
+    }
+
+
+    /**
+     * Add an Action button
+     *
+     * @param string $title  Buttin title
+     * @param string $action FlexiBee action
+     */
+    public function addActionButton($title, $action)
+    {
+        $show = false;
+
+        $actionFunction = str_replace('-', '_', $action);
+
+        $this->addButton($title, $action, 'action'.$actionFunction);
+
+        $this->addJavaScript('function action'.$actionFunction.'(com, grid) {
+              var action = $("div span" ,this).attr("class");
+
+                var numItems = $(\'.trSelected\').length
+                if(numItems){
+                    if(numItems == 1) {
+                        $(\'.trSelected\', grid).each(function() {
+                            var id = $(this).attr(\'id\');
+                            id = id.substring(id.lastIndexOf(\'row\')+3);
+                            $(location).attr(\'href\',\'evidence.php?evidence='.$this->dataSource->getEvidence().'&action=\' + action + \'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
+                        });
+
+                    } else {
+                        $(\'.trSelected\', grid).each(function() {
+                            var id = $(this).attr(\'id\');
+                            id = id.substring(id.lastIndexOf(\'row\')+3);
+                            var url =\'evidence.php?evidence='.$this->dataSource->getEvidence().'&action=\' + action + \'&'.$this->dataSource->getMyKeyColumn().'=\' +id;
+                            var win = window.open(url, \'_blank\');
+                            win.focus();
+                        });
+                    }
+                } else {
+                      $(location).attr(\'href\',\'evidence.php?evidence='.$this->dataSource->getEvidence().'&action=\' + action);
+                }
+
+            }
+        ', null, true);
     }
 
     /**
@@ -237,7 +280,7 @@ background: url(images/edit.png) no-repeat center left;
                 });
             }
         } else {
-            alert("'._('Please select some rows').'");
+            alert("'._('Please mark some rows').'");
         }
 
             }
@@ -282,7 +325,7 @@ background: url(images/delete.png) no-repeat center left;
                 });
             }
         } else {
-            alert("'._('Please select some rows').'");
+            alert("'._('Please mark some rows').'");
         }
 
             }

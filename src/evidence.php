@@ -17,8 +17,19 @@ $oPage->onlyForLogged();
 
 $evidence = $oPage->getRequestValue('evidence');
 $column   = $oPage->getRequestValue('column');
+$action   = $oPage->getRequestValue('action');
+$url      = constant('FLEXIBEE_URL').'/c/'.constant('FLEXIBEE_COMPANY');
+if ($evidence) {
+    $url.='/'.$evidence;
+}
+
 if (is_null($evidence)) {
     $oPage->redirect('index.php');
+}
+
+if (!is_null($action)) {
+    $id = $oPage->getRequestValue('id');
+    $oPage->redirect('query.php?evidence='.$evidence.'&action='.$action.'&id='.$id);
 }
 
 $oPage->addItem(new ui\PageTop(_('Evidence properties overview')));
@@ -32,13 +43,6 @@ $tabs->addTab(_('Listing'),
     new ui\DataGrid(_('Evidence'), new DataSource($evobj)));
 $tabs->addTab(_('Structure'), new ui\EvidenceProperties($evobj, $column),
     isset($column));
-
-
-$url      = constant('FLEXIBEE_URL').'/c/'.constant('FLEXIBEE_COMPANY');
-$evidence = $oPage->getRequestValue('evidence');
-if ($evidence) {
-    $url.='/'.$evidence;
-}
 
 $method = $oPage->getRequestValue('method');
 $body   = $oPage->getRequestValue('body');

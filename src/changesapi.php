@@ -95,30 +95,30 @@ $settingsForm->addInput(new ui\TWBSwitch('changesapi', $chapistatus, 'enable',
     ['onText' => _('Enable'), 'offText' => _('Disable')]), _('Changes API'),
     null,
     new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/changes-api/',
-    _('Je-li to zapnuto, FlexiBee zaznamenává všechny změny provedené v databázi firmy do changelogu a umožňuje seznam změn zpětně získat')));
+    _('If it is turned on , FlexiBee records all changes made ​​to the database company in the changelog and provides a list of changes recovered')));
 
 $settingsForm->addInput(new \Ease\Html\InputTextTag('hookurl'), _('Web Hook'),
     'http://server/getchanges.php',
     new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/web-hooks',
-    _('Když dojde v databázi FlexiBee ke změně, je odeslán POST HTTP request na všechna zaregistrovaná URL'))
+    _('When the database FlexiBee to change the POST HTTP request sent to all registered URL'))
 );
 
 $settingsForm->addInput(new ui\TWBSwitch('changesformat', true, 'JSON',
     ['onText' => 'JSON', 'offText' => 'XML']), _('Data format'));
 
 $settingsForm->addInput(new ui\TWBSwitch('hookurltest', true, 'skip'),
-    _('Přeskočit test URL'), null, _('Suppress URL functionality test'));
+    _('Skip URL test'), null, _('Suppress URL functionality test'));
 
 
 $settingsForm->addInput(new \Ease\Html\InputNumberTag('lastVersion', null,
     ['min' => 0, 'max' => $globalVersion]), _('Last version'), $globalVersion,
-    sprintf(_('Verze od které započne posílání následujích změn, tj. od nejbližší vyšší verze. Defaultní hodnota je rovna aktuální globální verzi (globalVersion) v momentě registrace hooku. Přípustné hodnoty jsou z intervalu: [0, %s]'),
+    sprintf(_('Version of which will begin sending FOLLOW changes , ie. The next higher version . The default value is equal to the current global version ( globalVersion ) at the moment of registration Hook. Permissible values ​​are in the range [ 0 , % s ]'),
         $globalVersion));
 
 $randstr = \Ease\Sand::randomString(30);
 $settingsForm->addInput(new \Ease\Html\InputTextTag('secKey'),
-    _('Bezpečnostní kód'), $randstr,
-    sprintf(_('Libovolný řetězec, (např. %s) který bude odesílán s každou notifikací změn v HTTP hlavičce. Slouží k jednoduchému ověření, zda patří příchozí notifikace Vámi registrovanému hooku. Název klíče v HTTP hlavičce je X-FB-Hook-SecKey.'),
+    _('Secutity Code'), $randstr,
+    sprintf(_('Any string (eg. %s) that will be sent with each change notifications in the HTTP header. Used to easily verify that include incoming notifications you registered Hook. Key name is in the HTTP header X-FB-Hook-SecKey .'),
         $randstr)
 );
 

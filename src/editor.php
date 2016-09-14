@@ -24,9 +24,9 @@ if ($oPage->isPosted()) {
         $engine->insertToFlexiBee();
         if ($engine->lastResponseCode != 400) {
             $id = $engine->getLastInsertedId();
-            $engine->addStatusMessage(_('Záznam byl uložen'), 'success');
+            $engine->addStatusMessage(_('Record was saved'), 'success');
         } else {
-            $engine->addStatusMessage(_('Záznam nebyl uložen'), 'warning');
+            $engine->addStatusMessage(_('Record was not saved'), 'warning');
         }
     }
 }
@@ -35,7 +35,7 @@ if (!is_null($id)) {
     $engine->loadFromFlexiBee($id);
     $recordInfo = $engine->__toString();
 } else {
-    $recordInfo = _('Nový záznam');
+    $recordInfo = _('New record');
 }
 
 $oPage->addItem(new ui\PageTop(_('Editor')));
@@ -51,7 +51,6 @@ if ($oPage->isPosted() && is_null($oPage->getRequestValue('toFlexiBee'))) {
 
     $oPage->container->addItem(new \Ease\TWB\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence='.$evidence.'">'.$evidence.'</a> '.$recordInfo),
         'info', new ui\SendForm($url, $method, $body)));
-
 } else {
     $oPage->container->addItem(new \Ease\TWB\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence='.$evidence.'">'.$evidence.'</a> '.$recordInfo),
         'info', new ui\Editor($engine)));
