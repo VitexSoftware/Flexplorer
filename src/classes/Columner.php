@@ -38,6 +38,16 @@ class Columner extends Flexplorer
     }
 
     /**
+     * Only way how to set unexistent evidence.
+     *
+     * @param string $evidence
+     */
+    public function setEvidence($evidence)
+    {
+        $this->evidence = $evidence;
+    }
+
+    /**
      * Search for match in evidences list
      *
      * @param string $what
@@ -46,7 +56,7 @@ class Columner extends Flexplorer
     public function searchString($what)
     {
         $results = [];
-        foreach (\FlexiPeeHP\Structure::$evidence as $evidencePath => $evidenceName) {
+        foreach (\FlexiPeeHP\EvidenceList::$name as $evidencePath => $evidenceName) {
             $evidenceProperties = $this->getColumnsInfo($evidencePath);
             if (count($evidenceProperties)) {
                 $columnNames = array_keys($evidenceProperties);

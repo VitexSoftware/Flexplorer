@@ -36,7 +36,7 @@ if (is_null($action)) {
 }
 $body   = $oPage->getRequestValue('body');
 
-$oPage->addItem(new ui\PageTop(_('Query')));
+$oPage->addItem(new ui\PageTop(_('Query').': '.$url));
 
 $requestTabs = new \Ease\TWB\Tabs('Request');
 

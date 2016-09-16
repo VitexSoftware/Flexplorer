@@ -15,7 +15,7 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-$oPage->addItem(new ui\PageTop(_('Flexplorer')));
+$oPage->addItem(new ui\PageTop(_('FlexiBee info')));
 
 $infoPanel = new \Ease\TWB\Panel(_('FlexiBee info'), 'info',
     new ui\LicenseInfo($_SESSION['license']));

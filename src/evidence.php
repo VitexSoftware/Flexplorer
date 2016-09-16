@@ -32,7 +32,8 @@ if (!is_null($action)) {
     $oPage->redirect('query.php?evidence='.$evidence.'&action='.$action.'&id='.$id);
 }
 
-$oPage->addItem(new ui\PageTop(_('Evidence properties overview')));
+$oPage->addItem(new ui\PageTop(sprintf(_('Evidence %s'),
+        \FlexiPeeHP\EvidenceList::$name[$evidence])));
 
 //$oPage->container->addItem(new );
 

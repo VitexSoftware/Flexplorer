@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-09-14 16:41+0100\n"
-"PO-Revision-Date: 2016-09-14 16:42+0100\n"
+"POT-Creation-Date: 2016-09-16 14:58+0100\n"
+"PO-Revision-Date: 2016-09-16 14:58+0100\n"
 "Last-Translator: Vítězslav Dvořák <vitex@arachne.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: en\n"
@@ -209,7 +209,7 @@ msgstr "Password"
 msgid "Remeber me"
 msgstr "Remeber me"
 
-#: ../src/classes/ui/BootstrapMenu.php:59 ../src/settings.php:17
+#: ../src/classes/ui/BootstrapMenu.php:59 ../src/settings.php:20
 msgid "Settings"
 msgstr "Settings"
 
@@ -253,7 +253,7 @@ msgstr "Delete"
 msgid "Title missing"
 msgstr "Title missing"
 
-#: ../src/classes/ui/DataGrid.php:283 ../src/classes/ui/DataGrid.php:328
+#: ../src/classes/ui/DataGrid.php:282 ../src/classes/ui/DataGrid.php:327
 msgid "Please mark some rows"
 msgstr "Please mark some rows"
 
@@ -290,7 +290,7 @@ msgstr "Type"
 msgid "Company"
 msgstr "Company"
 
-#: ../src/classes/ui/MainMenu.php:106 ../src/evidence.php:43
+#: ../src/classes/ui/MainMenu.php:106 ../src/evidence.php:44
 #: ../src/fakechange.php:71
 msgid "Evidence"
 msgstr "Evidence"
@@ -299,7 +299,7 @@ msgstr "Evidence"
 msgid "Tools"
 msgstr "Tools"
 
-#: ../src/classes/ui/MainMenu.php:113 ../src/evidence.php:53
+#: ../src/classes/ui/MainMenu.php:113 ../src/evidence.php:54
 #: ../src/query.php:39 ../src/viewevidence.php:46
 msgid "Query"
 msgstr "Query"
@@ -434,22 +434,23 @@ msgid "Editor"
 msgstr "Editor"
 
 #: ../src/evidence.php:35
-msgid "Evidence properties overview"
-msgstr "Evidence properties overview"
+#, php-format
+msgid "Evidence %s"
+msgstr "Evidence %s"
 
-#: ../src/evidence.php:42 ../src/viewevidence.php:31
+#: ../src/evidence.php:43 ../src/viewevidence.php:31
 msgid "Listing"
 msgstr "Listing"
 
-#: ../src/evidence.php:44 ../src/viewevidence.php:32
+#: ../src/evidence.php:45 ../src/viewevidence.php:32
 msgid "Structure"
 msgstr "Structure"
 
-#: ../src/evidence.php:54
+#: ../src/evidence.php:55
 msgid "User Query"
 msgstr "User Query"
 
-#: ../src/evidence.php:59
+#: ../src/evidence.php:60
 msgid "Items overview"
 msgstr "Items overview"
 
@@ -578,9 +579,13 @@ msgstr "Search results"
 msgid "Search for %s results in %s"
 msgstr "Search for %s results in %s"
 
-#: ../src/settings.php:19
-msgid "Nothig here yet"
-msgstr "Nothig here yet"
+#: ../src/settings.php:16
+msgid "History empty"
+msgstr "History empty"
+
+#: ../src/settings.php:23
+msgid "Reset history"
+msgstr "Reset history"
 
 #: ../src/ucetniobdobi.php:29
 msgid "Year was unregistred"
@@ -613,6 +618,12 @@ msgstr "Evidence proprties overview"
 #: ../src/viewevidence.php:47
 msgid "Custom query"
 msgstr "Custom query"
+
+#~ msgid "Evidence properties overview"
+#~ msgstr "Evidence properties overview"
+
+#~ msgid "Nothig here yet"
+#~ msgstr "Nothig here yet"
 
 #, fuzzy
 #~ msgid "Záznam nebyl uložen"

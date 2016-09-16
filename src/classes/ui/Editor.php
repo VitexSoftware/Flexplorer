@@ -124,7 +124,7 @@ class Editor extends ColumnsForm
             $note .= ' '._('Type').': '.$type;
         }
 
-        $this->addInput($widget, $name, $placeholder, $note);
+        $this->addInput($widget, $propertyName.': '.$name, $placeholder, $note);
     }
 
     /**
@@ -136,9 +136,12 @@ class Editor extends ColumnsForm
     private function colValues($colProperties)
     {
         $options = [];
-        foreach ($colProperties['values']['value'] as $colValue) {
-            $options[$colValue['@key']] = $colValue['$'];
+        if (isset($colProperties['values'])) {
+            foreach ($colProperties['values']['value'] as $colValue) {
+                $options[$colValue['@key']] = $colValue['$'];
+            }
         }
         return $options;
     }
+
 }

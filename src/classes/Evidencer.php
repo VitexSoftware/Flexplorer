@@ -35,7 +35,17 @@ class Evidencer extends Flexplorer
     public function __construct($evidence = null)
     {
         parent::__construct($evidence);
-        $this->evidencies = \FlexiPeeHP\Structure::$evidence;
+        $this->evidencies = \FlexiPeeHP\EvidenceList::$name;
+    }
+
+    /**
+     * Only way how to set unexistent evidence.
+     * 
+     * @param string $evidence
+     */
+    public function setEvidence($evidence)
+    {
+        $this->evidence = $evidence;
     }
 
     /**
