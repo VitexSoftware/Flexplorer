@@ -17,10 +17,22 @@ $id       = $oPage->getRequestValue('id');
 
 $engine = new Flexplorer($evidence);
 
+if (!is_null($id)) {
+    $engine->loadFromFlexiBee($id);
+    $originalData = $engine->getData();
+    $recordInfo = $engine->__toString();
+} else {
+    $recordInfo = _('New record');
+    $originalData = null;
+}
+
 if ($oPage->isPosted()) {
     $engine->takeData($_POST);
 
     if (!is_null($oPage->getRequestValue('toFlexiBee'))) {
+        if (isset($originalData['external-ids'])) {
+            $engine->changeExternalIDs($originalData['external-ids']);
+        }
         $engine->insertToFlexiBee();
         if ($engine->lastResponseCode != 400) {
             $id = $engine->getLastInsertedId();
@@ -29,13 +41,6 @@ if ($oPage->isPosted()) {
             $engine->addStatusMessage(_('Record was not saved'), 'warning');
         }
     }
-}
-
-if (!is_null($id)) {
-    $engine->loadFromFlexiBee($id);
-    $recordInfo = $engine->__toString();
-} else {
-    $recordInfo = _('New record');
 }
 
 $oPage->addItem(new ui\PageTop(_('Editor')));
@@ -49,10 +54,10 @@ if ($oPage->isPosted() && is_null($oPage->getRequestValue('toFlexiBee'))) {
     $method = 'POST';
     $body   = $engine->jsonizeData($engine->getData());
 
-    $oPage->container->addItem(new \Ease\TWB\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence='.$evidence.'">'.$evidence.'</a> '.$recordInfo),
+    $oPage->container->addItem(new \Ease\TWB\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence='.$evidence.'">'.$evidence.'</a> <a href="editor.php?evidence='.$evidence.'&id='.$id.'">'.$recordInfo),
         'info', new ui\SendForm($url, $method, $body)));
 } else {
-    $oPage->container->addItem(new \Ease\TWB\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence='.$evidence.'">'.$evidence.'</a> '.$recordInfo),
+    $oPage->container->addItem(new \Ease\TWB\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence='.$evidence.'">'.$evidence.'</a> <a href="editor.php?evidence='.$evidence.'&id='.$id.'">'.$recordInfo.'</a>'),
         'info', new ui\Editor($engine)));
 }
 

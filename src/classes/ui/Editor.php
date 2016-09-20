@@ -15,6 +15,11 @@ namespace Flexplorer\ui;
  */
 class Editor extends ColumnsForm
 {
+    /**
+     * Data Source Object
+     * @var \FlexiPeeHP 
+     */
+    public $engine = null;
 
     /**
      *
@@ -29,6 +34,7 @@ class Editor extends ColumnsForm
         $this->addItem(new TWBSwitch('toFlexiBee', false, 'on',
             ['onText' => _('Save to FlexiBee'), 'offText' => _('Show in editor')]));
         $this->addItem(new \Ease\TWB\SubmitButton(_('OK').' '.new \Ease\TWB\GlyphIcon('save')));
+        $this->engine = $engine;
     }
 
     public function addFlexiInput($colProperties)
@@ -142,6 +148,48 @@ class Editor extends ColumnsForm
             }
         }
         return $options;
+    }
+
+    /**
+     * Add ExtIDs form
+     */
+    public function finalize()
+    {
+        parent::finalize();
+        if ($this->engine->getDataValue('id')) {
+            $contents = $this->pageParts;
+            $this->emptyContents();
+
+            $editorTabs = new \Ease\TWB\Tabs('EditorTabs');
+            $editorTabs->addTab(_('Columns'), $contents);
+            $editorTabs->addTab(_('External IDs'), $this->extIDsEditor());
+
+            $this->addItem($editorTabs);
+        }
+    }
+
+    public function extIDsEditor()
+    {
+        $extIDsEditor = new \Ease\TWB\Container(new \Ease\Html\InputHiddenTag('id',
+            $this->engine->getDataValue('id')));
+        
+        $externalIDs = $this->engine->getDataValue('external-ids');
+        if (count($externalIDs)) {
+            foreach ($externalIDs as $externalID) {
+                $idParts = explode(':', $externalID);
+                $extIDsEditor->addItem(new \Ease\TWB\FormGroup($idParts[1],
+                    new \Ease\Html\InputTextTag('external-ids['.$idParts[1].']',
+                    $idParts[2]), $idParts[1], $externalID));
+            }
+        }
+
+        $extIDsEditor->addItem(new \Ease\TWB\FormGroup(_('New'),
+            new \Ease\Html\InputTextTag('external-ids[]'), 'ext:..',
+            new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/identifiers/',
+            _('External IDs'))));
+
+        $extIDsEditor->addItem(new \Ease\TWB\SubmitButton(_('OK').' '.new \Ease\TWB\GlyphIcon('save')));
+        return $extIDsEditor;
     }
 
 }

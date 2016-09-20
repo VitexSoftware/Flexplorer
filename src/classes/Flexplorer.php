@@ -194,9 +194,12 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
      */
     public function takeData($data)
     {
-        foreach ($data as $key => $value) {
-            if (!array_key_exists($key, $this->evidenceStructure)) {
-                unset($data[$key]);
+        if (array_key_exists('external-ids', $data)) {
+            foreach ($data['external-ids'] as $key => $value) {
+                if (!is_numeric($key)) {
+                    unset($data['external-ids'][$key]);
+                    $data['external-ids'][] = 'ext:'.$key.':'.$value;
+                }
             }
         }
         return parent::takeData($data);
@@ -218,4 +221,19 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
         }
         return $found;
     }
+
+    public function changeExternalIDs($originalIDs)
+    {
+        $extidToRemove = [];
+        foreach ($this->getDataValue('external-id') as $extid) {
+            if (!array_search($extid, $originalIDs)) {
+                $extidToRemove[] = $extid;
+            }
+        }
+        if (count($extidToRemove)) {
+            $this->setDataValue('@removeExternalIds',
+                implode(',', $extidToRemove));
+        }
+    }
+
 }
