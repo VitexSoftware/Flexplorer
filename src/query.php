@@ -26,7 +26,13 @@ if (!strlen($url)) {
     if ($evidence) {
         $url.='/'.$evidence;
     }
-    $url.='.json';
+
+    $id = $oPage->getRequestValue('id');
+    if (!is_null($id)) {
+        $url .= '/'.$id;
+    }
+
+    $url.= '.json';
 }
 $action = $oPage->getRequestValue('action');
 if (is_null($action)) {
@@ -34,7 +40,7 @@ if (is_null($action)) {
 } else {
     $method = 'PUT';
 }
-$body   = $oPage->getRequestValue('body');
+$body = $oPage->getRequestValue('body');
 
 $oPage->addItem(new ui\PageTop(_('Query').': '.$url));
 

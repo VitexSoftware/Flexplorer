@@ -90,8 +90,13 @@ class DataGrid extends \Ease\DataGrid
         $this->setUpColumns();
     }
 
+
+    /**
+     * Set up DataGrid buttons
+     */
     public function setUpButtons()
     {
+        $this->addJsonButton(_('Json'));
         $actions = $this->dataSource->handledObejct->getActionsInfo();
         if (count($actions)) {
             foreach ($actions as $action => $actionInfo) {
@@ -274,6 +279,44 @@ background: url(images/edit.png) no-repeat center left;
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
                     var url =\'editor.php?evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id;
+                    var win = window.open(url, \'_blank\');
+                    win.focus();
+                });
+            }
+        } else {
+            alert("'._('Please mark some rows').'");
+        }
+
+            }
+        ', null, true);
+    }
+
+
+    public function addJsonButton($title, $target = null)
+    {
+        $this->addButton($title, 'json', 'jsonRecord');
+
+        $this->addCss('.flexigrid div.fbutton .json {
+background: url(images/json.svg) no-repeat center left;
+}
+');
+
+        $this->addJavaScript('function jsonRecord(com, grid) {
+
+        var numItems = $(\'.trSelected\').length
+        if(numItems){
+            if(numItems == 1) {
+                $(\'.trSelected\', grid).each(function() {
+                    var id = $(this).attr(\'id\');
+                    id = id.substring(id.lastIndexOf(\'row\')+3);
+                    $(location).attr(\'href\',\'query.php?evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
+                });
+
+            } else {
+                $(\'.trSelected\', grid).each(function() {
+                    var id = $(this).attr(\'id\');
+                    id = id.substring(id.lastIndexOf(\'row\')+3);
+                    var url =\'jsonor.php?query='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id;
                     var win = window.open(url, \'_blank\');
                     win.focus();
                 });
