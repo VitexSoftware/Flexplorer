@@ -50,11 +50,8 @@ $requestTabs->addTab(_('Request'),
     new \Ease\TWB\Panel(_('Custom request'), 'warning',
     new ui\SendForm($url, $method, $body)));
 
-
-
-$requestTabs->addTab(_('Response'), new ui\RecieveResponse(), $oPage->isPosted());
-
-
+$requestTabs->addTab(_('Response'), new ui\RecieveResponse($url),
+    $oPage->isPosted() || ($oPage->getRequestValue('show') == 'result'));
 
 
 $oPage->container->addItem($requestTabs);

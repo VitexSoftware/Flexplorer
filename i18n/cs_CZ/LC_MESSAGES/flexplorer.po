@@ -2,109 +2,105 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
 "POT-Creation-Date: 2016-09-21 13:46+0100\n"
-"PO-Revision-Date: 2016-09-21 13:46+0100\n"
+"PO-Revision-Date: 2016-09-21 14:21+0100\n"
 "Last-Translator: Vítězslav Dvořák <vitex@arachne.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
-"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.10\n"
 "X-Poedit-Basepath: ../../\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"Language: cs_CZ\n"
 "X-Poedit-SearchPath-0: ../src\n"
 "X-Poedit-SearchPathExcluded-0: ../vendor\n"
 
 #: ../src/about.php:14
 msgid "About application"
-msgstr "About application"
+msgstr "O Aplikaci"
 
 #: ../src/changesapi.php:26
 msgid "ChangesAPI was enabled"
-msgstr "ChangesAPI was enabled"
+msgstr "API Změn bylo povoleno"
 
 #: ../src/changesapi.php:32
 msgid "ChangesAPI was disabled"
-msgstr "ChangesAPI was disabled"
+msgstr "API změn bylo zakázáno"
 
 #: ../src/changesapi.php:62
 #, php-format
 msgid "Hook %s was registered"
-msgstr "Hook %s was registered"
+msgstr "Hook %s byl registrován"
 
 #: ../src/changesapi.php:65
 #, php-format
 msgid "Hook %s not registered"
-msgstr "Hook %s not registered"
+msgstr "Hook %s nebyl registrován"
 
 #: ../src/changesapi.php:74
 msgid "Hook was unregistered"
-msgstr "Hook was unregistered"
+msgstr "Hook byl odregistrován"
 
 #: ../src/changesapi.php:76
 msgid "Hook was not unregistered"
-msgstr "Hook was not unregistered"
+msgstr ""
 
 #: ../src/changesapi.php:84
 msgid "Hook refreshed"
-msgstr "Hook refreshed"
+msgstr ""
 
 #: ../src/changesapi.php:86
 msgid "Hook refresh failed"
-msgstr "Hook refresh failed"
+msgstr ""
 
 #: ../src/changesapi.php:91
 msgid "ChangesAPI Tool"
-msgstr "ChangesAPI Tool"
+msgstr ""
 
 #: ../src/changesapi.php:95
 msgid "Enable"
-msgstr "Enable"
+msgstr ""
 
 #: ../src/changesapi.php:95
 msgid "Disable"
-msgstr "Disable"
+msgstr ""
 
 #: ../src/changesapi.php:95 ../src/classes/ui/MainMenu.php:114
 msgid "Changes API"
-msgstr "Changes API"
+msgstr ""
 
 #: ../src/changesapi.php:98
 msgid ""
 "If it is turned on , FlexiBee records all changes made ​​to the database "
 "company in the changelog and provides a list of changes recovered"
 msgstr ""
-"If it is turned on , FlexiBee records all changes made ​​to the database "
-"company in the changelog and provides a list of changes recovered"
 
 #: ../src/changesapi.php:100 ../src/fakechange.php:91
 msgid "Web Hook"
-msgstr "Web Hook"
+msgstr ""
 
 #: ../src/changesapi.php:103
 msgid ""
 "When the database FlexiBee to change the POST HTTP request sent to all "
 "registered URL"
 msgstr ""
-"When the database FlexiBee to change the POST HTTP request sent to all "
-"registered URL"
 
 #: ../src/changesapi.php:107 ../src/fakechange.php:64
 msgid "Data format"
-msgstr "Data format"
+msgstr ""
 
 #: ../src/changesapi.php:110
 msgid "Skip URL test"
-msgstr "Skip URL test"
+msgstr ""
 
 #: ../src/changesapi.php:110
 msgid "Suppress URL functionality test"
-msgstr "Suppress URL functionality test"
+msgstr ""
 
 #: ../src/changesapi.php:114 ../src/fakechange.php:67
 msgid "Last version"
-msgstr "Last version"
+msgstr ""
 
 #: ../src/changesapi.php:115
 #, php-format
@@ -114,14 +110,10 @@ msgid ""
 "( globalVersion ) at the moment of registration Hook. Permissible values ​​are "
 "in the range [ 0 , % s ]"
 msgstr ""
-"Version of which will begin sending FOLLOW changes , ie. The next higher "
-"version . The default value is equal to the current global version "
-"( globalVersion ) at the moment of registration Hook. Permissible values ​​are "
-"in the range [ 0 , % s ]"
 
 #: ../src/changesapi.php:120
 msgid "Secutity Code"
-msgstr "Secutity Code"
+msgstr ""
 
 #: ../src/changesapi.php:121
 #, php-format
@@ -130,549 +122,544 @@ msgid ""
 "HTTP header. Used to easily verify that include incoming notifications you "
 "registered Hook. Key name is in the HTTP header X-FB-Hook-SecKey ."
 msgstr ""
-"Any string (eg. %s) that will be sent with each change notifications in the "
-"HTTP header. Used to easily verify that include incoming notifications you "
-"registered Hook. Key name is in the HTTP header X-FB-Hook-SecKey ."
 
 #: ../src/changesapi.php:126 ../src/ucetniobdobi.php:46
 msgid "Perform operation"
-msgstr "Perform operation"
+msgstr ""
 
 #: ../src/changesapi.php:140
 msgid "Test"
-msgstr "Test"
+msgstr ""
 
 #: ../src/changesapi.php:147
 msgid "Webhooks registered"
-msgstr "Webhooks registered"
+msgstr ""
 
 #: ../src/changesapi.php:150
 msgid "ChangesAPI & WebHooks"
-msgstr "ChangesAPI & WebHooks"
+msgstr ""
 
 #: ../src/classes/DataSource.php:137
 msgid "Deleted"
-msgstr "Deleted"
+msgstr ""
 
 #: ../src/classes/DataSource.php:144
 msgid "Record was added"
-msgstr "Record was added"
+msgstr ""
 
 #: ../src/classes/DataSource.php:147
 msgid "Record was not added"
-msgstr "Record was not added"
+msgstr ""
 
 #: ../src/classes/DataSource.php:155
 msgid "Record was updated"
-msgstr "Record was updated"
+msgstr ""
 
 #: ../src/classes/DataSource.php:158
 msgid "Record update failed"
-msgstr "Record update failed"
+msgstr ""
 
 #: ../src/classes/Flexplorer.php:125
 #, php-format
 msgid "Unserialization error %s #%s "
-msgstr "Unserialization error %s #%s "
+msgstr ""
 
 #: ../src/classes/Searcher.php:109
 msgid "No search results"
-msgstr "No search results"
+msgstr ""
 
 #: ../src/classes/User.php:65
 msgid "Login Failed"
-msgstr "Login Failed"
+msgstr ""
 
 #: ../src/classes/User.php:98
 msgid "Loading evidence list failed"
-msgstr "Loading evidence list failed"
+msgstr ""
 
 #: ../src/classes/ui/BootstrapMenu.php:43
 #: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:46
 #: ../src/login.php:60
 msgid "Sign in"
-msgstr "Sign in"
+msgstr ""
 
 #: ../src/classes/ui/BootstrapMenu.php:46
 msgid "Server"
-msgstr "Server"
+msgstr ""
 
 #: ../src/classes/ui/BootstrapMenu.php:47
 msgid "login"
-msgstr "login"
+msgstr ""
 
 #: ../src/classes/ui/BootstrapMenu.php:48 ../src/login.php:73
 msgid "Password"
-msgstr "Password"
+msgstr ""
 
 #: ../src/classes/ui/BootstrapMenu.php:50
 msgid "Remeber me"
-msgstr "Remeber me"
+msgstr ""
 
 #: ../src/classes/ui/BootstrapMenu.php:59 ../src/settings.php:20
 msgid "Settings"
-msgstr "Settings"
+msgstr ""
 
 #: ../src/classes/ui/BootstrapMenu.php:63
 msgid "About"
-msgstr "About"
+msgstr ""
 
 #: ../src/classes/ui/BootstrapMenu.php:65
 msgid "Sign off"
-msgstr "Sign off"
+msgstr ""
 
 #: ../src/classes/ui/BootstrapMenu.php:80
 msgid "Click to hide messages"
-msgstr "Click to hide messages"
+msgstr ""
 
 #: ../src/classes/ui/ColumnsForm.php:102
 msgid "Save"
-msgstr "Save"
+msgstr ""
 
 #: ../src/classes/ui/ColumnsForm.php:112
 msgid "Save & go to listing"
-msgstr "Save & go to listing"
+msgstr ""
 
 #: ../src/classes/ui/ColumnsForm.php:121
 msgid "Save and next"
-msgstr "Save and next"
+msgstr ""
 
 #: ../src/classes/ui/DataGrid.php:99
 msgid "Json"
-msgstr "Json"
+msgstr ""
 
 #: ../src/classes/ui/DataGrid.php:107
 msgid "Add"
-msgstr "Add"
+msgstr ""
 
 #: ../src/classes/ui/DataGrid.php:110
 msgid "Edit"
-msgstr "Edit"
+msgstr ""
 
 #: ../src/classes/ui/DataGrid.php:113
 msgid "Delete"
-msgstr "Delete"
+msgstr ""
 
 #: ../src/classes/ui/DataGrid.php:184
 msgid "Title missing"
-msgstr "Title missing"
+msgstr ""
 
 #: ../src/classes/ui/DataGrid.php:287 ../src/classes/ui/DataGrid.php:325
 #: ../src/classes/ui/DataGrid.php:370
 msgid "Please mark some rows"
-msgstr "Please mark some rows"
+msgstr ""
 
 #: ../src/classes/ui/Editor.php:35
 msgid "Save to FlexiBee"
-msgstr "Save to FlexiBee"
+msgstr ""
 
 #: ../src/classes/ui/Editor.php:35
 msgid "Show in editor"
-msgstr "Show in editor"
+msgstr ""
 
 #: ../src/classes/ui/Editor.php:36 ../src/classes/ui/Editor.php:191
 msgid "OK"
-msgstr "OK"
+msgstr ""
 
 #: ../src/classes/ui/Editor.php:51
 msgid "Required"
-msgstr "Required"
+msgstr ""
 
 #: ../src/classes/ui/Editor.php:94
 msgid "Edit targeted record"
-msgstr "Edit targeted record"
+msgstr ""
 
 #: ../src/classes/ui/Editor.php:118
 #, php-format
 msgid "Unknown type of data %s"
-msgstr "Unknown type of data %s"
+msgstr ""
 
 #: ../src/classes/ui/Editor.php:128 ../src/classes/ui/Editor.php:130
 msgid "Type"
-msgstr "Type"
+msgstr ""
 
 #: ../src/classes/ui/Editor.php:164
 msgid "Columns"
-msgstr "Columns"
+msgstr ""
 
 #: ../src/classes/ui/Editor.php:165 ../src/classes/ui/Editor.php:189
 msgid "External IDs"
-msgstr "External IDs"
+msgstr ""
 
 #: ../src/classes/ui/Editor.php:186
 msgid "New"
-msgstr "New"
+msgstr ""
 
 #: ../src/classes/ui/MainMenu.php:96
 msgid "Company"
-msgstr "Company"
+msgstr ""
 
 #: ../src/classes/ui/MainMenu.php:106 ../src/evidence.php:44
 #: ../src/fakechange.php:71
 msgid "Evidence"
-msgstr "Evidence"
+msgstr ""
 
 #: ../src/classes/ui/MainMenu.php:111
 msgid "Tools"
-msgstr "Tools"
+msgstr ""
 
 #: ../src/classes/ui/MainMenu.php:113 ../src/evidence.php:54
 #: ../src/query.php:45 ../src/viewevidence.php:46
 msgid "Query"
-msgstr "Query"
+msgstr ""
 
 #: ../src/classes/ui/MainMenu.php:115 ../src/fakechange.php:53
 msgid "WebHook test"
-msgstr "WebHook test"
+msgstr ""
 
 #: ../src/classes/ui/MainMenu.php:116 ../src/ucetniobdobi.php:35
 msgid "Accounting period"
-msgstr "Accounting period"
+msgstr ""
 
 #: ../src/classes/ui/NavBarSearchBox.php:37
 #: ../src/classes/ui/NavBarSearchBox.php:47
 msgid "Search"
-msgstr "Search"
+msgstr ""
 
 #: ../src/classes/ui/NavBarSearchBox.php:43
 msgid "Close"
-msgstr "Close"
+msgstr ""
 
 #: ../src/classes/ui/PageBottom.php:28
 msgid "Sources"
-msgstr "Sources"
+msgstr ""
 
 #: ../src/classes/ui/PageBottom.php:38
 msgid "Support"
-msgstr "Support"
+msgstr ""
 
 #: ../src/classes/ui/PageBottom.php:46
 msgid "Services"
-msgstr "Services"
+msgstr ""
 
 #: ../src/classes/ui/PageBottom.php:54
 msgid "Docs"
-msgstr "Docs"
+msgstr ""
 
 #: ../src/classes/ui/PageBottom.php:60
 msgid "Author"
-msgstr "Author"
+msgstr ""
 
 #: ../src/classes/ui/PageBottom.php:63
 msgid "Vitex Software"
-msgstr "Vitex Software"
+msgstr ""
 
 #: ../src/classes/ui/PageBottom.php:66
 msgid "Sponsored by"
-msgstr "Sponsored by"
+msgstr ""
 
 #: ../src/classes/ui/PageBottom.php:69
 msgid "Spoje.Net"
-msgstr "Spoje.Net"
+msgstr ""
 
 #: ../src/classes/ui/PageBottom.php:79
 msgid "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
-msgstr "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
+msgstr ""
 
 #: ../src/classes/ui/RecieveResponse.php:45
 msgid "Dotaz nebyl zatím odeslán"
-msgstr "Dotaz nebyl zatím odeslán"
+msgstr ""
 
 #: ../src/classes/ui/SendForm.php:30
 msgid "URL"
-msgstr "URL"
+msgstr ""
 
 #: ../src/classes/ui/SendForm.php:33
 msgid "URL Compositon"
-msgstr "URL Compositon"
+msgstr ""
 
 #: ../src/classes/ui/SendForm.php:35
 msgid "Query body"
-msgstr "Query body"
+msgstr ""
 
 #: ../src/classes/ui/SendForm.php:38
 msgid "Method"
-msgstr "Method"
+msgstr ""
 
 #: ../src/classes/ui/SendForm.php:40
 msgid "Supported HTTP Operations"
-msgstr "Supported HTTP Operations"
+msgstr ""
 
 #: ../src/classes/ui/SendForm.php:41 ../src/fakechange.php:98
 msgid "Send"
-msgstr "Send"
+msgstr ""
 
 #: ../src/classes/ui/TWBSwitch.php:28
 msgid "Yes"
-msgstr "Yes"
+msgstr ""
 
 #: ../src/classes/ui/TWBSwitch.php:31
 msgid "No"
-msgstr "No"
+msgstr ""
 
 #: ../src/classes/ui/WebPage.php:68
 msgid "Please sign in as admin first"
-msgstr "Please sign in as admin first"
+msgstr ""
 
 #: ../src/delete.php:32
 msgid "Record was deleted"
-msgstr "Record was deleted"
+msgstr ""
 
 #: ../src/delete.php:35
 msgid "Record was not deleted"
-msgstr "Record was not deleted"
+msgstr ""
 
 #: ../src/delete.php:42
 msgid "Record Delete"
-msgstr "Record Delete"
+msgstr ""
 
 #: ../src/delete.php:48
 msgid "Keep record"
-msgstr "Keep record"
+msgstr ""
 
 #: ../src/delete.php:52
 msgid "Delete record"
-msgstr "Delete record"
+msgstr ""
 
 #: ../src/editor.php:25
 msgid "New record"
-msgstr "New record"
+msgstr ""
 
 #: ../src/editor.php:39
 msgid "Record was saved"
-msgstr "Record was saved"
+msgstr ""
 
 #: ../src/editor.php:41
 msgid "Record was not saved"
-msgstr "Record was not saved"
+msgstr ""
 
 #: ../src/editor.php:46
 msgid "Editor"
-msgstr "Editor"
+msgstr ""
 
 #: ../src/evidence.php:35
 #, php-format
 msgid "Evidence %s"
-msgstr "Evidence %s"
+msgstr ""
 
 #: ../src/evidence.php:43 ../src/viewevidence.php:31
 msgid "Listing"
-msgstr "Listing"
+msgstr ""
 
 #: ../src/evidence.php:45 ../src/viewevidence.php:32
 msgid "Structure"
-msgstr "Structure"
+msgstr ""
 
 #: ../src/evidence.php:55
 msgid "User Query"
-msgstr "User Query"
+msgstr ""
 
 #: ../src/evidence.php:60
 msgid "Items overview"
-msgstr "Items overview"
+msgstr ""
 
 #: ../src/fakechange.php:36
 msgid "WebHook successfully triggered"
-msgstr "WebHook successfully triggered"
+msgstr ""
 
 #: ../src/fakechange.php:38
 msgid "WebHook returns non empty response"
-msgstr "WebHook returns non empty response"
+msgstr ""
 
 #: ../src/fakechange.php:68
 msgid "Which version of the changes will begin sending following changes"
-msgstr "Which version of the changes will begin sending following changes"
+msgstr ""
 
 #: ../src/fakechange.php:76
 msgid "Operation"
-msgstr "Operation"
+msgstr ""
 
 #: ../src/fakechange.php:79
 msgid "Record number"
-msgstr "Record number"
+msgstr ""
 
 #: ../src/fakechange.php:79
 msgid "Internal number of record edited"
-msgstr "Internal number of record edited"
+msgstr ""
 
 #: ../src/fakechange.php:82
 msgid "External number"
-msgstr "External number"
+msgstr ""
 
 #: ../src/fakechange.php:82
 msgid "External number of record edited"
-msgstr "External number of record edited"
+msgstr ""
 
 #: ../src/fakechange.php:85
 msgid "Build change"
-msgstr "Build change"
+msgstr ""
 
 #: ../src/fakechange.php:92
 msgid "Choose Registered"
-msgstr "Choose Registered"
+msgstr ""
 
 #: ../src/fakechange.php:94
 msgid ""
 "When the database FlexiBee is changed the POST HTTP request sent to all "
 "registered URL"
 msgstr ""
-"When the database FlexiBee is changed the POST HTTP request sent to all "
-"registered URL"
 
 #: ../src/fakechange.php:119 ../src/query.php:55
 msgid "Response"
-msgstr "Response"
+msgstr ""
 
 #: ../src/fakechange.php:121 ../src/query.php:49
 msgid "Request"
-msgstr "Request"
+msgstr ""
 
 #: ../src/fakechange.php:123
 msgid "WebHook probe"
-msgstr "WebHook probe"
+msgstr ""
 
 #: ../src/index.php:18 ../src/index.php:20
 msgid "FlexiBee info"
-msgstr "FlexiBee info"
+msgstr ""
 
 #: ../src/login.php:32
 msgid "Signed in as: "
-msgstr "Signed in as: "
+msgstr ""
 
 #: ../src/login.php:42
 msgid "Please confirm your login credentials"
-msgstr "Please confirm your login credentials"
+msgstr ""
 
 #: ../src/login.php:56
 msgid "Welcome"
-msgstr "Welcome"
+msgstr ""
 
 #: ../src/login.php:64
 msgid "FlexiBee"
-msgstr "FlexiBee"
+msgstr ""
 
 #: ../src/login.php:68
 msgid "FlexiBee server URL. ex.: https://localhost:5434"
-msgstr "FlexiBee server URL. ex.: https://localhost:5434"
+msgstr ""
 
 #: ../src/login.php:69
 msgid "User name"
-msgstr "User name"
+msgstr ""
 
 #: ../src/login.php:72
 msgid "Login name"
-msgstr "Login name"
+msgstr ""
 
 #: ../src/login.php:76
 msgid "User's password"
-msgstr "User's password"
+msgstr ""
 
 #: ../src/logout.php:29
 msgid "Sign out"
-msgstr "Sign out"
+msgstr ""
 
 #: ../src/logout.php:33
 msgid "Thank you for your patronage and look forward to another visit"
-msgstr "Thank you for your patronage and look forward to another visit"
+msgstr ""
 
 #: ../src/main.php:19
 msgid "Main Page"
-msgstr "Main Page"
+msgstr ""
 
 #: ../src/query.php:50
 msgid "Custom request"
-msgstr "Custom request"
+msgstr ""
 
 #: ../src/search.php:24
 msgid "Search results"
-msgstr "Search results"
+msgstr ""
 
 #: ../src/search.php:53
 #, php-format
 msgid "Search for %s results in %s"
-msgstr "Search for %s results in %s"
+msgstr ""
 
 #: ../src/settings.php:16
 msgid "History empty"
-msgstr "History empty"
+msgstr ""
 
 #: ../src/settings.php:23
 msgid "Reset history"
-msgstr "Reset history"
+msgstr ""
 
 #: ../src/ucetniobdobi.php:29
 msgid "Year was unregistred"
-msgstr "Year was unregistred"
+msgstr ""
 
 #: ../src/ucetniobdobi.php:31
 msgid "Yeas was not unregistred"
-msgstr "Yeas was not unregistred"
+msgstr ""
 
 #: ../src/ucetniobdobi.php:41
 msgid "From Year"
-msgstr "From Year"
+msgstr ""
 
 #: ../src/ucetniobdobi.php:44
 msgid "To Year"
-msgstr "To Year"
+msgstr ""
 
 #: ../src/ucetniobdobi.php:62
 msgid "Registered Accounting periods"
-msgstr "Registered Accounting periods"
+msgstr ""
 
 #: ../src/ucetniobdobi.php:66
 msgid "Tool for massive creating Accounting periods"
-msgstr "Tool for massive creating Accounting periods"
+msgstr ""
 
 #: ../src/viewevidence.php:24
 msgid "Evidence proprties overview"
-msgstr "Evidence proprties overview"
+msgstr ""
 
 #: ../src/viewevidence.php:47
 msgid "Custom query"
-msgstr "Custom query"
+msgstr ""
 
-#~ msgid "Flexplorer"
-#~ msgstr "Flexplorer"
+msgid "Flexplorer"
+msgstr "Flexplorer"
 
-#~ msgid "Evidence properties overview"
-#~ msgstr "Evidence properties overview"
+msgid "Evidence properties overview"
+msgstr "Evidence properties overview"
 
-#~ msgid "Nothig here yet"
-#~ msgstr "Nothig here yet"
-
-#, fuzzy
-#~ msgid "Záznam nebyl uložen"
-#~ msgstr "Dotaz nebyl zatím odeslán"
+msgid "Nothig here yet"
+msgstr "Nothig here yet"
 
 #, fuzzy
-#~ msgid "Struktura"
-#~ msgstr "Structure"
+msgid "Záznam nebyl uložen"
+msgstr "Dotaz nebyl zatím odeslán"
 
 #, fuzzy
-#~ msgid "Rok nebyl odregistrován"
-#~ msgstr "Dotaz nebyl zatím odeslán"
+msgid "Struktura"
+msgstr "Structure"
 
 #, fuzzy
-#~ msgid "Přeskočit test URL"
-#~ msgstr "Test"
+msgid "Rok nebyl odregistrován"
+msgstr "Dotaz nebyl zatím odeslán"
 
 #, fuzzy
-#~ msgid "Evidence [roprties overview"
-#~ msgstr "Evidence properties overview"
+msgid "Přeskočit test URL"
+msgstr "Test"
 
 #, fuzzy
-#~ msgid "Test Web Hooku"
-#~ msgstr "Test"
+msgid "Evidence [roprties overview"
+msgstr "Evidence properties overview"
 
 #, fuzzy
-#~ msgid "Přehled vlastností evidence"
-#~ msgstr "Evidence"
+msgid "Test Web Hooku"
+msgstr "Test"
 
 #, fuzzy
-#~ msgid "Dotaz"
-#~ msgstr "Dotaz nebyl zatím odeslán"
+msgid "Přehled vlastností evidence"
+msgstr "Evidence"
 
 #, fuzzy
-#~ msgid "Uložit do FlexiBee"
-#~ msgstr "FlexiBee"
+msgid "Dotaz"
+msgstr "Dotaz nebyl zatím odeslán"
+
+#, fuzzy
+msgid "Uložit do FlexiBee"
+msgstr "FlexiBee"

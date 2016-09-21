@@ -9,25 +9,53 @@ namespace Flexplorer\ui;
  */
 class RecieveResponse extends \Ease\Html\Div
 {
+    /**
+     *
+     * @var type
+     */
+    public $url = null;
+
+    /**
+     * Recieve FlexiBee reuest response
+     *
+     * @param string $url
+     */
+    public function __construct($url = null)
+    {
+        $this->url = $url;
+        parent::__construct();
+    }
 
     public function finalize()
     {
         $webPage = \Ease\Shared::webPage();
-        if ($webPage->isPosted()) {
+
+        if ($webPage->isPosted() || strlen($this->url)) {
             $format = 'json';
             $sender = new \FlexiPeeHP\FlexiBeeRW();
-            $url    = $webPage->getRequestValue('url');
-            $method = $webPage->getRequestValue('method');
-            $body   = $webPage->getRequestValue('body');
-            if (!is_null($body)) {
-                $sender->setPostFields($body);
+            if (strlen($this->url)) {
+                $url    = $this->url;
+                $method = 'GET';
+                $body   = null;
+            } else {
+                $url    = $webPage->getRequestValue('url');
+                $method = $webPage->getRequestValue('method');
+                $body   = $webPage->getRequestValue('body');
+
+                if (!is_null($body)) {
+                    $sender->setPostFields($body);
+                }
             }
             $sender->doCurlRequest($url, $method, $format);
             $this->addItem(new \Ease\Html\H1Tag($sender->lastResponseCode));
 
             if (strlen($sender->lastCurlResponse)) {
+                $formated = self::jsonpp($sender->lastCurlResponse);
+                $formated = preg_replace('/ref":"(.*)"/',
+                    'ref":"<a href="query.php?show=result&url='.$sender->url.'$1">$1</a>"',
+                    $formated);
                 $this->addItem('<pre><code class="'.$format.'">'.
-                    self::jsonpp($sender->lastCurlResponse)
+                    $formated
                     .'</code></pre>');
             }
 
@@ -78,4 +106,5 @@ class RecieveResponse extends \Ease\Html\Div
         }
         return $result;
     }
+
 }
