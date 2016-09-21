@@ -1,4 +1,4 @@
-flexplorer (0.8-1) UNRELEASED; urgency=medium
+flexplorer (0.8.2-2) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -78,5 +78,7 @@ flexplorer (0.8-1) UNRELEASED; urgency=medium
   * Release 0.7
   * Update to current FlexiPeeHP Added Browsing history
   * Update to current FlexiPeeHP Added Browsing history
+  * Show links to referenced evidencies in json listing Update to
+    Current EaseFramework
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Fri, 16 Sep 2016 15:30:15 +0200
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 21 Sep 2016 15:57:57 +0200
