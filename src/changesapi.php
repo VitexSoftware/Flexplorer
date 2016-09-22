@@ -117,7 +117,7 @@ $settingsForm->addInput(new \Ease\Html\InputNumberTag('lastVersion', null,
 
 $randstr = \Ease\Sand::randomString(30);
 $settingsForm->addInput(new \Ease\Html\InputTextTag('secKey'),
-    _('Secutity Code'), $randstr,
+    _('Security Code'), $randstr,
     sprintf(_('Any string (eg. %s) that will be sent with each change notifications in the HTTP header. Used to easily verify that include incoming notifications you registered Hook. Key name is in the HTTP header X-FB-Hook-SecKey .'),
         $randstr)
 );

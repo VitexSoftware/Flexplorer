@@ -1,10 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-09-21 13:46+0100\n"
-"PO-Revision-Date: 2016-09-21 14:21+0100\n"
-"Last-Translator: Vítězslav Dvořák <vitex@arachne.cz>\n"
+"POT-Creation-Date: 2016-09-22 23:57+0100\n"
+"PO-Revision-Date: 2016-09-23 00:06+0100\n"
+"Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,7 +13,6 @@ msgstr ""
 "X-Poedit-Basepath: ../../\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Language: cs_CZ\n"
 "X-Poedit-SearchPath-0: ../src\n"
 "X-Poedit-SearchPathExcluded-0: ../vendor\n"
 
@@ -44,31 +44,33 @@ msgstr "Hook byl odregistrován"
 
 #: ../src/changesapi.php:76
 msgid "Hook was not unregistered"
-msgstr ""
+msgstr "Hook nebyl odregistrován"
 
 #: ../src/changesapi.php:84
 msgid "Hook refreshed"
-msgstr ""
+msgstr "Hook občerstven"
 
 #: ../src/changesapi.php:86
+#, fuzzy
 msgid "Hook refresh failed"
-msgstr ""
+msgstr "Hook byl odregistrován"
 
 #: ../src/changesapi.php:91
+#, fuzzy
 msgid "ChangesAPI Tool"
-msgstr ""
+msgstr "API Změn bylo povoleno"
 
 #: ../src/changesapi.php:95
 msgid "Enable"
-msgstr ""
+msgstr "Povolit"
 
 #: ../src/changesapi.php:95
 msgid "Disable"
-msgstr ""
+msgstr "Zakázat"
 
 #: ../src/changesapi.php:95 ../src/classes/ui/MainMenu.php:114
 msgid "Changes API"
-msgstr ""
+msgstr "API Změn"
 
 #: ../src/changesapi.php:98
 msgid ""
@@ -78,7 +80,7 @@ msgstr ""
 
 #: ../src/changesapi.php:100 ../src/fakechange.php:91
 msgid "Web Hook"
-msgstr ""
+msgstr "Web Hook"
 
 #: ../src/changesapi.php:103
 msgid ""
@@ -88,19 +90,20 @@ msgstr ""
 
 #: ../src/changesapi.php:107 ../src/fakechange.php:64
 msgid "Data format"
-msgstr ""
+msgstr "Formát dat"
 
 #: ../src/changesapi.php:110
 msgid "Skip URL test"
-msgstr ""
+msgstr "Přeskoč test URL"
 
 #: ../src/changesapi.php:110
+#, fuzzy
 msgid "Suppress URL functionality test"
-msgstr ""
+msgstr "Přeskoč test URL"
 
 #: ../src/changesapi.php:114 ../src/fakechange.php:67
 msgid "Last version"
-msgstr ""
+msgstr "Poslední verze"
 
 #: ../src/changesapi.php:115
 #, php-format
@@ -112,8 +115,8 @@ msgid ""
 msgstr ""
 
 #: ../src/changesapi.php:120
-msgid "Secutity Code"
-msgstr ""
+msgid "Security Code"
+msgstr "Bezečnostní kód"
 
 #: ../src/changesapi.php:121
 #, php-format
@@ -125,340 +128,372 @@ msgstr ""
 
 #: ../src/changesapi.php:126 ../src/ucetniobdobi.php:46
 msgid "Perform operation"
-msgstr ""
+msgstr "Vykonej operaci"
 
 #: ../src/changesapi.php:140
 msgid "Test"
-msgstr ""
+msgstr "Test\t"
 
 #: ../src/changesapi.php:147
 msgid "Webhooks registered"
-msgstr ""
+msgstr "Registrované WebHooky"
 
 #: ../src/changesapi.php:150
 msgid "ChangesAPI & WebHooks"
-msgstr ""
+msgstr "ChangesAPI & WebHooks"
 
 #: ../src/classes/DataSource.php:137
 msgid "Deleted"
-msgstr ""
+msgstr "Smáno"
 
 #: ../src/classes/DataSource.php:144
 msgid "Record was added"
-msgstr ""
+msgstr "Záznam  byl přidám"
 
 #: ../src/classes/DataSource.php:147
 msgid "Record was not added"
-msgstr ""
+msgstr "Záznam nebyl přidán"
 
 #: ../src/classes/DataSource.php:155
+#, fuzzy
 msgid "Record was updated"
-msgstr ""
+msgstr "Uchovat záznam"
 
 #: ../src/classes/DataSource.php:158
+#, fuzzy
 msgid "Record update failed"
-msgstr ""
+msgstr "Uchovat záznam"
 
 #: ../src/classes/Flexplorer.php:125
-#, php-format
+#, fuzzy, php-format
 msgid "Unserialization error %s #%s "
-msgstr ""
+msgstr "Nová registrace na %s"
 
 #: ../src/classes/Searcher.php:109
 msgid "No search results"
-msgstr ""
+msgstr "Žádné výsledky vyhledávání"
 
 #: ../src/classes/User.php:65
+#, fuzzy
 msgid "Login Failed"
-msgstr ""
+msgstr "Přihlašovací jeméno"
 
 #: ../src/classes/User.php:98
 msgid "Loading evidence list failed"
-msgstr ""
+msgstr "Načítání evidence se nezdařilo"
 
 #: ../src/classes/ui/BootstrapMenu.php:43
 #: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:46
 #: ../src/login.php:60
+#, fuzzy
 msgid "Sign in"
-msgstr ""
+msgstr "Přihlášení"
 
 #: ../src/classes/ui/BootstrapMenu.php:46
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 #: ../src/classes/ui/BootstrapMenu.php:47
+#, fuzzy
 msgid "login"
-msgstr ""
+msgstr "Přihlašovací jeméno"
 
 #: ../src/classes/ui/BootstrapMenu.php:48 ../src/login.php:73
+#, fuzzy
 msgid "Password"
-msgstr ""
+msgstr "Heslo"
 
 #: ../src/classes/ui/BootstrapMenu.php:50
+#, fuzzy
 msgid "Remeber me"
-msgstr ""
+msgstr "Napiš mi"
 
 #: ../src/classes/ui/BootstrapMenu.php:59 ../src/settings.php:20
+#, fuzzy
 msgid "Settings"
-msgstr ""
+msgstr "Nastavení"
 
 #: ../src/classes/ui/BootstrapMenu.php:63
+#, fuzzy
 msgid "About"
-msgstr ""
+msgstr "O Aplikaci"
 
 #: ../src/classes/ui/BootstrapMenu.php:65
+#, fuzzy
 msgid "Sign off"
-msgstr ""
+msgstr "Odhlášení"
 
 #: ../src/classes/ui/BootstrapMenu.php:80
+#, fuzzy
 msgid "Click to hide messages"
-msgstr ""
+msgstr "Klikni pro skrytí"
 
 #: ../src/classes/ui/ColumnsForm.php:102
 msgid "Save"
-msgstr ""
+msgstr "Ulož"
 
 #: ../src/classes/ui/ColumnsForm.php:112
+#, fuzzy
 msgid "Save & go to listing"
-msgstr ""
+msgstr "Výpis"
 
 #: ../src/classes/ui/ColumnsForm.php:121
 msgid "Save and next"
-msgstr ""
+msgstr "Ulož & další"
 
 #: ../src/classes/ui/DataGrid.php:99
 msgid "Json"
-msgstr ""
+msgstr "Json"
 
 #: ../src/classes/ui/DataGrid.php:107
 msgid "Add"
-msgstr ""
+msgstr "Přidej"
 
 #: ../src/classes/ui/DataGrid.php:110
+#, fuzzy
 msgid "Edit"
-msgstr ""
+msgstr "Uprav obsah"
 
 #: ../src/classes/ui/DataGrid.php:113
+#, fuzzy
 msgid "Delete"
-msgstr ""
+msgstr "Smazat"
 
 #: ../src/classes/ui/DataGrid.php:184
+#, fuzzy
 msgid "Title missing"
-msgstr ""
+msgstr "Nadpis"
 
 #: ../src/classes/ui/DataGrid.php:287 ../src/classes/ui/DataGrid.php:325
 #: ../src/classes/ui/DataGrid.php:370
 msgid "Please mark some rows"
-msgstr ""
+msgstr "Prosím označ nejaké řádkz"
 
 #: ../src/classes/ui/Editor.php:35
 msgid "Save to FlexiBee"
-msgstr ""
+msgstr "Uložit do FlexiBee"
 
 #: ../src/classes/ui/Editor.php:35
+#, fuzzy
 msgid "Show in editor"
-msgstr ""
+msgstr "Editor"
 
 #: ../src/classes/ui/Editor.php:36 ../src/classes/ui/Editor.php:191
+#, fuzzy
 msgid "OK"
 msgstr ""
+"Vstupuješ na stránky obsahující  konopný obsah. Stiskem tlačítka OK "
+"stvrzuješ, že:"
 
 #: ../src/classes/ui/Editor.php:51
+#, fuzzy
 msgid "Required"
-msgstr ""
+msgstr "Kukís jsou vyžadovány"
 
 #: ../src/classes/ui/Editor.php:94
+#, fuzzy
 msgid "Edit targeted record"
-msgstr ""
+msgstr "Uprav obsah"
 
 #: ../src/classes/ui/Editor.php:118
 #, php-format
 msgid "Unknown type of data %s"
-msgstr ""
+msgstr "Neznámý typ dat %s "
 
 #: ../src/classes/ui/Editor.php:128 ../src/classes/ui/Editor.php:130
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: ../src/classes/ui/Editor.php:164
 msgid "Columns"
-msgstr ""
+msgstr "Sloupečky"
 
 #: ../src/classes/ui/Editor.php:165 ../src/classes/ui/Editor.php:189
 msgid "External IDs"
-msgstr ""
+msgstr "Externí IDčka"
 
 #: ../src/classes/ui/Editor.php:186
+#, fuzzy
 msgid "New"
-msgstr ""
+msgstr "Nové heslo"
 
 #: ../src/classes/ui/MainMenu.php:96
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 #: ../src/classes/ui/MainMenu.php:106 ../src/evidence.php:44
 #: ../src/fakechange.php:71
 msgid "Evidence"
-msgstr ""
+msgstr "Evidence"
 
 #: ../src/classes/ui/MainMenu.php:111
 msgid "Tools"
-msgstr ""
+msgstr "Nástroje"
 
 #: ../src/classes/ui/MainMenu.php:113 ../src/evidence.php:54
-#: ../src/query.php:45 ../src/viewevidence.php:46
+#: ../src/query.php:45
 msgid "Query"
-msgstr ""
+msgstr "Dotaz"
 
 #: ../src/classes/ui/MainMenu.php:115 ../src/fakechange.php:53
+#, fuzzy
 msgid "WebHook test"
-msgstr ""
+msgstr "Přeskoč test URL"
 
 #: ../src/classes/ui/MainMenu.php:116 ../src/ucetniobdobi.php:35
 msgid "Accounting period"
-msgstr ""
+msgstr "Účetní období"
 
 #: ../src/classes/ui/NavBarSearchBox.php:37
 #: ../src/classes/ui/NavBarSearchBox.php:47
 msgid "Search"
-msgstr ""
+msgstr "Hledání"
 
 #: ../src/classes/ui/NavBarSearchBox.php:43
 msgid "Close"
-msgstr ""
+msgstr "Zavřít"
 
 #: ../src/classes/ui/PageBottom.php:28
 msgid "Sources"
-msgstr ""
+msgstr "Zdrojáky"
 
 #: ../src/classes/ui/PageBottom.php:38
 msgid "Support"
-msgstr ""
+msgstr "Podpora"
 
 #: ../src/classes/ui/PageBottom.php:46
 msgid "Services"
-msgstr ""
+msgstr "Služby"
 
 #: ../src/classes/ui/PageBottom.php:54
 msgid "Docs"
-msgstr ""
+msgstr "Dokumentace"
 
 #: ../src/classes/ui/PageBottom.php:60
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #: ../src/classes/ui/PageBottom.php:63
 msgid "Vitex Software"
-msgstr ""
+msgstr "Vitex Software"
 
 #: ../src/classes/ui/PageBottom.php:66
 msgid "Sponsored by"
-msgstr ""
+msgstr "Sponzorováno"
 
 #: ../src/classes/ui/PageBottom.php:69
 msgid "Spoje.Net"
-msgstr ""
+msgstr "Spoje.Net"
 
 #: ../src/classes/ui/PageBottom.php:79
 msgid "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
-msgstr ""
+msgstr "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 
-#: ../src/classes/ui/RecieveResponse.php:45
-msgid "Dotaz nebyl zatím odeslán"
-msgstr ""
+#: ../src/classes/ui/RecieveResponse.php:69
+msgid "Query does not sent yet"
+msgstr "Dotaz nebyl zatím odeslán"
 
 #: ../src/classes/ui/SendForm.php:30
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: ../src/classes/ui/SendForm.php:33
 msgid "URL Compositon"
-msgstr ""
+msgstr "Skládání URL"
 
 #: ../src/classes/ui/SendForm.php:35
 msgid "Query body"
-msgstr ""
+msgstr "Tělo dotazu"
 
 #: ../src/classes/ui/SendForm.php:38
 msgid "Method"
-msgstr ""
+msgstr "Metoda"
 
 #: ../src/classes/ui/SendForm.php:40
 msgid "Supported HTTP Operations"
-msgstr ""
+msgstr "Podporované HTTP Operace"
 
 #: ../src/classes/ui/SendForm.php:41 ../src/fakechange.php:98
 msgid "Send"
-msgstr ""
+msgstr "Odešli"
 
 #: ../src/classes/ui/TWBSwitch.php:28
 msgid "Yes"
-msgstr ""
+msgstr "Ano"
 
 #: ../src/classes/ui/TWBSwitch.php:31
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 #: ../src/classes/ui/WebPage.php:68
 msgid "Please sign in as admin first"
-msgstr ""
+msgstr "Nejprve se prosím přihlaš jako admin"
 
 #: ../src/delete.php:32
+#, fuzzy
 msgid "Record was deleted"
-msgstr ""
+msgstr "Zpráva byla smazána"
 
 #: ../src/delete.php:35
+#, fuzzy
 msgid "Record was not deleted"
-msgstr ""
+msgstr "Zpráva byla smazána"
 
 #: ../src/delete.php:42
+#, fuzzy
 msgid "Record Delete"
-msgstr ""
+msgstr "Smazat"
 
 #: ../src/delete.php:48
 msgid "Keep record"
-msgstr ""
+msgstr "Uchovat záznam"
 
 #: ../src/delete.php:52
+#, fuzzy
 msgid "Delete record"
-msgstr ""
+msgstr "Smazat"
 
 #: ../src/editor.php:25
+#, fuzzy
 msgid "New record"
-msgstr ""
+msgstr "Nové heslo"
 
 #: ../src/editor.php:39
+#, fuzzy
 msgid "Record was saved"
-msgstr ""
+msgstr "Vzkaz byl uložen"
 
 #: ../src/editor.php:41
+#, fuzzy
 msgid "Record was not saved"
-msgstr ""
+msgstr "Vzkaz byl uložen"
 
 #: ../src/editor.php:46
+#, fuzzy
 msgid "Editor"
-msgstr ""
+msgstr "Editor"
 
 #: ../src/evidence.php:35
-#, php-format
+#, fuzzy, php-format
 msgid "Evidence %s"
-msgstr ""
+msgstr "Nová registrace na %s"
 
-#: ../src/evidence.php:43 ../src/viewevidence.php:31
+#: ../src/evidence.php:43
 msgid "Listing"
-msgstr ""
+msgstr "Výpis"
 
-#: ../src/evidence.php:45 ../src/viewevidence.php:32
+#: ../src/evidence.php:45
 msgid "Structure"
-msgstr ""
+msgstr "Struktura"
 
 #: ../src/evidence.php:55
+#, fuzzy
 msgid "User Query"
-msgstr ""
+msgstr "Profil uživatele"
 
 #: ../src/evidence.php:60
 msgid "Items overview"
-msgstr ""
+msgstr "Přehled položek"
 
 #: ../src/fakechange.php:36
 msgid "WebHook successfully triggered"
@@ -474,31 +509,34 @@ msgstr ""
 
 #: ../src/fakechange.php:76
 msgid "Operation"
-msgstr ""
+msgstr "Operace"
 
 #: ../src/fakechange.php:79
+#, fuzzy
 msgid "Record number"
-msgstr ""
+msgstr "Uchovat záznam"
 
 #: ../src/fakechange.php:79
 msgid "Internal number of record edited"
-msgstr ""
+msgstr "Vnitřní číslo upravovaného záznamu"
 
 #: ../src/fakechange.php:82
 msgid "External number"
-msgstr ""
+msgstr "Externí číslo"
 
 #: ../src/fakechange.php:82
 msgid "External number of record edited"
-msgstr ""
+msgstr "Externí číslo upravovaného záznamu"
 
 #: ../src/fakechange.php:85
+#, fuzzy
 msgid "Build change"
-msgstr ""
+msgstr "Změna hesla"
 
 #: ../src/fakechange.php:92
+#, fuzzy
 msgid "Choose Registered"
-msgstr ""
+msgstr "Hook %s byl registrován"
 
 #: ../src/fakechange.php:94
 msgid ""
@@ -506,13 +544,13 @@ msgid ""
 "registered URL"
 msgstr ""
 
-#: ../src/fakechange.php:119 ../src/query.php:55
+#: ../src/fakechange.php:119 ../src/query.php:53
 msgid "Response"
-msgstr ""
+msgstr "Odpověď"
 
 #: ../src/fakechange.php:121 ../src/query.php:49
 msgid "Request"
-msgstr ""
+msgstr "Požadavek"
 
 #: ../src/fakechange.php:123
 msgid "WebHook probe"
@@ -520,64 +558,71 @@ msgstr ""
 
 #: ../src/index.php:18 ../src/index.php:20
 msgid "FlexiBee info"
-msgstr ""
+msgstr "FlexiBee info"
 
 #: ../src/login.php:32
 msgid "Signed in as: "
-msgstr ""
+msgstr "Přihlášen jako: "
 
 #: ../src/login.php:42
+#, fuzzy
 msgid "Please confirm your login credentials"
-msgstr ""
+msgstr "Prosím zadej jméno a heslo"
 
 #: ../src/login.php:56
+#, fuzzy
 msgid "Welcome"
-msgstr ""
+msgstr "Vítejte u Skeliho"
 
 #: ../src/login.php:64
 msgid "FlexiBee"
-msgstr ""
+msgstr "FlexiBee"
 
 #: ../src/login.php:68
 msgid "FlexiBee server URL. ex.: https://localhost:5434"
-msgstr ""
+msgstr "FlexiBee servr URL. např.: https://localhost:5434"
 
 #: ../src/login.php:69
+#, fuzzy
 msgid "User name"
-msgstr ""
+msgstr "Jméno"
 
 #: ../src/login.php:72
+#, fuzzy
 msgid "Login name"
-msgstr ""
+msgstr "Jméno"
 
 #: ../src/login.php:76
+#, fuzzy
 msgid "User's password"
-msgstr ""
+msgstr "Změna hesla uživatele"
 
 #: ../src/logout.php:29
+#, fuzzy
 msgid "Sign out"
-msgstr ""
+msgstr "Přihlášení"
 
 #: ../src/logout.php:33
 msgid "Thank you for your patronage and look forward to another visit"
 msgstr ""
 
 #: ../src/main.php:19
+#, fuzzy
 msgid "Main Page"
-msgstr ""
+msgstr "Neprohlížím tuto stránku na veřejnosti"
 
 #: ../src/query.php:50
 msgid "Custom request"
-msgstr ""
+msgstr "Uživatelský požadavek"
 
 #: ../src/search.php:24
 msgid "Search results"
 msgstr ""
 
 #: ../src/search.php:53
-#, php-format
+#, fuzzy, php-format
 msgid "Search for %s results in %s"
-msgstr ""
+msgstr "Nová registrace na %s"
 
 #: ../src/settings.php:16
 msgid "History empty"
@@ -597,69 +642,62 @@ msgstr ""
 
 #: ../src/ucetniobdobi.php:41
 msgid "From Year"
-msgstr ""
+msgstr "Od roku"
 
 #: ../src/ucetniobdobi.php:44
 msgid "To Year"
-msgstr ""
+msgstr "Do roku"
 
 #: ../src/ucetniobdobi.php:62
+#, fuzzy
 msgid "Registered Accounting periods"
-msgstr ""
+msgstr "Hook %s byl registrován"
 
 #: ../src/ucetniobdobi.php:66
 msgid "Tool for massive creating Accounting periods"
 msgstr ""
 
-#: ../src/viewevidence.php:24
-msgid "Evidence proprties overview"
-msgstr ""
+#~ msgid "Flexplorer"
+#~ msgstr "Flexplorer"
 
-#: ../src/viewevidence.php:47
-msgid "Custom query"
-msgstr ""
+#~ msgid "Evidence properties overview"
+#~ msgstr "Evidence properties overview"
 
-msgid "Flexplorer"
-msgstr "Flexplorer"
-
-msgid "Evidence properties overview"
-msgstr "Evidence properties overview"
-
-msgid "Nothig here yet"
-msgstr "Nothig here yet"
+#~ msgid "Nothig here yet"
+#~ msgstr "Nothig here yet"
 
 #, fuzzy
-msgid "Záznam nebyl uložen"
-msgstr "Dotaz nebyl zatím odeslán"
+#~ msgid "Záznam nebyl uložen"
+#~ msgstr "Dotaz nebyl zatím odeslán"
 
 #, fuzzy
-msgid "Struktura"
-msgstr "Structure"
+#~ msgid "Struktura"
+#~ msgstr "Structure"
 
 #, fuzzy
-msgid "Rok nebyl odregistrován"
-msgstr "Dotaz nebyl zatím odeslán"
+#~ msgid "Rok nebyl odregistrován"
+#~ msgstr "Dotaz nebyl zatím odeslán"
 
 #, fuzzy
-msgid "Přeskočit test URL"
-msgstr "Test"
+#~ msgid "Přeskočit test URL"
+#~ msgstr "Test"
 
 #, fuzzy
-msgid "Evidence [roprties overview"
-msgstr "Evidence properties overview"
+#~ msgid "Evidence [roprties overview"
+#~ msgstr "Evidence properties overview"
 
 #, fuzzy
-msgid "Test Web Hooku"
-msgstr "Test"
+#~ msgid "Test Web Hooku"
+#~ msgstr "Test"
 
 #, fuzzy
-msgid "Přehled vlastností evidence"
-msgstr "Evidence"
+#~ msgid "Přehled vlastností evidence"
+#~ msgstr "Evidence"
 
 #, fuzzy
-msgid "Dotaz"
-msgstr "Dotaz nebyl zatím odeslán"
+#~ msgid "Dotaz"
+#~ msgstr "Dotaz nebyl zatím odeslán"
 
 #, fuzzy
-msgid "Uložit do FlexiBee"
-msgstr "FlexiBee"
+#~ msgid "Uložit do FlexiBee"
+#~ msgstr "FlexiBee"

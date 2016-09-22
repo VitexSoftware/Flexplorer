@@ -66,7 +66,7 @@ class RecieveResponse extends \Ease\Html\Div
   });');
         } else {
             $this->addItem(new \Ease\TWB\Label('info',
-                _('Dotaz nebyl zatím odeslán')));
+                _('Query does not sent yet')));
         }
     }
 
