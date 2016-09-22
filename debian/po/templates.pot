@@ -1,0 +1,91 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: flexplorer\n"
+"Report-Msgid-Bugs-To: flexplorer@packages.debian.org\n"
+"POT-Creation-Date: 2016-09-22 16:29+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Default
+#: ../templates:1001
+msgid "https://demo.flexibee.eu"
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../templates:1002
+msgid "FlexiBee API URL:"
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../templates:1002
+msgid ""
+"URL with protocol, hostname and optional port ( https://localhost:5434 )"
+msgstr ""
+
+#. Type: string
+#. Default
+#: ../templates:2001
+msgid "winstorm"
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../templates:2002
+msgid "FlexiBee API Username:"
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../templates:2002
+msgid "User with prermisson to use REST API"
+msgstr ""
+
+#. Type: string
+#. Default
+#: ../templates:3001
+msgid "winstrom"
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../templates:3002
+msgid "FlexiBee API password:"
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../templates:3002
+msgid "Password for user with prermisson to use REST API"
+msgstr ""
+
+#. Type: string
+#. Default
+#: ../templates:4001
+msgid "demo"
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid "Selected company:"
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid "First company opened by default"
+msgstr ""

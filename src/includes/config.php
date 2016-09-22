@@ -1,15 +1,16 @@
 <?php
 /**
- * System.Spoje.Net - Konfigurace aplikace.
+ * Flexplorer - Application config file.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  2015 Spoje.Net
+ * @copyright  2016 Spoje.Net
  */
 define('LOG_NAME', 'Flexplorer');
 define('LOG_TYPE', 'syslog');
 
 /*
  * Výchozí odesilatel zpráv
+ * Default mail sender
  */
 define('EMAIL_FROM', 'flexplorer@localhost');
 

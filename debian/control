@@ -1,5 +1,5 @@
 Source: flexplorer
-Build-Depends: debhelper (>= 7.0.50~)
+Build-Depends: debhelper (>= 7.0.50~),po-debconf
 Standards-Version: 3.8.4
 Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
 Uploaders: Vitex <vitex@hippy.cz>

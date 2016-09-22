@@ -1,0 +1,22 @@
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
+db_version 2.0
+
+
+# FlexiBee URL
+db_input high flexplorer/FLEXIBEE_URL || true
+db_go
+
+# FlexiBee API login
+db_input high flexplorer/FLEXIBEE_LOGIN || true
+db_go
+
+# FlexiBee API password
+db_input high flexplorer/FLEXIBEE_PASSWORD || true
+db_go
+
+# FlexiBee API password
+db_input medium flexplorer/FLEXIBEE_COMPANY || true
+db_go
+

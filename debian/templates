@@ -1,0 +1,23 @@
+Template: flexplorer/FLEXIBEE_URL
+Type: string
+_Default: https://demo.flexibee.eu
+_Description: FlexiBee API URL:
+ URL with protocol, hostname and optional port ( https://localhost:5434 )
+
+Template: flexplorer/FLEXIBEE_LOGIN
+Type: string
+_Default: winstorm
+_Description: FlexiBee API Username:
+ User with prermisson to use REST API
+
+Template: flexplorer/FLEXIBEE_PASSWORD
+Type: string
+_Default: winstrom
+_Description: FlexiBee API password:
+ Password for user with prermisson to use REST API
+
+Template: flexplorer/FLEXIBEE_COMPANY
+Type: string
+_Default: demo
+_Description: Selected company:
+ First company opened by default

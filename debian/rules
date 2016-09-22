@@ -8,3 +8,7 @@ override_dh_install:
 	sed -i -e 's/..\//.\//g' debian/flexplorer/usr/share/flexplorer/about.php
 	sed -i -e 's/..\/vendor/\/var\/lib\/flexplorer/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
 	sed -i -e 's/..\/i18n/\/usr\/share\/locale/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
+
+override_dh_clean:
+	debconf-updatepo
+	dh_clean

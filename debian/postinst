@@ -26,6 +26,18 @@ apache_install() {
 
     . /usr/share/debconf/confmodule
 
+    db_get flexplorer/FLEXIBEE_URL
+    sed -i "/DEFAULT_FLEXIBEE_URL/c\define('DEFAULT_FLEXIBEE_URL', '${RET}');" /usr/share/flexplorer/includes/config.php
+
+    db_get flexplorer/FLEXIBEE_LOGIN
+    sed -i "/DEFAULT_FLEXIBEE_LOGIN/c\define('DEFAULT_FLEXIBEE_LOGIN', '${RET}');" /usr/share/flexplorer/includes/config.php
+
+    db_get flexplorer/FLEXIBEE_PASSWORD
+    sed -i "/DEFAULT_FLEXIBEE_PASSWORD/c\define('DEFAULT_FLEXIBEE_PASSWORD', '${RET}');" /usr/share/flexplorer/includes/config.php
+
+    db_get flexplorer/FLEXIBEE_COMPANY
+    sed -i "/DEFAULT_FLEXIBEE_COMPANY/c\define('DEFAULT_FLEXIBEE_COMPANY', '${RET}');" /usr/share/flexplorer/includes/config.php
+
             apache_install $1
                     # Reload webserver in any case, configuration might have changed
                     # Redirection of 3 is needed because Debconf uses it and it might 

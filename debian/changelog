@@ -1,4 +1,4 @@
-flexplorer (0.8.2-2) UNRELEASED; urgency=medium
+flexplorer (0.8.2-6) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -80,5 +80,11 @@ flexplorer (0.8.2-2) UNRELEASED; urgency=medium
   * Update to current FlexiPeeHP Added Browsing history
   * Show links to referenced evidencies in json listing Update to
     Current EaseFramework
+  * Show json operation in datagrid show json
+  * Show json operation in datagrid show json
+  * Show json operation in datagrid show json
+  * Show json operation in datagrid show json
+  * Show json operation in datagrid show json
+  * Show json operation in datagrid show json
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 21 Sep 2016 15:57:57 +0200
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Thu, 22 Sep 2016 16:19:40 +0200
