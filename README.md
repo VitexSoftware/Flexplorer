@@ -83,6 +83,8 @@ Poté budou zobrazeny dialogy pro zadání výchozího serveru, jména a hesla.
 Takto zadané údaje budou zapsány do konfiguráku aplikace a nabízeny jako 
 předvyplněné.
 
+![Debian Configure](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/flexplorer-debian-configure.png "Konfigurace v Debianu")
+
 Po instalaci balíčku a reloadu webserveru bude aplikace nainstalována do složky 
 /usr/share/flexplorer a dostupná jako http://localhost/flexplorer/ 
 ( konfigurováno v  /etc/apache2/conf-enabled/flexplorer.conf ) 
