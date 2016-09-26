@@ -6,7 +6,7 @@ _Description: FlexiBee API URL:
 
 Template: flexplorer/FLEXIBEE_LOGIN
 Type: string
-_Default: winstorm
+_Default: winstrom
 _Description: FlexiBee API Username:
  User with prermisson to use REST API
 

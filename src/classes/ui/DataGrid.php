@@ -13,7 +13,7 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class DataGrid extends \Ease\DataGrid
+class DataGrid extends \Ease\Html\TableTag
 {
     /**
      * Extra filtr výsledků
