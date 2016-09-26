@@ -13,7 +13,7 @@ Umožňuje:
   * Test odpovědi WebHook skriptu zpracovávajícího změny z FlexiBee
   * Hromadně zakládat účetní období   
 
-[![Source Code](http://img.shields.io/badge/source/VitexSoftware/Flexplorer-blue.svg?style=flat-square)](https://github.com/VitexSoftware/Flexplorer)
+[![Source Code](http://img.shields.io/badge/source-VitexSoftware/Flexplorer-blue.svg?style=flat-square)](https://github.com/VitexSoftware/Flexplorer)
 [![Latest Version](https://img.shields.io/github/release/VitexSoftware/Flexplorer.svg?style=flat-square)](https://github.com/VitexSoftware/Flexplorer/releases)
 [![Software License](https://img.shields.io/badge/license-GNU-brightgreen.svg?style=flat-square)](https://github.com/VitexSoftware/Flexplorer/blob/master/LICENSE)
 [![Build Status](https://img.shields.io/travis/VitexSoftware/Flexplorer/master.svg?style=flat-square)](https://travis-ci.org/VitexSoftware/Flexplorer)
@@ -72,7 +72,7 @@ Vyhledávat je také možné v názvech sloupců jednotlivých evidencí a jejic
 Instalace
 ---------
 
-Pro Debian prosím použijte [repozitář](http://vitexsoftware.cz/repos.php):
+Pro Debian či Ubuntu prosím použijte [repozitář](http://vitexsoftware.cz/repos.php):
 
     wget -O - http://v.s.cz/info@vitexsoftware.cz.gpg.key|sudo apt-key add -
     echo deb http://v.s.cz/ stable main > /etc/apt/sources.list.d/vitexsoftware.list
