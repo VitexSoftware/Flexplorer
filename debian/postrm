@@ -1,0 +1,17 @@
+#!/bin/sh
+# postrm script for flexplorer
+
+set -e
+
+if [ -f /usr/share/flexplorer/composer.lock ] ; then
+    rm -f /usr/share/flexplorer/composer.lock
+fi
+
+if [ -f /var/lib/flexplorer/autoload.php ] ; then
+    rm -rf /var/lib/flexplorer/
+fi
+
+
+#DEBHELPER#
+
+exit 0

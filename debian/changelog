@@ -1,4 +1,4 @@
-flexplorer (0.8.2-7) UNRELEASED; urgency=medium
+flexplorer (0.8.5-3) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -88,4 +88,12 @@ flexplorer (0.8.2-7) UNRELEASED; urgency=medium
   * Show json operation in datagrid show json
   * Added Dialogs for set up default connection in debian package.
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Thu, 22 Sep 2016 16:42:35 +0200
+  [ Vítězslav Dvořák ]
+  * Czech localisation update
+  * Czech localisation update
+  * Czech localisation update
+  * Czech localisation update
+  * Czech localisation update
+  * Czech localisation update
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Mon, 26 Sep 2016 01:55:52 +0200

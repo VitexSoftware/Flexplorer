@@ -29,7 +29,8 @@ class BootstrapMenu extends \Ease\TWB\Navbar
     {
         parent::__construct('Menu',
             new \Ease\Html\ImgTag('images/flexplorer-logo.png', 'Flexplorer',
-            24, 24, ['class' => 'img-rounded']), ['class' => 'navbar-fixed-top']);
+            ['class' => 'img-rounded', 'width' => 24]),
+            ['class' => 'navbar-fixed-top']);
 
         $user = \Ease\Shared::user();
         \Ease\TWB\Part::twBootstrapize();

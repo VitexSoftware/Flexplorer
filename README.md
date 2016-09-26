@@ -91,6 +91,15 @@ Po instalaci balíčku a reloadu webserveru bude aplikace nainstalována do slo�
 Pokud je nainstalován démon avahi, bude tento propagovat aplikaci jako službu.
 Aplikaci je pak možné spustit z nabídky programů v sekci "programování"
 
+Vagrant
+-------
+K dispozici je také konfigurace pro Vagrant. Po doběhnutí příkazu
+
+    vagrant up
+
+bude možné aktuální vývojovou zobrazit na adrese http://localhost:4567/src
+a verzi z nejnovějšího debianího balíčku na adrese http://localhost:4567/flexplorer/
+
 Konfigurace
 -----------
 
