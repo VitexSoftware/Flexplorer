@@ -60,6 +60,14 @@ $overviewUrl = $evobj->getEvidenceUrl().'/properties.html?inDesktopApp=true';
 $tabs->addTab(_('Items overview'),
     new \Ease\Html\IframeTag($overviewUrl,
     ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
+if (strstr($url, '?')) {
+    $overviewUrl = $url.'&inDesktopApp=true';
+} else {
+    $overviewUrl = $url.'?inDesktopApp=true';
+}
+$tabs->addTab(_('FlexiBee'),
+    new \Ease\Html\IframeTag(str_replace('.json', '.html', $overviewUrl),
+    ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
 
 
 $evidenceTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
@@ -88,9 +96,10 @@ if (is_null($myEvidenceRaw)) {
 }
 $evidenceTable->addRowColumns([_('Allowed by license'), $state]);
 
-
-
 $tabs->addTab(_('Info'), $evidenceTable);
+
+
+
 
 $oPage->container->addItem($tabs);
 

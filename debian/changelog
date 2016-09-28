@@ -1,4 +1,4 @@
-flexplorer (0.8.5-5) UNRELEASED; urgency=medium
+flexplorer (0.8.5-6) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -101,5 +101,6 @@ flexplorer (0.8.5-5) UNRELEASED; urgency=medium
     status
   * Evidencies overview page with paths module availbility by license
     status
+  * Evidencie page get new info tab with availbility by license status
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 28 Sep 2016 16:56:24 +0200
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 28 Sep 2016 21:17:41 +0200
