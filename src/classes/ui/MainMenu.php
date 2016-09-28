@@ -100,7 +100,8 @@ class MainMenu extends \Ease\Html\Div
                     define('FLEXIBEE_COMPANY', $_SESSION['company']);
                 }
 
-                $evidenciesToMenu = $_SESSION['evidence-menu'];
+                $evidenciesToMenu = array_merge(['evidences.php' => _('Overview')],
+                    [''], $_SESSION['evidence-menu']);
 
                 if (count($evidenciesToMenu)) {
                     $nav->addDropDownMenu(_('Evidence'), $evidenciesToMenu);

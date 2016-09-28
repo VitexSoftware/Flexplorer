@@ -24,6 +24,7 @@ if ($oUser->getUserID()) {
     $messagesBackup = $oUser->getStatusMessages(true);
     \Ease\Shared::user(new \Ease\Anonym());
     $oUser->addStatusMessages($messagesBackup);
+    ui\WebPage::redirect('login.php');
 }
 
 $oPage->addItem(new ui\PageTop(_('Sign out')));

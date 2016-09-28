@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-09-21 13:46+0100\n"
-"PO-Revision-Date: 2016-09-21 13:46+0100\n"
+"POT-Creation-Date: 2016-09-28 14:30+0100\n"
+"PO-Revision-Date: 2016-09-28 14:31+0100\n"
 "Last-Translator: Vítězslav Dvořák <vitex@arachne.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: en\n"
@@ -19,6 +19,10 @@ msgstr ""
 #: ../src/about.php:14
 msgid "About application"
 msgstr "About application"
+
+#: ../src/about.php:16
+msgid "Used Libraries"
+msgstr "Used Libraries"
 
 #: ../src/changesapi.php:26
 msgid "ChangesAPI was enabled"
@@ -66,7 +70,7 @@ msgstr "Enable"
 msgid "Disable"
 msgstr "Disable"
 
-#: ../src/changesapi.php:95 ../src/classes/ui/MainMenu.php:114
+#: ../src/changesapi.php:95 ../src/classes/ui/MainMenu.php:115
 msgid "Changes API"
 msgstr "Changes API"
 
@@ -120,8 +124,8 @@ msgstr ""
 "in the range [ 0 , % s ]"
 
 #: ../src/changesapi.php:120
-msgid "Secutity Code"
-msgstr "Secutity Code"
+msgid "Security Code"
+msgstr "Security Code"
 
 #: ../src/changesapi.php:121
 #, php-format
@@ -187,41 +191,41 @@ msgstr "Login Failed"
 msgid "Loading evidence list failed"
 msgstr "Loading evidence list failed"
 
-#: ../src/classes/ui/BootstrapMenu.php:43
-#: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:46
+#: ../src/classes/ui/BootstrapMenu.php:44
+#: ../src/classes/ui/BootstrapMenu.php:52 ../src/login.php:46
 #: ../src/login.php:60
 msgid "Sign in"
 msgstr "Sign in"
 
-#: ../src/classes/ui/BootstrapMenu.php:46
+#: ../src/classes/ui/BootstrapMenu.php:47
 msgid "Server"
 msgstr "Server"
 
-#: ../src/classes/ui/BootstrapMenu.php:47
+#: ../src/classes/ui/BootstrapMenu.php:48
 msgid "login"
 msgstr "login"
 
-#: ../src/classes/ui/BootstrapMenu.php:48 ../src/login.php:73
+#: ../src/classes/ui/BootstrapMenu.php:49 ../src/login.php:73
 msgid "Password"
 msgstr "Password"
 
-#: ../src/classes/ui/BootstrapMenu.php:50
+#: ../src/classes/ui/BootstrapMenu.php:51
 msgid "Remeber me"
 msgstr "Remeber me"
 
-#: ../src/classes/ui/BootstrapMenu.php:59 ../src/settings.php:20
+#: ../src/classes/ui/BootstrapMenu.php:60 ../src/settings.php:20
 msgid "Settings"
 msgstr "Settings"
 
-#: ../src/classes/ui/BootstrapMenu.php:63
+#: ../src/classes/ui/BootstrapMenu.php:64
 msgid "About"
 msgstr "About"
 
-#: ../src/classes/ui/BootstrapMenu.php:65
+#: ../src/classes/ui/BootstrapMenu.php:66
 msgid "Sign off"
 msgstr "Sign off"
 
-#: ../src/classes/ui/BootstrapMenu.php:80
+#: ../src/classes/ui/BootstrapMenu.php:81
 msgid "Click to hide messages"
 msgstr "Click to hide messages"
 
@@ -307,25 +311,29 @@ msgstr "New"
 msgid "Company"
 msgstr "Company"
 
-#: ../src/classes/ui/MainMenu.php:106 ../src/evidence.php:44
+#: ../src/classes/ui/MainMenu.php:103
+msgid "Overview"
+msgstr "Overview"
+
+#: ../src/classes/ui/MainMenu.php:107 ../src/evidence.php:44
 #: ../src/fakechange.php:71
 msgid "Evidence"
 msgstr "Evidence"
 
-#: ../src/classes/ui/MainMenu.php:111
+#: ../src/classes/ui/MainMenu.php:112
 msgid "Tools"
 msgstr "Tools"
 
-#: ../src/classes/ui/MainMenu.php:113 ../src/evidence.php:54
+#: ../src/classes/ui/MainMenu.php:114 ../src/evidence.php:54
 #: ../src/query.php:45 ../src/viewevidence.php:46
 msgid "Query"
 msgstr "Query"
 
-#: ../src/classes/ui/MainMenu.php:115 ../src/fakechange.php:53
+#: ../src/classes/ui/MainMenu.php:116 ../src/fakechange.php:53
 msgid "WebHook test"
 msgstr "WebHook test"
 
-#: ../src/classes/ui/MainMenu.php:116 ../src/ucetniobdobi.php:35
+#: ../src/classes/ui/MainMenu.php:117 ../src/ucetniobdobi.php:35
 msgid "Accounting period"
 msgstr "Accounting period"
 
@@ -374,9 +382,9 @@ msgstr "Spoje.Net"
 msgid "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 msgstr "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 
-#: ../src/classes/ui/RecieveResponse.php:45
-msgid "Dotaz nebyl zatím odeslán"
-msgstr "Dotaz nebyl zatím odeslán"
+#: ../src/classes/ui/RecieveResponse.php:69
+msgid "Query does not sent yet"
+msgstr "Query does not sent yet"
 
 #: ../src/classes/ui/SendForm.php:30
 msgid "URL"
@@ -471,6 +479,10 @@ msgstr "User Query"
 msgid "Items overview"
 msgstr "Items overview"
 
+#: ../src/evidences.php:18
+msgid "Evidences"
+msgstr "Evidences"
+
 #: ../src/fakechange.php:36
 msgid "WebHook successfully triggered"
 msgstr "WebHook successfully triggered"
@@ -519,7 +531,7 @@ msgstr ""
 "When the database FlexiBee is changed the POST HTTP request sent to all "
 "registered URL"
 
-#: ../src/fakechange.php:119 ../src/query.php:55
+#: ../src/fakechange.php:119 ../src/query.php:53
 msgid "Response"
 msgstr "Response"
 
@@ -631,6 +643,9 @@ msgstr "Evidence proprties overview"
 #: ../src/viewevidence.php:47
 msgid "Custom query"
 msgstr "Custom query"
+
+#~ msgid "Dotaz nebyl zatím odeslán"
+#~ msgstr "Dotaz nebyl zatím odeslán"
 
 #~ msgid "Flexplorer"
 #~ msgstr "Flexplorer"
