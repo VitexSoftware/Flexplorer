@@ -6,12 +6,15 @@ Flexplorer
 Vývojářský nástroj pro FlexiBee API/JSON. Napsaný s využitím knihovny [FlexiPeeHP](https://github.com/Spoje-NET/FlexiPeeHP)
 Umožňuje:
 
-  * zobrazovat obsah všech dostpných evidencí ve všech firmách
+  * zobrazovat obsah všech dostupných evidencí ve všech firmách
   * zobrazovat strukturu evidence
   * odesílat přímé požadavky na server a zobrazovat výsledky
   * Nastavovat ChangesAPI a přidávat WebHooks
   * Test odpovědi WebHook skriptu zpracovávajícího změny z FlexiBee
-  * Hromadně zakládat účetní období   
+  * Hromadně zakládat účetní období
+  * Rozlišit evidnece které jsou z důvodu licence nedostupné
+  * Zobrazovat vedle json výsledku požadavku i stránku z FlexiBee
+  * Upravovat Externí ID záznamů
 
 [![Source Code](http://img.shields.io/badge/source-VitexSoftware/Flexplorer-blue.svg?style=flat-square)](https://github.com/VitexSoftware/Flexplorer)
 [![Latest Version](https://img.shields.io/github/release/VitexSoftware/Flexplorer.svg?style=flat-square)](https://github.com/VitexSoftware/Flexplorer/releases)
