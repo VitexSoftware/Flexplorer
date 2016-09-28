@@ -61,6 +61,37 @@ $tabs->addTab(_('Items overview'),
     new \Ease\Html\IframeTag($overviewUrl,
     ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
 
+
+$evidenceTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
+$evidenceTable->addRowHeaderColumns();
+
+$evidencer = new \FlexiPeeHP\EvidenceList();
+
+$evidenceInfo = \FlexiPeeHP\EvidenceList::$evidences[$evidence];
+
+foreach ($evidenceInfo as $porperty => $propertyData) {
+    $evidenceTable->addRowColumns([$porperty, $propertyData]);
+}
+
+$myEvidenciesRaw = $evidencer->getColumnsFromFlexibee('*');
+$myEvidenceRaw   = null;
+foreach ($myEvidenciesRaw['evidences']['evidence'] as $evidenceUsedInfo) {
+    if ($evidenceUsedInfo['evidencePath'] == $evidence) {
+        $myEvidenceRaw = $evidenceUsedInfo;
+    }
+}
+
+if (is_null($myEvidenceRaw)) {
+    $state = _('no');
+} else {
+    $state = _('yes');
+}
+$evidenceTable->addRowColumns([_('Allowed by license'), $state]);
+
+
+
+$tabs->addTab(_('Info'), $evidenceTable);
+
 $oPage->container->addItem($tabs);
 
 $oPage->addItem(new ui\PageBottom());

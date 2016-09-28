@@ -316,7 +316,7 @@ background: url(images/json.svg) no-repeat center left;
                 $(\'.trSelected\', grid).each(function() {
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    var url =\'jsonor.php?show=restult&query='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id;
+                    var url =\'query.php?show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id;
                     var win = window.open(url, \'_blank\');
                     win.focus();
                 });

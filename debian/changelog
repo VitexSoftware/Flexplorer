@@ -1,4 +1,4 @@
-flexplorer (0.8.5-3) UNRELEASED; urgency=medium
+flexplorer (0.8.5-5) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -96,4 +96,10 @@ flexplorer (0.8.5-3) UNRELEASED; urgency=medium
   * Czech localisation update
   * Czech localisation update
 
- -- Vítězslav Dvořák <info@vitexsoftware.cz>  Mon, 26 Sep 2016 01:55:52 +0200
+  [ vitex ]
+  * Evidencies overview page with paths module availbility by license
+    status
+  * Evidencies overview page with paths module availbility by license
+    status
+
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 28 Sep 2016 16:56:24 +0200
