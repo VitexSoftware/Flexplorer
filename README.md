@@ -91,6 +91,14 @@ Po instalaci balíčku a reloadu webserveru bude aplikace nainstalována do slo�
 Pokud je nainstalován démon avahi, bude tento propagovat aplikaci jako službu.
 Aplikaci je pak možné spustit z nabídky programů v sekci "programování"
 
+Aktualizace
+-----------
+
+Pokud máte balíček nainstalovný ze zdroje aktualizace probíhají tak jak je v debianu zvykem: 
+
+![Debian Upgrade](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/flexplorer-debian-upgrade.png "Aktualizace balíčku")
+
+
 Vagrant
 -------
 K dispozici je také konfigurace pro Vagrant. Po doběhnutí příkazu
