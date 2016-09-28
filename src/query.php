@@ -53,6 +53,14 @@ $requestTabs->addTab(_('Request'),
 $requestTabs->addTab(_('Response'), new ui\RecieveResponse($url),
     $oPage->isPosted() || ($oPage->getRequestValue('show') == 'result'));
 
+if (strstr($url, '?')) {
+    $overviewUrl = $url.'&inDesktopApp=true';
+} else {
+    $overviewUrl = $url.'?inDesktopApp=true';
+}
+$tabs->addTab(_('FlexiBee'),
+    new \Ease\Html\IframeTag(str_replace('.json', '.html', $overviewUrl),
+    ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
 
 $oPage->container->addItem($requestTabs);
 
