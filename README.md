@@ -26,47 +26,47 @@ Vyzkoušejte:
 
 Pro přihlášení se používá jména a hesla uživatele aplikace s oprávněním používat REST API:
 
-![Mobilní přihlášení](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/flexplorer-mobile_login.png "Screenshot přihlášení")
+![Mobilní přihlášení](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-mobile_login.png "Screenshot přihlášení")
 
 FlexPlorer zobrazuje odpověď požadavku:
 
-![Odpověď serveru](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/flexplorer-response_serveru.png "Screenshot odpovědi")
+![Odpověď serveru](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-response_serveru.png "Screenshot odpovědi")
 
 Je možné si zvolit libovolnou evidenci FlexiBee a její obsah si vypsat:
 
-![Výpis evidence](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/flexplorer-vypis_evidence.png "Screenshot výpisu evidence")
+![Výpis evidence](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-vypis_evidence.png "Screenshot výpisu evidence")
 
 Data můžeme editovat a uložit, pokud k tomu má přihlášený uživatel práva:
 
-![Editor Evidence](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/flexplorer-editor-evidence.png "Screenshot Editoru Evidence")
+![Editor Evidence](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-editor-evidence.png "Screenshot Editoru Evidence")
 
 Nad otevřenou evidencí je možné snadno provádět dotazy:
 
-![JSON Editor](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/flexplorer-json-editor.png "Screenshot JSON Editoru")
+![JSON Editor](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-json-editor.png "Screenshot JSON Editoru")
 
 Smazání záznamu z evidence je třeba potvrdit:
 
-![Potvrzení před smazáním](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/flexplorer-potvrzeni-pred-smazanim.png "Přehledu a potvrzení před smazáním záznamu")
+![Potvrzení před smazáním](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-potvrzeni-pred-smazanim.png "Přehledu a potvrzení před smazáním záznamu")
 
 Při testování WebHooku pomůže tento nástroj, který sestaví maketu záznamu ChangesAPI a odešle jí na zvolený WebHook:
 
-![WebHook Request](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/flexplorer-webhook-request.png "Screenshot Požadavku na webhook")
+![WebHook Request](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-webhook-request.png "Screenshot Požadavku na webhook")
 
 Správná je prázdná odpověď. Ačkoliv funguje, tak by se tento skript FlexiBee nelíbil. Zde vidíme co vrací:
 
-![WebHook Response](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/flexplorer-webhook-response.png "Screenshot Odpovědi webhooku")
+![WebHook Response](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-webhook-response.png "Screenshot Odpovědi webhooku")
 
 Pro hledání v evidencích je k dispozici vyhledávací políčko:
 
-![WebHook Response](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/flexplorer-hinter_evidence.png "Našeptávač evidencí")
+![WebHook Response](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-hinter_evidence.png "Našeptávač evidencí")
 
 Po stisku entru se zobrazí podrobnější výsledky:
 
-![WebHook Response](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/flexplorer-nalezene_evidence.png "Nalezené evidence")
+![WebHook Response](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-nalezene_evidence.png "Nalezené evidence")
 
 Vyhledávat je také možné v názvech sloupců jednotlivých evidencí a jejich popiscích:
 
-![Columns Search](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/flexplorer-nalezene_sloupce.png "Nalezené sloupce")
+![Columns Search](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-nalezene_sloupce.png "Nalezené sloupce")
 
 
 Instalace
@@ -83,7 +83,7 @@ Poté budou zobrazeny dialogy pro zadání výchozího serveru, jména a hesla.
 Takto zadané údaje budou zapsány do konfiguráku aplikace a nabízeny jako 
 předvyplněné.
 
-![Debian Configure](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/flexplorer-debian-configure.png "Konfigurace v Debianu")
+![Debian Configure](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-debian-configure.png "Konfigurace v Debianu")
 
 Po instalaci balíčku a reloadu webserveru bude aplikace nainstalována do složky 
 /usr/share/flexplorer a dostupná jako http://localhost/flexplorer/ 
@@ -96,7 +96,7 @@ Aktualizace
 
 Pokud máte balíček nainstalovný ze zdroje aktualizace probíhají tak jak je v debianu zvykem: 
 
-![Debian Upgrade](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/flexplorer-debian-upgrade.png "Aktualizace balíčku")
+![Debian Upgrade](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-debian-upgrade.png "Aktualizace balíčku")
 
 
 Vagrant
