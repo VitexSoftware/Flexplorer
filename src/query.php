@@ -58,7 +58,7 @@ if (strstr($url, '?')) {
 } else {
     $overviewUrl = $url.'?inDesktopApp=true';
 }
-$tabs->addTab(_('FlexiBee'),
+$requestTabs->addTab(_('FlexiBee'),
     new \Ease\Html\IframeTag(str_replace('.json', '.html', $overviewUrl),
     ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
 
