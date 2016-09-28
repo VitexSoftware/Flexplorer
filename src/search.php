@@ -26,7 +26,15 @@ $oPage->addItem(new ui\PageTop(_('Search results')));
 if (strlen($query) > 1) {
     $searcher = new Searcher($evidence);
     $results  = $searcher->searchAll($query);
+
+    if ((count($results) === 1) && (count(current($results)) === 1)) {
+        if (isset($results[key($results)][0]['url'])) {
+            $oPage->redirect($results[key($results)][0]['url']);
+        }
+    }
+
     if (count($results)) {
+
         $resultTables = [];
         foreach ($results as $evidenceName => $evidenceResults) {
             $resultTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
