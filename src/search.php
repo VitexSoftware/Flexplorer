@@ -3,13 +3,11 @@
 namespace Flexplorer;
 
 /**
- * Flexplorer - Hlavní strana.
+ * Flexplorer - Search page.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2016 Vitex Software
  */
-
-namespace Flexplorer;
 
 require_once 'includes/Init.php';
 
@@ -18,10 +16,9 @@ $oPage->onlyForLogged();
 $evidence = $oPage->getRequestValue('evidence');
 $query    = $oPage->getRequestValue('search');
 
+$_SERVER['REQUEST_URI'].='?search='.$query;
 
-
-
-$oPage->addItem(new ui\PageTop(_('Search results')));
+$oPage->addItem(new ui\PageTop(_('Search results').': '.$query));
 
 if (strlen($query) > 1) {
     $searcher = new Searcher($evidence);
@@ -37,6 +34,7 @@ if (strlen($query) > 1) {
 
         $resultTables = [];
         foreach ($results as $evidenceName => $evidenceResults) {
+            $resultTables[] = new \Ease\Html\H3Tag($evidenceName);
             $resultTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
             $columnNames = array_keys(current($evidenceResults));
             if (count($columnNames) > 4) {
@@ -44,16 +42,19 @@ if (strlen($query) > 1) {
                 array_pop($columnNames);
                 array_pop($columnNames);
             }
+            array_pop($columnNames);
             $resultTable->addRowHeaderColumns($columnNames);
             foreach ($evidenceResults as $key => $values) {
                 foreach ($values as $vkey => $vvalue) {
-                    $values[$vkey] = '<a href="'.$values['url'].'">'.$vvalue.'</a>';
+                    $values[$vkey] = '<a href="'.$values['url'].'">'.str_replace($query,
+                            "<strong style=\"background-color: yellow\">$query</strong>",
+                            $vvalue).'</a>';
                 }
                 if (count($columnNames) > 4) {
                     unset($values['what']);
-                    unset($values['url']);
                     unset($values['name']);
                 }
+                unset($values['url']);
                 $resultTable->addRowColumns($values);
             }
             $resultTables[] = $resultTable;
