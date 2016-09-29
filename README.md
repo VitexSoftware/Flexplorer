@@ -11,7 +11,7 @@ Umožňuje:
   * odesílat přímé požadavky na server a zobrazovat výsledky
   * Nastavovat ChangesAPI a přidávat WebHooks
   * Test odpovědi WebHook skriptu zpracovávajícího změny z FlexiBee
-  * Hromadně zakládat účetní období
+  * Hromadně zakládat a rušit účetní období
   * Rozlišit evidnece které jsou z důvodu licence nedostupné
   * Zobrazovat vedle json výsledku požadavku i stránku z FlexiBee
   * Upravovat Externí ID záznamů
@@ -24,8 +24,8 @@ Umožňuje:
 
 Vyzkoušejte: 
 
-  * Vývojová verze: https://vitexsoftware.cz/flexplorer/ 
-  * Stabilní verze: http://flexibee-dev.spoje.net/ 
+  * Stabilní verze: http://flexibee-dev.spoje.net/ (vždy funguje)
+  * Vývojová verze: https://vitexsoftware.cz/flexplorer/ ( poslední novinky )
 
 Pro přihlášení se používá jména a hesla uživatele aplikace s oprávněním používat REST API:
 
@@ -97,7 +97,7 @@ Aplikaci je pak možné spustit z nabídky programů v sekci "programování"
 Aktualizace
 -----------
 
-Pokud máte balíček nainstalovný ze zdroje aktualizace probíhají tak jak je v debianu zvykem: 
+Pokud máte balíček nainstalovný ze zdroje, aktualizace probíhají tak jak je v debianu zvykem: 
 
 ![Debian Upgrade](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-debian-upgrade.png "Aktualizace balíčku")
 
@@ -108,8 +108,8 @@ K dispozici je také konfigurace pro Vagrant. Po doběhnutí příkazu
 
     vagrant up
 
-bude možné aktuální vývojovou zobrazit na adrese http://localhost:4567/src
-a verzi z nejnovějšího debianího balíčku na adrese http://localhost:4567/flexplorer/
+bude možné aktuální vývojovou zobrazit na adrese [http://localhost:4567/src/]
+a verzi z nejnovějšího debianího balíčku na adrese [http://localhost:4567/flexplorer/]
 
 Konfigurace
 -----------

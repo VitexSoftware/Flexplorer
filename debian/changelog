@@ -1,4 +1,4 @@
-flexplorer (0.8.5-9) UNRELEASED; urgency=medium
+flexplorer (0.8.5-10) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -105,5 +105,6 @@ flexplorer (0.8.5-9) UNRELEASED; urgency=medium
   * Added tab with flexibee web wiev of current query result
   * Added tab with flexibee web wiev of current query result
   * typo fix
+  * Search improved
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Wed, 28 Sep 2016 21:34:44 +0200
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Thu, 29 Sep 2016 11:44:45 +0200

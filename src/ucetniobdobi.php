@@ -25,10 +25,22 @@ if (!is_null($od)) {
 
 $yeardel = $oPage->getRequestValue('yeardel', 'int');
 if (!is_null($yeardel)) {
-    if ($uo->deleteFromFlexiBee($yeardel)) {
-        $uo->addStatusMessage(_('Year was unregistred'), 'success');
+    if ($yeardel === 0) {
+        foreach ($uo->getFlexiData() as $obdobi) {
+            if ($uo->deleteFromFlexiBee((int) $obdobi['id'])) {
+                $uo->addStatusMessage(sprintf(_('Year %s was unregistred'),
+                        $obdobi['kod']), 'success');
+            } else {
+                $uo->addStatusMessage(sprintf(_('Year %s was not unregistred'),
+                        $obdobi['kod']), 'warning');
+            }
+        }
     } else {
-        $uo->addStatusMessage(_('Yeas was not unregistred'), 'warning');
+        if ($uo->deleteFromFlexiBee($yeardel)) {
+            $uo->addStatusMessage(_('Year was unregistred'), 'success');
+        } else {
+            $uo->addStatusMessage(_('Yeas was not unregistred'), 'warning');
+        }
     }
 }
 
@@ -60,7 +72,8 @@ if (!isset($ucetniObdobi['message']) && count($ucetniObdobi)) {
 
     $toolRow->addColumn(6,
         new \Ease\TWB\Panel(_('Registered Accounting periods'), 'info',
-        $ucetniObdobiTable));
+        $ucetniObdobiTable,
+        new \Ease\TWB\LinkButton('?yeardel=0', _('Remove unused'), 'warning')));
 }
 
 $oPage->container->addItem(new \Ease\TWB\Panel(_('Tool for massive creating Accounting periods'),
