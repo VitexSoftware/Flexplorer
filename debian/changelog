@@ -1,4 +1,4 @@
-flexplorer (0.8.5-11) UNRELEASED; urgency=medium
+flexplorer (0.8.5-12) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -107,5 +107,6 @@ flexplorer (0.8.5-11) UNRELEASED; urgency=medium
   * typo fix
   * Search improved
   * Button to delete remove all unused Accounting Periods
+  * Show relations in evidence info tab
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Thu, 29 Sep 2016 14:12:52 +0200
+ -- vitex <vitex@developer.kancl.brevnov.czf>  Fri, 30 Sep 2016 14:09:29 +0200
