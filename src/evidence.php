@@ -96,7 +96,24 @@ if (is_null($myEvidenceRaw)) {
 }
 $evidenceTable->addRowColumns([_('Allowed by license'), $state]);
 
-$tabs->addTab(_('Info'), $evidenceTable);
+$infoRow = new \Ease\TWB\Row();
+$infoRow->addColumn(6, $evidenceTable);
+
+$relationsList = new \Ease\Html\UlTag();
+
+foreach ($evobj->getRelationsInfo() as $relation) {
+    if (is_array($relation)) {
+        $relationsList->addItemSmart(' <a href="evidence.php?evidence='.$relation['url'].'">'.
+            $relation['name'].' ('.$relation['evidenceType'].')</a>');
+    } else {
+        $relationsList->addItemSmart($relation);
+    }
+}
+
+$infoRow->addColumn(6,
+    new \Ease\TWB\Panel(_('Relations'), 'info', $relationsList));
+
+$tabs->addTab(_('Info'), $infoRow);
 
 
 
