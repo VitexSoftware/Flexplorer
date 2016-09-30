@@ -33,19 +33,25 @@ class RecieveResponse extends \Ease\Html\Div
         if ($webPage->isPosted() || strlen($this->url)) {
             $format = 'json';
             $sender = new \FlexiPeeHP\FlexiBeeRW();
-            if (strlen($this->url)) {
-                $url    = $this->url;
-                $method = 'GET';
-                $body   = null;
-            } else {
-                $url    = $webPage->getRequestValue('url');
-                $method = $webPage->getRequestValue('method');
-                $body   = $webPage->getRequestValue('body');
 
+            $url    = $webPage->getRequestValue('url');
+            $method = $webPage->getRequestValue('method');
+            $body   = $webPage->getRequestValue('body');
+
+            if (is_null($method)) {
+                $method = 'GET';
+            }
+
+            if (!strlen($url)) {
+                $url  = $this->url;
+                $body = null;
+            } else {
                 if (!is_null($body)) {
                     $sender->setPostFields($body);
                 }
             }
+
+
             $sender->doCurlRequest($url, $method, $format);
             $this->addItem(new \Ease\Html\H1Tag($sender->lastResponseCode));
 
