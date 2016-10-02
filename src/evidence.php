@@ -110,30 +110,32 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
 
     $evidenceNames = array_flip(\FlexiPeeHP\EvidenceList::$name);
 
-    foreach ($evobj->getRelationsInfo() as $relation) {
-        if (is_array($relation)) {
-            if (isset(\FlexiPeeHP\EvidenceList::$name[$relation['url']])) {
-                $relationsList->addItemSmart(' <a href="evidence.php?evidence='.$relation['url'].'">'.
-                    $relation['name'].' ('.$relation['evidenceType'].' <strong>'.$relation['url'].'</strong>)</a>');
-            } else {
-                if (array_key_exists($relation['name'], $evidenceNames)) {
-                    $relationsList->addItemSmart(' <a href="evidence.php?evidence='.$evidenceNames[$relation['name']].'"><strong>'.
-                        $relation['name'].'</strong> ('.$relation['evidenceType'].' '.$relation['url'].')</a>');
+    $relations = $evobj->getRelationsInfo();
+    if (count($relations)) {
+        foreach ($relations as $relation) {
+            if (is_array($relation)) {
+                if (isset(\FlexiPeeHP\EvidenceList::$name[$relation['url']])) {
+                    $relationsList->addItemSmart(' <a href="evidence.php?evidence='.$relation['url'].'">'.
+                        $relation['name'].' ('.$relation['evidenceType'].' <strong>'.$relation['url'].'</strong>)</a>');
                 } else {
-                    if (array_key_exists(strtolower($relation['evidenceType']),
-                            \FlexiPeeHP\EvidenceList::$name)) {
-                        $relationsList->addItemSmart(' <a href="evidence.php?evidence='.strtolower($relation['evidenceType']).'">'.
-                            $relation['name'].' (<strong>'.$relation['evidenceType'].'</strong> '.$relation['url'].')</a>');
+                    if (array_key_exists($relation['name'], $evidenceNames)) {
+                        $relationsList->addItemSmart(' <a href="evidence.php?evidence='.$evidenceNames[$relation['name']].'"><strong>'.
+                            $relation['name'].'</strong> ('.$relation['evidenceType'].' '.$relation['url'].')</a>');
                     } else {
-                        $relationsList->addItemSmart($relation['name'].' ('.$relation['evidenceType'].' '.$relation['url'].')</a>');
+                        if (array_key_exists(strtolower($relation['evidenceType']),
+                                \FlexiPeeHP\EvidenceList::$name)) {
+                            $relationsList->addItemSmart(' <a href="evidence.php?evidence='.strtolower($relation['evidenceType']).'">'.
+                                $relation['name'].' (<strong>'.$relation['evidenceType'].'</strong> '.$relation['url'].')</a>');
+                        } else {
+                            $relationsList->addItemSmart($relation['name'].' ('.$relation['evidenceType'].' '.$relation['url'].')</a>');
+                        }
                     }
                 }
+            } else {
+                $relationsList->addItemSmart($relation);
             }
-        } else {
-            $relationsList->addItemSmart($relation);
         }
     }
-
     $infoRow->addColumn(6,
         new \Ease\TWB\Panel(_('Relations'), 'info', $relationsList));
 

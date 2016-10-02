@@ -27,6 +27,10 @@ if (!is_null($id)) {
 }
 
 if ($oPage->isPosted()) {
+    unset($_POST['url']);
+    unset($_POST['body']);
+    unset($_POST['class']);
+    unset($_POST['method']);
     $engine->takeData($_POST);
 
     if (!is_null($oPage->getRequestValue('toFlexiBee'))) {

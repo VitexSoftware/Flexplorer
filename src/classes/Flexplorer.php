@@ -194,13 +194,54 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
      */
     public function takeData($data)
     {
-        if (array_key_exists('external-ids', $data)) {
-            foreach ($data['external-ids'] as $key => $value) {
-                if (!is_numeric($key)) {
-                    unset($data['external-ids'][$key]);
-                    $data['external-ids'][] = 'ext:'.$key.':'.$value;
+
+        $fbColumns = $this->getColumnsInfo();
+        foreach ($this->getRelationsInfo() as $relation) {
+            if (is_array($relation) && isset($relation['url'])) {
+                $fbRelations[$relation['url']] = $relation['url'];
+            }
+        }
+
+        if (count($fbColumns)) {
+            foreach ($data as $key => $value) {
+                if ($key == 'external-ids') {
+                    continue;
+                }
+
+                if (strstr($key, '@')) {
+                    $baseKey = substr($key, 0, strrpos($key, '@'));
+                    if (!array_key_exists($baseKey, $fbColumns)) {
+                        $this->addStatusMessage(sprintf('stripped unknown column %s for evidence %s',
+                                $key, $this->getEvidence()), 'warning');
+                    }
+                }
+
+                if (!array_key_exists($key, $fbColumns)) {
+                    if (!array_key_exists($key, $fbRelations)) {
+                        $this->addStatusMessage(sprintf('unknown column %s for evidence %s',
+                                $key, $this->getEvidence()), 'warning');
+                    } else {
+                        if (!is_array($value)) {
+                            $this->addStatusMessage(sprintf('subevidence %s in evidence %s must bee an array',
+                                    $key, $this->getEvidence()), 'warning');
+                        }
+                    }
                 }
             }
+        }
+
+
+        if (array_key_exists('external-ids', $data)) {
+            $id = [$data['id']];
+            foreach ($data['external-ids'] as $key => $value) {
+                if (is_numeric($key)) {
+                    $id[] = 'ext:'.str_replace('ext:', '', $value);
+                } else {
+                    $id[] = 'ext:'.$key.':'.str_replace('ext:', '', $value);
+                }
+            }
+            $data['id'] = $id;
+            unset($data['external-ids']);
         }
         return parent::takeData($data);
     }
@@ -235,5 +276,4 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
                 implode(',', $extidToRemove));
         }
     }
-
 }

@@ -28,9 +28,20 @@ class Editor extends ColumnsForm
     public function __construct($engine)
     {
         parent::__construct($engine);
+        $id = $this->engine->getDataValue('id');
+        if (is_array($id)) {
+            $externalIDs = [];
+            $this->engine->setDataValue('id', current($id));
+            array_shift($id);
+            $this->engine->setDataValue('external-ids', $id);
+        }
+
+
         foreach ($engine->evidenceStructure as $column) {
             $this->addFlexiInput($column);
         }
+
+
         $this->addItem(new TWBSwitch('toFlexiBee', false, 'on',
             ['onText' => _('Save to FlexiBee'), 'offText' => _('Show in editor')]));
         $this->addItem(new \Ease\TWB\SubmitButton(_('OK').' '.new \Ease\TWB\GlyphIcon('save')));
@@ -72,12 +83,12 @@ class Editor extends ColumnsForm
                     $value, $inputProperties);
                 break;
             case 'logic':
-                $name                       = $name;
-                $widget                     = new TWBSwitch($propertyName,
-                    $value, $inputProperties);
+
+                $widget   = new TWBSwitch($propertyName, $value, true,
+                    $inputProperties);
                 break;
             case 'relation':
-                $evidence                   = '';
+                $evidence = '';
                 if (isset($colProperties['url'])) {
                     $tmp      = explode('/', $colProperties['url']);
                     $evidence = end($tmp);
@@ -156,13 +167,28 @@ class Editor extends ColumnsForm
     public function finalize()
     {
         parent::finalize();
-        if ($this->engine->getDataValue('id')) {
+
+        $id = $this->engine->getDataValue('id');
+        if (is_array($id)) {
+            $id = current($id);
+        }
+
+        if ($id) {
             $contents = $this->pageParts;
             $this->emptyContents();
 
             $editorTabs = new \Ease\TWB\Tabs('EditorTabs');
             $editorTabs->addTab(_('Columns'), $contents);
             $editorTabs->addTab(_('External IDs'), $this->extIDsEditor());
+            $editorTabs->addTab(_('Query'),
+                new SendForm($this->engine->getEvidenceURL(), 'PUT',
+                $this->engine->jsonizeData($this->engine->getData())));
+
+            $editorTabs->addTab(_('FlexiBee'),
+                new \Ease\Html\IframeTag(str_replace('.json', '.html',
+                    $this->engine->getEvidenceURL().'/'.$id.'.'.$this->engine->format.'?inDesktopApp=true'),
+                ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
+
 
             $this->addItem($editorTabs);
         }
@@ -172,14 +198,17 @@ class Editor extends ColumnsForm
     {
         $extIDsEditor = new \Ease\TWB\Container(new \Ease\Html\InputHiddenTag('id',
             $this->engine->getDataValue('id')));
-        
-        $externalIDs = $this->engine->getDataValue('external-ids');
+        $externalIDs  = $this->engine->getDataValue('external-ids');
         if (count($externalIDs)) {
             foreach ($externalIDs as $externalID) {
+                if (!strlen($externalID)) {
+                    continue;
+                }
                 $idParts = explode(':', $externalID);
                 $extIDsEditor->addItem(new \Ease\TWB\FormGroup($idParts[1],
                     new \Ease\Html\InputTextTag('external-ids['.$idParts[1].']',
-                    $idParts[2]), $idParts[1], $externalID));
+                    $idParts[2], ['maxlength' => '20']), $idParts[1],
+                    $externalID));
             }
         }
 
@@ -191,5 +220,4 @@ class Editor extends ColumnsForm
         $extIDsEditor->addItem(new \Ease\TWB\SubmitButton(_('OK').' '.new \Ease\TWB\GlyphIcon('save')));
         return $extIDsEditor;
     }
-
 }

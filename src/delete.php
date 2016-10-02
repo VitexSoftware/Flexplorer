@@ -27,7 +27,7 @@ $engine = new Flexplorer($evidence);
 
 
 $delete = $oPage->getGetValue('delete', 'bool');
-if ($delete == true) {
+if ($delete === true) {
     if ($engine->deleteFromFlexiBee($id)) {
         $engine->addStatusMessage(_('Record was deleted'), 'success');
         $oPage->redirect('evidence.php?evidence='.$evidence);
@@ -51,7 +51,15 @@ $buttonRow->addColumn(4,
     new \Ease\TWB\LinkButton('delete.php?evidence='.$evidence.'&delete=true&id='.$id,
     _('Delete record').' '.new \Ease\TWB\GlyphIcon('remove-sign'), 'danger'));
 
-$oPage->container->addItem(new ui\RecordShow($engine, $buttonRow));
+$deleteTabs = new \Ease\TWB\Tabs('DeleteTabs');
+$deleteTabs->addTab(_('Overview'), new ui\RecordShow($engine, $buttonRow));
+$deleteTabs->addTab(_('FlexiBee'),
+    new \Ease\Html\IframeTag(str_replace('.json', '.html',
+        $engine->getEvidenceURL().'/'.$engine->getMyKey().'.'.$engine->format.'?inDesktopApp=true'),
+    ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
+
+
+$oPage->container->addItem($deleteTabs);
 
 
 $oPage->addItem(new ui\PageBottom());

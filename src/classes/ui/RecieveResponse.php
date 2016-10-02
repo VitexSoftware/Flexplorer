@@ -31,12 +31,12 @@ class RecieveResponse extends \Ease\Html\Div
         $webPage = \Ease\Shared::webPage();
 
         if ($webPage->isPosted() || strlen($this->url)) {
-            $format = 'json';
             $sender = new \FlexiPeeHP\FlexiBeeRW();
 
             $url    = $webPage->getRequestValue('url');
             $method = $webPage->getRequestValue('method');
             $body   = $webPage->getRequestValue('body');
+            $format = $webPage->getRequestValue('format');
 
             if (is_null($method)) {
                 $method = 'GET';
@@ -50,7 +50,13 @@ class RecieveResponse extends \Ease\Html\Div
                     $sender->setPostFields($body);
                 }
             }
-
+            if (is_null($format)) {
+                if (strstr($url, '.xml')) {
+                    $format = 'xml';
+                } else {
+                    $format = 'json';
+                }
+            }
 
             $sender->doCurlRequest($url, $method, $format);
             $this->addItem(new \Ease\Html\H1Tag($sender->lastResponseCode));
@@ -112,5 +118,4 @@ class RecieveResponse extends \Ease\Html\Div
         }
         return $result;
     }
-
 }
