@@ -263,8 +263,17 @@ class DataSource extends \Ease\Brick
         $jsonData = ['page' => $page, 'total' => $total, 'rows' => []];
         if (count($transactions)) {
             foreach ($transactions AS $row) {
+                if (array_key_exists('id', $row)) {
+                    $id = $row['id'];
+                } else {
+                    $id = current($row);
+                }
+
+                if (is_array($id)) {
+                    $id = current($id);
+                }
                 $entry              = [
-                    'id' => current($row),
+                    'id' => $id,
                     'cell' => $row
                 ];
                 $jsonData['rows'][] = $entry;
