@@ -129,17 +129,20 @@ $toolRow->addColumn(4, new \Ease\TWB\Well($settingsForm));
 
 if ($chapistatus) {
     $hooks = $hooker->getFlexiData();
-    if (!isset($hooks['message']) && count($hooks)) {
+    if (!isset($hooks['message']) && count($hooks) && count(current($hooks))) {
         $hooksTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
         $hooksTable->addRowHeaderColumns(array_keys(current($hooks)));
         foreach ($hooks as $hookinfo) {
-            $hookinfo[] = new \Ease\TWB\LinkButton('?refresh='.$hookinfo['id'],
+            $hookinfo[]      = new \Ease\TWB\LinkButton('?refresh='.$hookinfo['id'],
                 new \Ease\TWB\GlyphIcon('refresh'), 'success');
             $hookinfo[] = new \Ease\TWB\LinkButton('fakechange.php?hookurl='.$hookinfo['url'],
                 new \Ease\TWB\GlyphIcon('export'), 'info',
                 ['title' => _('Test')]);
             $hookinfo[] = new \Ease\TWB\LinkButton('?linkdel='.$hookinfo['id'],
                 new \Ease\TWB\GlyphIcon('remove'), 'danger');
+            $hookinfo['url'] = new \Ease\Html\ATag($hookinfo['url'],
+                $hookinfo['url']);
+
             $hooksTable->addRowColumns($hookinfo);
         }
 
