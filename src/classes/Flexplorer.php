@@ -234,10 +234,12 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
         if (array_key_exists('external-ids', $data)) {
             $id = [$data['id']];
             foreach ($data['external-ids'] as $key => $value) {
-                if (is_numeric($key)) {
-                    $id[] = 'ext:'.str_replace('ext:', '', $value);
-                } else {
-                    $id[] = 'ext:'.$key.':'.str_replace('ext:', '', $value);
+                if (strlen($value)) {
+                    if (is_numeric($key)) {
+                        $id[] = 'ext:'.str_replace('ext:', '', $value);
+                    } else {
+                        $id[] = 'ext:'.$key.':'.str_replace('ext:', '', $value);
+                    }
                 }
             }
             $data['id'] = $id;

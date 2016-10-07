@@ -29,12 +29,12 @@ foreach ($langs as $code => $lang) {
     }
 }
 setlocale(LC_ALL, $locale);
-bind_textdomain_codeset('Flexplorer', 'UTF-8');
+bind_textdomain_codeset('flexplorer', 'UTF-8');
 putenv("LC_ALL=$locale");
 if (file_exists('../i18n')) {
-    bindtextdomain('Flexplorer', '../i18n');
+    bindtextdomain('flexplorer', '../i18n');
 }
-textdomain('Flexplorer');
+textdomain('flexplorer');
 
 session_start();
 
@@ -57,13 +57,11 @@ if (isset($_SESSION['company'])) {
 }
 
 
-
-
-
-
-/*
- * Objekt uživatele VSUser nebo VSAnonym
- * @global EaseUser
+/**
+ * User class object User or Anonym
+ * Objekt uživatele User nebo Anonym
+ *
+ * @global User|Anonym
  */
 $oUser                 = \Ease\Shared::user();
 $oUser->settingsColumn = 'settings';

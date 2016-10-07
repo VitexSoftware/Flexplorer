@@ -39,7 +39,7 @@ if (!is_null($yeardel)) {
         if ($uo->deleteFromFlexiBee($yeardel)) {
             $uo->addStatusMessage(_('Year was unregistred'), 'success');
         } else {
-            $uo->addStatusMessage(_('Yeas was not unregistred'), 'warning');
+            $uo->addStatusMessage(_('Year was not unregistred'), 'warning');
         }
     }
 }

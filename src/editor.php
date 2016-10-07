@@ -31,6 +31,12 @@ if ($oPage->isPosted()) {
     unset($_POST['body']);
     unset($_POST['class']);
     unset($_POST['method']);
+    if (isset($_POST['deleteExtID']) && count($_POST['deleteExtID'])) {
+        $extidRemove = $_POST['deleteExtID'];
+        unset($_POST['deleteExtID']);
+        $engine->setDataValue('@removeExternalIds', implode(',', $extidRemove));
+    }
+
     $engine->takeData($_POST);
 
     if (!is_null($oPage->getRequestValue('toFlexiBee'))) {

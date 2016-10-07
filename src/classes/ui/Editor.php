@@ -48,6 +48,11 @@ class Editor extends ColumnsForm
         $this->engine = $engine;
     }
 
+    /**
+     * Add an FlexiBee column type input field
+     *
+     * @param array $colProperties
+     */
     public function addFlexiInput($colProperties)
     {
         $type         = $colProperties['type'];
@@ -194,6 +199,11 @@ class Editor extends ColumnsForm
         }
     }
 
+    /**
+     * External IDs editor
+     *
+     * @return \Ease\TWB\Container
+     */
     public function extIDsEditor()
     {
         $extIDsEditor = new \Ease\TWB\Container(new \Ease\Html\InputHiddenTag('id',
@@ -205,10 +215,20 @@ class Editor extends ColumnsForm
                     continue;
                 }
                 $idParts = explode(':', $externalID);
-                $extIDsEditor->addItem(new \Ease\TWB\FormGroup($idParts[1],
+                if (!isset($idParts[2])) {
+                    $idParts[2] = '';
+                }
+
+                $extIDrow = new \Ease\TWB\Row();
+                $extIDrow->addColumn(4,
+                    new \Ease\TWB\Checkbox('deleteExtID['.$idParts[1].']',
+                    $externalID, _('Remove')));
+                $extIDrow->addColumn(8,
+                    new \Ease\TWB\FormGroup($idParts[1],
                     new \Ease\Html\InputTextTag('external-ids['.$idParts[1].']',
                     $idParts[2], ['maxlength' => '20']), $idParts[1],
                     $externalID));
+                $extIDsEditor->addItem($extIDrow);
             }
         }
 

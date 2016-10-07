@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-09-28 14:30+0100\n"
-"PO-Revision-Date: 2016-09-28 14:31+0100\n"
-"Last-Translator: Vítězslav Dvořák <vitex@arachne.cz>\n"
+"POT-Creation-Date: 2016-10-04 23:28+0100\n"
+"PO-Revision-Date: 2016-10-04 23:29+0100\n"
+"Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -138,7 +138,7 @@ msgstr ""
 "HTTP header. Used to easily verify that include incoming notifications you "
 "registered Hook. Key name is in the HTTP header X-FB-Hook-SecKey ."
 
-#: ../src/changesapi.php:126 ../src/ucetniobdobi.php:46
+#: ../src/changesapi.php:126 ../src/ucetniobdobi.php:58
 msgid "Perform operation"
 msgstr "Perform operation"
 
@@ -146,11 +146,11 @@ msgstr "Perform operation"
 msgid "Test"
 msgstr "Test"
 
-#: ../src/changesapi.php:147
+#: ../src/changesapi.php:150
 msgid "Webhooks registered"
 msgstr "Webhooks registered"
 
-#: ../src/changesapi.php:150
+#: ../src/changesapi.php:153
 msgid "ChangesAPI & WebHooks"
 msgstr "ChangesAPI & WebHooks"
 
@@ -266,44 +266,54 @@ msgstr "Title missing"
 msgid "Please mark some rows"
 msgstr "Please mark some rows"
 
-#: ../src/classes/ui/Editor.php:35
+#: ../src/classes/ui/Editor.php:46
 msgid "Save to FlexiBee"
 msgstr "Save to FlexiBee"
 
-#: ../src/classes/ui/Editor.php:35
+#: ../src/classes/ui/Editor.php:46
 msgid "Show in editor"
 msgstr "Show in editor"
 
-#: ../src/classes/ui/Editor.php:36 ../src/classes/ui/Editor.php:191
+#: ../src/classes/ui/Editor.php:47 ../src/classes/ui/Editor.php:220
 msgid "OK"
 msgstr "OK"
 
-#: ../src/classes/ui/Editor.php:51
+#: ../src/classes/ui/Editor.php:62
 msgid "Required"
 msgstr "Required"
 
-#: ../src/classes/ui/Editor.php:94
+#: ../src/classes/ui/Editor.php:105
 msgid "Edit targeted record"
 msgstr "Edit targeted record"
 
-#: ../src/classes/ui/Editor.php:118
+#: ../src/classes/ui/Editor.php:129
 #, php-format
 msgid "Unknown type of data %s"
 msgstr "Unknown type of data %s"
 
-#: ../src/classes/ui/Editor.php:128 ../src/classes/ui/Editor.php:130
+#: ../src/classes/ui/Editor.php:139 ../src/classes/ui/Editor.php:141
 msgid "Type"
 msgstr "Type"
 
-#: ../src/classes/ui/Editor.php:164
+#: ../src/classes/ui/Editor.php:181
 msgid "Columns"
 msgstr "Columns"
 
-#: ../src/classes/ui/Editor.php:165 ../src/classes/ui/Editor.php:189
+#: ../src/classes/ui/Editor.php:182 ../src/classes/ui/Editor.php:218
 msgid "External IDs"
 msgstr "External IDs"
 
-#: ../src/classes/ui/Editor.php:186
+#: ../src/classes/ui/Editor.php:183 ../src/classes/ui/MainMenu.php:114
+#: ../src/evidence.php:61 ../src/query.php:45
+msgid "Query"
+msgstr "Query"
+
+#: ../src/classes/ui/Editor.php:187 ../src/delete.php:56
+#: ../src/evidence.php:75 ../src/login.php:64 ../src/query.php:61
+msgid "FlexiBee"
+msgstr "FlexiBee"
+
+#: ../src/classes/ui/Editor.php:215
 msgid "New"
 msgstr "New"
 
@@ -311,11 +321,11 @@ msgstr "New"
 msgid "Company"
 msgstr "Company"
 
-#: ../src/classes/ui/MainMenu.php:103
+#: ../src/classes/ui/MainMenu.php:103 ../src/delete.php:55
 msgid "Overview"
 msgstr "Overview"
 
-#: ../src/classes/ui/MainMenu.php:107 ../src/evidence.php:44
+#: ../src/classes/ui/MainMenu.php:107 ../src/evidence.php:51
 #: ../src/fakechange.php:71
 msgid "Evidence"
 msgstr "Evidence"
@@ -324,16 +334,11 @@ msgstr "Evidence"
 msgid "Tools"
 msgstr "Tools"
 
-#: ../src/classes/ui/MainMenu.php:114 ../src/evidence.php:54
-#: ../src/query.php:45 ../src/viewevidence.php:46
-msgid "Query"
-msgstr "Query"
-
 #: ../src/classes/ui/MainMenu.php:116 ../src/fakechange.php:53
 msgid "WebHook test"
 msgstr "WebHook test"
 
-#: ../src/classes/ui/MainMenu.php:117 ../src/ucetniobdobi.php:35
+#: ../src/classes/ui/MainMenu.php:117 ../src/ucetniobdobi.php:47
 msgid "Accounting period"
 msgstr "Accounting period"
 
@@ -382,7 +387,7 @@ msgstr "Spoje.Net"
 msgid "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 msgstr "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 
-#: ../src/classes/ui/RecieveResponse.php:69
+#: ../src/classes/ui/RecieveResponse.php:81
 msgid "Query does not sent yet"
 msgstr "Query does not sent yet"
 
@@ -446,42 +451,94 @@ msgstr "Delete record"
 msgid "New record"
 msgstr "New record"
 
-#: ../src/editor.php:39
+#: ../src/editor.php:43
 msgid "Record was saved"
 msgstr "Record was saved"
 
-#: ../src/editor.php:41
+#: ../src/editor.php:45
 msgid "Record was not saved"
 msgstr "Record was not saved"
 
-#: ../src/editor.php:46
+#: ../src/editor.php:50
 msgid "Editor"
 msgstr "Editor"
 
-#: ../src/evidence.php:35
+#: ../src/evidence.php:36
+#, php-format
+msgid "Evidence %s does not exist"
+msgstr "Evidence %s does not exist"
+
+#: ../src/evidence.php:42
 #, php-format
 msgid "Evidence %s"
 msgstr "Evidence %s"
 
-#: ../src/evidence.php:43 ../src/viewevidence.php:31
+#: ../src/evidence.php:50
 msgid "Listing"
 msgstr "Listing"
 
-#: ../src/evidence.php:45 ../src/viewevidence.php:32
+#: ../src/evidence.php:52
 msgid "Structure"
 msgstr "Structure"
 
-#: ../src/evidence.php:55
+#: ../src/evidence.php:62
 msgid "User Query"
 msgstr "User Query"
 
-#: ../src/evidence.php:60
+#: ../src/evidence.php:67
 msgid "Items overview"
 msgstr "Items overview"
+
+#: ../src/evidence.php:100
+msgid "no"
+msgstr "no"
+
+#: ../src/evidence.php:102
+#, fuzzy
+msgid "yes"
+msgstr "Yes"
+
+#: ../src/evidence.php:104
+msgid "Allowed by license"
+msgstr "Allowed by license"
+
+#: ../src/evidence.php:140
+#, fuzzy
+msgid "Relations"
+msgstr "Operation"
+
+#: ../src/evidence.php:142
+#, fuzzy
+msgid "localized name"
+msgstr "User name"
+
+#: ../src/evidence.php:143
+#, fuzzy
+msgid "targeted evidence"
+msgstr "Evidence"
+
+#: ../src/evidence.php:144
+#, fuzzy
+msgid "subitems collection name"
+msgstr "User name"
+
+#: ../src/evidence.php:146
+#, fuzzy
+msgid "Info"
+msgstr "FlexiBee info"
 
 #: ../src/evidences.php:18
 msgid "Evidences"
 msgstr "Evidences"
+
+#: ../src/evidences.php:38 ../src/evidences.php:39
+#, fuzzy
+msgid "licence ok"
+msgstr "OK"
+
+#: ../src/evidences.php:42
+msgid "unavialble"
+msgstr "unavialble"
 
 #: ../src/fakechange.php:36
 msgid "WebHook successfully triggered"
@@ -559,10 +616,6 @@ msgstr "Please confirm your login credentials"
 msgid "Welcome"
 msgstr "Welcome"
 
-#: ../src/login.php:64
-msgid "FlexiBee"
-msgstr "FlexiBee"
-
 #: ../src/login.php:68
 msgid "FlexiBee server URL. ex.: https://localhost:5434"
 msgstr "FlexiBee server URL. ex.: https://localhost:5434"
@@ -579,11 +632,11 @@ msgstr "Login name"
 msgid "User's password"
 msgstr "User's password"
 
-#: ../src/logout.php:29
+#: ../src/logout.php:30
 msgid "Sign out"
 msgstr "Sign out"
 
-#: ../src/logout.php:33
+#: ../src/logout.php:34
 msgid "Thank you for your patronage and look forward to another visit"
 msgstr "Thank you for your patronage and look forward to another visit"
 
@@ -595,11 +648,11 @@ msgstr "Main Page"
 msgid "Custom request"
 msgstr "Custom request"
 
-#: ../src/search.php:24
+#: ../src/search.php:21
 msgid "Search results"
 msgstr "Search results"
 
-#: ../src/search.php:53
+#: ../src/search.php:62
 #, php-format
 msgid "Search for %s results in %s"
 msgstr "Search for %s results in %s"
@@ -612,37 +665,47 @@ msgstr "History empty"
 msgid "Reset history"
 msgstr "Reset history"
 
-#: ../src/ucetniobdobi.php:29
+#: ../src/ucetniobdobi.php:31
+#, fuzzy, php-format
+msgid "Year %s was unregistred"
+msgstr "Search for %s results in %s"
+
+#: ../src/ucetniobdobi.php:34
+#, fuzzy, php-format
+msgid "Year %s was not unregistred"
+msgstr "Search for %s results in %s"
+
+#: ../src/ucetniobdobi.php:40
 msgid "Year was unregistred"
 msgstr "Year was unregistred"
 
-#: ../src/ucetniobdobi.php:31
-msgid "Yeas was not unregistred"
+#: ../src/ucetniobdobi.php:42
+#, fuzzy
+msgid "Year was not unregistred"
 msgstr "Yeas was not unregistred"
 
-#: ../src/ucetniobdobi.php:41
+#: ../src/ucetniobdobi.php:53
 msgid "From Year"
 msgstr "From Year"
 
-#: ../src/ucetniobdobi.php:44
+#: ../src/ucetniobdobi.php:56
 msgid "To Year"
 msgstr "To Year"
 
-#: ../src/ucetniobdobi.php:62
+#: ../src/ucetniobdobi.php:74
 msgid "Registered Accounting periods"
 msgstr "Registered Accounting periods"
 
-#: ../src/ucetniobdobi.php:66
+#: ../src/ucetniobdobi.php:76
+msgid "Remove unused"
+msgstr "Remove unused"
+
+#: ../src/ucetniobdobi.php:79
 msgid "Tool for massive creating Accounting periods"
 msgstr "Tool for massive creating Accounting periods"
 
-#: ../src/viewevidence.php:24
-msgid "Evidence proprties overview"
-msgstr "Evidence proprties overview"
-
-#: ../src/viewevidence.php:47
-msgid "Custom query"
-msgstr "Custom query"
+#~ msgid "Custom query"
+#~ msgstr "Custom query"
 
 #~ msgid "Dotaz nebyl zatím odeslán"
 #~ msgstr "Dotaz nebyl zatím odeslán"
