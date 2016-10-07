@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-10-04 23:28+0100\n"
-"PO-Revision-Date: 2016-10-04 23:29+0100\n"
+"POT-Creation-Date: 2016-10-07 22:23+0100\n"
+"PO-Revision-Date: 2016-10-07 22:31+0100\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: en\n"
@@ -192,8 +192,8 @@ msgid "Loading evidence list failed"
 msgstr "Loading evidence list failed"
 
 #: ../src/classes/ui/BootstrapMenu.php:44
-#: ../src/classes/ui/BootstrapMenu.php:52 ../src/login.php:46
-#: ../src/login.php:60
+#: ../src/classes/ui/BootstrapMenu.php:52 ../src/login.php:48
+#: ../src/login.php:72
 msgid "Sign in"
 msgstr "Sign in"
 
@@ -205,11 +205,11 @@ msgstr "Server"
 msgid "login"
 msgstr "login"
 
-#: ../src/classes/ui/BootstrapMenu.php:49 ../src/login.php:73
+#: ../src/classes/ui/BootstrapMenu.php:49 ../src/login.php:85
 msgid "Password"
 msgstr "Password"
 
-#: ../src/classes/ui/BootstrapMenu.php:51
+#: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:89
 msgid "Remeber me"
 msgstr "Remeber me"
 
@@ -274,46 +274,50 @@ msgstr "Save to FlexiBee"
 msgid "Show in editor"
 msgstr "Show in editor"
 
-#: ../src/classes/ui/Editor.php:47 ../src/classes/ui/Editor.php:220
+#: ../src/classes/ui/Editor.php:47 ../src/classes/ui/Editor.php:240
 msgid "OK"
 msgstr "OK"
 
-#: ../src/classes/ui/Editor.php:62
+#: ../src/classes/ui/Editor.php:67
 msgid "Required"
 msgstr "Required"
 
-#: ../src/classes/ui/Editor.php:105
+#: ../src/classes/ui/Editor.php:110
 msgid "Edit targeted record"
 msgstr "Edit targeted record"
 
-#: ../src/classes/ui/Editor.php:129
+#: ../src/classes/ui/Editor.php:134
 #, php-format
 msgid "Unknown type of data %s"
 msgstr "Unknown type of data %s"
 
-#: ../src/classes/ui/Editor.php:139 ../src/classes/ui/Editor.php:141
+#: ../src/classes/ui/Editor.php:144 ../src/classes/ui/Editor.php:146
 msgid "Type"
 msgstr "Type"
 
-#: ../src/classes/ui/Editor.php:181
+#: ../src/classes/ui/Editor.php:186
 msgid "Columns"
 msgstr "Columns"
 
-#: ../src/classes/ui/Editor.php:182 ../src/classes/ui/Editor.php:218
+#: ../src/classes/ui/Editor.php:187 ../src/classes/ui/Editor.php:238
 msgid "External IDs"
 msgstr "External IDs"
 
-#: ../src/classes/ui/Editor.php:183 ../src/classes/ui/MainMenu.php:114
+#: ../src/classes/ui/Editor.php:188 ../src/classes/ui/MainMenu.php:114
 #: ../src/evidence.php:61 ../src/query.php:45
 msgid "Query"
 msgstr "Query"
 
-#: ../src/classes/ui/Editor.php:187 ../src/delete.php:56
-#: ../src/evidence.php:75 ../src/login.php:64 ../src/query.php:61
+#: ../src/classes/ui/Editor.php:192 ../src/delete.php:56
+#: ../src/evidence.php:75 ../src/login.php:76 ../src/query.php:61
 msgid "FlexiBee"
 msgstr "FlexiBee"
 
-#: ../src/classes/ui/Editor.php:215
+#: ../src/classes/ui/Editor.php:225
+msgid "Remove"
+msgstr "Remove"
+
+#: ../src/classes/ui/Editor.php:235
 msgid "New"
 msgstr "New"
 
@@ -451,15 +455,15 @@ msgstr "Delete record"
 msgid "New record"
 msgstr "New record"
 
-#: ../src/editor.php:43
+#: ../src/editor.php:49
 msgid "Record was saved"
 msgstr "Record was saved"
 
-#: ../src/editor.php:45
+#: ../src/editor.php:51
 msgid "Record was not saved"
 msgstr "Record was not saved"
 
-#: ../src/editor.php:50
+#: ../src/editor.php:56
 msgid "Editor"
 msgstr "Editor"
 
@@ -494,47 +498,40 @@ msgid "no"
 msgstr "no"
 
 #: ../src/evidence.php:102
-#, fuzzy
 msgid "yes"
-msgstr "Yes"
+msgstr "yes"
 
 #: ../src/evidence.php:104
 msgid "Allowed by license"
 msgstr "Allowed by license"
 
 #: ../src/evidence.php:140
-#, fuzzy
 msgid "Relations"
-msgstr "Operation"
+msgstr "Relations"
 
 #: ../src/evidence.php:142
-#, fuzzy
 msgid "localized name"
-msgstr "User name"
+msgstr "localized name"
 
 #: ../src/evidence.php:143
-#, fuzzy
 msgid "targeted evidence"
-msgstr "Evidence"
+msgstr "targeted evidence"
 
 #: ../src/evidence.php:144
-#, fuzzy
 msgid "subitems collection name"
-msgstr "User name"
+msgstr "subitems collection name"
 
 #: ../src/evidence.php:146
-#, fuzzy
 msgid "Info"
-msgstr "FlexiBee info"
+msgstr "Info"
 
 #: ../src/evidences.php:18
 msgid "Evidences"
 msgstr "Evidences"
 
 #: ../src/evidences.php:38 ../src/evidences.php:39
-#, fuzzy
 msgid "licence ok"
-msgstr "OK"
+msgstr "licence ok"
 
 #: ../src/evidences.php:42
 msgid "unavialble"
@@ -604,33 +601,49 @@ msgstr "WebHook probe"
 msgid "FlexiBee info"
 msgstr "FlexiBee info"
 
-#: ../src/login.php:32
+#: ../src/login.php:34
 msgid "Signed in as: "
 msgstr "Signed in as: "
 
-#: ../src/login.php:42
+#: ../src/login.php:44
 msgid "Please confirm your login credentials"
 msgstr "Please confirm your login credentials"
 
-#: ../src/login.php:56
-msgid "Welcome"
-msgstr "Welcome"
+#: ../src/login.php:58
+msgid "Login History"
+msgstr "Login History"
 
-#: ../src/login.php:68
+#: ../src/login.php:80
 msgid "FlexiBee server URL. ex.: https://localhost:5434"
 msgstr "FlexiBee server URL. ex.: https://localhost:5434"
 
-#: ../src/login.php:69
+#: ../src/login.php:81
 msgid "User name"
 msgstr "User name"
 
-#: ../src/login.php:72
+#: ../src/login.php:84
 msgid "Login name"
 msgstr "Login name"
 
-#: ../src/login.php:76
+#: ../src/login.php:88
 msgid "User's password"
 msgstr "User's password"
+
+#: ../src/login.php:90
+msgid "Add this to Login History"
+msgstr "Add this to Login History"
+
+#: ../src/login.php:98
+msgid "1"
+msgstr ""
+
+#: ../src/login.php:99
+msgid "2"
+msgstr ""
+
+#: ../src/login.php:100
+msgid "3"
+msgstr ""
 
 #: ../src/logout.php:30
 msgid "Sign out"
@@ -666,23 +679,22 @@ msgid "Reset history"
 msgstr "Reset history"
 
 #: ../src/ucetniobdobi.php:31
-#, fuzzy, php-format
+#, php-format
 msgid "Year %s was unregistred"
-msgstr "Search for %s results in %s"
+msgstr "Year %s was unregistred"
 
 #: ../src/ucetniobdobi.php:34
-#, fuzzy, php-format
+#, php-format
 msgid "Year %s was not unregistred"
-msgstr "Search for %s results in %s"
+msgstr "Year %s was not unregistred"
 
 #: ../src/ucetniobdobi.php:40
 msgid "Year was unregistred"
 msgstr "Year was unregistred"
 
 #: ../src/ucetniobdobi.php:42
-#, fuzzy
 msgid "Year was not unregistred"
-msgstr "Yeas was not unregistred"
+msgstr "Year was not unregistred"
 
 #: ../src/ucetniobdobi.php:53
 msgid "From Year"
@@ -703,6 +715,9 @@ msgstr "Remove unused"
 #: ../src/ucetniobdobi.php:79
 msgid "Tool for massive creating Accounting periods"
 msgstr "Tool for massive creating Accounting periods"
+
+#~ msgid "Welcome"
+#~ msgstr "Welcome"
 
 #~ msgid "Custom query"
 #~ msgstr "Custom query"

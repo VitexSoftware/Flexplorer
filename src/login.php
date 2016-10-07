@@ -17,7 +17,12 @@ $backurl  = $oPage->getRequestValue('backurl');
 
 if ($login) {
     $oUser = \Ease\Shared::user(new User());
-    if ($oUser->tryToLogin($_POST)) {
+    if ($oUser->tryToLogin($_REQUEST)) {
+        if ($oPage->getRequestValue('remember-me')) {
+            $_SESSION['bookmarks'][] = ['login' => $login, 'password' => $password,
+            'server' => $server];
+            $oPage->addStatusMessage(_('Server added to bookmarks'));
+        }
         if (!is_null($backurl)) {
             $oPage->redirect($backurl);
         } else {
@@ -53,7 +58,17 @@ $loginRow   = new \Ease\TWB\Row();
 $infoColumn = $loginRow->addItem(new \Ease\TWB\Col(4));
 
 $infoBlock = $infoColumn->addItem(new \Ease\TWB\Well(new \Ease\Html\ImgTag('images/password.png')));
-$infoBlock->addItem(_('Welcome'));
+$infoBlock->addItem(_('Login History'));
+
+if (isset($_SESSION['bookmarks']) && count($_SESSION['bookmarks'])) {
+    $bookmarks = new \Ease\Html\UlTag(null, ['class' => 'list-group']);
+    foreach ($_SESSION['bookmarks'] as $bookmark) {
+        $bookmarks->addItemSmart(new \Ease\Html\ATag('login.php?login='.$bookmark['login'].'&password='.$bookmark['password'].'&server='.$bookmark['server'],
+            str_replace('://', '://'.$bookmark['login'].'@', $bookmark['server'])),
+            ['class' => 'list-group-item']);
+    }
+    $infoBlock->addItem($bookmarks);
+}
 
 $loginColumn = $loginRow->addItem(new \Ease\TWB\Col(4));
 
@@ -74,10 +89,39 @@ $loginPanel->addItem(new \Ease\TWB\FormGroup(_('Password'),
     new \Ease\Html\InputPasswordTag('password',
     $password ? $password : constant('DEFAULT_FLEXIBEE_PASSWORD')),
     constant('DEFAULT_FLEXIBEE_PASSWORD'), _('User\'s password')));
+$loginPanel->addItem(new \Ease\TWB\FormGroup(_('Remeber me'),
+    new ui\TWBSwitch('remember-me', true), null, _('Add this to Login History')));
+
 
 $loginPanel->body->setTagCss(['margin' => '20px']);
 
 $loginColumn->addItem($loginPanel);
+
+$featureList = new \Ease\Html\UlTag(null, ['class' => 'list-group']);
+$featureList->addItemSmart(_('display the contents of all the available records in all companies'),
+    ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('show the structure of evidence'),
+    ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('send direct requests to the server and display results'),
+    ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('set up ChangesAPI and add WebHooks'),
+    ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('Test WebHook script processing changes from FlexiBee answers'),
+    ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('Collectively establish and abolish the accounting period'),
+    ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('Evidnece distinguish which are inaccessible because of the license'),
+    ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('Shown next to json result of the request and page FlexiBee'),
+    ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('Edit External ID numbers'),
+    ['class' => 'list-group-item']);
+
+$featuresPanel = new \Ease\TWB\Panel(_('Features'), 'info');
+
+\Ease\Page::addItemCustom($featureList, $featuresPanel);
+$loginRow->addColumn(4, $featuresPanel);
+
 
 $oPage->container->addItem(new \Ease\TWB\Form('Login', null, 'POST', $loginRow));
 
