@@ -17,10 +17,10 @@ class EvidenceProperties extends \Ease\Html\TableTag
      * @param string $evidence to describe
      * @param string $hlcolumn to highlight
      */
-    public function __construct($evidence, $hlcolumn = null)
+    public function __construct($evidence, $hlcolumn = null, $cond = null)
     {
         parent::__construct(null, ['class' => 'table table-hover']);
-        $this->setTagId('structOf'.$evidence->getEvidence());
+        $this->setTagId('structOf'.$evidence->getEvidence().$cond);
         if (is_string($evidence)) {
             $properter     = new \FlexiPeeHP\FlexiBeeRO();
             $properter->setEvidence($evidence.'/properties');
@@ -39,7 +39,26 @@ class EvidenceProperties extends \Ease\Html\TableTag
         }
         $this->addRowHeaderColumns($columns);
 
+
+        if (!is_null($cond)) {
+            if ($cond[0] == '!') {
+                $cond = substr($cond, 1);
+                $req  = 'false';
+            } else {
+                $req = 'true';
+            }
+        }
+
         foreach ($proprtiesData as $propName => $propValues) {
+
+            if (!is_null($cond)) {
+                if (isset($propValues[$cond])) {
+                    if ($propValues[$cond] != $req) {
+                        continue;
+                    }
+                }
+            }
+
             foreach ($columns as $value) {
                 if (isset($propValues[$value])) {
                     switch ($value) {
@@ -121,5 +140,4 @@ class EvidenceProperties extends \Ease\Html\TableTag
 
         return parent::finalize();
     }
-
 }

@@ -162,12 +162,3 @@ knihovny [FlexiPeeHP](https://github.com/Spoje-NET/FlexiPeeHP) do vašich projek
 
 ![Spoje.Net](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/spoje-net_logo.gif "Spoje.Net")
 
-Poznámka
---------
-
-Zdrojáky aplikace je v současnosti postupně "překlápěny" do angličtiny. 
-Až budou všechny texty anglicky, bude proveden jejich gettext překlad do češtiny.
-
-
-
-

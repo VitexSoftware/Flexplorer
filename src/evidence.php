@@ -49,7 +49,8 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
     $tabs = new \Ease\TWB\Tabs('EviTabs');
     $tabs->addTab(_('Listing'),
         new ui\DataGrid(_('Evidence'), new DataSource($evobj)));
-    $tabs->addTab(_('Structure'), new ui\EvidenceProperties($evobj, $column),
+
+    $tabs->addTab(_('Column Groups'), new ui\ColumnsGroups($evobj, $column),
         isset($column));
 
     $method = $oPage->getRequestValue('method');

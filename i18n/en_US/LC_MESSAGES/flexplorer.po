@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-10-07 22:23+0100\n"
-"PO-Revision-Date: 2016-10-07 22:31+0100\n"
+"POT-Creation-Date: 2016-10-08 00:29+0100\n"
+"PO-Revision-Date: 2016-10-08 00:30+0100\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: en\n"
@@ -16,11 +16,11 @@ msgstr ""
 "X-Poedit-SearchPath-0: ../src\n"
 "X-Poedit-SearchPathExcluded-0: ../vendor\n"
 
-#: ../src/about.php:14
+#: ../src/about.php:15
 msgid "About application"
 msgstr "About application"
 
-#: ../src/about.php:16
+#: ../src/about.php:17
 msgid "Used Libraries"
 msgstr "Used Libraries"
 
@@ -191,41 +191,42 @@ msgstr "Login Failed"
 msgid "Loading evidence list failed"
 msgstr "Loading evidence list failed"
 
-#: ../src/classes/ui/BootstrapMenu.php:44
-#: ../src/classes/ui/BootstrapMenu.php:52 ../src/login.php:48
-#: ../src/login.php:72
-msgid "Sign in"
-msgstr "Sign in"
-
-#: ../src/classes/ui/BootstrapMenu.php:47
-msgid "Server"
-msgstr "Server"
-
-#: ../src/classes/ui/BootstrapMenu.php:48
-msgid "login"
-msgstr "login"
-
-#: ../src/classes/ui/BootstrapMenu.php:49 ../src/login.php:85
-msgid "Password"
-msgstr "Password"
-
-#: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:89
-msgid "Remeber me"
-msgstr "Remeber me"
-
-#: ../src/classes/ui/BootstrapMenu.php:60 ../src/settings.php:20
-msgid "Settings"
-msgstr "Settings"
-
-#: ../src/classes/ui/BootstrapMenu.php:64
+#: ../src/classes/ui/BootstrapMenu.php:39
+#: ../src/classes/ui/BootstrapMenu.php:66
 msgid "About"
 msgstr "About"
 
-#: ../src/classes/ui/BootstrapMenu.php:66
+#: ../src/classes/ui/BootstrapMenu.php:46
+#: ../src/classes/ui/BootstrapMenu.php:54 ../src/login.php:51
+#: ../src/login.php:75
+msgid "Sign in"
+msgstr "Sign in"
+
+#: ../src/classes/ui/BootstrapMenu.php:49
+msgid "Server"
+msgstr "Server"
+
+#: ../src/classes/ui/BootstrapMenu.php:50
+msgid "login"
+msgstr "login"
+
+#: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:88
+msgid "Password"
+msgstr "Password"
+
+#: ../src/classes/ui/BootstrapMenu.php:53 ../src/login.php:92
+msgid "Remeber me"
+msgstr "Remeber me"
+
+#: ../src/classes/ui/BootstrapMenu.php:62 ../src/settings.php:20
+msgid "Settings"
+msgstr "Settings"
+
+#: ../src/classes/ui/BootstrapMenu.php:68
 msgid "Sign off"
 msgstr "Sign off"
 
-#: ../src/classes/ui/BootstrapMenu.php:81
+#: ../src/classes/ui/BootstrapMenu.php:83
 msgid "Click to hide messages"
 msgstr "Click to hide messages"
 
@@ -240,6 +241,42 @@ msgstr "Save & go to listing"
 #: ../src/classes/ui/ColumnsForm.php:121
 msgid "Save and next"
 msgstr "Save and next"
+
+#: ../src/classes/ui/ColumnsGroups.php:21
+msgid "ColumnsGroups"
+msgstr "ColumnsGroups"
+
+#: ../src/classes/ui/ColumnsGroups.php:22
+msgid "Mandatory"
+msgstr "Mandatory"
+
+#: ../src/classes/ui/ColumnsGroups.php:24
+msgid "ID List"
+msgstr "ID List"
+
+#: ../src/classes/ui/ColumnsGroups.php:26
+msgid "Summary List"
+msgstr "Summary List"
+
+#: ../src/classes/ui/ColumnsGroups.php:28
+msgid "Full List"
+msgstr "Full List"
+
+#: ../src/classes/ui/ColumnsGroups.php:30
+msgid "Sortable"
+msgstr "Sortable"
+
+#: ../src/classes/ui/ColumnsGroups.php:32
+msgid "Non Sortable"
+msgstr "Non Sortable"
+
+#: ../src/classes/ui/ColumnsGroups.php:34
+msgid "Writable"
+msgstr "Writable"
+
+#: ../src/classes/ui/ColumnsGroups.php:36
+msgid "Read Only"
+msgstr "Read Only"
 
 #: ../src/classes/ui/DataGrid.php:99
 msgid "Json"
@@ -304,12 +341,12 @@ msgid "External IDs"
 msgstr "External IDs"
 
 #: ../src/classes/ui/Editor.php:188 ../src/classes/ui/MainMenu.php:114
-#: ../src/evidence.php:61 ../src/query.php:45
+#: ../src/evidence.php:62 ../src/query.php:45
 msgid "Query"
 msgstr "Query"
 
 #: ../src/classes/ui/Editor.php:192 ../src/delete.php:56
-#: ../src/evidence.php:75 ../src/login.php:76 ../src/query.php:61
+#: ../src/evidence.php:76 ../src/login.php:79 ../src/query.php:61
 msgid "FlexiBee"
 msgstr "FlexiBee"
 
@@ -481,47 +518,47 @@ msgstr "Evidence %s"
 msgid "Listing"
 msgstr "Listing"
 
-#: ../src/evidence.php:52
-msgid "Structure"
-msgstr "Structure"
+#: ../src/evidence.php:53
+msgid "Column Groups"
+msgstr "Column Groups"
 
-#: ../src/evidence.php:62
+#: ../src/evidence.php:63
 msgid "User Query"
 msgstr "User Query"
 
-#: ../src/evidence.php:67
+#: ../src/evidence.php:68
 msgid "Items overview"
 msgstr "Items overview"
 
-#: ../src/evidence.php:100
+#: ../src/evidence.php:101
 msgid "no"
 msgstr "no"
 
-#: ../src/evidence.php:102
+#: ../src/evidence.php:103
 msgid "yes"
 msgstr "yes"
 
-#: ../src/evidence.php:104
+#: ../src/evidence.php:105
 msgid "Allowed by license"
 msgstr "Allowed by license"
 
-#: ../src/evidence.php:140
+#: ../src/evidence.php:141
 msgid "Relations"
 msgstr "Relations"
 
-#: ../src/evidence.php:142
+#: ../src/evidence.php:143
 msgid "localized name"
 msgstr "localized name"
 
-#: ../src/evidence.php:143
+#: ../src/evidence.php:144
 msgid "targeted evidence"
 msgstr "targeted evidence"
 
-#: ../src/evidence.php:144
+#: ../src/evidence.php:145
 msgid "subitems collection name"
 msgstr "subitems collection name"
 
-#: ../src/evidence.php:146
+#: ../src/evidence.php:147
 msgid "Info"
 msgstr "Info"
 
@@ -601,49 +638,81 @@ msgstr "WebHook probe"
 msgid "FlexiBee info"
 msgstr "FlexiBee info"
 
-#: ../src/login.php:34
+#: ../src/login.php:24
+msgid "Server added to bookmarks"
+msgstr "Server added to bookmarks"
+
+#: ../src/login.php:37
 msgid "Signed in as: "
 msgstr "Signed in as: "
 
-#: ../src/login.php:44
+#: ../src/login.php:47
 msgid "Please confirm your login credentials"
 msgstr "Please confirm your login credentials"
 
-#: ../src/login.php:58
+#: ../src/login.php:61
 msgid "Login History"
 msgstr "Login History"
 
-#: ../src/login.php:80
+#: ../src/login.php:83
 msgid "FlexiBee server URL. ex.: https://localhost:5434"
 msgstr "FlexiBee server URL. ex.: https://localhost:5434"
 
-#: ../src/login.php:81
+#: ../src/login.php:84
 msgid "User name"
 msgstr "User name"
 
-#: ../src/login.php:84
+#: ../src/login.php:87
 msgid "Login name"
 msgstr "Login name"
 
-#: ../src/login.php:88
+#: ../src/login.php:91
 msgid "User's password"
 msgstr "User's password"
 
-#: ../src/login.php:90
+#: ../src/login.php:93
 msgid "Add this to Login History"
 msgstr "Add this to Login History"
 
-#: ../src/login.php:98
-msgid "1"
-msgstr ""
+#: ../src/login.php:101
+msgid "display the contents of all the available records in all companies"
+msgstr "display the contents of all the available records in all companies"
 
-#: ../src/login.php:99
-msgid "2"
-msgstr ""
+#: ../src/login.php:103
+msgid "show the structure of evidence"
+msgstr "show the structure of evidence"
 
-#: ../src/login.php:100
-msgid "3"
-msgstr ""
+#: ../src/login.php:105
+msgid "send direct requests to the server and display results"
+msgstr "send direct requests to the server and display results"
+
+#: ../src/login.php:107
+msgid "set up ChangesAPI and add WebHooks"
+msgstr "set up ChangesAPI and add WebHooks"
+
+#: ../src/login.php:109
+msgid "Test WebHook script processing changes from FlexiBee answers"
+msgstr "Test WebHook script processing changes from FlexiBee answers"
+
+#: ../src/login.php:111
+msgid "Collectively establish and abolish the accounting period"
+msgstr "Collectively establish and abolish the accounting period"
+
+#: ../src/login.php:113
+msgid "Evidnece distinguish which are inaccessible because of the license"
+msgstr "Evidnece distinguish which are inaccessible because of the license"
+
+#: ../src/login.php:115
+msgid "Shown next to json result of the request and page FlexiBee"
+msgstr "Shown next to json result of the request and page FlexiBee"
+
+#: ../src/login.php:117
+msgid "Edit External ID numbers"
+msgstr "Edit External ID numbers"
+
+#: ../src/login.php:120
+msgid "Features"
+msgstr "Features"
 
 #: ../src/logout.php:30
 msgid "Sign out"
@@ -715,6 +784,9 @@ msgstr "Remove unused"
 #: ../src/ucetniobdobi.php:79
 msgid "Tool for massive creating Accounting periods"
 msgstr "Tool for massive creating Accounting periods"
+
+#~ msgid "Structure"
+#~ msgstr "Structure"
 
 #~ msgid "Welcome"
 #~ msgstr "Welcome"
