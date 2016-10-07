@@ -13,7 +13,8 @@
     "require": {
         "php": ">= 5.5.9",
         "spoje.net/flexipeehp": "dev-master",
-        "vitexsoftware/ease-framework": "dev-master"
+        "vitexsoftware/ease-framework": "dev-master",
+        "league/commonmark": "^0.15.0"
     },
     "autoload": {
         "psr-4": {

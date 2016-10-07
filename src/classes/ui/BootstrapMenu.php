@@ -36,6 +36,8 @@ class BootstrapMenu extends \Ease\TWB\Navbar
         \Ease\TWB\Part::twBootstrapize();
         if (!$user->getUserID()) {
             if (get_class($user) != 'EaseAnonym') {
+                $this->addMenuItem(new \Ease\Html\ATag('about.php', _('About')),
+                    'right');
 
                 $this->addMenuItem(
                     '

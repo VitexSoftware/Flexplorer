@@ -8,6 +8,7 @@ namespace Flexplorer;
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2016 Vitex Software
  */
+use League\CommonMark\CommonMarkConverter;
 
 require_once 'includes/Init.php';
 
@@ -18,7 +19,10 @@ $oPage->container->addItem('<br> FlexiPeeHP v'.\FlexiPeeHP\FlexiBeeRO::$libVersi
 $oPage->container->addItem('<br> EasePHP Framework v'.\Ease\Atom::$frameworkVersion);
 
 $oPage->container->addItem('<br/><br/><br/><br/>');
-$oPage->container->addItem(new \Ease\Html\Div(nl2br(file_get_contents('../README.md')),
+
+$converter = new CommonMarkConverter();
+
+$oPage->container->addItem(new \Ease\Html\Div($converter->convertToHtml(file_get_contents('../README.md')),
     ['class' => 'jumbotron']));
 $oPage->container->addItem('<br/><br/><br/><br/>');
 
