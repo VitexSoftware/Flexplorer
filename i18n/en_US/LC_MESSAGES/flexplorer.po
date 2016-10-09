@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-10-08 00:29+0100\n"
-"PO-Revision-Date: 2016-10-08 00:30+0100\n"
+"POT-Creation-Date: 2016-10-09 13:37+0100\n"
+"PO-Revision-Date: 2016-10-09 13:38+0100\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: en\n"
@@ -428,7 +428,11 @@ msgstr "Spoje.Net"
 msgid "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 msgstr "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 
-#: ../src/classes/ui/RecieveResponse.php:81
+#: ../src/classes/ui/RecieveResponse.php:43
+msgid "File was used"
+msgstr "File was used"
+
+#: ../src/classes/ui/RecieveResponse.php:86
 msgid "Query does not sent yet"
 msgstr "Query does not sent yet"
 
@@ -444,15 +448,23 @@ msgstr "URL Compositon"
 msgid "Query body"
 msgstr "Query body"
 
+#: ../src/classes/ui/SendForm.php:37
+msgid "File"
+msgstr "File"
+
 #: ../src/classes/ui/SendForm.php:38
+msgid "This file overwrite \"request body\""
+msgstr "This file overwrite \"request body\""
+
+#: ../src/classes/ui/SendForm.php:42
 msgid "Method"
 msgstr "Method"
 
-#: ../src/classes/ui/SendForm.php:40
+#: ../src/classes/ui/SendForm.php:44
 msgid "Supported HTTP Operations"
 msgstr "Supported HTTP Operations"
 
-#: ../src/classes/ui/SendForm.php:41 ../src/fakechange.php:98
+#: ../src/classes/ui/SendForm.php:45 ../src/fakechange.php:98
 msgid "Send"
 msgstr "Send"
 

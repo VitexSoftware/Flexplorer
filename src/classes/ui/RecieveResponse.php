@@ -38,6 +38,11 @@ class RecieveResponse extends \Ease\Html\Div
             $body   = $webPage->getRequestValue('body');
             $format = $webPage->getRequestValue('format');
 
+            if (isset($_FILES['upload'])) {
+                $body = file_get_contents($_FILES['upload']['tmp_name']);
+                $this->addStatusMessage(_('File was used'), 'success');
+            }
+
             if (is_null($method)) {
                 $method = 'GET';
             }

@@ -33,6 +33,10 @@ class SendForm extends \Ease\TWB\Form
             _('URL Compositon')));
         $this->addInput(new JsonTextarea('body', $body,
             ['id' => 'editor', 'class' => 'animated']), _('Query body'));
+
+        $this->addInput(new \Ease\Html\InputFileTag('upload'), _('File'),
+            'data...json.xml.csv', _('This file overwrite "request body"'));
+
         $this->addInput(new \Ease\Html\Select('method',
             ['GET' => 'GET', 'POST' => 'POST', 'PUT' => 'PUT', 'PATCH' => 'PATCH',
             'DELETE' => 'DELETE'], $method), _('Method'), null,

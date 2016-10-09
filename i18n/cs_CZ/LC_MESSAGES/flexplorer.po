@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-10-08 00:25+0100\n"
-"PO-Revision-Date: 2016-10-08 00:28+0100\n"
+"POT-Creation-Date: 2016-10-09 13:36+0100\n"
+"PO-Revision-Date: 2016-10-09 13:37+0100\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: cs_CZ\n"
@@ -103,9 +103,8 @@ msgid "Skip URL test"
 msgstr "Přeskoč test URL"
 
 #: ../src/changesapi.php:110
-#, fuzzy
 msgid "Suppress URL functionality test"
-msgstr "Přeskoč test URL"
+msgstr "Přeskoč test funkčnosti URL"
 
 #: ../src/changesapi.php:114 ../src/fakechange.php:67
 msgid "Last version"
@@ -435,7 +434,12 @@ msgstr "Spoje.Net"
 msgid "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 msgstr "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 
-#: ../src/classes/ui/RecieveResponse.php:81
+#: ../src/classes/ui/RecieveResponse.php:43
+#, fuzzy
+msgid "File was used"
+msgstr "Použité knihovny"
+
+#: ../src/classes/ui/RecieveResponse.php:86
 msgid "Query does not sent yet"
 msgstr "Dotaz nebyl zatím odeslán"
 
@@ -451,15 +455,23 @@ msgstr "Skládání URL"
 msgid "Query body"
 msgstr "Tělo dotazu"
 
+#: ../src/classes/ui/SendForm.php:37
+msgid "File"
+msgstr "Soubor"
+
 #: ../src/classes/ui/SendForm.php:38
+msgid "This file overwrite \"request body\""
+msgstr "Tento soubor přepíše \"tělo požadavku\""
+
+#: ../src/classes/ui/SendForm.php:42
 msgid "Method"
 msgstr "Metoda"
 
-#: ../src/classes/ui/SendForm.php:40
+#: ../src/classes/ui/SendForm.php:44
 msgid "Supported HTTP Operations"
 msgstr "Podporované HTTP Operace"
 
-#: ../src/classes/ui/SendForm.php:41 ../src/fakechange.php:98
+#: ../src/classes/ui/SendForm.php:45 ../src/fakechange.php:98
 msgid "Send"
 msgstr "Odešli"
 
