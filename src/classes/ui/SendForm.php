@@ -1,6 +1,6 @@
 <?php
 /**
- * Flexplorer - formulář pro odeslání požadavku.
+ * Flexplorer - Request Send Form.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2016 Vitex Software

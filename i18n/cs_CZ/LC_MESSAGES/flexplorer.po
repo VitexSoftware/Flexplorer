@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-10-09 13:36+0100\n"
-"PO-Revision-Date: 2016-10-09 13:37+0100\n"
+"POT-Creation-Date: 2016-10-09 23:05+0100\n"
+"PO-Revision-Date: 2016-10-09 23:07+0100\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: cs_CZ\n"
@@ -347,12 +347,12 @@ msgid "External IDs"
 msgstr "Externí IDčka"
 
 #: ../src/classes/ui/Editor.php:188 ../src/classes/ui/MainMenu.php:114
-#: ../src/evidence.php:62 ../src/query.php:45
+#: ../src/evidence.php:75 ../src/query.php:45
 msgid "Query"
 msgstr "Dotaz"
 
 #: ../src/classes/ui/Editor.php:192 ../src/delete.php:56
-#: ../src/evidence.php:76 ../src/login.php:79 ../src/query.php:61
+#: ../src/evidence.php:89 ../src/login.php:79 ../src/query.php:61
 msgid "FlexiBee"
 msgstr "FlexiBee"
 
@@ -372,7 +372,7 @@ msgstr "Firma"
 msgid "Overview"
 msgstr "Přehled"
 
-#: ../src/classes/ui/MainMenu.php:107 ../src/evidence.php:51
+#: ../src/classes/ui/MainMenu.php:107 ../src/evidence.php:62
 #: ../src/fakechange.php:71
 msgid "Evidence"
 msgstr "Evidence"
@@ -435,9 +435,8 @@ msgid "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 msgstr "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 
 #: ../src/classes/ui/RecieveResponse.php:43
-#, fuzzy
 msgid "File was used"
-msgstr "Použité knihovny"
+msgstr "Soubor byl použit"
 
 #: ../src/classes/ui/RecieveResponse.php:86
 msgid "Query does not sent yet"
@@ -533,52 +532,52 @@ msgstr "Evidence %s neexistuje"
 msgid "Evidence %s"
 msgstr "Evidence %s"
 
-#: ../src/evidence.php:50
+#: ../src/evidence.php:61
 msgid "Listing"
 msgstr "Výpis"
 
-#: ../src/evidence.php:53
+#: ../src/evidence.php:64
 msgid "Column Groups"
 msgstr "Skupiny Sloupečků"
 
-#: ../src/evidence.php:63
+#: ../src/evidence.php:76
 msgid "User Query"
 msgstr "Uživatelský dotaz"
 
-#: ../src/evidence.php:68
+#: ../src/evidence.php:80
 msgid "Items overview"
 msgstr "Přehled položek"
 
-#: ../src/evidence.php:101
+#: ../src/evidence.php:114
 msgid "no"
 msgstr "ne"
 
-#: ../src/evidence.php:103
+#: ../src/evidence.php:116
 #, fuzzy
 msgid "yes"
 msgstr "Ano"
 
-#: ../src/evidence.php:105
+#: ../src/evidence.php:118
 msgid "Allowed by license"
 msgstr "Povoleno licencí"
 
-#: ../src/evidence.php:141
+#: ../src/evidence.php:154
 msgid "Relations"
 msgstr "Vstahy"
 
-#: ../src/evidence.php:143
+#: ../src/evidence.php:156
 msgid "localized name"
 msgstr "Lokalizované jméno"
 
-#: ../src/evidence.php:144
+#: ../src/evidence.php:157
 msgid "targeted evidence"
 msgstr "Cílová evidence"
 
-#: ../src/evidence.php:145
+#: ../src/evidence.php:158
 msgid "subitems collection name"
 msgstr "Jméno skupiny položek"
 
-#: ../src/evidence.php:147
+#: ../src/evidence.php:160
 msgid "Info"
 msgstr "info"
 
@@ -587,11 +586,30 @@ msgstr "info"
 msgid "Evidences"
 msgstr "Evidence"
 
-#: ../src/evidences.php:38 ../src/evidences.php:39
+#: ../src/evidences.php:33
+msgid "License"
+msgstr "Licence"
+
+#: ../src/evidences.php:49
+#, php-format
+msgid "Availble %s"
+msgstr "Dostupné %s"
+
+#: ../src/evidences.php:53
+#, php-format
+msgid "Unlicensed %s"
+msgstr "Nelicencované %s"
+
+#: ../src/evidences.php:59
+#, php-format
+msgid "All %s"
+msgstr "Všechny %s"
+
+#: ../src/evidences.php:72
 msgid "licence ok"
 msgstr "licence v pořádku"
 
-#: ../src/evidences.php:42
+#: ../src/evidences.php:75
 msgid "unavialble"
 msgstr "nepřístupno"
 

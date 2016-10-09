@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-10-09 13:37+0100\n"
-"PO-Revision-Date: 2016-10-09 13:38+0100\n"
+"POT-Creation-Date: 2016-10-09 23:05+0100\n"
+"PO-Revision-Date: 2016-10-09 23:05+0100\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: en\n"
@@ -341,12 +341,12 @@ msgid "External IDs"
 msgstr "External IDs"
 
 #: ../src/classes/ui/Editor.php:188 ../src/classes/ui/MainMenu.php:114
-#: ../src/evidence.php:62 ../src/query.php:45
+#: ../src/evidence.php:75 ../src/query.php:45
 msgid "Query"
 msgstr "Query"
 
 #: ../src/classes/ui/Editor.php:192 ../src/delete.php:56
-#: ../src/evidence.php:76 ../src/login.php:79 ../src/query.php:61
+#: ../src/evidence.php:89 ../src/login.php:79 ../src/query.php:61
 msgid "FlexiBee"
 msgstr "FlexiBee"
 
@@ -366,7 +366,7 @@ msgstr "Company"
 msgid "Overview"
 msgstr "Overview"
 
-#: ../src/classes/ui/MainMenu.php:107 ../src/evidence.php:51
+#: ../src/classes/ui/MainMenu.php:107 ../src/evidence.php:62
 #: ../src/fakechange.php:71
 msgid "Evidence"
 msgstr "Evidence"
@@ -526,51 +526,51 @@ msgstr "Evidence %s does not exist"
 msgid "Evidence %s"
 msgstr "Evidence %s"
 
-#: ../src/evidence.php:50
+#: ../src/evidence.php:61
 msgid "Listing"
 msgstr "Listing"
 
-#: ../src/evidence.php:53
+#: ../src/evidence.php:64
 msgid "Column Groups"
 msgstr "Column Groups"
 
-#: ../src/evidence.php:63
+#: ../src/evidence.php:76
 msgid "User Query"
 msgstr "User Query"
 
-#: ../src/evidence.php:68
+#: ../src/evidence.php:80
 msgid "Items overview"
 msgstr "Items overview"
 
-#: ../src/evidence.php:101
+#: ../src/evidence.php:114
 msgid "no"
 msgstr "no"
 
-#: ../src/evidence.php:103
+#: ../src/evidence.php:116
 msgid "yes"
 msgstr "yes"
 
-#: ../src/evidence.php:105
+#: ../src/evidence.php:118
 msgid "Allowed by license"
 msgstr "Allowed by license"
 
-#: ../src/evidence.php:141
+#: ../src/evidence.php:154
 msgid "Relations"
 msgstr "Relations"
 
-#: ../src/evidence.php:143
+#: ../src/evidence.php:156
 msgid "localized name"
 msgstr "localized name"
 
-#: ../src/evidence.php:144
+#: ../src/evidence.php:157
 msgid "targeted evidence"
 msgstr "targeted evidence"
 
-#: ../src/evidence.php:145
+#: ../src/evidence.php:158
 msgid "subitems collection name"
 msgstr "subitems collection name"
 
-#: ../src/evidence.php:147
+#: ../src/evidence.php:160
 msgid "Info"
 msgstr "Info"
 
@@ -578,11 +578,30 @@ msgstr "Info"
 msgid "Evidences"
 msgstr "Evidences"
 
-#: ../src/evidences.php:38 ../src/evidences.php:39
+#: ../src/evidences.php:33
+msgid "License"
+msgstr "License"
+
+#: ../src/evidences.php:49
+#, php-format
+msgid "Availble %s"
+msgstr "Availble %s"
+
+#: ../src/evidences.php:53
+#, php-format
+msgid "Unlicensed %s"
+msgstr "Unlicensed %s"
+
+#: ../src/evidences.php:59
+#, php-format
+msgid "All %s"
+msgstr "All %s"
+
+#: ../src/evidences.php:72
 msgid "licence ok"
 msgstr "licence ok"
 
-#: ../src/evidences.php:42
+#: ../src/evidences.php:75
 msgid "unavialble"
 msgstr "unavialble"
 

@@ -46,10 +46,21 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
 
     $evobj = new Flexplorer($evidence);
 
-    $tabs = new \Ease\TWB\Tabs('EviTabs');
-    $tabs->addTab(_('Listing'),
-        new ui\DataGrid(_('Evidence'), new DataSource($evobj)));
 
+    if (array_key_exists('evidence.php?evidence='.$evidence,
+            $_SESSION['evidence-menu'])) {
+        $evidenceLicensed = true;
+    } else {
+        $evidenceLicensed = false;
+    }
+
+
+
+    $tabs = new \Ease\TWB\Tabs('EviTabs');
+    if ($evidenceLicensed === true) {
+        $tabs->addTab(_('Listing'),
+            new ui\DataGrid(_('Evidence'), new DataSource($evobj)));
+    }
     $tabs->addTab(_('Column Groups'), new ui\ColumnsGroups($evobj, $column),
         isset($column));
 
@@ -59,24 +70,26 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
         $body = $evobj->jsonizeData([]);
     }
 
-    $tabs->addTab(_('Query'),
-        new \Ease\TWB\Panel(_('User Query'), 'warning',
-        new ui\SendForm($url, $method, $body)));
 
-    $overviewUrl = $evobj->getEvidenceUrl().'/properties.html?inDesktopApp=true';
+    if ($evidenceLicensed === true) {
+        $tabs->addTab(_('Query'),
+            new \Ease\TWB\Panel(_('User Query'), 'warning',
+            new ui\SendForm($url, $method, $body)));
+        $overviewUrl = $evobj->getEvidenceUrl().'/properties.html?inDesktopApp=true';
 
-    $tabs->addTab(_('Items overview'),
-        new \Ease\Html\IframeTag($overviewUrl,
-        ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
-    if (strstr($url, '?')) {
-        $overviewUrl = $url.'&inDesktopApp=true';
-    } else {
-        $overviewUrl = $url.'?inDesktopApp=true';
+        $tabs->addTab(_('Items overview'),
+            new \Ease\Html\IframeTag($overviewUrl,
+            ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
+        if (strstr($url, '?')) {
+            $overviewUrl = $url.'&inDesktopApp=true';
+        } else {
+            $overviewUrl = $url.'?inDesktopApp=true';
+        }
+
+        $tabs->addTab(_('FlexiBee'),
+            new \Ease\Html\IframeTag(str_replace('.json', '.html', $overviewUrl),
+            ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
     }
-    $tabs->addTab(_('FlexiBee'),
-        new \Ease\Html\IframeTag(str_replace('.json', '.html', $overviewUrl),
-        ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
-
 
     $evidenceTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
     $evidenceTable->addRowHeaderColumns();
@@ -98,9 +111,9 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
     }
 
     if (is_null($myEvidenceRaw)) {
-        $state = _('no');
+        $state = new \Ease\TWB\Label('danger', _('no'));
     } else {
-        $state = _('yes');
+        $state = new \Ease\TWB\Label('success', _('yes'));
     }
     $evidenceTable->addRowColumns([_('Allowed by license'), $state]);
 
@@ -144,7 +157,7 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
         new \Ease\Html\LiTag(_('targeted evidence')),
         new \Ease\Html\LiTag(_('subitems collection name'))])));
 
-    $tabs->addTab(_('Info'), $infoRow);
+    $tabs->addTab(_('Info'), $infoRow, ($evidenceLicensed === false));
 
     $oPage->container->addItem($tabs);
 
