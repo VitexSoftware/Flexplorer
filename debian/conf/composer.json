@@ -16,7 +16,8 @@
     "require": {
         "php": ">= 5.5.9",
         "flexipeehp": "*",
-        "ease-framework": "*"
+        "ease-framework": "*",
+        "league/commonmark": "^0.15.0"        
     },
     "autoload": {
         "psr-4": {
