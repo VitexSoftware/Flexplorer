@@ -67,10 +67,23 @@ class RecieveResponse extends \Ease\Html\Div
             $this->addItem(new \Ease\Html\H1Tag($sender->lastResponseCode));
 
             if (strlen($sender->lastCurlResponse)) {
-                $formated = self::jsonpp($sender->lastCurlResponse);
-                $formated = preg_replace('/ref":"(.*)"/',
-                    'ref":"<a href="query.php?show=result&url='.$sender->url.'$1">$1</a>"',
-                    $formated);
+
+                switch ($format) {
+                    case 'json':
+                        $formated = self::jsonpp($sender->lastCurlResponse);
+                        $formated = preg_replace('/ref":"(.*)"/',
+                            'ref":"<a href="query.php?show=result&url='.$sender->url.'$1">$1</a>"',
+                            $formated);
+                        break;
+                    case 'xml':
+                        $formated = htmlentities($sender->lastCurlResponse);
+                        break;
+                    case 'txt':
+                    default :
+                        $formated = $sender->lastCurlResponse;
+                        break;
+                }
+
                 $this->addItem('<pre><code class="'.$format.'">'.
                     $formated
                     .'</code></pre>');

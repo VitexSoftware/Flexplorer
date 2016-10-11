@@ -9,8 +9,6 @@ namespace Flexplorer;
  * @copyright  2016 Vitex Software
  */
 
-namespace Flexplorer;
-
 require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
@@ -35,6 +33,7 @@ if (!strlen($url)) {
     $url.= '.json';
 }
 $action = $oPage->getRequestValue('action');
+$format = $oPage->getRequestValue('format');
 if (is_null($action)) {
     $method = $oPage->getRequestValue('method');
 } else {
@@ -48,7 +47,7 @@ $requestTabs = new \Ease\TWB\Tabs('Request');
 
 $requestTabs->addTab(_('Request'),
     new \Ease\TWB\Panel(_('Custom request'), 'warning',
-    new ui\SendForm($url, $method, $body)));
+    new ui\SendForm($url, $method, $body, $format)));
 
 $requestTabs->addTab(_('Response'), new ui\RecieveResponse($url),
     $oPage->isPosted() || ($oPage->getRequestValue('show') == 'result'));

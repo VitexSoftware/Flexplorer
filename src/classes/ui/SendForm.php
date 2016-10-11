@@ -23,9 +23,11 @@ class SendForm extends \Ease\TWB\Form
      * @param string $method
      * @param string $body
      */
-    public function __construct($url, $method = 'GET', $body = '')
+    public function __construct($url, $method = 'GET', $body = '',
+                                $format = 'json')
     {
-        parent::__construct('Req', 'query.php');
+        parent::__construct('Req', 'query.php', $method, null,
+            ['class' => 'form-horizontal', 'enctype' => 'multipart/form-data']);
 
         $this->addInput(new \Ease\Html\InputTextTag('url', $url), _('URL'),
             $url,
@@ -42,6 +44,11 @@ class SendForm extends \Ease\TWB\Form
             'DELETE' => 'DELETE'], $method), _('Method'), null,
             new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/http-operations',
             _('Supported HTTP Operations')));
+
+        $this->addInput(new \Ease\Html\Select('format',
+            ['json' => 'JSON', 'xml' => 'XML', 'csv' => 'CSV'], $format),
+            _('Format'));
+
         $this->addItem(new \Ease\TWB\SubmitButton(_('Send'), 'success'));
     }
 }
