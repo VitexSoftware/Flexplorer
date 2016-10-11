@@ -126,24 +126,18 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
 
     $relations = $evobj->getRelationsInfo();
     if (count($relations)) {
+
+        $evidenciesByType = $evobj->reindexArrayBy(\FlexiPeeHP\EvidenceList::$evidences,
+            'evidenceType');
+
         foreach ($relations as $relation) {
             if (is_array($relation)) {
-                if (isset(\FlexiPeeHP\EvidenceList::$name[$relation['url']])) {
-                    $relationsList->addItemSmart(' <a href="evidence.php?evidence='.$relation['url'].'">'.
-                        $relation['name'].' ('.$relation['evidenceType'].' <strong>'.$relation['url'].'</strong>)</a>');
+                if (array_key_exists($relation['evidenceType'],
+                        $evidenciesByType)) {
+                    $relationsList->addItemSmart(' <a href="evidence.php?evidence='.$evidenciesByType[$relation['evidenceType']]['evidencePath'].'">'.
+                        $relation['name'].' (<strong>'.$relation['evidenceType'].'</strong> '.$relation['url'].')</a>');
                 } else {
-                    if (array_key_exists($relation['name'], $evidenceNames)) {
-                        $relationsList->addItemSmart(' <a href="evidence.php?evidence='.$evidenceNames[$relation['name']].'"><strong>'.
-                            $relation['name'].'</strong> ('.$relation['evidenceType'].' '.$relation['url'].')</a>');
-                    } else {
-                        if (array_key_exists(strtolower($relation['evidenceType']),
-                                \FlexiPeeHP\EvidenceList::$name)) {
-                            $relationsList->addItemSmart(' <a href="evidence.php?evidence='.strtolower($relation['evidenceType']).'">'.
-                                $relation['name'].' (<strong>'.$relation['evidenceType'].'</strong> '.$relation['url'].')</a>');
-                        } else {
-                            $relationsList->addItemSmart($relation['name'].' ('.$relation['evidenceType'].' '.$relation['url'].')</a>');
-                        }
-                    }
+                    $relationsList->addItemSmart($relation['name'].' ('.$relation['evidenceType'].' '.$relation['url'].')</a>');
                 }
             } else {
                 $relationsList->addItemSmart($relation);
