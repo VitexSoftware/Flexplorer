@@ -71,6 +71,14 @@ Vyhledávat je také možné v názvech sloupců jednotlivých evidencí a jejic
 
 ![Columns Search](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-nalezene_sloupce.png "Nalezené sloupce")
 
+Tělo požadavku je možné načítat ze souboru:
+
+![File Upload](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-xml-file-upload.png "Upload Souboru")
+
+Odpověď požadavku může být v podporovaných formátech (zde XML):
+
+![XML Response](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-xml-response.png "XML Response")
+
 
 Instalace
 ---------
