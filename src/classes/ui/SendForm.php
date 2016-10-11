@@ -26,7 +26,8 @@ class SendForm extends \Ease\TWB\Form
     public function __construct($url, $method = 'GET', $body = '',
                                 $format = 'json')
     {
-        parent::__construct('Req', 'query.php', $method, null,
+        $sourceurl = '';
+        parent::__construct('Req', 'query.php', 'POST', null,
             ['class' => 'form-horizontal', 'enctype' => 'multipart/form-data']);
 
         $this->addInput(new \Ease\Html\InputTextTag('url', $url), _('URL'),
@@ -34,10 +35,14 @@ class SendForm extends \Ease\TWB\Form
             new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/urls',
             _('URL Compositon')));
         $this->addInput(new JsonTextarea('body', $body,
-            ['id' => 'editor', 'class' => 'animated']), _('Query body'));
+            ['id' => 'editor', 'class' => 'animated']), _('Query body Text'));
 
-        $this->addInput(new \Ease\Html\InputFileTag('upload'), _('File'),
-            'data...json.xml.csv', _('This file overwrite "request body"'));
+        $this->addInput(new \Ease\Html\InputFileTag('upload'),
+            _('Query body from File'), 'data...json.xml.csv', _('This file overwrite "request body"'));
+
+        $this->addInput(new \Ease\Html\InputTextTag('sourceurl', $sourceurl),
+            _('Source URL'), $sourceurl, _('Get Query Body from url'));
+
 
         $this->addInput(new \Ease\Html\Select('method',
             ['GET' => 'GET', 'POST' => 'POST', 'PUT' => 'PUT', 'PATCH' => 'PATCH',

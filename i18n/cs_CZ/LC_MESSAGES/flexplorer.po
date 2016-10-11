@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-10-09 23:05+0100\n"
-"PO-Revision-Date: 2016-10-09 23:07+0100\n"
-"Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
+"POT-Creation-Date: 2016-10-11 13:00+0100\n"
+"PO-Revision-Date: 2016-10-11 13:02+0100\n"
+"Last-Translator: Vítězslav Dvořák <vitex@arachne.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
@@ -201,7 +201,7 @@ msgstr "O Aplikaci"
 #: ../src/login.php:75
 #, fuzzy
 msgid "Sign in"
-msgstr "Přihlášení"
+msgstr "Odhlášení"
 
 #: ../src/classes/ui/BootstrapMenu.php:49
 msgid "Server"
@@ -210,12 +210,12 @@ msgstr "Server"
 #: ../src/classes/ui/BootstrapMenu.php:50
 #, fuzzy
 msgid "login"
-msgstr "Přihlašovací jeméno"
+msgstr "Chyba přihlášení"
 
 #: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:88
 #, fuzzy
 msgid "Password"
-msgstr "Heslo"
+msgstr "Heslo uživatele"
 
 #: ../src/classes/ui/BootstrapMenu.php:53 ../src/login.php:92
 msgid "Remeber me"
@@ -287,25 +287,33 @@ msgstr "Pouze pro čtení"
 msgid "Json"
 msgstr "Json"
 
-#: ../src/classes/ui/DataGrid.php:107
+#: ../src/classes/ui/DataGrid.php:100
+msgid "XML"
+msgstr "XML"
+
+#: ../src/classes/ui/DataGrid.php:108
 msgid "Add"
 msgstr "Přidej"
 
-#: ../src/classes/ui/DataGrid.php:110
+#: ../src/classes/ui/DataGrid.php:111
 msgid "Edit"
 msgstr "Uprav"
 
-#: ../src/classes/ui/DataGrid.php:113
+#: ../src/classes/ui/DataGrid.php:114
 #, fuzzy
 msgid "Delete"
 msgstr "Smazat"
 
-#: ../src/classes/ui/DataGrid.php:184
+#: ../src/classes/ui/DataGrid.php:123
+msgid "Select All"
+msgstr "Vyber vše"
+
+#: ../src/classes/ui/DataGrid.php:186
 msgid "Title missing"
 msgstr "Chybí nadpis"
 
-#: ../src/classes/ui/DataGrid.php:287 ../src/classes/ui/DataGrid.php:325
-#: ../src/classes/ui/DataGrid.php:370
+#: ../src/classes/ui/DataGrid.php:289 ../src/classes/ui/DataGrid.php:326
+#: ../src/classes/ui/DataGrid.php:363 ../src/classes/ui/DataGrid.php:408
 msgid "Please mark some rows"
 msgstr "Prosím označ nejaké řádkz"
 
@@ -347,12 +355,12 @@ msgid "External IDs"
 msgstr "Externí IDčka"
 
 #: ../src/classes/ui/Editor.php:188 ../src/classes/ui/MainMenu.php:114
-#: ../src/evidence.php:75 ../src/query.php:45
+#: ../src/evidence.php:75 ../src/query.php:48 ../src/viewevidence.php:46
 msgid "Query"
 msgstr "Dotaz"
 
 #: ../src/classes/ui/Editor.php:192 ../src/delete.php:56
-#: ../src/evidence.php:89 ../src/login.php:79 ../src/query.php:61
+#: ../src/evidence.php:89 ../src/login.php:79 ../src/query.php:64
 msgid "FlexiBee"
 msgstr "FlexiBee"
 
@@ -434,43 +442,67 @@ msgstr "Spoje.Net"
 msgid "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 msgstr "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 
-#: ../src/classes/ui/RecieveResponse.php:43
-msgid "File was used"
-msgstr "Soubor byl použit"
+#: ../src/classes/ui/RecieveResponse.php:44
+#, php-format
+msgid "File %s was used"
+msgstr "Byl použit soubor %s"
 
-#: ../src/classes/ui/RecieveResponse.php:86
+#: ../src/classes/ui/RecieveResponse.php:52
+#, php-format
+msgid "URL %s was used"
+msgstr "Byla použita adresa %s"
+
+#: ../src/classes/ui/RecieveResponse.php:55
+#, php-format
+msgid "Error %s obataing %s"
+msgstr "Chyba %s získání %s"
+
+#: ../src/classes/ui/RecieveResponse.php:113
 msgid "Query does not sent yet"
 msgstr "Dotaz nebyl zatím odeslán"
 
-#: ../src/classes/ui/SendForm.php:30
+#: ../src/classes/ui/SendForm.php:33
 msgid "URL"
 msgstr "URL"
 
-#: ../src/classes/ui/SendForm.php:33
+#: ../src/classes/ui/SendForm.php:36
 msgid "URL Compositon"
 msgstr "Skládání URL"
 
-#: ../src/classes/ui/SendForm.php:35
-msgid "Query body"
-msgstr "Tělo dotazu"
-
-#: ../src/classes/ui/SendForm.php:37
-msgid "File"
-msgstr "Soubor"
-
 #: ../src/classes/ui/SendForm.php:38
+msgid "Query body Text"
+msgstr "Text Těla dotazu"
+
+#: ../src/classes/ui/SendForm.php:41
+msgid "Query body from File"
+msgstr "Načíst tělo dotazu ze souboru"
+
+#: ../src/classes/ui/SendForm.php:41
 msgid "This file overwrite \"request body\""
 msgstr "Tento soubor přepíše \"tělo požadavku\""
 
-#: ../src/classes/ui/SendForm.php:42
+#: ../src/classes/ui/SendForm.php:44
+msgid "Source URL"
+msgstr "Adresa URL zdroje"
+
+#: ../src/classes/ui/SendForm.php:44
+msgid "Get Query Body from url"
+msgstr "Použij tělo dotazu z URL adresy"
+
+#: ../src/classes/ui/SendForm.php:49
 msgid "Method"
 msgstr "Metoda"
 
-#: ../src/classes/ui/SendForm.php:44
+#: ../src/classes/ui/SendForm.php:51
 msgid "Supported HTTP Operations"
 msgstr "Podporované HTTP Operace"
 
-#: ../src/classes/ui/SendForm.php:45 ../src/fakechange.php:98
+#: ../src/classes/ui/SendForm.php:55
+#, fuzzy
+msgid "Format"
+msgstr "Formát dat"
+
+#: ../src/classes/ui/SendForm.php:57 ../src/fakechange.php:98
 msgid "Send"
 msgstr "Odešli"
 
@@ -532,7 +564,7 @@ msgstr "Evidence %s neexistuje"
 msgid "Evidence %s"
 msgstr "Evidence %s"
 
-#: ../src/evidence.php:61
+#: ../src/evidence.php:61 ../src/viewevidence.php:31
 msgid "Listing"
 msgstr "Výpis"
 
@@ -590,26 +622,26 @@ msgstr "Evidence"
 msgid "License"
 msgstr "Licence"
 
-#: ../src/evidences.php:49
+#: ../src/evidences.php:54
 #, php-format
 msgid "Availble %s"
 msgstr "Dostupné %s"
 
-#: ../src/evidences.php:53
+#: ../src/evidences.php:58
 #, php-format
 msgid "Unlicensed %s"
 msgstr "Nelicencované %s"
 
-#: ../src/evidences.php:59
+#: ../src/evidences.php:64
 #, php-format
 msgid "All %s"
 msgstr "Všechny %s"
 
-#: ../src/evidences.php:72
+#: ../src/evidences.php:83
 msgid "licence ok"
 msgstr "licence v pořádku"
 
-#: ../src/evidences.php:75
+#: ../src/evidences.php:86
 msgid "unavialble"
 msgstr "nepřístupno"
 
@@ -661,11 +693,11 @@ msgstr ""
 "Když dojde v databázi FlexiBee ke změně, je odeslán POST HTTP request na "
 "všechna zaregistrovaná URL"
 
-#: ../src/fakechange.php:119 ../src/query.php:53
+#: ../src/fakechange.php:119 ../src/query.php:56
 msgid "Response"
 msgstr "Odpověď"
 
-#: ../src/fakechange.php:121 ../src/query.php:49
+#: ../src/fakechange.php:121 ../src/query.php:52
 msgid "Request"
 msgstr "Požadavek"
 
@@ -765,7 +797,7 @@ msgstr "Díky za váš zájem a těším se na další návštěvu"
 msgid "Main Page"
 msgstr "Hlavní stránka"
 
-#: ../src/query.php:50
+#: ../src/query.php:53
 msgid "Custom request"
 msgstr "Uživatelský požadavek"
 
@@ -824,15 +856,25 @@ msgstr "Odstranit nepoužité"
 msgid "Tool for massive creating Accounting periods"
 msgstr "Nástroj pro hromadné zakládání účetních období"
 
-#~ msgid "Structure"
-#~ msgstr "Struktura"
+#: ../src/viewevidence.php:24
+#, fuzzy
+msgid "Evidence proprties overview"
+msgstr "Přehled vlastností evidence"
+
+#: ../src/viewevidence.php:32
+msgid "Structure"
+msgstr "Struktura"
+
+#: ../src/viewevidence.php:47
+#, fuzzy
+msgid "Custom query"
+msgstr "Uživatelský požadavek"
+
+#~ msgid "File"
+#~ msgstr "Soubor"
 
 #~ msgid "Welcome"
 #~ msgstr "Vítejte"
-
-#, fuzzy
-#~ msgid "Custom query"
-#~ msgstr "Uživatelský požadavek"
 
 #~ msgid "Flexplorer"
 #~ msgstr "Flexplorer"
@@ -855,10 +897,6 @@ msgstr "Nástroj pro hromadné zakládání účetních období"
 #, fuzzy
 #~ msgid "Přeskočit test URL"
 #~ msgstr "Test"
-
-#, fuzzy
-#~ msgid "Evidence [roprties overview"
-#~ msgstr "Evidence properties overview"
 
 #, fuzzy
 #~ msgid "Test Web Hooku"

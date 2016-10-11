@@ -33,14 +33,28 @@ class RecieveResponse extends \Ease\Html\Div
         if ($webPage->isPosted() || strlen($this->url)) {
             $sender = new \FlexiPeeHP\FlexiBeeRW();
 
-            $url    = $webPage->getRequestValue('url');
-            $method = $webPage->getRequestValue('method');
-            $body   = $webPage->getRequestValue('body');
-            $format = $webPage->getRequestValue('format');
+            $url       = $webPage->getRequestValue('url');
+            $method    = $webPage->getRequestValue('method');
+            $body      = $webPage->getRequestValue('body');
+            $format    = $webPage->getRequestValue('format');
+            $sourceurl = $webPage->getRequestValue('sourceurl');
 
             if (isset($_FILES['upload'])) {
                 $body = file_get_contents($_FILES['upload']['tmp_name']);
-                $this->addStatusMessage(_('File was used'), 'success');
+                $this->addStatusMessage(sprintf(_('File %s was used'),
+                        $_FILES['upload']['name']), 'success');
+            }
+
+            if (strlen($sourceurl)) {
+                $sender->doCurlRequest($sourceurl, 'get');
+                if ($sender->lastResponseCode == 200) {
+                    $body = $sender->lastCurlResponse;
+                    $this->addStatusMessage(sprintf(_('URL %s was used'),
+                            $sourceurl), 'success');
+                } else {
+                    $this->addStatusMessage(sprintf(_('Error %s obataing %s'),
+                            $sender->lastResponseCode, $sourceurl), 'success');
+                }
             }
 
             if (is_null($method)) {
@@ -136,4 +150,5 @@ class RecieveResponse extends \Ease\Html\Div
         }
         return $result;
     }
+
 }

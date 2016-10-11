@@ -8,12 +8,12 @@ namespace Flexplorer;
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2016 Vitex Software
  */
-
 require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-$url = $oPage->getRequestValue('url');
+$url    = $oPage->getRequestValue('url');
+$format = $oPage->getRequestValue('format');
 if (!strlen($url)) {
     $url = constant('FLEXIBEE_URL').'/c/';
     if (defined('FLEXIBEE_COMPANY')) {
@@ -30,7 +30,11 @@ if (!strlen($url)) {
         $url .= '/'.$id;
     }
 
-    $url.= '.json';
+    if (is_null($format)) {
+        $format = 'json';
+    }
+
+    $url.= '.'.$format;
 }
 $action = $oPage->getRequestValue('action');
 $format = $oPage->getRequestValue('format');

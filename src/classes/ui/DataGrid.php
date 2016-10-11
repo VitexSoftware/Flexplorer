@@ -97,6 +97,7 @@ class DataGrid extends \Ease\Html\TableTag
     public function setUpButtons()
     {
         $this->addJsonButton(_('Json'));
+        $this->addXmlButton(_('XML'));
         $actions = $this->dataSource->handledObejct->getActionsInfo();
         if (count($actions)) {
             foreach ($actions as $action => $actionInfo) {
@@ -119,6 +120,7 @@ class DataGrid extends \Ease\Html\TableTag
                 }
             }
         }
+        $this->addSelectAllButton(_('Select All'));
     }
 
     /**
@@ -291,6 +293,42 @@ background: url(images/edit.png) no-repeat center left;
         ', null, true);
     }
 
+    public function addXmlButton($title, $target = null)
+    {
+        $this->addButton($title, 'xml', 'xmlRecord');
+
+        $this->addCss('.flexigrid div.fbutton .xml {
+background: url(images/xml.svg) no-repeat center left;
+}
+');
+
+        $this->addJavaScript('function xmlRecord(com, grid) {
+
+        var numItems = $(\'.trSelected\').length
+        if(numItems){
+            if(numItems == 1) {
+                $(\'.trSelected\', grid).each(function() {
+                    var id = $(this).attr(\'id\');
+                    id = id.substring(id.lastIndexOf(\'row\')+3);
+                    $(location).attr(\'href\',\'query.php?show=result&format=xml&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
+                });
+
+            } else {
+                $(\'.trSelected\', grid).each(function() {
+                    var id = $(this).attr(\'id\');
+                    id = id.substring(id.lastIndexOf(\'row\')+3);
+                    var url =\'query.php?show=result&format=xml&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id;
+                    var win = window.open(url, \'_blank\');
+                    win.focus();
+                });
+            }
+        } else {
+            alert("'._('Please mark some rows').'");
+        }
+
+            }
+        ', null, true);
+    }
 
     public function addJsonButton($title, $target = null)
     {

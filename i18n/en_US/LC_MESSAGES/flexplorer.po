@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-10-09 23:05+0100\n"
-"PO-Revision-Date: 2016-10-09 23:05+0100\n"
-"Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
+"POT-Creation-Date: 2016-10-11 12:59+0100\n"
+"PO-Revision-Date: 2016-10-11 13:02+0100\n"
+"Last-Translator: Vítězslav Dvořák <vitex@arachne.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -282,24 +282,32 @@ msgstr "Read Only"
 msgid "Json"
 msgstr "Json"
 
-#: ../src/classes/ui/DataGrid.php:107
+#: ../src/classes/ui/DataGrid.php:100
+msgid "XML"
+msgstr "XML"
+
+#: ../src/classes/ui/DataGrid.php:108
 msgid "Add"
 msgstr "Add"
 
-#: ../src/classes/ui/DataGrid.php:110
+#: ../src/classes/ui/DataGrid.php:111
 msgid "Edit"
 msgstr "Edit"
 
-#: ../src/classes/ui/DataGrid.php:113
+#: ../src/classes/ui/DataGrid.php:114
 msgid "Delete"
 msgstr "Delete"
 
-#: ../src/classes/ui/DataGrid.php:184
+#: ../src/classes/ui/DataGrid.php:123
+msgid "Select All"
+msgstr "Select All"
+
+#: ../src/classes/ui/DataGrid.php:186
 msgid "Title missing"
 msgstr "Title missing"
 
-#: ../src/classes/ui/DataGrid.php:287 ../src/classes/ui/DataGrid.php:325
-#: ../src/classes/ui/DataGrid.php:370
+#: ../src/classes/ui/DataGrid.php:289 ../src/classes/ui/DataGrid.php:326
+#: ../src/classes/ui/DataGrid.php:363 ../src/classes/ui/DataGrid.php:408
 msgid "Please mark some rows"
 msgstr "Please mark some rows"
 
@@ -341,12 +349,12 @@ msgid "External IDs"
 msgstr "External IDs"
 
 #: ../src/classes/ui/Editor.php:188 ../src/classes/ui/MainMenu.php:114
-#: ../src/evidence.php:75 ../src/query.php:45
+#: ../src/evidence.php:75 ../src/query.php:48 ../src/viewevidence.php:46
 msgid "Query"
 msgstr "Query"
 
 #: ../src/classes/ui/Editor.php:192 ../src/delete.php:56
-#: ../src/evidence.php:89 ../src/login.php:79 ../src/query.php:61
+#: ../src/evidence.php:89 ../src/login.php:79 ../src/query.php:64
 msgid "FlexiBee"
 msgstr "FlexiBee"
 
@@ -428,43 +436,66 @@ msgstr "Spoje.Net"
 msgid "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 msgstr "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 
-#: ../src/classes/ui/RecieveResponse.php:43
-msgid "File was used"
-msgstr "File was used"
+#: ../src/classes/ui/RecieveResponse.php:44
+#, php-format
+msgid "File %s was used"
+msgstr "File %s was used"
 
-#: ../src/classes/ui/RecieveResponse.php:86
+#: ../src/classes/ui/RecieveResponse.php:52
+#, php-format
+msgid "URL %s was used"
+msgstr "URL %s was used"
+
+#: ../src/classes/ui/RecieveResponse.php:55
+#, php-format
+msgid "Error %s obataing %s"
+msgstr "Error %s obataing %s"
+
+#: ../src/classes/ui/RecieveResponse.php:113
 msgid "Query does not sent yet"
 msgstr "Query does not sent yet"
 
-#: ../src/classes/ui/SendForm.php:30
+#: ../src/classes/ui/SendForm.php:33
 msgid "URL"
 msgstr "URL"
 
-#: ../src/classes/ui/SendForm.php:33
+#: ../src/classes/ui/SendForm.php:36
 msgid "URL Compositon"
 msgstr "URL Compositon"
 
-#: ../src/classes/ui/SendForm.php:35
-msgid "Query body"
-msgstr "Query body"
-
-#: ../src/classes/ui/SendForm.php:37
-msgid "File"
-msgstr "File"
-
 #: ../src/classes/ui/SendForm.php:38
+msgid "Query body Text"
+msgstr "Query body Text"
+
+#: ../src/classes/ui/SendForm.php:41
+msgid "Query body from File"
+msgstr "Query body from File"
+
+#: ../src/classes/ui/SendForm.php:41
 msgid "This file overwrite \"request body\""
 msgstr "This file overwrite \"request body\""
 
-#: ../src/classes/ui/SendForm.php:42
+#: ../src/classes/ui/SendForm.php:44
+msgid "Source URL"
+msgstr "Source URL"
+
+#: ../src/classes/ui/SendForm.php:44
+msgid "Get Query Body from url"
+msgstr "Get Query Body from url"
+
+#: ../src/classes/ui/SendForm.php:49
 msgid "Method"
 msgstr "Method"
 
-#: ../src/classes/ui/SendForm.php:44
+#: ../src/classes/ui/SendForm.php:51
 msgid "Supported HTTP Operations"
 msgstr "Supported HTTP Operations"
 
-#: ../src/classes/ui/SendForm.php:45 ../src/fakechange.php:98
+#: ../src/classes/ui/SendForm.php:55
+msgid "Format"
+msgstr "Format"
+
+#: ../src/classes/ui/SendForm.php:57 ../src/fakechange.php:98
 msgid "Send"
 msgstr "Send"
 
@@ -526,7 +557,7 @@ msgstr "Evidence %s does not exist"
 msgid "Evidence %s"
 msgstr "Evidence %s"
 
-#: ../src/evidence.php:61
+#: ../src/evidence.php:61 ../src/viewevidence.php:31
 msgid "Listing"
 msgstr "Listing"
 
@@ -582,26 +613,26 @@ msgstr "Evidences"
 msgid "License"
 msgstr "License"
 
-#: ../src/evidences.php:49
+#: ../src/evidences.php:54
 #, php-format
 msgid "Availble %s"
 msgstr "Availble %s"
 
-#: ../src/evidences.php:53
+#: ../src/evidences.php:58
 #, php-format
 msgid "Unlicensed %s"
 msgstr "Unlicensed %s"
 
-#: ../src/evidences.php:59
+#: ../src/evidences.php:64
 #, php-format
 msgid "All %s"
 msgstr "All %s"
 
-#: ../src/evidences.php:72
+#: ../src/evidences.php:83
 msgid "licence ok"
 msgstr "licence ok"
 
-#: ../src/evidences.php:75
+#: ../src/evidences.php:86
 msgid "unavialble"
 msgstr "unavialble"
 
@@ -653,11 +684,11 @@ msgstr ""
 "When the database FlexiBee is changed the POST HTTP request sent to all "
 "registered URL"
 
-#: ../src/fakechange.php:119 ../src/query.php:53
+#: ../src/fakechange.php:119 ../src/query.php:56
 msgid "Response"
 msgstr "Response"
 
-#: ../src/fakechange.php:121 ../src/query.php:49
+#: ../src/fakechange.php:121 ../src/query.php:52
 msgid "Request"
 msgstr "Request"
 
@@ -757,7 +788,7 @@ msgstr "Thank you for your patronage and look forward to another visit"
 msgid "Main Page"
 msgstr "Main Page"
 
-#: ../src/query.php:50
+#: ../src/query.php:53
 msgid "Custom request"
 msgstr "Custom request"
 
@@ -816,23 +847,29 @@ msgstr "Remove unused"
 msgid "Tool for massive creating Accounting periods"
 msgstr "Tool for massive creating Accounting periods"
 
-#~ msgid "Structure"
-#~ msgstr "Structure"
+#: ../src/viewevidence.php:24
+msgid "Evidence proprties overview"
+msgstr "Evidence proprties overview"
+
+#: ../src/viewevidence.php:32
+msgid "Structure"
+msgstr "Structure"
+
+#: ../src/viewevidence.php:47
+msgid "Custom query"
+msgstr "Custom query"
+
+#~ msgid "File"
+#~ msgstr "File"
 
 #~ msgid "Welcome"
 #~ msgstr "Welcome"
-
-#~ msgid "Custom query"
-#~ msgstr "Custom query"
 
 #~ msgid "Dotaz nebyl zatím odeslán"
 #~ msgstr "Dotaz nebyl zatím odeslán"
 
 #~ msgid "Flexplorer"
 #~ msgstr "Flexplorer"
-
-#~ msgid "Evidence properties overview"
-#~ msgstr "Evidence properties overview"
 
 #~ msgid "Nothig here yet"
 #~ msgstr "Nothig here yet"

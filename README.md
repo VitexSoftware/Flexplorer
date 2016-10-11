@@ -162,7 +162,9 @@ Závislosti
  * [Twitter Bootstrap](http://getbootstrap.com/)
  * [Bootstrap Switch](http://www.bootstrap-switch.org/)
 
-#Poděkování
+Poděkování
+----------
+
 Vznik tohoto nástroje by nebyl možný bez laskavé podpory společnosti [Spoje.Net](http://www.spoje.net), 
 
 U společnosti Spoje.Net, je možné si objednat komerční podporu pro integraci
