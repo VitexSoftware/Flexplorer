@@ -35,6 +35,7 @@ if (!strlen($url)) {
     }
 
     $url.= '.'.$format;
+    $_REQUEST['url'] = $url;
 }
 $action = $oPage->getRequestValue('action');
 $format = $oPage->getRequestValue('format');
@@ -62,7 +63,8 @@ if (strstr($url, '?')) {
     $overviewUrl = $url.'?inDesktopApp=true';
 }
 $requestTabs->addTab(_('FlexiBee'),
-    new \Ease\Html\IframeTag(str_replace('.json', '.html', $overviewUrl),
+    new \Ease\Html\IframeTag(str_replace(['.json', '.xml', '.csv'], '.html',
+        $overviewUrl),
     ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
 
 $oPage->container->addItem($requestTabs);

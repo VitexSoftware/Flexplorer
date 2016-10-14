@@ -39,7 +39,7 @@ class RecieveResponse extends \Ease\Html\Div
             $format    = $webPage->getRequestValue('format');
             $sourceurl = $webPage->getRequestValue('sourceurl');
 
-            if (isset($_FILES['upload'])) {
+            if (isset($_FILES['upload']) && strlen($_FILES['upload']['tmp_name'])) {
                 $body = file_get_contents($_FILES['upload']['tmp_name']);
                 $this->addStatusMessage(sprintf(_('File %s was used'),
                         $_FILES['upload']['name']), 'success');
@@ -90,7 +90,11 @@ class RecieveResponse extends \Ease\Html\Div
                             $formated);
                         break;
                     case 'xml':
+
                         $formated = htmlentities($sender->lastCurlResponse);
+                        $formated = preg_replace('/ref=&quot;(.*)&quot;/',
+                            'ref=&quot;<a href="query.php?show=result&url='.$sender->url.'$1">$1</a>&quot;',
+                            $formated);
                         break;
                     case 'txt':
                     default :

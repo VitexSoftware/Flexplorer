@@ -63,15 +63,19 @@ class MainMenu extends \Ease\Html\Div
             $nav->addMenuItem(new NavBarSearchBox('search', 'search.php', $term));
             $companer = new \FlexiPeeHP\Company();
 
-            $infoLabel = $companer->getEvidenceURL();
+            $url = \Ease\Shared::webPage()->getRequestValue('url');
+            if (is_null($url)) {
+                $infoLabel = $companer->getEvidenceURL();
 
-            $infoLabel.= '/'.constant('FLEXIBEE_COMPANY');
+                $infoLabel.= '/'.constant('FLEXIBEE_COMPANY');
 
-            $evidence = $this->webPage->getRequestValue('evidence');
-            if ($evidence) {
-                $infoLabel.='/'.$evidence;
+                $evidence = $this->webPage->getRequestValue('evidence');
+                if ($evidence) {
+                    $infoLabel.='/'.$evidence;
+                }
+            } else {
+                $infoLabel = $url;
             }
-
             $nav->addMenuItem(new \Ease\Html\Div(new \Ease\TWB\Label('success',
                 new \Ease\Html\ATag($infoLabel, $infoLabel),
                 ['class' => 'navbar-text', 'style' => 'color: yellow; font-size: 12px;']),
@@ -135,5 +139,4 @@ class MainMenu extends \Ease\Html\Div
             null, true);
         $this->includeJavaScript('js/slideupmessages.js');
     }
-
 }

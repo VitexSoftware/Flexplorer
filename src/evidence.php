@@ -145,11 +145,7 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
         }
     }
     $infoRow->addColumn(6,
-        new \Ease\TWB\Panel(_('Relations'), 'info', $relationsList,
-        new \Ease\Html\UlTag([
-        new \Ease\Html\LiTag(_('localized name')),
-        new \Ease\Html\LiTag(_('targeted evidence')),
-        new \Ease\Html\LiTag(_('subitems collection name'))])));
+        new \Ease\TWB\Panel(_('Relations'), 'info', $relationsList));
 
     $tabs->addTab(_('Info'), $infoRow, ($evidenceLicensed === false));
 
