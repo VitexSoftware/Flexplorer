@@ -33,7 +33,7 @@ class NavBarSearchBox extends \Ease\TWB\Form
             'search', $term,
             [
             'class' => 'form-control pull-right typeahead input-sm',
-            'style' => 'width: 300px; margin-right: 35px, border: 1px solid black; background-color: #e5e5e5; height: 27px',
+            'style' => 'width: 200px; margin-right: 35px, border: 1px solid black; background-color: #e5e5e5; height: 27px',
             'placeholder' => _('Search'),
             ]), ['class' => 'input-group'])
         );
