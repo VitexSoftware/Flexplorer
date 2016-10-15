@@ -86,7 +86,11 @@ class EvidenceProperties extends \Ease\Html\TableTag
                                 $label = new \Ease\TWB\Badge(
                                     $defineValue['@key'],
                                     ['title' => $defineValue['$']]);
-                                $props[$value] .= $label->__toString();
+                                if (array_key_exists($value, $props)) {
+                                    $props[$value] .= $label->__toString();
+                                } else {
+                                    $props[$value] = $label->__toString();
+                                }
                             }
 
                             break;

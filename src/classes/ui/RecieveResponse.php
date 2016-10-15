@@ -113,13 +113,14 @@ class RecieveResponse extends \Ease\Html\Div
                             $("#editor").val( $("#formatedResponse").html() );
                             $("#Request a:first").tab("show");
                             $("#editor").focus();
+                            $("#editor").change();
                         };
 
 function downloadResponse(){
     var a = document.body.appendChild(
         document.createElement("a")
     );
-    a.download = "'.str_replace('/', '_', $url).'";
+    a.download = "'.\Ease\Sand::lettersOnly($url).'.'.$format.'";
     a.href = "data:'.$sender->info['content_type'].'," + document.getElementById("formatedResponse").innerHTML; // Grab the HTML
     a.click(); // Trigger a click on the element
 }

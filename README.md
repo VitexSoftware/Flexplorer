@@ -3,9 +3,10 @@ Flexplorer
 
 ![Flexplorer Logo](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/src/images/flexplorer-logo.png "Project Logo")
 
-Vývojářský nástroj pro FlexiBee API/JSON. Napsaný s využitím knihovny [FlexiPeeHP](https://github.com/Spoje-NET/FlexiPeeHP)
+Vývojářský nástroj pro FlexiBee API. Napsaný s využitím knihovny [FlexiPeeHP](https://github.com/Spoje-NET/FlexiPeeHP)
 Umožňuje:
 
+  * Pracovat s formáty JSON,XML a CSV
   * zobrazovat obsah všech dostupných evidencí ve všech firmách
   * zobrazovat strukturu evidence
   * odesílat přímé požadavky na server a zobrazovat výsledky

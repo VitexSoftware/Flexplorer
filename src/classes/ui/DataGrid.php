@@ -310,17 +310,17 @@ background: url(images/xml.svg) no-repeat center left;
                 $(\'.trSelected\', grid).each(function() {
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\'query.php?show=result&format=xml&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
+                    $(location).attr(\'href\',\'query.php?format=xml&show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
                 });
 
             } else {
+                var ids = [];
                 $(\'.trSelected\', grid).each(function() {
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    var url =\'query.php?show=result&format=xml&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id;
-                    var win = window.open(url, \'_blank\');
-                    win.focus();
+                    ids.push( id );
                 });
+                $(location).attr(\'href\',\'query.php?format=xml&show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' + ids.join());
             }
         } else {
             alert("'._('Please mark some rows').'");
@@ -347,17 +347,17 @@ background: url(images/json.svg) no-repeat center left;
                 $(\'.trSelected\', grid).each(function() {
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\'query.php?show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
+                    $(location).attr(\'href\',\'query.php?format=json&show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
                 });
 
             } else {
+                var ids = [];
                 $(\'.trSelected\', grid).each(function() {
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    var url =\'query.php?show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id;
-                    var win = window.open(url, \'_blank\');
-                    win.focus();
+                    ids.push( id );
                 });
+                $(location).attr(\'href\',\'query.php?format=json&show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' + ids.join());
             }
         } else {
             alert("'._('Please mark some rows').'");

@@ -66,7 +66,7 @@ class MainMenu extends \Ease\Html\Div
             $url = \Ease\Shared::webPage()->getRequestValue('url');
             if (is_null($url)) {
                 $infoLabel = $companer->getEvidenceURL();
-
+ 
                 $infoLabel.= '/'.constant('FLEXIBEE_COMPANY');
 
                 $evidence = $this->webPage->getRequestValue('evidence');
@@ -78,8 +78,9 @@ class MainMenu extends \Ease\Html\Div
             }
             $nav->addMenuItem(new \Ease\Html\Div(new \Ease\TWB\Label('success',
                 new \Ease\Html\ATag($infoLabel, $infoLabel),
-                ['class' => 'navbar-text', 'style' => 'color: yellow; font-size: 12px;']),
+                ['class' => 'navbar-text', 'style' => 'color: yellow; font-size: 12px; max-width: 800px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;']),
                 ['class' => 'collapse navbar-collapse']));
+
 
             $companiesToMenu = [];
             $companer        = new \FlexiPeeHP\Company();
@@ -120,6 +121,7 @@ class MainMenu extends \Ease\Html\Div
                 'fakechange.php' => _('WebHook test'),
                 'ucetniobdobi.php' => _('Accounting period')
             ]);
+
         }
     }
 

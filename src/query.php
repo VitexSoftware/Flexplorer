@@ -14,6 +14,7 @@ $oPage->onlyForLogged();
 
 $url    = $oPage->getRequestValue('url');
 $format = $oPage->getRequestValue('format');
+$format = $oPage->getRequestValue('format');
 if (!strlen($url)) {
     $url = constant('FLEXIBEE_URL').'/c/';
     if (defined('FLEXIBEE_COMPANY')) {
@@ -27,7 +28,15 @@ if (!strlen($url)) {
 
     $id = $oPage->getRequestValue('id');
     if (!is_null($id)) {
-        $url .= '/'.$id;
+        if (strstr($id, ',')) {
+            $ids = [];
+            foreach (explode(',', $id) as $oneID) {
+                $ids [] = 'id='.$oneID;
+            }
+            $url .= '/('.implode(' or ', $ids).')';
+        } else {
+            $url .= '/'.$id;
+        }
     }
 
     if (is_null($format)) {
@@ -35,6 +44,7 @@ if (!strlen($url)) {
     }
 
     $url.= '.'.$format;
+    $url.= '?detail=full';
     $_REQUEST['url'] = $url;
 }
 $action = $oPage->getRequestValue('action');
