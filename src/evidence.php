@@ -17,7 +17,6 @@ $oPage->onlyForLogged();
 
 $evidence = $oPage->getRequestValue('evidence');
 $column   = $oPage->getRequestValue('column');
-$action   = $oPage->getRequestValue('action');
 $url      = constant('FLEXIBEE_URL').'/c/'.constant('FLEXIBEE_COMPANY');
 if ($evidence) {
     $url.='/'.$evidence;
@@ -25,11 +24,6 @@ if ($evidence) {
 
 if (is_null($evidence)) {
     $oPage->redirect('index.php');
-}
-
-if (!is_null($action)) {
-    $id = $oPage->getRequestValue('id');
-    $oPage->redirect('query.php?evidence='.$evidence.'&action='.$action.'&id='.$id);
 }
 
 if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {

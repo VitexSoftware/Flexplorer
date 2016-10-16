@@ -12,21 +12,21 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-$url    = $oPage->getRequestValue('url');
-$format = $oPage->getRequestValue('format');
-$format = $oPage->getRequestValue('format');
+$id       = $oPage->getRequestValue('id');
+$url      = $oPage->getRequestValue('url');
+$method   = $oPage->getRequestValue('method');
+$format   = $oPage->getRequestValue('format');
+$evidence = $oPage->getRequestValue('evidence');
 if (!strlen($url)) {
     $url = constant('FLEXIBEE_URL').'/c/';
     if (defined('FLEXIBEE_COMPANY')) {
         $url .= constant('FLEXIBEE_COMPANY');
     }
 
-    $evidence = $oPage->getRequestValue('evidence');
     if ($evidence) {
         $url.='/'.$evidence;
     }
 
-    $id = $oPage->getRequestValue('id');
     if (!is_null($id)) {
         if (strstr($id, ',')) {
             $ids = [];
@@ -47,13 +47,6 @@ if (!strlen($url)) {
     $url.= '?detail=full';
     $_REQUEST['url'] = $url;
 }
-$action = $oPage->getRequestValue('action');
-$format = $oPage->getRequestValue('format');
-if (is_null($action)) {
-    $method = $oPage->getRequestValue('method');
-} else {
-    $method = 'PUT';
-}
 $body = $oPage->getRequestValue('body');
 
 $oPage->addItem(new ui\PageTop(_('Query').': '.$url));
@@ -64,7 +57,7 @@ $requestTabs->addTab(_('Request'),
     new \Ease\TWB\Panel(_('Custom request'), 'warning',
     new ui\SendForm($url, $method, $body, $format)));
 
-$requestTabs->addTab(_('Response'), new ui\RecieveResponse($url),
+$requestTabs->addTab(_('Response'), new ui\ShowResponse($url),
     $oPage->isPosted() || ($oPage->getRequestValue('show') == 'result'));
 
 if (strstr($url, '?')) {

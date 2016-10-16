@@ -7,100 +7,71 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class RecieveResponse extends \Ease\Html\Div
+class ShowResponse extends \Ease\Html\Div
 {
     /**
-     *
-     * @var type
+     * Url to request forom FlexiBee
+     * @var string
      */
-    public $url = null;
+    public $url    = null;
+
+    /**
+     * Class for FlexiBee interaction
+     * @var \FlexiPeeHP\FlexiBeeRW
+     */
+    public $sender = null;
 
     /**
      * Recieve FlexiBee reuest response
      *
      * @param string $url
+     * @param \FlexiPeeHP\FlexiBeeRW $engine custom engine for request performing
      */
-    public function __construct($url = null)
+    public function __construct($url = null, $engine = null)
     {
         $this->url = $url;
+        if (is_null($engine)) {
+            $this->sender = new \Flexplorer\Flexplorer(\Ease\Shared::webPage()->getRequestValue('evidence'));
+        } else {
+            $this->sender = $engine;
+        }
         parent::__construct();
     }
 
     public function finalize()
     {
-        $webPage          = \Ease\Shared::webPage();
         $formatedResponse = '';
-
+        /* @var $webPage \Ease\TWB\WebPage */
+        $webPage          = \Ease\Shared::webPage();
         if ($webPage->isPosted() || strlen($this->url)) {
-            $sender = new \FlexiPeeHP\FlexiBeeRW();
+            $this->sender->performQuery();
 
-            $url       = $webPage->getRequestValue('url');
-            $method    = $webPage->getRequestValue('method');
-            $body      = $webPage->getRequestValue('body');
-            $format    = $webPage->getRequestValue('format');
-            $sourceurl = $webPage->getRequestValue('sourceurl');
+            $this->addItem(new \Ease\Html\H1Tag($this->sender->lastResponseCode.': '.self::responseCodeMessage($this->sender->lastResponseCode)));
 
-            if (isset($_FILES['upload']) && strlen($_FILES['upload']['tmp_name'])) {
-                $body = file_get_contents($_FILES['upload']['tmp_name']);
-                $this->addStatusMessage(sprintf(_('File %s was used'),
-                        $_FILES['upload']['name']), 'success');
-            }
-
-            if (strlen($sourceurl)) {
-                $sender->doCurlRequest($sourceurl, 'get');
-                if ($sender->lastResponseCode == 200) {
-                    $body = $sender->lastCurlResponse;
-                    $this->addStatusMessage(sprintf(_('URL %s was used'),
-                            $sourceurl), 'success');
-                } else {
-                    $this->addStatusMessage(sprintf(_('Error %s obataing %s'),
-                            $sender->lastResponseCode, $sourceurl), 'success');
-                }
-            }
-
-            if (is_null($method)) {
-                $method = 'GET';
-            }
-
-            if (!strlen($url)) {
-                $url  = $this->url;
-                $body = null;
-            } else {
-                if (!is_null($body)) {
-                    $sender->setPostFields($body);
-                }
-            }
-            if (is_null($format)) {
-                if (strstr($url, '.xml')) {
-                    $format = 'xml';
-                } else {
-                    $format = 'json';
-                }
-            }
-
-            $sender->doCurlRequest($url, $method, $format);
-            $this->addItem(new \Ease\Html\H1Tag($sender->lastResponseCode.': '.self::responseCodeMessage($sender->lastResponseCode)));
-
-            if (strlen($sender->lastCurlResponse)) {
-
+            if (strlen($this->sender->lastCurlResponse)) {
+                $format = $this->sender->getResponseFormat();
                 switch ($format) {
+                    case 'application/json':
                     case 'json':
-                        $formated         = self::jsonpp($sender->lastCurlResponse);
+                        $format           = 'json';
+                        $formated         = self::jsonpp($this->sender->lastCurlResponse);
                         $formatedResponse = $formated;
                         $formated = preg_replace('/ref":"(.*)"/',
-                            'ref":"<a href="query.php?show=result&url='.$sender->url.'$1">$1</a>"',
+                            'ref":"<a href="query.php?show=result&url='.$this->sender->url.'$1">$1</a>"',
                             $formated);
                         break;
+                    case 'application/xml':
                     case 'xml':
-                        $formatedResponse = $sender->lastCurlResponse;
-                        $formated         = htmlentities($sender->lastCurlResponse);
+                        $format           = 'xml';
+                        $formatedResponse = $this->sender->lastCurlResponse;
+                        $formated         = htmlentities($this->sender->lastCurlResponse);
                         $formated         = preg_replace('/ref=&quot;(.*)&quot;/',
-                            'ref=&quot;<a href="query.php?show=result&url='.$sender->url.'$1">$1</a>&quot;',
+                            'ref=&quot;<a href="query.php?show=result&url='.$this->sender->url.'$1">$1</a>&quot;',
                             $formated);
                         break;
                     case 'txt':
                     default :
-                        $formated = $sender->lastCurlResponse;
+                        $formated         = $this->sender->lastCurlResponse;
                         break;
                 }
 
@@ -120,8 +91,8 @@ function downloadResponse(){
     var a = document.body.appendChild(
         document.createElement("a")
     );
-    a.download = "'.\Ease\Sand::lettersOnly($url).'.'.$format.'";
-    a.href = "data:'.$sender->info['content_type'].'," + document.getElementById("formatedResponse").innerHTML; // Grab the HTML
+    a.download = "'.\Ease\Sand::lettersOnly($this->url).'.'.$format.'";
+    a.href = "data:'.$this->sender->info['content_type'].'," + document.getElementById("formatedResponse").innerHTML; // Grab the HTML
     a.click(); // Trigger a click on the element
 }
                         ', null, false);

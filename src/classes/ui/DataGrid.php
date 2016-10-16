@@ -146,14 +146,14 @@ class DataGrid extends \Ease\Html\TableTag
                         $(\'.trSelected\', grid).each(function() {
                             var id = $(this).attr(\'id\');
                             id = id.substring(id.lastIndexOf(\'row\')+3);
-                            $(location).attr(\'href\',\'evidence.php?evidence='.$this->dataSource->getEvidence().'&action=\' + action + \'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
+                            $(location).attr(\'href\',\'query.php?show=result&evidence='.$this->dataSource->getEvidence().'&action=\' + action + \'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
                         });
 
                     } else {
                         $(\'.trSelected\', grid).each(function() {
                             var id = $(this).attr(\'id\');
                             id = id.substring(id.lastIndexOf(\'row\')+3);
-                            var url =\'evidence.php?evidence='.$this->dataSource->getEvidence().'&action=\' + action + \'&'.$this->dataSource->getMyKeyColumn().'=\' +id;
+                            var url =\'query.php?show=result&evidence='.$this->dataSource->getEvidence().'&action=\' + action + \'&'.$this->dataSource->getMyKeyColumn().'=\' +id;
                             var win = window.open(url, \'_blank\');
                             win.focus();
                         });

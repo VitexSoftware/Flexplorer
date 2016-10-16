@@ -33,7 +33,9 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
         if (is_null($evidence)) {
             $evidence = $this->getEvidence();
         }
-        $this->setEvidence($evidence);
+        if (!is_null($evidence)) {
+            $this->setEvidence($evidence);
+        }
         parent::__construct();
         $this->evidenceStructure = $this->getColumnsInfo();
     }
@@ -277,5 +279,68 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
             $this->setDataValue('@removeExternalIds',
                 implode(',', $extidToRemove));
         }
+    }
+
+    /**
+     * Interact with FlexiBee
+     */
+    public function performQuery()
+    {
+        $webPage          = \Ease\Shared::webPage();
+
+        $id        = $webPage->getRequestValue('id');
+        $url       = $webPage->getRequestValue('url');
+        $body      = $webPage->getRequestValue('body');
+        $action    = $webPage->getRequestValue('action');
+        $method    = $webPage->getRequestValue('method');
+        $format    = $webPage->getRequestValue('format');
+        $sourceurl = $webPage->getRequestValue('sourceurl');
+
+        if (isset($_FILES['upload']) && strlen($_FILES['upload']['tmp_name'])) {
+            $body = file_get_contents($_FILES['upload']['tmp_name']);
+            $this->addStatusMessage(sprintf(_('File %s was used'),
+                    $_FILES['upload']['name']), 'success');
+        }
+
+
+        if (strlen($sourceurl)) {
+            $this->doCurlRequest($sourceurl, 'get');
+            if ($this->lastResponseCode == 200) {
+                $body = $this->lastCurlResponse;
+                $this->addStatusMessage(sprintf(_('URL %s was used'), $sourceurl),
+                    'success');
+            } else {
+                $this->addStatusMessage(sprintf(_('Error %s obataing %s'),
+                        $this->lastResponseCode, $sourceurl), 'success');
+            }
+        }
+
+        if (is_null($method)) {
+            $method = 'GET';
+        }
+
+        if (!strlen($url)) {
+            $url  = $this->url;
+            $body = null;
+        } else {
+            if (!is_null($body)) {
+                $this->setPostFields($body);
+            }
+        }
+        if (is_null($format)) {
+            if (strstr($url, '.xml')) {
+                $format = 'xml';
+            } else {
+                $format = 'json';
+            }
+        }
+
+        if (strlen($action)) {
+            $this->setMyKey($id);
+            $result = $this->performAction($action, 'int');
+        } else {
+            $result = $this->doCurlRequest($url, $method, $format);
+        }
+        return $result;
     }
 }
