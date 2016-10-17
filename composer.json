@@ -1,7 +1,7 @@
 {
     "name": "spoje.net/flexplorer",
     "description": "Průzkumník a editor evidencí FlexiBee",
-    "version": "0.11.0",
+    "version": "1.0",
     "license": "GPL-2.0",
     "type": "project",
     "authors": [

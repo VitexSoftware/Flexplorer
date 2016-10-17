@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-10-11 13:00+0100\n"
-"PO-Revision-Date: 2016-10-11 13:02+0100\n"
+"POT-Creation-Date: 2016-10-17 18:24+0100\n"
+"PO-Revision-Date: 2016-10-17 18:25+0100\n"
 "Last-Translator: Vítězslav Dvořák <vitex@arachne.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: cs_CZ\n"
@@ -70,7 +70,7 @@ msgstr "Povolit"
 msgid "Disable"
 msgstr "Zakázat"
 
-#: ../src/changesapi.php:95 ../src/classes/ui/MainMenu.php:115
+#: ../src/changesapi.php:95 ../src/classes/ui/MainMenu.php:120
 msgid "Changes API"
 msgstr "API Změn"
 
@@ -173,10 +173,25 @@ msgstr "Záznam byl aktualizován"
 msgid "Record update failed"
 msgstr "Záznam se nepovedlo aktualizovat"
 
-#: ../src/classes/Flexplorer.php:125
+#: ../src/classes/Flexplorer.php:127
 #, php-format
 msgid "Unserialization error %s #%s "
 msgstr "Chyba deserializace %s #%s "
+
+#: ../src/classes/Flexplorer.php:301
+#, php-format
+msgid "File %s was used"
+msgstr "Byl použit soubor %s"
+
+#: ../src/classes/Flexplorer.php:310
+#, php-format
+msgid "URL %s was used"
+msgstr "Byla použita adresa %s"
+
+#: ../src/classes/Flexplorer.php:313
+#, php-format
+msgid "Error %s obataing %s"
+msgstr "Chyba %s získání %s"
 
 #: ../src/classes/Searcher.php:109
 msgid "No search results"
@@ -302,7 +317,7 @@ msgstr "Uprav"
 #: ../src/classes/ui/DataGrid.php:114
 #, fuzzy
 msgid "Delete"
-msgstr "Smazat"
+msgstr "Smazat záznam"
 
 #: ../src/classes/ui/DataGrid.php:123
 msgid "Select All"
@@ -354,13 +369,13 @@ msgstr "Sloupečky"
 msgid "External IDs"
 msgstr "Externí IDčka"
 
-#: ../src/classes/ui/Editor.php:188 ../src/classes/ui/MainMenu.php:114
-#: ../src/evidence.php:75 ../src/query.php:48 ../src/viewevidence.php:46
+#: ../src/classes/ui/Editor.php:188 ../src/classes/ui/MainMenu.php:119
+#: ../src/evidence.php:69 ../src/query.php:65 ../src/viewevidence.php:46
 msgid "Query"
 msgstr "Dotaz"
 
 #: ../src/classes/ui/Editor.php:192 ../src/delete.php:56
-#: ../src/evidence.php:89 ../src/login.php:79 ../src/query.php:64
+#: ../src/evidence.php:83 ../src/login.php:79 ../src/query.php:81
 msgid "FlexiBee"
 msgstr "FlexiBee"
 
@@ -372,28 +387,28 @@ msgstr "Odstranit"
 msgid "New"
 msgstr "Nový"
 
-#: ../src/classes/ui/MainMenu.php:96
+#: ../src/classes/ui/MainMenu.php:101
 msgid "Company"
 msgstr "Firma"
 
-#: ../src/classes/ui/MainMenu.php:103 ../src/delete.php:55
+#: ../src/classes/ui/MainMenu.php:108 ../src/delete.php:55
 msgid "Overview"
 msgstr "Přehled"
 
-#: ../src/classes/ui/MainMenu.php:107 ../src/evidence.php:62
+#: ../src/classes/ui/MainMenu.php:112 ../src/evidence.php:56
 #: ../src/fakechange.php:71
 msgid "Evidence"
 msgstr "Evidence"
 
-#: ../src/classes/ui/MainMenu.php:112
+#: ../src/classes/ui/MainMenu.php:117
 msgid "Tools"
 msgstr "Nástroje"
 
-#: ../src/classes/ui/MainMenu.php:116 ../src/fakechange.php:53
+#: ../src/classes/ui/MainMenu.php:121 ../src/fakechange.php:53
 msgid "WebHook test"
 msgstr "Test\tWebHooku"
 
-#: ../src/classes/ui/MainMenu.php:117 ../src/ucetniobdobi.php:47
+#: ../src/classes/ui/MainMenu.php:122 ../src/ucetniobdobi.php:47
 msgid "Accounting period"
 msgstr "Účetní období"
 
@@ -442,25 +457,6 @@ msgstr "Spoje.Net"
 msgid "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 msgstr "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
 
-#: ../src/classes/ui/RecieveResponse.php:44
-#, php-format
-msgid "File %s was used"
-msgstr "Byl použit soubor %s"
-
-#: ../src/classes/ui/RecieveResponse.php:52
-#, php-format
-msgid "URL %s was used"
-msgstr "Byla použita adresa %s"
-
-#: ../src/classes/ui/RecieveResponse.php:55
-#, php-format
-msgid "Error %s obataing %s"
-msgstr "Chyba %s získání %s"
-
-#: ../src/classes/ui/RecieveResponse.php:113
-msgid "Query does not sent yet"
-msgstr "Dotaz nebyl zatím odeslán"
-
 #: ../src/classes/ui/SendForm.php:33
 msgid "URL"
 msgstr "URL"
@@ -505,6 +501,15 @@ msgstr "Formát dat"
 #: ../src/classes/ui/SendForm.php:57 ../src/fakechange.php:98
 msgid "Send"
 msgstr "Odešli"
+
+#: ../src/classes/ui/ShowResponse.php:89
+msgid "Make new request from this response"
+msgstr "Vytvořit požadavek z odpovědi"
+
+#: ../src/classes/ui/ShowResponse.php:93
+#, fuzzy
+msgid "Save this response to file"
+msgstr "Odpověď"
 
 #: ../src/classes/ui/TWBSwitch.php:28
 msgid "Yes"
@@ -554,62 +559,50 @@ msgstr "Záznam nebyl uložen"
 msgid "Editor"
 msgstr "Editor"
 
-#: ../src/evidence.php:36
+#: ../src/evidence.php:30
 #, php-format
 msgid "Evidence %s does not exist"
 msgstr "Evidence %s neexistuje"
 
-#: ../src/evidence.php:42
+#: ../src/evidence.php:36
 #, php-format
 msgid "Evidence %s"
 msgstr "Evidence %s"
 
-#: ../src/evidence.php:61 ../src/viewevidence.php:31
+#: ../src/evidence.php:55 ../src/viewevidence.php:31
 msgid "Listing"
 msgstr "Výpis"
 
-#: ../src/evidence.php:64
+#: ../src/evidence.php:58
 msgid "Column Groups"
 msgstr "Skupiny Sloupečků"
 
-#: ../src/evidence.php:76
+#: ../src/evidence.php:70
 msgid "User Query"
 msgstr "Uživatelský dotaz"
 
-#: ../src/evidence.php:80
+#: ../src/evidence.php:74
 msgid "Items overview"
 msgstr "Přehled položek"
 
-#: ../src/evidence.php:114
+#: ../src/evidence.php:108
 msgid "no"
 msgstr "ne"
 
-#: ../src/evidence.php:116
+#: ../src/evidence.php:110
 #, fuzzy
 msgid "yes"
 msgstr "Ano"
 
-#: ../src/evidence.php:118
+#: ../src/evidence.php:112
 msgid "Allowed by license"
 msgstr "Povoleno licencí"
 
-#: ../src/evidence.php:154
+#: ../src/evidence.php:142
 msgid "Relations"
 msgstr "Vstahy"
 
-#: ../src/evidence.php:156
-msgid "localized name"
-msgstr "Lokalizované jméno"
-
-#: ../src/evidence.php:157
-msgid "targeted evidence"
-msgstr "Cílová evidence"
-
-#: ../src/evidence.php:158
-msgid "subitems collection name"
-msgstr "Jméno skupiny položek"
-
-#: ../src/evidence.php:160
+#: ../src/evidence.php:144
 msgid "Info"
 msgstr "info"
 
@@ -693,11 +686,11 @@ msgstr ""
 "Když dojde v databázi FlexiBee ke změně, je odeslán POST HTTP request na "
 "všechna zaregistrovaná URL"
 
-#: ../src/fakechange.php:119 ../src/query.php:56
+#: ../src/fakechange.php:119 ../src/query.php:73
 msgid "Response"
 msgstr "Odpověď"
 
-#: ../src/fakechange.php:121 ../src/query.php:52
+#: ../src/fakechange.php:121 ../src/query.php:69
 msgid "Request"
 msgstr "Požadavek"
 
@@ -797,7 +790,7 @@ msgstr "Díky za váš zájem a těším se na další návštěvu"
 msgid "Main Page"
 msgstr "Hlavní stránka"
 
-#: ../src/query.php:53
+#: ../src/query.php:70
 msgid "Custom request"
 msgstr "Uživatelský požadavek"
 
@@ -869,6 +862,18 @@ msgstr "Struktura"
 #, fuzzy
 msgid "Custom query"
 msgstr "Uživatelský požadavek"
+
+#~ msgid "Query does not sent yet"
+#~ msgstr "Dotaz nebyl zatím odeslán"
+
+#~ msgid "localized name"
+#~ msgstr "Lokalizované jméno"
+
+#~ msgid "targeted evidence"
+#~ msgstr "Cílová evidence"
+
+#~ msgid "subitems collection name"
+#~ msgstr "Jméno skupiny položek"
 
 #~ msgid "File"
 #~ msgstr "Soubor"
