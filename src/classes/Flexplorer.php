@@ -286,7 +286,7 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
      */
     public function performQuery()
     {
-        $webPage          = \Ease\Shared::webPage();
+        $webPage = \Ease\Shared::webPage();
 
         $id        = $webPage->getRequestValue('id');
         $url       = $webPage->getRequestValue('url');
@@ -343,4 +343,5 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
         }
         return $result;
     }
+
 }

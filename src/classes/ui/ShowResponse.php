@@ -10,12 +10,6 @@ namespace Flexplorer\ui;
 class ShowResponse extends \Ease\Html\Div
 {
     /**
-     * Url to request forom FlexiBee
-     * @var string
-     */
-    public $url    = null;
-
-    /**
      * Class for FlexiBee interaction
      * @var \FlexiPeeHP\FlexiBeeRW
      */
@@ -27,14 +21,9 @@ class ShowResponse extends \Ease\Html\Div
      * @param string $url
      * @param \FlexiPeeHP\FlexiBeeRW $engine custom engine for request performing
      */
-    public function __construct($url = null, $engine = null)
+    public function __construct($engine)
     {
-        $this->url = $url;
-        if (is_null($engine)) {
-            $this->sender = new \Flexplorer\Flexplorer(\Ease\Shared::webPage()->getRequestValue('evidence'));
-        } else {
-            $this->sender = $engine;
-        }
+        $this->sender = $engine;
         parent::__construct();
     }
 
@@ -43,43 +32,41 @@ class ShowResponse extends \Ease\Html\Div
         $formatedResponse = '';
         /* @var $webPage \Ease\TWB\WebPage */
         $webPage          = \Ease\Shared::webPage();
-        if ($webPage->isPosted() || strlen($this->url)) {
-            $this->sender->performQuery();
 
-            $this->addItem(new \Ease\Html\H1Tag($this->sender->lastResponseCode.': '.self::responseCodeMessage($this->sender->lastResponseCode)));
+        $this->addItem(new \Ease\Html\H1Tag($this->sender->lastResponseCode.': '.self::responseCodeMessage($this->sender->lastResponseCode)));
 
-            if (strlen($this->sender->lastCurlResponse)) {
-                $format = $this->sender->getResponseFormat();
-                switch ($format) {
-                    case 'application/json':
-                    case 'json':
-                        $format           = 'json';
-                        $formated         = self::jsonpp($this->sender->lastCurlResponse);
-                        $formatedResponse = $formated;
-                        $formated = preg_replace('/ref":"(.*)"/',
-                            'ref":"<a href="query.php?show=result&url='.$this->sender->url.'$1">$1</a>"',
-                            $formated);
-                        break;
-                    case 'application/xml':
-                    case 'xml':
-                        $format           = 'xml';
-                        $formatedResponse = $this->sender->lastCurlResponse;
-                        $formated         = htmlentities($this->sender->lastCurlResponse);
-                        $formated         = preg_replace('/ref=&quot;(.*)&quot;/',
-                            'ref=&quot;<a href="query.php?show=result&url='.$this->sender->url.'$1">$1</a>&quot;',
-                            $formated);
-                        break;
-                    case 'txt':
-                    default :
-                        $formated         = $this->sender->lastCurlResponse;
-                        break;
-                }
+        if (strlen($this->sender->lastCurlResponse)) {
+            $format = $this->sender->getResponseFormat();
+            switch ($format) {
+                case 'application/json':
+                case 'json':
+                    $format           = 'json';
+                    $formated         = self::jsonpp($this->sender->lastCurlResponse);
+                    $formatedResponse = $formated;
+                    $formated         = preg_replace('/ref":"(.*)"/',
+                        'ref":"<a href="query.php?show=result&url='.$this->sender->url.'$1">$1</a>"',
+                        $formated);
+                    break;
+                case 'application/xml':
+                case 'xml':
+                    $format           = 'xml';
+                    $formatedResponse = $this->sender->lastCurlResponse;
+                    $formated         = htmlentities($this->sender->lastCurlResponse);
+                    $formated         = preg_replace('/ref=&quot;(.*)&quot;/',
+                        'ref=&quot;<a href="query.php?show=result&url='.$this->sender->url.'$1">$1</a>&quot;',
+                        $formated);
+                    break;
+                case 'txt':
+                default :
+                    $formated         = $this->sender->lastCurlResponse;
+                    break;
+            }
 
-                $this->addItem('<pre><code class="'.$format.'">'.
-                    $formated
-                    .'</code></pre>');
-                if (strlen($formatedResponse)) {
-                    $this->addJavaScript('
+            $this->addItem('<pre><code class="'.$format.'">'.
+                $formated
+                .'</code></pre>');
+            if (strlen($formatedResponse)) {
+                $this->addJavaScript('
                         function responseToRequest() {
                             $("#editor").val( $("#formatedResponse").html() );
                             $("#Request a:first").tab("show");
@@ -91,32 +78,28 @@ function downloadResponse(){
     var a = document.body.appendChild(
         document.createElement("a")
     );
-    a.download = "'.\Ease\Sand::lettersOnly($this->url).'.'.$format.'";
+    a.download = "'.\Ease\Sand::lettersOnly($this->sender->info['url']).'.'.$format.'";
     a.href = "data:'.$this->sender->info['content_type'].'," + document.getElementById("formatedResponse").innerHTML; // Grab the HTML
     a.click(); // Trigger a click on the element
 }
                         ', null, false);
-                    $this->addItem(new \Ease\Html\Div($formatedResponse,
-                        ['id' => 'formatedResponse', 'style' => 'visibility: hidden; height: 0px;']));
-                    $this->addItem(new \Ease\TWB\LinkButton('#',
-                        _('Make new request from this response').new \Ease\TWB\GlyphIcon('repeat'),
-                        'success', ['onClick' => 'responseToRequest();']));
+                $this->addItem(new \Ease\Html\Div($formatedResponse,
+                    ['id' => 'formatedResponse', 'style' => 'visibility: hidden; height: 0px;']));
+                $this->addItem(new \Ease\TWB\LinkButton('#',
+                    _('Make new request from this response').new \Ease\TWB\GlyphIcon('repeat'),
+                    'success', ['onClick' => 'responseToRequest();']));
 
-                    $this->addItem(new \Ease\TWB\LinkButton('#',
-                        _('Save this response to file').new \Ease\TWB\GlyphIcon('floppy-save'),
-                        'success', ['onClick' => 'downloadResponse();']));
-                }
+                $this->addItem(new \Ease\TWB\LinkButton('#',
+                    _('Save this response to file').new \Ease\TWB\GlyphIcon('floppy-save'),
+                    'success', ['onClick' => 'downloadResponse();']));
             }
+        }
 
-            $webPage->includeCss('css/github.css');
-            $webPage->includeJavaScript('js/highlight.min.js');
-            $webPage->addJavascript('$(\'pre code\').each(function(i, block) {
+        $webPage->includeCss('css/github.css');
+        $webPage->includeJavaScript('js/highlight.min.js');
+        $webPage->addJavascript('$(\'pre code\').each(function(i, block) {
     hljs.highlightBlock(block);
   });');
-        } else {
-            $this->addItem(new \Ease\TWB\Label('info',
-                _('Query does not sent yet')));
-        }
     }
 
     /**
@@ -245,4 +228,5 @@ function downloadResponse(){
         }
         return $text;
     }
+
 }

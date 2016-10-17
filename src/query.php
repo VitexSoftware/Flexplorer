@@ -14,6 +14,8 @@ $oPage->onlyForLogged();
 
 $id       = $oPage->getRequestValue('id');
 $url      = $oPage->getRequestValue('url');
+$body     = $oPage->getRequestValue('body');
+$action   = $oPage->getRequestValue('action');
 $method   = $oPage->getRequestValue('method');
 $format   = $oPage->getRequestValue('format');
 $evidence = $oPage->getRequestValue('evidence');
@@ -47,7 +49,18 @@ if (!strlen($url)) {
     $url.= '?detail=full';
     $_REQUEST['url'] = $url;
 }
-$body = $oPage->getRequestValue('body');
+
+$sender = new Flexplorer($evidence);
+
+if ($oPage->isPosted() || strlen($url)) {
+    $sender->performQuery();
+}
+
+if (strlen($action)) {
+    $method = 'POST';
+    $body = $sender->postFields;
+}
+
 
 $oPage->addItem(new ui\PageTop(_('Query').': '.$url));
 
@@ -57,7 +70,7 @@ $requestTabs->addTab(_('Request'),
     new \Ease\TWB\Panel(_('Custom request'), 'warning',
     new ui\SendForm($url, $method, $body, $format)));
 
-$requestTabs->addTab(_('Response'), new ui\ShowResponse($url),
+$requestTabs->addTab(_('Response'), new ui\ShowResponse($sender),
     $oPage->isPosted() || ($oPage->getRequestValue('show') == 'result'));
 
 if (strstr($url, '?')) {
