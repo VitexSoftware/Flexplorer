@@ -17,10 +17,21 @@ $oPage->onlyForLogged();
 
 $oPage->addItem(new ui\PageTop(_('FlexiBee info')));
 
-$infoPanel = new \Ease\TWB\Panel(_('FlexiBee info'), 'info',
-    new ui\LicenseInfo($_SESSION['license']));
+$statuser = new \FlexiPeeHP\Status();
 
-$oPage->container->addItem($infoPanel);
+$infoTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
+
+foreach ($statuser->getData() as $property => $value) {
+    $infoTable->addRowColumns([$property, $value]);
+}
+
+
+$infoRow = new \Ease\TWB\Row();
+$infoRow->addColumn(6, new \Ease\TWB\Panel(_('server info'), 'info', $infoTable));
+$infoRow->addColumn(6,
+    new \Ease\TWB\Panel(_('license info'), 'info',
+    new ui\LicenseInfo($_SESSION['license'])));
+$oPage->container->addItem($infoRow);
 
 $oPage->addItem(new ui\PageBottom());
 
