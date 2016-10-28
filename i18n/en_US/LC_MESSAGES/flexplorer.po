@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-10-17 18:25+0100\n"
-"PO-Revision-Date: 2016-10-17 18:25+0100\n"
+"POT-Creation-Date: 2016-10-28 16:48+0100\n"
+"PO-Revision-Date: 2016-10-28 16:50+0100\n"
 "Last-Translator: Vítězslav Dvořák <vitex@arachne.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: en\n"
@@ -179,17 +179,17 @@ msgstr "Record update failed"
 msgid "Unserialization error %s #%s "
 msgstr "Unserialization error %s #%s "
 
-#: ../src/classes/Flexplorer.php:301
+#: ../src/classes/Flexplorer.php:297
 #, php-format
 msgid "File %s was used"
 msgstr "File %s was used"
 
-#: ../src/classes/Flexplorer.php:310
+#: ../src/classes/Flexplorer.php:306
 #, php-format
 msgid "URL %s was used"
 msgstr "URL %s was used"
 
-#: ../src/classes/Flexplorer.php:313
+#: ../src/classes/Flexplorer.php:309
 #, php-format
 msgid "Error %s obataing %s"
 msgstr "Error %s obataing %s"
@@ -364,12 +364,12 @@ msgid "External IDs"
 msgstr "External IDs"
 
 #: ../src/classes/ui/Editor.php:188 ../src/classes/ui/MainMenu.php:119
-#: ../src/evidence.php:69 ../src/query.php:65 ../src/viewevidence.php:46
+#: ../src/evidence.php:67 ../src/query.php:65 ../src/viewevidence.php:46
 msgid "Query"
 msgstr "Query"
 
 #: ../src/classes/ui/Editor.php:192 ../src/delete.php:56
-#: ../src/evidence.php:83 ../src/login.php:79 ../src/query.php:81
+#: ../src/evidence.php:81 ../src/login.php:79 ../src/query.php:81
 msgid "FlexiBee"
 msgstr "FlexiBee"
 
@@ -389,7 +389,7 @@ msgstr "Company"
 msgid "Overview"
 msgstr "Overview"
 
-#: ../src/classes/ui/MainMenu.php:112 ../src/evidence.php:56
+#: ../src/classes/ui/MainMenu.php:112 ../src/evidence.php:54
 #: ../src/fakechange.php:71
 msgid "Evidence"
 msgstr "Evidence"
@@ -511,7 +511,7 @@ msgstr "Yes"
 msgid "No"
 msgstr "No"
 
-#: ../src/classes/ui/WebPage.php:68
+#: ../src/classes/ui/WebPage.php:70
 msgid "Please sign in as admin first"
 msgstr "Please sign in as admin first"
 
@@ -561,39 +561,39 @@ msgstr "Evidence %s does not exist"
 msgid "Evidence %s"
 msgstr "Evidence %s"
 
-#: ../src/evidence.php:55 ../src/viewevidence.php:31
+#: ../src/evidence.php:53 ../src/viewevidence.php:31
 msgid "Listing"
 msgstr "Listing"
 
-#: ../src/evidence.php:58
+#: ../src/evidence.php:56
 msgid "Column Groups"
 msgstr "Column Groups"
 
-#: ../src/evidence.php:70
+#: ../src/evidence.php:68
 msgid "User Query"
 msgstr "User Query"
 
-#: ../src/evidence.php:74
+#: ../src/evidence.php:72
 msgid "Items overview"
 msgstr "Items overview"
 
-#: ../src/evidence.php:108
+#: ../src/evidence.php:106
 msgid "no"
 msgstr "no"
 
-#: ../src/evidence.php:110
+#: ../src/evidence.php:108
 msgid "yes"
 msgstr "yes"
 
-#: ../src/evidence.php:112
+#: ../src/evidence.php:110
 msgid "Allowed by license"
 msgstr "Allowed by license"
 
-#: ../src/evidence.php:142
+#: ../src/evidence.php:140
 msgid "Relations"
 msgstr "Relations"
 
-#: ../src/evidence.php:144
+#: ../src/evidence.php:142
 msgid "Info"
 msgstr "Info"
 
@@ -688,9 +688,17 @@ msgstr "Request"
 msgid "WebHook probe"
 msgstr "WebHook probe"
 
-#: ../src/index.php:18 ../src/index.php:20
+#: ../src/index.php:18
 msgid "FlexiBee info"
 msgstr "FlexiBee info"
+
+#: ../src/index.php:30
+msgid "server info"
+msgstr "server info"
+
+#: ../src/index.php:32
+msgid "license info"
+msgstr "license info"
 
 #: ../src/login.php:24
 msgid "Server added to bookmarks"

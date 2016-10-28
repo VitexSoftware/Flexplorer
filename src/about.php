@@ -15,7 +15,7 @@ require_once 'includes/Init.php';
 $oPage->addItem(new ui\PageTop(_('About application')));
 
 $oPage->container->addItem(_('Used Libraries').':');
-$oPage->container->addItem('<br> FlexiPeeHP v'.\FlexiPeeHP\FlexiBeeRO::$libVersion);
+$oPage->container->addItem('<br> FlexiPeeHP v'.\FlexiPeeHP\FlexiBeeRO::$libVersion.' (FlexiBee '.\FlexiPeeHP\EvidenceList::$version.')');
 $oPage->container->addItem('<br> EasePHP Framework v'.\Ease\Atom::$frameworkVersion);
 
 $oPage->container->addItem('<br/><br/><br/><br/>');

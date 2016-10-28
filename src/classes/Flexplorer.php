@@ -211,11 +211,7 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
                 }
 
                 if (strstr($key, '@')) {
-                    $baseKey = substr($key, 0, strrpos($key, '@'));
-                    if (!array_key_exists($baseKey, $fbColumns)) {
-                        $this->addStatusMessage(sprintf('stripped unknown column %s for evidence %s',
-                                $key, $this->getEvidence()), 'warning');
-                    }
+                    continue;
                 }
 
                 if (!array_key_exists($key, $fbColumns)) {

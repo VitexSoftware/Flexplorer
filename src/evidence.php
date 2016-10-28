@@ -36,8 +36,6 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
     $oPage->addItem(new ui\PageTop(sprintf(_('Evidence %s'),
             \FlexiPeeHP\EvidenceList::$name[$evidence])));
 
-//$oPage->container->addItem(new );
-
     $evobj = new Flexplorer($evidence);
 
 
