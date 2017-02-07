@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
 "POT-Creation-Date: 2016-10-28 16:50+0100\n"
-"PO-Revision-Date: 2016-10-28 16:50+0100\n"
-"Last-Translator: Vítězslav Dvořák <vitex@arachne.cz>\n"
+"PO-Revision-Date: 2016-11-23 12:33+0100\n"
+"Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
@@ -214,23 +214,20 @@ msgstr "O Aplikaci"
 #: ../src/classes/ui/BootstrapMenu.php:46
 #: ../src/classes/ui/BootstrapMenu.php:54 ../src/login.php:51
 #: ../src/login.php:75
-#, fuzzy
 msgid "Sign in"
-msgstr "Odhlášení"
+msgstr "Přihlásit"
 
 #: ../src/classes/ui/BootstrapMenu.php:49
 msgid "Server"
 msgstr "Server"
 
 #: ../src/classes/ui/BootstrapMenu.php:50
-#, fuzzy
 msgid "login"
-msgstr "Chyba přihlášení"
+msgstr "login"
 
 #: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:88
-#, fuzzy
 msgid "Password"
-msgstr "Heslo uživatele"
+msgstr "Heslo"
 
 #: ../src/classes/ui/BootstrapMenu.php:53 ../src/login.php:92
 msgid "Remeber me"
@@ -507,9 +504,8 @@ msgid "Make new request from this response"
 msgstr "Vytvořit požadavek z odpovědi"
 
 #: ../src/classes/ui/ShowResponse.php:93
-#, fuzzy
 msgid "Save this response to file"
-msgstr "Odpověď"
+msgstr "Uložit odpověď do souboru"
 
 #: ../src/classes/ui/TWBSwitch.php:28
 msgid "Yes"

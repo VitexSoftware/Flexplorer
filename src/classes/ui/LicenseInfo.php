@@ -25,6 +25,9 @@ class LicenseInfo extends \Ease\Html\TableTag
         }
         $licenseInfo['features'] = $features;
 
+        $licenseInfo['key'] = new \Ease\Html\ATag('https://www.flexibee.eu/moje-licence/?key='.$licenseInfo['key'],
+            $licenseInfo['key'], ['target' => '_blank']);
+
         $licenseInfo['legislations'] = implode(',',
             $licenseInfo['legislations']['legislation']);
         $licenseInfo['languages']    = implode(',',

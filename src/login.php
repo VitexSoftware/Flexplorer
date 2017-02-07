@@ -80,7 +80,7 @@ $loginPanel->addItem(new \Ease\TWB\FormGroup(_('FlexiBee'),
     new \Ease\Html\InputTextTag('server',
     $server ? $server : constant('DEFAULT_FLEXIBEE_URL') ),
     constant('DEFAULT_FLEXIBEE_URL'),
-    _('FlexiBee server URL. ex.: https://localhost:5434')));
+    _('FlexiBee server URL. ex.:').' <a href="?server=https://localhost:5434">https://localhost:5434</a>'));
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('User name'),
     new \Ease\Html\InputTextTag('login',
     $login ? $login : constant('DEFAULT_FLEXIBEE_LOGIN')
