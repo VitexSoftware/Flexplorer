@@ -20,9 +20,9 @@ $engine = new Flexplorer($evidence);
 if (!is_null($id)) {
     $engine->loadFromFlexiBee($id);
     $originalData = $engine->getData();
-    $recordInfo = $engine->__toString();
+    $recordInfo   = $engine->__toString();
 } else {
-    $recordInfo = _('New record');
+    $recordInfo   = _('New record');
     $originalData = null;
 }
 
@@ -53,8 +53,7 @@ if ($oPage->isPosted()) {
     }
 }
 
-$oPage->addItem(new ui\PageTop(_('Editor')));
-
+$oPage->addItem(new ui\PageTop(_('Editor').' '.$evidence.' '.$recordInfo));
 
 
 if ($oPage->isPosted() && is_null($oPage->getRequestValue('toFlexiBee'))) {
