@@ -11,6 +11,7 @@ Umožňuje:
   * zobrazovat strukturu evidence
   * odesílat přímé požadavky na server a zobrazovat výsledky
   * Nastavovat ChangesAPI a přidávat WebHooks
+  * Zobrazovat data přijatá WebHookem
   * Test odpovědi WebHook skriptu zpracovávajícího změny z FlexiBee
   * Hromadně zakládat a rušit účetní období
   * Rozlišit evidnece které jsou z důvodu licence nedostupné

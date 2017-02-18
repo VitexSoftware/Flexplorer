@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-10-28 16:50+0100\n"
-"PO-Revision-Date: 2016-11-23 12:33+0100\n"
+"POT-Creation-Date: 2017-02-18 03:26+0100\n"
+"PO-Revision-Date: 2017-02-18 03:28+0100\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: cs_CZ\n"
@@ -24,11 +24,27 @@ msgstr "O Aplikaci"
 msgid "Used Libraries"
 msgstr "Použité knihovny"
 
-#: ../src/changesapi.php:26
+#: ../src/change.php:22
+msgid "Changes recieved"
+msgstr "Přijaté změny"
+
+#: ../src/changes.php:32
+msgid "FlexiBee WebHook income"
+msgstr "Data přijatá WebHookem"
+
+#: ../src/changes.php:38
+msgid "Delete All"
+msgstr "Smazat všechny"
+
+#: ../src/changes.php:45 ../src/changesapi.php:111
+msgid "Target to FlexPlorer"
+msgstr "Naseměrovat na FlexPlorer"
+
+#: ../src/changesapi.php:27
 msgid "ChangesAPI was enabled"
 msgstr "API Změn bylo povoleno"
 
-#: ../src/changesapi.php:32
+#: ../src/changesapi.php:33
 msgid "ChangesAPI was disabled"
 msgstr "API změn bylo zakázáno"
 
@@ -37,44 +53,44 @@ msgstr "API změn bylo zakázáno"
 msgid "Hook %s was registered"
 msgstr "Hook %s byl registrován"
 
-#: ../src/changesapi.php:65
+#: ../src/changesapi.php:66
 #, php-format
 msgid "Hook %s not registered"
 msgstr "Hook %s nebyl registrován"
 
-#: ../src/changesapi.php:74
+#: ../src/changesapi.php:75
 msgid "Hook was unregistered"
 msgstr "Hook byl odregistrován"
 
-#: ../src/changesapi.php:76
+#: ../src/changesapi.php:77
 msgid "Hook was not unregistered"
 msgstr "Hook nebyl odregistrován"
 
-#: ../src/changesapi.php:84
+#: ../src/changesapi.php:85
 msgid "Hook refreshed"
 msgstr "Hook občerstven"
 
-#: ../src/changesapi.php:86
+#: ../src/changesapi.php:87
 msgid "Hook refresh failed"
 msgstr "Obnovení hooku nebylo úspěšné"
 
-#: ../src/changesapi.php:91
+#: ../src/changesapi.php:92
 msgid "ChangesAPI Tool"
 msgstr "Nástroj pro API Změn"
 
-#: ../src/changesapi.php:95
+#: ../src/changesapi.php:96
 msgid "Enable"
 msgstr "Povolit"
 
-#: ../src/changesapi.php:95
+#: ../src/changesapi.php:96
 msgid "Disable"
 msgstr "Zakázat"
 
-#: ../src/changesapi.php:95 ../src/classes/ui/MainMenu.php:120
+#: ../src/changesapi.php:96 ../src/classes/ui/MainMenu.php:120
 msgid "Changes API"
 msgstr "API Změn"
 
-#: ../src/changesapi.php:98
+#: ../src/changesapi.php:99
 msgid ""
 "If it is turned on , FlexiBee records all changes made ​​to the database "
 "company in the changelog and provides a list of changes recovered"
@@ -82,11 +98,11 @@ msgstr ""
 "Je-li to zapnuto, FlexiBee zaznamenává všechny změny provedené v databázi "
 "firmy do changelogu a umožňuje seznam změn zpětně získat."
 
-#: ../src/changesapi.php:100 ../src/fakechange.php:91
+#: ../src/changesapi.php:105 ../src/fakechange.php:91
 msgid "Web Hook"
 msgstr "Web Hook"
 
-#: ../src/changesapi.php:103
+#: ../src/changesapi.php:107
 msgid ""
 "When the database FlexiBee to change the POST HTTP request sent to all "
 "registered URL"
@@ -94,23 +110,23 @@ msgstr ""
 "dyž dojde v databázi FlexiBee ke změně, je odeslán POST HTTP request na "
 "všechna zaregistrovaná URL"
 
-#: ../src/changesapi.php:107 ../src/fakechange.php:64
+#: ../src/changesapi.php:114 ../src/fakechange.php:64
 msgid "Data format"
 msgstr "Formát dat"
 
-#: ../src/changesapi.php:110
+#: ../src/changesapi.php:117
 msgid "Skip URL test"
 msgstr "Přeskoč test URL"
 
-#: ../src/changesapi.php:110
+#: ../src/changesapi.php:117
 msgid "Suppress URL functionality test"
 msgstr "Přeskoč test funkčnosti URL"
 
-#: ../src/changesapi.php:114 ../src/fakechange.php:67
+#: ../src/changesapi.php:121 ../src/fakechange.php:67
 msgid "Last version"
 msgstr "Poslední verze"
 
-#: ../src/changesapi.php:115
+#: ../src/changesapi.php:122
 #, php-format
 msgid ""
 "Version of which will begin sending FOLLOW changes , ie. The next higher "
@@ -122,11 +138,11 @@ msgstr ""
 "verze. Defaultní hodnota je rovna aktuální globální verzi (globalVersion) v "
 "momentě registrace hooku. Přípustné hodnoty jsou z intervalu: [0, %s]."
 
-#: ../src/changesapi.php:120
+#: ../src/changesapi.php:127
 msgid "Security Code"
 msgstr "Bezečnostní kód"
 
-#: ../src/changesapi.php:121
+#: ../src/changesapi.php:128
 #, php-format
 msgid ""
 "Any string (eg. %s) that will be sent with each change notifications in the "
@@ -137,19 +153,19 @@ msgstr ""
 "HTTP hlavičce. Slouží k jednoduchému ověření, zda patří příchozí notifikace "
 "Vámi registrovanému hooku. Název klíče v HTTP hlavičce je X-FB-Hook-SecKey."
 
-#: ../src/changesapi.php:126 ../src/ucetniobdobi.php:58
+#: ../src/changesapi.php:133 ../src/ucetniobdobi.php:58
 msgid "Perform operation"
 msgstr "Vykonej operaci"
 
-#: ../src/changesapi.php:140
+#: ../src/changesapi.php:147
 msgid "Test"
 msgstr "Test\t"
 
-#: ../src/changesapi.php:150
+#: ../src/changesapi.php:157
 msgid "Webhooks registered"
 msgstr "Registrované WebHooky"
 
-#: ../src/changesapi.php:153
+#: ../src/changesapi.php:160
 msgid "ChangesAPI & WebHooks"
 msgstr "ChangesAPI & WebHooks"
 
@@ -192,6 +208,15 @@ msgstr "Byla použita adresa %s"
 #, php-format
 msgid "Error %s obataing %s"
 msgstr "Chyba %s získání %s"
+
+#: ../src/classes/HookReciever.php:80
+#, php-format
+msgid "WebHook %s triggered"
+msgstr "Webhook byl %s byl přijat"
+
+#: ../src/classes/HookReciever.php:100
+msgid "Empty WebHook request"
+msgstr "Webhook vrátil prázdnou odezvu"
 
 #: ../src/classes/Searcher.php:109
 msgid "No search results"
@@ -314,7 +339,7 @@ msgstr "Uprav"
 #: ../src/classes/ui/DataGrid.php:114
 #, fuzzy
 msgid "Delete"
-msgstr "Smazat záznam"
+msgstr "Smazat"
 
 #: ../src/classes/ui/DataGrid.php:123
 msgid "Select All"
@@ -401,11 +426,16 @@ msgstr "Evidence"
 msgid "Tools"
 msgstr "Nástroje"
 
-#: ../src/classes/ui/MainMenu.php:121 ../src/fakechange.php:53
+#: ../src/classes/ui/MainMenu.php:121
+#, fuzzy
+msgid "Changes Recieved"
+msgstr "API Změn"
+
+#: ../src/classes/ui/MainMenu.php:122 ../src/fakechange.php:53
 msgid "WebHook test"
 msgstr "Test\tWebHooku"
 
-#: ../src/classes/ui/MainMenu.php:122 ../src/ucetniobdobi.php:47
+#: ../src/classes/ui/MainMenu.php:123 ../src/ucetniobdobi.php:47
 msgid "Accounting period"
 msgstr "Účetní období"
 
@@ -694,15 +724,15 @@ msgstr "Požadavek"
 msgid "WebHook probe"
 msgstr "Zkouška webhooku"
 
-#: ../src/index.php:18
+#: ../src/index.php:15
 msgid "FlexiBee info"
 msgstr "FlexiBee info"
 
-#: ../src/index.php:30
+#: ../src/index.php:27
 msgid "server info"
 msgstr "Informace o serveru"
 
-#: ../src/index.php:32
+#: ../src/index.php:29
 msgid "license info"
 msgstr "informace o licenci"
 
@@ -723,7 +753,8 @@ msgid "Login History"
 msgstr "Historie přihlášení"
 
 #: ../src/login.php:83
-msgid "FlexiBee server URL. ex.: https://localhost:5434"
+#, fuzzy
+msgid "FlexiBee server URL. ex.:"
 msgstr "FlexiBee servr URL. např.: https://localhost:5434"
 
 #: ../src/login.php:84
@@ -856,7 +887,7 @@ msgstr "Nástroj pro hromadné zakládání účetních období"
 #: ../src/viewevidence.php:24
 #, fuzzy
 msgid "Evidence proprties overview"
-msgstr "Přehled vlastností evidence"
+msgstr "Přehled"
 
 #: ../src/viewevidence.php:32
 msgid "Structure"
@@ -865,7 +896,7 @@ msgstr "Struktura"
 #: ../src/viewevidence.php:47
 #, fuzzy
 msgid "Custom query"
-msgstr "Uživatelský požadavek"
+msgstr "Dotaz"
 
 #~ msgid "Query does not sent yet"
 #~ msgstr "Dotaz nebyl zatím odeslán"

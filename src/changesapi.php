@@ -18,6 +18,7 @@ $hooker        = new \FlexiPeeHP\Hooks();
 $chapistatus   = $changer->getStatus();
 $invoicer      = new \FlexiPeeHP\FakturaVydana();
 $globalVersion = $invoicer->getGlobalVersion();
+$hookurl       = $oPage->getRequestValue('hookurl');
 
 if ($oPage->isPosted()) {
     if ($oPage->getRequestValue('changesapi') === 'enable') {
@@ -34,7 +35,6 @@ if ($oPage->isPosted()) {
         }
     }
 
-    $hookurl = $oPage->getRequestValue('hookurl');
     if (strlen($hookurl)) {
 
         if ($oPage->getRequestValue('changesformat') === 'JSON') {
@@ -61,6 +61,7 @@ if ($oPage->isPosted()) {
         if ($hookResult) {
             $hooker->addStatusMessage(sprintf(_('Hook %s was registered'),
                     $hookurl), 'success');
+            $hookurl = '';
         } else {
             $hooker->addStatusMessage(sprintf(_('Hook %s not registered'),
                     $hookurl), 'warning');
@@ -97,11 +98,17 @@ $settingsForm->addInput(new ui\TWBSwitch('changesapi', $chapistatus, 'enable',
     new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/changes-api/',
     _('If it is turned on , FlexiBee records all changes made ​​to the database company in the changelog and provides a list of changes recovered')));
 
-$settingsForm->addInput(new \Ease\Html\InputTextTag('hookurl'), _('Web Hook'),
-    'http://server/getchanges.php',
+$webHookUrl = str_replace(basename(__FILE__), 'webhook.php',
+    \Ease\Page::phpSelf());
+
+$settingsForm->addInput(new \Ease\Html\InputTextTag('hookurl', $hookurl),
+    _('Web Hook'), $webHookUrl,
     new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/web-hooks',
     _('When the database FlexiBee to change the POST HTTP request sent to all registered URL'))
 );
+
+$settingsForm->addItem(new \Ease\TWB\LinkButton("?hookurl=".urlencode($webHookUrl),
+    _('Target to FlexPlorer'), 'success', ['class' => 'button button-xs']));
 
 $settingsForm->addInput(new ui\TWBSwitch('changesformat', true, 'JSON',
     ['onText' => 'JSON', 'offText' => 'XML']), _('Data format'));
@@ -135,10 +142,10 @@ if ($chapistatus) {
         foreach ($hooks as $hookinfo) {
             $hookinfo[]      = new \Ease\TWB\LinkButton('?refresh='.$hookinfo['id'],
                 new \Ease\TWB\GlyphIcon('refresh'), 'success');
-            $hookinfo[] = new \Ease\TWB\LinkButton('fakechange.php?hookurl='.$hookinfo['url'],
+            $hookinfo[]      = new \Ease\TWB\LinkButton('fakechange.php?hookurl='.$hookinfo['url'],
                 new \Ease\TWB\GlyphIcon('export'), 'info',
                 ['title' => _('Test')]);
-            $hookinfo[] = new \Ease\TWB\LinkButton('?linkdel='.$hookinfo['id'],
+            $hookinfo[]      = new \Ease\TWB\LinkButton('?linkdel='.$hookinfo['id'],
                 new \Ease\TWB\GlyphIcon('remove'), 'danger');
             $hookinfo['url'] = new \Ease\Html\ATag($hookinfo['url'],
                 $hookinfo['url']);

@@ -1,12 +1,9 @@
 <?php
-
-namespace Flexplorer;
-
 /**
  * Flexplorer - Hlavní strana.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  2016 Vitex Software
+ * @copyright  2016-2017 Vitex Software
  */
 
 namespace Flexplorer;

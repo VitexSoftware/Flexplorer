@@ -66,12 +66,12 @@ class MainMenu extends \Ease\Html\Div
             $url = \Ease\Shared::webPage()->getRequestValue('url');
             if (is_null($url)) {
                 $infoLabel = $companer->getEvidenceURL();
- 
-                $infoLabel.= '/'.constant('FLEXIBEE_COMPANY');
+
+                $infoLabel .= '/'.constant('FLEXIBEE_COMPANY');
 
                 $evidence = $this->webPage->getRequestValue('evidence');
                 if ($evidence) {
-                    $infoLabel.='/'.$evidence;
+                    $infoLabel .= '/'.$evidence;
                 }
             } else {
                 $infoLabel = $url;
@@ -118,10 +118,10 @@ class MainMenu extends \Ease\Html\Div
                 [
                 'query.php' => _('Query'),
                 'changesapi.php' => _('Changes API'),
+                'changes.php' => _('Changes Recieved'),
                 'fakechange.php' => _('WebHook test'),
                 'ucetniobdobi.php' => _('Accounting period')
             ]);
-
         }
     }
 
