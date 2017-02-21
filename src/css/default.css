@@ -144,3 +144,7 @@ th {
     padding: 10px;
     width: 90%;
 }	
+
+.ResponseShow pre a { 
+    background-color: #ff0;
+}

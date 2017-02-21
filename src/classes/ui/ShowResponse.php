@@ -24,6 +24,7 @@ class ShowResponse extends \Ease\Html\Div
     public function __construct($engine)
     {
         $this->sender = $engine;
+        $this->setTagClass('ResponseShow');
         parent::__construct();
     }
 
@@ -46,6 +47,9 @@ class ShowResponse extends \Ease\Html\Div
                     $formated         = preg_replace('/ref":"(.*)"/',
                         'ref":"<a href="query.php?show=result&url='.$this->sender->url.'$1">$1</a>"',
                         $formated);
+                    $formated         = preg_replace('/@evidence":"(.*)"/',
+                        '@evidence":"<a href="evidence.php?evidence=$1">$1</a>"',
+                        $formated);
                     break;
                 case 'application/xml':
                 case 'xml':
@@ -55,6 +59,9 @@ class ShowResponse extends \Ease\Html\Div
                     $formated         = preg_replace('/ref=&quot;(.*)&quot;/',
                         'ref=&quot;<a href="query.php?show=result&url='.$this->sender->url.'$1">$1</a>&quot;',
                         $formated);
+                    $formated         = preg_replace('/evidence=&quot;(.*)&quot;/',
+                        'evidence=&quot;<a href="evidence.php?evidence=$1">$1</a>&quot;',
+                        $formated);
                     break;
                 case 'txt':
                 default :
@@ -62,6 +69,8 @@ class ShowResponse extends \Ease\Html\Div
                     break;
             }
 
+            $formated = $this->addEvidenciesLinks( $formated );
+            
             $this->addItem('<pre><code class="'.$format.'">'.
                 $formated
                 .'</code></pre>');
@@ -229,4 +238,32 @@ function downloadResponse(){
         return $text;
     }
 
+    /**
+     * Make Link from alle evidencies names
+     * 
+     * @param string $formated
+     * @return string with links
+     */
+    public function addEvidenciesLinks($formated,$separator = '"')
+    {
+        $links = [];
+        $names = [];
+        foreach (\FlexiPeeHP\EvidenceList::$name as $code => $name){
+            $names[] = $separator.$code.$separator;
+            $links[] = $separator.self::addEvidenceLink($code,$name).$separator;
+        }
+        return str_replace($names , $links, $formated);
+    }
+
+    /**
+     * Make link from evidence name
+     * 
+     * @param string $evidence
+     * @param string $name Human readable name
+     * @return string hyperlink code to evidence
+     */
+    static public function addEvidenceLink($evidence,$name = ''){
+        return '<a href="evidence.php?evidence='.$evidence.'" title="'.$name.'">'.$evidence.'</a>';
+    }
+    
 }

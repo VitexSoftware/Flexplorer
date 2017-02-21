@@ -17,7 +17,8 @@ $sender                   = new Flexplorer();
 $sender->lastResponseCode = 200;
 $sender->lastCurlResponse = json_encode(json_decode(file_get_contents(sys_get_temp_dir().'/'.basename($file))),
     JSON_PRETTY_PRINT);
-
+$sender->info['content_type'] = 'json';
+$sender->info['url'] = 'file://'.$file;
 
 $oPage->addItem(new ui\PageTop(_('Changes recieved').': '.$file));
 
