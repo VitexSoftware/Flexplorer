@@ -13,7 +13,7 @@ require_once 'includes/Init.php';
 $oPage->onlyForLogged();
 
 $id       = $oPage->getRequestValue('id');
-$url      = $oPage->getRequestValue('url');
+$url      = urldecode($oPage->getRequestValue('url'));
 $body     = $oPage->getRequestValue('body');
 $action   = $oPage->getRequestValue('action');
 $method   = $oPage->getRequestValue('method');

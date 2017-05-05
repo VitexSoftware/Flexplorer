@@ -286,7 +286,7 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
 
         $id        = $webPage->getRequestValue('id');
         $url       = $webPage->getRequestValue('url');
-        $body      = $webPage->getRequestValue('body');
+        $body      = urldecode($webPage->getRequestValue('body'));
         $action    = $webPage->getRequestValue('action');
         $method    = $webPage->getRequestValue('method');
         $format    = $webPage->getRequestValue('format');
@@ -340,4 +340,19 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
         return $result;
     }
 
+    /**
+     * Vykonej HTTP požadavek + uloz URI do $_SESSION['lasturl']
+     *
+     * @link https://www.flexibee.eu/api/dokumentace/ref/urls/ Sestavování URL
+     * @param string $url    URL požadavku
+     * @param strinf $method HTTP Method GET|POST|PUT|OPTIONS|DELETE
+     * @param string $format požadovaný formát komunikace
+     * @return int HTTP Response CODE
+     */
+    public function doCurlRequest($url = null, $method = 'GET', $format = null)
+    {
+        $result              = parent::doCurlRequest($url, $method, $format);
+        $_SESSION['lasturl'] = $this->info['url'];
+        return $result;
+    }
 }

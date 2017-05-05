@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2017-02-18 03:26+0100\n"
-"PO-Revision-Date: 2017-02-18 03:28+0100\n"
+"POT-Creation-Date: 2017-03-26 23:59+0100\n"
+"PO-Revision-Date: 2017-03-26 23:59+0100\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: cs_CZ\n"
@@ -429,7 +429,7 @@ msgstr "Nástroje"
 #: ../src/classes/ui/MainMenu.php:121
 #, fuzzy
 msgid "Changes Recieved"
-msgstr "API Změn"
+msgstr "Přijaté změny"
 
 #: ../src/classes/ui/MainMenu.php:122 ../src/fakechange.php:53
 msgid "WebHook test"
@@ -887,7 +887,7 @@ msgstr "Nástroj pro hromadné zakládání účetních období"
 #: ../src/viewevidence.php:24
 #, fuzzy
 msgid "Evidence proprties overview"
-msgstr "Přehled"
+msgstr "Evidence"
 
 #: ../src/viewevidence.php:32
 msgid "Structure"

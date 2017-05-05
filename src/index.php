@@ -12,9 +12,10 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-$oPage->addItem(new ui\PageTop(_('FlexiBee info')));
+$statuser            = new \FlexiPeeHP\Status();
+$_SESSION['lasturl'] = $statuser->info['url'];
 
-$statuser = new \FlexiPeeHP\Status();
+$oPage->addItem(new ui\PageTop(_('FlexiBee info')));
 
 $infoTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
 

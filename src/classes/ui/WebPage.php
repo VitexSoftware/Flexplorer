@@ -54,7 +54,11 @@ class WebPage extends \Ease\TWB\WebPage
         $this->head->addItem('<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="favicon.ico">');
         $this->head->addItem('<link rel="apple-touch-icon-precomposed"  type="image/png" href="images/flexplorer-logo.png">');
         $this->head->addItem('<link rel="stylesheet" href="/javascript/font-awesome/css/font-awesome.min.css">');
+        $this->addItem(new FlexiURL(isset($_SESSION['lasturl']) ? $_SESSION['lasturl'] : null,
+            ['id' => 'lasturl', 'class' => 'innershadow']));
+
         $this->container = $this->addItem(new \Ease\TWB\Container());
+
         $this->includeJavaScript('js/jquery.keepAlive.js');
         $this->addJavaScript('$.fn.keepAlive({timer: 300000});');
     }
