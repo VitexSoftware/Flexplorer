@@ -114,12 +114,15 @@ Pokud máte balíček nainstalovný ze zdroje, aktualizace probíhají tak jak j
 
 Vagrant
 -------
-K dispozici je také konfigurace pro Vagrant. Po doběhnutí příkazu
+K dispozici je také [Box](https://atlas.hashicorp.com/vitexsoftware/boxes/flexplorer) pro Vagrant. Po doběhnutí příkazu
 
-    vagrant up
+    vagrant init vitexsoftware/flexplorer; vagrant up --provider virtualbox
 
-bude možné aktuální vývojovou zobrazit na adrese [http://localhost:4567/src/]
-a verzi z nejnovějšího debianího balíčku na adrese [http://localhost:4567/flexplorer/]
+bude možné aktuální vývojovou zobrazit na adrese [http://localhost:8080/src/]
+a verzi z nejnovějšího debianího balíčku na adrese [http://localhost:8080/flexplorer/]
+
+
+
 
 Konfigurace
 -----------
