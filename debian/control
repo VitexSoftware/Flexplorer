@@ -8,7 +8,7 @@ Homepage: https://github.com/VitexSoftware/Flexplorer
 
 Package: flexplorer
 Depends: ${misc:Depends},flexipeehp,composer,php5-intl | php7.0-intl,libjs-twitter-bootstrap-switch,libjs-font-awesome
-Recommends: flexibee
+Recommends: flexibee-server
 Architecture: all
 Section: web
 Priority: optional

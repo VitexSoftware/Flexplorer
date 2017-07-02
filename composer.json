@@ -32,7 +32,8 @@
     "require-dev": {
         "phpunit/php-token-stream": "~1.2",
         "phpunit/phpunit": "5.3.*",
-        "phpunit/phpunit-skeleton-generator": "*"
+        "phpunit/phpunit-skeleton-generator": "*",
+        "codeception/codeception": "^2.3"
     }
 
 }
