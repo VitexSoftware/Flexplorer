@@ -43,7 +43,7 @@ class Searcher extends \Ease\Atom
             $this->sysClasses['column']     = new Columner();
 //            $lister    = new \FlexiPeeHP\EvidenceList();
 //            $flexidata = $lister->getFlexiData();
-//            foreach ($flexidata['evidences']['evidence'] as $evidence) {
+//            foreach ($flexidata as $evidence) {
 //                $this->registerEvidence($evidence['evidencePath']);
 //            }
         } else {

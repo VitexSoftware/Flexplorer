@@ -352,7 +352,7 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
     public function doCurlRequest($url = null, $method = 'GET', $format = null)
     {
         $result              = parent::doCurlRequest($url, $method, $format);
-        $_SESSION['lasturl'] = $this->info['url'];
+        $_SESSION['lasturl'] = $this->curlInfo['url'];
         return $result;
     }
 }

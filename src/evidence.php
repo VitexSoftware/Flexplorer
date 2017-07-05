@@ -96,7 +96,7 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
 
     $myEvidenciesRaw = $evidencer->getColumnsFromFlexibee('*');
     $myEvidenceRaw   = null;
-    foreach ($myEvidenciesRaw['evidences']['evidence'] as $evidenceUsedInfo) {
+    foreach ($myEvidenciesRaw as $evidenceUsedInfo) {
         if ($evidenceUsedInfo['evidencePath'] == $evidence) {
             $myEvidenceRaw = $evidenceUsedInfo;
         }

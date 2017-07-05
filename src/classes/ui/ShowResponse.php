@@ -87,8 +87,8 @@ function downloadResponse(){
     var a = document.body.appendChild(
         document.createElement("a")
     );
-    a.download = "'.\Ease\Sand::lettersOnly($this->sender->info['url']).'.'.$format.'";
-    a.href = "data:'.$this->sender->info['content_type'].'," + document.getElementById("formatedResponse").innerHTML; // Grab the HTML
+    a.download = "'.\Ease\Sand::lettersOnly($this->sender->curlInfo['url']).'.'.$format.'";
+    a.href = "data:'.$this->sender->curlInfo['content_type'].'," + document.getElementById("formatedResponse").innerHTML; // Grab the HTML
     a.click(); // Trigger a click on the element
 }
                         ', null, false);

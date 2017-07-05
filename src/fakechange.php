@@ -44,7 +44,7 @@ $lister    = new \FlexiPeeHP\EvidenceList();
 $flexidata = $lister->getFlexiData();
 
 if (count($flexidata)) {
-    foreach ($flexidata['evidences']['evidence'] as $evidence) {
+    foreach ($flexidata as $evidence) {
         $evidenciesToMenu[$evidence['evidencePath']] = $evidence['evidenceName'];
     }
     asort($evidenciesToMenu);

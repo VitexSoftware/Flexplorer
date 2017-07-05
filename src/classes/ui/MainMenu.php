@@ -67,7 +67,7 @@ class MainMenu extends \Ease\Html\Div
             if (is_null($url)) {
                 $infoLabel = $companer->getEvidenceURL();
 
-                $infoLabel .= '/'.$companer->getCompany();
+                $infoLabel .= '/'.$_SESSION['company'];
 
                 $evidence = $this->webPage->getRequestValue('evidence');
                 if ($evidence) {
@@ -83,7 +83,7 @@ class MainMenu extends \Ease\Html\Div
 
 
             $companiesToMenu = [];
-            $companer        = new \FlexiPeeHP\Company();
+
             $companies       = $companer->getFlexiData();
 
             if (isset($companies) && count($companies)) {
@@ -95,7 +95,7 @@ class MainMenu extends \Ease\Html\Div
                 $nav->addDropDownMenu(_('Company'), $companiesToMenu);
 
                 if (!isset($_SESSION['company'])) { //Auto choose first company
-                    $_SESSION['company'] = $companies['company'][0]['dbNazev'];
+                    $_SESSION['company'] = $companies[0]['dbNazev'];
                     define('FLEXIBEE_COMPANY', $_SESSION['company']);
                 }
 
