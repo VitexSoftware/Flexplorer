@@ -13,7 +13,7 @@ require_once 'includes/Init.php';
 $oPage->onlyForLogged();
 
 $statuser            = new \FlexiPeeHP\Status();
-$_SESSION['lasturl'] = $statuser->info['url'];
+$_SESSION['lasturl'] = $statuser->curlInfo['url'];
 
 $oPage->addItem(new ui\PageTop(_('FlexiBee info')));
 

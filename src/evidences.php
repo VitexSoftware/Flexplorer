@@ -23,10 +23,9 @@ $evidencer = new \FlexiPeeHP\EvidenceList();
 $myEvidenciesRaw = $evidencer->getColumnsFromFlexibee('*');
 
 $myEvidencies = [];
-foreach ($myEvidenciesRaw['evidences']['evidence'] as $myEvidence) {
+foreach ($myEvidenciesRaw as $myEvidence) {
     $myEvidencies[$myEvidence['evidencePath']] = $myEvidence;
 }
-
 
 $allEvidencesTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
 $allEvidencesTable->addRowHeaderColumns(array_merge(array_keys(current(\FlexiPeeHP\EvidenceList::$evidences)),

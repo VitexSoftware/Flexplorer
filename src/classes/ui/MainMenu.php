@@ -67,7 +67,7 @@ class MainMenu extends \Ease\Html\Div
             if (is_null($url)) {
                 $infoLabel = $companer->getEvidenceURL();
 
-                $infoLabel .= '/'.constant('FLEXIBEE_COMPANY');
+                $infoLabel .= '/'.$companer->getCompany();
 
                 $evidence = $this->webPage->getRequestValue('evidence');
                 if ($evidence) {
@@ -86,14 +86,8 @@ class MainMenu extends \Ease\Html\Div
             $companer        = new \FlexiPeeHP\Company();
             $companies       = $companer->getFlexiData();
 
-            if (!isset($companies['company'][0])) {
-                $cmpInfo                 = $companies['company'];
-                unset($companies['company']);
-                $companies['company'][0] = $cmpInfo;
-            }
-
-            if (isset($companies['company']) && count($companies['company'])) {
-                foreach ($companies['company'] as $company) {
+            if (isset($companies) && count($companies)) {
+                foreach ($companies as $company) {
                     $companiesToMenu['?company='.$company['dbNazev']] = $company['nazev'];
                 }
                 asort($companiesToMenu);
@@ -141,4 +135,5 @@ class MainMenu extends \Ease\Html\Div
             null, true);
         $this->includeJavaScript('js/slideupmessages.js');
     }
+
 }

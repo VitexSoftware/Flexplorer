@@ -85,10 +85,10 @@ class User extends \Ease\User
         $_SESSION['license'] = $licenseInfo['license'];
 
         $lister    = new \FlexiPeeHP\EvidenceList(null, $_SESSION);
-        $flexidata = $lister->getFlexiData();
+        $evidences = $lister->getFlexiData();
 
-        if (count($flexidata) && isset($flexidata['evidences']['evidence'])) {
-            foreach ($flexidata['evidences']['evidence'] as $evidence) {
+        if (count($evidences)) {
+            foreach ($evidences as $evidence) {
                 $evidenciesToMenu['evidence.php?evidence='.$evidence['evidencePath']]
                     = $evidence['evidenceName'];
             }
