@@ -18,7 +18,7 @@ $id       = $oPage->getRequestValue('id');
 $engine = new Flexplorer($evidence);
 
 if (!is_null($id)) {
-    $engine->loadFromFlexiBee($id);
+    $engine->loadFromFlexiBee(is_numeric($id) ? intval($id) : $id );
     $originalData = $engine->getData();
     $recordInfo   = $engine->__toString();
 } else {

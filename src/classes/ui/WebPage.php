@@ -87,7 +87,10 @@ class WebPage extends \Ease\TWB\WebPage
      */
     public function onlyForLogged($loginPage = 'login.php')
     {
-        return parent::onlyForLogged($loginPage.'?backurl='.urlencode($_SERVER['REQUEST_URI']));
+        if (!isset($_SESSION['backurl'])) {
+            $_SESSION['backurl'] = $_SERVER['REQUEST_URI'];
+        }
+        return parent::onlyForLogged($loginPage);
     }
 
 }

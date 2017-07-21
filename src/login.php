@@ -23,8 +23,9 @@ if ($login) {
             'server' => $server];
             $oPage->addStatusMessage(_('Server added to bookmarks'));
         }
-        if (!is_null($backurl)) {
-            $oPage->redirect($backurl);
+        if (isset($_SESSION['backurl'])) {
+            $oPage->redirect($_SESSION['backurl']);
+            unset($_SESSION['backurl']);
         } else {
             $oPage->redirect('index.php');
         }

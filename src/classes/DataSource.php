@@ -236,8 +236,9 @@ class DataSource extends \Ease\Brick
     }
 
     /**
+     * Get Json type Response
      *
-     * @param type $queryRaw
+     * @param string $queryRaw
      * @return null
      */
     public function getJson($queryRaw)

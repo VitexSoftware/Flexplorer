@@ -16,4 +16,11 @@ $evidence = $oPage->getRequestValue('evidence');
 if (strlen($evidence)) {
     $datasource = new DataSource(new Flexplorer($evidence));
     $datasource->output();
+} else {
+    $stitek = $oPage->getRequestValue('stitek');
+    if (strlen($stitek)) {
+        $datasource = new DataSource(new SearchFlexplorer(['stitek' => $stitek]));
+
+        $datasource->output();
+    }
 }

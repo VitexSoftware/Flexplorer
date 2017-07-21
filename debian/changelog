@@ -1,4 +1,4 @@
-flexplorer (0.8.5-14) UNRELEASED; urgency=medium
+flexplorer (1.1-1) UNRELEASED; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -111,4 +111,8 @@ flexplorer (0.8.5-14) UNRELEASED; urgency=medium
   * Discover all relations Do not crash on unexistent evidence listig
   * Fixed Response show for custom query when post some data
 
- -- vitex <vitex@developer.kancl.brevnov.czf>  Fri, 30 Sep 2016 19:03:37 +0200
+  [ Vítězslav Dvořák ]
+  * Vagrant Box s Ubuntu Zesty
+  * Vagrant Box s Ubuntu Zesty
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Fri, 16 Jun 2017 10:31:57 +0200

@@ -55,7 +55,15 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
                 if (is_array($htmlized)) {
                     foreach ($htmlized as $key => $value) {
                         if (!is_null($value)) {
-                            $data[$rowId][$key] = $value;
+                            
+                            if ($key == 'stitky') {
+                                foreach (implode(',', $value) as $stitek) {
+                                    $data[$rowId][$key] .= ' <a href="listybylabel.php?label='.$stitek.'">'.$stitek.'</a> ';
+                                }
+                                
+                            } else {
+                                $data[$rowId][$key] = $value;
+                            }
                         } else {
                             if (!isset($data[$rowId][$key])) {
                                 $data[$rowId][$key] = $value;
