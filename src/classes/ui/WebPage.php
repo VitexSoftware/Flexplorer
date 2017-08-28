@@ -84,13 +84,14 @@ class WebPage extends \Ease\TWB\WebPage
      * Nepřihlášeného uživatele přesměruje na přihlašovací stránku.
      *
      * @param string $loginPage adresa přihlašovací stránky
+     * @param string $message Custom message for redirected
      */
-    public function onlyForLogged($loginPage = 'login.php')
+    public function onlyForLogged($loginPage = 'login.php', $message = NULL)
     {
         if (!isset($_SESSION['backurl'])) {
             $_SESSION['backurl'] = $_SERVER['REQUEST_URI'];
         }
-        return parent::onlyForLogged($loginPage);
+        return parent::onlyForLogged($loginPage, $message);
     }
 
 }
