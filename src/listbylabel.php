@@ -1,7 +1,4 @@
 <?php
-
-namespace Flexplorer;
-
 /**
  * Flexplorer - An evidence page.
  *

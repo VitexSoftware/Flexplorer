@@ -185,7 +185,7 @@ class Editor extends ColumnsForm
             $editorTabs = new \Ease\TWB\Tabs('EditorTabs');
             $editorTabs->addTab(_('Columns'), $contents);
             $editorTabs->addTab(_('External IDs'), $this->extIDsEditor());
-            $editorTabs->addTab(_('Labes'), new LabelGroup($this->engine));
+            $editorTabs->addTab(_('Labels'), new LabelSwitches($this->engine));
             $editorTabs->addTab(_('Query'),
                 new SendForm($this->engine->getEvidenceURL(), 'PUT',
                 $this->engine->jsonizeData($this->engine->getData())));
