@@ -17,6 +17,7 @@ Umožňuje:
   * Rozlišit evidnece které jsou z důvodu licence nedostupné
   * Zobrazovat vedle json výsledku požadavku i stránku z FlexiBee
   * Upravovat Externí ID záznamů
+  * Měnit stav přiřazení štítků k evidenci
 
 [![Source Code](http://img.shields.io/badge/source-VitexSoftware/Flexplorer-blue.svg?style=flat-square)](https://github.com/VitexSoftware/Flexplorer)
 [![Latest Version](https://img.shields.io/github/release/VitexSoftware/Flexplorer.svg?style=flat-square)](https://github.com/VitexSoftware/Flexplorer/releases)

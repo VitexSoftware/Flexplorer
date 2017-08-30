@@ -17,9 +17,10 @@ $oPage->onlyForLogged();
 
 $evidence = $oPage->getRequestValue('evidence');
 $column   = $oPage->getRequestValue('column');
+$label    = $oPage->getRequestValue('label');
 $url      = constant('FLEXIBEE_URL').'/c/'.constant('FLEXIBEE_COMPANY');
 if ($evidence) {
-    $url.='/'.$evidence;
+    $url .= '/'.$evidence;
 }
 
 if (is_null($evidence)) {
@@ -51,7 +52,8 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
     $tabs = new \Ease\TWB\Tabs('EviTabs');
     if ($evidenceLicensed === true) {
         $tabs->addTab(_('Listing'),
-            new ui\DataGrid(_('Evidence'), new DataSource($evobj)));
+            new ui\DataGrid(_('Evidence'), new DataSource($evobj),
+            ['label' => $label]));
     }
     $tabs->addTab(_('Column Groups'), new ui\ColumnsGroups($evobj, $column),
         isset($column));
@@ -139,8 +141,14 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
     $infoRow->addColumn(6,
         new \Ease\TWB\Panel(_('Relations'), 'info', $relationsList));
 
-    $tabs->addTab(_('Info'), $infoRow, ($evidenceLicensed === false));
+    $infoTab = $tabs->addTab(_('Info'), $infoRow, ($evidenceLicensed === false));
 
+    if (array_key_exists('stitky', $evobj->getColumnsInfo())) {
+        $evobj->setDataValue('stitky',
+            \FlexiPeeHP\Stitek::getAvailbleLabels($evobj));
+        $infoTab->addItem(new \Ease\TWB\Panel(_('Labels Availble'), 'info',
+            new ui\LabelGroup($evobj)));
+    }
     $oPage->container->addItem($tabs);
 
     $oPage->addItem(new ui\PageBottom());

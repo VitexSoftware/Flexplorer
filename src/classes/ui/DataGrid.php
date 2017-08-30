@@ -78,7 +78,11 @@ class DataGrid extends \Ease\Html\TableTag
         $this->options['title'] = $name;
         $this->setTagID();
 
-        $this->options['url']      = 'datasource.php?evidence='.urlencode($datasource->getEvidence());
+        $this->options['url'] = 'datasource.php?evidence='.urlencode($datasource->getEvidence());
+        if (isset($properties['label'])) {
+            $this->options['url'] .= '&stitek='.urlencode($properties['label']);
+        }
+
         $this->options['sortname'] = $datasource->getMyKeyColumn();
         $dataurl                   = null;
 

@@ -26,11 +26,16 @@ class LabelGroup extends \Ease\Container
         $stitky = $flexibee->getDataValue('stitky');
         parent::__construct();
         if (count($stitky)) {
-            $stitkyArr = explode(',', $stitky);
-            foreach ($stitkyArr as $stitek) {
+            if (is_array($stitky)) {
+                $stitkyArr = $stitky;
+            } else {
+                $stitkyArr = explode(',', $stitky);
+            }
+            foreach ($stitkyArr as $code => $stitek) {
                 $this->addItem(new \Ease\TWB\Label('info',
                     new \Ease\Html\ATag('listbylabel.php?label='.trim($stitek).'&evidence='.$flexibee->getEvidence(),
-                    trim($stitek))));
+                    is_numeric($code) ? trim($stitek) : new \Ease\TWB\Label('info',
+                        $code, ['title' => trim($stitek)]))));
             }
         }
     }

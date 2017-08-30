@@ -55,14 +55,15 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
                 if (is_array($htmlized)) {
                     foreach ($htmlized as $key => $value) {
                         if (!is_null($value)) {
-                            
+
                             if ($key == 'stitky') {
-                                foreach (\FlexiPeeHP\Stitek::listToArray($value) as $stitek) {
+                                $data[$rowId][$key] = '';
+                                foreach (is_string($value) ? \FlexiPeeHP\Stitek::listToArray($value)
+                                        : $value as $stitek) {
                                     if (strlen($stitek)) {
-                                        $data[$rowId][$key] .= ' <a href="listybylabel.php?label='.$stitek.'">'.$stitek.'</a> ';
+                                        $data[$rowId][$key] .= ' <a href="listbylabel.php?label='.$stitek.'">'.$stitek.'</a> ';
                                     }
                                 }
-                                
                             } else {
                                 $data[$rowId][$key] = $value;
                             }
@@ -169,6 +170,9 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
                 }
             }
         }
+
+        $row['external-ids'] = isset($row['external-ids']) ? implode(',',
+                $row['external-ids']) : '';
         return $row;
     }
 
@@ -348,6 +352,27 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
             $result = $this->doCurlRequest($url, $method, $format);
         }
         return $result;
+    }
+    /**
+     * Obtain structure for current (or given) evidence
+     *
+     * @param string $evidence
+     * @return array Evidence structure
+     */
+    public function getColumnsInfo($evidence = null)
+    {
+        $columnsInfo = parent::getColumnsInfo($evidence);
+
+        $idBackup = $columnsInfo['id'];
+        unset($columnsInfo['id']);
+
+        $columnsInfoFinal['id']          = $idBackup;
+        $columnsInfoFinal['external-ids'] = ['name' => 'ExtID', 'title' => _('External ID'),
+            'type' => 'string', 'isSortable' => 'false'];
+
+        $columnsInfoFinal = array_merge($columnsInfoFinal, $columnsInfo);
+
+        return $columnsInfoFinal;
     }
 
     /**
