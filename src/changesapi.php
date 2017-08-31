@@ -81,7 +81,7 @@ if (!is_null($linkdel)) {
 
 $linkrefresh = $oPage->getRequestValue('refresh', 'int');
 if (!is_null($linkrefresh)) {
-    if ($hooker->refresh($linkrefresh)) {
+    if ($hooker->refreshWebHook($linkrefresh)) {
         $hooker->addStatusMessage(_('Hook refreshed'), 'success');
     } else {
         $hooker->addStatusMessage(_('Hook refresh failed'), 'warning');
