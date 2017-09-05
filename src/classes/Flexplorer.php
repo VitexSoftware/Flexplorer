@@ -353,6 +353,7 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
         }
         return $result;
     }
+
     /**
      * Obtain structure for current (or given) evidence
      *
@@ -361,17 +362,18 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
      */
     public function getColumnsInfo($evidence = null)
     {
-        $columnsInfo = parent::getColumnsInfo($evidence);
+        $columnsInfoFinal = [];
+        $columnsInfo      = parent::getColumnsInfo($evidence);
+        if (is_array($columnsInfo) && array_key_exists('id', $columnsInfo)) {
+            $idBackup = $columnsInfo['id'];
+            unset($columnsInfo['id']);
 
-        $idBackup = $columnsInfo['id'];
-        unset($columnsInfo['id']);
+            $columnsInfoFinal['id']           = $idBackup;
+            $columnsInfoFinal['external-ids'] = ['name' => 'ExtID', 'title' => _('External ID'),
+                'type' => 'string', 'isSortable' => 'false'];
 
-        $columnsInfoFinal['id']          = $idBackup;
-        $columnsInfoFinal['external-ids'] = ['name' => 'ExtID', 'title' => _('External ID'),
-            'type' => 'string', 'isSortable' => 'false'];
-
-        $columnsInfoFinal = array_merge($columnsInfoFinal, $columnsInfo);
-
+            $columnsInfoFinal = array_merge($columnsInfoFinal, $columnsInfo);
+        }
         return $columnsInfoFinal;
     }
 
