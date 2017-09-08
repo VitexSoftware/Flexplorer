@@ -17,7 +17,7 @@ $changer       = new \FlexiPeeHP\Changes();
 $hooker        = new \FlexiPeeHP\Hooks();
 $chapistatus   = $changer->getStatus();
 $invoicer      = new \FlexiPeeHP\FakturaVydana();
-$globalVersion = $invoicer->getGlobalVersion();
+$globalVersion = $changer->getGlobalVersion();
 $hookurl       = $oPage->getRequestValue('hookurl');
 
 if ($oPage->isPosted()) {
