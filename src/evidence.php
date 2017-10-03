@@ -146,8 +146,8 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
     if (array_key_exists('stitky', $evobj->getColumnsInfo())) {
         $evobj->setDataValue('stitky',
             \FlexiPeeHP\Stitek::getAvailbleLabels($evobj));
-        $infoTab->addItem(new \Ease\TWB\Panel(_('Labels Availble'), 'info',
-            new ui\LabelGroup($evobj)));
+        current($infoTab)->addItem(new \Ease\TWB\Panel(_('Labels Availble'),
+            'info', new ui\LabelGroup($evobj)));
     }
     $oPage->container->addItem($tabs);
 
