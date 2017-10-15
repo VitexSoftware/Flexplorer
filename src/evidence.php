@@ -138,8 +138,17 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
             }
         }
     }
-    $infoRow->addColumn(6,
+    $relations = $infoRow->addColumn(6,
         new \Ease\TWB\Panel(_('Relations'), 'info', $relationsList));
+
+    $relations->addItem(
+        [
+            new \Ease\TWB\LinkButton($evobj->getEvidenceURL().'/schema-import.xsd',
+                'XSD Import'),
+            new \Ease\TWB\LinkButton($evobj->getEvidenceURL().'/schema-export.xsd',
+                'XSD Export')
+        ]
+    );
 
     $infoTab = $tabs->addTab(_('Info'), $infoRow, ($evidenceLicensed === false));
 

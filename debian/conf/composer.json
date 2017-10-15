@@ -22,7 +22,8 @@
     "autoload": {
         "psr-4": {
             "Flexplorer\\": "classes/",
-            "Flexplorer\\ui\\": "classes/ui/"
+            "Flexplorer\\ui\\": "classes/ui/",
+            "Flexplorer\\xml\\": "classes/xml/"
         }
     },
     "repositories": [

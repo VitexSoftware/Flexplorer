@@ -84,7 +84,7 @@ class MainMenu extends \Ease\Html\Div
 
             $companiesToMenu = [];
 
-            $companies       = $companer->getFlexiData();
+            $companies = $companer->getFlexiData();
 
             if (isset($companies) && count($companies)) {
                 foreach ($companies as $company) {
@@ -111,6 +111,8 @@ class MainMenu extends \Ease\Html\Div
             $nav->addDropDownMenu(_('Tools'),
                 [
                 'query.php' => _('Query'),
+//                'xslt.php' => _('XSLT'),
+                'buttons.php' => _('Buttons'),
                 'changesapi.php' => _('Changes API'),
                 'changes.php' => _('Changes Recieved'),
                 'fakechange.php' => _('WebHook test'),
@@ -135,5 +137,4 @@ class MainMenu extends \Ease\Html\Div
             null, true);
         $this->includeJavaScript('js/slideupmessages.js');
     }
-
 }
