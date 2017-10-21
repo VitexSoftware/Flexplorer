@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2016-10-28 16:48+0100\n"
-"PO-Revision-Date: 2016-10-28 16:50+0100\n"
-"Last-Translator: Vítězslav Dvořák <vitex@arachne.cz>\n"
+"POT-Creation-Date: 2017-10-21 17:03+0200\n"
+"PO-Revision-Date: 2017-10-21 17:04+0200\n"
+"Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
-"X-Poedit-Basepath: ../../\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ../src\n"
@@ -24,11 +24,44 @@ msgstr "About application"
 msgid "Used Libraries"
 msgstr "Used Libraries"
 
-#: ../src/changesapi.php:26
+#: ../src/buttons.php:15
+msgid "FlexiBee Buttons"
+msgstr "FlexiBee Buttons"
+
+#: ../src/buttons.php:18 ../src/classes/ui/MainMenu.php:107
+#: ../src/evidence.php:55 ../src/fakechange.php:71
+msgid "Evidence"
+msgstr "Evidence"
+
+#: ../src/buttons.php:19
+msgid "This button open current FlexiBee evidence in FlexPlorer"
+msgstr "This button open current FlexiBee evidence in FlexPlorer"
+
+#: ../src/buttons.php:22
+msgid "Download Buttons XML install file"
+msgstr "Download Buttons XML install file"
+
+#: ../src/change.php:23
+msgid "Changes recieved"
+msgstr "Changes recieved"
+
+#: ../src/changes.php:32
+msgid "FlexiBee WebHook income"
+msgstr "FlexiBee WebHook income"
+
+#: ../src/changes.php:38
+msgid "Delete All"
+msgstr "Delete All"
+
+#: ../src/changes.php:45 ../src/changesapi.php:111
+msgid "Target to FlexPlorer"
+msgstr "Target to FlexPlorer"
+
+#: ../src/changesapi.php:27
 msgid "ChangesAPI was enabled"
 msgstr "ChangesAPI was enabled"
 
-#: ../src/changesapi.php:32
+#: ../src/changesapi.php:33
 msgid "ChangesAPI was disabled"
 msgstr "ChangesAPI was disabled"
 
@@ -37,56 +70,56 @@ msgstr "ChangesAPI was disabled"
 msgid "Hook %s was registered"
 msgstr "Hook %s was registered"
 
-#: ../src/changesapi.php:65
+#: ../src/changesapi.php:66
 #, php-format
 msgid "Hook %s not registered"
 msgstr "Hook %s not registered"
 
-#: ../src/changesapi.php:74
+#: ../src/changesapi.php:75
 msgid "Hook was unregistered"
 msgstr "Hook was unregistered"
 
-#: ../src/changesapi.php:76
+#: ../src/changesapi.php:77
 msgid "Hook was not unregistered"
 msgstr "Hook was not unregistered"
 
-#: ../src/changesapi.php:84
+#: ../src/changesapi.php:85
 msgid "Hook refreshed"
 msgstr "Hook refreshed"
 
-#: ../src/changesapi.php:86
+#: ../src/changesapi.php:87
 msgid "Hook refresh failed"
 msgstr "Hook refresh failed"
 
-#: ../src/changesapi.php:91
+#: ../src/changesapi.php:92
 msgid "ChangesAPI Tool"
 msgstr "ChangesAPI Tool"
 
-#: ../src/changesapi.php:95
+#: ../src/changesapi.php:96
 msgid "Enable"
 msgstr "Enable"
 
-#: ../src/changesapi.php:95
+#: ../src/changesapi.php:96
 msgid "Disable"
 msgstr "Disable"
 
-#: ../src/changesapi.php:95 ../src/classes/ui/MainMenu.php:120
+#: ../src/changesapi.php:96 ../src/classes/ui/MainMenu.php:117
 msgid "Changes API"
 msgstr "Changes API"
 
-#: ../src/changesapi.php:98
+#: ../src/changesapi.php:99
 msgid ""
-"If it is turned on , FlexiBee records all changes made ​​to the database "
-"company in the changelog and provides a list of changes recovered"
+"If it is turned on , FlexiBee records all changes made ​​to the database company "
+"in the changelog and provides a list of changes recovered"
 msgstr ""
-"If it is turned on , FlexiBee records all changes made ​​to the database "
-"company in the changelog and provides a list of changes recovered"
+"If it is turned on , FlexiBee records all changes made ​​to the database company "
+"in the changelog and provides a list of changes recovered"
 
-#: ../src/changesapi.php:100 ../src/fakechange.php:91
+#: ../src/changesapi.php:105 ../src/fakechange.php:91
 msgid "Web Hook"
 msgstr "Web Hook"
 
-#: ../src/changesapi.php:103
+#: ../src/changesapi.php:107
 msgid ""
 "When the database FlexiBee to change the POST HTTP request sent to all "
 "registered URL"
@@ -94,23 +127,23 @@ msgstr ""
 "When the database FlexiBee to change the POST HTTP request sent to all "
 "registered URL"
 
-#: ../src/changesapi.php:107 ../src/fakechange.php:64
+#: ../src/changesapi.php:114 ../src/fakechange.php:64
 msgid "Data format"
 msgstr "Data format"
 
-#: ../src/changesapi.php:110
+#: ../src/changesapi.php:117
 msgid "Skip URL test"
 msgstr "Skip URL test"
 
-#: ../src/changesapi.php:110
+#: ../src/changesapi.php:117
 msgid "Suppress URL functionality test"
 msgstr "Suppress URL functionality test"
 
-#: ../src/changesapi.php:114 ../src/fakechange.php:67
+#: ../src/changesapi.php:121 ../src/fakechange.php:67
 msgid "Last version"
 msgstr "Last version"
 
-#: ../src/changesapi.php:115
+#: ../src/changesapi.php:122
 #, php-format
 msgid ""
 "Version of which will begin sending FOLLOW changes , ie. The next higher "
@@ -123,11 +156,11 @@ msgstr ""
 "( globalVersion ) at the moment of registration Hook. Permissible values ​​are "
 "in the range [ 0 , % s ]"
 
-#: ../src/changesapi.php:120
+#: ../src/changesapi.php:127
 msgid "Security Code"
 msgstr "Security Code"
 
-#: ../src/changesapi.php:121
+#: ../src/changesapi.php:128
 #, php-format
 msgid ""
 "Any string (eg. %s) that will be sent with each change notifications in the "
@@ -138,19 +171,19 @@ msgstr ""
 "HTTP header. Used to easily verify that include incoming notifications you "
 "registered Hook. Key name is in the HTTP header X-FB-Hook-SecKey ."
 
-#: ../src/changesapi.php:126 ../src/ucetniobdobi.php:58
+#: ../src/changesapi.php:133 ../src/ucetniobdobi.php:58
 msgid "Perform operation"
 msgstr "Perform operation"
 
-#: ../src/changesapi.php:140
+#: ../src/changesapi.php:147
 msgid "Test"
 msgstr "Test"
 
-#: ../src/changesapi.php:150
+#: ../src/changesapi.php:157
 msgid "Webhooks registered"
 msgstr "Webhooks registered"
 
-#: ../src/changesapi.php:153
+#: ../src/changesapi.php:160
 msgid "ChangesAPI & WebHooks"
 msgstr "ChangesAPI & WebHooks"
 
@@ -174,25 +207,38 @@ msgstr "Record was updated"
 msgid "Record update failed"
 msgstr "Record update failed"
 
-#: ../src/classes/Flexplorer.php:127
+#: ../src/classes/Flexplorer.php:138
 #, php-format
 msgid "Unserialization error %s #%s "
 msgstr "Unserialization error %s #%s "
 
-#: ../src/classes/Flexplorer.php:297
+#: ../src/classes/Flexplorer.php:311
 #, php-format
 msgid "File %s was used"
 msgstr "File %s was used"
 
-#: ../src/classes/Flexplorer.php:306
+#: ../src/classes/Flexplorer.php:320
 #, php-format
 msgid "URL %s was used"
 msgstr "URL %s was used"
 
-#: ../src/classes/Flexplorer.php:309
+#: ../src/classes/Flexplorer.php:323
 #, php-format
 msgid "Error %s obataing %s"
 msgstr "Error %s obataing %s"
+
+#: ../src/classes/Flexplorer.php:372
+msgid "External ID"
+msgstr "External ID"
+
+#: ../src/classes/HookReciever.php:80
+#, php-format
+msgid "WebHook %s triggered"
+msgstr "WebHook %s triggered"
+
+#: ../src/classes/HookReciever.php:100
+msgid "Empty WebHook request"
+msgstr "Empty WebHook request"
 
 #: ../src/classes/Searcher.php:109
 msgid "No search results"
@@ -206,14 +252,12 @@ msgstr "Login Failed"
 msgid "Loading evidence list failed"
 msgstr "Loading evidence list failed"
 
-#: ../src/classes/ui/BootstrapMenu.php:39
-#: ../src/classes/ui/BootstrapMenu.php:66
+#: ../src/classes/ui/BootstrapMenu.php:39 ../src/classes/ui/BootstrapMenu.php:66
 msgid "About"
 msgstr "About"
 
-#: ../src/classes/ui/BootstrapMenu.php:46
-#: ../src/classes/ui/BootstrapMenu.php:54 ../src/login.php:51
-#: ../src/login.php:75
+#: ../src/classes/ui/BootstrapMenu.php:46 ../src/classes/ui/BootstrapMenu.php:54
+#: ../src/login.php:52 ../src/login.php:76
 msgid "Sign in"
 msgstr "Sign in"
 
@@ -225,11 +269,11 @@ msgstr "Server"
 msgid "login"
 msgstr "login"
 
-#: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:88
+#: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:89
 msgid "Password"
 msgstr "Password"
 
-#: ../src/classes/ui/BootstrapMenu.php:53 ../src/login.php:92
+#: ../src/classes/ui/BootstrapMenu.php:53 ../src/login.php:93
 msgid "Remeber me"
 msgstr "Remeber me"
 
@@ -293,36 +337,36 @@ msgstr "Writable"
 msgid "Read Only"
 msgstr "Read Only"
 
-#: ../src/classes/ui/DataGrid.php:99
+#: ../src/classes/ui/DataGrid.php:103
 msgid "Json"
 msgstr "Json"
 
-#: ../src/classes/ui/DataGrid.php:100
+#: ../src/classes/ui/DataGrid.php:104
 msgid "XML"
 msgstr "XML"
 
-#: ../src/classes/ui/DataGrid.php:108
+#: ../src/classes/ui/DataGrid.php:112
 msgid "Add"
 msgstr "Add"
 
-#: ../src/classes/ui/DataGrid.php:111
+#: ../src/classes/ui/DataGrid.php:115
 msgid "Edit"
 msgstr "Edit"
 
-#: ../src/classes/ui/DataGrid.php:114
+#: ../src/classes/ui/DataGrid.php:118
 msgid "Delete"
 msgstr "Delete"
 
-#: ../src/classes/ui/DataGrid.php:123
+#: ../src/classes/ui/DataGrid.php:127
 msgid "Select All"
 msgstr "Select All"
 
-#: ../src/classes/ui/DataGrid.php:186
+#: ../src/classes/ui/DataGrid.php:190
 msgid "Title missing"
 msgstr "Title missing"
 
-#: ../src/classes/ui/DataGrid.php:289 ../src/classes/ui/DataGrid.php:326
-#: ../src/classes/ui/DataGrid.php:363 ../src/classes/ui/DataGrid.php:408
+#: ../src/classes/ui/DataGrid.php:293 ../src/classes/ui/DataGrid.php:330
+#: ../src/classes/ui/DataGrid.php:367 ../src/classes/ui/DataGrid.php:412
 msgid "Please mark some rows"
 msgstr "Please mark some rows"
 
@@ -334,7 +378,7 @@ msgstr "Save to FlexiBee"
 msgid "Show in editor"
 msgstr "Show in editor"
 
-#: ../src/classes/ui/Editor.php:47 ../src/classes/ui/Editor.php:240
+#: ../src/classes/ui/Editor.php:47 ../src/classes/ui/Editor.php:241
 msgid "OK"
 msgstr "OK"
 
@@ -359,50 +403,57 @@ msgstr "Type"
 msgid "Columns"
 msgstr "Columns"
 
-#: ../src/classes/ui/Editor.php:187 ../src/classes/ui/Editor.php:238
+#: ../src/classes/ui/Editor.php:187 ../src/classes/ui/Editor.php:239
 msgid "External IDs"
 msgstr "External IDs"
 
-#: ../src/classes/ui/Editor.php:188 ../src/classes/ui/MainMenu.php:119
-#: ../src/evidence.php:67 ../src/query.php:65 ../src/viewevidence.php:46
+#: ../src/classes/ui/Editor.php:188
+msgid "Labels"
+msgstr "Labels"
+
+#: ../src/classes/ui/Editor.php:189 ../src/classes/ui/MainMenu.php:114
+#: ../src/evidence.php:69 ../src/query.php:65 ../src/viewevidence.php:46
 msgid "Query"
 msgstr "Query"
 
-#: ../src/classes/ui/Editor.php:192 ../src/delete.php:56
-#: ../src/evidence.php:81 ../src/login.php:79 ../src/query.php:81
+#: ../src/classes/ui/Editor.php:193 ../src/delete.php:56 ../src/evidence.php:83
+#: ../src/login.php:80 ../src/query.php:81
 msgid "FlexiBee"
 msgstr "FlexiBee"
 
-#: ../src/classes/ui/Editor.php:225
+#: ../src/classes/ui/Editor.php:226
 msgid "Remove"
 msgstr "Remove"
 
-#: ../src/classes/ui/Editor.php:235
+#: ../src/classes/ui/Editor.php:236
 msgid "New"
 msgstr "New"
 
-#: ../src/classes/ui/MainMenu.php:101
+#: ../src/classes/ui/MainMenu.php:95
 msgid "Company"
 msgstr "Company"
 
-#: ../src/classes/ui/MainMenu.php:108 ../src/delete.php:55
+#: ../src/classes/ui/MainMenu.php:102 ../src/delete.php:55
 msgid "Overview"
 msgstr "Overview"
 
-#: ../src/classes/ui/MainMenu.php:112 ../src/evidence.php:54
-#: ../src/fakechange.php:71
-msgid "Evidence"
-msgstr "Evidence"
-
-#: ../src/classes/ui/MainMenu.php:117
+#: ../src/classes/ui/MainMenu.php:112
 msgid "Tools"
 msgstr "Tools"
 
-#: ../src/classes/ui/MainMenu.php:121 ../src/fakechange.php:53
+#: ../src/classes/ui/MainMenu.php:116
+msgid "Buttons"
+msgstr "Buttons"
+
+#: ../src/classes/ui/MainMenu.php:118
+msgid "Changes Recieved"
+msgstr "Changes Recieved"
+
+#: ../src/classes/ui/MainMenu.php:119 ../src/fakechange.php:53
 msgid "WebHook test"
 msgstr "WebHook test"
 
-#: ../src/classes/ui/MainMenu.php:122 ../src/ucetniobdobi.php:47
+#: ../src/classes/ui/MainMenu.php:120 ../src/ucetniobdobi.php:47
 msgid "Accounting period"
 msgstr "Accounting period"
 
@@ -495,11 +546,11 @@ msgstr "Format"
 msgid "Send"
 msgstr "Send"
 
-#: ../src/classes/ui/ShowResponse.php:89
+#: ../src/classes/ui/ShowResponse.php:98
 msgid "Make new request from this response"
 msgstr "Make new request from this response"
 
-#: ../src/classes/ui/ShowResponse.php:93
+#: ../src/classes/ui/ShowResponse.php:102
 msgid "Save this response to file"
 msgstr "Save this response to file"
 
@@ -511,7 +562,7 @@ msgstr "Yes"
 msgid "No"
 msgstr "No"
 
-#: ../src/classes/ui/WebPage.php:70
+#: ../src/classes/ui/WebPage.php:77
 msgid "Please sign in as admin first"
 msgstr "Please sign in as admin first"
 
@@ -551,80 +602,84 @@ msgstr "Record was not saved"
 msgid "Editor"
 msgstr "Editor"
 
-#: ../src/evidence.php:30
+#: ../src/evidence.php:31
 #, php-format
 msgid "Evidence %s does not exist"
 msgstr "Evidence %s does not exist"
 
-#: ../src/evidence.php:36
+#: ../src/evidence.php:37
 #, php-format
 msgid "Evidence %s"
 msgstr "Evidence %s"
 
-#: ../src/evidence.php:53 ../src/viewevidence.php:31
+#: ../src/evidence.php:54 ../src/viewevidence.php:31
 msgid "Listing"
 msgstr "Listing"
 
-#: ../src/evidence.php:56
+#: ../src/evidence.php:58
 msgid "Column Groups"
 msgstr "Column Groups"
 
-#: ../src/evidence.php:68
+#: ../src/evidence.php:70
 msgid "User Query"
 msgstr "User Query"
 
-#: ../src/evidence.php:72
+#: ../src/evidence.php:74
 msgid "Items overview"
 msgstr "Items overview"
 
-#: ../src/evidence.php:106
+#: ../src/evidence.php:108
 msgid "no"
 msgstr "no"
 
-#: ../src/evidence.php:108
+#: ../src/evidence.php:110
 msgid "yes"
 msgstr "yes"
 
-#: ../src/evidence.php:110
+#: ../src/evidence.php:112
 msgid "Allowed by license"
 msgstr "Allowed by license"
 
-#: ../src/evidence.php:140
+#: ../src/evidence.php:142
 msgid "Relations"
 msgstr "Relations"
 
-#: ../src/evidence.php:142
+#: ../src/evidence.php:153
 msgid "Info"
 msgstr "Info"
+
+#: ../src/evidence.php:158
+msgid "Labels Availble"
+msgstr "Labels Availble"
 
 #: ../src/evidences.php:18
 msgid "Evidences"
 msgstr "Evidences"
 
-#: ../src/evidences.php:33
+#: ../src/evidences.php:28
 msgid "License"
 msgstr "License"
 
-#: ../src/evidences.php:54
+#: ../src/evidences.php:49
 #, php-format
 msgid "Availble %s"
 msgstr "Availble %s"
 
-#: ../src/evidences.php:58
+#: ../src/evidences.php:53
 #, php-format
 msgid "Unlicensed %s"
 msgstr "Unlicensed %s"
 
-#: ../src/evidences.php:64
+#: ../src/evidences.php:59
 #, php-format
 msgid "All %s"
 msgstr "All %s"
 
-#: ../src/evidences.php:83
+#: ../src/evidences.php:78
 msgid "licence ok"
 msgstr "licence ok"
 
-#: ../src/evidences.php:86
+#: ../src/evidences.php:81
 msgid "unavialble"
 msgstr "unavialble"
 
@@ -688,91 +743,105 @@ msgstr "Request"
 msgid "WebHook probe"
 msgstr "WebHook probe"
 
+#: ../src/getbuttonxml.php:27
+#, php-format
+msgid "flexplorer %s lexibee-buttons"
+msgstr "flexplorer %s lexibee-buttons"
+
 #: ../src/index.php:18
 msgid "FlexiBee info"
 msgstr "FlexiBee info"
 
-#: ../src/index.php:30
+#: ../src/index.php:28
 msgid "server info"
 msgstr "server info"
 
-#: ../src/index.php:32
+#: ../src/index.php:30
 msgid "license info"
 msgstr "license info"
+
+#: ../src/listbylabel.php:18
+#, php-format
+msgid "Label %s occurencies"
+msgstr "Label %s occurencies"
+
+#: ../src/listbylabel.php:24
+msgid "All Evidencies"
+msgstr "All Evidencies"
 
 #: ../src/login.php:24
 msgid "Server added to bookmarks"
 msgstr "Server added to bookmarks"
 
-#: ../src/login.php:37
+#: ../src/login.php:38
 msgid "Signed in as: "
 msgstr "Signed in as: "
 
-#: ../src/login.php:47
+#: ../src/login.php:48
 msgid "Please confirm your login credentials"
 msgstr "Please confirm your login credentials"
 
-#: ../src/login.php:61
+#: ../src/login.php:62
 msgid "Login History"
 msgstr "Login History"
 
-#: ../src/login.php:83
-msgid "FlexiBee server URL. ex.: https://localhost:5434"
-msgstr "FlexiBee server URL. ex.: https://localhost:5434"
-
 #: ../src/login.php:84
+msgid "FlexiBee server URL. ex.:"
+msgstr "FlexiBee server URL. ex.:"
+
+#: ../src/login.php:85
 msgid "User name"
 msgstr "User name"
 
-#: ../src/login.php:87
+#: ../src/login.php:88
 msgid "Login name"
 msgstr "Login name"
 
-#: ../src/login.php:91
+#: ../src/login.php:92
 msgid "User's password"
 msgstr "User's password"
 
-#: ../src/login.php:93
+#: ../src/login.php:94
 msgid "Add this to Login History"
 msgstr "Add this to Login History"
 
-#: ../src/login.php:101
+#: ../src/login.php:102
 msgid "display the contents of all the available records in all companies"
 msgstr "display the contents of all the available records in all companies"
 
-#: ../src/login.php:103
+#: ../src/login.php:104
 msgid "show the structure of evidence"
 msgstr "show the structure of evidence"
 
-#: ../src/login.php:105
+#: ../src/login.php:106
 msgid "send direct requests to the server and display results"
 msgstr "send direct requests to the server and display results"
 
-#: ../src/login.php:107
+#: ../src/login.php:108
 msgid "set up ChangesAPI and add WebHooks"
 msgstr "set up ChangesAPI and add WebHooks"
 
-#: ../src/login.php:109
+#: ../src/login.php:110
 msgid "Test WebHook script processing changes from FlexiBee answers"
 msgstr "Test WebHook script processing changes from FlexiBee answers"
 
-#: ../src/login.php:111
+#: ../src/login.php:112
 msgid "Collectively establish and abolish the accounting period"
 msgstr "Collectively establish and abolish the accounting period"
 
-#: ../src/login.php:113
+#: ../src/login.php:114
 msgid "Evidnece distinguish which are inaccessible because of the license"
 msgstr "Evidnece distinguish which are inaccessible because of the license"
 
-#: ../src/login.php:115
+#: ../src/login.php:116
 msgid "Shown next to json result of the request and page FlexiBee"
 msgstr "Shown next to json result of the request and page FlexiBee"
 
-#: ../src/login.php:117
+#: ../src/login.php:118
 msgid "Edit External ID numbers"
 msgstr "Edit External ID numbers"
 
-#: ../src/login.php:120
+#: ../src/login.php:121
 msgid "Features"
 msgstr "Features"
 

@@ -20,12 +20,8 @@ $oPage->addItem(new ui\PageTop(_('Evidences')));
 
 $evidencer = new \FlexiPeeHP\EvidenceList();
 
-$myEvidenciesRaw = $evidencer->getColumnsFromFlexibee('*');
-
-$myEvidencies = [];
-foreach ($myEvidenciesRaw as $myEvidence) {
-    $myEvidencies[$myEvidence['evidencePath']] = $myEvidence;
-}
+$myEvidencies = \Ease\Sand::reindexArrayBy($evidencer->getAllFromFlexibee(),
+        'evidencePath');
 
 $allEvidencesTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
 $allEvidencesTable->addRowHeaderColumns(array_merge(array_keys(current(\FlexiPeeHP\EvidenceList::$evidences)),
@@ -85,7 +81,7 @@ foreach (\FlexiPeeHP\EvidenceList::$evidences as $evidence) {
         $evidence[] = _('unavialble');
     }
 
-    $allEvidences->addRowColumns($evidence);
+    $allEvidences['static']->addRowColumns($evidence);
 }
 
 

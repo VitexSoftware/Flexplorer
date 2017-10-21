@@ -4,8 +4,12 @@
 set -e
 
 desktop_install() {
-	if [ -d /usr/share/applications/ -a ! -e /usr/share/applications/flexplorer.desktop -a ! -L /usr/share/applications/flexplorer.desktop ] ; then
-		ln -s /etc/flexplorer/flexplorer.desktop /usr/share/applications/
+	if [ -f /usr/bin/xdg-desktop-menu ]; then
+	    xdg-desktop-menu install --novendor /usr/share/applications/flexplorer.desktop > /dev/null || true
+        else
+            if [ -d /usr/share/applications/ -a ! -e /usr/share/applications/flexplorer.desktop -a ! -L /usr/share/applications/flexplorer.desktop ] ; then
+               	ln -s /etc/flexplorer/flexplorer.desktop /usr/share/applications/
+            fi
 	fi
 }
 

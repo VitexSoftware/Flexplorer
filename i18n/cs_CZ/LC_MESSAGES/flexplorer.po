@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2017-03-26 23:59+0100\n"
-"PO-Revision-Date: 2017-03-26 23:59+0100\n"
+"POT-Creation-Date: 2017-10-21 17:05+0200\n"
+"PO-Revision-Date: 2017-10-21 17:10+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
-"X-Poedit-Basepath: ../../\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ../..\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ../src\n"
@@ -24,7 +24,24 @@ msgstr "O Aplikaci"
 msgid "Used Libraries"
 msgstr "Použité knihovny"
 
-#: ../src/change.php:22
+#: ../src/buttons.php:15
+msgid "FlexiBee Buttons"
+msgstr "FlexiBee Tlačítka"
+
+#: ../src/buttons.php:18 ../src/classes/ui/MainMenu.php:107
+#: ../src/evidence.php:55 ../src/fakechange.php:71
+msgid "Evidence"
+msgstr "Evidence"
+
+#: ../src/buttons.php:19
+msgid "This button open current FlexiBee evidence in FlexPlorer"
+msgstr "Tlačítko otevře aktuální evidenci FlexiBee ve FlexPloreru"
+
+#: ../src/buttons.php:22
+msgid "Download Buttons XML install file"
+msgstr "Stahnout XML pro instalaci tlačítek"
+
+#: ../src/change.php:23
 msgid "Changes recieved"
 msgstr "Přijaté změny"
 
@@ -86,14 +103,14 @@ msgstr "Povolit"
 msgid "Disable"
 msgstr "Zakázat"
 
-#: ../src/changesapi.php:96 ../src/classes/ui/MainMenu.php:120
+#: ../src/changesapi.php:96 ../src/classes/ui/MainMenu.php:117
 msgid "Changes API"
 msgstr "API Změn"
 
 #: ../src/changesapi.php:99
 msgid ""
-"If it is turned on , FlexiBee records all changes made ​​to the database "
-"company in the changelog and provides a list of changes recovered"
+"If it is turned on , FlexiBee records all changes made ​​to the database company "
+"in the changelog and provides a list of changes recovered"
 msgstr ""
 "Je-li to zapnuto, FlexiBee zaznamenává všechny změny provedené v databázi "
 "firmy do changelogu a umožňuje seznam změn zpětně získat."
@@ -189,25 +206,29 @@ msgstr "Záznam byl aktualizován"
 msgid "Record update failed"
 msgstr "Záznam se nepovedlo aktualizovat"
 
-#: ../src/classes/Flexplorer.php:127
+#: ../src/classes/Flexplorer.php:138
 #, php-format
 msgid "Unserialization error %s #%s "
 msgstr "Chyba deserializace %s #%s "
 
-#: ../src/classes/Flexplorer.php:297
+#: ../src/classes/Flexplorer.php:311
 #, php-format
 msgid "File %s was used"
 msgstr "Byl použit soubor %s"
 
-#: ../src/classes/Flexplorer.php:306
+#: ../src/classes/Flexplorer.php:320
 #, php-format
 msgid "URL %s was used"
 msgstr "Byla použita adresa %s"
 
-#: ../src/classes/Flexplorer.php:309
+#: ../src/classes/Flexplorer.php:323
 #, php-format
 msgid "Error %s obataing %s"
 msgstr "Chyba %s získání %s"
+
+#: ../src/classes/Flexplorer.php:372
+msgid "External ID"
+msgstr "Externí ID"
 
 #: ../src/classes/HookReciever.php:80
 #, php-format
@@ -230,15 +251,12 @@ msgstr "Chyba přihlášení"
 msgid "Loading evidence list failed"
 msgstr "Načítání evidence se nezdařilo"
 
-#: ../src/classes/ui/BootstrapMenu.php:39
-#: ../src/classes/ui/BootstrapMenu.php:66
-#, fuzzy
+#: ../src/classes/ui/BootstrapMenu.php:39 ../src/classes/ui/BootstrapMenu.php:66
 msgid "About"
-msgstr "O Aplikaci"
+msgstr "O aplikaci"
 
-#: ../src/classes/ui/BootstrapMenu.php:46
-#: ../src/classes/ui/BootstrapMenu.php:54 ../src/login.php:51
-#: ../src/login.php:75
+#: ../src/classes/ui/BootstrapMenu.php:46 ../src/classes/ui/BootstrapMenu.php:54
+#: ../src/login.php:52 ../src/login.php:76
 msgid "Sign in"
 msgstr "Přihlásit"
 
@@ -250,21 +268,19 @@ msgstr "Server"
 msgid "login"
 msgstr "login"
 
-#: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:88
+#: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:89
 msgid "Password"
 msgstr "Heslo"
 
-#: ../src/classes/ui/BootstrapMenu.php:53 ../src/login.php:92
+#: ../src/classes/ui/BootstrapMenu.php:53 ../src/login.php:93
 msgid "Remeber me"
 msgstr "Pamatuj si mne"
 
 #: ../src/classes/ui/BootstrapMenu.php:62 ../src/settings.php:20
-#, fuzzy
 msgid "Settings"
 msgstr "Nastavení"
 
 #: ../src/classes/ui/BootstrapMenu.php:68
-#, fuzzy
 msgid "Sign off"
 msgstr "Odhlášení"
 
@@ -320,37 +336,36 @@ msgstr "Zapisovatelné"
 msgid "Read Only"
 msgstr "Pouze pro čtení"
 
-#: ../src/classes/ui/DataGrid.php:99
+#: ../src/classes/ui/DataGrid.php:103
 msgid "Json"
 msgstr "Json"
 
-#: ../src/classes/ui/DataGrid.php:100
+#: ../src/classes/ui/DataGrid.php:104
 msgid "XML"
 msgstr "XML"
 
-#: ../src/classes/ui/DataGrid.php:108
+#: ../src/classes/ui/DataGrid.php:112
 msgid "Add"
 msgstr "Přidej"
 
-#: ../src/classes/ui/DataGrid.php:111
+#: ../src/classes/ui/DataGrid.php:115
 msgid "Edit"
 msgstr "Uprav"
 
-#: ../src/classes/ui/DataGrid.php:114
-#, fuzzy
+#: ../src/classes/ui/DataGrid.php:118
 msgid "Delete"
 msgstr "Smazat"
 
-#: ../src/classes/ui/DataGrid.php:123
+#: ../src/classes/ui/DataGrid.php:127
 msgid "Select All"
 msgstr "Vyber vše"
 
-#: ../src/classes/ui/DataGrid.php:186
+#: ../src/classes/ui/DataGrid.php:190
 msgid "Title missing"
 msgstr "Chybí nadpis"
 
-#: ../src/classes/ui/DataGrid.php:289 ../src/classes/ui/DataGrid.php:326
-#: ../src/classes/ui/DataGrid.php:363 ../src/classes/ui/DataGrid.php:408
+#: ../src/classes/ui/DataGrid.php:293 ../src/classes/ui/DataGrid.php:330
+#: ../src/classes/ui/DataGrid.php:367 ../src/classes/ui/DataGrid.php:412
 msgid "Please mark some rows"
 msgstr "Prosím označ nejaké řádkz"
 
@@ -362,7 +377,7 @@ msgstr "Uložit do FlexiBee"
 msgid "Show in editor"
 msgstr "Zobraz v editoru"
 
-#: ../src/classes/ui/Editor.php:47 ../src/classes/ui/Editor.php:240
+#: ../src/classes/ui/Editor.php:47 ../src/classes/ui/Editor.php:241
 msgid "OK"
 msgstr "OK"
 
@@ -387,55 +402,57 @@ msgstr "Typ"
 msgid "Columns"
 msgstr "Sloupečky"
 
-#: ../src/classes/ui/Editor.php:187 ../src/classes/ui/Editor.php:238
+#: ../src/classes/ui/Editor.php:187 ../src/classes/ui/Editor.php:239
 msgid "External IDs"
 msgstr "Externí IDčka"
 
-#: ../src/classes/ui/Editor.php:188 ../src/classes/ui/MainMenu.php:119
-#: ../src/evidence.php:67 ../src/query.php:65 ../src/viewevidence.php:46
+#: ../src/classes/ui/Editor.php:188
+msgid "Labels"
+msgstr "Štítky"
+
+#: ../src/classes/ui/Editor.php:189 ../src/classes/ui/MainMenu.php:114
+#: ../src/evidence.php:69 ../src/query.php:65 ../src/viewevidence.php:46
 msgid "Query"
 msgstr "Dotaz"
 
-#: ../src/classes/ui/Editor.php:192 ../src/delete.php:56
-#: ../src/evidence.php:81 ../src/login.php:79 ../src/query.php:81
+#: ../src/classes/ui/Editor.php:193 ../src/delete.php:56 ../src/evidence.php:83
+#: ../src/login.php:80 ../src/query.php:81
 msgid "FlexiBee"
 msgstr "FlexiBee"
 
-#: ../src/classes/ui/Editor.php:225
+#: ../src/classes/ui/Editor.php:226
 msgid "Remove"
 msgstr "Odstranit"
 
-#: ../src/classes/ui/Editor.php:235
+#: ../src/classes/ui/Editor.php:236
 msgid "New"
 msgstr "Nový"
 
-#: ../src/classes/ui/MainMenu.php:101
+#: ../src/classes/ui/MainMenu.php:95
 msgid "Company"
 msgstr "Firma"
 
-#: ../src/classes/ui/MainMenu.php:108 ../src/delete.php:55
+#: ../src/classes/ui/MainMenu.php:102 ../src/delete.php:55
 msgid "Overview"
 msgstr "Přehled"
 
-#: ../src/classes/ui/MainMenu.php:112 ../src/evidence.php:54
-#: ../src/fakechange.php:71
-msgid "Evidence"
-msgstr "Evidence"
-
-#: ../src/classes/ui/MainMenu.php:117
+#: ../src/classes/ui/MainMenu.php:112
 msgid "Tools"
 msgstr "Nástroje"
 
-#: ../src/classes/ui/MainMenu.php:121
-#, fuzzy
+#: ../src/classes/ui/MainMenu.php:116
+msgid "Buttons"
+msgstr "Tlačítka"
+
+#: ../src/classes/ui/MainMenu.php:118
 msgid "Changes Recieved"
 msgstr "Přijaté změny"
 
-#: ../src/classes/ui/MainMenu.php:122 ../src/fakechange.php:53
+#: ../src/classes/ui/MainMenu.php:119 ../src/fakechange.php:53
 msgid "WebHook test"
 msgstr "Test\tWebHooku"
 
-#: ../src/classes/ui/MainMenu.php:123 ../src/ucetniobdobi.php:47
+#: ../src/classes/ui/MainMenu.php:120 ../src/ucetniobdobi.php:47
 msgid "Accounting period"
 msgstr "Účetní období"
 
@@ -521,19 +538,18 @@ msgid "Supported HTTP Operations"
 msgstr "Podporované HTTP Operace"
 
 #: ../src/classes/ui/SendForm.php:55
-#, fuzzy
 msgid "Format"
-msgstr "Formát dat"
+msgstr "Formát"
 
 #: ../src/classes/ui/SendForm.php:57 ../src/fakechange.php:98
 msgid "Send"
 msgstr "Odešli"
 
-#: ../src/classes/ui/ShowResponse.php:89
+#: ../src/classes/ui/ShowResponse.php:98
 msgid "Make new request from this response"
 msgstr "Vytvořit požadavek z odpovědi"
 
-#: ../src/classes/ui/ShowResponse.php:93
+#: ../src/classes/ui/ShowResponse.php:102
 msgid "Save this response to file"
 msgstr "Uložit odpověď do souboru"
 
@@ -545,7 +561,7 @@ msgstr "Ano"
 msgid "No"
 msgstr "Ne"
 
-#: ../src/classes/ui/WebPage.php:70
+#: ../src/classes/ui/WebPage.php:77
 msgid "Please sign in as admin first"
 msgstr "Nejprve se prosím přihlaš jako admin"
 
@@ -585,82 +601,84 @@ msgstr "Záznam nebyl uložen"
 msgid "Editor"
 msgstr "Editor"
 
-#: ../src/evidence.php:30
+#: ../src/evidence.php:31
 #, php-format
 msgid "Evidence %s does not exist"
 msgstr "Evidence %s neexistuje"
 
-#: ../src/evidence.php:36
+#: ../src/evidence.php:37
 #, php-format
 msgid "Evidence %s"
 msgstr "Evidence %s"
 
-#: ../src/evidence.php:53 ../src/viewevidence.php:31
+#: ../src/evidence.php:54 ../src/viewevidence.php:31
 msgid "Listing"
 msgstr "Výpis"
 
-#: ../src/evidence.php:56
+#: ../src/evidence.php:58
 msgid "Column Groups"
 msgstr "Skupiny Sloupečků"
 
-#: ../src/evidence.php:68
+#: ../src/evidence.php:70
 msgid "User Query"
 msgstr "Uživatelský dotaz"
 
-#: ../src/evidence.php:72
+#: ../src/evidence.php:74
 msgid "Items overview"
 msgstr "Přehled položek"
 
-#: ../src/evidence.php:106
+#: ../src/evidence.php:108
 msgid "no"
 msgstr "ne"
 
-#: ../src/evidence.php:108
-#, fuzzy
+#: ../src/evidence.php:110
 msgid "yes"
 msgstr "Ano"
 
-#: ../src/evidence.php:110
+#: ../src/evidence.php:112
 msgid "Allowed by license"
 msgstr "Povoleno licencí"
 
-#: ../src/evidence.php:140
+#: ../src/evidence.php:142
 msgid "Relations"
 msgstr "Vstahy"
 
-#: ../src/evidence.php:142
+#: ../src/evidence.php:153
 msgid "Info"
 msgstr "info"
 
+#: ../src/evidence.php:158
+msgid "Labels Availble"
+msgstr "Dostupné štítky"
+
 #: ../src/evidences.php:18
-#, fuzzy
 msgid "Evidences"
 msgstr "Evidence"
 
-#: ../src/evidences.php:33
+#: ../src/evidences.php:28
 msgid "License"
 msgstr "Licence"
 
-#: ../src/evidences.php:54
+#: ../src/evidences.php:49
 #, php-format
 msgid "Availble %s"
 msgstr "Dostupné %s"
 
-#: ../src/evidences.php:58
+#: ../src/evidences.php:53
 #, php-format
 msgid "Unlicensed %s"
 msgstr "Nelicencované %s"
 
-#: ../src/evidences.php:64
+#: ../src/evidences.php:59
 #, php-format
 msgid "All %s"
 msgstr "Všechny %s"
 
-#: ../src/evidences.php:83
+#: ../src/evidences.php:78
 msgid "licence ok"
 msgstr "licence v pořádku"
 
-#: ../src/evidences.php:86
+#: ../src/evidences.php:81
 msgid "unavialble"
 msgstr "nepřístupno"
 
@@ -724,92 +742,105 @@ msgstr "Požadavek"
 msgid "WebHook probe"
 msgstr "Zkouška webhooku"
 
-#: ../src/index.php:15
+#: ../src/getbuttonxml.php:27
+#, php-format
+msgid "flexplorer %s lexibee-buttons"
+msgstr "flexplorer %s lexibee-buttons"
+
+#: ../src/index.php:18
 msgid "FlexiBee info"
 msgstr "FlexiBee info"
 
-#: ../src/index.php:27
+#: ../src/index.php:28
 msgid "server info"
 msgstr "Informace o serveru"
 
-#: ../src/index.php:29
+#: ../src/index.php:30
 msgid "license info"
 msgstr "informace o licenci"
+
+#: ../src/listbylabel.php:18
+#, php-format
+msgid "Label %s occurencies"
+msgstr "Výskyty štítku %s"
+
+#: ../src/listbylabel.php:24
+msgid "All Evidencies"
+msgstr "Všechny Evidence"
 
 #: ../src/login.php:24
 msgid "Server added to bookmarks"
 msgstr "Server byl přidán do záložek"
 
-#: ../src/login.php:37
+#: ../src/login.php:38
 msgid "Signed in as: "
 msgstr "Přihlášen jako: "
 
-#: ../src/login.php:47
+#: ../src/login.php:48
 msgid "Please confirm your login credentials"
 msgstr "Prosím potvrď své přihlašovací údaje"
 
-#: ../src/login.php:61
+#: ../src/login.php:62
 msgid "Login History"
 msgstr "Historie přihlášení"
 
-#: ../src/login.php:83
-#, fuzzy
-msgid "FlexiBee server URL. ex.:"
-msgstr "FlexiBee servr URL. např.: https://localhost:5434"
-
 #: ../src/login.php:84
+msgid "FlexiBee server URL. ex.:"
+msgstr "FlexiBee servr URL. např.:"
+
+#: ../src/login.php:85
 msgid "User name"
 msgstr "Uživatelské Jméno"
 
-#: ../src/login.php:87
+#: ../src/login.php:88
 msgid "Login name"
 msgstr "Přihlašovací Jméno"
 
-#: ../src/login.php:91
+#: ../src/login.php:92
 msgid "User's password"
 msgstr "Heslo uživatele"
 
-#: ../src/login.php:93
+#: ../src/login.php:94
 msgid "Add this to Login History"
 msgstr "Přidej do historie přihlášení"
 
-#: ../src/login.php:101
+#: ../src/login.php:102
 msgid "display the contents of all the available records in all companies"
 msgstr "zobrazovat obsah všech dostupných evidencí ve všech firmách"
 
-#: ../src/login.php:103
+#: ../src/login.php:104
 msgid "show the structure of evidence"
 msgstr "zobrazovat strukturu evidence"
 
-#: ../src/login.php:105
+#: ../src/login.php:106
 msgid "send direct requests to the server and display results"
 msgstr "odesílat přímé požadavky na server a zobrazovat výsledky"
 
-#: ../src/login.php:107
+#: ../src/login.php:108
 msgid "set up ChangesAPI and add WebHooks"
 msgstr "Nastavovat ChangesAPI a přidávat WebHooks"
 
-#: ../src/login.php:109
+#: ../src/login.php:110
 msgid "Test WebHook script processing changes from FlexiBee answers"
 msgstr "Test odpovědi WebHook skriptu zpracovávajícího změny z FlexiBee"
 
-#: ../src/login.php:111
+#: ../src/login.php:112
 msgid "Collectively establish and abolish the accounting period"
 msgstr "Hromadně zakládat a rušit účetní období"
 
-#: ../src/login.php:113
+#: ../src/login.php:114
 msgid "Evidnece distinguish which are inaccessible because of the license"
 msgstr "Rozlišit evidnece které jsou z důvodu licence nedostupné"
 
-#: ../src/login.php:115
+#: ../src/login.php:116
 msgid "Shown next to json result of the request and page FlexiBee"
 msgstr "Zobrazovat vedle json výsledku požadavku i stránku z FlexiBee"
 
-#: ../src/login.php:117
+#: ../src/login.php:118
 msgid "Edit External ID numbers"
 msgstr "Upravovat Externí ID záznamů"
 
-#: ../src/login.php:120
+#: ../src/login.php:121
 msgid "Features"
 msgstr "Schopnosti"
 
@@ -885,18 +916,16 @@ msgid "Tool for massive creating Accounting periods"
 msgstr "Nástroj pro hromadné zakládání účetních období"
 
 #: ../src/viewevidence.php:24
-#, fuzzy
 msgid "Evidence proprties overview"
-msgstr "Evidence"
+msgstr "Přehled vlastností Evidence"
 
 #: ../src/viewevidence.php:32
 msgid "Structure"
 msgstr "Struktura"
 
 #: ../src/viewevidence.php:47
-#, fuzzy
 msgid "Custom query"
-msgstr "Dotaz"
+msgstr "Dotaz na API"
 
 #~ msgid "Query does not sent yet"
 #~ msgstr "Dotaz nebyl zatím odeslán"

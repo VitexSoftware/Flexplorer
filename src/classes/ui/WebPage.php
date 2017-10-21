@@ -94,4 +94,38 @@ class WebPage extends \Ease\TWB\WebPage
         return parent::onlyForLogged($loginPage, $message);
     }
 
+    /**
+     * Add given evidence to the top of history
+     *
+     * @param arrya $evidence
+     */
+    public function addEvidenceToHistory($evidence)
+    {
+        if (isset($_SESSION['evidence_history'])) {
+            $newHistory = ['evidence.php?evidence='.$evidence => $evidence];
+            foreach ($_SESSION['evidence_history'] as $link => $oldevidence) {
+                if ($oldevidence != $evidence) {
+                    $newHistory[$link] = $oldevidence;
+                }
+            }
+            $_SESSION['evidence_history'] = $newHistory;
+        } else {
+            $_SESSION['evidence_history']['evidence.php?evidence='.$evidence] = $evidence;
+        }
+    }
+
+    /**
+     * 
+     * @return type
+     */
+    public function getEvidenceHistory()
+    {
+        if (!empty($_SESSION['evidence_history'])) {
+            $history = array_merge([''], $_SESSION['evidence_history'], ['']);
+        } else {
+            $history = [''];
+        }
+
+        return $history;
+    }
 }

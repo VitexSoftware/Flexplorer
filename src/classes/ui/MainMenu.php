@@ -12,7 +12,7 @@ class MainMenu extends \Ease\Html\Div
 {
 
     /**
-     * Vytvoří hlavní menu.
+     * MainMenu.
      */
     public function __construct()
     {
@@ -100,7 +100,8 @@ class MainMenu extends \Ease\Html\Div
                 }
 
                 $evidenciesToMenu = array_merge(['evidences.php' => _('Overview')],
-                    [''], $_SESSION['evidence-menu']);
+                \Ease\Shared::webPage()->getEvidenceHistory(),
+                    $_SESSION['evidence-menu']);
 
                 if (count($evidenciesToMenu)) {
                     $nav->addDropDownMenu(_('Evidence'), $evidenciesToMenu);

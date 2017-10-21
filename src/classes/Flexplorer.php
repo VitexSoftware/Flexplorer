@@ -384,6 +384,7 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
      * @param string $url    URL požadavku
      * @param strinf $method HTTP Method GET|POST|PUT|OPTIONS|DELETE
      * @param string $format požadovaný formát komunikace
+     *
      * @return int HTTP Response CODE
      */
     public function doCurlRequest($url = null, $method = 'GET', $format = null)
@@ -391,5 +392,23 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
         $result              = parent::doCurlRequest($url, $method, $format);
         $_SESSION['lasturl'] = $this->curlInfo['url'];
         return $result;
+    }
+
+    /**
+     * Process flexibee results
+     *
+     * @param array $results
+     */
+    public static function extractResults($results)
+    {
+        $results = [];
+        if (isset($results['results'][0]['result'])) {
+            foreach ($results['results'][0]['result'] as $result) {
+                list($null, $prefix, $company, $evidence, $recordId) = explode('/',
+                    $result['ref']);
+                $results[] = $evidence.'/'.$recordId;
+            }
+        }
+        return $results;
     }
 }

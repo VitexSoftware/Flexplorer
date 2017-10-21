@@ -32,7 +32,7 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
         'warning');
     $oPage->redirect('evidences.php');
 } else {
-
+    $oPage->addEvidenceToHistory($evidence);
 
     $oPage->addItem(new ui\PageTop(sprintf(_('Evidence %s'),
             \FlexiPeeHP\EvidenceList::$name[$evidence])));
