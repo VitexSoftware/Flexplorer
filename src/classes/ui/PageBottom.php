@@ -76,7 +76,7 @@ class PageBottom extends \Ease\TWB\Container
             [new \Ease\TWB\Col(8,
                 'Flex<strong>plorer</strong> v.: '.$appInfo->version
             ), new \Ease\TWB\Col(4,
-        _('&copy; 2016 Vítězslav "Vitex" Dvořák'))]));
+        _('&copy; 2016- Vítězslav "Vitex" Dvořák'))]));
 
         $this->addItem($rowFluid2);
     }

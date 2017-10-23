@@ -77,9 +77,9 @@ class MainMenu extends \Ease\Html\Div
                 $infoLabel = $url;
             }
             $nav->addMenuItem(new \Ease\Html\Div(new \Ease\TWB\Label('success',
-                new \Ease\Html\ATag($infoLabel, $infoLabel),
-                ['class' => 'navbar-text', 'style' => 'color: yellow; font-size: 12px; max-width: 800px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;']),
-                ['class' => 'collapse navbar-collapse']));
+                        new \Ease\Html\ATag($infoLabel, $infoLabel),
+                        ['class' => 'navbar-text', 'style' => 'color: yellow; font-size: 12px; max-width: 800px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;']),
+                    ['class' => 'collapse navbar-collapse']));
 
 
             $companiesToMenu = [];
@@ -92,7 +92,14 @@ class MainMenu extends \Ease\Html\Div
                 }
                 asort($companiesToMenu);
 
-                $nav->addDropDownMenu(_('Company'), $companiesToMenu);
+                $companyTools = ['newcompany.php' => new \Ease\TWB\GlyphIcon('plus').' '._('New'),
+//                    'resetcompany.php' => new \Ease\TWB\GlyphIcon('repeat').' '._('Reset'),
+//                    'restorecompany.php' => new \Ease\TWB\GlyphIcon('floppy-open').' '._('Restore'),
+//                    'savecompany.php' => new \Ease\TWB\GlyphIcon('floppy-save').' '._('Save'),
+                    '' => ''];
+
+                $nav->addDropDownMenu(_('Company'),
+                    array_merge($companyTools, $companiesToMenu));
 
                 if (!isset($_SESSION['company'])) { //Auto choose first company
                     $_SESSION['company'] = $companies[0]['dbNazev'];
@@ -100,7 +107,7 @@ class MainMenu extends \Ease\Html\Div
                 }
 
                 $evidenciesToMenu = array_merge(['evidences.php' => _('Overview')],
-                \Ease\Shared::webPage()->getEvidenceHistory(),
+                    \Ease\Shared::webPage()->getEvidenceHistory(),
                     $_SESSION['evidence-menu']);
 
                 if (count($evidenciesToMenu)) {
@@ -111,13 +118,13 @@ class MainMenu extends \Ease\Html\Div
 
             $nav->addDropDownMenu(_('Tools'),
                 [
-                'query.php' => _('Query'),
+                    'query.php' => _('Query'),
 //                'xslt.php' => _('XSLT'),
-                'buttons.php' => _('Buttons'),
-                'changesapi.php' => _('Changes API'),
-                'changes.php' => _('Changes Recieved'),
-                'fakechange.php' => _('WebHook test'),
-                'ucetniobdobi.php' => _('Accounting period')
+                    'buttons.php' => _('Buttons'),
+                    'changesapi.php' => _('Changes API'),
+                    'changes.php' => _('Changes Recieved'),
+                    'fakechange.php' => _('WebHook test'),
+                    'ucetniobdobi.php' => _('Accounting period')
             ]);
         }
     }
