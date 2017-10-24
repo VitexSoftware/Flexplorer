@@ -50,9 +50,9 @@ class MainMenu extends \Ease\Html\Div
      */
     public function afterAdd()
     {
-        $nav = $this->addItem(new BootstrapMenu());
-
-        $userID = \Ease\Shared::user()->getUserID();
+        $nav       = $this->addItem(new BootstrapMenu());
+        $myCompany = $_SESSION['company'];
+        $userID    = \Ease\Shared::user()->getUserID();
         if ($userID) { //Authenticated user
             if (isset($_SESSION['searchQuery'])) {
                 $term = $_SESSION['searchQuery'];
@@ -67,7 +67,7 @@ class MainMenu extends \Ease\Html\Div
             if (is_null($url)) {
                 $infoLabel = $companer->getEvidenceURL();
 
-                $infoLabel .= '/'.$_SESSION['company'];
+                $infoLabel .= '/'.$myCompany;
 
                 $evidence = $this->webPage->getRequestValue('evidence');
                 if ($evidence) {
@@ -92,11 +92,16 @@ class MainMenu extends \Ease\Html\Div
                 }
                 asort($companiesToMenu);
 
-                $companyTools = ['newcompany.php' => new \Ease\TWB\GlyphIcon('plus').' '._('New'),
-//                    'resetcompany.php' => new \Ease\TWB\GlyphIcon('repeat').' '._('Reset'),
-//                    'restorecompany.php' => new \Ease\TWB\GlyphIcon('floppy-open').' '._('Restore'),
-//                    'savecompany.php' => new \Ease\TWB\GlyphIcon('floppy-save').' '._('Save'),
-                    '' => ''];
+                $companyTools = ['newcompany.php' => new \Ease\TWB\GlyphIcon('plus').' '._('New')];
+
+                if (!empty($myCompany)) {
+                    $companyTools['resetcompany.php']   = new \Ease\TWB\GlyphIcon('repeat').' '._('Reset');
+//                    $companyTools['restorecompany.php'] = new \Ease\TWB\GlyphIcon('floppy-open').' '._('Restore');
+//                    $companyTools['savecompany.php']    = new \Ease\TWB\GlyphIcon('floppy-save').' '._('Save');
+                    $companyTools['deletecompany.php']  = new \Ease\TWB\GlyphIcon('remove').' '._('Remove');
+                }
+
+                array_push($companyTools, ['-' => '']);
 
                 $nav->addDropDownMenu(_('Company'),
                     array_merge($companyTools, $companiesToMenu));

@@ -19,6 +19,8 @@ Umožňuje:
   * Upravovat Externí ID záznamů
   * Měnit stav přiřazení štítků k evidenci
   * Doplnit FlexiBee GUI o tlačítka odkazující do FlexPloreru
+  * Zakládat a mazat firmy
+  * Resetovat firmu (smazat a znovu založit )
 
 [![Source Code](http://img.shields.io/badge/source-VitexSoftware/Flexplorer-blue.svg?style=flat-square)](https://github.com/VitexSoftware/Flexplorer)
 [![Latest Version](https://img.shields.io/github/release/VitexSoftware/Flexplorer.svg?style=flat-square)](https://github.com/VitexSoftware/Flexplorer/releases)

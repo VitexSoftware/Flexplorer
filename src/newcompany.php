@@ -30,12 +30,9 @@ if (empty($name)) {
         $companer->addStatusMessage(sprintf(_('Company %s already exists'),
                 $name), 'warning');
     } else {
-        $creator = new \FlexiPeeHP\FlexiBeeRW();
-        $result  = $creator->performRequest('/admin/zalozeni-firmy?name='.$name,
-            'PUT');
-    if ($creator->lastResponseCode == 201) {
-            $companer->addStatusMessage(sprintf(_('Company %s was created'), $name),
-            'success');
+        if ($companer->createNew($name)) {
+            $companer->addStatusMessage(sprintf(_('Company %s was created'),
+                    $name), 'success');
             $companies = $companer->getColumnsFromFlexibee(['dbNazev',
                 'createDt'], [], 'createDt');
             ksort($companies);
