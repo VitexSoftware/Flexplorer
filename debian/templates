@@ -21,3 +21,10 @@ Type: string
 _Default: demo
 _Description: Selected company:
  First company opened by default
+
+Template: flexplorer/BACKUP_DIRECTORY
+Type: string
+_Default: /var/lib/flexplorer/backups
+_Description: Backup Directory:
+ Dircecory for storing database backups
+

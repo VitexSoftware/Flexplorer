@@ -26,5 +26,4 @@ if ($companer->deleteFromFlexiBee()) {
     }
 }
 
-$oPage->redirect('index.php');
-
+$oPage->redirect('company.php?company='.$company);

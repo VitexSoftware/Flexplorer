@@ -19,11 +19,11 @@ define('EMAIL_FROM', 'flexplorer@localhost');
  */
 define('DEFAULT_FLEXIBEE_URL', 'https://demo.flexibee.eu');
 /*
- * Uživatel FlexiBee API
+ * FlexiBee API User
  */
 define('DEFAULT_FLEXIBEE_LOGIN', 'winstrom');
 /*
- * Heslo FlexiBee API
+ * FlexiBee API Password
  */
 
 define('DEFAULT_FLEXIBEE_PASSWORD', 'winstrom');
@@ -33,3 +33,7 @@ define('DEFAULT_FLEXIBEE_PASSWORD', 'winstrom');
 
 define('DEFAULT_FLEXIBEE_COMPANY', 'demo');
 
+/*
+ * Where store database backups
+ */
+define('BACKUP_DIRECTORY', '../backups');

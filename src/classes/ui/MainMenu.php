@@ -51,7 +51,7 @@ class MainMenu extends \Ease\Html\Div
     public function afterAdd()
     {
         $nav       = $this->addItem(new BootstrapMenu());
-        $myCompany = $_SESSION['company'];
+        $myCompany = isset($_SESSION['company']) ? $_SESSION['company'] : '';
         $userID    = \Ease\Shared::user()->getUserID();
         if ($userID) { //Authenticated user
             if (isset($_SESSION['searchQuery'])) {
@@ -88,20 +88,12 @@ class MainMenu extends \Ease\Html\Div
 
             if (isset($companies) && count($companies)) {
                 foreach ($companies as $company) {
-                    $companiesToMenu['?company='.$company['dbNazev']] = $company['nazev'];
+                    $companiesToMenu['company.php?company='.$company['dbNazev']]
+                        = $company['nazev'];
                 }
                 asort($companiesToMenu);
 
                 $companyTools = ['newcompany.php' => new \Ease\TWB\GlyphIcon('plus').' '._('New')];
-
-                if (!empty($myCompany)) {
-                    $companyTools['resetcompany.php']   = new \Ease\TWB\GlyphIcon('repeat').' '._('Reset');
-//                    $companyTools['restorecompany.php'] = new \Ease\TWB\GlyphIcon('floppy-open').' '._('Restore');
-//                    $companyTools['savecompany.php']    = new \Ease\TWB\GlyphIcon('floppy-save').' '._('Save');
-                    $companyTools['deletecompany.php']  = new \Ease\TWB\GlyphIcon('remove').' '._('Remove');
-                }
-
-                array_push($companyTools, ['-' => '']);
 
                 $nav->addDropDownMenu(_('Company'),
                     array_merge($companyTools, $companiesToMenu));

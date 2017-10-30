@@ -18,9 +18,11 @@ $oPage->onlyForLogged();
 
 $company = $_SESSION['company'];
 
-$saver = new Company(['dbNazev' => $company]);
-$saver->saveBackupTo('/var/lib/flexplorer/backups');
+$saver = new \FlexiPeeHP\Company(['dbNazev' => $company]);
+if ($saver->saveBackupTo(constant('BACKUP_DIRECTORY').$company.'.winstrom-backup')) {
+    $saver->addStatusMessage(_('backup saved'), 'success');
+}
 
 
-$oPage->redirect('index.php');
+$oPage->redirect('company.php?company='.$company);
 

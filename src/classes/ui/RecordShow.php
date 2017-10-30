@@ -30,7 +30,9 @@ class RecordShow extends \Ease\TWB\Panel
 
         $row = new \Ease\TWB\Row();
 
-        $recordObject->setData($recordObject->htmlizeRow($recordObject->getData()));
+        if (method_exists($recordObject, 'htmlizeRow')) {
+            $recordObject->setData($recordObject->htmlizeRow($recordObject->getData()));
+        }
 
         foreach ($recordObject->evidenceStructure as $keyword => $kinfo) {
             if ($keyword == $recordObject->nameColumn) {

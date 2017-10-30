@@ -42,6 +42,9 @@ apache_install() {
     db_get flexplorer/FLEXIBEE_COMPANY
     sed -i "/DEFAULT_FLEXIBEE_COMPANY/c\define('DEFAULT_FLEXIBEE_COMPANY', '${RET}');" /usr/share/flexplorer/includes/config.php
 
+    db_get flexplorer/BACKUP_DIRECTORY
+    sed -i "/DEFAULT_BACKUP_DIRECTORY/c\define('DEFAULT_BACKUP_DIRECTORY', '${RET}');" /usr/share/flexplorer/includes/config.php
+
             apache_install $1
                     # Reload webserver in any case, configuration might have changed
                     # Redirection of 3 is needed because Debconf uses it and it might 

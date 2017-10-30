@@ -481,13 +481,17 @@ class DataSource extends \Ease\Brick
      */
     public function getWhere()
     {
-        $where = [];
         $query = isset($_REQUEST['query']) ? $_REQUEST['query'] : false;
         $qtype = isset($_REQUEST['qtype']) ? $_REQUEST['qtype'] : false;
-        if (($qtype != 'id') && ($query != '')) {
+
+        if (empty($query)) {
+            $where = [];
+        } else {
+            if ($qtype == 'external-ids') {
+                $qtype = 'id';
+            }
             $where = [$qtype => $query];
         }
         return $where;
     }
-
 }
