@@ -29,7 +29,7 @@ class History extends \Ease\Html\Div
 
         parent::__construct(null, $properties);
 
-        foreach ($_SESSION['history'] as $bookmark) {
+        foreach (array_reverse($_SESSION['history']) as $bookmark) {
             $this->addItem(new \Ease\Html\Span(new \Ease\Html\ATag($bookmark['url'],
                 [new \Ease\TWB\GlyphIcon('bookmark'), ' '.$bookmark['title']]),
                 ['class' => 'hitem']));

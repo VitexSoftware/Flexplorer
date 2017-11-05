@@ -57,12 +57,13 @@ class Editor extends ColumnsForm
     {
         $type         = $colProperties['type'];
         $name         = $colProperties['name'];
-        $propertyName = $colProperties['propertyName'];
+        $propertyName = isset($colProperties['propertyName']) ? $colProperties['propertyName']
+                : $colProperties['name'];
         $value        = $this->engine->getDataValue($propertyName);
         $note         = '';
 
         $inputProperties = [];
-        if ($colProperties['mandatory'] === 'true') {
+        if (isset($colProperties['mandatory']) && ($colProperties['mandatory'] === 'true')) {
             $inputProperties[] = 'required';
             $note .= '<span class="error">'._('Required').'</span> ';
         }

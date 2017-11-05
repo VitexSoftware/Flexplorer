@@ -25,53 +25,58 @@ $companer = new \FlexiPeeHP\Company($company);
 
 $oPage->addItem(new ui\PageTop($companer->getDataValue('nazev')));
 
-$companyPanel = new \Ease\TWB\Panel(new \Ease\Html\H2Tag($companer->getDataValue('nazev')),
-    'info');
-
-//$companyPanel->addItem(new \Ease\Html\PreTag(print_r($companer->getData(), true)));
-//$companyPanel->addItem(new \Ease\Html\PreTag(print_r($settings, true)));
+$companyActions = new \Ease\TWB\Row();
 
 
-
-
-
-
-
-$companyRow = new \Ease\TWB\Row();
-
-
-$companyActions = new \Ease\TWB\Well();
-
-
-$companyActions->addItem(new \Ease\TWB\LinkButton('newcompany.php',
-        new \Ease\TWB\GlyphIcon('plus').' '._('New'), 'success'));
-
-$companyActions->addItem(new \Ease\TWB\LinkButton('resetcompany.php',
+$companyActions->addColumn(2,
+    new \Ease\TWB\LinkButton('resetcompany.php',
         new \Ease\TWB\GlyphIcon('repeat').' '._('Reset'), 'danger',
-        ['onClick' => "$('#Preloader').css('visibility', 'visible');"]));
+        ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Drop company and create again')]));
 
 
 $backupFile = '../backups/'.$company.'.winstrom-backup';
-if (file_exists($backupFile)) {
-    $companyActions->addItem(new \Ease\TWB\LinkButton('restorecompany.php',
-            new \Ease\TWB\GlyphIcon('floppy-open').' '._('Restore'), 'warning',
-            ['onClick' => "$('#Preloader').css('visibility', 'visible');"]));
-}
+
+$companyActions->addColumn(2,
+    new \Ease\TWB\LinkButton('restorecompany.php',
+        new \Ease\TWB\GlyphIcon('floppy-open').' '._('Restore'), 'warning',
+        ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Restore previously saved state')]));
 
 
-$companyActions->addItem(new \Ease\TWB\LinkButton('savecompany.php',
+$companyActions->addColumn(2,
+    new \Ease\TWB\LinkButton('savecompany.php',
         new \Ease\TWB\GlyphIcon('floppy-save').' '._('Save'), 'success',
-        ['onClick' => "$('#Preloader').css('visibility', 'visible');"]));
+        ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Save current state')]));
 
-$companyActions->addItem(new \Ease\TWB\LinkButton('deletecompany.php',
+$companyActions->addColumn(2,
+    new \Ease\TWB\LinkButton('deletecompany.php',
         new \Ease\TWB\GlyphIcon('remove').' '._('Remove'), 'danger',
-        ['onClick' => "$('#Preloader').css('visibility', 'visible');"]));
+        ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => 'Drop all company data']));
+
+$companyActions->addColumn(2,
+    new \Ease\TWB\LinkButton('editor.php?evidence=nastaveni&company='.$company.'&id=1',
+        new \Ease\TWB\GlyphIcon('wrench').' '._('Settings'), 'info',
+        ['title' => 'Serveral company settings']));
 
 
-$companyRow->addColumn(2, $companyActions);
-$companyRow->addColumn(10, $companyPanel);
+$companyActions->addColumn(2,
+    new \Ease\TWB\LinkButton('newcompany.php',
+        new \Ease\TWB\GlyphIcon('plus').' '._('Create company'), 'success',
+        ['title' => 'Create new company']));
 
-$oPage->container->addItem($companyRow);
+
+$companyInfo = new \Ease\Html\PreTag(print_r($companer->getData(), true));
+
+$companyPanel = new \Ease\TWB\Panel(new \Ease\Html\H2Tag($companer->getDataValue('nazev')),
+    'info', $companyInfo, $companyActions);
+
+
+$companyPanel->addItem(\FlexiPeeHP\FlexiBeeRO::flexiDateToDateTime($companer->getDataValue('createDt')));
+
+
+//$companyPanel->addItem(new \Ease\Html\PreTag(print_r($settings, true)));
+
+
+$oPage->container->addItem($companyPanel);
 
 $oPage->addItem(new ui\PageBottom());
 
