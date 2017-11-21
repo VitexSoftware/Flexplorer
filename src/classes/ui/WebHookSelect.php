@@ -22,7 +22,7 @@ class WebHookSelect extends \Ease\Html\Select
         $hooks  = $hooker->getFlexiData();
         if (!isset($hooks['message']) && count($hooks) && count(current($hooks))) {
             foreach ($hooks as $hook) {
-                    $items = [$hook['url'] => $hook['dataFormat'].' '.$hook['url']];
+                    $items[$hook['url']] = $hook['dataFormat'].' '.$hook['url'];
             }
         }
         parent::__construct($name, $items, $defaultValue, null, $properties);

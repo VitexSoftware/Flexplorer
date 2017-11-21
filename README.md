@@ -11,7 +11,8 @@ Umožňuje:
   * zobrazovat strukturu evidence
   * odesílat přímé požadavky na server a zobrazovat výsledky
   * Nastavovat ChangesAPI a přidávat WebHooks
-  * Zobrazovat data přijatá WebHookem
+  * Zobrazovat data změn přijatá z ChangesAPI
+  * Zasílat přijatá data změn na url webhooku aplikace a zobrazit problémy
   * Test odpovědi WebHook skriptu zpracovávajícího změny z FlexiBee
   * Hromadně zakládat a rušit účetní období
   * Rozlišit evidnece které jsou z důvodu licence nedostupné
@@ -64,6 +65,10 @@ Smazání záznamu z evidence je třeba potvrdit:
 Při testování WebHooku pomůže tento nástroj, který sestaví maketu záznamu ChangesAPI a odešle jí na zvolený WebHook:
 
 ![WebHook Request](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-webhook-request.png "Screenshot Požadavku na webhook")
+
+Je možné také použít data změn došlá na webhook FlexPloreru a zvolit si na který webhook testované aplikace budou tato odesílána:
+
+![Change Data reuse](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-reuse-change-data.png "Screenshot přijatých dat změny")
 
 Správná je prázdná odpověď. Ačkoliv funguje, tak by se tento skript FlexiBee nelíbil. Zde vidíme co vrací:
 
