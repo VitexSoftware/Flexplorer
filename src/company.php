@@ -33,6 +33,10 @@ $companyActions->addColumn(2,
         new \Ease\TWB\GlyphIcon('repeat').' '._('Reset'), 'danger',
         ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Drop company and create again')]));
 
+$companyActions->addColumn(1,
+    new \Ease\TWB\LinkButton('copycompany.php',
+        new \Ease\TWB\GlyphIcon('duplicate').' '._('Duplicate'), 'success',
+        ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Create copy')]));
 
 $backupFile = '../backups/'.$company.'.winstrom-backup';
 
@@ -42,7 +46,7 @@ $companyActions->addColumn(2,
         ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Restore previously saved state')]));
 
 
-$companyActions->addColumn(2,
+$companyActions->addColumn(1,
     new \Ease\TWB\LinkButton('savecompany.php',
         new \Ease\TWB\GlyphIcon('floppy-save').' '._('Save'), 'success',
         ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Save current state')]));

@@ -81,7 +81,7 @@ foreach (\FlexiPeeHP\EvidenceList::$evidences as $evidence) {
         $evidence[] = _('unavialble');
     }
 
-    $allEvidences['static']->addRowColumns($evidence);
+    $allEvidences->addRowColumns($evidence);
 }
 
 

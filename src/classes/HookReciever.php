@@ -35,6 +35,15 @@ class HookReciever extends \Ease\Brick
         $this->lastProcessedVersion = $this->getLastProcessedVersion();
     }
 
+    public static function getSaveDir()
+    {
+        $tmpDir = sys_get_temp_dir();
+        if (!is_writable($tmpDir)) { // IIS & C:\WINDOWS\TEMP
+            $tmpDir = __DIR__; //Try to use current directory
+        }
+        return $tmpDir;
+    }
+
     /**
      * Poslouchá standartní vstup
      *
@@ -48,7 +57,7 @@ class HookReciever extends \Ease\Brick
             if (is_null($filename)) {
                 $filename = $this->getSaveName();
             }
-            file_put_contents(sys_get_temp_dir().'/'.$filename, $inputJSON);
+            file_put_contents(self::getSaveDir().'/'.$filename, $inputJSON);
             $this->lastFileName = $filename;
             $input = json_decode($inputJSON, TRUE); //convert JSON into array
         }
@@ -91,6 +100,7 @@ class HookReciever extends \Ease\Brick
      * 
      * @link https://www.flexibee.eu/api/dokumentace/ref/changes-api/ Changes API
      * @param array $changes pole změn
+     * 
      * @return int Globální verze poslední změny
      */
     public function takeChanges($changes)

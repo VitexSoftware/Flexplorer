@@ -18,18 +18,29 @@ $operation   = $oPage->getRequestValue('operation');
 $extid       = $oPage->getRequestValue('extid');
 $lastversion = $oPage->getRequestValue('lastversion', 'int');
 $id          = $oPage->getRequestValue('id', 'int');
+$change      = $oPage->getRequestValue('changefile');
 $format      = 'json';
 
-$change = ['winstrom' => ['@globalVersion' => $lastversion, 'changes' => ['@evidence' => $evidence,
+$changeFile = HookReciever::getSaveDir().'/'.basename($change);
+
+
+$changeData = ['winstrom' => ['@globalVersion' => $lastversion, 'changes' => ['@evidence' => $evidence,
             '@in-version' => $lastversion,
             '@operation' => $operation, 'id' => $id, 'external-ids' => [$extid]]]];
 
 $responseBody = null;
 $responseCode = null;
-if ($oPage->isPosted()) {
-    $prober             = new \FlexiPeeHP\FlexiBeeRW();
-    $prober->postFields = json_encode($change);
-    $responseCode       = $prober->doCurlRequest($hookurl, 'POST', $format);
+if ($oPage->isPosted() || (!empty($change) && file_exists($changeFile))) {
+    $prober = new \FlexiPeeHP\FlexiBeeRW();
+
+    if (empty($change)) {
+        $prober->postFields = json_encode($changeData);
+    } else {
+        $prober->postFields = file_get_contents($changeFile);
+        $changeData         = json_decode($prober->postFields);
+    }
+
+    $responseCode = $prober->doCurlRequest($hookurl, 'POST', $format);
     $responseBody       = $prober->lastCurlResponse;
 
     if (($responseCode == 200) && !strlen($responseBody)) {
@@ -94,7 +105,8 @@ $hookForm->addInput(new \Ease\Html\InputTextTag('hookurl', $hookurl),
         _('When the database FlexiBee is changed the POST HTTP request sent to all registered URL'))]
 );
 
-$hookForm->addInput(new ui\JsonTextarea('code', json_encode($change)));
+$hookForm->addInput(new ui\JsonTextarea('code',
+        json_encode($changeData, JSON_PRETTY_PRINT)));
 $hookForm->addItem(new \Ease\TWB\SubmitButton(_('Send'), 'success'));
 
 $toolRow->addColumn(8, new \Ease\TWB\Well($hookForm));

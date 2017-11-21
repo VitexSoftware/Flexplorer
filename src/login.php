@@ -59,17 +59,24 @@ $loginRow   = new \Ease\TWB\Row();
 $infoColumn = $loginRow->addItem(new \Ease\TWB\Col(4));
 
 $infoBlock = $infoColumn->addItem(new \Ease\TWB\Well(new \Ease\Html\ImgTag('images/password.png')));
-$infoBlock->addItem(_('Login History'));
+$infoBlock->addItem(_('Login Bookmarks'));
 
-if (isset($_SESSION['bookmarks']) && count($_SESSION['bookmarks'])) {
-    $bookmarks = new \Ease\Html\UlTag(null, ['class' => 'list-group']);
+$_SESSION['bookmarks']['demo'] = ['login' => 'winstrom', 'password' => 'winstrom',
+    'server' => 'https://demo.flexibee.eu'];
+
+$_SESSION['bookmarks']['localhost'] = ['login' => '', 'password' => '',
+    'server' => 'https://localhost:5434'];
+
+
+
+$bookmarks = new \Ease\Html\UlTag(null, ['class' => 'list-group']);
     foreach ($_SESSION['bookmarks'] as $bookmark) {
         $bookmarks->addItemSmart(new \Ease\Html\ATag('login.php?login='.$bookmark['login'].'&password='.$bookmark['password'].'&server='.$bookmark['server'],
             str_replace('://', '://'.$bookmark['login'].'@', $bookmark['server'])),
             ['class' => 'list-group-item']);
     }
     $infoBlock->addItem($bookmarks);
-}
+
 
 $loginColumn = $loginRow->addItem(new \Ease\TWB\Col(4));
 

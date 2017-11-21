@@ -21,8 +21,10 @@ Umožňuje:
   * Doplnit FlexiBee GUI o tlačítka odkazující do FlexPloreru
   * Zakládat a mazat firmy
   * Resetovat firmu (smazat a znovu založit )
+  * Klonovat firmu
   * Uložit a znovu načíst výchozí zálohu firmy
   * Filtrovat záznamy dle ID nebo Externího ID
+  
 
 [![Source Code](http://img.shields.io/badge/source-VitexSoftware/Flexplorer-blue.svg?style=flat-square)](https://github.com/VitexSoftware/Flexplorer)
 [![Latest Version](https://img.shields.io/github/release/VitexSoftware/Flexplorer.svg?style=flat-square)](https://github.com/VitexSoftware/Flexplorer/releases)
@@ -182,4 +184,7 @@ U společnosti Spoje.Net, je možné si objednat komerční podporu pro integrac
 knihovny [FlexiPeeHP](https://github.com/Spoje-NET/FlexiPeeHP) do vašich projektů. 
 
 ![Spoje.Net](https://github.com/Spoje-NET/FlexiPeeHP/raw/master/spoje-net_logo.gif "Spoje.Net")
+
+[Statistiky Projektu na Wakatime](https://wakatime.com/@5abba9ca-813e-43ac-9b5f-b1cfdf3dc1c7/projects/wvloiziluw)
+
 
