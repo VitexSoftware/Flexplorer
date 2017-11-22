@@ -20,27 +20,27 @@ class ShowLiveAge extends \Ease\Html\TimeTag
         $days = floor($age / 86400);
         parent::__construct($days.' '._('days').', '.gmdate("G:i:s", $age),
             $properties);
-        $this->setTagID('timestamp');
+        $this->setTagID();
 
         $this->addJavaScript('
-var timestamp = '.$age.';
+var timestamp'.$this->getTagID().' = '.$age.';
 
 function component(x, v) {
     return Math.floor(x / v);
 }
 
-var $div = $(\'#'.$this->getTagID().'\');
+var $div'.$this->getTagID().' = $(\'#'.$this->getTagID().'\');
 
 setInterval(function() {
 
-    timestamp++;
+    timestamp'.$this->getTagID().'++;
 
-    var days    = component(timestamp, 24 * 60 * 60),
-        hours   = component(timestamp,      60 * 60) % 24,
-        minutes = component(timestamp,           60) % 60,
-        seconds = component(timestamp,            1) % 60;
+    var days'.$this->getTagID().'    = component(timestamp'.$this->getTagID().', 24 * 60 * 60),
+        hours'.$this->getTagID().'   = component(timestamp'.$this->getTagID().',      60 * 60) % 24,
+        minutes'.$this->getTagID().' = component(timestamp'.$this->getTagID().',           60) % 60,
+        seconds'.$this->getTagID().' = component(timestamp'.$this->getTagID().',            1) % 60;
 
-    $div.html(days + " '._('days').', " + hours + ":" + minutes + ":" + seconds);
+    $div'.$this->getTagID().'.html(days'.$this->getTagID().' + " '._('days').', " + hours'.$this->getTagID().' + ":" + minutes'.$this->getTagID().' + ":" + seconds'.$this->getTagID().');
 
 }, 1000);
             ');

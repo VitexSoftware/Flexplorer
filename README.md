@@ -94,6 +94,9 @@ Odpověď požadavku může být v podporovaných formátech (zde XML):
 
 ![XML Response](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-xml-response.png "XML Response")
 
+Základní přehled firmy
+
+![Company overview](https://raw.githubusercontent.com/VitexSoftware/Flexplorer/master/screenshots/flexplorer-company-page.png "Company Page")
 
 Instalace
 ---------

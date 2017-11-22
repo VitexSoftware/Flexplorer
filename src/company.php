@@ -50,7 +50,7 @@ $companyActions->addColumn(2,
 $companyActions->addColumn(1,
     new \Ease\TWB\LinkButton('savecompany.php',
         new \Ease\TWB\GlyphIcon('floppy-save').' '._('Save'), 'success',
-        ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Save current state')]));
+        ['title' => _('Save current state')]));
 
 $companyActions->addColumn(2,
     new \Ease\TWB\LinkButton('deletecompany.php',
