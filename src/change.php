@@ -46,10 +46,12 @@ $testForm = new \Ease\TWB\Form('probechange', 'fakechange.php');
 $testForm->addItem(new \Ease\Html\InputHiddenTag('changefile', $file));
 
 $optionsRow = new \Ease\TWB\Row();
-$optionsRow->addColumn(6, new ui\WebHookSelect('hookurl'));
+$optionsRow->addColumn(6, new ui\WebHookSelect('hookurl'))->addItem(new \Ease\TWB\LinkButton('changesapi.php',
+        new \Ease\TWB\GlyphIcon('plus'), 'success',
+        ['title' => _('Add new webhook')]));
 $optionsRow->addColumn(2,
     new \Ease\TWB\SubmitButton(new \Ease\TWB\GlyphIcon('flash').' '._('Probe'),
-        'success'));
+        'warning'));
 $optionsRow->addColumn(2);
 $optionsRow->addColumn(2,
     new \Ease\TWB\LinkButton('change.php?delete='.$file,
