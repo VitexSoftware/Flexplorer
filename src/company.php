@@ -25,6 +25,7 @@ $companer = new \FlexiPeeHP\Company($company);
 
 $oPage->addItem(new ui\PageTop($companer->getDataValue('nazev')));
 
+
 $companyActions = new \Ease\TWB\Row();
 
 
@@ -68,16 +69,30 @@ $companyActions->addColumn(2,
         ['title' => 'Create new company']));
 
 
-$companyInfo = new \Ease\Html\PreTag(print_r($companer->getData(), true));
+
+
+$companyInfo = new \Ease\Html\TableTag(null, ['class' => 'table']);
+
+$companyInfo->addRowColumns([_('database'), new ui\CopyToClipBoard(new \Ease\Html\InputTextTag('dbNazev',
+            $companer->getDataValue('dbNazev'), ['id' => 'dbNazev', 'readonly']))]);
+
+$created     = \FlexiPeeHP\FlexiBeeRO::flexiDateToDateTime($companer->getDataValue('createDt'))->getTimestamp();
+$companyInfo->addRowColumns([_('created'), strftime('%a %d. %m. %Y  - %X',
+        $created).' '.'('._('before').' '.new ui\ShowLiveAge($created).')']);
+
+
+$companyInfo->addRowColumns([_('Watching changes'), new ui\WatchingChangesStatus($companer->getDataValue('watchingChanges')
+        == 'true')]);
+
+$companyInfo->addRowColumns([_('Show'), new ui\BooleanLabel($companer->getDataValue('watchingChanges')
+        == 'true')]);
+
+$companyInfo->addRowColumns([_('License Group'), $companer->getDataValue('licenseGroup')]);
+
+$companyInfo->addRowColumns([_('Status'), $companer->getDataValue('stavEnum')]);
 
 $companyPanel = new \Ease\TWB\Panel(new \Ease\Html\H2Tag($companer->getDataValue('nazev')),
     'info', $companyInfo, $companyActions);
-
-
-$companyPanel->addItem(\FlexiPeeHP\FlexiBeeRO::flexiDateToDateTime($companer->getDataValue('createDt')));
-
-
-//$companyPanel->addItem(new \Ease\Html\PreTag(print_r($settings, true)));
 
 
 $oPage->container->addItem($companyPanel);
