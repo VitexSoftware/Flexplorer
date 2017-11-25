@@ -24,11 +24,12 @@ $defaultSaveTo = $company.'-'.date('Y-m-d-Hi').'.winstrom-backup';
 
 $saver = new \FlexiPeeHP\Company(['dbNazev' => $company]);
 if (!empty($saveTo)) {
-    if ($saver->saveBackupTo(constant('BACKUP_DIRECTORY').$saveTo)) {
-        $saver->addStatusMessage(_('backup saved'), 'success');
+    if ($saver->saveBackupTo(constant('BACKUP_DIRECTORY').'/'.$saveTo)) {
+        $saver->addStatusMessage(sprintf(_('backup %s saved'), $saveTo),
+            'success');
+    } else {
+        $saver->addStatusMessage(_('backup save failed'), 'error');
     }
-
-    $oPage->redirect('company.php?company='.$company);
 } else {
     $saver->addStatusMessage(_('Please enter backup file name'), 'warning');
 }

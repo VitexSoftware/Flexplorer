@@ -14,6 +14,11 @@ namespace Flexplorer\ui;
  */
 class BackupsListing extends \Ease\Html\DivTag
 {
+    /**
+     *
+     * @var \Ease\Html\ThTag
+     */
+    public $header = null;
 
     /**
      *
@@ -21,6 +26,13 @@ class BackupsListing extends \Ease\Html\DivTag
      */
     public $contents = null;
 
+    /**
+     * Show basic directory listing
+     *
+     * @param string $backupDir
+     * @param string $regex
+     * @param array $properties
+     */
     public function __construct($backupDir, $regex, $properties = [])
     {
         parent::__construct(new \Ease\Html\H1Tag($backupDir), $properties);
@@ -28,7 +40,8 @@ class BackupsListing extends \Ease\Html\DivTag
         foreach ($this->getListing($backupDir, $regex) as $fileInfo) {
             $this->addFileToListing($fileInfo);
         }
-        $this->contents->addRowHeaderColumns([_('File'), _('Size'), _('Age')]);
+        $this->header = $this->contents->addRowHeaderColumns([_('File'), _('Size'),
+            _('Age')]);
         $this->addItem($this->contents);
     }
 
@@ -52,8 +65,8 @@ class BackupsListing extends \Ease\Html\DivTag
 
     public function addFileToListing($fileInfo)
     {
-        $this->contents->addRowColumns([
-            $fileInfo['filename'],
+      return $this->contents->addRowColumns([
+                $fileInfo['filename'],
             \Ease\Page::humanFilesize($fileInfo['size']),
             new ShowLiveAge($fileInfo['age'])
         ]);

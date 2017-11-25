@@ -10,6 +10,8 @@ namespace Flexplorer\ui;
 
 class WebPage extends \Ease\TWB\WebPage
 {
+    public $requestURL = null;
+
     /**
      * Main block of page.
      *
@@ -55,11 +57,6 @@ class WebPage extends \Ease\TWB\WebPage
         $this->head->addItem('<link rel="apple-touch-icon-precomposed"  type="image/png" href="images/flexplorer-logo.png">');
         $this->head->addItem('<link rel="stylesheet" href="/javascript/font-awesome/css/font-awesome.min.css">');
 
-        $userID = $userObject->getUserID();
-        if ($userID) { //Authenticated user
-            $this->addItem(new FlexiURL(isset($_SESSION['lasturl']) ? $_SESSION['lasturl'] : null,
-            ['id' => 'lasturl', 'class' => 'innershadow']));
-        }
         $this->container = $this->addItem(new \Ease\TWB\Container());
 
         $this->includeJavaScript('js/jquery.keepAlive.js');
@@ -115,6 +112,20 @@ class WebPage extends \Ease\TWB\WebPage
     }
 
     /**
+     * Set URL of request to show 
+     * @param string $url
+     */
+    public function setRequestURL($url)
+    {
+        $_SESSION['lasturl'] = $this->requestURL    = $url;
+    }
+
+    public function getRequestURL()
+    {
+        return is_null($this->requestURL) ? $_SESSION['lasturl'] : $this->requestURL;
+    }
+
+    /**
      * 
      * @return type
      */
@@ -127,5 +138,14 @@ class WebPage extends \Ease\TWB\WebPage
         }
 
         return $history;
+    }
+
+    public function draw()
+    {
+        if (\Ease\Shared::user()->getUserID()) { //Authenticated user
+            $this->body->addAsFirst(new FlexiURL($this->getRequestURL(),
+                    ['id' => 'lasturl', 'class' => 'innershadow']));
+        }
+        return parent::draw();
     }
 }

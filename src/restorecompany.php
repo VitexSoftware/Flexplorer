@@ -23,16 +23,13 @@ $loader  = new \FlexiPeeHP\Company(['dbNazev' => $company]);
 
 if (empty($backup)) {
     $oPage->addItem(new ui\PageTop(_('Baskup restore')));
-    $oPage->container->addItem('Specify backup to restore');
+    $oPage->addStatusMessage('Specify backup to restore', 'warning');
 
-    constant('BACKUP_DIRECTORY').$company.'.winstrom-backup';
-    $d     = dir(constant('BACKUP_DIRECTORY'));
-    echo "Handle: ".$d->handle."\n";
-    echo "Path: ".$d->path."\n";
-    while (false !== ($entry = $d->read())) {
-        $oPage->container->addItem($entry);
-    }
-    $d->close();
+    $oPage->container->addItem(new \Ease\TWB\Panel(_('Backups'), 'success',
+            new ui\BackupsTool(constant('BACKUP_DIRECTORY'),
+                $company.'.*\.winstrom-backup')));
+
+
 
     $oPage->addItem(new ui\PageBottom());
 

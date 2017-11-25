@@ -93,7 +93,11 @@ class MainMenu extends \Ease\Html\Div
                 }
                 asort($companiesToMenu);
 
-                $companyTools = ['newcompany.php' => new \Ease\TWB\GlyphIcon('plus').' '._('New')];
+                $companyTools = [
+                    'newcompany.php' => new \Ease\TWB\GlyphIcon('plus').' '._('New'),
+                    'companies.php' => new \Ease\TWB\GlyphIcon('list').' '._('Listing'),
+                    '' => ''
+                ];
 
                 $nav->addDropDownMenu(_('Company'),
                     array_merge($companyTools, $companiesToMenu));
@@ -121,7 +125,8 @@ class MainMenu extends \Ease\Html\Div
                     'changesapi.php' => _('Changes API'),
                     'changes.php' => _('Changes Recieved'),
                     'fakechange.php' => _('WebHook test'),
-                    'ucetniobdobi.php' => _('Accounting period')
+                    'ucetniobdobi.php' => _('Accounting period'),
+                    'backups.php' => _('Backups')
             ]);
         }
     }

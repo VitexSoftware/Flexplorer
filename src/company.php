@@ -23,6 +23,8 @@ $settings = $setinger->getColumnsFromFlexibee('*',
 
 $companer = new \FlexiPeeHP\Company($company);
 
+$oPage->setRequestURL($companer->apiURL);
+
 $oPage->addItem(new ui\PageTop($companer->getDataValue('nazev')));
 
 
@@ -94,6 +96,9 @@ $companyInfo->addRowColumns([_('Status'), $companer->getDataValue('stavEnum')]);
 $companyPanel = new \Ease\TWB\Panel(new \Ease\Html\H2Tag($companer->getDataValue('nazev')),
     'info', $companyInfo, $companyActions);
 
+$oPage->container->addItem(new \Ease\Html\DivTag('<br>'));
+$oPage->container->addItem(new ui\FlexiURL($oPage->getRequestURL(),
+        ['id' => 'lasturl', 'class' => 'innershadow']));
 
 $oPage->container->addItem($companyPanel);
 
