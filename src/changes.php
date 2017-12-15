@@ -22,12 +22,13 @@ while (false !== ($entry = $d->read())) {
         if ($delete === 'all') {
             unlink(HookReciever::getSaveDir().'/'.$entry);
         } else {
-            $chages[] = $entry;
+            $chages[$entry] = $entry;
         }
     }
 }
 $d->close();
 
+arsort($chages);
 
 $oPage->addItem(new ui\PageTop(_('FlexiBee WebHook income')));
 

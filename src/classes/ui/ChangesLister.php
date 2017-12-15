@@ -14,11 +14,14 @@ namespace Flexplorer\ui;
  */
 class ChangesLister extends \Ease\Html\UlTag
 {
+
     public function &addItemSmart($pageItem, $properties = [])
     {
+        list($tmp, $stamp) = explode('_', $pageItem);
+        $age      = new ShowLiveAge(str_replace('.json', '', $stamp));
         $pageItem = new \Ease\Html\ATag('change.php?file='.$pageItem,
             str_replace(['flexplorer-changes-', '_'], ['', '&nbsp;<strong>'],
-                $pageItem).'</strong>');
+                $pageItem).'</strong>'.$age);
         $item     = parent::addItemSmart($pageItem, $properties);
         return $item;
     }

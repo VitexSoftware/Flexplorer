@@ -41,9 +41,9 @@ class Editor extends ColumnsForm
             $this->addFlexiInput($column);
         }
 
-
+        \Ease\Shared::webPage()->includeJavaScript('js/datasaver.js');
         $this->addItem(new TWBSwitch('toFlexiBee', false, 'on',
-            ['onText' => _('Save to FlexiBee'), 'offText' => _('Show in editor')]));
+                ['onText' => _('Save to FlexiBee'), 'offText' => _('Show in editor')]));
         $this->addItem(new \Ease\TWB\SubmitButton(_('OK').' '.new \Ease\TWB\GlyphIcon('save')));
         $this->engine = $engine;
     }
@@ -62,10 +62,10 @@ class Editor extends ColumnsForm
         $value        = $this->engine->getDataValue($propertyName);
         $note         = '';
 
-        $inputProperties = [];
+        $inputProperties = ['OnChange' => $this->onChangeCode($propertyName)];
         if (isset($colProperties['mandatory']) && ($colProperties['mandatory'] === 'true')) {
             $inputProperties[] = 'required';
-            $note .= '<span class="error">'._('Required').'</span> ';
+            $note              .= '<span class="error">'._('Required').'</span> ';
         }
         if (isset($colProperties['isWritable']) && ($colProperties['isWritable']
             === 'false')) {
@@ -189,12 +189,12 @@ class Editor extends ColumnsForm
             $editorTabs->addTab(_('Labels'), new LabelSwitches($this->engine));
             $editorTabs->addTab(_('Query'),
                 new SendForm($this->engine->getEvidenceURL(), 'PUT',
-                $this->engine->jsonizeData($this->engine->getData())));
+                    $this->engine->jsonizeData($this->engine->getData())));
 
             $editorTabs->addTab(_('FlexiBee'),
                 new \Ease\Html\IframeTag(str_replace('.json', '.html',
-                    $this->engine->getEvidenceURL().'/'.$id.'.'.$this->engine->format.'?inDesktopApp=true'),
-                ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
+                        $this->engine->getEvidenceURL().'/'.$id.'.'.$this->engine->format.'?inDesktopApp=true'),
+                    ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
 
 
             $this->addItem($editorTabs);
@@ -209,7 +209,7 @@ class Editor extends ColumnsForm
     public function extIDsEditor()
     {
         $extIDsEditor = new \Ease\TWB\Container(new \Ease\Html\InputHiddenTag('id',
-            $this->engine->getDataValue('id')));
+                $this->engine->getDataValue('id')));
         $externalIDs  = $this->engine->getDataValue('external-ids');
         if (count($externalIDs)) {
             foreach ($externalIDs as $externalID) {
@@ -224,22 +224,39 @@ class Editor extends ColumnsForm
                 $extIDrow = new \Ease\TWB\Row();
                 $extIDrow->addColumn(4,
                     new \Ease\TWB\Checkbox('deleteExtID['.$idParts[1].']',
-                    $externalID, _('Remove')));
+                        $externalID, _('Remove')));
                 $extIDrow->addColumn(8,
                     new \Ease\TWB\FormGroup($idParts[1],
-                    new \Ease\Html\InputTextTag('external-ids['.$idParts[1].']',
-                    $idParts[2], ['maxlength' => '20']), $idParts[1],
-                    $externalID));
+                        new \Ease\Html\InputTextTag('external-ids['.$idParts[1].']',
+                            $idParts[2], ['maxlength' => '20']), $idParts[1],
+                        $externalID));
                 $extIDsEditor->addItem($extIDrow);
             }
         }
 
         $extIDsEditor->addItem(new \Ease\TWB\FormGroup(_('New'),
-            new \Ease\Html\InputTextTag('external-ids[]'), 'ext:..',
-            new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/identifiers/',
-            _('External IDs'))));
+                new \Ease\Html\InputTextTag('external-ids[]'), 'ext:..',
+                new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/identifiers/',
+                    _('External IDs'))));
 
         $extIDsEditor->addItem(new \Ease\TWB\SubmitButton(_('OK').' '.new \Ease\TWB\GlyphIcon('save')));
         return $extIDsEditor;
+    }
+
+    /**
+     * Vraci kod pro ukladani policka formulare po editaci
+     *
+     * @param string $fieldName
+     * @return string javascript
+     */
+    public function onChangeCode($fieldName)
+    {
+        $chCode = '';
+        $id     = $this->engine->getMyKey();
+        if (!is_null($id)) {
+            $chCode = 'saveColumnData(\''.str_replace('\\', '-',
+                    get_class($this->engine)).'\', \''.$id.'\', \''.$fieldName.'\', \''.$this->engine->getEvidence().'\')';
+        }
+        return $chCode;
     }
 }

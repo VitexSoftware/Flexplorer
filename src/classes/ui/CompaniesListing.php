@@ -68,7 +68,7 @@ class CompaniesListing extends \Ease\Html\DivTag
         $companyData['name']     = new \Ease\Html\ATag('company.php?company='.$companyDataRaw['dbNazev'],
             $companyDataRaw['nazev']);
 
-        $created                = \FlexiPeeHP\FlexiBeeRO::flexiDateToDateTime($companyDataRaw['createDt'])->getTimestamp();
+        $created                = \FlexiPeeHP\FlexiBeeRO::flexiDateTimeToDateTime($companyDataRaw['createDt'])->getTimestamp();
         $companyData['created'] = strftime('%a %d. %m. %Y  - %X', $created).' '.'('._('before').' '.new ShowLiveAge($created).')';
         $companyData['databaze'] = new CopyToClipBoard(new \Ease\Html\InputTextTag('dbNazev',
                 $companyDataRaw['dbNazev'], ['id' => 'dbNazev', 'readonly']));
