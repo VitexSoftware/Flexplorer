@@ -20,6 +20,17 @@ $oPage->addItem(new ui\PageTop(_('FlexiBee info')));
 $infoTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
 
 foreach ($statuser->getData() as $property => $value) {
+    
+    switch ($property){
+        case 'startupTime':
+            $value = new ui\ShowLiveAge(\FlexiPeeHP\FlexiBeeRO::flexiDateTimeToDateTime($value)->getTimestamp());
+            break;
+        case 'memoryHeap':
+        case 'memoryUsed':
+            $value = ui\WebPage::formatBytes($value);
+            break;
+    }
+    
     $infoTable->addRowColumns([$property, $value]);
 }
 
