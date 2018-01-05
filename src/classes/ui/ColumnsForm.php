@@ -185,7 +185,7 @@ class ColumnsForm extends \Ease\TWB\Form
         $this->addItem(new \Ease\Html\InputHiddenTag('class',
             get_class($this->engine)));
         if (!is_null($recordID)) {
-            $this->addItem(new \Ease\Html\InputHiddenTag($this->engine->myKeyColumn,
+            $this->addItem(new \Ease\Html\InputHiddenTag($this->engine->keyColumn,
                 $recordID));
         }
         $this->addItem($this->savers);

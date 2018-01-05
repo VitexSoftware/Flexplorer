@@ -3,7 +3,7 @@
  * Flexplorer - DataGrid.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  2016 Vitex Software
+ * @copyright  2016-2017 Vitex Software
  */
 
 namespace Flexplorer\ui;
@@ -83,7 +83,7 @@ class DataGrid extends \Ease\Html\TableTag
             $this->options['url'] .= '&stitek='.urlencode($properties['label']);
         }
 
-        $this->options['sortname'] = $datasource->getMyKeyColumn();
+        $this->options['sortname'] = $datasource->getKeyColumn();
         $dataurl                   = null;
 
         parent::__construct($dataurl, $properties);
@@ -150,14 +150,14 @@ class DataGrid extends \Ease\Html\TableTag
                         $(\'.trSelected\', grid).each(function() {
                             var id = $(this).attr(\'id\');
                             id = id.substring(id.lastIndexOf(\'row\')+3);
-                            $(location).attr(\'href\',\'query.php?show=result&evidence='.$this->dataSource->getEvidence().'&action=\' + action + \'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
+                            $(location).attr(\'href\',\'query.php?show=result&evidence='.$this->dataSource->getEvidence().'&action=\' + action + \'&'.$this->dataSource->getKeyColumn().'=\' +id);
                         });
 
                     } else {
                         $(\'.trSelected\', grid).each(function() {
                             var id = $(this).attr(\'id\');
                             id = id.substring(id.lastIndexOf(\'row\')+3);
-                            var url =\'query.php?show=result&evidence='.$this->dataSource->getEvidence().'&action=\' + action + \'&'.$this->dataSource->getMyKeyColumn().'=\' +id;
+                            var url =\'query.php?show=result&evidence='.$this->dataSource->getEvidence().'&action=\' + action + \'&'.$this->dataSource->getKeyColumn().'=\' +id;
                             var win = window.open(url, \'_blank\');
                             win.focus();
                         });
@@ -277,14 +277,14 @@ background: url(images/edit.png) no-repeat center left;
                 $(\'.trSelected\', grid).each(function() {
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\'editor.php?evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
+                    $(location).attr(\'href\',\'editor.php?evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().'=\' +id);
                 });
 
             } else {
                 $(\'.trSelected\', grid).each(function() {
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    var url =\'editor.php?evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id;
+                    var url =\'editor.php?evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().'=\' +id;
                     var win = window.open(url, \'_blank\');
                     win.focus();
                 });
@@ -314,7 +314,7 @@ background: url(images/xml.svg) no-repeat center left;
                 $(\'.trSelected\', grid).each(function() {
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\'query.php?format=xml&show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
+                    $(location).attr(\'href\',\'query.php?format=xml&show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().'=\' +id);
                 });
 
             } else {
@@ -324,7 +324,7 @@ background: url(images/xml.svg) no-repeat center left;
                     id = id.substring(id.lastIndexOf(\'row\')+3);
                     ids.push( id );
                 });
-                $(location).attr(\'href\',\'query.php?format=xml&show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' + ids.join());
+                $(location).attr(\'href\',\'query.php?format=xml&show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().'=\' + ids.join());
             }
         } else {
             alert("'._('Please mark some rows').'");
@@ -351,7 +351,7 @@ background: url(images/json.svg) no-repeat center left;
                 $(\'.trSelected\', grid).each(function() {
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\'query.php?format=json&show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
+                    $(location).attr(\'href\',\'query.php?format=json&show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().'=\' +id);
                 });
 
             } else {
@@ -361,7 +361,7 @@ background: url(images/json.svg) no-repeat center left;
                     id = id.substring(id.lastIndexOf(\'row\')+3);
                     ids.push( id );
                 });
-                $(location).attr(\'href\',\'query.php?format=json&show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' + ids.join());
+                $(location).attr(\'href\',\'query.php?format=json&show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().'=\' + ids.join());
             }
         } else {
             alert("'._('Please mark some rows').'");
@@ -396,14 +396,14 @@ background: url(images/delete.png) no-repeat center left;
                 $(\'.trSelected\', grid).each(function() {
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\'delete.php?evidence='.$this->dataSource->getEvidence().'&action=delete&'.$this->dataSource->getMyKeyColumn().'=\' +id);
+                    $(location).attr(\'href\',\'delete.php?evidence='.$this->dataSource->getEvidence().'&action=delete&'.$this->dataSource->getKeyColumn().'=\' +id);
                 });
 
             } else {
                 $(\'.trSelected\', grid).each(function() {
                     var id = $(this).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    var url =\'delete.php?evidence='.$this->dataSource->getEvidence().'&action=delete&'.$this->dataSource->getMyKeyColumn().'=\' +id;
+                    var url =\'delete.php?evidence='.$this->dataSource->getEvidence().'&action=delete&'.$this->dataSource->getKeyColumn().'=\' +id;
                     var win = window.open(url, \'_blank\');
                     win.focus();
                 });
@@ -531,7 +531,7 @@ background: url(images/delete.png) no-repeat center left;
             $this->options['onDoubleClick'] = 'function(g) {
                     var id = $(g).attr(\'id\');
                     id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\'editor.php?evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getMyKeyColumn().'=\' +id);
+                    $(location).attr(\'href\',\'editor.php?evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().'=\' +id);
 
             }';
         }

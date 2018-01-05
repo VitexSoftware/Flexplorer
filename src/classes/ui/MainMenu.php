@@ -29,9 +29,9 @@ class MainMenu extends \Ease\Html\Div
      */
     protected function getMenuList($source, $icon = '')
     {
-        $keycolumn  = $source->getmyKeyColumn();
+        $keycolumn  = $source->getkeyColumn();
         $namecolumn = $source->nameColumn;
-        $lister     = $source->getColumnsFromSQL([$source->getmyKeyColumn(), $namecolumn],
+        $lister     = $source->getColumnsFromSQL([$source->getkeyColumn(), $namecolumn],
             [$keycolumn => true], $namecolumn, $keycolumn);
 
         $itemList = [];
