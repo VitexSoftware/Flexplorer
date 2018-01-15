@@ -40,7 +40,7 @@ if ($evidence) {
 $method = $oPage->getRequestValue('method');
 $body   = $oPage->getRequestValue('body');
 if (is_null($body)) {
-    $body = $evobj->jsonizeData([]);
+    $body = $evobj->getJsonizedData([]);
 }
 
 $tabs->addTab(_('Query'),

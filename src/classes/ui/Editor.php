@@ -189,7 +189,7 @@ class Editor extends ColumnsForm
             $editorTabs->addTab(_('Labels'), new LabelSwitches($this->engine));
             $editorTabs->addTab(_('Query'),
                 new SendForm($this->engine->getEvidenceURL(), 'PUT',
-                    $this->engine->jsonizeData($this->engine->getData())));
+                    $this->engine->getJsonizedData($this->engine->getData())));
 
             $editorTabs->addTab(_('FlexiBee'),
                 new \Ease\Html\IframeTag(str_replace('.json', '.html',

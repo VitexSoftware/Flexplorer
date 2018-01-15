@@ -61,7 +61,7 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
     $method = $oPage->getRequestValue('method');
     $body   = $oPage->getRequestValue('body');
     if (is_null($body)) {
-        $body = $evobj->jsonizeData([]);
+        $body = $evobj->getJsonizedData([]);
     }
 
 

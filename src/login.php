@@ -82,7 +82,7 @@ $loginColumn = $loginRow->addItem(new \Ease\TWB\Col(4));
 
 $submit = new \Ease\TWB\SubmitButton(_('Sign in'), 'success');
 
-$loginPanel = new \Ease\TWB\Panel(new \Ease\Html\ImgTag('images/flexplorer-logo.png'),
+$loginPanel = new \Ease\TWB\Panel(new \Ease\Html\ImgTag('images/flexplorer-logo.png','FlexPlorer',['class'=>'img-responsive']),
     'success', null, $submit);
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('FlexiBee'),
     new \Ease\Html\InputTextTag('server',

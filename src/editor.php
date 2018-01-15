@@ -61,7 +61,7 @@ if ($oPage->isPosted() && is_null($oPage->getRequestValue('toFlexiBee'))) {
     $url = $engine->getEvidenceURL();
 
     $method = 'POST';
-    $body   = $engine->jsonizeData($engine->getData());
+    $body   = $engine->getJsonizedData($engine->getData());
 
     $oPage->container->addItem(new \Ease\TWB\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence='.$evidence.'">'.$evidence.'</a> <a href="editor.php?evidence='.$evidence.'&id='.$id.'">'.$recordInfo),
         'info', new ui\SendForm($url, $method, $body)));
