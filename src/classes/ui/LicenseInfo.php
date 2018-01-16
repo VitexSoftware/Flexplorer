@@ -15,15 +15,10 @@ namespace Flexplorer\ui;
  */
 class LicenseInfo extends \Ease\Html\TableTag
 {
+
     public function __construct($licenseInfo)
     {
         parent::__construct(null, ['class' => 'table']);
-
-        $features = [];
-        foreach ($licenseInfo['features']['feature'] as $feature) {
-            $features[] = new \Ease\TWB\Label('success', $feature);
-        }
-        $licenseInfo['features'] = $features;
 
         $licenseInfo['key'] = new \Ease\Html\ATag('https://www.flexibee.eu/moje-licence/?key='.$licenseInfo['key'],
             $licenseInfo['key'], ['target' => '_blank']);
@@ -37,6 +32,20 @@ class LicenseInfo extends \Ease\Html\TableTag
 
 
         foreach ($licenseInfo as $licenseKey => $licenseValue) {
+            switch ($licenseKey) {
+                case 'modules':
+                    $licenseValue = new ModulesOverview(\FlexiPeeHP\Stitek::listToArray($licenseValue));
+                    break;
+                case 'features':
+                    $features = [];
+                    foreach ($licenseValue['feature'] as $feature) {
+                        $features[] = new \Ease\TWB\Label('success', $feature);
+                    }
+                    $licenseValue = $features;
+                    break;
+                default:
+                    break;
+            }
             $this->addRowColumns([$licenseKey, $licenseValue]);
         }
     }
