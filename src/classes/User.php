@@ -54,8 +54,8 @@ class User extends \Ease\User
         $this->flexiBee->curlInit();
         $companies                = $this->flexiBee->performRequest('c.json');
         if (isset($companies['companies'])) {
-            if (isset($companies['companies']['company'][0]['dbNazev'])) {
-                $this->flexiBee->company = $companies['companies']['company'][0]['dbNazev'];
+            if (isset($companies['companies']['company'])) {
+                $this->flexiBee->company = end($companies['companies']['company'])['dbNazev'];
             } else {
                 $this->flexiBee->company = $companies['companies']['company']['dbNazev'];
             }

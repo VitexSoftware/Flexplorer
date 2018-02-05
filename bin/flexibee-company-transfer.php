@@ -17,8 +17,7 @@ if ($argc == 1) {
     echo "flexibee-company-transfer https://user:password@flexibee.source.cz:5434/c/firma_a_s_  https://user:password@flexibee.source.cz:5434/c/firma_a_s_  \n";
 } else {
     $srcOptions = urlToOptions($argv[1]);
-    $source     = new \FlexiPeeHP\Company(['dbNazev' => $srcOptions['company']],
-        $srcOptions);
+    $source     = new \FlexiPeeHP\Company($srcOptions['company'],$srcOptions);
     if ($source->lastResponseCode == 200) {
         
         $backupFile = constant('BACKUP_DIRECTORY').$srcOptions['company'].'.winstorm-backup';
@@ -26,9 +25,8 @@ if ($argc == 1) {
         if ($source->saveBackupTo($backupFile)) {
             $source->addStatusMessage(_('backup saved'), 'success');
             $dstOptions = urlToOptions($argv[2]);
-            $target     = new \FlexiPeeHP\Company(['dbNazev' => $dstOptions['company']],
-                $dstOptions);
-        
+            $target     = new \FlexiPeeHP\Company($dstOptions['company'],$dstOptions);
+            if(!empty($target->getDataValue('stavEnum')))
             $target->addStatusMessage(_('Remove company before restore'), 'info');
             if ($target->deleteFromFlexiBee() || ($target->lastResponseCode == 404)) {
                 if ($target->lastResponseCode == 201) {

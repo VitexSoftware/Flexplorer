@@ -12,7 +12,7 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-if (!$oUser->GetUserID()) {
+if (!$oUser->getUserID()) {
     die(_('nejprve se prosím přihlaš'));
 }
 

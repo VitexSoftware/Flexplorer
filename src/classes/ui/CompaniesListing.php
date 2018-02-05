@@ -44,7 +44,7 @@ class CompaniesListing extends \Ease\Html\DivTag
         parent::__construct(new \Ease\Html\H1Tag(_('Companies Listing')),
             $properties);
         $this->contents = new \Ease\Html\TableTag('', ['class' => 'table']);
-        $this->companer = new \FlexiPeeHP\Company();
+        $this->companer = new \FlexiPeeHP\Company(null,['company'=>null]);
         foreach ($this->getListing() as $companyInfo) {
             $this->contents->addRowColumns($this->companyRow($companyInfo));
         }

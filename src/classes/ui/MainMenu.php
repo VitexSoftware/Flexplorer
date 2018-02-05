@@ -61,7 +61,7 @@ class MainMenu extends \Ease\Html\Div
             }
 
             $nav->addMenuItem(new NavBarSearchBox('search', 'search.php', $term));
-            $companer = new \FlexiPeeHP\Company();
+            $companer = new \FlexiPeeHP\Company(null,['company'=>null]);
 
             $url = \Ease\Shared::webPage()->getRequestValue('url');
             if (is_null($url)) {
