@@ -22,7 +22,7 @@ if (empty($id)) {
         unset($_POST['id']);
         $engine->takeData($_POST);
         $oPage->addStatusMessage(_('New record save'),
-            $engine->refresh() ? 'success' : 'error');
+            $engine->sync() ? 'success' : 'error');
         $id = $engine->getRecordID();
     } else {
         $recordInfo   = _('New record');
