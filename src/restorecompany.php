@@ -22,7 +22,7 @@ $loader  = new \FlexiPeeHP\Company(['dbNazev' => $company]);
 
 
 if (empty($backup)) {
-    $oPage->addItem(new ui\PageTop(_('Baskup restore')));
+    $oPage->addItem(new ui\PageTop(_('Backup restore')));
     $oPage->addStatusMessage('Specify backup to restore', 'warning');
 
     $oPage->container->addItem(new \Ease\TWB\Panel(_('Backups'), 'success',

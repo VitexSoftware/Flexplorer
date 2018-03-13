@@ -1,0 +1,58 @@
+<?php
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+namespace Flexplorer\ui;
+
+/**
+ * Description of ButtonForm
+ *
+ * @author Vítězslav Dvořák <info@vitexsoftware.cz>
+ */
+class ButtonForm extends \Ease\TWB\Form
+{
+
+    /**
+     * Form for new Custom Button in given evidence
+     * 
+     * @param string $evidence evidence dbNazev
+     */
+    public function __construct($evidence)
+    {
+        parent::__construct('button', 'editor.php?evidence=custom-button',
+            'POST');
+
+        $this->addItem(new \Ease\Html\InputHiddenTag('evidence', $evidence));
+
+        $this->addInput(new \Ease\Html\InputTextTag('title',null,['id'=>'buttonTitle']),_('Button Title'));
+
+        $this->addInput(new \Ease\Html\InputTextTag('kod',null,['id'=>'buttonCode']),_('Code'));
+        
+        $this->addInput(new \Ease\Html\InputTextTag('description'),_('Button Description'));
+        
+        $this->addInput(new \Ease\Html\InputUrlTag('url'),_('Button target Url'));
+
+        $this->addInput(new \Ease\Html\Select('location',['list'=>_('List'),'detail'=>_('Detail')]) ,_('Button Location in FlexiBee') );
+        
+        $this->addInput(new \Ease\Html\Select('browser',['automatic'=>_('Automatic'),'desktop'=>_('Desktop')]) ,_('Browser used') );
+        
+        $this->addInput(new \Ease\TWB\SubmitButton(_('Save New Button'),'success'));
+    }
+    
+    /**
+     * 
+     */
+    public function finalize()
+    {
+        $this->addJavaScript('$(\'#buttonTitle\').change(function() {
+         if($.trim($(\'#buttonCode\').val()) == \'\'){
+            $(\'#buttonCode\').val($(this).val().toUpperCase().replace(/\s/g,"_").substring(0,20));
+        }
+});   ');
+        parent::finalize();
+    }
+    
+}

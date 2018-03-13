@@ -13,9 +13,9 @@ require_once 'includes/Init.php';
 $oPage->onlyForLogged();
 
 if (!$oUser->getUserID()) {
-    die(_('nejprve se prosím přihlaš'));
+    die(_('Please login First'));
 }
-
+    
 $saverClass = str_replace('-', '\\', $oPage->GetRequestValue('SaverClass'));
 if ($saverClass == 'undefined') {
     exit;
@@ -35,7 +35,7 @@ $saver->setMyKey($key);
 
 if (is_null($saverClass) || is_null($field) || is_null($value) || is_null($key)) {
     header('HTTP/1.1 400 Bad Request', 400);
-    die(_('Chybné volání'));
+    die(_('Bad call'));
 }
 if (strtolower($value) == 'null') {
     $value = null;

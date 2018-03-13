@@ -157,6 +157,9 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
             \FlexiPeeHP\Stitek::getAvailbleLabels($evobj));
         $infoTab->addItem(new \Ease\TWB\Panel(_('Labels Availble'), 'info', new ui\LabelGroup($evobj)));
     }
+    
+    $buttonsTab = $tabs->addTab(_('Custom Buttons'), new ui\EvidenceCustomButtons($evobj), ($evidenceLicensed === false));
+    
     $oPage->container->addItem($tabs);
 
     $oPage->addItem(new ui\PageBottom());

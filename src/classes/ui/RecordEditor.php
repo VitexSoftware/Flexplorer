@@ -53,6 +53,11 @@ class RecordEditor extends \Ease\TWB\Panel
                 $this->addFlexiInput($column);
             }
         }
+        
+        if(empty($engine->getMyKey())){
+            $this->form->addInput(new \Ease\TWB\SubmitButton(_('Save new record'),'success'));
+        }
+        
         $this->addItem($this->form);
     }
 

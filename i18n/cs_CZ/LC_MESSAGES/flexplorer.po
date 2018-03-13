@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2017-11-26 00:19+0100\n"
-"PO-Revision-Date: 2017-11-26 00:28+0100\n"
+"POT-Creation-Date: 2018-03-13 12:15+0100\n"
+"PO-Revision-Date: 2018-03-13 12:16+0100\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: cs_CZ\n"
@@ -25,14 +25,14 @@ msgid "Used Libraries"
 msgstr "Použité knihovny"
 
 #: ../src/backups.php:24
-#, fuzzy, php-format
+#, php-format
 msgid "%s was deleted"
-msgstr "Záznam byl smazán"
+msgstr "%s byl smazán"
 
 #: ../src/backups.php:27
-#, fuzzy, php-format
+#, php-format
 msgid "%s was not deleted"
-msgstr "Záznam nebyl smazán"
+msgstr "%s nebyl smazán"
 
 #: ../src/backups.php:33 ../src/backups.php:35 ../src/classes/ui/MainMenu.php:129
 #: ../src/restorecompany.php:28
@@ -87,15 +87,15 @@ msgstr "Zkusit"
 msgid "Delete"
 msgstr "Smazat"
 
-#: ../src/changes.php:32
+#: ../src/changes.php:33
 msgid "FlexiBee WebHook income"
 msgstr "Data přijatá WebHookem"
 
-#: ../src/changes.php:38
+#: ../src/changes.php:39
 msgid "Delete All"
 msgstr "Smazat všechny"
 
-#: ../src/changes.php:45 ../src/changesapi.php:111
+#: ../src/changes.php:46 ../src/changesapi.php:111
 msgid "Target to FlexPlorer"
 msgstr "Naseměrovat na FlexPlorer"
 
@@ -253,22 +253,22 @@ msgstr "Záznam se nepovedlo aktualizovat"
 msgid "Unserialization error %s #%s "
 msgstr "Chyba deserializace %s #%s "
 
-#: ../src/classes/Flexplorer.php:311
+#: ../src/classes/Flexplorer.php:314
 #, php-format
 msgid "File %s was used"
 msgstr "Byl použit soubor %s"
 
-#: ../src/classes/Flexplorer.php:320
+#: ../src/classes/Flexplorer.php:323
 #, php-format
 msgid "URL %s was used"
 msgstr "Byla použita adresa %s"
 
-#: ../src/classes/Flexplorer.php:323
+#: ../src/classes/Flexplorer.php:326
 #, php-format
 msgid "Error %s obataing %s"
 msgstr "Chyba %s získání %s"
 
-#: ../src/classes/Flexplorer.php:372
+#: ../src/classes/Flexplorer.php:375
 msgid "External ID"
 msgstr "Externí ID"
 
@@ -307,7 +307,7 @@ msgid "Age"
 msgstr "Stáří"
 
 #: ../src/classes/ui/BackupsTool.php:17 ../src/classes/ui/BackupsTool.php:25
-#: ../src/company.php:48
+#: ../src/company.php:52
 msgid "Restore"
 msgstr "Obnovit"
 
@@ -344,7 +344,7 @@ msgstr "Heslo"
 msgid "Remeber me"
 msgstr "Pamatuj si mne"
 
-#: ../src/classes/ui/BootstrapMenu.php:62 ../src/company.php:64
+#: ../src/classes/ui/BootstrapMenu.php:62 ../src/company.php:68
 #: ../src/settings.php:20
 msgid "Settings"
 msgstr "Nastavení"
@@ -357,8 +357,53 @@ msgstr "Odhlášení"
 msgid "Click to hide messages"
 msgstr "Klikni pro skrytí zpráv"
 
+#: ../src/classes/ui/ButtonForm.php:30
+msgid "Button Title"
+msgstr "Text na Tlačítku"
+
+#: ../src/classes/ui/ButtonForm.php:32
+#: ../src/classes/ui/EvidenceCustomButtons.php:31
+msgid "Code"
+msgstr "Kód"
+
+#: ../src/classes/ui/ButtonForm.php:34
+msgid "Button Description"
+msgstr "Popis tlačítka"
+
+#: ../src/classes/ui/ButtonForm.php:36
+msgid "Button target Url"
+msgstr "Cílové URL tlačítka"
+
+#: ../src/classes/ui/ButtonForm.php:38
+msgid "List"
+msgstr "Seznam"
+
+#: ../src/classes/ui/ButtonForm.php:38
+msgid "Detail"
+msgstr "Detail"
+
+#: ../src/classes/ui/ButtonForm.php:38
+msgid "Button Location in FlexiBee"
+msgstr "umístění tlačítka ve FlexiBee"
+
+#: ../src/classes/ui/ButtonForm.php:40
+msgid "Automatic"
+msgstr "Automatický"
+
+#: ../src/classes/ui/ButtonForm.php:40
+msgid "Desktop"
+msgstr "Desktop"
+
+#: ../src/classes/ui/ButtonForm.php:40
+msgid "Browser used"
+msgstr "Použitý prohlížeč"
+
+#: ../src/classes/ui/ButtonForm.php:42
+msgid "Save New Button"
+msgstr "Nové tlačítko"
+
 #: ../src/classes/ui/ColumnsForm.php:102 ../src/classes/ui/CompanyForm.php:38
-#: ../src/company.php:54 ../src/savecompany.php:45
+#: ../src/company.php:58 ../src/savecompany.php:45
 msgid "Save"
 msgstr "Ulož"
 
@@ -411,23 +456,20 @@ msgid "Companies Listing"
 msgstr "Přehled firem"
 
 #: ../src/classes/ui/CompaniesListing.php:51
-#, fuzzy
 msgid "Name"
 msgstr "Jméno"
 
 #: ../src/classes/ui/CompaniesListing.php:52
-#, fuzzy
 msgid "Database"
-msgstr "Chyba zápisu do databáze"
+msgstr "databáze"
 
-#: ../src/classes/ui/CompaniesListing.php:72 ../src/company.php:83
+#: ../src/classes/ui/CompaniesListing.php:72 ../src/company.php:88
 msgid "before"
 msgstr "před"
 
 #: ../src/classes/ui/CompanyForm.php:27
-#, fuzzy
 msgid "Company name"
-msgstr "Firma"
+msgstr "Název firma"
 
 #: ../src/classes/ui/CompanyForm.php:28
 msgid "My Company"
@@ -474,20 +516,21 @@ msgstr "Zobraz v editoru"
 msgid "OK"
 msgstr "OK"
 
-#: ../src/classes/ui/Editor.php:68
+#: ../src/classes/ui/Editor.php:68 ../src/classes/ui/RecordEditor.php:86
 msgid "Required"
 msgstr "Vyžadováno"
 
-#: ../src/classes/ui/Editor.php:111
+#: ../src/classes/ui/Editor.php:111 ../src/classes/ui/RecordEditor.php:129
 msgid "Edit targeted record"
 msgstr "Uprav zvolený záznam"
 
-#: ../src/classes/ui/Editor.php:135
+#: ../src/classes/ui/Editor.php:135 ../src/classes/ui/RecordEditor.php:155
 #, php-format
 msgid "Unknown type of data %s"
 msgstr "Neznámý typ dat %s "
 
 #: ../src/classes/ui/Editor.php:145 ../src/classes/ui/Editor.php:147
+#: ../src/classes/ui/RecordEditor.php:165 ../src/classes/ui/RecordEditor.php:167
 msgid "Type"
 msgstr "Typ"
 
@@ -513,13 +556,29 @@ msgstr "Dotaz"
 msgid "FlexiBee"
 msgstr "FlexiBee"
 
-#: ../src/classes/ui/Editor.php:227 ../src/company.php:59
+#: ../src/classes/ui/Editor.php:227 ../src/company.php:63
 msgid "Remove"
 msgstr "Odstranit"
 
 #: ../src/classes/ui/Editor.php:237 ../src/classes/ui/MainMenu.php:97
 msgid "New"
 msgstr "Nový"
+
+#: ../src/classes/ui/EvidenceCustomButtons.php:31
+msgid "Url"
+msgstr "Url"
+
+#: ../src/classes/ui/EvidenceCustomButtons.php:31
+msgid "Title"
+msgstr "Nadpis"
+
+#: ../src/classes/ui/EvidenceCustomButtons.php:32
+msgid "Description"
+msgstr "Popisek"
+
+#: ../src/classes/ui/EvidenceCustomButtons.php:32
+msgid "Location"
+msgstr "Umístění"
 
 #: ../src/classes/ui/MainMenu.php:98 ../src/evidence.php:54
 #: ../src/viewevidence.php:31
@@ -553,6 +612,79 @@ msgstr "Test\tWebHooku"
 #: ../src/classes/ui/MainMenu.php:128 ../src/ucetniobdobi.php:47
 msgid "Accounting period"
 msgstr "Účetní období"
+
+#: ../src/classes/ui/ModulesOverview.php:26
+msgid "Invoices Received"
+msgstr "Přijaté faktury"
+
+#: ../src/classes/ui/ModulesOverview.php:27
+msgid "Invoices Issued"
+msgstr "Vydané faktury"
+
+#: ../src/classes/ui/ModulesOverview.php:28
+msgid "Banks"
+msgstr "Banky"
+
+#: ../src/classes/ui/ModulesOverview.php:29
+msgid "Checkout"
+msgstr "Kontrola"
+
+#: ../src/classes/ui/ModulesOverview.php:30
+msgid "Warehouses"
+msgstr "Sklady"
+
+#: ../src/classes/ui/ModulesOverview.php:31
+msgid "Internal Documents"
+msgstr "Interní doklady"
+
+#: ../src/classes/ui/ModulesOverview.php:32
+msgid "Receivables"
+msgstr "Pohledávky"
+
+#: ../src/classes/ui/ModulesOverview.php:33
+msgid "Commitments"
+msgstr "Závazky"
+
+#: ../src/classes/ui/ModulesOverview.php:34
+msgid "Sessions"
+msgstr "Sezení"
+
+#: ../src/classes/ui/ModulesOverview.php:35
+#: ../src/classes/ui/ModulesOverview.php:44
+msgid "Assets"
+msgstr "Majetek"
+
+#: ../src/classes/ui/ModulesOverview.php:36
+msgid "Wages"
+msgstr "Mzdy"
+
+#: ../src/classes/ui/ModulesOverview.php:37
+msgid "CRM"
+msgstr "CRM"
+
+#: ../src/classes/ui/ModulesOverview.php:38
+msgid "Inquiries received"
+msgstr "Přijaté poptávky"
+
+#: ../src/classes/ui/ModulesOverview.php:39
+msgid "Demands issued"
+msgstr "Požadavky"
+
+#: ../src/classes/ui/ModulesOverview.php:40
+msgid "Bids Received"
+msgstr "Nabídky přijaté"
+
+#: ../src/classes/ui/ModulesOverview.php:41
+msgid "bids received"
+msgstr "přijaté nabídky"
+
+#: ../src/classes/ui/ModulesOverview.php:42
+msgid "Orders Received"
+msgstr "Přijaté objednávky"
+
+#: ../src/classes/ui/ModulesOverview.php:43
+msgid "Orders will issue"
+msgstr "Vydané objednávky"
 
 #: ../src/classes/ui/NavBarSearchBox.php:37
 #: ../src/classes/ui/NavBarSearchBox.php:47
@@ -598,6 +730,10 @@ msgstr "Spoje.Net"
 #: ../src/classes/ui/PageBottom.php:79
 msgid "&copy; 2016-2017 Vítězslav \"Vitex\" Dvořák"
 msgstr "&copy; 2016-2017 Vítězslav \"Vitex\" Dvořák"
+
+#: ../src/classes/ui/RecordEditor.php:58
+msgid "Save new record"
+msgstr "Ulož bový záznam"
 
 #: ../src/classes/ui/SendForm.php:33
 msgid "URL"
@@ -667,59 +803,57 @@ msgstr "Nejprve se prosím přihlaš jako admin"
 msgid "Companies"
 msgstr "Firmy"
 
-#: ../src/company.php:36
+#: ../src/company.php:40
 msgid "Reset"
 msgstr "Reset"
 
-#: ../src/company.php:37
+#: ../src/company.php:41
 msgid "Drop company and create again"
 msgstr "Smazat firmu a znovu ji vytvořit"
 
-#: ../src/company.php:41
+#: ../src/company.php:45
 msgid "Duplicate"
 msgstr "Duplikace"
 
-#: ../src/company.php:42
+#: ../src/company.php:46
 msgid "Create copy"
-msgstr ""
+msgstr "Vytvoř kopii"
 
-#: ../src/company.php:49
+#: ../src/company.php:53
 msgid "Restore previously saved state"
-msgstr ""
+msgstr "Obnov ze zálohy"
 
-#: ../src/company.php:55
+#: ../src/company.php:59
 msgid "Save current state"
-msgstr ""
+msgstr "Ulož aktuální stav"
 
-#: ../src/company.php:70
+#: ../src/company.php:74
 msgid "Create company"
 msgstr "Založ firmu"
 
-#: ../src/company.php:78
+#: ../src/company.php:82
 msgid "database"
 msgstr "databáze"
 
-#: ../src/company.php:82
-#, fuzzy
+#: ../src/company.php:87
 msgid "created"
 msgstr "vytvořeno"
 
-#: ../src/company.php:86
+#: ../src/company.php:91
 msgid "Watching changes"
 msgstr "Sledování změn"
 
-#: ../src/company.php:89
-#, fuzzy
-msgid "Show"
-msgstr "Zobraz"
+#: ../src/company.php:94
+msgid "Show in listing"
+msgstr "Zobraz v přehledu"
 
-#: ../src/company.php:92
+#: ../src/company.php:97
 msgid "License Group"
 msgstr "Licenční skupina"
 
-#: ../src/company.php:94
+#: ../src/company.php:99
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: ../src/copycompany.php:23
 msgid "Clone company"
@@ -727,7 +861,7 @@ msgstr "Klonovat Firmu"
 
 #: ../src/copycompany.php:30
 msgid "Clone to"
-msgstr ""
+msgstr "Klonuj do"
 
 #: ../src/copycompany.php:37
 msgid "backup saved"
@@ -735,17 +869,45 @@ msgstr "záloha uložena"
 
 #: ../src/copycompany.php:41 ../src/restorecompany.php:46
 msgid "backup restored"
-msgstr ""
+msgstr "záloha byla obnovena"
 
 #: ../src/copycompany.php:44 ../src/restorecompany.php:48
-#, fuzzy, php-format
+#, php-format
 msgid "company %s was not restored"
-msgstr "Rok %s nebyl odregistrován"
+msgstr "Firma %s nebyla obnovena"
 
 #: ../src/copycompany.php:49
 #, php-format
 msgid "Saving company %s failed"
-msgstr ""
+msgstr "Zaloha firmy %s selhala"
+
+#: ../src/createinsert.php:25 ../src/editor.php:28
+msgid "New record"
+msgstr "Nový záznam"
+
+#: ../src/createinsert.php:49
+msgid "Record was saved"
+msgstr "Záznam byl uložen"
+
+#: ../src/createinsert.php:51
+msgid "Record was not saved"
+msgstr "Záznam nebyl uložen"
+
+#: ../src/createinsert.php:56
+msgid "Editor"
+msgstr "Editor"
+
+#: ../src/datasaver.php:16
+msgid "Please login First"
+msgstr "Nejprve se prosím přihlašte"
+
+#: ../src/datasaver.php:38
+msgid "Bad call"
+msgstr "Chybné volání"
+
+#: ../src/datasaver.php:50
+msgid "Error saving to FlexiBee"
+msgstr "Chyba ukládání do FlexiBee"
 
 #: ../src/delete.php:32
 msgid "Record was deleted"
@@ -767,21 +929,13 @@ msgstr "Uchovat záznam"
 msgid "Delete record"
 msgstr "Smazat záznam"
 
-#: ../src/editor.php:25
-msgid "New record"
-msgstr "Nový záznam"
+#: ../src/editor.php:24
+msgid "New record save"
+msgstr "Uložení nového záznamu"
 
-#: ../src/editor.php:49
-msgid "Record was saved"
-msgstr "Záznam byl uložen"
-
-#: ../src/editor.php:51
-msgid "Record was not saved"
-msgstr "Záznam nebyl uložen"
-
-#: ../src/editor.php:56
-msgid "Editor"
-msgstr "Editor"
+#: ../src/editor.php:37
+msgid "Record Editor"
+msgstr "Editor záznamu"
 
 #: ../src/evidence.php:31
 #, php-format
@@ -828,6 +982,10 @@ msgstr "info"
 #: ../src/evidence.php:158
 msgid "Labels Availble"
 msgstr "Dostupné štítky"
+
+#: ../src/evidence.php:161
+msgid "Custom Buttons"
+msgstr "Uživatelská Tlačítka"
 
 #: ../src/evidences.php:18
 msgid "Evidences"
@@ -946,11 +1104,11 @@ msgstr "flexplorer %s lexibee-buttons"
 msgid "FlexiBee info"
 msgstr "FlexiBee info"
 
-#: ../src/index.php:28
+#: ../src/index.php:39
 msgid "server info"
 msgstr "Informace o serveru"
 
-#: ../src/index.php:30
+#: ../src/index.php:41
 msgid "license info"
 msgstr "informace o licenci"
 
@@ -977,7 +1135,7 @@ msgstr "Prosím potvrď své přihlašovací údaje"
 
 #: ../src/login.php:62
 msgid "Login Bookmarks"
-msgstr ""
+msgstr "Záložky přihlášení"
 
 #: ../src/login.php:91
 msgid "FlexiBee server URL. ex.:"
@@ -1053,12 +1211,12 @@ msgstr "Hlavní stránka"
 
 #: ../src/newcompany.php:27
 msgid "Please enter company name"
-msgstr ""
+msgstr "Prosím vložte název firmy"
 
 #: ../src/newcompany.php:30
 #, php-format
 msgid "Company %s already exists"
-msgstr ""
+msgstr "Firma %s již existuje"
 
 #: ../src/newcompany.php:34
 #, php-format
@@ -1068,11 +1226,11 @@ msgstr "Firma %s byla registrován"
 #: ../src/newcompany.php:44
 #, php-format
 msgid "Creating company %s failed"
-msgstr ""
+msgstr "Vytváření firmy %s sehlalo"
 
 #: ../src/newcompany.php:52
 msgid "Create New Company"
-msgstr ""
+msgstr "Vytvoř novou firmu"
 
 #: ../src/query.php:70
 msgid "Custom request"
@@ -1084,30 +1242,29 @@ msgid "Company %s was recreated"
 msgstr "Firma %s byl znovuvytvořena"
 
 #: ../src/restorecompany.php:25
-msgid "Baskup restore"
-msgstr ""
+msgid "Backup restore"
+msgstr "Obnova ze zálohy"
 
 #: ../src/restorecompany.php:40
 msgid "company removed before restore"
-msgstr ""
+msgstr "firma odstraněna před obnovením"
 
 #: ../src/restorecompany.php:42
 msgid "company cleanup failed"
-msgstr ""
+msgstr "čištění firmy selhalo"
 
 #: ../src/savecompany.php:28
 #, php-format
 msgid "backup %s saved"
-msgstr ""
+msgstr "záloha %s uložena"
 
 #: ../src/savecompany.php:31
-#, fuzzy
 msgid "backup save failed"
-msgstr "Záznam se nepovedlo aktualizovat"
+msgstr "ukládání zálohy selhalo"
 
 #: ../src/savecompany.php:34
 msgid "Please enter backup file name"
-msgstr ""
+msgstr "Prosím zadejte jméno zálohy"
 
 #: ../src/savecompany.php:38
 msgid "Company Backup"
@@ -1183,6 +1340,18 @@ msgstr "Struktura"
 #: ../src/viewevidence.php:47
 msgid "Custom query"
 msgstr "Dotaz na API"
+
+#, fuzzy
+#~ msgid "nejprve se prosím přihlaš"
+#~ msgstr "nejprve se prosím přihlaš"
+
+#, fuzzy
+#~ msgid "Chybné volání"
+#~ msgstr "Chybné volání"
+
+#, fuzzy
+#~ msgid "Show"
+#~ msgstr "Zobraz"
 
 #~ msgid "Login History"
 #~ msgstr "Historie přihlášení"

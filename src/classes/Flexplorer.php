@@ -212,12 +212,15 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
     {
 
         $fbColumns = $this->getColumnsInfo();
-        foreach ($this->getRelationsInfo() as $relation) {
-            if (is_array($relation) && isset($relation['url'])) {
-                $fbRelations[$relation['url']] = $relation['url'];
+        $relations = $this->getRelationsInfo();
+
+        if ($relations) {
+            foreach ($relations as $relation) {
+                if (is_array($relation) && isset($relation['url'])) {
+                    $fbRelations[$relation['url']] = $relation['url'];
+                }
             }
         }
-
         if (count($fbColumns)) {
             foreach ($data as $key => $value) {
                 if ($key == 'external-ids') {

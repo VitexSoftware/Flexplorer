@@ -173,7 +173,7 @@ class Editor extends ColumnsForm
     public function finalize()
     {
         parent::finalize();
-
+        \Ease\JQuery\Part::jQueryze();
         $id = $this->engine->getDataValue('id');
         if (is_array($id)) {
             $id = current($id);
