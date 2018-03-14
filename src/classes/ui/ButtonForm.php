@@ -24,24 +24,35 @@ class ButtonForm extends \Ease\TWB\Form
     {
         parent::__construct('button', 'editor.php?evidence=custom-button',
             'POST');
+        $url = dirname((isset($_SERVER['HTTPS']) ? "https" : "http")."://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+        $url .= '/editor.php?evidence='.$evidence.'&id=${object.id}';
 
         $this->addItem(new \Ease\Html\InputHiddenTag('evidence', $evidence));
 
-        $this->addInput(new \Ease\Html\InputTextTag('title',null,['id'=>'buttonTitle']),_('Button Title'));
+        $this->addInput(new \Ease\Html\InputTextTag('title', _('Open in Flexplorer'),
+                ['id' => 'buttonTitle']), _('Button Title'));
 
-        $this->addInput(new \Ease\Html\InputTextTag('kod',null,['id'=>'buttonCode']),_('Code'));
-        
-        $this->addInput(new \Ease\Html\InputTextTag('description'),_('Button Description'));
-        
-        $this->addInput(new \Ease\Html\InputUrlTag('url'),_('Button target Url'));
+        $this->addInput(new \Ease\Html\InputTextTag('kod', null,
+                ['id' => 'buttonCode', 'maxlength' => 20]), _('Code'));
 
-        $this->addInput(new \Ease\Html\Select('location',['list'=>_('List'),'detail'=>_('Detail')]) ,_('Button Location in FlexiBee') );
-        
-        $this->addInput(new \Ease\Html\Select('browser',['automatic'=>_('Automatic'),'desktop'=>_('Desktop')]) ,_('Browser used') );
-        
-        $this->addInput(new \Ease\TWB\SubmitButton(_('Save New Button'),'success'));
+        $this->addInput(new \Ease\Html\InputTextTag('description'),
+            _('Button Description'));
+
+        $this->addInput(new \Ease\Html\InputUrlTag('url', $url),
+            _('Button target Url'));
+
+        $this->addInput(new \Ease\Html\Select('location',
+                ['list' => _('List'), 'detail' => _('Detail')]),
+            _('Button Location in FlexiBee'));
+
+        $this->addInput(new \Ease\Html\Select('browser',
+                ['automatic' => _('Automatic'), 'desktop' => _('Desktop')]),
+            _('Browser used'));
+
+        $this->addInput(new \Ease\TWB\SubmitButton(_('Save New Button'),
+                'success'));
     }
-    
+
     /**
      * 
      */
@@ -54,5 +65,4 @@ class ButtonForm extends \Ease\TWB\Form
 });   ');
         parent::finalize();
     }
-    
 }
