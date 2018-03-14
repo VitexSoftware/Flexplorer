@@ -35,11 +35,11 @@ class ButtonForm extends \Ease\TWB\Form
         $this->addInput(new \Ease\Html\InputTextTag('kod', null,
                 ['id' => 'buttonCode', 'maxlength' => 20]), _('Code'));
 
-        $this->addInput(new \Ease\Html\InputTextTag('description'),
+        $this->addInput(new \Ease\Html\InputTextTag('description',null,['id'=>'buttonDescription']),
             _('Button Description'));
 
         $this->addInput(new \Ease\Html\InputUrlTag('url', $url),
-            _('Button target Url'));
+            _('Button target Url'), $url, new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/uzivatelske-tlacitko/', _('Api Documentation')));
 
         $this->addInput(new \Ease\Html\Select('location',
                 ['list' => _('List'), 'detail' => _('Detail')]),
@@ -61,7 +61,11 @@ class ButtonForm extends \Ease\TWB\Form
         $this->addJavaScript('$(\'#buttonTitle\').change(function() {
          if($.trim($(\'#buttonCode\').val()) == \'\'){
             $(\'#buttonCode\').val($(this).val().toUpperCase().replace(/\s/g,"_").substring(0,20));
-        }
+         }
+         if($.trim($(\'#buttonDescription\').val()) == \'\'){
+            $(\'#buttonDescription\').val($(this).val());
+         }
+        
 });   ');
         parent::finalize();
     }
