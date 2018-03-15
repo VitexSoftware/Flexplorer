@@ -34,7 +34,7 @@ class RecordEditor extends \Ease\TWB\Panel
      */
     public function __construct($engine)
     {
-        parent::__construct(\FlexiPeeHP\EvidenceList::$evidences[$engine->getEvidence()]['evidenceName'].' #'.$engine->getMyKey(),
+        parent::__construct( new \Ease\Html\H3Tag(new \Ease\Html\ATag('evidence.php?evidence='.$engine->getEvidence(), \FlexiPeeHP\EvidenceList::$evidences[$engine->getEvidence()]['evidenceName']).' #'.$engine->getMyKey()),
             'info');
         $columns    = $engine->getColumnsInfo();
         \Ease\Shared::webPage()->includeJavaScript('js/datasaver.js');

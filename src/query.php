@@ -35,7 +35,7 @@ if (!strlen($url)) {
             foreach (explode(',', $id) as $oneID) {
                 $ids [] = 'id='.$oneID;
             }
-            $url .= '/('.implode(' or ', $ids).')';
+            $url .= '/'. '('.implode('%20or%20', $ids).')';
         } else {
             $url .= '/'.$id;
         }

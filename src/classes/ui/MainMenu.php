@@ -67,7 +67,7 @@ class MainMenu extends \Ease\Html\Div
             if (is_null($url)) {
                 $infoLabel = $companer->getEvidenceURL();
 
-                $infoLabel .= '/'.$myCompany;
+                $infoLabel .= $myCompany;
 
                 $evidence = $this->webPage->getRequestValue('evidence');
                 if ($evidence) {

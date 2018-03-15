@@ -29,17 +29,20 @@ class ButtonForm extends \Ease\TWB\Form
 
         $this->addItem(new \Ease\Html\InputHiddenTag('evidence', $evidence));
 
-        $this->addInput(new \Ease\Html\InputTextTag('title', _('Open in Flexplorer'),
-                ['id' => 'buttonTitle']), _('Button Title'));
+        $this->addInput(new \Ease\Html\InputTextTag('title',
+                _('Open in Flexplorer'), ['id' => 'buttonTitle']),
+            _('Button Title'));
 
         $this->addInput(new \Ease\Html\InputTextTag('kod', null,
                 ['id' => 'buttonCode', 'maxlength' => 20]), _('Code'));
 
-        $this->addInput(new \Ease\Html\InputTextTag('description',null,['id'=>'buttonDescription']),
-            _('Button Description'));
+        $this->addInput(new \Ease\Html\InputTextTag('description', null,
+                ['id' => 'buttonDescription']), _('Button Description'));
 
         $this->addInput(new \Ease\Html\InputUrlTag('url', $url),
-            _('Button target Url'), $url, new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/uzivatelske-tlacitko/', _('Api Documentation')));
+            _('Button target Url'), $url,
+            new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/uzivatelske-tlacitko/',
+                _('Api Documentation')));
 
         $this->addInput(new \Ease\Html\Select('location',
                 ['list' => _('List'), 'detail' => _('Detail')]),
