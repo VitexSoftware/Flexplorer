@@ -15,6 +15,10 @@ namespace Flexplorer;
  */
 class User extends \Ease\User
 {
+    /**
+     * FlexiBee engine
+     * @var \FlexiPeeHP\FlexiBeeRO
+     */
     public $flexiBee = null;
 
     /**
@@ -55,7 +59,7 @@ class User extends \Ease\User
         $companies                = $this->flexiBee->performRequest('c.json');
         if (isset($companies['companies'])) {
             if (isset($companies['companies']['company'])) {
-                $this->flexiBee->company = end($companies['companies']['company'])['dbNazev'];
+                $this->flexiBee->company = array_key_exists('dbNazev', $companies['companies']['company'] ) ? $companies['companies']['company']['dbNazev'] : end($companies['companies']['company'])['dbNazev'];
             } else {
                 $this->flexiBee->company = $companies['companies']['company']['dbNazev'];
             }
@@ -76,8 +80,8 @@ class User extends \Ease\User
     {
         $_SESSION['user']     = $this->flexiBee->user;
         $_SESSION['password'] = $this->flexiBee->password;
-        $_SESSION['company']  = $this->flexiBee->company;
         $_SESSION['url']      = $this->flexiBee->url;
+        $_SESSION['company']  = $this->flexiBee->company;
 
         $this->flexiBee->setEvidence('');
         $this->flexiBee->setCompany('');

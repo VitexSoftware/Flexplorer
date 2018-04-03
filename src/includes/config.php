@@ -17,16 +17,16 @@ define('EMAIL_FROM', 'flexplorer@localhost');
 /*
  * URL Flexibee API
  */
-define('DEFAULT_FLEXIBEE_URL', 'https://demo.flexibee.eu');
+define('DEFAULT_FLEXIBEE_URL', 'https://vitexsoftware.flexibee.eu:5434');
 /*
  * FlexiBee API User
  */
-define('DEFAULT_FLEXIBEE_LOGIN', 'winstrom');
+define('DEFAULT_FLEXIBEE_LOGIN', 'vitex');
 /*
  * FlexiBee API Password
  */
 
-define('DEFAULT_FLEXIBEE_PASSWORD', 'winstrom');
+define('DEFAULT_FLEXIBEE_PASSWORD', 'Sod1orp');
 /*
  * Společnost v FlexiBee
  */

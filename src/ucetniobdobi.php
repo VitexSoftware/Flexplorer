@@ -17,10 +17,38 @@ $do = $oPage->getRequestValue('do');
 
 $uo = new \FlexiPeeHP\UcetniObdobi();
 
+/**
+ * Create requested Accounting period
+ *
+ * @param int $startYear first year to create
+ * @param int $endYear   last yar to create - default is current year
+ *
+ * @return array Results
+ */
+function createYearsFrom($uo, $startYear, $endYear = null)
+{
+    $result = [];
+    if (is_null($endYear)) {
+        $endYear = date('Y');
+    }
 
-if (!is_null($od)) {
-
-    $uo->createYearsFrom($od, $do);
+    for ($year = $startYear; $year <= $endYear; ++$year) {
+        $obdobi = ['kod' => $year,
+            'platiOdData' => $year.'-01-01T00:00:00',
+            'platiDoData' => $year.'-12-31T23:59:59',
+        ];
+        if ($uo->idExists('code:'.$year)) {
+            $uo->addStatusMessage(sprintf(_('%s already exists.'), $year));
+        } else {
+            $uo->setData($obdobi);
+            $result[] = $uo->insertToFlexibee();
+            $uo->dataReset();
+        }
+    }
+    return $result;
+}
+if (!is_null($od)) { 
+   createYearsFrom($uo, $od, $do);
 }
 
 $yeardel = $oPage->getRequestValue('yeardel', 'int');
@@ -50,13 +78,13 @@ $toolRow      = new \Ease\TWB\Row();
 $settingsForm = new \Ease\TWB\Form('settings');
 
 $settingsForm->addInput(new \Ease\Html\InputNumberTag('od', null,
-    ['min' => 1980]), _('From Year'), date('Y') - 2);
+        ['min' => 1980]), _('From Year'), date('Y') - 2);
 
 $settingsForm->addInput(new \Ease\Html\InputNumberTag('od', date('Y'),
-    ['min' => 1980]), _('To Year'), date('Y') + 2);
+        ['min' => 1980]), _('To Year'), date('Y') + 2);
 
 $settingsForm->addItem(new \Ease\TWB\SubmitButton(_('Perform operation'),
-    'warning'));
+        'warning'));
 $toolRow->addColumn(6, new \Ease\TWB\Well($settingsForm));
 
 
@@ -72,12 +100,12 @@ if (!isset($ucetniObdobi['message']) && count($ucetniObdobi)) {
 
     $toolRow->addColumn(6,
         new \Ease\TWB\Panel(_('Registered Accounting periods'), 'info',
-        $ucetniObdobiTable,
-        new \Ease\TWB\LinkButton('?yeardel=0', _('Remove unused'), 'warning')));
+            $ucetniObdobiTable,
+            new \Ease\TWB\LinkButton('?yeardel=0', _('Remove unused'), 'warning')));
 }
 
 $oPage->container->addItem(new \Ease\TWB\Panel(_('Tool for massive creating Accounting periods'),
-    'info', $toolRow));
+        'info', $toolRow));
 
 $oPage->addItem(new ui\PageBottom());
 
