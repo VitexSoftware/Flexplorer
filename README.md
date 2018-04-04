@@ -25,6 +25,8 @@ Umožňuje:
   * Klonovat firmu
   * Uložit a znovu načíst výchozí zálohu firmy
   * Filtrovat záznamy dle ID nebo Externího ID
+  * Definovat Uživatelská tlačítka
+  * Zobrazovat oprávnění k rolím
   
 
 [![Source Code](http://img.shields.io/badge/source-VitexSoftware/Flexplorer-blue.svg?style=flat-square)](https://github.com/VitexSoftware/Flexplorer)

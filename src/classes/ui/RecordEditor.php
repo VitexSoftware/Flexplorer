@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Flexplorer - RecortEditor
+ * Flexplorer - RecordEditor
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2018 Vitex Software

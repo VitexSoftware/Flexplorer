@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2018-03-13 12:15+0100\n"
-"PO-Revision-Date: 2018-03-13 12:16+0100\n"
+"POT-Creation-Date: 2018-04-04 14:16+0200\n"
+"PO-Revision-Date: 2018-04-04 14:18+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: cs_CZ\n"
@@ -34,7 +34,7 @@ msgstr "%s byl smazán"
 msgid "%s was not deleted"
 msgstr "%s nebyl smazán"
 
-#: ../src/backups.php:33 ../src/backups.php:35 ../src/classes/ui/MainMenu.php:129
+#: ../src/backups.php:33 ../src/backups.php:35 ../src/classes/ui/MainMenu.php:130
 #: ../src/restorecompany.php:28
 msgid "Backups"
 msgstr "Zálohy"
@@ -84,6 +84,7 @@ msgstr "Zkusit"
 
 #: ../src/change.php:58 ../src/classes/ui/BackupsTool.php:18
 #: ../src/classes/ui/BackupsTool.php:27 ../src/classes/ui/DataGrid.php:118
+#: ../src/classes/ui/EvidenceCustomButtons.php:32
 msgid "Delete"
 msgstr "Smazat"
 
@@ -212,7 +213,7 @@ msgstr ""
 "HTTP hlavičce. Slouží k jednoduchému ověření, zda patří příchozí notifikace "
 "Vámi registrovanému hooku. Název klíče v HTTP hlavičce je X-FB-Hook-SecKey."
 
-#: ../src/changesapi.php:133 ../src/ucetniobdobi.php:58
+#: ../src/changesapi.php:133 ../src/ucetniobdobi.php:86
 msgid "Perform operation"
 msgstr "Vykonej operaci"
 
@@ -285,11 +286,11 @@ msgstr "Webhook vrátil prázdnou odezvu"
 msgid "No search results"
 msgstr "Žádné výsledky vyhledávání"
 
-#: ../src/classes/User.php:65
+#: ../src/classes/User.php:69
 msgid "Login Failed"
 msgstr "Chyba přihlášení"
 
-#: ../src/classes/User.php:98
+#: ../src/classes/User.php:102
 msgid "Loading evidence list failed"
 msgstr "Načítání evidence se nezdařilo"
 
@@ -319,86 +320,102 @@ msgstr "Ano"
 msgid "No"
 msgstr "Ne"
 
-#: ../src/classes/ui/BootstrapMenu.php:39 ../src/classes/ui/BootstrapMenu.php:66
+#: ../src/classes/ui/BootstrapMenu.php:40 ../src/classes/ui/MainMenu.php:120
+msgid "Tools"
+msgstr "Nástroje"
+
+#: ../src/classes/ui/BootstrapMenu.php:42 ../src/classes/ui/MainMenu.php:129
+msgid "Role Permissions"
+msgstr "Oprávnění rolí"
+
+#: ../src/classes/ui/BootstrapMenu.php:46 ../src/classes/ui/BootstrapMenu.php:73
 msgid "About"
 msgstr "O aplikaci"
 
-#: ../src/classes/ui/BootstrapMenu.php:46 ../src/classes/ui/BootstrapMenu.php:54
+#: ../src/classes/ui/BootstrapMenu.php:53 ../src/classes/ui/BootstrapMenu.php:61
 #: ../src/login.php:52 ../src/login.php:83
 msgid "Sign in"
 msgstr "Přihlásit"
 
-#: ../src/classes/ui/BootstrapMenu.php:49
+#: ../src/classes/ui/BootstrapMenu.php:56
 msgid "Server"
 msgstr "Server"
 
-#: ../src/classes/ui/BootstrapMenu.php:50
+#: ../src/classes/ui/BootstrapMenu.php:57
 msgid "login"
 msgstr "login"
 
-#: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:96
+#: ../src/classes/ui/BootstrapMenu.php:58 ../src/login.php:96
 msgid "Password"
 msgstr "Heslo"
 
-#: ../src/classes/ui/BootstrapMenu.php:53 ../src/login.php:100
+#: ../src/classes/ui/BootstrapMenu.php:60 ../src/login.php:100
 msgid "Remeber me"
 msgstr "Pamatuj si mne"
 
-#: ../src/classes/ui/BootstrapMenu.php:62 ../src/company.php:68
+#: ../src/classes/ui/BootstrapMenu.php:69 ../src/company.php:68
 #: ../src/settings.php:20
 msgid "Settings"
 msgstr "Nastavení"
 
-#: ../src/classes/ui/BootstrapMenu.php:68
+#: ../src/classes/ui/BootstrapMenu.php:75
 msgid "Sign off"
 msgstr "Odhlášení"
 
-#: ../src/classes/ui/BootstrapMenu.php:83
+#: ../src/classes/ui/BootstrapMenu.php:90
 msgid "Click to hide messages"
 msgstr "Klikni pro skrytí zpráv"
 
-#: ../src/classes/ui/ButtonForm.php:30
+#: ../src/classes/ui/ButtonForm.php:33
+msgid "Open in Flexplorer"
+msgstr "Otevřít ve Flexploreru"
+
+#: ../src/classes/ui/ButtonForm.php:34
 msgid "Button Title"
 msgstr "Text na Tlačítku"
 
-#: ../src/classes/ui/ButtonForm.php:32
+#: ../src/classes/ui/ButtonForm.php:37
 #: ../src/classes/ui/EvidenceCustomButtons.php:31
 msgid "Code"
 msgstr "Kód"
 
-#: ../src/classes/ui/ButtonForm.php:34
+#: ../src/classes/ui/ButtonForm.php:40
 msgid "Button Description"
 msgstr "Popis tlačítka"
 
-#: ../src/classes/ui/ButtonForm.php:36
+#: ../src/classes/ui/ButtonForm.php:43
 msgid "Button target Url"
 msgstr "Cílové URL tlačítka"
 
-#: ../src/classes/ui/ButtonForm.php:38
+#: ../src/classes/ui/ButtonForm.php:45
+msgid "Api Documentation"
+msgstr "Dokumentace API"
+
+#: ../src/classes/ui/ButtonForm.php:48
 msgid "List"
 msgstr "Seznam"
 
-#: ../src/classes/ui/ButtonForm.php:38
+#: ../src/classes/ui/ButtonForm.php:48
 msgid "Detail"
 msgstr "Detail"
 
-#: ../src/classes/ui/ButtonForm.php:38
+#: ../src/classes/ui/ButtonForm.php:49
 msgid "Button Location in FlexiBee"
 msgstr "umístění tlačítka ve FlexiBee"
 
-#: ../src/classes/ui/ButtonForm.php:40
+#: ../src/classes/ui/ButtonForm.php:52
 msgid "Automatic"
 msgstr "Automatický"
 
-#: ../src/classes/ui/ButtonForm.php:40
+#: ../src/classes/ui/ButtonForm.php:52
 msgid "Desktop"
 msgstr "Desktop"
 
-#: ../src/classes/ui/ButtonForm.php:40
+#: ../src/classes/ui/ButtonForm.php:53
 msgid "Browser used"
 msgstr "Použitý prohlížeč"
 
-#: ../src/classes/ui/ButtonForm.php:42
+#: ../src/classes/ui/ButtonForm.php:55
 msgid "Save New Button"
 msgstr "Nové tlačítko"
 
@@ -488,6 +505,7 @@ msgid "Add"
 msgstr "Přidej"
 
 #: ../src/classes/ui/DataGrid.php:115
+#: ../src/classes/ui/EvidenceCustomButtons.php:32
 msgid "Edit"
 msgstr "Uprav"
 
@@ -569,16 +587,16 @@ msgid "Url"
 msgstr "Url"
 
 #: ../src/classes/ui/EvidenceCustomButtons.php:31
-msgid "Title"
-msgstr "Nadpis"
+msgid "Button"
+msgstr "Tlačítko"
 
-#: ../src/classes/ui/EvidenceCustomButtons.php:32
-msgid "Description"
-msgstr "Popisek"
+#: ../src/classes/ui/EvidenceCustomButtons.php:44
+msgid "Current Buttons"
+msgstr "Stávající Tlačítka"
 
-#: ../src/classes/ui/EvidenceCustomButtons.php:32
-msgid "Location"
-msgstr "Umístění"
+#: ../src/classes/ui/EvidenceCustomButtons.php:47
+msgid "New Button"
+msgstr "Nové tlačítko"
 
 #: ../src/classes/ui/MainMenu.php:98 ../src/evidence.php:54
 #: ../src/viewevidence.php:31
@@ -593,10 +611,6 @@ msgstr "Firma"
 msgid "Overview"
 msgstr "Přehled"
 
-#: ../src/classes/ui/MainMenu.php:120
-msgid "Tools"
-msgstr "Nástroje"
-
 #: ../src/classes/ui/MainMenu.php:124
 msgid "Buttons"
 msgstr "Tlačítka"
@@ -609,7 +623,7 @@ msgstr "Přijaté změny"
 msgid "WebHook test"
 msgstr "Test\tWebHooku"
 
-#: ../src/classes/ui/MainMenu.php:128 ../src/ucetniobdobi.php:47
+#: ../src/classes/ui/MainMenu.php:128 ../src/ucetniobdobi.php:75
 msgid "Accounting period"
 msgstr "Účetní období"
 
@@ -730,6 +744,19 @@ msgstr "Spoje.Net"
 #: ../src/classes/ui/PageBottom.php:79
 msgid "&copy; 2016-2017 Vítězslav \"Vitex\" Dvořák"
 msgstr "&copy; 2016-2017 Vítězslav \"Vitex\" Dvořák"
+
+#: ../src/classes/ui/PermissionsViewer.php:33
+msgid "true"
+msgstr "ano"
+
+#: ../src/classes/ui/PermissionsViewer.php:37
+msgid "false"
+msgstr "ne"
+
+#: ../src/classes/ui/PermissionsViewer.php:46
+#, php-format
+msgid "Error reading file %s"
+msgstr "Chyba čtení souboru %s"
 
 #: ../src/classes/ui/RecordEditor.php:58
 msgid "Save new record"
@@ -1232,6 +1259,10 @@ msgstr "Vytváření firmy %s sehlalo"
 msgid "Create New Company"
 msgstr "Vytvoř novou firmu"
 
+#: ../src/permissions.php:16
+msgid "Permissions overview"
+msgstr "Přehled oprávnění"
+
 #: ../src/query.php:70
 msgid "Custom request"
 msgstr "Uživatelský požadavek"
@@ -1291,41 +1322,46 @@ msgstr "Historie je prázdná"
 msgid "Reset history"
 msgstr "Vymazat historii"
 
-#: ../src/ucetniobdobi.php:31
+#: ../src/ucetniobdobi.php:41
+#, php-format
+msgid "%s already exists."
+msgstr "%s již existuje"
+
+#: ../src/ucetniobdobi.php:59
 #, php-format
 msgid "Year %s was unregistred"
 msgstr "Rok %s byl odregistorván"
 
-#: ../src/ucetniobdobi.php:34
+#: ../src/ucetniobdobi.php:62
 #, php-format
 msgid "Year %s was not unregistred"
 msgstr "Rok %s nebyl odregistrován"
 
-#: ../src/ucetniobdobi.php:40
+#: ../src/ucetniobdobi.php:68
 msgid "Year was unregistred"
 msgstr "Rok byl odregistrován"
 
-#: ../src/ucetniobdobi.php:42
+#: ../src/ucetniobdobi.php:70
 msgid "Year was not unregistred"
 msgstr "Rok nebyl odregistrován"
 
-#: ../src/ucetniobdobi.php:53
+#: ../src/ucetniobdobi.php:81
 msgid "From Year"
 msgstr "Od roku"
 
-#: ../src/ucetniobdobi.php:56
+#: ../src/ucetniobdobi.php:84
 msgid "To Year"
 msgstr "Do roku"
 
-#: ../src/ucetniobdobi.php:74
+#: ../src/ucetniobdobi.php:102
 msgid "Registered Accounting periods"
 msgstr "Registrovaná účetní období"
 
-#: ../src/ucetniobdobi.php:76
+#: ../src/ucetniobdobi.php:104
 msgid "Remove unused"
 msgstr "Odstranit nepoužité"
 
-#: ../src/ucetniobdobi.php:79
+#: ../src/ucetniobdobi.php:107
 msgid "Tool for massive creating Accounting periods"
 msgstr "Nástroj pro hromadné zakládání účetních období"
 
@@ -1340,6 +1376,15 @@ msgstr "Struktura"
 #: ../src/viewevidence.php:47
 msgid "Custom query"
 msgstr "Dotaz na API"
+
+#~ msgid "Title"
+#~ msgstr "Nadpis"
+
+#~ msgid "Description"
+#~ msgstr "Popisek"
+
+#~ msgid "Location"
+#~ msgstr "Umístění"
 
 #, fuzzy
 #~ msgid "nejprve se prosím přihlaš"

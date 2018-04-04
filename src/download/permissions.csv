@@ -1,0 +1,379 @@
+agenda;admin;jenCist;obchodnik;skladnik;skladSPok;superUziv;ucetni;mzdovyUcet;uzivatel
+Adresy firem;true;true;true;true;true;true;true;true;true
+Bankovní spojení;true;true;true;true;true;true;true;true;true
+Kontakty;true;true;true;true;true;true;true;true;true
+Místa určení;true;true;true;true;true;true;true;true;true
+Náklady na události / aktivity;true;true;true;true;true;true;true;true;true
+Poštovní směrovací čísla;true;true;true;true;true;true;true;true;true
+Skupiny firem;true;true;true;true;true;true;true;true;true
+Peněžní ústavy;true;true;true;false;false;true;true;true;true
+Státy;true;true;true;false;false;true;true;true;true
+Úkoly k realizaci;true;true;true;true;true;true;true;true;true
+Průvodce aktivací produktu FlexiBee;true;true;true;true;true;true;true;true;true
+Můj FlexiBee;true;false;false;false;false;true;false;false;false
+Typy událostí / aktivit;true;true;true;true;true;true;true;true;true
+Typy nákladů na události / aktivity;true;true;true;true;true;true;true;true;true
+Časté dotazy;true;true;true;true;true;true;true;true;true
+Cenové úrovně;true;true;true;false;false;true;false;false;true
+Ceník;true;true;true;true;true;true;true;true;true
+Dodavatelé;true;true;true;true;true;true;true;true;true
+Kusovník;true;true;true;true;true;true;true;true;true
+Měrné jednotky ;true;true;true;true;true;true;true;true;true
+Ceny pro odběratele/skupiny odběratelů, speciální kódy;true;true;true;true;true;true;true;true;true
+Podobné;true;true;true;true;true;true;true;true;true
+Poplatky;true;true;true;true;true;true;true;true;true
+Sady;true;true;true;true;true;true;true;true;true
+Správa datových zdrojů;true;true;true;true;true;true;true;true;true
+Přidat datový zdroj;true;true;true;true;true;true;true;true;true
+Skupiny zboží a materiálu;true;true;true;true;true;true;false;false;true
+Ceníkové skupiny;true;true;true;true;true;true;false;false;true
+Číselníky zakázek;true;true;true;false;false;true;true;true;true
+Číselník stavů položek ceníku;true;true;true;true;true;true;true;true;true
+Příslušenství;true;true;true;true;true;true;true;true;true
+Standardní typy atributů;true;true;true;true;true;true;true;true;true
+Standardní skupiny atributů;true;true;true;true;true;true;true;true;true
+Atributy;true;true;true;true;true;true;true;true;true
+Číselníky atributů;true;true;true;true;true;true;true;true;true
+Evidence obalů EkoKom;true;true;true;true;true;true;true;true;true
+Ceny v cizích měnách;true;true;true;true;true;true;true;true;true
+Výkaz daňové evidence;true;true;true;true;true;true;true;true;true
+Automatický tisk;true;true;true;false;false;true;true;true;true
+Výběr dokladů k uhrazení;true;true;true;true;true;true;true;true;true
+Přijaté faktury;true;true;true;false;false;true;true;true;true
+Prodejní kasa;true;true;true;false;false;true;true;true;true
+Ostatní pohledávky;true;true;false;false;false;true;true;true;true
+Ostatní závazky;true;true;false;false;false;true;true;true;true
+Bankovní/pokladní/interní doklad;true;true;true;true;true;true;true;true;true
+Vzájemné zápočty;true;true;false;false;false;true;true;true;true
+Pokladní kniha;true;true;true;false;true;true;true;true;true
+Přijaté nabídky;true;true;true;false;false;true;false;false;true
+Vydané nabídky;true;true;true;false;false;true;false;false;true
+Přijaté objednávky;true;true;true;false;false;true;false;false;true
+Vydané objednávky;true;true;true;false;false;true;false;false;true
+Přijaté poptávky;true;true;true;false;false;true;false;false;true
+Vydané poptávky;true;true;true;false;false;true;false;false;true
+Příjemky/výdejky;true;true;true;true;true;true;true;true;true
+Bankovní formáty;true;true;true;false;false;true;true;true;true
+EET komunikace;true;true;false;false;true;true;true;false;true
+Konstantní symboly;true;true;true;false;false;true;true;true;true
+Úhrada;true;true;true;false;false;true;true;true;true
+Stavy smluv;true;true;true;false;false;true;true;true;true
+Typy dodavatelských smluv;true;true;true;false;false;true;true;true;true
+Dodavatelské smlouvy;true;true;true;false;false;true;true;true;true
+Externí položky smluv;true;true;true;false;false;true;true;true;true
+Žurnál pro smlouvy;true;true;true;false;false;true;true;true;true
+Položky přijatých faktur;true;true;true;false;false;true;true;true;true
+Položky vydaných faktur a prodejek;true;true;true;false;false;true;true;true;true
+Položky ostatních pohledávek;true;true;false;false;false;true;true;true;true
+Položky ostatních závazků;true;true;false;false;false;true;true;true;true
+Položky vzájemných zápočtů;true;true;false;false;false;true;true;true;true
+Položky interních dokladů;true;true;false;false;false;true;true;true;true
+Položky pokladních dokladů;true;true;true;false;true;true;true;true;true
+Položky přijaté nabídky;true;true;true;false;false;true;true;true;true
+Položky vydané nabídky;true;true;true;false;false;true;true;true;true
+Položky přijaté objednávky;true;true;true;false;false;true;true;true;true
+Položky vydané objednávky;true;true;true;true;true;true;true;true;true
+Položky přijatých poptávek;true;true;true;false;false;true;true;true;true
+Položky vydané poptávky;true;true;true;false;false;true;true;true;true
+Položka elektronického příkazu k úhradě;true;true;true;false;false;true;false;false;true
+Skladové pohyby - přehled;true;true;true;true;true;true;true;true;true
+Příkaz k inkasu;true;true;true;false;false;true;false;false;true
+Příkaz k úhradě;true;true;true;false;false;true;false;false;true
+dokladové řady;true;true;true;true;true;true;true;true;true
+Dokladové řady - bankovní doklady;true;true;false;false;false;true;true;true;true
+Dokladové řady - přijaté faktury;true;true;true;false;false;true;true;true;true
+Dokladové řady - vydané faktury;true;true;true;false;false;true;true;true;true
+Dokladové řady - interní doklady;true;true;false;false;false;true;true;true;true
+Dokladové řady - přijaté nabídky;true;true;true;false;false;true;false;false;true
+Dokladové řady - vydané nabídky;true;true;true;false;false;true;false;false;true
+Dokladové řady - přijaté objednávky;true;true;true;false;false;true;false;false;true
+Dokladové řady - vydané objednávky;true;true;true;false;false;true;false;false;true
+Dokladové řady - pohledávky;true;true;false;false;false;true;true;true;true
+Dokladové řady - pokladní doklady;true;true;false;false;true;true;true;true;true
+Dokladové řady - přijaté poptávky;true;true;true;false;false;true;false;false;true
+Dokladové řady - vydané poptávky;true;true;true;false;false;true;false;false;true
+Dokladové řady - sklad;true;true;true;true;true;true;true;true;true
+Dokladové řady - závazky;true;true;false;false;false;true;true;true;true
+Díry v dokladové řadě;true;true;true;true;true;true;true;true;true
+Roční položky dokladové řady;true;true;true;true;true;true;true;true;true
+Banky/pokladny/sklady;true;true;true;true;true;true;true;true;true
+Seznam bankovních účtů;true;true;false;false;false;true;true;true;true
+Seznam pokladen;true;true;true;false;true;true;true;true;true
+Seznam skladů;true;true;true;true;true;true;true;true;true
+Typy dokladů;true;true;true;true;true;true;true;true;true
+Typy zápočtů;true;true;false;false;false;true;true;true;true
+Typy přijatých faktur;true;true;true;false;false;true;true;true;true
+Seznam prodejních kas;true;true;true;false;false;true;true;true;true
+Typy interních dokladů;true;true;false;false;false;true;true;true;true
+Typy přijatých nabídek;true;true;true;false;false;true;false;false;true
+Typy vydaných nabídek;true;true;true;false;false;true;false;false;true
+Typy přijatých objednávek;true;true;true;false;false;true;false;false;true
+Typy vydaných objednávek;true;true;true;false;false;true;false;false;true
+Typy ostatních pohledávek;true;true;false;false;false;true;true;true;true
+Typy pokladních dokladů;true;true;true;false;true;true;true;true;true
+Typy přijatých poptávek;true;true;true;false;false;true;false;false;true
+Typy vydaných poptávek;true;true;true;false;false;true;false;false;true
+Typy skladových dokladů;true;true;true;true;true;true;true;true;true
+Typy ostatních závazků;true;true;false;false;false;true;true;true;true
+Vazby dokladu;true;true;true;true;true;true;true;true;true
+Formy úhrady;true;true;false;false;false;true;true;true;true
+Zaúčtování formy úhrady;true;true;false;false;false;true;true;true;true
+Formy dopravy;true;true;false;false;false;true;true;false;true
+Čísla balíků;true;true;false;false;false;true;true;false;true
+Pracovní plocha;true;true;true;true;true;true;true;true;true
+Přehledy;true;true;false;false;false;true;true;true;true
+Přehledy;true;true;true;true;true;true;true;true;true
+Základní přehled;true;true;false;false;false;true;true;true;true
+Analytický přehled;true;true;false;false;false;true;true;true;true
+Archiv;true;true;true;true;true;true;true;true;true
+Upomínky;true;true;true;true;true;true;true;true;true
+Firma;true;true;true;true;true;true;true;true;true
+Dodací podmínky;true;true;true;true;true;true;true;true;true
+Druh dopravy;true;true;true;true;true;true;true;true;true
+Měrné jednotky;true;true;true;true;true;true;true;true;true
+Kraje určení;true;true;true;true;true;true;true;true;true
+Kódy nomenklatury;true;true;true;true;true;true;true;true;true
+Obchodní transakce;true;true;true;true;true;true;true;true;true
+Zvláštní pohyby;true;true;true;true;true;true;true;true;true
+Import z Excelu;true;false;true;true;true;true;true;true;true
+Import e-faktury ISDOC;true;true;true;true;true;true;true;true;true
+Import z XML;true;true;true;true;true;true;true;true;true
+Import licence;true;false;false;false;false;true;false;false;false
+Průvodce nastavením firmy;true;false;false;false;false;true;false;false;false
+Položky vstupující do Intrastatu;true;true;false;false;false;true;true;true;true
+Řádky Intrastatu;true;true;false;false;false;true;true;true;true
+FlexiBee;true;true;true;true;true;true;true;true;true
+Koupit licenci;true;true;true;true;true;true;true;true;true
+Licence aplikace;true;true;true;true;true;true;true;true;true
+Přihlášení do aplikace;true;true;true;true;true;true;true;true;true
+Daňové náklady;true;true;false;false;false;true;true;true;true
+Daňové odpisy;true;true;false;false;false;true;true;true;true
+Leasing;true;true;false;false;false;true;true;true;true
+Majetek;true;true;false;false;false;true;true;true;true
+Stav majetku k datu;true;true;false;false;false;true;true;true;true
+Odpisové skupiny;true;true;false;false;false;true;true;true;true
+Splátkový kalendář;true;true;false;false;false;true;true;true;true
+Typy leasingů;true;true;false;false;false;true;true;true;true
+Typy majetků;true;true;false;false;false;true;true;true;true
+Účetní odpisy;true;true;false;false;false;true;true;true;true
+Události;true;true;false;false;false;true;true;true;true
+Umístění;true;true;false;false;false;true;true;true;true
+Zápůjčky;true;true;false;false;false;true;true;true;true
+Majetek;true;true;true;true;true;true;true;true;true
+Odpisové skupiny;true;true;true;true;true;true;true;true;true
+Majetek;true;true;false;false;false;true;true;true;true
+Typy;true;true;true;true;true;true;true;true;true
+Migrace agendy z Money S3;true;false;false;false;false;true;false;false;false
+Potvrzení o zdanitelných příjmech;true;true;false;false;false;true;false;true;false
+Pojistné na důchodové spoření;true;true;false;false;false;true;false;true;false
+Vyúčtování pojistného na důchodové spoření;true;true;false;false;false;true;false;true;false
+Výpočet daně a daňového zvýhodnění;true;true;false;false;false;true;false;true;false
+Podklady pro vyúčtování daně z příjmu ze závislé činnosti;true;true;false;false;false;true;false;true;false
+Pro finanční úřad;true;true;true;true;true;true;true;true;true
+Mzdové výstupy;true;true;true;true;true;true;true;true;true
+Pro OSSZ;true;true;true;true;true;true;true;true;true
+Ostatní;true;true;true;true;true;true;true;true;true
+Pro zdravotní pojišťovny;true;true;true;true;true;true;true;true;true
+Tiskové výstupy;true;true;true;true;true;true;true;true;true
+ELDP;true;true;false;false;false;true;false;true;false
+Oznámení o nástupu do zaměstnání (skončení zaměstnání);true;true;false;false;false;true;false;true;false
+Přehled o výši pojistného (Zákon č. 589/1992 Sb.);true;true;false;false;false;true;false;true;false
+Mzdové listy;true;true;true;true;true;true;true;true;true
+Zákonné pojištění odpovědnosti;true;true;false;false;false;true;false;true;false
+Příloha k žádosti o nemocenské, ...;true;true;false;false;false;true;false;true;false
+Potvrzení o zaměstnání (Zápočtový list);true;true;false;false;false;true;false;true;false
+Hromadné oznámení zaměstnavatele;true;true;false;false;false;true;false;true;false
+Přehled o platbě pojistného;true;true;false;false;false;true;false;true;false
+ISPV;true;true;false;false;false;true;false;true;false
+Pracovněprávní průměry;true;true;false;false;false;true;false;true;false
+Přehled čerpání dovolené;true;true;false;false;false;true;false;true;false
+Přehled pracovních poměrů;true;true;false;false;false;true;false;true;false
+Přepočtený počet zaměstnanců;true;true;false;false;false;true;false;true;false
+Výpočet průměrného čistého výdělku;true;true;false;false;false;true;false;true;false
+Číselníky;true;true;true;true;true;true;true;true;true
+Import;true;false;false;false;false;true;false;false;false
+Nastavení;true;false;false;false;false;true;true;true;false
+Účetní období;true;false;true;true;true;true;true;true;true
+Nákup;true;true;true;false;false;true;true;true;true
+Dokladové řady;true;true;true;true;true;true;true;true;true
+Předpisy zaúčtování;true;true;true;true;true;true;true;true;true
+Typy dokladů;true;true;true;true;true;true;true;true;true
+Nápověda k programu;true;true;true;true;true;true;true;true;true
+Nastavení serveru;true;false;false;false;false;true;false;false;false
+Nástroje;true;true;true;true;true;true;true;true;true
+Nastavení programu a modulů;true;true;true;true;true;true;true;true;true
+Nastavení žurnálu;true;true;true;true;true;true;true;true;true
+Přepočet stavů účtů;true;false;false;false;false;true;false;false;false
+Přepočet daňové evidence;true;false;false;false;false;true;false;false;false
+Nová firma;true;true;true;true;true;true;true;true;true
+Založení nové firmy;true;true;true;true;true;true;true;true;true
+Obsazení disku;true;false;false;false;false;false;false;false;false
+O aplikaci FlexiBee;true;true;true;true;true;true;true;true;true
+Odpojené firmy;true;true;true;true;true;true;true;true;true
+Přepočet skladu;true;false;false;false;false;true;false;false;false
+Aktualizace požadavků na výdej;true;false;false;true;true;true;false;false;false
+Číselník mzdových složek;true;true;false;false;false;true;false;true;false
+Dítě;true;true;false;false;false;true;false;true;false
+Řádka mzdové kalkulačky;true;true;false;false;false;true;false;true;false
+Hlavička mzdové kalkulačky;true;true;false;false;false;true;false;true;false
+Hromadná operace mzdového calculátoru;true;true;false;false;false;true;false;true;false
+Inicializační řádka mzdové kalkulačky;true;true;false;false;false;true;false;true;false
+ISPV;true;true;false;false;false;true;false;true;false
+Nepřítomnost;true;true;false;false;false;true;false;true;false
+Personalistika;true;true;false;false;false;true;false;true;false
+Hlavičky osob;true;true;false;false;false;true;false;true;false
+Pracovní poměr;true;true;false;false;false;true;false;true;false
+Pracovní poměr;true;true;false;false;false;true;false;true;false
+Skupiny osob;true;true;false;false;false;true;false;true;false
+Směny;true;true;false;false;false;true;false;true;false
+Srážka;true;true;false;false;false;true;false;true;false
+Stálá mzdová složka;true;true;false;false;false;true;false;true;false
+Práce pro střediska;true;true;false;false;false;true;false;true;false
+Typ pracovního poměru;true;true;false;false;false;true;false;true;false
+Parametr typu pracovního poměru;true;true;false;false;false;true;false;true;false
+Obchodní partneři;true;true;true;true;true;true;true;true;true
+Peníze;true;true;true;true;true;true;true;true;true
+Přehledy položek dokladů;true;true;true;true;true;true;true;true;true
+Dokladové řady;true;true;true;true;true;true;true;true;true
+Typy dokladů;true;true;true;true;true;true;true;true;true
+Předpisy zaúčtování;true;true;true;true;true;true;true;true;true
+Aktualizace mezd;true;true;false;false;false;true;false;true;false
+Uživatelská podpora;true;true;true;true;true;true;true;true;true
+Přehledy položek dokladů;true;true;false;false;false;true;true;true;true
+Přehledy položek dokladů;true;true;false;false;false;true;true;true;true
+Nápověda;true;true;true;true;true;true;true;true;true
+Pošlete názor na FlexiBee;true;true;true;true;true;true;true;true;true
+Práva serveru;true;false;false;false;false;false;false;false;false
+Rekapitulace mzdových složek;true;true;false;false;false;true;false;true;false
+Rekapitulace mzdových složek;true;true;false;false;false;true;false;true;false
+Přehled zaměstnanců;true;true;false;false;false;true;false;true;false
+Prodej;true;true;true;false;false;true;true;true;true
+Dokladové řady;true;true;true;true;true;true;true;true;true
+Předpisy zaúčtování;true;true;true;true;true;true;true;true;true
+Typy dokladů;true;true;true;true;true;true;true;true;true
+První spuštění;true;true;true;true;true;true;true;true;true
+Registrace FlexiBee Start;true;true;true;true;true;true;true;true;true
+FlexiBee;true;true;true;true;true;true;true;true;true
+Skladové karty;true;true;true;true;true;true;true;true;true
+Mapování skladů;true;true;true;true;true;true;false;false;true
+Rezervace;true;true;true;true;true;true;true;true;true
+Umístění ve skladu;true;true;true;true;true;true;true;true;true
+Výběr výrobních čísel;true;true;true;true;true;true;true;true;true
+Zadání počtu EAN kódů;true;true;true;true;true;true;true;true;true
+Intrastat;true;true;true;true;true;true;true;true;true
+FIFO Vazby;true;true;true;true;true;true;true;true;true
+Archiv;true;true;true;true;true;true;true;true;true
+Ukončit aplikaci;true;true;true;true;true;true;true;true;true
+ABRA FlexiBee;true;true;true;true;true;true;true;true;true
+Stav skladu k datu;true;true;true;true;true;true;true;true;true
+Stav skladu k datu;true;true;true;true;true;true;true;true;true
+FIFO vazby rozpadu vydejek;true;true;true;true;true;true;true;true;true
+Inventury;true;true;true;true;true;true;true;true;true
+Položka inventury;true;true;true;true;true;true;true;true;true
+Činnost;true;true;true;true;true;true;true;true;true
+Řádky přiznání DPH;true;true;true;false;false;true;true;true;true
+Řádky kontrolního hlášení DPH;true;true;true;false;false;true;true;true;true
+Daňová evidence;true;true;true;true;true;true;true;true;true
+Seznam zboží v režimu přenesení DPH;true;true;false;false;false;true;true;true;true
+Kurzy pro cenotvorbu;true;true;true;false;false;true;true;true;true
+Měny;true;true;true;false;false;true;true;true;true
+Počáteční stavy účtů;true;true;true;true;true;true;true;true;true
+Sazby DPH;true;true;true;false;false;true;true;true;true
+Řádek sestavy;true;true;true;true;true;true;true;true;true
+Rozpad řádků sestavy na účty;true;true;true;true;true;true;true;true;true
+Standardní předpis sestavy;true;true;true;true;true;true;true;true;true
+Sumace v sestavách;true;true;true;true;true;true;true;true;true
+Předpis sestavy;true;true;true;true;true;true;true;true;true
+Seznam sestav;true;true;true;true;true;true;true;true;true
+Stavy zakázek;true;true;true;false;false;true;true;true;true
+Standardní účetní osnova;true;true;false;false;false;true;true;true;true
+Střediska;true;true;true;false;false;true;true;true;true
+Typ organizace;true;true;true;true;true;true;true;true;true
+Předpisy zaúčtování - interní doklady;true;true;false;false;false;true;true;true;true
+Typy zakázek;true;true;true;false;false;true;true;true;true
+Účtový rozvrh;true;true;false;true;true;true;true;true;true
+Vyhodnocení zakázek;true;true;true;false;false;true;true;true;true
+Zakázky;true;true;true;false;false;true;true;true;true
+Účetní výstupy;true;true;false;false;false;true;true;true;true
+Účetnictví;true;true;false;false;false;true;true;true;true
+Přehledy položek dokladů;true;true;true;true;true;true;true;true;true
+Dokladové řady;true;true;true;true;true;true;true;true;true
+Předpisy zaúčtování;true;true;true;true;true;true;true;true;true
+Typy dokladů;true;true;true;true;true;true;true;true;true
+Výběr firmy;true;true;true;true;true;true;true;true;true
+Výběr firmy;true;true;true;true;true;true;true;true;true
+Daňová evidence;true;true;true;true;true;true;true;true;true
+Hlavní kniha;true;true;false;false;false;true;true;true;true
+Podklady DPH;true;true;false;false;false;true;true;true;true
+Kontrolní hlášení DPH;true;true;false;false;false;true;true;true;true
+Daňové přiznání MOSS;true;true;false;false;false;true;true;true;true
+EET komunikace;true;true;false;false;true;true;true;true;true
+Účetní analýza zakázky;true;true;false;false;false;true;true;true;true
+Analýza nákupu - Nákupy od ceníkových skupin;true;true;true;false;false;true;true;true;false
+Přiznání DPH;true;true;false;false;false;true;true;true;true
+Uložené řádky přiznání DPH;true;true;false;false;false;true;true;true;true
+Rozvaha;true;true;false;false;false;true;true;true;true
+Přehled o peněžních tocích;true;true;false;false;false;true;true;true;true
+Souhrnné hlášení k DPH;true;true;true;true;true;true;true;true;true
+Evidence dle § 92a;true;true;true;true;true;true;true;true;true
+Neuhrazené pohledávky/závazky po splatnosti;true;true;true;true;true;true;true;true;true
+Výpočet stav úhrad k datu;true;true;true;true;true;true;true;true;true
+Výkaz hospodaření za měsíc;true;true;false;false;false;true;true;true;true
+Účetní deník;true;true;false;false;false;true;true;true;true
+Účetní deník - zjednodušený;true;false;false;false;false;false;false;false;false
+Položky obratů;true;false;false;false;false;false;false;false;false
+Nákupní, prodejní a skladové pohyby;true;true;true;false;false;true;true;true;true
+Vazební tabulka dokladů;true;true;true;true;true;true;true;true;true
+Navázané doklady;true;true;true;true;true;true;true;true;true
+Výkaz zisku a ztráty;true;true;false;false;false;true;true;true;true
+Účtovná závierka;true;true;false;false;false;true;true;true;true
+Rozvaha a výkaz zisku a ztráty v XML;true;true;false;false;false;true;true;true;true
+Účetní analýza zakázky;true;true;true;false;false;true;true;true;false
+Individuální ceník;true;true;true;false;false;true;false;false;true
+Výkaz o produkci obalů EKO-KOM;true;true;false;false;false;true;true;true;false
+Definice workflow;true;false;false;false;false;false;false;false;false
+Skupiny pro workflow;true;false;false;false;false;false;false;false;false
+Členství workflow;true;false;false;false;false;false;false;false;false
+Spustit workflow;true;false;false;false;false;false;false;false;false
+Certifikáty firmy;true;true;true;true;true;true;true;true;true
+Certifikační autority;true;true;true;false;false;true;true;true;true
+Práva viditelnosti dat;true;true;true;true;true;true;true;true;true
+Uživatelské dotazy;true;true;true;true;true;true;true;true;true
+Parametry;true;true;true;true;true;true;true;true;true
+Vlastnosti;true;true;true;true;true;true;true;true;true
+Uživatelské transformace;true;true;true;true;true;true;true;true;true
+Uživatelský dotaz;true;true;true;true;true;true;true;true;true
+Externí ID pro majetek;true;true;true;true;true;true;true;true;true
+Uživatelské filtry;true;true;true;true;true;true;true;true;true
+Internetové obchody;true;false;true;false;false;true;false;false;true
+Lokalizovaný číselník;true;true;true;true;true;true;true;true;true
+Certifikáty;true;false;true;true;true;true;true;true;true
+Pokročilá parametrizace pomocí parametrů;true;true;true;true;true;true;true;true;true
+Uživatelské tlačítko;true;true;true;true;true;true;true;true;true
+Přehled;true;true;true;true;true;true;true;true;true
+Sdílení přehledů;true;true;true;true;true;true;true;true;true
+Příloha;true;true;true;true;true;true;true;true;true
+Data přílohy;true;true;true;true;true;true;true;true;true
+Přístupová práva;true;true;true;true;true;true;true;true;true
+Uživatelské reporty;true;false;false;false;false;false;false;false;false
+Uživatelské role;true;false;false;false;false;false;false;false;false
+Upomínky;true;true;true;false;false;true;true;true;true
+Obecný strom;true;true;true;true;true;true;true;true;true
+Předdefinované texty;true;true;true;true;true;true;true;true;true
+Uzel stromu;true;true;true;true;true;true;true;true;true
+Osoby a uživatelé;true;false;false;false;false;false;false;false;false
+Vazba uzlu na objekt;true;true;true;true;true;true;true;true;true
+Uživatelské vazby;true;true;true;true;true;true;true;true;true
+Typy uživatelských vazeb;true;true;true;true;true;true;true;true;true
+VO pro zobrazení uživatelských vazeb;true;true;true;true;true;true;true;true;true
+Štítky;true;true;true;true;true;true;true;true;true
+Skupiny štítků;true;true;true;true;true;true;true;true;true
+Zamykání období;true;true;true;true;true;true;true;true;true
+Zástupnosti;true;false;false;false;false;false;false;false;false
+Žurnál;true;true;true;true;true;true;true;true;true
+Zámky záznamu;true;true;true;true;true;true;true;true;true
+Záloha firmy;true;false;false;false;false;true;false;false;false
+Zaměstnanci;true;true;false;false;false;true;false;true;false
+Zboží;true;true;true;true;true;true;true;true;true
+Změnit heslo;true;true;true;true;true;true;true;true;true
+Změna nebo přidání účetního období;true;true;true;true;true;true;true;true;true

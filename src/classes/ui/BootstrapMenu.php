@@ -29,13 +29,20 @@ class BootstrapMenu extends \Ease\TWB\Navbar
     {
         parent::__construct('Menu',
             new \Ease\Html\ImgTag('images/flexplorer-logo.png', 'Flexplorer',
-            ['class' => 'img-rounded', 'width' => 24]),
+                ['class' => 'img-rounded', 'width' => 24]),
             ['class' => 'navbar-fixed-top']);
 
         $user = \Ease\Shared::user();
         \Ease\TWB\Part::twBootstrapize();
         if (!$user->getUserID()) {
             if (get_class($user) != 'EaseAnonym') {
+
+                $this->addDropDownMenu(_('Tools'),
+                    [
+                        'permissions.php' => _('Role Permissions')
+                ]);
+
+
                 $this->addMenuItem(new \Ease\Html\ATag('about.php', _('About')),
                     'right');
 
@@ -80,12 +87,11 @@ class BootstrapMenu extends \Ease\TWB\Navbar
         $statusMessages = $this->webPage->getStatusMessagesAsHtml();
         if ($statusMessages) {
             $this->addItem(new \Ease\Html\Div($statusMessages,
-                ['id' => 'StatusMessages', 'class' => 'well', 'title' => _('Click to hide messages'),
-                'data-state' => 'down']));
+                    ['id' => 'StatusMessages', 'class' => 'well', 'title' => _('Click to hide messages'),
+                    'data-state' => 'down']));
             $this->addItem(new \Ease\Html\Div(null, ['id' => 'smdrag']));
             $this->webPage->cleanMessages();
         }
         parent::draw();
     }
-
 }
