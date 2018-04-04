@@ -9,6 +9,7 @@ src/includes/*.php		usr/share/flexplorer/includes/
 src/classes/*.php		usr/share/flexplorer/classes/
 src/classes/ui/*.php		usr/share/flexplorer/classes/ui/
 src/classes/xml/*.php		usr/share/flexplorer/classes/xml/
+src/download/*                  usr/share/flexplorer/download/
 debian/conf/flexplorer.conf	etc/apache2/conf-available/
 debian/conf/flexplorer.service  etc/avahi/services/
 debian/conf/composer.json       usr/share/flexplorer/
