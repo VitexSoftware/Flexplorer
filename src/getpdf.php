@@ -18,14 +18,16 @@ $oPage->onlyForLogged();
 $embed    = $oPage->getRequestValue('embed');
 $id       = $oPage->getRequestValue('id');
 $evidence = $oPage->getRequestValue('evidence');
-$report = $oPage->getRequestValue('report-name');
+$report   = $oPage->getRequestValue('report-name');
 
 
 $document = new \FlexiPeeHP\FlexiBeeRO(is_numeric($id) ? intval($id) : $id,
     ['evidence' => $evidence]);
 
-if (!is_null($document->getMyKey())) {
-    $documentBody = $document->getInFormat('pdf',$report);
+if (empty($evidence)) {
+    die(_('Wrong call'));
+} else {
+    $documentBody = $document->getInFormat('pdf', $report);
 
     if ($embed != 'true') {
         header('Content-Description: File Transfer');
@@ -40,6 +42,4 @@ if (!is_null($document->getMyKey())) {
     header('Pragma: public');
     header('Content-Length: '.strlen($documentBody));
     echo $documentBody;
-} else {
-    die(_('Wrong call'));
 }

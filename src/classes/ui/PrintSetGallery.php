@@ -23,12 +23,14 @@ class PrintSetGallery extends \Ease\TWB\Tabs
     {
         $printSets = $engine->getFlexiData($engine->getEvidenceURL().'/reports');
         parent::__construct('PrintSet');
-        foreach ($printSets['reports']['report'] as $printSet) {
-            $this->addAjaxTab(
-                $printSet['reportName'],
-                'document.php?evidence='.$engine->getEvidence().'&id='.$engine->getMyKey().'&report-name='.$printSet['reportId'].'&embed=true',
-                $printSet['isDefault'] == 'true'
-            );
+        if (count($printSets)) {
+            foreach ($printSets['reports']['report'] as $printSet) {
+                $this->addAjaxTab(
+                    htmlentities($printSet['reportName']),
+                    'document.php?evidence='.$engine->getEvidence().'&id='.$engine->getMyKey().'&report-name='.$printSet['reportId'].'&embed=true',
+                    $printSet['isDefault'] == 'true'
+                );
+            }
         }
     }
 }
