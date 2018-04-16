@@ -28,6 +28,7 @@ Umožňuje:
   * Filtrovat záznamy dle ID nebo Externího ID
   * Definovat Uživatelská tlačítka
   * Zobrazovat oprávnění k rolím
+  * Zobrazovat PDF tiskové sestavy k záznamu i výpisu evidence
   
 
 [![Source Code](http://img.shields.io/badge/source-VitexSoftware/Flexplorer-blue.svg?style=flat-square)](https://github.com/VitexSoftware/Flexplorer)

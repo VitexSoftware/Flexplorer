@@ -23,6 +23,7 @@ if (strstr($id, ',')) {
 
 $evidence = $oPage->getRequestValue('evidence');
 $embed    = $oPage->getRequestValue('embed');
+$report    = $oPage->getRequestValue('report-name');
 
 if (empty($embed)) {
     $oPage->addItem(new ui\PageTop($evidence.' #'.$id));
@@ -34,13 +35,13 @@ if (isset($ids)) {
     $document = new \FlexiPeeHP\FlexiBeeRO(null, ['evidence' => $evidence]);
 } else {
     $document = new \FlexiPeeHP\FlexiBeeRO(is_numeric($id) ? intval($id) : $id,
-        ['evidence' => $evidence]);
+        ['evidence' => $evidence,'list'=>'id']);
 }
 
 if (empty($embed)) {
     $oPage->addItem(new ui\PageTop($document->getEvidence().' '.$document));
 }
-$embeded = new \FlexiPeeHP\ui\EmbedResponsivePDF($document);
+$embeded = new \FlexiPeeHP\ui\EmbedResponsivePDF($document,'getpdf.php',$report);
 
 if (empty($embed)) {
     $oPage->container->addItem($embeded);

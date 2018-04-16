@@ -159,6 +159,8 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
     }
     
     $buttonsTab = $tabs->addTab(_('Custom Buttons'), new ui\EvidenceCustomButtons($evobj), ($evidenceLicensed === false));
+
+    $tabs->addTab(_('Print Sets'), new ui\PrintSetGallery($evobj));
     
     $oPage->container->addItem($tabs);
 

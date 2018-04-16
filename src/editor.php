@@ -40,6 +40,9 @@ $editorTabs = new \Ease\TWB\Tabs('EditorTabs');
 $editorTabs->addTab(_('Record Editor'), new ui\RecordEditor($engine));
 $editorTabs->addAjaxTab(_('PDF'),
     'document.php?embed=true&evidence='.$evidence.'&id='.$engine->getMyKey());
+
+$editorTabs->addTab(_('Print Sets'), new ui\PrintSetGallery($engine));
+
 $oPage->container->addItem($editorTabs);
 
 $oPage->addItem(new ui\PageBottom());
