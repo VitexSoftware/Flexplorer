@@ -17,6 +17,7 @@ Umožňuje:
   * Hromadně zakládat a rušit účetní období
   * Rozlišit evidnece které jsou z důvodu licence nedostupné
   * Zobrazovat vedle json výsledku požadavku i stránku z FlexiBee
+  * Zobrazovat PDF náhled editovaného dokladu
   * Upravovat Externí ID záznamů
   * Měnit stav přiřazení štítků k evidenci
   * Doplnit FlexiBee GUI o tlačítka odkazující do FlexPloreru

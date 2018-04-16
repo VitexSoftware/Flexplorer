@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2018-04-04 14:16+0200\n"
-"PO-Revision-Date: 2018-04-04 14:18+0200\n"
+"POT-Creation-Date: 2018-04-16 02:00+0200\n"
+"PO-Revision-Date: 2018-04-16 02:01+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: cs_CZ\n"
@@ -83,7 +83,7 @@ msgid "Probe"
 msgstr "Zkusit"
 
 #: ../src/change.php:58 ../src/classes/ui/BackupsTool.php:18
-#: ../src/classes/ui/BackupsTool.php:27 ../src/classes/ui/DataGrid.php:118
+#: ../src/classes/ui/BackupsTool.php:27 ../src/classes/ui/DataGrid.php:119
 #: ../src/classes/ui/EvidenceCustomButtons.php:32
 msgid "Delete"
 msgstr "Smazat"
@@ -249,27 +249,27 @@ msgstr "Záznam byl aktualizován"
 msgid "Record update failed"
 msgstr "Záznam se nepovedlo aktualizovat"
 
-#: ../src/classes/Flexplorer.php:138
+#: ../src/classes/Flexplorer.php:151
 #, php-format
 msgid "Unserialization error %s #%s "
 msgstr "Chyba deserializace %s #%s "
 
-#: ../src/classes/Flexplorer.php:314
+#: ../src/classes/Flexplorer.php:327
 #, php-format
 msgid "File %s was used"
 msgstr "Byl použit soubor %s"
 
-#: ../src/classes/Flexplorer.php:323
+#: ../src/classes/Flexplorer.php:336
 #, php-format
 msgid "URL %s was used"
 msgstr "Byla použita adresa %s"
 
-#: ../src/classes/Flexplorer.php:326
+#: ../src/classes/Flexplorer.php:339
 #, php-format
 msgid "Error %s obataing %s"
 msgstr "Chyba %s získání %s"
 
-#: ../src/classes/Flexplorer.php:375
+#: ../src/classes/Flexplorer.php:388
 msgid "External ID"
 msgstr "Externí ID"
 
@@ -500,25 +500,30 @@ msgstr "Json"
 msgid "XML"
 msgstr "XML"
 
-#: ../src/classes/ui/DataGrid.php:112
+#: ../src/classes/ui/DataGrid.php:105 ../src/editor.php:41
+msgid "PDF"
+msgstr "PDF"
+
+#: ../src/classes/ui/DataGrid.php:113
 msgid "Add"
 msgstr "Přidej"
 
-#: ../src/classes/ui/DataGrid.php:115
+#: ../src/classes/ui/DataGrid.php:116
 #: ../src/classes/ui/EvidenceCustomButtons.php:32
 msgid "Edit"
 msgstr "Uprav"
 
-#: ../src/classes/ui/DataGrid.php:127
+#: ../src/classes/ui/DataGrid.php:128
 msgid "Select All"
 msgstr "Vyber vše"
 
-#: ../src/classes/ui/DataGrid.php:190
+#: ../src/classes/ui/DataGrid.php:191
 msgid "Title missing"
 msgstr "Chybí nadpis"
 
-#: ../src/classes/ui/DataGrid.php:293 ../src/classes/ui/DataGrid.php:330
-#: ../src/classes/ui/DataGrid.php:367 ../src/classes/ui/DataGrid.php:412
+#: ../src/classes/ui/DataGrid.php:294 ../src/classes/ui/DataGrid.php:331
+#: ../src/classes/ui/DataGrid.php:368 ../src/classes/ui/DataGrid.php:405
+#: ../src/classes/ui/DataGrid.php:450
 msgid "Please mark some rows"
 msgstr "Prosím označ nejaké řádkz"
 
@@ -534,11 +539,11 @@ msgstr "Zobraz v editoru"
 msgid "OK"
 msgstr "OK"
 
-#: ../src/classes/ui/Editor.php:68 ../src/classes/ui/RecordEditor.php:86
+#: ../src/classes/ui/Editor.php:68 ../src/classes/ui/RecordEditor.php:87
 msgid "Required"
 msgstr "Vyžadováno"
 
-#: ../src/classes/ui/Editor.php:111 ../src/classes/ui/RecordEditor.php:129
+#: ../src/classes/ui/Editor.php:111 ../src/classes/ui/RecordEditor.php:131
 msgid "Edit targeted record"
 msgstr "Uprav zvolený záznam"
 
@@ -745,15 +750,15 @@ msgstr "Spoje.Net"
 msgid "&copy; 2016-2017 Vítězslav \"Vitex\" Dvořák"
 msgstr "&copy; 2016-2017 Vítězslav \"Vitex\" Dvořák"
 
-#: ../src/classes/ui/PermissionsViewer.php:33
+#: ../src/classes/ui/PermissionsViewer.php:37
 msgid "true"
 msgstr "ano"
 
-#: ../src/classes/ui/PermissionsViewer.php:37
+#: ../src/classes/ui/PermissionsViewer.php:42
 msgid "false"
 msgstr "ne"
 
-#: ../src/classes/ui/PermissionsViewer.php:46
+#: ../src/classes/ui/PermissionsViewer.php:53
 #, php-format
 msgid "Error reading file %s"
 msgstr "Chyba čtení souboru %s"
@@ -960,7 +965,7 @@ msgstr "Smazat záznam"
 msgid "New record save"
 msgstr "Uložení nového záznamu"
 
-#: ../src/editor.php:37
+#: ../src/editor.php:37 ../src/editor.php:40
 msgid "Record Editor"
 msgstr "Editor záznamu"
 
@@ -1127,6 +1132,10 @@ msgstr "XML ve Flexploreru"
 msgid "flexplorer %s lexibee-buttons"
 msgstr "flexplorer %s lexibee-buttons"
 
+#: ../src/getpdf.php:43
+msgid "Wrong call"
+msgstr "Špatné volání"
+
 #: ../src/index.php:18
 msgid "FlexiBee info"
 msgstr "FlexiBee info"
@@ -1220,7 +1229,11 @@ msgstr "Zobrazovat vedle json výsledku požadavku i stránku z FlexiBee"
 msgid "Edit External ID numbers"
 msgstr "Upravovat Externí ID záznamů"
 
-#: ../src/login.php:128
+#: ../src/login.php:127
+msgid "PDF Preview of edited record"
+msgstr "PDF Náhled upravovaného záznamu"
+
+#: ../src/login.php:130
 msgid "Features"
 msgstr "Schopnosti"
 
@@ -1262,6 +1275,18 @@ msgstr "Vytvoř novou firmu"
 #: ../src/permissions.php:16
 msgid "Permissions overview"
 msgstr "Přehled oprávnění"
+
+#: ../src/permissions.php:22
+msgid "Get CSV"
+msgstr "Stáhni CSV"
+
+#: ../src/permissions.php:24
+msgid "Get XLSx"
+msgstr "Stáhni XLSx"
+
+#: ../src/permissions.php:26
+msgid "Get html"
+msgstr "Stáhni html"
 
 #: ../src/query.php:70
 msgid "Custom request"

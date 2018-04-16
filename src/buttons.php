@@ -22,7 +22,7 @@ $evidenceButtonInfo = new \Ease\TWB\Panel(_('Evidence'), 'info',
  '._('Download Buttons XML install file'), 'info'),
     new \Ease\TWB\LinkButton('getbuttonxml.php?type=evidence&operation=install',
         '<i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
- '._('Install Buttons into FlexiBee'), 'disabled')
+ '._('Install Buttons into FlexiBee'), 'success')
     ]);
 
 

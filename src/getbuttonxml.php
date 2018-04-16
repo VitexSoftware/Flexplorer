@@ -48,7 +48,7 @@ if ($operation == 'install') {
                 $type)));
 
 
-    $engine->setEvidence('import');
+    $engine->setEvidence('custom-button');
     $engine->setPostFields($xml);
 
     $results = $engine->performRequest('', 'POST', 'xml');

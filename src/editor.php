@@ -36,7 +36,11 @@ if (empty($id)) {
 
 $oPage->addItem(new ui\PageTop(_('Record Editor').' '.$evidence.':'.$id));
 
-$oPage->container->addItem(new ui\RecordEditor($engine));
+$editorTabs = new \Ease\TWB\Tabs('EditorTabs');
+$editorTabs->addTab(_('Record Editor'), new ui\RecordEditor($engine));
+$editorTabs->addAjaxTab(_('PDF'),
+    'document.php?embed=true&evidence='.$evidence.'&id='.$engine->getMyKey());
+$oPage->container->addItem($editorTabs);
 
 $oPage->addItem(new ui\PageBottom());
 

@@ -102,6 +102,7 @@ class DataGrid extends \Ease\Html\TableTag
     {
         $this->addJsonButton(_('Json'));
         $this->addXmlButton(_('XML'));
+        $this->addPdfButton(_('PDF'));
         $actions = $this->dataSource->handledObejct->getActionsInfo();
         if (count($actions)) {
             foreach ($actions as $action => $actionInfo) {
@@ -362,6 +363,43 @@ background: url(images/json.svg) no-repeat center left;
                     ids.push( id );
                 });
                 $(location).attr(\'href\',\'query.php?format=json&show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().'=\' + ids.join());
+            }
+        } else {
+            alert("'._('Please mark some rows').'");
+        }
+
+            }
+        ', null, true);
+    }
+
+    public function addPdfButton($title, $target = null)
+    {
+        $this->addButton($title, 'pdf', 'pdfRecord');
+
+        $this->addCss('.flexigrid div.fbutton .pdf {
+background: url(images/pdf.svg) no-repeat center left;
+}
+');
+
+        $this->addJavaScript('function pdfRecord(com, grid) {
+
+        var numItems = $(\'.trSelected\').length
+        if(numItems){
+            if(numItems == 1) {
+                $(\'.trSelected\', grid).each(function() {
+                    var id = $(this).attr(\'id\');
+                    id = id.substring(id.lastIndexOf(\'row\')+3);
+                    $(location).attr(\'href\',\'document.php?format=pdf&show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().'=\' +id);
+                });
+
+            } else {
+                var ids = [];
+                $(\'.trSelected\', grid).each(function() {
+                    var id = $(this).attr(\'id\');
+                    id = id.substring(id.lastIndexOf(\'row\')+3);
+                    ids.push( id );
+                });
+                $(location).attr(\'href\',\'document.php?format=pdf&show=result&evidence='.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().'=\' + ids.join());
             }
         } else {
             alert("'._('Please mark some rows').'");

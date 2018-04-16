@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Flexplorer - RecordEditor
  *
@@ -34,7 +33,8 @@ class RecordEditor extends \Ease\TWB\Panel
      */
     public function __construct($engine)
     {
-        parent::__construct( new \Ease\Html\H3Tag(new \Ease\Html\ATag('evidence.php?evidence='.$engine->getEvidence(), \FlexiPeeHP\EvidenceList::$evidences[$engine->getEvidence()]['evidenceName']).' #'.$engine->getMyKey()),
+        parent::__construct(new \Ease\Html\H3Tag(new \Ease\Html\ATag('evidence.php?evidence='.$engine->getEvidence(),
+                    \FlexiPeeHP\EvidenceList::$evidences[$engine->getEvidence()]['evidenceName']).' #'.$engine->getMyKey()),
             'info');
         $columns    = $engine->getColumnsInfo();
         \Ease\Shared::webPage()->includeJavaScript('js/datasaver.js');
@@ -53,11 +53,12 @@ class RecordEditor extends \Ease\TWB\Panel
                 $this->addFlexiInput($column);
             }
         }
-        
-        if(empty($engine->getMyKey())){
-            $this->form->addInput(new \Ease\TWB\SubmitButton(_('Save new record'),'success'));
+
+        if (empty($engine->getMyKey())) {
+            $this->form->addInput(new \Ease\TWB\SubmitButton(_('Save new record'),
+                    'success'));
         }
-        
+
         $this->addItem($this->form);
     }
 
@@ -88,6 +89,7 @@ class RecordEditor extends \Ease\TWB\Panel
         if (isset($colProperties['isWritable']) && ($colProperties['isWritable']
             === 'false')) {
             $inputProperties[] = 'disabled';
+            return;
         }
 
         if (is_null($value)) {
@@ -138,14 +140,12 @@ class RecordEditor extends \Ease\TWB\Panel
             case 'date':
                 $inputProperties['data-format'] = 'YYYY-MM-DD';
                 $widget                         = new DateTimePicker($propertyName,
-                    $value, $inputProperties,
-                    $this->onChangeCode($propertyName));
+                    $value, $inputProperties, $this->onChangeCode($propertyName));
                 break;
             case 'datetime':
                 $inputProperties['data-format'] = 'YYYY-MM-DDTHH:mm:ss';
                 $widget                         = new DateTimePicker($propertyName,
-                    $value, $inputProperties,
-                    $this->onChangeCode($propertyName));
+                    $value, $inputProperties, $this->onChangeCode($propertyName));
                 break;
             case 'string':
                 $widget                         = new \Ease\Html\InputTextTag($propertyName,
@@ -207,5 +207,4 @@ class RecordEditor extends \Ease\TWB\Panel
         }
         return $chCode;
     }
-
- }
+}

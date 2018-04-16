@@ -124,6 +124,8 @@ $featureList->addItemSmart(_('Shown next to json result of the request and page 
     ['class' => 'list-group-item']);
 $featureList->addItemSmart(_('Edit External ID numbers'),
     ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('PDF Preview of edited record'),
+    ['class' => 'list-group-item']);
 
 $featuresPanel = new \Ease\TWB\Panel(_('Features'), 'info');
 

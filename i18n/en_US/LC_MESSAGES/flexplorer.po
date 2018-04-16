@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2017-10-21 17:03+0200\n"
-"PO-Revision-Date: 2017-10-21 17:04+0200\n"
+"POT-Creation-Date: 2018-04-16 02:02+0200\n"
+"PO-Revision-Date: 2018-04-16 02:03+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: en\n"
@@ -24,12 +24,27 @@ msgstr "About application"
 msgid "Used Libraries"
 msgstr "Used Libraries"
 
+#: ../src/backups.php:24
+#, php-format
+msgid "%s was deleted"
+msgstr "%s was deleted"
+
+#: ../src/backups.php:27
+#, php-format
+msgid "%s was not deleted"
+msgstr "%s was not deleted"
+
+#: ../src/backups.php:33 ../src/backups.php:35 ../src/classes/ui/MainMenu.php:130
+#: ../src/restorecompany.php:28
+msgid "Backups"
+msgstr "Backups"
+
 #: ../src/buttons.php:15
 msgid "FlexiBee Buttons"
 msgstr "FlexiBee Buttons"
 
-#: ../src/buttons.php:18 ../src/classes/ui/MainMenu.php:107
-#: ../src/evidence.php:55 ../src/fakechange.php:71
+#: ../src/buttons.php:18 ../src/classes/ui/MainMenu.php:115
+#: ../src/evidence.php:55 ../src/fakechange.php:82
 msgid "Evidence"
 msgstr "Evidence"
 
@@ -41,19 +56,47 @@ msgstr "This button open current FlexiBee evidence in FlexPlorer"
 msgid "Download Buttons XML install file"
 msgstr "Download Buttons XML install file"
 
+#: ../src/buttons.php:25
+msgid "Install Buttons into FlexiBee"
+msgstr "Install Buttons into FlexiBee"
+
+#: ../src/change.php:19
+#, php-format
+msgid "File witch Change %s was deleted"
+msgstr "File witch Change %s was deleted"
+
 #: ../src/change.php:23
+#, php-format
+msgid "File with Change %s was not deleted"
+msgstr "File with Change %s was not deleted"
+
+#: ../src/change.php:39
 msgid "Changes recieved"
 msgstr "Changes recieved"
 
-#: ../src/changes.php:32
+#: ../src/change.php:51
+msgid "Add new webhook"
+msgstr "Add new webhook"
+
+#: ../src/change.php:53
+msgid "Probe"
+msgstr "Probe"
+
+#: ../src/change.php:58 ../src/classes/ui/BackupsTool.php:18
+#: ../src/classes/ui/BackupsTool.php:27 ../src/classes/ui/DataGrid.php:119
+#: ../src/classes/ui/EvidenceCustomButtons.php:32
+msgid "Delete"
+msgstr "Delete"
+
+#: ../src/changes.php:33
 msgid "FlexiBee WebHook income"
 msgstr "FlexiBee WebHook income"
 
-#: ../src/changes.php:38
+#: ../src/changes.php:39
 msgid "Delete All"
 msgstr "Delete All"
 
-#: ../src/changes.php:45 ../src/changesapi.php:111
+#: ../src/changes.php:46 ../src/changesapi.php:111
 msgid "Target to FlexPlorer"
 msgstr "Target to FlexPlorer"
 
@@ -103,7 +146,7 @@ msgstr "Enable"
 msgid "Disable"
 msgstr "Disable"
 
-#: ../src/changesapi.php:96 ../src/classes/ui/MainMenu.php:117
+#: ../src/changesapi.php:96 ../src/classes/ui/MainMenu.php:125
 msgid "Changes API"
 msgstr "Changes API"
 
@@ -115,7 +158,7 @@ msgstr ""
 "If it is turned on , FlexiBee records all changes made ​​to the database company "
 "in the changelog and provides a list of changes recovered"
 
-#: ../src/changesapi.php:105 ../src/fakechange.php:91
+#: ../src/changesapi.php:105 ../src/fakechange.php:102
 msgid "Web Hook"
 msgstr "Web Hook"
 
@@ -127,7 +170,7 @@ msgstr ""
 "When the database FlexiBee to change the POST HTTP request sent to all "
 "registered URL"
 
-#: ../src/changesapi.php:114 ../src/fakechange.php:64
+#: ../src/changesapi.php:114 ../src/fakechange.php:75
 msgid "Data format"
 msgstr "Data format"
 
@@ -139,7 +182,7 @@ msgstr "Skip URL test"
 msgid "Suppress URL functionality test"
 msgstr "Suppress URL functionality test"
 
-#: ../src/changesapi.php:121 ../src/fakechange.php:67
+#: ../src/changesapi.php:121 ../src/fakechange.php:78
 msgid "Last version"
 msgstr "Last version"
 
@@ -171,7 +214,7 @@ msgstr ""
 "HTTP header. Used to easily verify that include incoming notifications you "
 "registered Hook. Key name is in the HTTP header X-FB-Hook-SecKey ."
 
-#: ../src/changesapi.php:133 ../src/ucetniobdobi.php:58
+#: ../src/changesapi.php:133 ../src/ucetniobdobi.php:86
 msgid "Perform operation"
 msgstr "Perform operation"
 
@@ -207,36 +250,36 @@ msgstr "Record was updated"
 msgid "Record update failed"
 msgstr "Record update failed"
 
-#: ../src/classes/Flexplorer.php:138
+#: ../src/classes/Flexplorer.php:151
 #, php-format
 msgid "Unserialization error %s #%s "
 msgstr "Unserialization error %s #%s "
 
-#: ../src/classes/Flexplorer.php:311
+#: ../src/classes/Flexplorer.php:327
 #, php-format
 msgid "File %s was used"
 msgstr "File %s was used"
 
-#: ../src/classes/Flexplorer.php:320
+#: ../src/classes/Flexplorer.php:336
 #, php-format
 msgid "URL %s was used"
 msgstr "URL %s was used"
 
-#: ../src/classes/Flexplorer.php:323
+#: ../src/classes/Flexplorer.php:339
 #, php-format
 msgid "Error %s obataing %s"
 msgstr "Error %s obataing %s"
 
-#: ../src/classes/Flexplorer.php:372
+#: ../src/classes/Flexplorer.php:388
 msgid "External ID"
 msgstr "External ID"
 
-#: ../src/classes/HookReciever.php:80
+#: ../src/classes/HookReciever.php:89
 #, php-format
 msgid "WebHook %s triggered"
 msgstr "WebHook %s triggered"
 
-#: ../src/classes/HookReciever.php:100
+#: ../src/classes/HookReciever.php:110
 msgid "Empty WebHook request"
 msgstr "Empty WebHook request"
 
@@ -244,52 +287,141 @@ msgstr "Empty WebHook request"
 msgid "No search results"
 msgstr "No search results"
 
-#: ../src/classes/User.php:65
+#: ../src/classes/User.php:69
 msgid "Login Failed"
 msgstr "Login Failed"
 
-#: ../src/classes/User.php:98
+#: ../src/classes/User.php:102
 msgid "Loading evidence list failed"
 msgstr "Loading evidence list failed"
 
-#: ../src/classes/ui/BootstrapMenu.php:39 ../src/classes/ui/BootstrapMenu.php:66
+#: ../src/classes/ui/BackupsListing.php:43
+msgid "File"
+msgstr "File"
+
+#: ../src/classes/ui/BackupsListing.php:43
+msgid "Size"
+msgstr "Size"
+
+#: ../src/classes/ui/BackupsListing.php:44
+#: ../src/classes/ui/CompaniesListing.php:51
+msgid "Age"
+msgstr "Age"
+
+#: ../src/classes/ui/BackupsTool.php:17 ../src/classes/ui/BackupsTool.php:25
+#: ../src/company.php:52
+msgid "Restore"
+msgstr "Restore"
+
+#: ../src/classes/ui/BooleanLabel.php:27 ../src/classes/ui/TWBSwitch.php:28
+msgid "Yes"
+msgstr "Yes"
+
+#: ../src/classes/ui/BooleanLabel.php:27 ../src/classes/ui/TWBSwitch.php:31
+msgid "No"
+msgstr "No"
+
+#: ../src/classes/ui/BootstrapMenu.php:40 ../src/classes/ui/MainMenu.php:120
+msgid "Tools"
+msgstr "Tools"
+
+#: ../src/classes/ui/BootstrapMenu.php:42 ../src/classes/ui/MainMenu.php:129
+msgid "Role Permissions"
+msgstr "Role Permissions"
+
+#: ../src/classes/ui/BootstrapMenu.php:46 ../src/classes/ui/BootstrapMenu.php:73
 msgid "About"
 msgstr "About"
 
-#: ../src/classes/ui/BootstrapMenu.php:46 ../src/classes/ui/BootstrapMenu.php:54
-#: ../src/login.php:52 ../src/login.php:76
+#: ../src/classes/ui/BootstrapMenu.php:53 ../src/classes/ui/BootstrapMenu.php:61
+#: ../src/login.php:52 ../src/login.php:83
 msgid "Sign in"
 msgstr "Sign in"
 
-#: ../src/classes/ui/BootstrapMenu.php:49
+#: ../src/classes/ui/BootstrapMenu.php:56
 msgid "Server"
 msgstr "Server"
 
-#: ../src/classes/ui/BootstrapMenu.php:50
+#: ../src/classes/ui/BootstrapMenu.php:57
 msgid "login"
 msgstr "login"
 
-#: ../src/classes/ui/BootstrapMenu.php:51 ../src/login.php:89
+#: ../src/classes/ui/BootstrapMenu.php:58 ../src/login.php:96
 msgid "Password"
 msgstr "Password"
 
-#: ../src/classes/ui/BootstrapMenu.php:53 ../src/login.php:93
+#: ../src/classes/ui/BootstrapMenu.php:60 ../src/login.php:100
 msgid "Remeber me"
 msgstr "Remeber me"
 
-#: ../src/classes/ui/BootstrapMenu.php:62 ../src/settings.php:20
+#: ../src/classes/ui/BootstrapMenu.php:69 ../src/company.php:68
+#: ../src/settings.php:20
 msgid "Settings"
 msgstr "Settings"
 
-#: ../src/classes/ui/BootstrapMenu.php:68
+#: ../src/classes/ui/BootstrapMenu.php:75
 msgid "Sign off"
 msgstr "Sign off"
 
-#: ../src/classes/ui/BootstrapMenu.php:83
+#: ../src/classes/ui/BootstrapMenu.php:90
 msgid "Click to hide messages"
 msgstr "Click to hide messages"
 
-#: ../src/classes/ui/ColumnsForm.php:102
+#: ../src/classes/ui/ButtonForm.php:33
+msgid "Open in Flexplorer"
+msgstr "Open in Flexplorer"
+
+#: ../src/classes/ui/ButtonForm.php:34
+msgid "Button Title"
+msgstr "Button Title"
+
+#: ../src/classes/ui/ButtonForm.php:37
+#: ../src/classes/ui/EvidenceCustomButtons.php:31
+msgid "Code"
+msgstr "Code"
+
+#: ../src/classes/ui/ButtonForm.php:40
+msgid "Button Description"
+msgstr "Button Description"
+
+#: ../src/classes/ui/ButtonForm.php:43
+msgid "Button target Url"
+msgstr "Button target Url"
+
+#: ../src/classes/ui/ButtonForm.php:45
+msgid "Api Documentation"
+msgstr "Api Documentation"
+
+#: ../src/classes/ui/ButtonForm.php:48
+msgid "List"
+msgstr "List"
+
+#: ../src/classes/ui/ButtonForm.php:48
+msgid "Detail"
+msgstr "Detail"
+
+#: ../src/classes/ui/ButtonForm.php:49
+msgid "Button Location in FlexiBee"
+msgstr "Button Location in FlexiBee"
+
+#: ../src/classes/ui/ButtonForm.php:52
+msgid "Automatic"
+msgstr "Automatic"
+
+#: ../src/classes/ui/ButtonForm.php:52
+msgid "Desktop"
+msgstr "Desktop"
+
+#: ../src/classes/ui/ButtonForm.php:53
+msgid "Browser used"
+msgstr "Browser used"
+
+#: ../src/classes/ui/ButtonForm.php:55
+msgid "Save New Button"
+msgstr "Save New Button"
+
+#: ../src/classes/ui/ColumnsForm.php:102 ../src/classes/ui/CompanyForm.php:38
+#: ../src/company.php:58 ../src/savecompany.php:45
 msgid "Save"
 msgstr "Save"
 
@@ -337,6 +469,30 @@ msgstr "Writable"
 msgid "Read Only"
 msgstr "Read Only"
 
+#: ../src/classes/ui/CompaniesListing.php:44
+msgid "Companies Listing"
+msgstr "Companies Listing"
+
+#: ../src/classes/ui/CompaniesListing.php:51
+msgid "Name"
+msgstr "Name"
+
+#: ../src/classes/ui/CompaniesListing.php:52
+msgid "Database"
+msgstr "Database"
+
+#: ../src/classes/ui/CompaniesListing.php:72 ../src/company.php:88
+msgid "before"
+msgstr "before"
+
+#: ../src/classes/ui/CompanyForm.php:27
+msgid "Company name"
+msgstr "Company name"
+
+#: ../src/classes/ui/CompanyForm.php:28
+msgid "My Company"
+msgstr "My Company"
+
 #: ../src/classes/ui/DataGrid.php:103
 msgid "Json"
 msgstr "Json"
@@ -345,28 +501,30 @@ msgstr "Json"
 msgid "XML"
 msgstr "XML"
 
-#: ../src/classes/ui/DataGrid.php:112
+#: ../src/classes/ui/DataGrid.php:105 ../src/editor.php:41
+msgid "PDF"
+msgstr "PDF"
+
+#: ../src/classes/ui/DataGrid.php:113
 msgid "Add"
 msgstr "Add"
 
-#: ../src/classes/ui/DataGrid.php:115
+#: ../src/classes/ui/DataGrid.php:116
+#: ../src/classes/ui/EvidenceCustomButtons.php:32
 msgid "Edit"
 msgstr "Edit"
 
-#: ../src/classes/ui/DataGrid.php:118
-msgid "Delete"
-msgstr "Delete"
-
-#: ../src/classes/ui/DataGrid.php:127
+#: ../src/classes/ui/DataGrid.php:128
 msgid "Select All"
 msgstr "Select All"
 
-#: ../src/classes/ui/DataGrid.php:190
+#: ../src/classes/ui/DataGrid.php:191
 msgid "Title missing"
 msgstr "Title missing"
 
-#: ../src/classes/ui/DataGrid.php:293 ../src/classes/ui/DataGrid.php:330
-#: ../src/classes/ui/DataGrid.php:367 ../src/classes/ui/DataGrid.php:412
+#: ../src/classes/ui/DataGrid.php:294 ../src/classes/ui/DataGrid.php:331
+#: ../src/classes/ui/DataGrid.php:368 ../src/classes/ui/DataGrid.php:405
+#: ../src/classes/ui/DataGrid.php:450
 msgid "Please mark some rows"
 msgstr "Please mark some rows"
 
@@ -378,84 +536,175 @@ msgstr "Save to FlexiBee"
 msgid "Show in editor"
 msgstr "Show in editor"
 
-#: ../src/classes/ui/Editor.php:47 ../src/classes/ui/Editor.php:241
+#: ../src/classes/ui/Editor.php:47 ../src/classes/ui/Editor.php:242
 msgid "OK"
 msgstr "OK"
 
-#: ../src/classes/ui/Editor.php:67
+#: ../src/classes/ui/Editor.php:68 ../src/classes/ui/RecordEditor.php:87
 msgid "Required"
 msgstr "Required"
 
-#: ../src/classes/ui/Editor.php:110
+#: ../src/classes/ui/Editor.php:111 ../src/classes/ui/RecordEditor.php:131
 msgid "Edit targeted record"
 msgstr "Edit targeted record"
 
-#: ../src/classes/ui/Editor.php:134
+#: ../src/classes/ui/Editor.php:135 ../src/classes/ui/RecordEditor.php:155
 #, php-format
 msgid "Unknown type of data %s"
 msgstr "Unknown type of data %s"
 
-#: ../src/classes/ui/Editor.php:144 ../src/classes/ui/Editor.php:146
+#: ../src/classes/ui/Editor.php:145 ../src/classes/ui/Editor.php:147
+#: ../src/classes/ui/RecordEditor.php:165 ../src/classes/ui/RecordEditor.php:167
 msgid "Type"
 msgstr "Type"
 
-#: ../src/classes/ui/Editor.php:186
+#: ../src/classes/ui/Editor.php:187
 msgid "Columns"
 msgstr "Columns"
 
-#: ../src/classes/ui/Editor.php:187 ../src/classes/ui/Editor.php:239
+#: ../src/classes/ui/Editor.php:188 ../src/classes/ui/Editor.php:240
 msgid "External IDs"
 msgstr "External IDs"
 
-#: ../src/classes/ui/Editor.php:188
+#: ../src/classes/ui/Editor.php:189
 msgid "Labels"
 msgstr "Labels"
 
-#: ../src/classes/ui/Editor.php:189 ../src/classes/ui/MainMenu.php:114
+#: ../src/classes/ui/Editor.php:190 ../src/classes/ui/MainMenu.php:122
 #: ../src/evidence.php:69 ../src/query.php:65 ../src/viewevidence.php:46
 msgid "Query"
 msgstr "Query"
 
-#: ../src/classes/ui/Editor.php:193 ../src/delete.php:56 ../src/evidence.php:83
-#: ../src/login.php:80 ../src/query.php:81
+#: ../src/classes/ui/Editor.php:194 ../src/delete.php:56 ../src/evidence.php:83
+#: ../src/login.php:87 ../src/query.php:81
 msgid "FlexiBee"
 msgstr "FlexiBee"
 
-#: ../src/classes/ui/Editor.php:226
+#: ../src/classes/ui/Editor.php:227 ../src/company.php:63
 msgid "Remove"
 msgstr "Remove"
 
-#: ../src/classes/ui/Editor.php:236
+#: ../src/classes/ui/Editor.php:237 ../src/classes/ui/MainMenu.php:97
 msgid "New"
 msgstr "New"
 
-#: ../src/classes/ui/MainMenu.php:95
+#: ../src/classes/ui/EvidenceCustomButtons.php:31
+msgid "Url"
+msgstr "Url"
+
+#: ../src/classes/ui/EvidenceCustomButtons.php:31
+msgid "Button"
+msgstr "Button"
+
+#: ../src/classes/ui/EvidenceCustomButtons.php:44
+msgid "Current Buttons"
+msgstr "Current Buttons"
+
+#: ../src/classes/ui/EvidenceCustomButtons.php:47
+msgid "New Button"
+msgstr "New Button"
+
+#: ../src/classes/ui/MainMenu.php:98 ../src/evidence.php:54
+#: ../src/viewevidence.php:31
+msgid "Listing"
+msgstr "Listing"
+
+#: ../src/classes/ui/MainMenu.php:102
 msgid "Company"
 msgstr "Company"
 
-#: ../src/classes/ui/MainMenu.php:102 ../src/delete.php:55
+#: ../src/classes/ui/MainMenu.php:110 ../src/delete.php:55
 msgid "Overview"
 msgstr "Overview"
 
-#: ../src/classes/ui/MainMenu.php:112
-msgid "Tools"
-msgstr "Tools"
-
-#: ../src/classes/ui/MainMenu.php:116
+#: ../src/classes/ui/MainMenu.php:124
 msgid "Buttons"
 msgstr "Buttons"
 
-#: ../src/classes/ui/MainMenu.php:118
+#: ../src/classes/ui/MainMenu.php:126
 msgid "Changes Recieved"
 msgstr "Changes Recieved"
 
-#: ../src/classes/ui/MainMenu.php:119 ../src/fakechange.php:53
+#: ../src/classes/ui/MainMenu.php:127 ../src/fakechange.php:64
 msgid "WebHook test"
 msgstr "WebHook test"
 
-#: ../src/classes/ui/MainMenu.php:120 ../src/ucetniobdobi.php:47
+#: ../src/classes/ui/MainMenu.php:128 ../src/ucetniobdobi.php:75
 msgid "Accounting period"
 msgstr "Accounting period"
+
+#: ../src/classes/ui/ModulesOverview.php:26
+msgid "Invoices Received"
+msgstr "Invoices Received"
+
+#: ../src/classes/ui/ModulesOverview.php:27
+msgid "Invoices Issued"
+msgstr "Invoices Issued"
+
+#: ../src/classes/ui/ModulesOverview.php:28
+msgid "Banks"
+msgstr "Banks"
+
+#: ../src/classes/ui/ModulesOverview.php:29
+msgid "Checkout"
+msgstr "Checkout"
+
+#: ../src/classes/ui/ModulesOverview.php:30
+msgid "Warehouses"
+msgstr "Warehouses"
+
+#: ../src/classes/ui/ModulesOverview.php:31
+msgid "Internal Documents"
+msgstr "Internal Documents"
+
+#: ../src/classes/ui/ModulesOverview.php:32
+msgid "Receivables"
+msgstr "Receivables"
+
+#: ../src/classes/ui/ModulesOverview.php:33
+msgid "Commitments"
+msgstr "Commitments"
+
+#: ../src/classes/ui/ModulesOverview.php:34
+msgid "Sessions"
+msgstr "Sessions"
+
+#: ../src/classes/ui/ModulesOverview.php:35
+#: ../src/classes/ui/ModulesOverview.php:44
+msgid "Assets"
+msgstr "Assets"
+
+#: ../src/classes/ui/ModulesOverview.php:36
+msgid "Wages"
+msgstr "Wages"
+
+#: ../src/classes/ui/ModulesOverview.php:37
+msgid "CRM"
+msgstr "CRM"
+
+#: ../src/classes/ui/ModulesOverview.php:38
+msgid "Inquiries received"
+msgstr "Inquiries received"
+
+#: ../src/classes/ui/ModulesOverview.php:39
+msgid "Demands issued"
+msgstr "Demands issued"
+
+#: ../src/classes/ui/ModulesOverview.php:40
+msgid "Bids Received"
+msgstr "Bids Received"
+
+#: ../src/classes/ui/ModulesOverview.php:41
+msgid "bids received"
+msgstr "bids received"
+
+#: ../src/classes/ui/ModulesOverview.php:42
+msgid "Orders Received"
+msgstr "Orders Received"
+
+#: ../src/classes/ui/ModulesOverview.php:43
+msgid "Orders will issue"
+msgstr "Orders will issue"
 
 #: ../src/classes/ui/NavBarSearchBox.php:37
 #: ../src/classes/ui/NavBarSearchBox.php:47
@@ -499,8 +748,25 @@ msgid "Spoje.Net"
 msgstr "Spoje.Net"
 
 #: ../src/classes/ui/PageBottom.php:79
-msgid "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
-msgstr "&copy; 2016 Vítězslav \"Vitex\" Dvořák"
+msgid "&copy; 2016-2017 Vítězslav \"Vitex\" Dvořák"
+msgstr "&copy; 2016-2017 Vítězslav \"Vitex\" Dvořák"
+
+#: ../src/classes/ui/PermissionsViewer.php:37
+msgid "true"
+msgstr "true"
+
+#: ../src/classes/ui/PermissionsViewer.php:42
+msgid "false"
+msgstr "false"
+
+#: ../src/classes/ui/PermissionsViewer.php:53
+#, php-format
+msgid "Error reading file %s"
+msgstr "Error reading file %s"
+
+#: ../src/classes/ui/RecordEditor.php:58
+msgid "Save new record"
+msgstr "Save new record"
 
 #: ../src/classes/ui/SendForm.php:33
 msgid "URL"
@@ -542,9 +808,13 @@ msgstr "Supported HTTP Operations"
 msgid "Format"
 msgstr "Format"
 
-#: ../src/classes/ui/SendForm.php:57 ../src/fakechange.php:98
+#: ../src/classes/ui/SendForm.php:57 ../src/fakechange.php:110
 msgid "Send"
 msgstr "Send"
+
+#: ../src/classes/ui/ShowLiveAge.php:21 ../src/classes/ui/ShowLiveAge.php:43
+msgid "days"
+msgstr "days"
 
 #: ../src/classes/ui/ShowResponse.php:98
 msgid "Make new request from this response"
@@ -554,17 +824,123 @@ msgstr "Make new request from this response"
 msgid "Save this response to file"
 msgstr "Save this response to file"
 
-#: ../src/classes/ui/TWBSwitch.php:28
-msgid "Yes"
-msgstr "Yes"
+#: ../src/classes/ui/WatchingChangesStatus.php:28
+msgid "Chanes API Settings"
+msgstr "Chanes API Settings"
 
-#: ../src/classes/ui/TWBSwitch.php:31
-msgid "No"
-msgstr "No"
-
-#: ../src/classes/ui/WebPage.php:77
+#: ../src/classes/ui/WebPage.php:74
 msgid "Please sign in as admin first"
 msgstr "Please sign in as admin first"
+
+#: ../src/companies.php:19
+msgid "Companies"
+msgstr "Companies"
+
+#: ../src/company.php:40
+msgid "Reset"
+msgstr "Reset"
+
+#: ../src/company.php:41
+msgid "Drop company and create again"
+msgstr "Drop company and create again"
+
+#: ../src/company.php:45
+msgid "Duplicate"
+msgstr "Duplicate"
+
+#: ../src/company.php:46
+msgid "Create copy"
+msgstr "Create copy"
+
+#: ../src/company.php:53
+msgid "Restore previously saved state"
+msgstr "Restore previously saved state"
+
+#: ../src/company.php:59
+msgid "Save current state"
+msgstr "Save current state"
+
+#: ../src/company.php:74
+msgid "Create company"
+msgstr "Create company"
+
+#: ../src/company.php:82
+msgid "database"
+msgstr "database"
+
+#: ../src/company.php:87
+msgid "created"
+msgstr "created"
+
+#: ../src/company.php:91
+msgid "Watching changes"
+msgstr "Watching changes"
+
+#: ../src/company.php:94
+msgid "Show in listing"
+msgstr "Show in listing"
+
+#: ../src/company.php:97
+msgid "License Group"
+msgstr "License Group"
+
+#: ../src/company.php:99
+msgid "Status"
+msgstr "Status"
+
+#: ../src/copycompany.php:23
+msgid "Clone company"
+msgstr "Clone company"
+
+#: ../src/copycompany.php:30
+msgid "Clone to"
+msgstr "Clone to"
+
+#: ../src/copycompany.php:37
+msgid "backup saved"
+msgstr "backup saved"
+
+#: ../src/copycompany.php:41 ../src/restorecompany.php:46
+msgid "backup restored"
+msgstr "backup restored"
+
+#: ../src/copycompany.php:44 ../src/restorecompany.php:48
+#, php-format
+msgid "company %s was not restored"
+msgstr "company %s was not restored"
+
+#: ../src/copycompany.php:49
+#, php-format
+msgid "Saving company %s failed"
+msgstr "Saving company %s failed"
+
+#: ../src/createinsert.php:25 ../src/editor.php:28
+msgid "New record"
+msgstr "New record"
+
+#: ../src/createinsert.php:49
+msgid "Record was saved"
+msgstr "Record was saved"
+
+#: ../src/createinsert.php:51
+msgid "Record was not saved"
+msgstr "Record was not saved"
+
+#: ../src/createinsert.php:56
+msgid "Editor"
+msgstr "Editor"
+
+#: ../src/datasaver.php:16
+msgid "Please login First"
+msgstr "Please login First"
+
+#: ../src/datasaver.php:38
+msgid "Bad call"
+msgstr "Bad call"
+
+#: ../src/datasaver.php:50
+msgid "Error saving to FlexiBee"
+msgstr "Error saving to FlexiBee"
 
 #: ../src/delete.php:32
 msgid "Record was deleted"
@@ -586,21 +962,13 @@ msgstr "Keep record"
 msgid "Delete record"
 msgstr "Delete record"
 
-#: ../src/editor.php:25
-msgid "New record"
-msgstr "New record"
+#: ../src/editor.php:24
+msgid "New record save"
+msgstr "New record save"
 
-#: ../src/editor.php:49
-msgid "Record was saved"
-msgstr "Record was saved"
-
-#: ../src/editor.php:51
-msgid "Record was not saved"
-msgstr "Record was not saved"
-
-#: ../src/editor.php:56
-msgid "Editor"
-msgstr "Editor"
+#: ../src/editor.php:37 ../src/editor.php:40
+msgid "Record Editor"
+msgstr "Record Editor"
 
 #: ../src/evidence.php:31
 #, php-format
@@ -611,10 +979,6 @@ msgstr "Evidence %s does not exist"
 #, php-format
 msgid "Evidence %s"
 msgstr "Evidence %s"
-
-#: ../src/evidence.php:54 ../src/viewevidence.php:31
-msgid "Listing"
-msgstr "Listing"
 
 #: ../src/evidence.php:58
 msgid "Column Groups"
@@ -652,6 +1016,10 @@ msgstr "Info"
 msgid "Labels Availble"
 msgstr "Labels Availble"
 
+#: ../src/evidence.php:161
+msgid "Custom Buttons"
+msgstr "Custom Buttons"
+
 #: ../src/evidences.php:18
 msgid "Evidences"
 msgstr "Evidences"
@@ -683,47 +1051,47 @@ msgstr "licence ok"
 msgid "unavialble"
 msgstr "unavialble"
 
-#: ../src/fakechange.php:36
+#: ../src/fakechange.php:47
 msgid "WebHook successfully triggered"
 msgstr "WebHook successfully triggered"
 
-#: ../src/fakechange.php:38
+#: ../src/fakechange.php:49
 msgid "WebHook returns non empty response"
 msgstr "WebHook returns non empty response"
 
-#: ../src/fakechange.php:68
+#: ../src/fakechange.php:79
 msgid "Which version of the changes will begin sending following changes"
 msgstr "Which version of the changes will begin sending following changes"
 
-#: ../src/fakechange.php:76
+#: ../src/fakechange.php:87
 msgid "Operation"
 msgstr "Operation"
 
-#: ../src/fakechange.php:79
+#: ../src/fakechange.php:90
 msgid "Record number"
 msgstr "Record number"
 
-#: ../src/fakechange.php:79
+#: ../src/fakechange.php:90
 msgid "Internal number of record edited"
 msgstr "Internal number of record edited"
 
-#: ../src/fakechange.php:82
+#: ../src/fakechange.php:93
 msgid "External number"
 msgstr "External number"
 
-#: ../src/fakechange.php:82
+#: ../src/fakechange.php:93
 msgid "External number of record edited"
 msgstr "External number of record edited"
 
-#: ../src/fakechange.php:85
+#: ../src/fakechange.php:96
 msgid "Build change"
 msgstr "Build change"
 
-#: ../src/fakechange.php:92
+#: ../src/fakechange.php:103
 msgid "Choose Registered"
 msgstr "Choose Registered"
 
-#: ../src/fakechange.php:94
+#: ../src/fakechange.php:105
 msgid ""
 "When the database FlexiBee is changed the POST HTTP request sent to all "
 "registered URL"
@@ -731,32 +1099,53 @@ msgstr ""
 "When the database FlexiBee is changed the POST HTTP request sent to all "
 "registered URL"
 
-#: ../src/fakechange.php:119 ../src/query.php:73
+#: ../src/fakechange.php:131 ../src/query.php:73
 msgid "Response"
 msgstr "Response"
 
-#: ../src/fakechange.php:121 ../src/query.php:69
+#: ../src/fakechange.php:133 ../src/query.php:69
 msgid "Request"
 msgstr "Request"
 
-#: ../src/fakechange.php:123
+#: ../src/fakechange.php:135
 msgid "WebHook probe"
 msgstr "WebHook probe"
 
+#: ../src/getbuttonxml.php:21
+#, php-format
+msgid "Open %s in Flexplorer"
+msgstr "Open %s in Flexplorer"
+
 #: ../src/getbuttonxml.php:27
+msgid "Edit Record in Flexplorer"
+msgstr "Edit Record in Flexplorer"
+
+#: ../src/getbuttonxml.php:33
+msgid "JSON in Flexplorer"
+msgstr "JSON in Flexplorer"
+
+#: ../src/getbuttonxml.php:39
+msgid "XML in Flexplorer"
+msgstr "XML in Flexplorer"
+
+#: ../src/getbuttonxml.php:47
 #, php-format
 msgid "flexplorer %s lexibee-buttons"
 msgstr "flexplorer %s lexibee-buttons"
+
+#: ../src/getpdf.php:43
+msgid "Wrong call"
+msgstr "Wrong call"
 
 #: ../src/index.php:18
 msgid "FlexiBee info"
 msgstr "FlexiBee info"
 
-#: ../src/index.php:28
+#: ../src/index.php:39
 msgid "server info"
 msgstr "server info"
 
-#: ../src/index.php:30
+#: ../src/index.php:41
 msgid "license info"
 msgstr "license info"
 
@@ -782,66 +1171,70 @@ msgid "Please confirm your login credentials"
 msgstr "Please confirm your login credentials"
 
 #: ../src/login.php:62
-msgid "Login History"
-msgstr "Login History"
+msgid "Login Bookmarks"
+msgstr "Login Bookmarks"
 
-#: ../src/login.php:84
+#: ../src/login.php:91
 msgid "FlexiBee server URL. ex.:"
 msgstr "FlexiBee server URL. ex.:"
 
-#: ../src/login.php:85
+#: ../src/login.php:92
 msgid "User name"
 msgstr "User name"
 
-#: ../src/login.php:88
+#: ../src/login.php:95
 msgid "Login name"
 msgstr "Login name"
 
-#: ../src/login.php:92
+#: ../src/login.php:99
 msgid "User's password"
 msgstr "User's password"
 
-#: ../src/login.php:94
+#: ../src/login.php:101
 msgid "Add this to Login History"
 msgstr "Add this to Login History"
 
-#: ../src/login.php:102
+#: ../src/login.php:109
 msgid "display the contents of all the available records in all companies"
 msgstr "display the contents of all the available records in all companies"
 
-#: ../src/login.php:104
+#: ../src/login.php:111
 msgid "show the structure of evidence"
 msgstr "show the structure of evidence"
 
-#: ../src/login.php:106
+#: ../src/login.php:113
 msgid "send direct requests to the server and display results"
 msgstr "send direct requests to the server and display results"
 
-#: ../src/login.php:108
+#: ../src/login.php:115
 msgid "set up ChangesAPI and add WebHooks"
 msgstr "set up ChangesAPI and add WebHooks"
 
-#: ../src/login.php:110
+#: ../src/login.php:117
 msgid "Test WebHook script processing changes from FlexiBee answers"
 msgstr "Test WebHook script processing changes from FlexiBee answers"
 
-#: ../src/login.php:112
+#: ../src/login.php:119
 msgid "Collectively establish and abolish the accounting period"
 msgstr "Collectively establish and abolish the accounting period"
 
-#: ../src/login.php:114
+#: ../src/login.php:121
 msgid "Evidnece distinguish which are inaccessible because of the license"
 msgstr "Evidnece distinguish which are inaccessible because of the license"
 
-#: ../src/login.php:116
+#: ../src/login.php:123
 msgid "Shown next to json result of the request and page FlexiBee"
 msgstr "Shown next to json result of the request and page FlexiBee"
 
-#: ../src/login.php:118
+#: ../src/login.php:125
 msgid "Edit External ID numbers"
 msgstr "Edit External ID numbers"
 
-#: ../src/login.php:121
+#: ../src/login.php:127
+msgid "PDF Preview of edited record"
+msgstr "PDF Preview of edited record"
+
+#: ../src/login.php:130
 msgid "Features"
 msgstr "Features"
 
@@ -853,13 +1246,90 @@ msgstr "Sign out"
 msgid "Thank you for your patronage and look forward to another visit"
 msgstr "Thank you for your patronage and look forward to another visit"
 
-#: ../src/main.php:19
+#: ../src/main.php:19 ../src/newcompany.php:50
 msgid "Main Page"
 msgstr "Main Page"
+
+#: ../src/newcompany.php:27
+msgid "Please enter company name"
+msgstr "Please enter company name"
+
+#: ../src/newcompany.php:30
+#, php-format
+msgid "Company %s already exists"
+msgstr "Company %s already exists"
+
+#: ../src/newcompany.php:34
+#, php-format
+msgid "Company %s was created"
+msgstr "Company %s was created"
+
+#: ../src/newcompany.php:44
+#, php-format
+msgid "Creating company %s failed"
+msgstr "Creating company %s failed"
+
+#: ../src/newcompany.php:52
+msgid "Create New Company"
+msgstr "Create New Company"
+
+#: ../src/permissions.php:16
+msgid "Permissions overview"
+msgstr "Permissions overview"
+
+#: ../src/permissions.php:22
+msgid "Get CSV"
+msgstr "Get CSV"
+
+#: ../src/permissions.php:24
+msgid "Get XLSx"
+msgstr "Get XLSx"
+
+#: ../src/permissions.php:26
+msgid "Get html"
+msgstr "Get html"
 
 #: ../src/query.php:70
 msgid "Custom request"
 msgstr "Custom request"
+
+#: ../src/resetcompany.php:24
+#, php-format
+msgid "Company %s was recreated"
+msgstr "Company %s was recreated"
+
+#: ../src/restorecompany.php:25
+msgid "Backup restore"
+msgstr "Backup restore"
+
+#: ../src/restorecompany.php:40
+msgid "company removed before restore"
+msgstr "company removed before restore"
+
+#: ../src/restorecompany.php:42
+msgid "company cleanup failed"
+msgstr "company cleanup failed"
+
+#: ../src/savecompany.php:28
+#, php-format
+msgid "backup %s saved"
+msgstr "backup %s saved"
+
+#: ../src/savecompany.php:31
+msgid "backup save failed"
+msgstr "backup save failed"
+
+#: ../src/savecompany.php:34
+msgid "Please enter backup file name"
+msgstr "Please enter backup file name"
+
+#: ../src/savecompany.php:38
+msgid "Company Backup"
+msgstr "Company Backup"
+
+#: ../src/savecompany.php:57
+msgid "Save Company As"
+msgstr "Save Company As"
 
 #: ../src/search.php:21
 msgid "Search results"
@@ -878,41 +1348,46 @@ msgstr "History empty"
 msgid "Reset history"
 msgstr "Reset history"
 
-#: ../src/ucetniobdobi.php:31
+#: ../src/ucetniobdobi.php:41
+#, php-format
+msgid "%s already exists."
+msgstr "%s already exists."
+
+#: ../src/ucetniobdobi.php:59
 #, php-format
 msgid "Year %s was unregistred"
 msgstr "Year %s was unregistred"
 
-#: ../src/ucetniobdobi.php:34
+#: ../src/ucetniobdobi.php:62
 #, php-format
 msgid "Year %s was not unregistred"
 msgstr "Year %s was not unregistred"
 
-#: ../src/ucetniobdobi.php:40
+#: ../src/ucetniobdobi.php:68
 msgid "Year was unregistred"
 msgstr "Year was unregistred"
 
-#: ../src/ucetniobdobi.php:42
+#: ../src/ucetniobdobi.php:70
 msgid "Year was not unregistred"
 msgstr "Year was not unregistred"
 
-#: ../src/ucetniobdobi.php:53
+#: ../src/ucetniobdobi.php:81
 msgid "From Year"
 msgstr "From Year"
 
-#: ../src/ucetniobdobi.php:56
+#: ../src/ucetniobdobi.php:84
 msgid "To Year"
 msgstr "To Year"
 
-#: ../src/ucetniobdobi.php:74
+#: ../src/ucetniobdobi.php:102
 msgid "Registered Accounting periods"
 msgstr "Registered Accounting periods"
 
-#: ../src/ucetniobdobi.php:76
+#: ../src/ucetniobdobi.php:104
 msgid "Remove unused"
 msgstr "Remove unused"
 
-#: ../src/ucetniobdobi.php:79
+#: ../src/ucetniobdobi.php:107
 msgid "Tool for massive creating Accounting periods"
 msgstr "Tool for massive creating Accounting periods"
 
@@ -928,6 +1403,9 @@ msgstr "Structure"
 msgid "Custom query"
 msgstr "Custom query"
 
+#~ msgid "Login History"
+#~ msgstr "Login History"
+
 #~ msgid "Query does not sent yet"
 #~ msgstr "Query does not sent yet"
 
@@ -940,17 +1418,11 @@ msgstr "Custom query"
 #~ msgid "subitems collection name"
 #~ msgstr "subitems collection name"
 
-#~ msgid "File"
-#~ msgstr "File"
-
 #~ msgid "Welcome"
 #~ msgstr "Welcome"
 
 #~ msgid "Dotaz nebyl zatím odeslán"
 #~ msgstr "Dotaz nebyl zatím odeslán"
-
-#~ msgid "Flexplorer"
-#~ msgstr "Flexplorer"
 
 #~ msgid "Nothig here yet"
 #~ msgstr "Nothig here yet"

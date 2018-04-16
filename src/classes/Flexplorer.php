@@ -40,6 +40,19 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
         $this->evidenceStructure = $this->getColumnsInfo();
     }
 
+    
+    /**
+     * Add Default Url params to given url if not overrided
+     *
+     * @param string $urlRaw
+     *
+     * @return string url with default params added
+     */
+    public function addDefaultUrlParams($urlRaw)
+    {
+        return $this->addUrlParams($urlRaw, $this->defaultUrlParams, true);
+    }
+    
     /**
      * Return all records as html]
      *

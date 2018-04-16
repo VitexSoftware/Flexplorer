@@ -122,7 +122,7 @@ class WebPage extends \Ease\TWB\WebPage
 
     public function getRequestURL()
     {
-        return is_null($this->requestURL) ? $_SESSION['lasturl'] : $this->requestURL;
+        return is_null($this->requestURL) ? isset($_SESSION['lasturl']) ? $_SESSION['lasturl'] : '' : $this->requestURL;
     }
 
     /**
