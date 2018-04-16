@@ -11,13 +11,14 @@
     ],
     "minimum-stability": "dev",
     "config": {
-	"vendor-dir": "/var/lib/flexplorer"
+        "vendor-dir": "/var/lib/flexplorer"
     },
     "require": {
         "php": ">= 5.5.9",
         "flexipeehp": "*",
         "ease-framework": "*",
-        "league/commonmark": "^0.15.0"        
+        "league/commonmark": "^0.15.0",
+        "vitexsoftware/flexipeehp-bricks": "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -42,5 +43,4 @@
             }
         }
     ]
-
 }
