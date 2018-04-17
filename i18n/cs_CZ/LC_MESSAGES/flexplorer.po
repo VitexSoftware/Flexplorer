@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2018-04-16 02:00+0200\n"
-"PO-Revision-Date: 2018-04-16 02:01+0200\n"
+"POT-Creation-Date: 2018-04-17 15:30+0200\n"
+"PO-Revision-Date: 2018-04-17 15:31+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: cs_CZ\n"
@@ -969,6 +969,10 @@ msgstr "Uložení nového záznamu"
 msgid "Record Editor"
 msgstr "Editor záznamu"
 
+#: ../src/editor.php:44 ../src/evidence.php:163
+msgid "Print Sets"
+msgstr "Tiskové sestavy"
+
 #: ../src/evidence.php:31
 #, php-format
 msgid "Evidence %s does not exist"
@@ -1132,7 +1136,7 @@ msgstr "XML ve Flexploreru"
 msgid "flexplorer %s lexibee-buttons"
 msgstr "flexplorer %s lexibee-buttons"
 
-#: ../src/getpdf.php:43
+#: ../src/getpdf.php:28
 msgid "Wrong call"
 msgstr "Špatné volání"
 
