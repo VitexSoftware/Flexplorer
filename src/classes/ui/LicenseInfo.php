@@ -40,6 +40,7 @@ class LicenseInfo extends \Ease\Html\TableTag
                     $features = [];
                     foreach ($licenseValue['feature'] as $feature) {
                         $features[] = new \Ease\TWB\Label('success', $feature);
+                        $features[] = ' ';
                     }
                     $licenseValue = $features;
                     break;

@@ -41,6 +41,8 @@ $editorTabs->addTab(_('Record Editor'), new ui\RecordEditor($engine));
 $editorTabs->addAjaxTab(_('PDF'),
     'document.php?embed=true&evidence='.$evidence.'&id='.$engine->getMyKey());
 
+$editorTabs->addTab(_('Downloads'), new ui\RecordDownloader($engine));
+
 $editorTabs->addTab(_('Print Sets'), new ui\PrintSetGallery($engine));
 
 $oPage->container->addItem($editorTabs);

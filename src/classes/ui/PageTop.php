@@ -38,7 +38,6 @@ class PageTop extends \Ease\Html\Div
      */
     public function finalize()
     {
-        $this->SetupWebPage();
         $this->addItem(new MainMenu());
         $this->addItem(new History());
     }
