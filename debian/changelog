@@ -1,4 +1,4 @@
-flexplorer (1.1-1) UNRELEASED; urgency=medium
+flexplorer (1.4) experimental; urgency=medium
 
   [ Cybervitexus ]
   * Debian package composer inir update
@@ -12,107 +12,11 @@ flexplorer (1.1-1) UNRELEASED; urgency=medium
   * Doplněn nástroj pro práci s WebHooks a ChangesApi Opraveno
     přihlašování
   * Doplněn nástroj pro hromadné zakládání účetních období
-  * Doplněn nástroj pro hromadné zakládání účetních období
   * Oprava přihlášení pokud je vedena pouze jedna firma.
   * Doplněn editor záznamů Přidána možnost voložit nový záznam Přidána
     možnost smazat záznam drobnéopravy a úpravy
   * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
     potvrzení mazání Doplněn před tím necommitnutý DataGrid
-  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
-    potvrzení mazání Doplněn před tím necommitnutý DataGrid
-  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
-    potvrzení mazání Doplněn před tím necommitnutý DataGrid
-  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
-    potvrzení mazání Doplněn před tím necommitnutý DataGrid
-  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
-    potvrzení mazání Doplněn před tím necommitnutý DataGrid
-  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
-    potvrzení mazání Doplněn před tím necommitnutý DataGrid
-  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
-    potvrzení mazání Doplněn před tím necommitnutý DataGrid
-  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
-    potvrzení mazání Doplněn před tím necommitnutý DataGrid
-  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
-    potvrzení mazání Doplněn před tím necommitnutý DataGrid
-  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
-    potvrzení mazání Doplněn před tím necommitnutý DataGrid
-
-  [ vitex ]
-  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
-    potvrzení mazání Doplněn před tím necommitnutý DataGrid
-  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
-    potvrzení mazání Doplněn před tím necommitnutý DataGrid
-  * Doplnění Readme o popis konfiguráku Přidány screnshoty editorů a
-    potvrzení mazání Doplněn před tím necommitnutý DataGrid
-  * Added tool for probing WebHooks
-  * Oprava Screenshotu Odpovědi WebHooku
-  * Release Verze 0.3
-  * Release Verze 0.3
-  * Release 0.4 Main menu switched to english
-  * Vyhledávání doplněno do README
-  * Vyhledávání doplněno do README
-  * Vyhledávání doplněno do README
-  * Vyhledávání doplněno do README
-  * Vyhledávání doplněno do README
-  * Vyhledávání doplněno do README
-  * Oprava aktualizace knihoven composerem při instalaci balíčku
-  * Oprava aktualizace knihoven composerem při instalaci balíčku
-  * Oprava aktualizace knihoven composerem při instalaci balíčku
-  * Oprava aktualizace knihoven composerem při instalaci balíčku
-  * Oprava aktualizace knihoven composerem při instalaci balíčku
-  * Oprava aktualizace knihoven composerem při instalaci balíčku
-  * Searching optimized
-
-  [ Vítězslav Dvořák ]
-  * Footer white Some English translations
-  * Footer white Some English translations
-  * Footer white Some English translations
-  * Footer white Some English translations
-  * Footer white Some English translations
-  * Footer white Some English translations
-  * Footer white Some English translations
-
-  [ vitex ]
-  * Jump back to original url after session expire and reloign fixed
-  * Release 0.7
-  * Release 0.7
-  * Update to current FlexiPeeHP Added Browsing history
-  * Update to current FlexiPeeHP Added Browsing history
-  * Show links to referenced evidencies in json listing Update to
-    Current EaseFramework
-  * Show json operation in datagrid show json
-  * Show json operation in datagrid show json
-  * Show json operation in datagrid show json
-  * Show json operation in datagrid show json
-  * Show json operation in datagrid show json
-  * Show json operation in datagrid show json
-  * Added Dialogs for set up default connection in debian package.
-
-  [ Vítězslav Dvořák ]
-  * Czech localisation update
-  * Czech localisation update
-  * Czech localisation update
-  * Czech localisation update
-  * Czech localisation update
-  * Czech localisation update
-
-  [ vitex ]
-  * Evidencies overview page with paths module availbility by license
-    status
-  * Evidencies overview page with paths module availbility by license
-    status
-  * Evidencie page get new info tab with availbility by license status
-  * Added tab with flexibee web wiev of current query result
-  * Added tab with flexibee web wiev of current query result
-  * typo fix
-  * Search improved
-  * Button to delete remove all unused Accounting Periods
-  * Show relations in evidence info tab
-  * Discover all relations Do not crash on unexistent evidence listig
-  * Fixed Response show for custom query when post some data
-
-  [ Vítězslav Dvořák ]
-  * Vagrant Box s Ubuntu Zesty
   * Vagrant Box s Ubuntu Zesty
 
  -- Vítězslav Dvořák <info@vitexsoftware.cz>  Fri, 16 Jun 2017 10:31:57 +0200
