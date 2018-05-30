@@ -1,9 +1,11 @@
+all:
+
 deb:
 	dpkg-buildpackage -A -us -uc
 
 
-docker:
+dimage:
 	docker build -t vitexsoftware/flexplorer .
 
-install:
+drun:
 	docker-compose run --rm default install
