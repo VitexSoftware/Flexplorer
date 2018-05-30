@@ -84,13 +84,14 @@ class BootstrapMenu extends \Ease\TWB\Navbar
      */
     public function draw()
     {
-        $statusMessages = $this->webPage->getStatusMessagesAsHtml();
+        $webPage        = \Ease\Shared::webPage();
+        $statusMessages = $webPage->getStatusMessagesAsHtml();
         if ($statusMessages) {
             $this->addItem(new \Ease\Html\Div($statusMessages,
                     ['id' => 'StatusMessages', 'class' => 'well', 'title' => _('Click to hide messages'),
                     'data-state' => 'down']));
             $this->addItem(new \Ease\Html\Div(null, ['id' => 'smdrag']));
-            $this->webPage->cleanMessages();
+            $webPage->cleanMessages();
         }
         parent::draw();
     }

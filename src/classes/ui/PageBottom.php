@@ -86,6 +86,7 @@ class PageBottom extends \Ease\TWB\Container
      */
     public function finalize()
     {
+        $this->webPage = \Ease\Shared::webPage();
         if (isset($this->webPage->heroUnit) && !count($this->webPage->heroUnit->pageParts)) {
             unset($this->webPage->container->pageParts['\Ease\Html\DivTag@heroUnit']);
         }

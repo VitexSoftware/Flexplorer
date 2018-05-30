@@ -51,6 +51,7 @@ class MainMenu extends \Ease\Html\Div
     public function afterAdd()
     {
         $nav       = $this->addItem(new BootstrapMenu());
+        $webPage   = \Ease\Shared::webPage();
         $myCompany = isset($_SESSION['company']) ? $_SESSION['company'] : '';
         $userID    = \Ease\Shared::user()->getUserID();
         if ($userID) { //Authenticated user
@@ -63,13 +64,13 @@ class MainMenu extends \Ease\Html\Div
             $nav->addMenuItem(new NavBarSearchBox('search', 'search.php', $term));
             $companer = new \FlexiPeeHP\Company(null, ['company' => null]);
 
-            $url = \Ease\Shared::webPage()->getRequestValue('url');
+            $url = $webPage->getRequestValue('url');
             if (is_null($url)) {
                 $infoLabel = $companer->getEvidenceURL();
 
                 $infoLabel .= $myCompany;
 
-                $evidence = $this->webPage->getRequestValue('evidence');
+                $evidence = $webPage->getRequestValue('evidence');
                 if ($evidence) {
                     $infoLabel .= '/'.$evidence;
                 }

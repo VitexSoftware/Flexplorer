@@ -21,7 +21,7 @@ class ChangesLister extends \Ease\Html\UlTag
         $age      = new ShowLiveAge(str_replace('.json', '', $stamp));
         $pageItem = new \Ease\Html\ATag('change.php?file='.$pageItem,
             str_replace(['flexplorer-changes-', '_'], ['', '&nbsp;<strong>'],
-                $pageItem).'</strong>'.$age);
+                $pageItem).'</strong> '.$age);
         $item     = parent::addItemSmart($pageItem, $properties);
         return $item;
     }

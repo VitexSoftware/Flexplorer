@@ -496,7 +496,7 @@ background: url(images/delete.png) no-repeat center left;
                 $columnProperties['label'] = $title;
             }
             if (!isset($columnProperties['value'])) {
-                $columnProperties['value'] = $this->webPage->getRequestValue($name);
+                $columnProperties['value'] = \Ease\Shared::webPage()->getRequestValue($name);
             }
             $columnProperties['name']   = $name;
             $this->editFormItems[$name] = $columnProperties;
