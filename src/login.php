@@ -98,7 +98,7 @@ $loginPanel->addItem(new \Ease\TWB\FormGroup(_('Password'),
     $password ? $password : constant('DEFAULT_FLEXIBEE_PASSWORD')),
     constant('DEFAULT_FLEXIBEE_PASSWORD'), _('User\'s password')));
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('Remeber me'),
-    new ui\TWBSwitch('remember-me', true), null, _('Add this to Login History')));
+    new \Ease\ui\TWBSwitch('remember-me', true), null, _('Add this to Login History')));
 
 
 $loginPanel->body->setTagCss(['margin' => '20px']);

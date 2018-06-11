@@ -17,9 +17,9 @@
         "php": ">= 5.5.9",
         "flexipeehp": "*",
         "ease-framework": "*",
-        "ease-framework-bricks": "*",
+        "ease-bricks": "*",
         "league/commonmark": "^0.15.0",
-        "vitexsoftware/flexipeehp-bricks": "dev-master"
+        "flexipeehp-bricks": "*"
     },
     "autoload": {
         "psr-4": {
@@ -46,6 +46,13 @@
         {
             "type": "path",
             "url": "/usr/share/php/FlexiPeeHP",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "/usr/share/php/FlexiPeeHPBricks",
             "options": {
                 "symlink": true
             }

@@ -42,7 +42,7 @@ class Editor extends ColumnsForm
         }
 
         \Ease\Shared::webPage()->includeJavaScript('js/datasaver.js');
-        $this->addItem(new TWBSwitch('toFlexiBee', false, 'on',
+        $this->addItem(new \Ease\ui\TWBSwitch('toFlexiBee', false, 'on',
                 ['onText' => _('Save to FlexiBee'), 'offText' => _('Show in editor')]));
         $this->addItem(new \Ease\TWB\SubmitButton(_('OK').' '.new \Ease\TWB\GlyphIcon('save')));
         $this->engine = $engine;

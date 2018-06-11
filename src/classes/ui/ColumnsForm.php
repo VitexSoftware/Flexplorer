@@ -155,7 +155,7 @@ class ColumnsForm extends \Ease\TWB\Form
 
             switch ($type) {
                 case 'BOOL':
-                    $input_widget = new TWBSwitch($col_name, $value);
+                    $input_widget = new \Ease\ui\TWBSwitch($col_name, $value);
                     break;
                 case 'INT':
                     $input_widget = new \Ease\Html\InputTextTag($col_name,
