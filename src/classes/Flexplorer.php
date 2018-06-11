@@ -50,7 +50,7 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
      */
     public function addDefaultUrlParams($urlRaw)
     {
-        return $this->addUrlParams($urlRaw, $this->defaultUrlParams, true);
+        return \Ease\Shared::addUrlParams($urlRaw, $this->defaultUrlParams);
     }
     
     /**
@@ -257,22 +257,6 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
                 }
             }
         }
-
-
-        if (array_key_exists('external-ids', $data)) {
-            $id = [$data['id']];
-            foreach ($data['external-ids'] as $key => $value) {
-                if (strlen($value)) {
-                    if (is_numeric($key)) {
-                        $id[] = 'ext:'.str_replace('ext:', '', $value);
-                    } else {
-                        $id[] = 'ext:'.$key.':'.str_replace('ext:', '', $value);
-                    }
-                }
-            }
-            $data['id'] = $id;
-            unset($data['external-ids']);
-        }
         return parent::takeData($data);
     }
 
@@ -293,6 +277,10 @@ class Flexplorer extends \FlexiPeeHP\FlexiBeeRW
         return $found;
     }
 
+    /**
+     * 
+     * @param type $originalIDs
+     */
     public function changeExternalIDs($originalIDs)
     {
         $extidToRemove = [];

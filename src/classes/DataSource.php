@@ -187,6 +187,7 @@ class DataSource extends \Ease\Brick
      *
      * @param string $queryRaw
      * @param string $transform html|none
+     * 
      * @return array
      */
     public function getListing($queryRaw, $transform = 'html')
@@ -200,8 +201,7 @@ class DataSource extends \Ease\Brick
                 : 'desc';
         $conditions                  = $this->getWhere();
         $conditions['add-row-count'] = 'true';
-
-        $start = (($page - 1) * $rp);
+        $start                       = (($page - 1) * $rp);
 
         $conditions['limit']  = $rp;
         $conditions['start']  = $start;

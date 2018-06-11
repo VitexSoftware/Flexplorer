@@ -17,6 +17,7 @@
         "php": ">= 5.5.9",
         "flexipeehp": "*",
         "ease-framework": "*",
+        "ease-framework-bricks": "*",
         "league/commonmark": "^0.15.0",
         "vitexsoftware/flexipeehp-bricks": "dev-master"
     },
@@ -31,6 +32,13 @@
         {
             "type": "path",
             "url": "/usr/share/php/Ease",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "/usr/share/php/EaseBricks",
             "options": {
                 "symlink": true
             }

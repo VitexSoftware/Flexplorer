@@ -52,7 +52,10 @@ $optionsRow->addColumn(6, new ui\WebHookSelect('hookurl'))->addItem(new \Ease\TW
 $optionsRow->addColumn(2,
     new \Ease\TWB\SubmitButton(new \Ease\TWB\GlyphIcon('flash').' '._('Probe'),
         'warning'));
-$optionsRow->addColumn(2);
+
+$optionsRow->addColumn(2,
+    new \Ease\TWB\LinkButton('change.php?download='.$file,
+        new \Ease\TWB\GlyphIcon('download').' '._('Download'), 'info'));
 $optionsRow->addColumn(2,
     new \Ease\TWB\LinkButton('change.php?delete='.$file,
         new \Ease\TWB\GlyphIcon('trash').' '._('Delete'), 'danger'));

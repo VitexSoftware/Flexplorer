@@ -15,7 +15,8 @@
         "spoje.net/flexipeehp": "dev-master",
         "vitexsoftware/ease-framework": "dev-master",
         "league/commonmark": "^0.15.0",
-        "vitexsoftware/flexipeehp-bricks": "dev-master"
+        "vitexsoftware/flexipeehp-bricks": "dev-master",
+        "vitexsoftware/ease-bricks": "0.2"
     },
     "autoload": {
         "psr-4": {

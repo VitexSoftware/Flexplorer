@@ -70,7 +70,7 @@ $toolRow      = new \Ease\TWB\Row();
 $settingsForm = new \Ease\TWB\Form('settings');
 
 
-$settingsForm->addInput(new ui\TWBSwitch('changesformat', true, 'JSON',
+$settingsForm->addInput(new \Ease\ui\TWBSwitch('changesformat', true, 'JSON',
     ['onText' => 'JSON', 'offText' => 'XML', 'disabled' => true]),
     _('Data format'));
 

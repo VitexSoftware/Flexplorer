@@ -92,7 +92,7 @@ if (!is_null($linkrefresh)) {
 $oPage->addItem(new ui\PageTop(_('ChangesAPI Tool')));
 $toolRow      = new \Ease\TWB\Row();
 $settingsForm = new \Ease\TWB\Form('settings');
-$settingsForm->addInput(new ui\TWBSwitch('changesapi', $chapistatus, 'enable',
+$settingsForm->addInput(new \Ease\ui\TWBSwitch('changesapi', $chapistatus, 'enable',
     ['onText' => _('Enable'), 'offText' => _('Disable')]), _('Changes API'),
     null,
     new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/changes-api/',
@@ -110,10 +110,10 @@ $settingsForm->addInput(new \Ease\Html\InputTextTag('hookurl', $hookurl),
 $settingsForm->addItem(new \Ease\TWB\LinkButton("?hookurl=".urlencode($webHookUrl),
     _('Target to FlexPlorer'), 'success', ['class' => 'button button-xs']));
 
-$settingsForm->addInput(new ui\TWBSwitch('changesformat', true, 'JSON',
+$settingsForm->addInput(new \Ease\ui\TWBSwitch('changesformat', true, 'JSON',
     ['onText' => 'JSON', 'offText' => 'XML']), _('Data format'));
 
-$settingsForm->addInput(new ui\TWBSwitch('hookurltest', true, 'skip'),
+$settingsForm->addInput(new \Ease\ui\TWBSwitch('hookurltest', true, 'skip'),
     _('Skip URL test'), null, _('Suppress URL functionality test'));
 
 

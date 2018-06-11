@@ -6,7 +6,7 @@ namespace Flexplorer;
  * Flexplorer - Editor záznamu.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  2016 Vitex Software
+ * @copyright  2016-2018 Vitex Software
  */
 require_once 'includes/Init.php';
 
@@ -38,6 +38,12 @@ $oPage->addItem(new ui\PageTop(_('Record Editor').' '.$evidence.':'.$id));
 
 $editorTabs = new \Ease\TWB\Tabs('EditorTabs');
 $editorTabs->addTab(_('Record Editor'), new ui\RecordEditor($engine));
+
+$editorTabs->addTab(_('External IDs'),
+    new \Ease\TWB\Form('extIDs', 'createinsert.php', 'POST',
+        new ui\extIDsEditor($engine)));
+$editorTabs->addTab(_('Labels'), new ui\LabelSwitches($engine));
+
 $editorTabs->addAjaxTab(_('PDF'),
     'document.php?embed=true&evidence='.$evidence.'&id='.$engine->getMyKey());
 $editorTabs->addTab(_('Print Sets'), new ui\PrintSetGallery($engine));

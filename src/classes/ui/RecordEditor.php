@@ -190,8 +190,6 @@ class RecordEditor extends \Ease\TWB\Panel
 
     /**
      * Vraci kod pro ukladani policka formulare po editaci
-     *    /**
-     * Vraci kod pro ukladani policka formulare po editaci
      *
      * @param string $fieldName
      * 
