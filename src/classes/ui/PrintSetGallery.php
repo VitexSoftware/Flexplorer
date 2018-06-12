@@ -24,9 +24,9 @@ class PrintSetGallery extends \Ease\TWB\Tabs
         $printSets = $engine->getFlexiData($engine->getEvidenceURL().'/reports');
         parent::__construct('PrintSet');
         if (count($printSets)) {
-            foreach ($printSets['reports']['report'] as $printSet) {
+            foreach ($printSets['reports'] as $printSet) {
                 $this->addAjaxTab(
-                    htmlentities($printSet['reportName']),
+                    htmlentities( $printSet['reportName']),
                     'document.php?evidence='.$engine->getEvidence().'&id='.$engine->getMyKey().'&report-name='.$printSet['reportId'].'&embed=true',
                     $printSet['isDefault'] == 'true'
                 );
