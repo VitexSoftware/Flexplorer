@@ -18,9 +18,9 @@ class FXPreloader extends \Ease\Html\DivTag
 
     public function finalize()
     {
-        \Ease\Shared::webPage()->includeCss('twitter-bootstrap/css/fuelux.css',
+        \Ease\Shared::webPage()->includeCss('https://cdnjs.cloudflare.com/ajax/libs/fuelux/3.16.7/css/fuelux.css',
             true);
-        \Ease\Shared::webPage()->includeJavascript("/javascript/twitter-bootstrap/fuelux.js");
+        \Ease\Shared::webPage()->includeJavascript('https://cdnjs.cloudflare.com/ajax/libs/fuelux/3.16.7/js/fuelux.js');
         \Ease\Shared::webPage()->addJavascript("$('#".$this->getTagID()."').loader();");
         \Ease\Shared::webPage()->addCSS('
 #'.$this->getTagID().'{
@@ -31,9 +31,8 @@ class FXPreloader extends \Ease\Html\DivTag
     margin-left: -50px;
     width: 100px;
     height: 100px;
-    visibility: hidden;
+    visibility: hidden;S
 }​
             ');
     }
-
 }

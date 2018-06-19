@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Flexplorer\n"
-"POT-Creation-Date: 2018-04-17 15:30+0200\n"
-"PO-Revision-Date: 2018-04-17 15:31+0200\n"
+"POT-Creation-Date: 2018-06-19 14:44+0200\n"
+"PO-Revision-Date: 2018-06-19 14:46+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: Vitex Software <info@vitexsoftware.cz>\n"
 "Language: cs_CZ\n"
@@ -34,7 +34,7 @@ msgstr "%s byl smazán"
 msgid "%s was not deleted"
 msgstr "%s nebyl smazán"
 
-#: ../src/backups.php:33 ../src/backups.php:35 ../src/classes/ui/MainMenu.php:130
+#: ../src/backups.php:33 ../src/backups.php:35 ../src/classes/ui/MainMenu.php:131
 #: ../src/restorecompany.php:28
 msgid "Backups"
 msgstr "Zálohy"
@@ -43,7 +43,7 @@ msgstr "Zálohy"
 msgid "FlexiBee Buttons"
 msgstr "FlexiBee Tlačítka"
 
-#: ../src/buttons.php:18 ../src/classes/ui/MainMenu.php:115
+#: ../src/buttons.php:18 ../src/classes/ui/MainMenu.php:116
 #: ../src/evidence.php:55 ../src/fakechange.php:82
 msgid "Evidence"
 msgstr "Evidence"
@@ -82,7 +82,11 @@ msgstr "Přidej nový webhook"
 msgid "Probe"
 msgstr "Zkusit"
 
-#: ../src/change.php:58 ../src/classes/ui/BackupsTool.php:18
+#: ../src/change.php:58
+msgid "Download"
+msgstr "Stažení"
+
+#: ../src/change.php:61 ../src/classes/ui/BackupsTool.php:18
 #: ../src/classes/ui/BackupsTool.php:27 ../src/classes/ui/DataGrid.php:119
 #: ../src/classes/ui/EvidenceCustomButtons.php:32
 msgid "Delete"
@@ -146,7 +150,7 @@ msgstr "Povolit"
 msgid "Disable"
 msgstr "Zakázat"
 
-#: ../src/changesapi.php:96 ../src/classes/ui/MainMenu.php:125
+#: ../src/changesapi.php:96 ../src/classes/ui/MainMenu.php:126
 msgid "Changes API"
 msgstr "API Změn"
 
@@ -254,22 +258,22 @@ msgstr "Záznam se nepovedlo aktualizovat"
 msgid "Unserialization error %s #%s "
 msgstr "Chyba deserializace %s #%s "
 
-#: ../src/classes/Flexplorer.php:327
+#: ../src/classes/Flexplorer.php:315
 #, php-format
 msgid "File %s was used"
 msgstr "Byl použit soubor %s"
 
-#: ../src/classes/Flexplorer.php:336
+#: ../src/classes/Flexplorer.php:324
 #, php-format
 msgid "URL %s was used"
 msgstr "Byla použita adresa %s"
 
-#: ../src/classes/Flexplorer.php:339
+#: ../src/classes/Flexplorer.php:327
 #, php-format
 msgid "Error %s obataing %s"
 msgstr "Chyba %s získání %s"
 
-#: ../src/classes/Flexplorer.php:388
+#: ../src/classes/Flexplorer.php:376
 msgid "External ID"
 msgstr "Externí ID"
 
@@ -312,19 +316,19 @@ msgstr "Stáří"
 msgid "Restore"
 msgstr "Obnovit"
 
-#: ../src/classes/ui/BooleanLabel.php:27 ../src/classes/ui/TWBSwitch.php:28
+#: ../src/classes/ui/BooleanLabel.php:27
 msgid "Yes"
 msgstr "Ano"
 
-#: ../src/classes/ui/BooleanLabel.php:27 ../src/classes/ui/TWBSwitch.php:31
+#: ../src/classes/ui/BooleanLabel.php:27
 msgid "No"
 msgstr "Ne"
 
-#: ../src/classes/ui/BootstrapMenu.php:40 ../src/classes/ui/MainMenu.php:120
+#: ../src/classes/ui/BootstrapMenu.php:40 ../src/classes/ui/MainMenu.php:121
 msgid "Tools"
 msgstr "Nástroje"
 
-#: ../src/classes/ui/BootstrapMenu.php:42 ../src/classes/ui/MainMenu.php:129
+#: ../src/classes/ui/BootstrapMenu.php:42 ../src/classes/ui/MainMenu.php:130
 msgid "Role Permissions"
 msgstr "Oprávnění rolí"
 
@@ -362,7 +366,7 @@ msgstr "Nastavení"
 msgid "Sign off"
 msgstr "Odhlášení"
 
-#: ../src/classes/ui/BootstrapMenu.php:90
+#: ../src/classes/ui/BootstrapMenu.php:91
 msgid "Click to hide messages"
 msgstr "Klikni pro skrytí zpráv"
 
@@ -500,7 +504,7 @@ msgstr "Json"
 msgid "XML"
 msgstr "XML"
 
-#: ../src/classes/ui/DataGrid.php:105 ../src/editor.php:41
+#: ../src/classes/ui/DataGrid.php:105 ../src/editor.php:47
 msgid "PDF"
 msgstr "PDF"
 
@@ -536,6 +540,7 @@ msgid "Show in editor"
 msgstr "Zobraz v editoru"
 
 #: ../src/classes/ui/Editor.php:47 ../src/classes/ui/Editor.php:242
+#: ../src/classes/ui/extIDsEditor.php:56
 msgid "OK"
 msgstr "OK"
 
@@ -562,14 +567,15 @@ msgid "Columns"
 msgstr "Sloupečky"
 
 #: ../src/classes/ui/Editor.php:188 ../src/classes/ui/Editor.php:240
+#: ../src/classes/ui/extIDsEditor.php:54 ../src/editor.php:42
 msgid "External IDs"
 msgstr "Externí IDčka"
 
-#: ../src/classes/ui/Editor.php:189
+#: ../src/classes/ui/Editor.php:189 ../src/editor.php:45
 msgid "Labels"
 msgstr "Štítky"
 
-#: ../src/classes/ui/Editor.php:190 ../src/classes/ui/MainMenu.php:122
+#: ../src/classes/ui/Editor.php:190 ../src/classes/ui/MainMenu.php:123
 #: ../src/evidence.php:69 ../src/query.php:65 ../src/viewevidence.php:46
 msgid "Query"
 msgstr "Dotaz"
@@ -579,11 +585,13 @@ msgstr "Dotaz"
 msgid "FlexiBee"
 msgstr "FlexiBee"
 
-#: ../src/classes/ui/Editor.php:227 ../src/company.php:63
+#: ../src/classes/ui/Editor.php:227 ../src/classes/ui/extIDsEditor.php:41
+#: ../src/company.php:63
 msgid "Remove"
 msgstr "Odstranit"
 
-#: ../src/classes/ui/Editor.php:237 ../src/classes/ui/MainMenu.php:97
+#: ../src/classes/ui/Editor.php:237 ../src/classes/ui/MainMenu.php:98
+#: ../src/classes/ui/extIDsEditor.php:51
 msgid "New"
 msgstr "Nový"
 
@@ -603,32 +611,32 @@ msgstr "Stávající Tlačítka"
 msgid "New Button"
 msgstr "Nové tlačítko"
 
-#: ../src/classes/ui/MainMenu.php:98 ../src/evidence.php:54
+#: ../src/classes/ui/MainMenu.php:99 ../src/evidence.php:54
 #: ../src/viewevidence.php:31
 msgid "Listing"
 msgstr "Výpis"
 
-#: ../src/classes/ui/MainMenu.php:102
+#: ../src/classes/ui/MainMenu.php:103
 msgid "Company"
 msgstr "Firma"
 
-#: ../src/classes/ui/MainMenu.php:110 ../src/delete.php:55
+#: ../src/classes/ui/MainMenu.php:111 ../src/delete.php:55
 msgid "Overview"
 msgstr "Přehled"
 
-#: ../src/classes/ui/MainMenu.php:124
+#: ../src/classes/ui/MainMenu.php:125
 msgid "Buttons"
 msgstr "Tlačítka"
 
-#: ../src/classes/ui/MainMenu.php:126
+#: ../src/classes/ui/MainMenu.php:127
 msgid "Changes Recieved"
 msgstr "Přijaté změny"
 
-#: ../src/classes/ui/MainMenu.php:127 ../src/fakechange.php:64
+#: ../src/classes/ui/MainMenu.php:128 ../src/fakechange.php:64
 msgid "WebHook test"
 msgstr "Test\tWebHooku"
 
-#: ../src/classes/ui/MainMenu.php:128 ../src/ucetniobdobi.php:75
+#: ../src/classes/ui/MainMenu.php:129 ../src/ucetniobdobi.php:75
 msgid "Accounting period"
 msgstr "Účetní období"
 
@@ -762,6 +770,15 @@ msgstr "ne"
 #, php-format
 msgid "Error reading file %s"
 msgstr "Chyba čtení souboru %s"
+
+#: ../src/classes/ui/RecordDownloader.php:24
+msgid "Record downloads"
+msgstr "Stažení evidence"
+
+#: ../src/classes/ui/RecordDownloader.php:38
+#, php-format
+msgid "No availble formats info for evidence %s is not set"
+msgstr "Evidence %s nemá dostupné žádné formáty"
 
 #: ../src/classes/ui/RecordEditor.php:58
 msgid "Save new record"
@@ -969,9 +986,13 @@ msgstr "Uložení nového záznamu"
 msgid "Record Editor"
 msgstr "Editor záznamu"
 
-#: ../src/editor.php:44 ../src/evidence.php:163
+#: ../src/editor.php:49 ../src/evidence.php:163
 msgid "Print Sets"
 msgstr "Tiskové sestavy"
+
+#: ../src/editor.php:50
+msgid "Downloads"
+msgstr "Stažení"
 
 #: ../src/evidence.php:31
 #, php-format
@@ -1136,7 +1157,7 @@ msgstr "XML ve Flexploreru"
 msgid "flexplorer %s lexibee-buttons"
 msgstr "flexplorer %s lexibee-buttons"
 
-#: ../src/getpdf.php:28
+#: ../src/getinformat.php:26 ../src/getpdf.php:28
 msgid "Wrong call"
 msgstr "Špatné volání"
 
