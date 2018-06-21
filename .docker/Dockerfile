@@ -1,5 +1,5 @@
 FROM php:7
-MAINTAINER adam.stipak@gmail.com
+MAINTAINER info@vitexsoftware
 
 RUN wget -O - http://v.s.cz/info@vitexsoftware.cz.gpg.key | apt-key add -
 RUN echo deb http://v.s.cz/ stable main | sudo tee /etc/apt/sources.list.d/vitexsoftware.list 

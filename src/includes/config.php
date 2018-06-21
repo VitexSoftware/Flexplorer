@@ -14,24 +14,36 @@ define('LOG_TYPE', 'syslog');
  */
 define('EMAIL_FROM', 'flexplorer@localhost');
 
+if (file_exists('/etc/flexibee/client.json')) {
+    $clientConfig = json_decode(file_get_contents('/etc/flexibee/client.json'),
+        true);
+} else {
+    $clientConfig = [
+        'FLEXIBEE_URL' => 'https://demo.flexibee.eu:5434',
+        'FLEXIBEE_LOGIN' => 'winstrom',
+        'FLEXIBEE_PASSWORD' => 'winstrom',
+        'FLEXIBEE_COMPANY' => 'demo'
+    ];
+}
+
 /*
  * URL Flexibee API
  */
-define('DEFAULT_FLEXIBEE_URL', 'https://vitexsoftware.flexibee.eu:5434');
+define('DEFAULT_FLEXIBEE_URL', $clientConfig['FLEXIBEE_URL']);
 /*
  * FlexiBee API User
  */
-define('DEFAULT_FLEXIBEE_LOGIN', 'vitex');
+define('DEFAULT_FLEXIBEE_LOGIN', $clientConfig['FLEXIBEE_LOGIN']);
 /*
  * FlexiBee API Password
  */
 
-define('DEFAULT_FLEXIBEE_PASSWORD', 'Sod1orp');
+define('DEFAULT_FLEXIBEE_PASSWORD', $clientConfig['FLEXIBEE_PASSWORD']);
 /*
  * Společnost v FlexiBee
  */
 
-define('DEFAULT_FLEXIBEE_COMPANY', 'demo');
+define('DEFAULT_FLEXIBEE_COMPANY', $clientConfig['FLEXIBEE_COMPANY']);
 
 /*
  * Where store database backups

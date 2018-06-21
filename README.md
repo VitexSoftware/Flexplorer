@@ -142,6 +142,14 @@ bude možné aktuální vývojovou zobrazit na adrese [http://localhost:8080/src
 a verzi z nejnovějšího debianího balíčku na adrese [http://localhost:8080/flexplorer/]
 
 
+Docker
+------
+
+K dispozici je také obraz pro docker. Následující příkaz zpřístupní FlexPlorer na adrese: [localhost:2323](http://0.0.0.0:2323/)
+
+    docker run  -dit --name flexplorer -p 2323:80 vitexsoftware/flexplorer
+    
+
 
 
 Konfigurace

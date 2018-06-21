@@ -9,5 +9,9 @@ clean:
 dimage:
 	docker build -t vitexsoftware/flexplorer .
 
-drun:
+dtest:
 	docker-compose run --rm default install
+        
+drun: dimage
+	docker run  -dit --name flexplorer -p 2323:80 vitexsoftware/flexplorer
+	nightly http://localhost:2323
