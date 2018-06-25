@@ -12,7 +12,7 @@ RUN apt update
 RUN apt-get update
 RUN apt-get -y upgrade
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 libapache2-mod-php php-mysql php-gd php-pear php-curl php-mbstring curl lynx-cur composer php-zip
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 libapache2-mod-php php-mysql php-gd php-pear php-curl php-mbstring curl lynx-cur composer php-intl locales-all
 
 
 RUN rm -f /var/www/html/index.html

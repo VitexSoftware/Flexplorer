@@ -27,7 +27,7 @@ $document = new \FlexiPeeHP\FlexiBeeRO(is_numeric($id) ? intval($id) : $id,
 if (empty($evidence)) {
     die(_('Wrong call'));
 } else {
-    $documentBody = $document->getInFormat('pdf', $report);
+    $documentBody = $document->getInFormat('pdf', urldecode($report));
 
     if ($embed != 'true') {
         header('Content-Description: File Transfer');
