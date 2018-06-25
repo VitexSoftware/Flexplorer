@@ -21,7 +21,7 @@ class PrintSetGallery extends \Ease\TWB\Tabs
      */
     public function __construct($engine)
     {
-        $printSets = $engine->getReports();
+        $printSets = $engine->getReportsInfo();
         parent::__construct('PrintSet');
         if (count($printSets)) {
             foreach ($printSets as $reportId => $printSet) {
