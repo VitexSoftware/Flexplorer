@@ -25,5 +25,5 @@ RUN composer install --no-dev --no-plugins --no-scripts  -d /var/www/
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
-
+EXPOSE 80
 CMD ["/usr/sbin/apachectl","-DFOREGROUND"]

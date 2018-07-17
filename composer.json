@@ -16,7 +16,7 @@
         "vitexsoftware/ease-framework": "dev-master",
         "league/commonmark": "^0.15.0",
         "vitexsoftware/flexipeehp-bricks": "dev-master",
-        "vitexsoftware/ease-bricks": "0.2"
+        "vitexsoftware/ease-bricks": "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -38,5 +38,4 @@
         "phpunit/phpunit-skeleton-generator": "*",
         "codeception/codeception": "^2.3"
     }
-
 }

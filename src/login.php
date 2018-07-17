@@ -20,7 +20,7 @@ if ($login) {
     if ($oUser->tryToLogin($_REQUEST)) {
         if ($oPage->getRequestValue('remember-me')) {
             $_SESSION['bookmarks'][] = ['login' => $login, 'password' => $password,
-            'server' => $server];
+                'server' => $server];
             $oPage->addStatusMessage(_('Server added to bookmarks'));
         }
         if (isset($_SESSION['backurl'])) {
@@ -51,7 +51,7 @@ if ($login) {
 
 $oPage->addItem(new ui\PageTop(_('Sign in')));
 
-$loginFace = new \Ease\Html\DivTag(null,['id' => 'LoginFace']);
+$loginFace = new \Ease\Html\DivTag(null, ['id' => 'LoginFace']);
 
 $oPage->container->addItem($loginFace);
 
@@ -70,20 +70,20 @@ $_SESSION['bookmarks']['localhost'] = ['login' => '', 'password' => '',
 
 
 $bookmarks = new \Ease\Html\UlTag(null, ['class' => 'list-group']);
-    foreach ($_SESSION['bookmarks'] as $bookmark) {
-        $bookmarks->addItemSmart(new \Ease\Html\ATag('login.php?login='.$bookmark['login'].'&password='.$bookmark['password'].'&server='.$bookmark['server'],
-            str_replace('://', '://'.$bookmark['login'].'@', $bookmark['server'])),
-            ['class' => 'list-group-item']);
-    }
-    $infoBlock->addItem($bookmarks);
+foreach ($_SESSION['bookmarks'] as $bookmark) {
+    $bookmarks->addItemSmart(new \Ease\Html\ATag('login.php?login='.$bookmark['login'].'&password='.$bookmark['password'].'&server='.$bookmark['server'],
+        str_replace('://', '://'.$bookmark['login'].'@', $bookmark['server'])),
+        ['class' => 'list-group-item']);
+}
+$infoBlock->addItem($bookmarks);
 
 
 $loginColumn = $loginRow->addItem(new \Ease\TWB\Col(4));
 
 $submit = new \Ease\TWB\SubmitButton(_('Sign in'), 'success');
 
-$loginPanel = new \Ease\TWB\Panel(new \Ease\Html\ImgTag('images/flexplorer-logo.png','FlexPlorer',['class'=>'img-responsive']),
-    'success', null, $submit);
+$loginPanel = new \Ease\TWB\Panel(new \Ease\Html\ImgTag('images/flexplorer-logo.png',
+    'FlexPlorer', ['class' => 'img-responsive']), 'success', null, $submit);
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('FlexiBee'),
     new \Ease\Html\InputTextTag('server',
     $server ? $server : constant('DEFAULT_FLEXIBEE_URL') ),
@@ -94,11 +94,12 @@ $loginPanel->addItem(new \Ease\TWB\FormGroup(_('User name'),
     $login ? $login : constant('DEFAULT_FLEXIBEE_LOGIN')
     ), constant('DEFAULT_FLEXIBEE_LOGIN'), _('Login name')));
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('Password'),
-    new \Ease\Html\InputPasswordTag('password',
+    new \Ease\ui\PasswordInput('password',
     $password ? $password : constant('DEFAULT_FLEXIBEE_PASSWORD')),
     constant('DEFAULT_FLEXIBEE_PASSWORD'), _('User\'s password')));
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('Remeber me'),
-    new \Ease\ui\TWBSwitch('remember-me', true), null, _('Add this to Login History')));
+    new \Ease\ui\TWBSwitch('remember-me', true), null,
+    _('Add this to Login History')));
 
 
 $loginPanel->body->setTagCss(['margin' => '20px']);
