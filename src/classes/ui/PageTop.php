@@ -11,7 +11,7 @@ namespace Flexplorer\ui;
 /**
  * Page TOP.
  */
-class PageTop extends \Ease\Html\Div
+class PageTop extends \Ease\Html\DivTag
 {
     /**
      * Titulek stránky.
@@ -39,6 +39,6 @@ class PageTop extends \Ease\Html\Div
     public function finalize()
     {
         $this->addItem(new MainMenu());
-        $this->addItem(new History());
+        $this->addItem(new \Ease\ui\BrowsingHistory());
     }
 }

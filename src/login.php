@@ -62,18 +62,34 @@ $infoBlock = $infoColumn->addItem(new \Ease\TWB\Well(new \Ease\Html\ImgTag('imag
 $infoBlock->addItem(_('Login Bookmarks'));
 
 $_SESSION['bookmarks']['demo'] = ['login' => 'winstrom', 'password' => 'winstrom',
-    'server' => 'https://demo.flexibee.eu'];
+    'server' => 'https://demo.flexibee.eu', 'comapny' => 'demo'];
 
 $_SESSION['bookmarks']['localhost'] = ['login' => '', 'password' => '',
     'server' => 'https://localhost:5434'];
 
+if (is_dir('/etc/flexibee/')) {
+    foreach (scandir('/etc/flexibee/') as $candidat) {
+        if ($candidat[0] == '.') {
+            continue;
+        }
+        if (strtolower(pathinfo($candidat, PATHINFO_EXTENSION)) == 'json') {
+            $configRaw = json_decode(file_get_contents('/etc/flexibee/'.$candidat),
+                true);
+            if (array_key_exists('FLEXIBEE_URL', $configRaw)) {
+                $_SESSION['bookmarks'][pathinfo($candidat, PATHINFO_FILENAME)] = [
+                    'login' => $configRaw['FLEXIBEE_LOGIN'], 'password' => $configRaw['FLEXIBEE_PASSWORD'],
+                    'server' => $configRaw['FLEXIBEE_URL'], 'company' => $configRaw['FLEXIBEE_COMPANY']
+                ];
+            }
+        }
+    }
+}
 
 
 $bookmarks = new \Ease\Html\UlTag(null, ['class' => 'list-group']);
-foreach ($_SESSION['bookmarks'] as $bookmark) {
+foreach ($_SESSION['bookmarks'] as $bookmarkName => $bookmark) {
     $bookmarks->addItemSmart(new \Ease\Html\ATag('login.php?login='.$bookmark['login'].'&password='.$bookmark['password'].'&server='.$bookmark['server'],
-        str_replace('://', '://'.$bookmark['login'].'@', $bookmark['server'])),
-        ['class' => 'list-group-item']);
+        '<strong>'.$bookmarkName.'</strong> '. $bookmark['login'].'@'.parse_url($bookmark['server'], PHP_URL_HOST)) , ['class' => 'list-group-item']);
 }
 $infoBlock->addItem($bookmarks);
 

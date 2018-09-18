@@ -77,10 +77,10 @@ class MainMenu extends \Ease\Html\Div
             } else {
                 $infoLabel = $url;
             }
-            $nav->addMenuItem(new \Ease\Html\Div(new \Ease\TWB\Label('success',
-                        new \Ease\Html\ATag($infoLabel, $infoLabel),
-                        ['class' => 'navbar-text', 'style' => 'color: yellow; font-size: 12px; max-width: 800px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;']),
-                    ['class' => 'collapse navbar-collapse']));
+            $nav->addMenuItem(new \Ease\Html\DivTag(new \Ease\TWB\Label('success',
+                new \Ease\Html\ATag($infoLabel, $infoLabel),
+                ['class' => 'navbar-text', 'style' => 'color: yellow; font-size: 12px; max-width: 800px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;']),
+                ['class' => 'collapse navbar-collapse']));
 
 
             $companiesToMenu = [];
@@ -108,9 +108,36 @@ class MainMenu extends \Ease\Html\Div
                     define('FLEXIBEE_COMPANY', $_SESSION['company']);
                 }
 
+                if (!array_key_exists('evidence-menu', $_SESSION)) {
+                    $_SESSION['evidence-menu'] = [];
+                }
+
+                if (!array_key_exists($_SESSION['company'], $companiesToMenu)) {
+
+                    $lister    = new \FlexiPeeHP\EvidenceList(null, $_SESSION);
+                    $evidences = $lister->getFlexiData();
+
+                    if (count($evidences)) {
+                        foreach ($evidences as $evidence) {
+                            $evidenciesToMenu['evidence.php?evidence='.$evidence['evidencePath']]
+                                = $evidence['evidenceName'];
+                        }
+                        asort($evidenciesToMenu);
+                        $_SESSION['evidence-menu'][$_SESSION['company']] = $evidenciesToMenu;
+                    } else {
+                        $lister->addStatusMessage(_('Loading evidence list failed'),
+                            'error');
+                    }
+                }
+
+
+                if (array_key_exists('', $companiesToMenu)) {
+                    
+                }
+
                 $evidenciesToMenu = array_merge(['evidences.php' => _('Overview')],
                     \Ease\Shared::webPage()->getEvidenceHistory(),
-                    $_SESSION['evidence-menu']);
+                    $_SESSION['evidence-menu'][$_SESSION['company']]);
 
                 if (count($evidenciesToMenu)) {
                     $nav->addDropDownMenu(_('Evidence'), $evidenciesToMenu);
@@ -120,15 +147,15 @@ class MainMenu extends \Ease\Html\Div
 
             $nav->addDropDownMenu(_('Tools'),
                 [
-                    'query.php' => _('Query'),
+                'query.php' => _('Query'),
 //                'xslt.php' => _('XSLT'),
-                    'buttons.php' => _('Buttons'),
-                    'changesapi.php' => _('Changes API'),
-                    'changes.php' => _('Changes Recieved'),
-                    'fakechange.php' => _('WebHook test'),
-                    'ucetniobdobi.php' => _('Accounting period'),
-                    'permissions.php' => _('Role Permissions'),
-                    'backups.php' => _('Backups')
+                'buttons.php' => _('Buttons'),
+                'changesapi.php' => _('Changes API'),
+                'changes.php' => _('Changes Recieved'),
+                'fakechange.php' => _('WebHook test'),
+                'ucetniobdobi.php' => _('Accounting period'),
+                'permissions.php' => _('Role Permissions'),
+                'backups.php' => _('Backups')
             ]);
         }
     }
