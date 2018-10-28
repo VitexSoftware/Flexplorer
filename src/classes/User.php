@@ -88,19 +88,6 @@ class User extends \Ease\User
         $licenseInfo         = $this->flexiBee->performRequest('default-license.json');
         $_SESSION['license'] = $licenseInfo['license'];
 
-        $lister    = new \FlexiPeeHP\EvidenceList(null, $_SESSION);
-        $evidences = $lister->getFlexiData();
-
-        if (count($evidences)) {
-            foreach ($evidences as $evidence) {
-                $evidenciesToMenu['evidence.php?evidence='.$evidence['evidencePath']]
-                    = $evidence['evidenceName'];
-            }
-            asort($evidenciesToMenu);
-            $_SESSION['evidence-menu'] = $evidenciesToMenu;
-        } else {
-            $lister->addStatusMessage(_('Loading evidence list failed'), 'error');
-        }
 
         return parent::loginSuccess();
     }

@@ -38,5 +38,4 @@
         "phpunit/phpunit-skeleton-generator": "*",
         "codeception/codeception": "^2.3"
     }
-
 }

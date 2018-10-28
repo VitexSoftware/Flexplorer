@@ -108,9 +108,36 @@ class MainMenu extends \Ease\Html\DivTag
                     define('FLEXIBEE_COMPANY', $_SESSION['company']);
                 }
 
+                if (!array_key_exists('evidence-menu', $_SESSION)) {
+                    $_SESSION['evidence-menu'] = [];
+                }
+
+                if (!array_key_exists($_SESSION['company'], $companiesToMenu)) {
+
+                    $lister    = new \FlexiPeeHP\EvidenceList(null, $_SESSION);
+                    $evidences = $lister->getFlexiData();
+
+                    if (count($evidences)) {
+                        foreach ($evidences as $evidence) {
+                            $evidenciesToMenu['evidence.php?evidence='.$evidence['evidencePath']]
+                                = $evidence['evidenceName'];
+                        }
+                        asort($evidenciesToMenu);
+                        $_SESSION['evidence-menu'][$_SESSION['company']] = $evidenciesToMenu;
+                    } else {
+                        $lister->addStatusMessage(_('Loading evidence list failed'),
+                            'error');
+                    }
+                }
+
+
+                if (array_key_exists('', $companiesToMenu)) {
+                    
+                }
+
                 $evidenciesToMenu = array_merge(['evidences.php' => _('Overview')],
                     \Ease\Shared::webPage()->getEvidenceHistory(),
-                    $_SESSION['evidence-menu']);
+                    $_SESSION['evidence-menu'][$_SESSION['company']]);
 
                 if (count($evidenciesToMenu)) {
                     $nav->addDropDownMenu(_('Evidence'), $evidenciesToMenu);

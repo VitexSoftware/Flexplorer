@@ -36,6 +36,7 @@ class LabelGroup extends \Ease\Container
                     new \Ease\Html\ATag('listbylabel.php?label='.trim($stitek).'&evidence='.$flexibee->getEvidence(),
                     is_numeric($code) ? trim($stitek) : new \Ease\TWB\Label('info',
                         $code, ['title' => trim($stitek)]))));
+                $this->addItem(' ');
             }
         }
     }

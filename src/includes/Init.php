@@ -33,6 +33,9 @@ if (isset($_SESSION['company'])) {
     define('FLEXIBEE_COMPANY', $_SESSION['company']);
 }
 
+if (isset($_SESSION['sessionid'])) {
+    define('FLEXIBEE_AUTHSESSID', $_SESSION['sessionid']);
+}
 
 /**
  * User class object User or Anonym
@@ -46,4 +49,21 @@ $oUser->settingsColumn = 'settings';
 if (!\Ease\Shared::isCli()) {
     /* @var $oPage \Sys\WebPage */
     $oPage = new ui\WebPage();
+
+    $serverURL = $oPage->getRequestValue('serveruri');
+    if ($serverURL) {
+        define('FLEXIBEE_URL', $serverURL);
+    }
+
+    $sessionID = $oPage->getRequestValue('sessionid');
+    if ($sessionID) {
+        define('FLEXIBEE_AUTHSESSID', $sessionID);
+    }
+    
+    $company = $oPage->getRequestValue('company');
+    if ($sessionID) {
+        define('FLEXIBEE_COMPANY', $sessionID);
+    }
+
+    
 }
