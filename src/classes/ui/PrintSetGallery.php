@@ -31,6 +31,8 @@ class PrintSetGallery extends \Ease\TWB\Tabs
                     $printSet['isDefault'] == 'true'
                 );
             }
+        } else {
+            $this->addTab(_('none'));
         }
     }
 }

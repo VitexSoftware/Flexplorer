@@ -12,7 +12,7 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class FlexiURL extends \Ease\Html\Div
+class FlexiURL extends \Ease\Html\DivTag
 {
 
     /**
