@@ -8,7 +8,7 @@
 
 namespace Flexplorer\ui;
 
-class MainMenu extends \Ease\Html\Div
+class MainMenu extends \Ease\Html\DivTag
 {
 
     /**

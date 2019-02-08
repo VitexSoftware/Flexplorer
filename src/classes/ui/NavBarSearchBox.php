@@ -29,7 +29,7 @@ class NavBarSearchBox extends \Ease\TWB\Form
 
         $this->setTagProperties(['class' => 'navbar-form', 'role' => 'search']);
         $group   = $this->addItem(
-            new \Ease\Html\Div(new \Ease\Html\InputTextTag(
+            new \Ease\Html\DivTag(new \Ease\Html\InputTextTag(
             'search', $term,
             [
             'class' => 'form-control pull-right typeahead input-sm',
@@ -37,14 +37,14 @@ class NavBarSearchBox extends \Ease\TWB\Form
             'placeholder' => _('Search'),
             ]), ['class' => 'input-group'])
         );
-        $buttons = $group->addItem(new \Ease\Html\Span( null,
+        $buttons = $group->addItem(new \Ease\Html\SpanTag( null,
             ['class' => 'input-group-btn']));
-        $buttons->addItem(new \Ease\Html\ButtonTag(new \Ease\Html\Span(
-            new \Ease\Html\Span( _('Close'), ['class' => 'sr-only']),
+        $buttons->addItem(new \Ease\Html\ButtonTag(new \Ease\Html\SpanTag(
+            new \Ease\Html\SpanTag( _('Close'), ['class' => 'sr-only']),
             ['class' => 'glyphicon glyphicon-remove']),
             ['type' => 'reset', 'class' => 'btn btn-default btn-sm']));
-        $buttons->addItem(new \Ease\Html\ButtonTag(new \Ease\Html\Span(
-            new \Ease\Html\Span( _('Search'), ['class' => 'sr-only']),
+        $buttons->addItem(new \Ease\Html\ButtonTag(new \Ease\Html\SpanTag(
+            new \Ease\Html\SpanTag( _('Search'), ['class' => 'sr-only']),
             ['class' => 'glyphicon glyphicon-search']),
             ['type' => 'submit', 'class' => 'btn btn-default btn-sm ']));
     }
