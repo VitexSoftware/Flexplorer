@@ -7,6 +7,7 @@
  */
 define('LOG_NAME', 'Flexplorer');
 define('LOG_TYPE', 'syslog');
+define('CONFIGS', '../configurations/');
 
 /*
  * Výchozí odesilatel zpráv
@@ -14,8 +15,8 @@ define('LOG_TYPE', 'syslog');
  */
 define('EMAIL_FROM', 'flexplorer@localhost');
 
-if (file_exists('/etc/flexibee/client.json')) {
-    $clientConfig = json_decode(file_get_contents('/etc/flexibee/client.json'),
+if (file_exists(constant('CONFIGS').'/default.json')) {
+    $clientConfig = json_decode(file_get_contents(constant('CONFIGS').'/default.json'),
         true);
 } else {
     $clientConfig = [

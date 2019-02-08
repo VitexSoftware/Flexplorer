@@ -111,7 +111,30 @@ Docker
 K dispozici je také obraz pro docker. Následující příkaz zpřístupní FlexPlorer na adrese: [localhost:2323](http://0.0.0.0:2323/)
 
     docker run  -dit --name flexplorer -p 2323:80 vitexsoftware/flexplorer
-    
+
+```    
+vitex@docker:~$ docker run  -dit --name flexplorer -p 2323:80 vitexsoftware/flexplorer
+Unable to find image 'vitexsoftware/flexplorer:latest' locally
+latest: Pulling from vitexsoftware/flexplorer
+cc1a78bfd46b: Pull complete 
+1cd0b77f3d1d: Pull complete 
+9b851b09757c: Pull complete 
+9b36fad49c61: Pull complete 
+d0e15216409e: Pull complete 
+da8507a1fa91: Pull complete 
+1285ef6f4076: Pull complete 
+07c17144f477: Pull complete 
+058b8f440dad: Pull complete 
+507722a10e0a: Pull complete 
+f3440e09e483: Pull complete 
+967168855bae: Pull complete 
+da8a7cb827b5: Pull complete 
+Digest: sha256:38ed8bd94aaf2e57877c8b207cd55bb486d09178dacbd0b4def87090cae6170b
+Status: Downloaded newer image for vitexsoftware/flexplorer:latest
+396261e16a3adb66faf8f63a3f518b3c10331cc9c0f575c73cd86df3899b8f87
+```
+
+
 
 
 

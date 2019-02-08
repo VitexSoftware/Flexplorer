@@ -67,13 +67,13 @@ $_SESSION['bookmarks']['demo'] = ['login' => 'winstrom', 'password' => 'winstrom
 $_SESSION['bookmarks']['localhost'] = ['login' => '', 'password' => '',
     'server' => 'https://localhost:5434'];
 
-if (is_dir('/etc/flexibee/')) {
-    foreach (scandir('/etc/flexibee/') as $candidat) {
+if (is_dir(constant('CONFIGS'))) {
+    foreach (scandir(constant('CONFIGS')) as $candidat) {
         if ($candidat[0] == '.') {
             continue;
         }
         if (strtolower(pathinfo($candidat, PATHINFO_EXTENSION)) == 'json') {
-            $configRaw = json_decode(file_get_contents('/etc/flexibee/'.$candidat),
+            $configRaw = json_decode(file_get_contents(constant('CONFIGS').$candidat),
                 true);
             if (array_key_exists('FLEXIBEE_URL', $configRaw)) {
                 $_SESSION['bookmarks'][pathinfo($candidat, PATHINFO_FILENAME)] = [
@@ -88,8 +88,9 @@ if (is_dir('/etc/flexibee/')) {
 
 $bookmarks = new \Ease\Html\UlTag(null, ['class' => 'list-group']);
 foreach ($_SESSION['bookmarks'] as $bookmarkName => $bookmark) {
-    $bookmarks->addItemSmart(new \Ease\Html\ATag('login.php?login='.$bookmark['login'].'&password='.$bookmark['password'].'&server='.$bookmark['server'],
-        '<strong>'.$bookmarkName.'</strong> '. $bookmark['login'].'@'.parse_url($bookmark['server'], PHP_URL_HOST)) , ['class' => 'list-group-item']);
+    $bookmarks->addItemSmart(new \Ease\Html\ATag('login.php?login='.urlencode($bookmark['login']).'&password='.urlencode($bookmark['password']).'&server='.urlencode($bookmark['server']),
+            '<strong>'.$bookmarkName.'</strong> '.$bookmark['login'].'@'.parse_url($bookmark['server'],
+                PHP_URL_HOST)), ['class' => 'list-group-item']);
 }
 $infoBlock->addItem($bookmarks);
 
@@ -99,23 +100,23 @@ $loginColumn = $loginRow->addItem(new \Ease\TWB\Col(4));
 $submit = new \Ease\TWB\SubmitButton(_('Sign in'), 'success');
 
 $loginPanel = new \Ease\TWB\Panel(new \Ease\Html\ImgTag('images/flexplorer-logo.png',
-    'FlexPlorer', ['class' => 'img-responsive']), 'success', null, $submit);
+        'FlexPlorer', ['class' => 'img-responsive']), 'success', null, $submit);
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('FlexiBee'),
-    new \Ease\Html\InputTextTag('server',
-    $server ? $server : constant('DEFAULT_FLEXIBEE_URL') ),
-    constant('DEFAULT_FLEXIBEE_URL'),
-    _('FlexiBee server URL. ex.:').' <a href="?server=https://localhost:5434">https://localhost:5434</a>'));
+        new \Ease\Html\InputTextTag('server',
+            $server ? $server : constant('DEFAULT_FLEXIBEE_URL') ),
+        constant('DEFAULT_FLEXIBEE_URL'),
+        _('FlexiBee server URL. ex.:').' <a href="?server=https://localhost:5434">https://localhost:5434</a>'));
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('User name'),
-    new \Ease\Html\InputTextTag('login',
-    $login ? $login : constant('DEFAULT_FLEXIBEE_LOGIN')
-    ), constant('DEFAULT_FLEXIBEE_LOGIN'), _('Login name')));
+        new \Ease\Html\InputTextTag('login',
+            $login ? $login : constant('DEFAULT_FLEXIBEE_LOGIN')
+        ), constant('DEFAULT_FLEXIBEE_LOGIN'), _('Login name')));
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('Password'),
-    new \Ease\ui\PasswordInput('password',
-    $password ? $password : constant('DEFAULT_FLEXIBEE_PASSWORD')),
-    constant('DEFAULT_FLEXIBEE_PASSWORD'), _('User\'s password')));
+        new \Ease\ui\PasswordInput('password',
+            $password ? $password : constant('DEFAULT_FLEXIBEE_PASSWORD')),
+        constant('DEFAULT_FLEXIBEE_PASSWORD'), _('User\'s password')));
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('Remeber me'),
-    new \Ease\ui\TWBSwitch('remember-me', true), null,
-    _('Add this to Login History')));
+        new \Ease\ui\TWBSwitch('remember-me', true), null,
+        _('Add this to Login History')));
 
 
 $loginPanel->body->setTagCss(['margin' => '20px']);

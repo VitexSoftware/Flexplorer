@@ -78,9 +78,9 @@ class MainMenu extends \Ease\Html\Div
                 $infoLabel = $url;
             }
             $nav->addMenuItem(new \Ease\Html\DivTag(new \Ease\TWB\Label('success',
-                new \Ease\Html\ATag($infoLabel, $infoLabel),
-                ['class' => 'navbar-text', 'style' => 'color: yellow; font-size: 12px; max-width: 800px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;']),
-                ['class' => 'collapse navbar-collapse']));
+                        new \Ease\Html\ATag($infoLabel, $infoLabel),
+                        ['class' => 'navbar-text', 'style' => 'color: yellow; font-size: 12px; max-width: 800px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;']),
+                    ['class' => 'collapse navbar-collapse']));
 
 
             $companiesToMenu = [];
@@ -117,6 +117,7 @@ class MainMenu extends \Ease\Html\Div
                     $lister    = new \FlexiPeeHP\EvidenceList(null, $_SESSION);
                     $evidences = $lister->getFlexiData();
 
+
                     if (count($evidences)) {
                         foreach ($evidences as $evidence) {
                             $evidenciesToMenu['evidence.php?evidence='.$evidence['evidencePath']]
@@ -147,15 +148,15 @@ class MainMenu extends \Ease\Html\Div
 
             $nav->addDropDownMenu(_('Tools'),
                 [
-                'query.php' => _('Query'),
+                    'query.php' => _('Query'),
 //                'xslt.php' => _('XSLT'),
-                'buttons.php' => _('Buttons'),
-                'changesapi.php' => _('Changes API'),
-                'changes.php' => _('Changes Recieved'),
-                'fakechange.php' => _('WebHook test'),
-                'ucetniobdobi.php' => _('Accounting period'),
-                'permissions.php' => _('Role Permissions'),
-                'backups.php' => _('Backups')
+                    'buttons.php' => _('Buttons'),
+                    'changesapi.php' => _('Changes API'),
+                    'changes.php' => _('Changes Recieved'),
+                    'fakechange.php' => _('WebHook test'),
+                    'ucetniobdobi.php' => _('Accounting period'),
+                    'permissions.php' => _('Role Permissions'),
+                    'backups.php' => _('Backups')
             ]);
         }
     }
