@@ -15,9 +15,9 @@
     },
     "require": {
         "php": ">= 5.5.9",
-        "flexipeehp": "*",
-        "ease-framework": "*",
-        "ease-bricks": "*",
+        "spojenet.flexipeehp": "*",
+        "vitexsoftware.ease-framework": "*",
+        "vitexsoftware.ease-bricks": "*",
         "league/commonmark": "^0.15.0",
         "flexipeehp-bricks": "*"
     },

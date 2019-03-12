@@ -96,7 +96,7 @@ $settingsForm->addInput(new \Ease\ui\TWBSwitch('changesapi', $chapistatus, 'enab
     ['onText' => _('Enable'), 'offText' => _('Disable')]), _('Changes API'),
     null,
     new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/changes-api/',
-    _('If it is turned on , FlexiBee records all changes made ​​to the database company in the changelog and provides a list of changes recovered')));
+    _('If it is turned on , FlexiBee records all changes made to the database company in the changelog and provides a list of changes recovered')));
 
 $webHookUrl = str_replace(basename(__FILE__), 'webhook.php',
     \Ease\Page::phpSelf());

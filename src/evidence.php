@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Flexplorer - An evidence page.
  *
@@ -33,13 +32,13 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
     $oPage->addEvidenceToHistory($evidence);
 
     $oPage->addItem(new ui\PageTop(sprintf(_('Evidence %s'),
-            \FlexiPeeHP\EvidenceList::$name[$evidence])));
+                \FlexiPeeHP\EvidenceList::$name[$evidence])));
 
     $evobj = new Flexplorer($evidence);
 
 
     if (array_key_exists('evidence.php?evidence='.$evidence,
-            $_SESSION['evidence-menu'])) {
+            $_SESSION['evidence-menu'][constant('FLEXIBEE_COMPANY')])) {
         $evidenceLicensed = true;
     } else {
         $evidenceLicensed = false;
@@ -51,7 +50,7 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
     if ($evidenceLicensed === true) {
         $tabs->addTab(_('Listing'),
             new ui\DataGrid(_('Evidence'), new DataSource($evobj),
-            ['label' => $label]));
+                ['label' => $label]));
     }
     $tabs->addTab(_('Column Groups'), new ui\ColumnsGroups($evobj, $column),
         isset($column));
@@ -66,12 +65,12 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
     if ($evidenceLicensed === true) {
         $tabs->addTab(_('Query'),
             new \Ease\TWB\Panel(_('User Query'), 'warning',
-            new ui\SendForm($url, $method, $body)));
+                new ui\SendForm($url, $method, $body)));
         $overviewUrl = $evobj->getEvidenceUrl().'/properties.html?inDesktopApp=true';
 
         $tabs->addTab(_('Items overview'),
             new \Ease\Html\IframeTag($overviewUrl,
-            ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
+                ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
         if (strstr($url, '?')) {
             $overviewUrl = $url.'&inDesktopApp=true';
         } else {
@@ -80,7 +79,7 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
 
         $tabs->addTab(_('FlexiBee'),
             new \Ease\Html\IframeTag(str_replace('.json', '.html', $overviewUrl),
-            ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
+                ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
     }
 
     $evidenceTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
@@ -153,13 +152,15 @@ if (!isset(\FlexiPeeHP\EvidenceList::$name[$evidence])) {
     if (array_key_exists('stitky', $evobj->getColumnsInfo())) {
         $evobj->setDataValue('stitky',
             \FlexiPeeHP\Stitek::getAvailbleLabels($evobj));
-        $infoTab->addItem(new \Ease\TWB\Panel(_('Labels Availble'), 'info', new ui\LabelGroup($evobj)));
+        $infoTab->addItem(new \Ease\TWB\Panel(_('Labels Availble'), 'info',
+                new ui\LabelGroup($evobj)));
     }
-    
-    $buttonsTab = $tabs->addTab(_('Custom Buttons'), new ui\EvidenceCustomButtons($evobj), ($evidenceLicensed === false));
+
+    $buttonsTab = $tabs->addTab(_('Custom Buttons'),
+        new ui\EvidenceCustomButtons($evobj), ($evidenceLicensed === false));
 
     $tabs->addTab(_('Print Sets'), new ui\PrintSetGallery($evobj));
-    
+
     $oPage->container->addItem($tabs);
 
     $oPage->addItem(new ui\PageBottom());
