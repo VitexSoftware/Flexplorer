@@ -1,5 +1,5 @@
 {
-    "name": "vitexsoftware_flexplorer",
+    "name": "deb/flexplorer",
     "description": "Průzkumník a editor evidencí FlexiBee",
     "version": "1.4.5",
     "type": "project",
@@ -15,11 +15,11 @@
     },
     "require": {
         "php": ">= 5.5.9",
-        "spojenet_flexipeehp": "*",
-        "vitexsoftware_ease-framework": "*",
-        "vitexsoftware_ease-bricks": "*",
+        "deb/flexipeehp": "*",
+        "deb/ease-framework": "*",
+        "deb/ease-bricks": "*",
         "league/commonmark": "^0.15.0",
-        "vitexsoftware_flexipeehp-bricks": "*"
+        "deb/flexipeehp-bricks": "*"
     },
     "autoload": {
         "psr-4": {
