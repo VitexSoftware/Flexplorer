@@ -22,7 +22,7 @@ $oPage->container->addItem('<br/><br/><br/><br/>');
 
 $converter = new CommonMarkConverter();
 
-$oPage->container->addItem(new \Ease\Html\Div($converter->convertToHtml(file_get_contents('../README.md')),
+$oPage->container->addItem(new \Ease\Html\DivTag($converter->convertToHtml(file_get_contents('../README.md')),
     ['class' => 'jumbotron']));
 $oPage->container->addItem('<br/><br/><br/><br/>');
 

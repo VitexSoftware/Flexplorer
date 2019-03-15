@@ -59,7 +59,7 @@ class ColumnsForm extends \Ease\TWB\Form
             get_class($engine), '', 'POST', $formContents, $tagProperties
         );
         $this->newRow();
-        $this->savers = new \Ease\Html\Div(null,
+        $this->savers = new \Ease\Html\DivTag(null,
             ['style' => 'text-align: right']);
     }
 

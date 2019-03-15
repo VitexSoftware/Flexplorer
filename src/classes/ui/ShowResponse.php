@@ -7,7 +7,7 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class ShowResponse extends \Ease\Html\Div
+class ShowResponse extends \Ease\Html\DivTag
 {
     /**
      * Class for FlexiBee interaction
@@ -92,7 +92,7 @@ function downloadResponse(){
     a.click(); // Trigger a click on the element
 }
                         ', null, false);
-                $this->addItem(new \Ease\Html\Div($formatedResponse,
+                $this->addItem(new \Ease\Html\DivTag($formatedResponse,
                     ['id' => 'formatedResponse', 'style' => 'visibility: hidden; height: 0px;']));
                 $this->addItem(new \Ease\TWB\LinkButton('#',
                     _('Make new request from this response').new \Ease\TWB\GlyphIcon('repeat'),
