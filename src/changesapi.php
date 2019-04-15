@@ -138,7 +138,7 @@ if ($chapistatus) {
     $hooks = $hooker->getFlexiData();
     if (!isset($hooks['message']) && is_array($hooks) && count(current($hooks))) {
         $hooksTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
-        $hooksTable->addRowHeaderColumns(array_keys(current($hooks)));
+        $hooksTable->addRowHeaderColumns( array_merge(array_keys(current($hooks)), [_('Reset'),_('Test'),_('Remove')]));
         foreach ($hooks as $hookinfo) {
             $hookinfo[]      = new \Ease\TWB\LinkButton('?refresh='.$hookinfo['id'],
                 new \Ease\TWB\GlyphIcon('refresh'), 'success');
