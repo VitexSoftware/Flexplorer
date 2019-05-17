@@ -61,6 +61,9 @@ class Columner extends Flexplorer
             if (count($evidenceProperties)) {
                 $columnNames = array_keys($evidenceProperties);
                 foreach ($columnNames as $columnId => $columnName) {
+                    if(!array_key_exists('title', $evidenceProperties[$columnName])) {
+                        $evidenceProperties[$columnName]['title'] = '';
+                    }
                     if ($this->contains($what, $columnName) || $this->contains($what,
                             $evidenceProperties[$columnName]['name']) || $this->contains($what,
                             $evidenceProperties[$columnName]['title'])) { //Column names

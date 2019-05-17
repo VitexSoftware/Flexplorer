@@ -68,7 +68,7 @@ class BackupsListing extends \Ease\Html\DivTag
       return $this->contents->addRowColumns([
                 $fileInfo['filename'],
             \Ease\Page::humanFilesize($fileInfo['size']),
-            new ShowLiveAge($fileInfo['age'])
+            new \Ease\ui\LiveAge($fileInfo['age'])
         ]);
     }
 }

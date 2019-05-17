@@ -25,7 +25,7 @@ class extIDsEditor extends \Ease\TWB\Container
                 $this->engine->getEvidence()) );
         
         $externalIDs = $this->engine->getDataValue('external-ids');
-        if (count($externalIDs)) {
+        if (!empty($externalIDs)) {
             foreach ($externalIDs as $externalID) {
                 if (!strlen($externalID)) {
                     continue;

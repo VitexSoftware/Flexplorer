@@ -13,7 +13,7 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class DateTimePicker extends \Ease\Html\Div
+class DateTimePicker extends \Ease\Html\DivTag
 {
     public $format = null;
 

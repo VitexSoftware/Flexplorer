@@ -10,11 +10,12 @@
             "email": "vitex@arachne.cz"
         }   
     ],
+    "minimum-stability": "dev",
     "require": {
         "php": ">= 5.5.9",
         "spoje.net/flexipeehp": "dev-master",
         "vitexsoftware/ease-framework": "dev-master",
-        "league/commonmark": "^0.15.0",
+        "league/commonmark": "*",
         "vitexsoftware/flexipeehp-bricks": "dev-master",
         "vitexsoftware/ease-bricks": "dev-master"
     },

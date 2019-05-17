@@ -23,7 +23,7 @@ foreach ($statuser->getData() as $property => $value) {
     
     switch ($property){
         case 'startupTime':
-            $value = new ui\ShowLiveAge(\FlexiPeeHP\FlexiBeeRO::flexiDateTimeToDateTime($value)->getTimestamp());
+            $value = new \Ease\ui\LiveAge(\FlexiPeeHP\FlexiBeeRO::flexiDateTimeToDateTime($value)->getTimestamp());
             break;
         case 'memoryHeap':
         case 'memoryUsed':

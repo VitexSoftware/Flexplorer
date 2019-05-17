@@ -85,7 +85,7 @@ if (empty($company)) {
 
     $created = \FlexiPeeHP\FlexiBeeRO::flexiDateTimeToDateTime($companer->getDataValue('createDt'))->getTimestamp();
     $companyInfo->addRowColumns([_('created'), strftime('%a %d. %m. %Y  - %X',
-            $created).' '.'('._('before').' '.new ui\ShowLiveAge($created).')']);
+            $created).' '.'('._('before').' '.new \Ease\ui\LiveAge($created).')']);
 
 
     $companyInfo->addRowColumns([_('Watching changes'), new ui\WatchingChangesStatus($companer->getDataValue('watchingChanges')
