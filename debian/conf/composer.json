@@ -14,12 +14,11 @@
         "vendor-dir": "/var/lib/flexplorer"
     },
     "require": {
-        "php": ">= 5.5.9",
-        "deb/flexipeehp": "*",
-        "deb/ease-framework": "*",
-        "deb/ease-bricks": "*",
-        "league/commonmark": "^0.15.0",
-        "deb/flexipeehp-bricks": "*"
+        "league/commonmark": "^1.5",
+        "deb/abraflexi": "*",
+        "deb/abraflexi-bricks": "*",
+        "deb/ease-twbootstrap-widgets": "*",
+        "deb/datatables-abraflexi": "*"
     },
     "autoload": {
         "psr-4": {
@@ -31,31 +30,39 @@
     "repositories": [
         {
             "type": "path",
-            "url": "/usr/share/php/Ease",
-            "options": {
-                "symlink": true
-            }
+            "url": "/usr/share/php/EaseCore/"
         },
         {
             "type": "path",
-            "url": "/usr/share/php/EaseBricks",
-            "options": {
-                "symlink": true
-            }
+            "url": "/usr/share/php/EaseHtml/"
         },
         {
             "type": "path",
-            "url": "/usr/share/php/FlexiPeeHP",
-            "options": {
-                "symlink": true
-            }
+            "url": "/usr/share/php/FlexiPeeHP/"
         },
         {
             "type": "path",
-            "url": "/usr/share/php/FlexiPeeHPBricks",
-            "options": {
-                "symlink": true
-            }
+            "url": "/usr/share/php/EaseBricks/"
+        },
+        {
+            "type": "path",
+            "url": "/usr/share/php/EaseTWB/"
+        },
+        {
+            "type": "path",
+            "url": "/usr/share/php/AbraFlexiBricks/"
+        },
+        {
+            "type": "path",
+            "url": "/usr/share/php/EaseTWBWidgets/"
+        },
+        {
+            "type": "path",
+            "url": "/usr/share/php/EaseTWBWidgetsAbraFlexi/"
+        },
+        {
+            "type": "path",
+            "url": "/usr/share/php/DataTablesAbraFlexi/"
         }
     ]
 }

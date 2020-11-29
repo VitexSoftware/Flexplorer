@@ -1,5 +1,5 @@
 Source: flexplorer
-Build-Depends: debhelper (>= 7.0.50~),po-debconf,moreutils, jq, composer, php-apigen
+Build-Depends: debhelper (>= 7.0.50~),po-debconf,moreutils, jq, composer
 Standards-Version: 3.8.4
 Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
 Uploaders: Vitex <vitex@hippy.cz>
@@ -7,7 +7,7 @@ Priority: optional
 Homepage: https://github.com/VitexSoftware/Flexplorer
 
 Package: flexplorer
-Depends: ${misc:Depends},flexipeehp (>= 1.8.5),composer,php5-intl | php5.6-intl | php7.0-intl | php7.1-intl | php7.2-intl ,libjs-twitter-bootstrap-switch,libjs-font-awesome, php-flexibee-config, ease-framework-bricks, flexipeehp-bricks
+Depends: ${misc:Depends},flexipeehp (>= 1.8.5),composer, php-intl, libjs-font-awesome, php-abraflexi-config, php-vitexsoftware-abraflexi-bricks,php-vitexsoftware-ease-bootstrap-widgets,php-vitexsoftware-datatables-abraflexi
 Recommends: flexibee-server
 Architecture: all
 Section: web
