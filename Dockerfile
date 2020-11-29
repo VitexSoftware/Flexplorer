@@ -1,29 +1,25 @@
 FROM debian:latest
 MAINTAINER Vítězslav Dvořák <info@vitexsoftware.cz>
 
-RUN apt update
-RUN apt-get update && apt-get install -my wget gnupg
-
-RUN wget -O - http://v.s.cz/info@vitexsoftware.cz.gpg.key | apt-key add -
-RUN echo deb http://v.s.cz/ stable main | tee /etc/apt/sources.list.d/vitexsoftware.list
-RUN apt update
-
-
-RUN apt-get update
-RUN apt-get -y upgrade
-
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 libapache2-mod-php php-mysql php-gd php-pear php-curl php-mbstring curl lynx-cur composer php-intl locales-all
-
-
-RUN rm -f /var/www/html/index.html
-COPY src/ /var/www/html/
-RUN ln -s /var/www/html/ /var/www/src
-COPY composer.json /var/www/composer.json
-
-RUN composer install --no-dev --no-plugins --no-scripts  -d /var/www/
-
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
+ENV APACHE_DOCUMENT_ROOT /usr/share/flexplorer/
+env DEBIAN_FRONTEND=noninteractive
+
+RUN apt update ; apt install -y wget libapache2-mod-php; echo "deb http://repo.vitexsoftware.cz buster main" | tee /etc/apt/sources.list.d/vitexsoftware.list ; wget -O /etc/apt/trusted.gpg.d/vitexsoftware.gpg http://repo.vitexsoftware.cz/keyring.gpg
+RUN apt-get update && apt-get install -y locales apache2 aptitude  cron locales-all && rm -rf /var/lib/apt/lists/* \
+    && localedef -i cs_CZ -c -f UTF-8 -A /usr/share/locale/locale.alias cs_CZ.UTF-8
+ENV LANG cs_CZ.utf8
+
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+RUN apt update
+
+RUN aptitude -y install flexplorer
+
+RUN a2ensite flexplorer
+
 EXPOSE 80
-CMD ["/usr/sbin/apachectl","-DFOREGROUND"]
+CMD [ "/usr/sbin/apache2ctl", "-D", "FOREGROUND" ]
