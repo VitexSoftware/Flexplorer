@@ -4,7 +4,7 @@
  * Flexplorer - bs_grid.
  *
  * @link http://www.pontikis.net/labs/bs_grid/ Bootstrap Datagrid
- * @author     Vítězslav Dvořák <vitex@arachne.cz>
+ * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Vitex Software
  */
 

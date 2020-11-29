@@ -3,7 +3,7 @@
 /**
  * Flexplorer - An evidence page.
  *
- * @author     Vítězslav Dvořák <vitex@arachne.cz>
+ * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Vitex Software
  */
 
@@ -45,13 +45,9 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
         $evidenceLicensed = false;
     }
 
-
-
     $tabs = new \Ease\TWB\Tabs('EviTabs');
     if ($evidenceLicensed === true) {
-        $tabs->addTab(_('Listing'),
-                new ui\DataGrid(_('Evidence'), new DataSource($evobj),
-                        ['label' => $label]));
+        $tabs->addTab(_('Listing'), new \Flexplorer\ui\DataTable($evobj));
     }
     $tabs->addTab(_('Column Groups'), new ui\ColumnsGroups($evobj, $column),
             isset($column));
@@ -120,7 +116,7 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
     if (count($relations)) {
 
         $evidenciesByType = \Ease\Functions::reindexArrayBy(\AbraFlexi\EvidenceList::$evidences,
-                'evidenceType');
+                        'evidenceType');
 
         foreach ($relations as $relation) {
             if (is_array($relation)) {

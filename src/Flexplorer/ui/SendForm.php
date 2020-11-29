@@ -3,7 +3,7 @@
 /**
  * Flexplorer - Request Send Form.
  *
- * @author     Vítězslav Dvořák <vitex@arachne.cz>
+ * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Vitex Software
  */
 
@@ -26,7 +26,7 @@ class SendForm extends \Ease\TWB\Form {
     public function __construct($url, $method = 'GET', $body = '',
             $format = 'json') {
         $sourceurl = '';
-        parent::__construct(['name'=>'Req','action'=>'query.php','method'=>'POST','class' => 'form-horizontal', 'enctype' => 'multipart/form-data']);
+        parent::__construct(['name' => 'Req', 'action' => 'query.php', 'method' => 'POST', 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data']);
 
         $this->addInput(new \Ease\Html\InputTextTag('url', $url), _('URL'),
                 $url,

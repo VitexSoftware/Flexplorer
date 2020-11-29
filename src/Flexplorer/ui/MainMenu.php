@@ -3,7 +3,7 @@
 /**
  * Flexplorer - Application Menu.
  *
- * @author     Vítězslav Dvořák <vitex@arachne.cz>
+ * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Vitex Software
  */
 
@@ -164,11 +164,28 @@ class MainMenu extends \Ease\Html\DivTag {
                 padding-bottom: 40px;
             }');
 
-        \Ease\Part::jQueryze($this);
-        \Ease\WebPage::singleton()->addCss('.dropdown-menu { overflow-y: auto } ');
-        \Ease\WebPage::singleton()->addJavaScript("$('.dropdown-menu').css('max-height',$(window).height()-100);",
-                null, true);
-        $this->includeJavaScript('js/slideupmessages.js');
+        if (!empty(\Ease\Shared::logger()->getMessages())) {
+
+            WebPage::singleton()->addCss('
+#smdrag { height: 8px; 
+          background-image:  url( images/slidehandle.png ); 
+          background-color: #ccc; 
+          background-repeat: no-repeat; 
+          background-position: top center; 
+          cursor: ns-resize;
+}
+#smdrag:hover { background-color: #f5ad66; }
+
+');
+
+            $this->addItem(WebPage::singleton()->getStatusMessagesBlock(['id' => 'status-messages', 'title' => _('Click to hide messages')]));
+            $this->addItem(new \Ease\Html\DivTag(null, ['id' => 'smdrag', 'style' => 'margin-bottom: 5px']));
+            \Ease\Shared::logger()->cleanMessages();
+            WebPage::singleton()->addCss('.dropdown-menu { overflow-y: auto } ');
+            WebPage::singleton()->addJavaScript("$('.dropdown-menu').css('max-height',$(window).height()-100);",
+                    null, true);
+            WebPage::singleton()->includeJavaScript('js/slideupmessages.js');
+        }
     }
 
 }

@@ -3,7 +3,7 @@
 /**
  * Flexplorer - Application config file.
  *
- * @author     Vítězslav Dvořák <vitex@arachne.cz>
+ * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Spoje.Net
  */
 define('LOG_NAME', 'Flexplorer');

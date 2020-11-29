@@ -9,15 +9,15 @@
 
 $(document).ready(function () {
     setTimeout(function () {
-        $("#StatusMessages").slideUp("slow");
+        $("#status-messages").slideUp("slow");
         $("#smdrag").fadeTo("slow", 0.25);
     }, 6000);
 
     $('#smdrag').on('mousedown', function (e) {
         $("#smdrag").fadeTo("slow", 1);
-        $("#StatusMessages").slideDown("slow");
+        $("#status-messages").slideDown("slow");
 
-        var $dragable = $('#StatusMessages'),
+        var $dragable = $('#status-messages'),
                 startHeight = $dragable.height() - 10,
                 pY = e.pageY;
 
@@ -34,9 +34,9 @@ $(document).ready(function () {
 
     });
 
-    $("#StatusMessages").click(function () {
-        $("#StatusMessages").slideUp("slow");
-        $("#StatusMessages").attr('data-state', 'up');
+    $("#status-messages").click(function () {
+        $("#status-messages").slideUp("slow");
+        $("#status-messages").attr('data-state', 'up');
         $("#smdrag").fadeTo("slow", 0.25);
     });
 

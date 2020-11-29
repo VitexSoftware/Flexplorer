@@ -3,7 +3,7 @@
 /**
  * Flexplorer - Sign in page.
  *
- * @author     Vítězslav Dvořák <vitex@arachne.cz>
+ * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016-2020 Vitex Software
  */
 

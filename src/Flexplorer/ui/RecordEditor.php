@@ -3,7 +3,7 @@
 /**
  * Flexplorer - RecordEditor
  *
- * @author     Vítězslav Dvořák <vitex@arachne.cz>
+ * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2018 Vitex Software
  */
 

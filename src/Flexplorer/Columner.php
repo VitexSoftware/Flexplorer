@@ -3,7 +3,7 @@
 /**
  * Flexplorer - Search in column names.
  *
- * @author     Vítězslav Dvořák <vitex@arachne.cz>
+ * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Vitex Software
  */
 

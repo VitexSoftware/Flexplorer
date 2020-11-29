@@ -21,7 +21,7 @@ class ButtonForm extends \Ease\TWB\Form {
      * @param string $evidence evidence dbNazev
      */
     public function __construct($evidence) {
-        parent::__construct(['name'=>'button', 'action'=>'editor.php?evidence=custom-button','method'=>'POST']);
+        parent::__construct(['name' => 'button', 'action' => 'editor.php?evidence=custom-button', 'method' => 'POST']);
         $url = dirname((isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
         $url .= '/editor.php?evidence=' . $evidence . '&id=${object.id}';
 

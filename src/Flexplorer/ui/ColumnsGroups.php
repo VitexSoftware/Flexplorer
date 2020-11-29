@@ -3,7 +3,7 @@
 /**
  * Flexplorer - Column Groups tabs.
  *
- * @author     Vítězslav Dvořák <vitex@arachne.cz>
+ * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Vitex Software
  */
 
