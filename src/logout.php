@@ -31,8 +31,8 @@ $oPage->addItem(new ui\PageTop(_('Sign out')));
 
 $oPage->container->addItem('<br/><br/><br/><br/>');
 $oPage->container->addItem(new \Ease\Html\DivTag(new \Ease\Html\ATag('login.php',
-    _('Thank you for your patronage and look forward to another visit'),
-    ['class' => 'jumbotron'])));
+                        _('Thank you for your patronage and look forward to another visit'),
+                        ['class' => 'jumbotron'])));
 $oPage->container->addItem('<br/><br/><br/><br/>');
 
 $oPage->addItem(new ui\PageBottom());

@@ -20,7 +20,7 @@ if ($oPage->getRequestValue('reset') == 'history') {
 $oPage->addItem(new ui\PageTop(_('Settings')));
 
 $oPage->container->addItem(new \Ease\TWB\LinkButton('?reset=history',
-    _('Reset history'), 'success'));
+                _('Reset history'), 'success'));
 
 
 

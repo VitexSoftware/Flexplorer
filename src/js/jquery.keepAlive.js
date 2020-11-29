@@ -8,9 +8,9 @@
  *
  * Version 1.0 2011-02-17
  */
-(function($) {
+(function ($) {
     var methods = {
-        init : function(options) {
+        init: function (options) {
             var defaults = {
                 url: "keepAlive.php",
                 timer: 600000 // 10min
@@ -19,13 +19,13 @@
             methods._poke.apply(this);
             return this;
         },
-        stop : function() {
-            if(this.nextPoke)
+        stop: function () {
+            if (this.nextPoke)
                 clearTimeout(this.nextPoke);
         },
-        _poke : function() {
+        _poke: function () {
             var self = this;
-            this.nextPoke = setTimeout(function() {
+            this.nextPoke = setTimeout(function () {
                 $.ajax({
                     url: self.options.url,
                     cache: false
@@ -35,13 +35,13 @@
         }
     };
 
-    $.fn.keepAlive = function(method) {
+    $.fn.keepAlive = function (method) {
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
         } else if (typeof method === 'object' || !method) {
             return methods.init.apply(this, arguments);
         } else {
-            $.error("The method " +  method + " doesn't exist in $.fn.keepAlive");
+            $.error("The method " + method + " doesn't exist in $.fn.keepAlive");
         }
     };
 })(jQuery);

@@ -9,8 +9,8 @@ Skupiny firem;true;true;true;true;true;true;true;true;true
 Peněžní ústavy;true;true;true;false;false;true;true;true;true
 Státy;true;true;true;false;false;true;true;true;true
 Úkoly k realizaci;true;true;true;true;true;true;true;true;true
-Průvodce aktivací produktu FlexiBee;true;true;true;true;true;true;true;true;true
-Můj FlexiBee;true;false;false;false;false;true;false;false;false
+Průvodce aktivací produktu AbraFlexi;true;true;true;true;true;true;true;true;true
+Můj AbraFlexi;true;false;false;false;false;true;false;false;false
 Typy událostí / aktivit;true;true;true;true;true;true;true;true;true
 Typy nákladů na události / aktivity;true;true;true;true;true;true;true;true;true
 Časté dotazy;true;true;true;true;true;true;true;true;true
@@ -142,7 +142,7 @@ Import licence;true;false;false;false;false;true;false;false;false
 Průvodce nastavením firmy;true;false;false;false;false;true;false;false;false
 Položky vstupující do Intrastatu;true;true;false;false;false;true;true;true;true
 Řádky Intrastatu;true;true;false;false;false;true;true;true;true
-FlexiBee;true;true;true;true;true;true;true;true;true
+AbraFlexi;true;true;true;true;true;true;true;true;true
 Koupit licenci;true;true;true;true;true;true;true;true;true
 Licence aplikace;true;true;true;true;true;true;true;true;true
 Přihlášení do aplikace;true;true;true;true;true;true;true;true;true
@@ -208,7 +208,7 @@ Přepočet daňové evidence;true;false;false;false;false;true;false;false;false
 Nová firma;true;true;true;true;true;true;true;true;true
 Založení nové firmy;true;true;true;true;true;true;true;true;true
 Obsazení disku;true;false;false;false;false;false;false;false;false
-O aplikaci FlexiBee;true;true;true;true;true;true;true;true;true
+O aplikaci AbraFlexi;true;true;true;true;true;true;true;true;true
 Odpojené firmy;true;true;true;true;true;true;true;true;true
 Přepočet skladu;true;false;false;false;false;true;false;false;false
 Aktualizace požadavků na výdej;true;false;false;true;true;true;false;false;false
@@ -242,7 +242,7 @@ Uživatelská podpora;true;true;true;true;true;true;true;true;true
 Přehledy položek dokladů;true;true;false;false;false;true;true;true;true
 Přehledy položek dokladů;true;true;false;false;false;true;true;true;true
 Nápověda;true;true;true;true;true;true;true;true;true
-Pošlete názor na FlexiBee;true;true;true;true;true;true;true;true;true
+Pošlete názor na AbraFlexi;true;true;true;true;true;true;true;true;true
 Práva serveru;true;false;false;false;false;false;false;false;false
 Rekapitulace mzdových složek;true;true;false;false;false;true;false;true;false
 Rekapitulace mzdových složek;true;true;false;false;false;true;false;true;false
@@ -252,8 +252,8 @@ Dokladové řady;true;true;true;true;true;true;true;true;true
 Předpisy zaúčtování;true;true;true;true;true;true;true;true;true
 Typy dokladů;true;true;true;true;true;true;true;true;true
 První spuštění;true;true;true;true;true;true;true;true;true
-Registrace FlexiBee Start;true;true;true;true;true;true;true;true;true
-FlexiBee;true;true;true;true;true;true;true;true;true
+Registrace AbraFlexi Start;true;true;true;true;true;true;true;true;true
+AbraFlexi;true;true;true;true;true;true;true;true;true
 Skladové karty;true;true;true;true;true;true;true;true;true
 Mapování skladů;true;true;true;true;true;true;false;false;true
 Rezervace;true;true;true;true;true;true;true;true;true
@@ -264,7 +264,7 @@ Intrastat;true;true;true;true;true;true;true;true;true
 FIFO Vazby;true;true;true;true;true;true;true;true;true
 Archiv;true;true;true;true;true;true;true;true;true
 Ukončit aplikaci;true;true;true;true;true;true;true;true;true
-ABRA FlexiBee;true;true;true;true;true;true;true;true;true
+ABRA AbraFlexi;true;true;true;true;true;true;true;true;true
 Stav skladu k datu;true;true;true;true;true;true;true;true;true
 Stav skladu k datu;true;true;true;true;true;true;true;true;true
 FIFO vazby rozpadu vydejek;true;true;true;true;true;true;true;true;true

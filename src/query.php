@@ -12,32 +12,32 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-$id       = $oPage->getRequestValue('id');
-$url      = urldecode($oPage->getRequestValue('url'));
-$body     = $oPage->getRequestValue('body');
-$action   = $oPage->getRequestValue('action');
-$method   = $oPage->getRequestValue('method');
-$format   = $oPage->getRequestValue('format');
+$id = $oPage->getRequestValue('id');
+$url = urldecode($oPage->getRequestValue('url'));
+$body = $oPage->getRequestValue('body');
+$action = $oPage->getRequestValue('action');
+$method = $oPage->getRequestValue('method');
+$format = $oPage->getRequestValue('format');
 $evidence = $oPage->getRequestValue('evidence');
 if (!strlen($url)) {
-    $url = constant('FLEXIBEE_URL').'/c/';
-    if (defined('FLEXIBEE_COMPANY')) {
-        $url .= constant('FLEXIBEE_COMPANY');
+    $url = constant('ABRAFLEXI_URL') . '/c/';
+    if (defined('ABRAFLEXI_COMPANY')) {
+        $url .= constant('ABRAFLEXI_COMPANY');
     }
 
     if ($evidence) {
-        $url.='/'.$evidence;
+        $url .= '/' . $evidence;
     }
 
     if (!is_null($id)) {
         if (strstr($id, ',')) {
             $ids = [];
             foreach (explode(',', $id) as $oneID) {
-                $ids [] = 'id='.$oneID;
+                $ids [] = 'id=' . $oneID;
             }
-            $url .= '/'. '('.implode('%20or%20', $ids).')';
+            $url .= '/' . '(' . implode('%20or%20', $ids) . ')';
         } else {
-            $url .= '/'.$id;
+            $url .= '/' . $id;
         }
     }
 
@@ -45,8 +45,8 @@ if (!strlen($url)) {
         $format = 'json';
     }
 
-    $url.= '.'.$format;
-    $url.= '?detail=full';
+    $url .= '.' . $format;
+    $url .= '?detail=full';
     $_REQUEST['url'] = $url;
 }
 
@@ -62,26 +62,26 @@ if (strlen($action)) {
 }
 
 
-$oPage->addItem(new ui\PageTop(_('Query').': '.$url));
+$oPage->addItem(new ui\PageTop(_('Query') . ': ' . $url));
 
 $requestTabs = new \Ease\TWB\Tabs('Request');
 
 $requestTabs->addTab(_('Request'),
-    new \Ease\TWB\Panel(_('Custom request'), 'warning',
-    new ui\SendForm($url, $method, $body, $format)));
+        new \Ease\TWB\Panel(_('Custom request'), 'warning',
+                new ui\SendForm($url, $method, $body, $format)));
 
 $requestTabs->addTab(_('Response'), new ui\ShowResponse($sender),
-    $oPage->isPosted() || ($oPage->getRequestValue('show') == 'result'));
+        $oPage->isPosted() || ($oPage->getRequestValue('show') == 'result'));
 
 if (strstr($url, '?')) {
-    $overviewUrl = $url.'&inDesktopApp=true';
+    $overviewUrl = $url . '&inDesktopApp=true';
 } else {
-    $overviewUrl = $url.'?inDesktopApp=true';
+    $overviewUrl = $url . '?inDesktopApp=true';
 }
-$requestTabs->addTab(_('FlexiBee'),
-    new \Ease\Html\IframeTag(str_replace(['.json', '.xml', '.csv'], '.html',
-        $overviewUrl),
-    ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
+$requestTabs->addTab(_('AbraFlexi'),
+        new \Ease\Html\IframeTag(str_replace(['.json', '.xml', '.csv'], '.html',
+                        $overviewUrl),
+                ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
 
 $oPage->container->addItem($requestTabs);
 

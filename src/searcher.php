@@ -13,7 +13,7 @@ require_once 'includes/Init.php';
 $oPage->onlyForLogged();
 
 $evidence = $oPage->getRequestValue('evidence');
-$query    = $oPage->getRequestValue('q');
+$query = $oPage->getRequestValue('q');
 if (strlen($query)) {
     $_SESSION['searchQuery'] = $query;
 
@@ -31,7 +31,7 @@ if (strlen($query)) {
                 if (isset($record['url'])) {
                     $url = $record['url'];
                 } else {
-                    $url = 'evidence.php?evidence='.$rectype.'&amp;id='.$record['id'];
+                    $url = 'evidence.php?evidence=' . $rectype . '&amp;id=' . $record['id'];
                 }
                 if (isset($record['name'])) {
                     $name = $record['name'];

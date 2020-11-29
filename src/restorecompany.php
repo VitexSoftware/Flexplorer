@@ -16,9 +16,9 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-$backup  = $oPage->getRequestValue('backup');
+$backup = $oPage->getRequestValue('backup');
 $company = $_SESSION['company'];
-$loader  = new \FlexiPeeHP\Company(['dbNazev' => $company]);
+$loader = new \AbraFlexi\Company(['dbNazev' => $company]);
 
 
 if (empty($backup)) {
@@ -26,8 +26,8 @@ if (empty($backup)) {
     $oPage->addStatusMessage('Specify backup to restore', 'warning');
 
     $oPage->container->addItem(new \Ease\TWB\Panel(_('Backups'), 'success',
-            new ui\BackupsTool(constant('BACKUP_DIRECTORY'),
-                $company.'.*\.winstrom-backup')));
+                    new ui\BackupsTool(constant('BACKUP_DIRECTORY'),
+                            $company . '.*\.winstrom-backup')));
 
 
 
@@ -36,19 +36,19 @@ if (empty($backup)) {
     $oPage->draw();
 } else {
 
-    if ($loader->deleteFromFlexiBee()) {
+    if ($loader->deleteFromAbraFlexi()) {
         $loader->addStatusMessage(_('company removed before restore'), 'warning');
     } else {
         $loader->addStatusMessage(_('company cleanup failed'), 'warning');
     }
 
-    if ($loader->restoreBackupFrom(constant('BACKUP_DIRECTORY').$company.'.winstrom-backup')) {
+    if ($loader->restoreBackupFrom(constant('BACKUP_DIRECTORY') . $company . '.winstrom-backup')) {
         $loader->addStatusMessage(_('backup restored'), 'success');
     } else {
         $loader->addStatusMessage(sprintf(_('company %s was not restored'),
-                $company), 'warning');
+                        $company), 'warning');
     }
 
-    $oPage->redirect('company.php?company='.$company);
+    $oPage->redirect('company.php?company=' . $company);
 }
 

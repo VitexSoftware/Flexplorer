@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Flexplorer - Hlavní strana.
  *
@@ -12,25 +13,25 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-$statuser            = new \FlexiPeeHP\Status();
+$statuser = new \AbraFlexi\Status();
 $_SESSION['lasturl'] = $statuser->curlInfo['url'];
 
-$oPage->addItem(new ui\PageTop(_('FlexiBee info')));
+$oPage->addItem(new ui\PageTop(_('AbraFlexi info')));
 
 $infoTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
 
 foreach ($statuser->getData() as $property => $value) {
-    
-    switch ($property){
+
+    switch ($property) {
         case 'startupTime':
-            $value = new \Ease\ui\LiveAge(\FlexiPeeHP\FlexiBeeRO::flexiDateTimeToDateTime($value)->getTimestamp());
+            $value = new \Ease\TWB\Widgets\LiveAge(\AbraFlexi\RO::flexiDateTimeToDateTime($value)->getTimestamp());
             break;
         case 'memoryHeap':
         case 'memoryUsed':
             $value = ui\WebPage::formatBytes($value);
             break;
     }
-    
+
     $infoTable->addRowColumns([$property, $value]);
 }
 
@@ -38,8 +39,8 @@ foreach ($statuser->getData() as $property => $value) {
 $infoRow = new \Ease\TWB\Row();
 $infoRow->addColumn(6, new \Ease\TWB\Panel(_('server info'), 'info', $infoTable));
 $infoRow->addColumn(6,
-    new \Ease\TWB\Panel(_('license info'), 'info',
-    new ui\LicenseInfo($_SESSION['license'])));
+        new \Ease\TWB\Panel(_('license info'), 'info',
+                new ui\LicenseInfo($_SESSION['license'])));
 $oPage->container->addItem($infoRow);
 
 $oPage->addItem(new ui\PageBottom());

@@ -1,6 +1,6 @@
 /* Albanian translation for the jQuery Timepicker Addon */
 /* Written by Olti Buzi */
-(function($) {
+(function ($) {
     $.timepicker.regional['sq'] = {
         timeOnlyTitle: 'Zgjidh orarin',
         timeText: 'Orari',

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Flexplorer - Application config file.
  *
@@ -15,36 +16,36 @@ define('CONFIGS', '../configurations/');
  */
 define('EMAIL_FROM', 'flexplorer@localhost');
 
-if (file_exists(constant('CONFIGS').'/default.json')) {
-    $clientConfig = json_decode(file_get_contents(constant('CONFIGS').'/default.json'),
-        true);
+if (file_exists(constant('CONFIGS') . '/default.json')) {
+    $clientConfig = json_decode(file_get_contents(constant('CONFIGS') . '/default.json'),
+            true);
 } else {
     $clientConfig = [
-        'FLEXIBEE_URL' => 'https://demo.flexibee.eu:5434',
-        'FLEXIBEE_LOGIN' => 'winstrom',
-        'FLEXIBEE_PASSWORD' => 'winstrom',
-        'FLEXIBEE_COMPANY' => 'demo'
+        'ABRAFLEXI_URL' => 'https://demo.flexibee.eu:5434',
+        'ABRAFLEXI_LOGIN' => 'winstrom',
+        'ABRAFLEXI_PASSWORD' => 'winstrom',
+        'ABRAFLEXI_COMPANY' => 'demo'
     ];
 }
 
 /*
- * URL Flexibee API
+ * URL AbraFlexi API
  */
-define('DEFAULT_FLEXIBEE_URL', $clientConfig['FLEXIBEE_URL']);
+define('DEFAULT_ABRAFLEXI_URL', $clientConfig['ABRAFLEXI_URL']);
 /*
- * FlexiBee API User
+ * AbraFlexi API User
  */
-define('DEFAULT_FLEXIBEE_LOGIN', $clientConfig['FLEXIBEE_LOGIN']);
+define('DEFAULT_ABRAFLEXI_LOGIN', $clientConfig['ABRAFLEXI_LOGIN']);
 /*
- * FlexiBee API Password
+ * AbraFlexi API Password
  */
 
-define('DEFAULT_FLEXIBEE_PASSWORD', $clientConfig['FLEXIBEE_PASSWORD']);
+define('DEFAULT_ABRAFLEXI_PASSWORD', $clientConfig['ABRAFLEXI_PASSWORD']);
 /*
- * Společnost v FlexiBee
+ * Společnost v AbraFlexi
  */
 
-define('DEFAULT_FLEXIBEE_COMPANY', $clientConfig['FLEXIBEE_COMPANY']);
+define('DEFAULT_ABRAFLEXI_COMPANY', $clientConfig['ABRAFLEXI_COMPANY']);
 
 /*
  * Where store database backups

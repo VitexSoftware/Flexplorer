@@ -15,20 +15,20 @@ $oPage->onlyForLogged();
 if (!$oUser->getUserID()) {
     die(_('Please login First'));
 }
-    
+
 $saverClass = str_replace('-', '\\', $oPage->GetRequestValue('SaverClass'));
 if ($saverClass == 'undefined') {
     exit;
 }
 
-$field    = $oPage->getRequestValue('Field');
-$value    = $oPage->getRequestValue('Value');
-$key      = $oPage->getRequestValue('Key', 'int');
+$field = $oPage->getRequestValue('Field');
+$value = $oPage->getRequestValue('Value');
+$key = $oPage->getRequestValue('Key', 'int');
 $evidence = $oPage->getRequestValue('Evidence', 'string');
 /**
  * @var Flexplorer Třída pro ukládající data
  */
-$saver    = new $saverClass($evidence);
+$saver = new $saverClass($evidence);
 $saver->setMyKey($key);
 
 
@@ -43,11 +43,11 @@ if (strtolower($value) == 'null') {
 
 $saver->takeData([$field => $value]);
 
-$saver->insertToFlexiBee();
+$saver->insertToAbraFlexi();
 
 if ($saver->lastResponseCode != 201) {
     header('HTTP/1.1 501 Not Implemented', 501);
-    $oUser->addStatusMessage(_('Error saving to FlexiBee'), 'error');
+    $oUser->addStatusMessage(_('Error saving to AbraFlexi'), 'error');
 } else {
     header("HTTP/1.1 200 OK");
 }

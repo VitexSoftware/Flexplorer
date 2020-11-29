@@ -1,6 +1,6 @@
 /* Slovenian translation for the jQuery Timepicker Addon */
 /* Written by Hadalin (https://github.com/hadalin) */
-(function($) {
+(function ($) {
     $.timepicker.regional['sl'] = {
         timeOnlyTitle: 'Izberite čas',
         timeText: 'Čas',

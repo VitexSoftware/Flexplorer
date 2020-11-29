@@ -1,6 +1,6 @@
 /* Persian translation for the jQuery Timepicker Addon */
 /* Written by Meysam Pour Ganji */
-(function($) {
+(function ($) {
     $.timepicker.regional['fa'] = {
         timeOnlyTitle: 'انتخاب زمان',
         timeText: 'زمان',

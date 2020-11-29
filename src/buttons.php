@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Flexplorer - Buttons.
  *
@@ -12,18 +13,18 @@ require_once 'includes/Init.php';
 
 
 
-$oPage->addItem(new ui\PageTop(_('FlexiBee Buttons')));
+$oPage->addItem(new ui\PageTop(_('AbraFlexi Buttons')));
 
 
 $evidenceButtonInfo = new \Ease\TWB\Panel(_('Evidence'), 'info',
-    _('This button open current FlexiBee evidence in FlexPlorer'),
-    [new \Ease\TWB\LinkButton('getbuttonxml.php?type=evidence&operation=download',
-        '<i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
- '._('Download Buttons XML install file'), 'info'),
+        _('This button open current AbraFlexi evidence in FlexPlorer'),
+        [new \Ease\TWB\LinkButton('getbuttonxml.php?type=evidence&operation=download',
+            '<i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+ ' . _('Download Buttons XML install file'), 'info'),
     new \Ease\TWB\LinkButton('getbuttonxml.php?type=evidence&operation=install',
-        '<i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
- '._('Install Buttons into FlexiBee'), 'success')
-    ]);
+            '<i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+ ' . _('Install Buttons into AbraFlexi'), 'success')
+        ]);
 
 
 //$oPage->container->addItem( new \Ease\TWB\LinkButton('getbuttonxml.php?type=structure', _('Structure')) );

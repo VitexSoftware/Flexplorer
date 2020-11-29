@@ -31,21 +31,21 @@ $tabs = new \Ease\TWB\Tabs('EviTabs');
 $tabs->addTab(_('Listing'), new ui\FlexiBsGrid(new DataSource($evobj)));
 $tabs->addTab(_('Structure'), new ui\BsEvidenceProperties($evobj));
 
-$url      = constant('FLEXIBEE_URL').'/c/'.constant('FLEXIBEE_COMPANY');
+$url = constant('ABRAFLEXI_URL') . '/c/' . constant('ABRAFLEXI_COMPANY');
 $evidence = $oPage->getRequestValue('evidence');
 if ($evidence) {
-    $url.='/'.$evidence;
+    $url .= '/' . $evidence;
 }
 
 $method = $oPage->getRequestValue('method');
-$body   = $oPage->getRequestValue('body');
+$body = $oPage->getRequestValue('body');
 if (is_null($body)) {
     $body = $evobj->getJsonizedData([]);
 }
 
 $tabs->addTab(_('Query'),
-    new \Ease\TWB\Panel(_('Custom query'), 'warning',
-    new ui\SendForm($url, $method, $body)));
+        new \Ease\TWB\Panel(_('Custom query'), 'warning',
+                new ui\SendForm($url, $method, $body)));
 
 
 $oPage->container->addItem($tabs);

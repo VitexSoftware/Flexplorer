@@ -8,21 +8,20 @@ namespace Flexplorer;
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2016 Vitex Software
  */
-
 require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
 $evidence = $oPage->getRequestValue('evidence');
-$query    = $oPage->getRequestValue('search');
+$query = $oPage->getRequestValue('search');
 
-$_SERVER['REQUEST_URI'].='?search='.$query;
+$_SERVER['REQUEST_URI'] .= '?search=' . $query;
 
-$oPage->addItem(new ui\PageTop(_('Search results').': '.$query));
+$oPage->addItem(new ui\PageTop(_('Search results') . ': ' . $query));
 
 if (strlen($query) > 1) {
     $searcher = new Searcher($evidence);
-    $results  = $searcher->searchAll($query);
+    $results = $searcher->searchAll($query);
 
     if ((count($results) === 1) && (count(current($results)) === 1)) {
         if (isset($results[key($results)][0]['url'])) {
@@ -46,9 +45,9 @@ if (strlen($query) > 1) {
             $resultTable->addRowHeaderColumns($columnNames);
             foreach ($evidenceResults as $key => $values) {
                 foreach ($values as $vkey => $vvalue) {
-                    $values[$vkey] = '<a href="'.$values['url'].'">'.str_replace($query,
-                            "<strong style=\"background-color: yellow\">$query</strong>",
-                            $vvalue).'</a>';
+                    $values[$vkey] = '<a href="' . $values['url'] . '">' . str_replace($query,
+                                    "<strong style=\"background-color: yellow\">$query</strong>",
+                                    $vvalue) . '</a>';
                 }
                 if (count($columnNames) > 4) {
                     unset($values['what']);
@@ -60,7 +59,7 @@ if (strlen($query) > 1) {
             $resultTables[] = $resultTable;
         }
         $oPage->container->addItem(new \Ease\TWB\Panel(sprintf(_('Search for %s results in %s'),
-                "<strong>$query</strong>", $evidenceName), 'info', $resultTables));
+                                "<strong>$query</strong>", $evidenceName), 'info', $resultTables));
     }
 }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Flexplorer - Label Assigment Change saver.
  *
@@ -12,26 +13,26 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-$id       = $oPage->getRequestValue('record');
-$label    = $oPage->getRequestValue('label');
+$id = $oPage->getRequestValue('record');
+$label = $oPage->getRequestValue('label');
 $evidence = $oPage->getRequestValue('evidence');
-$result   = false;
+$result = false;
 
 if ($id && $label && $evidence) {
-    $flexiBee = new \FlexiPeeHP\FlexiBeeRW(['id' => $id],
-        ['evidence' => $evidence]);
+    $abraFlexi = new \AbraFlexi\RW(['id' => $id],
+            ['evidence' => $evidence]);
 
     if ($oPage->getRequestValue('state', 'boolean')) {
-        $result = \FlexiPeeHP\Stitek::setLabel($label, $flexiBee);
+        $result = \AbraFlexi\Stitek::setLabel($label, $abraFlexi);
     } else {
-        $urlparbac                            = $flexiBee->defaultUrlParams;
-        $flexiBee->defaultUrlParams['detail'] = 'custom:id,stitky';
-        $flexiBee->loadFromFlexiBee(is_numeric($id) ? intval($id) : $id);
-        $result                               = \FlexiPeeHP\Stitek::unsetLabel($label,
-                $flexiBee);
-        $flexiBee->defaultUrlParams           = $urlparbac;
+        $urlparbac = $abraFlexi->defaultUrlParams;
+        $abraFlexi->defaultUrlParams['detail'] = 'custom:id,stitky';
+        $abraFlexi->loadFromAbraFlexi(is_numeric($id) ? intval($id) : $id);
+        $result = \AbraFlexi\Stitek::unsetLabel($label,
+                        $abraFlexi);
+        $abraFlexi->defaultUrlParams = $urlparbac;
     }
-    http_response_code($flexiBee->lastResponseCode);
+    http_response_code($abraFlexi->lastResponseCode);
 } else {
     http_response_code(404);
 }

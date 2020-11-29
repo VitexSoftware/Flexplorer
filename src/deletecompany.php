@@ -16,11 +16,11 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-$company = empty($oPage->getRequestValue('company')) ? $_SESSION['company']  : $oPage->getRequestValue('company') ;
+$company = empty($oPage->getRequestValue('company')) ? $_SESSION['company'] : $oPage->getRequestValue('company');
 
-$saver = new \FlexiPeeHP\Company($company);
+$saver = new \AbraFlexi\Company($company);
 
-if ($saver->deleteFromFlexiBee()) {
+if ($saver->deleteFromAbraFlexi()) {
     $_SESSION['company'] = '';
 }
 

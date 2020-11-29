@@ -1,4 +1,5 @@
 <?php
+
 /**
  * System.Spoje.Net - Init aplikace.
  *
@@ -8,21 +9,25 @@
 
 namespace Flexplorer;
 
+use Ease\Locale;
+use Ease\Shared;
+use Flexplorer\ui\WebPage;
+
 require_once 'includes/config.php';
 require_once '../vendor/autoload.php';
 
-\Ease\Shared::initializeGetText('flexplorer', 'UTF-8', '../i18n');
+new Locale('UTF-8', '../i18n', 'flexplorer');
 
 session_start();
 
 if (isset($_SESSION['user'])) {
-    define('FLEXIBEE_LOGIN', $_SESSION['user']);
+    define('ABRAFLEXI_LOGIN', $_SESSION['user']);
 }
 if (isset($_SESSION['password'])) {
-    define('FLEXIBEE_PASSWORD', $_SESSION['password']);
+    define('ABRAFLEXI_PASSWORD', $_SESSION['password']);
 }
 if (isset($_SESSION['url'])) {
-    define('FLEXIBEE_URL', $_SESSION['url']);
+    define('ABRAFLEXI_URL', $_SESSION['url']);
 }
 
 if (isset($_REQUEST['company'])) {
@@ -30,11 +35,11 @@ if (isset($_REQUEST['company'])) {
 }
 
 if (isset($_SESSION['company'])) {
-    define('FLEXIBEE_COMPANY', $_SESSION['company']);
+    define('ABRAFLEXI_COMPANY', $_SESSION['company']);
 }
 
 if (isset($_SESSION['sessionid'])) {
-    define('FLEXIBEE_AUTHSESSID', $_SESSION['sessionid']);
+    define('ABRAFLEXI_AUTHSESSID', $_SESSION['sessionid']);
 }
 
 /**
@@ -43,27 +48,27 @@ if (isset($_SESSION['sessionid'])) {
  *
  * @global User|Anonym
  */
-$oUser                 = \Ease\Shared::user();
+define('EASE_LOGGER', 'syslog');
+
+$oUser = Shared::user(null, 'Flexplorer\User');
 $oUser->settingsColumn = 'settings';
 
-if (!\Ease\Shared::isCli()) {
-    /* @var $oPage \Sys\WebPage */
-    $oPage = new ui\WebPage();
+if (PHP_SAPI != 'clie') {
+    /* @var $oPage WebPage */
+    $oPage = new WebPage();
 
     $serverURL = $oPage->getRequestValue('serveruri');
     if ($serverURL) {
-        define('FLEXIBEE_URL', $serverURL);
+        define('ABRAFLEXI_URL', $serverURL);
     }
 
     $sessionID = $oPage->getRequestValue('sessionid');
     if ($sessionID) {
-        define('FLEXIBEE_AUTHSESSID', $sessionID);
-    }
-    
-    $company = $oPage->getRequestValue('company');
-    if ($sessionID) {
-        define('FLEXIBEE_COMPANY', $sessionID);
+        define('ABRAFLEXI_AUTHSESSID', $sessionID);
     }
 
-    
+    $company = $oPage->getRequestValue('company');
+    if ($sessionID) {
+        define('ABRAFLEXI_COMPANY', $sessionID);
+    }
 }

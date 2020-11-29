@@ -13,16 +13,16 @@ require_once 'includes/Init.php';
 $oPage->onlyForLogged();
 
 $evidence = $oPage->getRequestValue('evidence');
-$id       = $oPage->getRequestValue('id');
+$id = $oPage->getRequestValue('id');
 
 $engine = new Flexplorer($evidence);
 
 if (!is_null($id)) {
-    $engine->loadFromFlexiBee(is_numeric($id) ? intval($id) : $id );
+    $engine->loadFromAbraFlexi(is_numeric($id) ? intval($id) : $id );
     $originalData = $engine->getData();
-    $recordInfo   = $engine->__toString();
+    $recordInfo = $engine->__toString();
 } else {
-    $recordInfo   = _('New record');
+    $recordInfo = _('New record');
     $originalData = null;
 }
 
@@ -39,11 +39,11 @@ if ($oPage->isPosted()) {
 
     $engine->takeData($_POST);
 
-    if (!is_null($oPage->getRequestValue('toFlexiBee'))) {
+    if (!is_null($oPage->getRequestValue('toAbraFlexi'))) {
         if (isset($originalData['external-ids'])) {
             $engine->changeExternalIDs($originalData['external-ids']);
         }
-        $engine->insertToFlexiBee();
+        $engine->insertToAbraFlexi();
         if ($engine->lastResponseCode != 400) {
             $id = $engine->getLastInsertedId();
             $engine->addStatusMessage(_('Record was saved'), 'success');
@@ -53,21 +53,21 @@ if ($oPage->isPosted()) {
     }
 }
 
-$oPage->addItem(new ui\PageTop(_('Editor').' '.$evidence.' '.$recordInfo));
+$oPage->addItem(new ui\PageTop(_('Editor') . ' ' . $evidence . ' ' . $recordInfo));
 
 
-if ($oPage->isPosted() && is_null($oPage->getRequestValue('toFlexiBee'))) {
+if ($oPage->isPosted() && is_null($oPage->getRequestValue('toAbraFlexi'))) {
 
     $url = $engine->getEvidenceURL();
 
     $method = 'POST';
-    $body   = $engine->getJsonizedData($engine->getData());
+    $body = $engine->getJsonizedData($engine->getData());
 
-    $oPage->container->addItem(new \Ease\TWB\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence='.$evidence.'">'.$evidence.'</a> <a href="editor.php?evidence='.$evidence.'&id='.$id.'">'.$recordInfo),
-        'info', new ui\SendForm($url, $method, $body)));
+    $oPage->container->addItem(new \Ease\TWB\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence=' . $evidence . '">' . $evidence . '</a> <a href="editor.php?evidence=' . $evidence . '&id=' . $id . '">' . $recordInfo),
+                    'info', new ui\SendForm($url, $method, $body)));
 } else {
-    $oPage->container->addItem(new \Ease\TWB\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence='.$evidence.'">'.$evidence.'</a> <a href="editor.php?evidence='.$evidence.'&id='.$id.'">'.$recordInfo.'</a>'),
-        'info', new ui\Editor($engine)));
+    $oPage->container->addItem(new \Ease\TWB\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence=' . $evidence . '">' . $evidence . '</a> <a href="editor.php?evidence=' . $evidence . '&id=' . $id . '">' . $recordInfo . '</a>'),
+                    'info', new ui\Editor($engine)));
 }
 
 $oPage->addItem(new ui\PageBottom());
