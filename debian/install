@@ -14,6 +14,7 @@ debian/conf/flexplorer.conf	etc/apache2/conf-available/
 debian/conf/flexplorer.service  etc/avahi/services/
 debian/conf/composer.json       usr/share/flexplorer/
 debian/conf/flexplorer.desktop  etc/flexplorer/
+debian/conf/io.github.vitexsoftware.flexplorer.metainfo.xml usr/share/metainfo/
 
 i18n/cs_CZ/LC_MESSAGES/*.mo     usr/share/locale/cs_CZ/LC_MESSAGES
 i18n/en_US/LC_MESSAGES/*.mo     usr/share/locale/en_US/LC_MESSAGES

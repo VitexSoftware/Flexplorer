@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.vitexsoftware.flexplorer</id>
+  
+  <name>Flexplorer</name>
+  <summary>Developer&apos;s tool for FlexiBee API JSON/XML </summary>
+  
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  
+  <description>
+    <p>
+      Provide lowlevel access to AbraFlexi api functions
+    </p>
+  </description>
+  
+  <launchable type="desktop-id">flexplorer.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/VitexSoftware/Flexplorer/abraflexi/screenshots/flexplorer-vypis_evidence.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://github.com/VitexSoftware/Flexplorer/blob/abraflexi/screenshots/flexplorer-company-page.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://github.com/VitexSoftware/Flexplorer/blob/abraflexi/screenshots/flexplorer-xml-response.png</image>
+    </screenshot>
+  </screenshots>
+</component>
+
