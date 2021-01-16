@@ -16,7 +16,7 @@
         "spojenet/flexibee": "2.0.x-dev",
         "vitexsoftware/flexibee-bricks": "dev-abraflexi",
         "vitexsoftware/ease-twbootstrap-widgets": "*",
-        "vitexsoftware/php-datatables-abraflexi": "dev-abraflexi"
+        "vitexsoftware/datatables-abraflexi": "dev-abraflexi"
     },
     "autoload": {
         "psr-4": {

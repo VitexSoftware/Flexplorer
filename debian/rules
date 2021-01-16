@@ -3,11 +3,11 @@
 %:
 	dh $@
 
-override_dh_prep:
-	composer update
-	apigen generate --destination=docs -- src
-	dh_prep
 
+override_dh_prep:
+	phpdoc -d src --defaultpackagename=MainPackage
+	mv .phpdoc/build/* docs
+	dh_prep
 
 override_dh_install:
 	dh_install
