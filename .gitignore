@@ -12,3 +12,5 @@
 /.vagrant/
 /backups/
 /configurations/
+.phpdoc
+
