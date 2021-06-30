@@ -12,25 +12,25 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-
 header('Content-Type: application/json');
 
 $class = $oPage->getRequestValue('class');
-
 
 /**
  * @var Engine Data Source
  */
 $engine = new $class(null, ['evidence' => ui\WebPage::getRequestValue('evidence')]);
 
-
 unset($_REQUEST['class']);
 unset($_REQUEST['_']);
 
 $dataRaw = $engine->getColumnsFromAbraFlexi('*', $_REQUEST);
 
-echo json_encode(['data' => $dataRaw, 'recordsTotal' => count($dataRaw)]);
+foreach ($dataRaw as $row => $columns) {
+    $dataRaw[$row]['lastUpdate'] = $dataRaw[$row]['lastUpdate']->format(\AbraFlexi\RO::$DateTimeFormat);
+}
 
+echo json_encode(['data' => $dataRaw, 'recordsTotal' => count($dataRaw)]);
 
 exit;
 

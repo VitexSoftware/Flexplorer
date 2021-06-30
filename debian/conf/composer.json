@@ -17,7 +17,7 @@
         "league/commonmark": "^1.5",
         "deb/abraflexi": "*",
         "deb/abraflexi-bricks": "*",
-        "deb/ease-twbootstrap-widgets": "*",
+        "deb/ease-bootstrap-widgets": "*",
         "deb/datatables-abraflexi": "*"
     },
     "autoload": {
@@ -38,7 +38,7 @@
         },
         {
             "type": "path",
-            "url": "/usr/share/php/FlexiPeeHP/"
+            "url": "/usr/share/php/AbraFlexi/"
         },
         {
             "type": "path",
@@ -62,7 +62,7 @@
         },
         {
             "type": "path",
-            "url": "/usr/share/php/DataTablesAbraFlexi/"
+            "url": "/usr/share/php/AbraFlexiUiDataTables"
         }
     ]
 }

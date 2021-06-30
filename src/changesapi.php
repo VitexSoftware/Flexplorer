@@ -91,15 +91,15 @@ if (!is_null($linkrefresh)) {
 
 $oPage->addItem(new ui\PageTop(_('ChangesAPI Tool')));
 $toolRow = new \Ease\TWB\Row();
-$settingsForm = new \Ease\TWB\Form('settings');
-$settingsForm->addInput(new \Ease\ui\TWBSwitch('changesapi', $chapistatus, 'enable',
+$settingsForm = new \Ease\TWB\Form(['name'=>'settings']);
+$settingsForm->addInput(new \Ease\TWB\Widgets\TWBSwitch('changesapi', $chapistatus, 'enable',
                 ['onText' => _('Enable'), 'offText' => _('Disable')]), _('Changes API'),
         null,
         new \Ease\Html\ATag('https://www.abraflexi.eu/api/dokumentace/ref/changes-api/',
                 _('If it is turned on , AbraFlexi records all changes made to the database company in the changelog and provides a list of changes recovered')));
 
 $webHookUrl = str_replace(basename(__FILE__), 'webhook.php',
-        \Ease\Page::phpSelf());
+        \Ease\Document::phpSelf());
 
 $settingsForm->addInput(new \Ease\Html\InputTextTag('hookurl', $hookurl),
         _('Web Hook'), $webHookUrl,
@@ -110,7 +110,7 @@ $settingsForm->addInput(new \Ease\Html\InputTextTag('hookurl', $hookurl),
 $settingsForm->addItem(new \Ease\TWB\LinkButton("?hookurl=" . urlencode($webHookUrl),
                 _('Target to FlexPlorer'), 'success', ['class' => 'button button-xs']));
 
-$settingsForm->addInput(new \Ease\ui\TWBSwitch('changesformat', true, 'JSON',
+$settingsForm->addInput(new \Ease\TWB\Widgets\TWBSwitch('changesformat', true, 'JSON',
                 ['onText' => 'JSON', 'offText' => 'XML']), _('Data format'));
 
 $settingsForm->addInput(new \Ease\ui\TWBSwitch('hookurltest', true, 'skip'),

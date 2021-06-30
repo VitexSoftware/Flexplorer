@@ -7,7 +7,7 @@
     "authors": [
         {
             "name": "Vítězslav Dvořák",
-            "email": "vitex@arachne.cz"
+            "email": "info@vitexsoftware.cz"
         }   
     ],
     "minimum-stability": "dev",
@@ -28,8 +28,8 @@
     "autoload-dev": {
         "psr-4": {
             "Test\\Flexplorer\\": "testing/PHPUnit/src/classes/",
-            "Test\\Ease\\": "vendor/vitexsoftware/ease-framework/tests/src/Ease",
-            "Test\\FlexiPeeHP\\": "vendor/spoje.net/flexipeehp/testing/src/FlexiPeeHP/"
+            "Test\\Ease\\": "vendor/vitexsoftware/ease-core/tests/src/Ease",
+            "Test\\AbraFlexi\\": "vendor/spoje.net/abraflexi/testing/src/AbraFlexi/"
         }
     },
     "require-dev": {

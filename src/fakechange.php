@@ -23,7 +23,6 @@ $format = 'json';
 
 $changeFile = HookReciever::getSaveDir() . '/' . basename($change);
 
-
 $changeData = ['winstrom' => ['@globalVersion' => $lastversion, 'changes' => ['@evidence' => $evidence,
             '@in-version' => $lastversion,
             '@operation' => $operation, 'id' => $id, 'external-ids' => [$extid]]]];
@@ -65,12 +64,11 @@ $oPage->addItem(new ui\PageTop(_('WebHook test')));
 
 $changeTabs = new \Ease\TWB\Tabs('changetabs');
 
-
 $toolRow = new \Ease\TWB\Row();
-$settingsForm = new \Ease\TWB\Form('settings');
+$settingsForm = new \Ease\TWB\Form(['name' => 'settings']);
 
-
-$settingsForm->addInput(new \Ease\ui\TWBSwitch('changesformat', true, 'JSON',
+//TODO \Ease\TWB4\Widgets\Toggle
+$settingsForm->addInput(new \Ease\TWB\Widgets\TWBSwitch('changesformat', true, 'JSON',
                 ['onText' => 'JSON', 'offText' => 'XML', 'disabled' => true]),
         _('Data format'));
 
@@ -80,7 +78,6 @@ $settingsForm->addInput(new \Ease\Html\InputNumberTag('lastversion',
 
 $settingsForm->addInput(new \Ease\Html\Select('evidence', $evidenciesToMenu,
                 $evidence), _('Evidence'));
-
 
 $settingsForm->addInput(new \Ease\Html\Select('operation',
                 ['create' => 'Create', 'update' => 'Update', 'delete' => 'Delete'],
@@ -92,12 +89,10 @@ $settingsForm->addInput(new \Ease\Html\InputNumberTag('id', $id, ['min' => 0]),
 $settingsForm->addInput(new \Ease\Html\InputTextTag('extid', $extid),
         _('External number'), $extid, _('External number of record edited'));
 
-
 $settingsForm->addItem(new \Ease\TWB\SubmitButton(_('Build change'), 'warning'));
 $toolRow->addColumn(4, new \Ease\TWB\Well($settingsForm));
 
-
-$hookForm = new \Ease\TWB\Form('TriggerHook');
+$hookForm = new \Ease\TWB\Form(['name' => 'TriggerHook']);
 $hookForm->addInput(new \Ease\Html\InputTextTag('hookurl', $hookurl),
         _('Web Hook'), 'http://server/getchanges.php',
         [new \Ease\TWB\LinkButton('changesapi.php', _('Choose Registered')),
@@ -120,13 +115,11 @@ if (strlen($responseBody)) {
             nl2br(htmlentities($prober->lastCurlResponse))
             . '</code></pre>');
 
-
     $oPage->includeCss('css/github.css');
     $oPage->includeJavaScript('js/highlight.min.js');
     $oPage->addJavascript('$(\'pre code\').each(function(i, block) {
     hljs.highlightBlock(block);
   });');
-
 
     $changeTabs->addTab(_('Response'), $responseBlock);
 }
@@ -134,7 +127,6 @@ $changeTabs->addTab(_('Request'), $toolRow);
 
 $oPage->container->addItem(new \Ease\TWB\Panel(_('WebHook probe'), 'info',
                 $changeTabs));
-
 
 $oPage->addItem(new ui\PageBottom());
 

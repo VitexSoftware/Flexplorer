@@ -30,6 +30,8 @@ apache_install() {
 
     . /usr/share/debconf/confmodule
 
+    debian-composer flexplorer
+
     db_get flexplorer/FLEXIBEE_URL
     sed -i "/DEFAULT_FLEXIBEE_URL/c\define('DEFAULT_FLEXIBEE_URL', '${RET}');" /usr/share/flexplorer/includes/config.php
 
@@ -68,12 +70,6 @@ apache_install() {
 	    desktop_install
     fi
 
-
-cd /usr/share/flexplorer
-if [ -f composer.lock ] ; then
-    rm -f composer.lock
-fi
-composer --no-dev -o install
 
 #DEBHELPER#
 

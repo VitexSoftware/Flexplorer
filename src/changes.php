@@ -40,8 +40,7 @@ if (count($chages)) {
                     _('Delete All'), 'danger'));
 } else {
 
-    $webHookUrl = str_replace(basename(__FILE__), 'webhook.php',
-            \Ease\Page::phpSelf());
+    $webHookUrl = str_replace(basename(__FILE__), 'webhook.php', \Ease\Document::phpSelf());
 
     $oPage->container->addItem(new \Ease\TWB\LinkButton("changesapi.php?hookurl=" . urlencode($webHookUrl),
                     _('Target to FlexPlorer'), 'success',

@@ -17,7 +17,7 @@ override_dh_prep:
 override_dh_install:
 	dh_install
 	sed -i -e 's/\.\.\//.\//g' debian/flexplorer/usr/share/flexplorer/about.php
-	sed -i -e 's/..\/vendor/\/var\/lib\/flexplorer/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
+	sed -i -e 's/..\/vendor/\/var\/lib\/composer\/flexplorer/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
 	sed -i -e 's/..\/i18n/\/usr\/share\/locale/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
 	sed -i -e 's/https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/fuelux\/3.16.7\/css\/fuelux.css/\/javascript\/fuelux\/css\/fuelux.css/g' debian/flexplorer/usr/share/flexplorer/classes/ui/FXPreloader.php
 	sed -i -e 's/https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/fuelux\/3.16.7\/js\/fuelux.js/\/javascript\/fuelux\/fuelux.js/g'         debian/flexplorer/usr/share/flexplorer/classes/ui/FXPreloader.php
