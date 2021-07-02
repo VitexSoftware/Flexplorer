@@ -73,7 +73,7 @@ Přihlášení
 
 Nepřihlášený uživatel je přesměrován na stránku login.php s přihlašovacím dialogem. Zde je možné vyplnit přihlašovací údaje, nebo kliknot na link v záložkách po levé straně.
 Novou záložku je možné přidat buď volbou přepínače pod přihlašovacím dialogem nebo přidáním json souboru do složky /etc/abraflexi/. 
-Formát těchto souborů musí být kompatibilní s https://github.com/VitexSoftware/php-abraflexi-config tzn.
+Formát těchto souborů musí být kompatibilní s https://github.com/VitexSoftware/abraflexi-client-config tzn.
 
 ```json
 {
