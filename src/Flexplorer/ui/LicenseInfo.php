@@ -19,7 +19,7 @@ class LicenseInfo extends \Ease\Html\TableTag {
     public function __construct($licenseInfo) {
         parent::__construct(null, ['class' => 'table']);
 
-        $licenseInfo['key'] = new \Ease\Html\ATag('https://www.abraflexi.eu/moje-licence/?key=' . $licenseInfo['key'],
+        $licenseInfo['key'] = new \Ease\Html\ATag('https://www.flexibee.eu/moje-licence/?key=' . $licenseInfo['key'],
                 $licenseInfo['key'], ['target' => '_blank']);
 
         $licenseInfo['legislations'] = implode(',',

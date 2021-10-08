@@ -39,14 +39,14 @@ class ButtonForm extends \Ease\TWB\Form {
 
         $this->addInput(new \Ease\Html\InputUrlTag('url', $url),
                 _('Button target Url'), $url,
-                new \Ease\Html\ATag('https://www.abraflexi.eu/api/dokumentace/ref/uzivatelske-tlacitko/',
+                new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/uzivatelske-tlacitko/',
                         _('Api Documentation')));
 
-        $this->addInput(new \Ease\Html\Select('location',
+        $this->addInput(new \Ease\Html\SelectTag('location',
                         ['list' => _('List'), 'detail' => _('Detail')]),
                 _('Button Location in AbraFlexi'));
 
-        $this->addInput(new \Ease\Html\Select('browser',
+        $this->addInput(new \Ease\Html\SelectTag('browser',
                         ['automatic' => _('Automatic'), 'desktop' => _('Desktop')]),
                 _('Browser used'));
 

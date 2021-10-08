@@ -63,18 +63,18 @@ $infoBlock = $infoColumn->addItem(new \Ease\TWB\Well(new \Ease\Html\ImgTag('imag
 $infoBlock->addItem(_('Login Bookmarks'));
 
 $_SESSION['bookmarks']['demo'] = ['login' => 'winstrom', 'password' => 'winstrom',
-    'server' => 'https://demo.abraflexi.eu', 'comapny' => 'demo'];
+    'server' => 'https://demo.flexibee.eu', 'comapny' => 'demo'];
 
 $_SESSION['bookmarks']['localhost'] = ['login' => '', 'password' => '',
     'server' => 'https://localhost:5434'];
 
-if (is_dir(constant('CONFIGS'))) {
-    foreach (scandir(constant('CONFIGS')) as $candidat) {
+if (is_dir(\Ease\Functions::cfg('CONFIGS'))) {
+    foreach (scandir(\Ease\Functions::cfg('CONFIGS')) as $candidat) {
         if ($candidat[0] == '.') {
             continue;
         }
         if (strtolower(pathinfo($candidat, PATHINFO_EXTENSION)) == 'json') {
-            $configRaw = json_decode(file_get_contents(constant('CONFIGS') . $candidat),
+            $configRaw = json_decode(file_get_contents(\Ease\Functions::cfg('CONFIGS') . $candidat),
                     true);
             if (array_key_exists('ABRAFLEXI_URL', $configRaw)) {
                 $_SESSION['bookmarks'][pathinfo($candidat, PATHINFO_FILENAME)] = [
@@ -94,7 +94,6 @@ foreach ($_SESSION['bookmarks'] as $bookmarkName => $bookmark) {
                             PHP_URL_HOST)), ['class' => 'list-group-item']);
 }
 $infoBlock->addItem($bookmarks);
-
 
 $loginColumn = $loginRow->addItem(new \Ease\TWB\Col(4));
 
@@ -118,7 +117,6 @@ $loginPanel->addItem(new \Ease\TWB\FormGroup(_('Password'),
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('Remeber me'),
                 new \Ease\TWB\Widgets\TWBSwitch('remember-me', true), null,
                 _('Add this to Login History')));
-
 
 $loginPanel->body->setTagCss(['margin' => '20px']);
 
@@ -150,7 +148,6 @@ $featuresPanel = new \Ease\TWB\Panel(_('Features'), 'info');
 
 \Ease\WebPage::addItemCustom($featureList, $featuresPanel);
 $loginRow->addColumn(4, $featuresPanel);
-
 
 $oPage->container->addItem(new \Ease\TWB\Form(['name' => 'Login'], $loginRow));
 

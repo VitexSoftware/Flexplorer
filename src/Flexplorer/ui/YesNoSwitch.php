@@ -15,7 +15,7 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class YesNoSwitch extends \Ease\ui\TWBSwitch {
+class YesNoSwitch extends \Ease\TWB\Widgets\TWBSwitch {
 
     public $keyCode = 'var key = $(".keyId").val();';
 

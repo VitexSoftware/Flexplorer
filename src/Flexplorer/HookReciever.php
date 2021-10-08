@@ -95,7 +95,7 @@ class HookReciever extends \Ease\Brick {
     /**
      * Převezme změny
      * 
-     * @link https://www.abraflexi.eu/api/dokumentace/ref/changes-api/ Changes API
+     * @link https://www.flexibee.eu/api/dokumentace/ref/changes-api/ Changes API
      * @param array $changes pole změn
      * 
      * @return int Globální verze poslední změny

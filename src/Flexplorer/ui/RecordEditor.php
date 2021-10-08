@@ -130,7 +130,7 @@ class RecordEditor extends \Ease\TWB\Panel {
                 break;
 
             case 'select':
-                $widget = new \Ease\Html\Select($propertyName,
+                $widget = new \Ease\Html\SelectTag($propertyName,
                         $this->colValues($colProperties), $value, null,
                         $inputProperties);
                 break;

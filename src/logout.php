@@ -23,7 +23,7 @@ if ($oUser->getUserID()) {
     $oUser->logout();
     $messagesBackup = $oUser->getStatusMessages(true);
     \Ease\Shared::user(new \Ease\Anonym());
-    $oUser->addStatusMessages($messagesBackup);
+    $oPage->addStatusMessages($messagesBackup);
     ui\WebPage::redirect('login.php');
 }
 

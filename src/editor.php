@@ -40,7 +40,7 @@ $editorTabs = new \Ease\TWB\Tabs('EditorTabs');
 $editorTabs->addTab(_('Record Editor'), new ui\RecordEditor($engine));
 
 $editorTabs->addTab(_('External IDs'),
-        new \Ease\TWB\Form('extIDs', 'createinsert.php', 'POST',
+        new \Ease\TWB\Form(['name'=>'extIDs','action'=>'createinsert.php','method'=>'POST'] ,
                 new ui\extIDsEditor($engine)));
 $editorTabs->addTab(_('Labels'), new ui\LabelSwitches($engine));
 

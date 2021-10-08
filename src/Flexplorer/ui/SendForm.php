@@ -42,13 +42,13 @@ class SendForm extends \Ease\TWB\Form {
                 _('Source URL'), $sourceurl, _('Get Query Body from url'));
 
 
-        $this->addInput(new \Ease\Html\Select('method',
+        $this->addInput(new \Ease\Html\SelectTag('method',
                         ['GET' => 'GET', 'POST' => 'POST', 'PUT' => 'PUT', 'PATCH' => 'PATCH',
                     'DELETE' => 'DELETE'], $method), _('Method'), null,
-                new \Ease\Html\ATag('https://www.abraflexi.eu/api/dokumentace/ref/http-operations',
+                new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/http-operations',
                         _('Supported HTTP Operations')));
 
-        $this->addInput(new \Ease\Html\Select('format',
+        $this->addInput(new \Ease\Html\SelectTag('format',
                         ['json' => 'JSON', 'xml' => 'XML', 'csv' => 'CSV'], $format),
                 _('Format'));
 

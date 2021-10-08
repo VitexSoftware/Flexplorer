@@ -95,7 +95,7 @@ $settingsForm = new \Ease\TWB\Form(['name'=>'settings']);
 $settingsForm->addInput(new \Ease\TWB\Widgets\TWBSwitch('changesapi', $chapistatus, 'enable',
                 ['onText' => _('Enable'), 'offText' => _('Disable')]), _('Changes API'),
         null,
-        new \Ease\Html\ATag('https://www.abraflexi.eu/api/dokumentace/ref/changes-api/',
+        new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/changes-api/',
                 _('If it is turned on , AbraFlexi records all changes made to the database company in the changelog and provides a list of changes recovered')));
 
 $webHookUrl = str_replace(basename(__FILE__), 'webhook.php',
@@ -103,7 +103,7 @@ $webHookUrl = str_replace(basename(__FILE__), 'webhook.php',
 
 $settingsForm->addInput(new \Ease\Html\InputTextTag('hookurl', $hookurl),
         _('Web Hook'), $webHookUrl,
-        new \Ease\Html\ATag('https://www.abraflexi.eu/api/dokumentace/ref/web-hooks',
+        new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/web-hooks',
                 _('When the database AbraFlexi to change the POST HTTP request sent to all registered URL'))
 );
 

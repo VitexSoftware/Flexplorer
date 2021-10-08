@@ -76,10 +76,10 @@ $settingsForm->addInput(new \Ease\Html\InputNumberTag('lastversion',
                 $lastversion, ['min' => 0]), _('Last version'), $lastversion,
         _('Which version of the changes will begin sending following changes'));
 
-$settingsForm->addInput(new \Ease\Html\Select('evidence', $evidenciesToMenu,
+$settingsForm->addInput(new \Ease\Html\SelectTag('evidence', $evidenciesToMenu,
                 $evidence), _('Evidence'));
 
-$settingsForm->addInput(new \Ease\Html\Select('operation',
+$settingsForm->addInput(new \Ease\Html\SelectTag('operation',
                 ['create' => 'Create', 'update' => 'Update', 'delete' => 'Delete'],
                 $operation), _('Operation'), null);
 
@@ -96,7 +96,7 @@ $hookForm = new \Ease\TWB\Form(['name' => 'TriggerHook']);
 $hookForm->addInput(new \Ease\Html\InputTextTag('hookurl', $hookurl),
         _('Web Hook'), 'http://server/getchanges.php',
         [new \Ease\TWB\LinkButton('changesapi.php', _('Choose Registered')),
-            new \Ease\Html\ATag('https://www.abraflexi.eu/api/dokumentace/ref/web-hooks',
+            new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/web-hooks',
                     _('When the database AbraFlexi is changed the POST HTTP request sent to all registered URL'))]
 );
 

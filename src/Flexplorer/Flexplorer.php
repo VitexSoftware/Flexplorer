@@ -375,7 +375,7 @@ class Flexplorer extends \AbraFlexi\RW {
     /**
      * Vykonej HTTP požadavek + uloz URI do $_SESSION['lasturl']
      *
-     * @link https://www.abraflexi.eu/api/dokumentace/ref/urls/ Sestavování URL
+     * @link https://www.flexibee.eu/api/dokumentace/ref/urls/ Sestavování URL
      * @param string $url    URL požadavku
      * @param strinf $method HTTP Method GET|POST|PUT|OPTIONS|DELETE
      * @param string $format požadovaný formát komunikace

@@ -110,7 +110,7 @@ class Editor extends ColumnsForm {
                 break;
 
             case 'select':
-                $widget = new \Ease\Html\Select($propertyName,
+                $widget = new \Ease\Html\SelectTag($propertyName,
                         $this->colValues($colProperties), $value, null,
                         $inputProperties);
                 break;
@@ -230,7 +230,7 @@ class Editor extends ColumnsForm {
 
         $extIDsEditor->addItem(new \Ease\TWB\FormGroup(_('New'),
                         new \Ease\Html\InputTextTag('external-ids[]'), 'ext:..',
-                        new \Ease\Html\ATag('https://www.abraflexi.eu/api/dokumentace/ref/identifiers/',
+                        new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/identifiers/',
                                 _('External IDs'))));
 
         $extIDsEditor->addItem(new \Ease\TWB\SubmitButton(_('OK') . ' ' . new \Ease\TWB\GlyphIcon('save')));

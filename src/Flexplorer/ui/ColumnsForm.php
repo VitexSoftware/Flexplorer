@@ -55,9 +55,7 @@ class ColumnsForm extends \Ease\TWB\Form {
     public function __construct($engine, $formContents = null,
             $tagProperties = null) {
         $this->engine = $engine;
-        parent::__construct(
-                get_class($engine), '', 'POST', $formContents, $tagProperties
-        );
+        parent::__construct(['name'=>get_class($engine), 'method'=> 'POST'], $formContents, $tagProperties );
         $this->newRow();
         $this->savers = new \Ease\Html\DivTag(null,
                 ['style' => 'text-align: right']);

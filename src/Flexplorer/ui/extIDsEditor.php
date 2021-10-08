@@ -49,7 +49,7 @@ class extIDsEditor extends \Ease\TWB\Container {
 
         $this->addItem(new \Ease\TWB\FormGroup(_('New'),
                         new \Ease\Html\InputTextTag('external-ids[]'), 'ext:..',
-                        new \Ease\Html\ATag('https://www.abraflexi.eu/api/dokumentace/ref/identifiers/',
+                        new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/identifiers/',
                                 _('External IDs'))));
 
         $this->addItem(new \Ease\TWB\SubmitButton(_('OK') . ' ' . new \Ease\TWB\GlyphIcon('save'), 'success'));

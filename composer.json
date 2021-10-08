@@ -13,8 +13,8 @@
     "minimum-stability": "dev",
     "require": {
         "league/commonmark": "^1.5",
-        "spojenet/flexibee": "2.0.x-dev",
-        "vitexsoftware/flexibee-bricks": "dev-abraflexi",
+        "spojenet/flexibee": "main-dev",
+        "vitexsoftware/abraflexi-bricks": "dev-main",
         "vitexsoftware/ease-twbootstrap-widgets": "*",
         "vitexsoftware/datatables-abraflexi": "dev-abraflexi"
     },

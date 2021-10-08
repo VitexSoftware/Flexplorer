@@ -36,23 +36,23 @@ class PageBottom extends \Ease\TWB\Container {
         $colB = $rowFluid1->addItem(new \Ease\TWB\Col(2));
         $listB1 = $colB->addItem(new \Ease\Html\UlTag(_('Support'),
                         ['style' => 'list-style-type: none']));
-        $listB1->addItemSmart(new \Ease\Html\ATag('https://www.abraflexi.eu/podpora/Tickets/ViewList',
+        $listB1->addItemSmart(new \Ease\Html\ATag('https://www.flexibee.eu/podpora/Tickets/ViewList',
                         'My issues'));
-        $listB1->addItemSmart(new \Ease\Html\ATag('https://www.abraflexi.eu/podpora/Tickets/Submit',
+        $listB1->addItemSmart(new \Ease\Html\ATag('https://www.flexibee.eu/podpora/Tickets/Submit',
                         'Enter issue'));
 
         $colC = $rowFluid1->addItem(new \Ease\TWB\Col(2));
         $listC1 = $colC->addItem(new \Ease\Html\UlTag(_('Services'),
                         ['style' => 'list-style-type: none']));
-        $listC1->addItemSmart(new \Ease\Html\ATag('https://www.abraflexi.eu/podpora/stazeni-abraflexi/',
+        $listC1->addItemSmart(new \Ease\Html\ATag('https://www.flexibee.eu/podpora/stazeni-abraflexi/',
                         'Download'));
-        $listC1->addItemSmart(new \Ease\Html\ATag('https://www.abraflexi.eu/api/licence-pro-vyvojare/zadost-o-vyvojarskou-licenci/',
+        $listC1->addItemSmart(new \Ease\Html\ATag('https://www.flexibee.eu/api/licence-pro-vyvojare/zadost-o-vyvojarskou-licenci/',
                         'Deverloper License request'));
 
         $colD = $rowFluid1->addItem(new \Ease\TWB\Col(2));
         $listD1 = $colD->addItem(new \Ease\Html\UlTag(_('Docs'),
                         ['style' => 'list-style-type: none']));
-        $listD1->addItemSmart(new \Ease\Html\ATag('https://demo.abraflexi.eu/devdoc/',
+        $listD1->addItemSmart(new \Ease\Html\ATag('https://demo.flexibee.eu/devdoc/',
                         'REST API'));
 
         $colE = $rowFluid1->addItem(new \Ease\TWB\Col(2));
