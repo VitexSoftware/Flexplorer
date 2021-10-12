@@ -12,7 +12,6 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-
 $changer = new \AbraFlexi\Changes();
 $hooker = new \AbraFlexi\Hooks();
 $chapistatus = $changer->getStatus();
@@ -91,7 +90,7 @@ if (!is_null($linkrefresh)) {
 
 $oPage->addItem(new ui\PageTop(_('ChangesAPI Tool')));
 $toolRow = new \Ease\TWB\Row();
-$settingsForm = new \Ease\TWB\Form(['name'=>'settings']);
+$settingsForm = new \Ease\TWB\Form(['name' => 'settings']);
 $settingsForm->addInput(new \Ease\TWB\Widgets\TWBSwitch('changesapi', $chapistatus, 'enable',
                 ['onText' => _('Enable'), 'offText' => _('Disable')]), _('Changes API'),
         null,
@@ -113,22 +112,20 @@ $settingsForm->addItem(new \Ease\TWB\LinkButton("?hookurl=" . urlencode($webHook
 $settingsForm->addInput(new \Ease\TWB\Widgets\TWBSwitch('changesformat', true, 'JSON',
                 ['onText' => 'JSON', 'offText' => 'XML']), _('Data format'));
 
-$settingsForm->addInput(new \Ease\ui\TWBSwitch('hookurltest', true, 'skip'),
+$settingsForm->addInput(new \Ease\TWB\Widgets\TWBSwitch('hookurltest', true, 'skip'),
         _('Skip URL test'), null, _('Suppress URL functionality test'));
-
 
 $settingsForm->addInput(new \Ease\Html\InputNumberTag('lastVersion', null,
                 ['min' => 0, 'max' => $globalVersion]), _('Last version'), $globalVersion,
         sprintf(_('Version of which will begin sending FOLLOW changes , ie. The next higher version . The default value is equal to the current global version ( globalVersion ) at the moment of registration Hook. Permissible values ​​are in the range [ 0 , % s ]'),
                 $globalVersion));
 
-$randstr = \Ease\Sand::randomString(30);
+$randstr = \Ease\Functions::randomString(30);
 $settingsForm->addInput(new \Ease\Html\InputTextTag('secKey'),
         _('Security Code'), $randstr,
         sprintf(_('Any string (eg. %s) that will be sent with each change notifications in the HTTP header. Used to easily verify that include incoming notifications you registered Hook. Key name is in the HTTP header X-FB-Hook-SecKey .'),
                 $randstr)
 );
-
 
 $settingsForm->addItem(new \Ease\TWB\SubmitButton(_('Perform operation'),
                 'warning'));
@@ -159,9 +156,6 @@ if ($chapistatus) {
 }
 $oPage->container->addItem(new \Ease\TWB\Panel(_('ChangesAPI & WebHooks'),
                 'info', $toolRow));
-
-
-
 
 $oPage->addItem(new ui\PageBottom());
 

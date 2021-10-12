@@ -18,7 +18,6 @@ unset($_SESSION['password']);
 unset($_SESSION['url']);
 unset($_SESSION['company']);
 
-
 if ($oUser->getUserID()) {
     $oUser->logout();
     $messagesBackup = $oUser->getStatusMessages(true);

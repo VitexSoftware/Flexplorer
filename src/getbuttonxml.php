@@ -47,7 +47,6 @@ if ($operation == 'install') {
     $oPage->addItem(new ui\PageTop(sprintf(_('flexplorer %s lexibee-buttons'),
                             $type)));
 
-
     $engine->setEvidence('custom-button');
     $engine->setPostFields($xml);
 

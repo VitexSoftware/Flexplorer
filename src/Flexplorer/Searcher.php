@@ -85,9 +85,9 @@ class Searcher extends \Ease\Atom {
                         $found[$lineNo]['what'] = $values['what'];
                     } else {
                         $found[$lineNo]['what'] = current(array_keys(array_filter($values,
-                                                function($var) use ($term) {
-                                            return preg_match("/\b$term\b/i", $var);
-                                        })));
+                                                function ($var) use ($term) {
+                                                    return preg_match("/\b$term\b/i", $var);
+                                                })));
 
                         if ($found[$lineNo]['what'] === false) {
                             foreach ($values as $column => $value) {

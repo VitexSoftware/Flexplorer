@@ -78,7 +78,6 @@ class MainMenu extends \Ease\Html\DivTag {
                                     ['class' => 'navbar-text', 'style' => 'color: yellow; font-size: 12px; max-width: 800px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;']),
                             ['class' => 'collapse navbar-collapse']));
 
-
             $companiesToMenu = [];
 
             $companies = $companer->getFlexiData();
@@ -111,7 +110,6 @@ class MainMenu extends \Ease\Html\DivTag {
 
                     $lister = new \AbraFlexi\EvidenceList(null, $_SESSION);
                     $evidences = $lister->getFlexiData();
-
 
                     if (count($evidences)) {
                         foreach ($evidences as $evidence) {

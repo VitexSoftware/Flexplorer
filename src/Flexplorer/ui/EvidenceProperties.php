@@ -38,7 +38,6 @@ class EvidenceProperties extends \Ease\Html\TableTag {
         }
         $this->addRowHeaderColumns($columns);
 
-
         if (!is_null($cond)) {
             if ($cond[0] == '!') {
                 $cond = substr($cond, 1);

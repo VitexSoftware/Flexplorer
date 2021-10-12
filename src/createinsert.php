@@ -55,7 +55,6 @@ if ($oPage->isPosted()) {
 
 $oPage->addItem(new ui\PageTop(_('Editor') . ' ' . $evidence . ' ' . $recordInfo));
 
-
 if ($oPage->isPosted() && is_null($oPage->getRequestValue('toAbraFlexi'))) {
 
     $url = $engine->getEvidenceURL();

@@ -47,7 +47,6 @@ class BsGrid extends \Ease\Html\Div {
         WebPage::singleton()->includeJavaScript('js/jquery.bs_grid.min.js');
         WebPage::singleton()->includeJavaScript('js/bs_grid/localization/en.min.js');
 
-
         WebPage::singleton()->addJavaScript('
 $("#' . $this->getTagID() . '").bs_grid(' . json_encode($this->options) . ');
             ');

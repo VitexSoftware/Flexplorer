@@ -1,14 +1,19 @@
-.mpicon { width: 150px; height: 150px; }
+.mpicon {
+    width: 150px;
+    height: 150px;
+}
 
-.mpicon:hover { width: 150px; height: 150px; 
+.mpicon:hover {
+    width: 150px;
+    height: 150px;
 
-                -moz-box-shadow:    3px 3px 5px 6px #ccc;
-                -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-                box-shadow:         3px 3px 5px 6px #ccc;
-                -moz-border-radius: 20px;
-                -webkit-border-radius: 20px;
-                -khtml-border-radius: 20px;
-                border-radius: 20px; 
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow:         3px 3px 5px 6px #ccc;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
 
 }
 
@@ -32,19 +37,24 @@
     overflow-y: auto;
 }
 
-#smdrag { height: 8px; 
-          background-image:  url( ../images/slidehandle.png ); 
-          background-color: #ccc; 
-          background-repeat: no-repeat; 
-          background-position: top center; 
-          cursor: ns-resize;
+#smdrag {
+    height: 8px;
+    background-image:  url( ../images/slidehandle.png );
+    background-color: #ccc;
+    background-repeat: no-repeat;
+    background-position: top center;
+    cursor: ns-resize;
 }
 
-#smdrag:hover { background-color: #f5ad66; }
+#smdrag:hover {
+    background-color: #f5ad66;
+}
 
-.error { color: red; }
+.error {
+    color: red;
+}
 
-.tt-input, 
+.tt-input,
 .tt-hint {
 
     height: 30px;
@@ -56,7 +66,7 @@
     outline: none;
 }
 
-.tt-input { 
+.tt-input {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
@@ -64,7 +74,7 @@
     color: #999;
 }
 
-.tt-menu { 
+.tt-menu {
     margin-top: 12px;
     padding: 8px 0;
     min-width: 500px;
@@ -82,7 +92,7 @@
     line-height: 24px;
 }
 
-.tt-suggestion.tt-cursor { 
+.tt-suggestion.tt-cursor {
     color: #fff;
     background-color: #0097cf;
     cursor: pointer;
@@ -92,12 +102,12 @@
     margin: 0;
 }
 
-.well .checkbox { 
+.well .checkbox {
     padding: 5px;
 }
 
-.well .checkbox:hover { 
-    background-color: #d2e3ec; 
+.well .checkbox:hover {
+    background-color: #d2e3ec;
     border-radius: 8px;
     padding: 5px;
     width: 100%;
@@ -110,9 +120,10 @@
     display: inline-block;
 }
 
-body { background-image: linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0)); 
-       background-color: #e9eeef ;
-       box-shadow: 0 60px 50px -30px rgba(255, 255, 255, .5) inset;
+body {
+    background-image: linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0));
+    background-color: #e9eeef ;
+    box-shadow: 0 60px 50px -30px rgba(255, 255, 255, .5) inset;
 }
 
 .navbar {
@@ -121,11 +132,11 @@ body { background-image: linear-gradient(top, rgba(255,255,255,.5), rgba(255,255
     background-image: -moz-linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0));
     background-image: -ms-linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0));
     background-image: -o-linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0));
-    background-image: linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0));	
+    background-image: linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0));
     -moz-box-shadow: 0 60px 50px -30px rgba(255, 255, 255, .5) inset;
     -webkit-box-shadow: 0 60px 50px -30px rgba(255, 255, 255, .5) inset;
-    box-shadow: 0 60px 50px -30px rgba(255, 255, 255, .5) inset;	
-}	
+    box-shadow: 0 60px 50px -30px rgba(255, 255, 255, .5) inset;
+}
 
 th {
     background-color: #009926;
@@ -133,19 +144,19 @@ th {
     background-image: -moz-linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0));
     background-image: -ms-linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0));
     background-image: -o-linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0));
-    background-image: linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0));	
+    background-image: linear-gradient(top, rgba(255,255,255,.5), rgba(255,255,255,0));
     -moz-box-shadow: 0 60px 50px -30px rgba(255, 255, 255, .5) inset;
     -webkit-box-shadow: 0 60px 50px -30px rgba(255, 255, 255, .5) inset;
-    box-shadow: 0 60px 50px -30px rgba(255, 255, 255, .5) inset;	
-}	
+    box-shadow: 0 60px 50px -30px rgba(255, 255, 255, .5) inset;
+}
 
 #footer {
     background-color: #fff;
     padding: 10px;
     width: 90%;
-}	
+}
 
-.ResponseShow pre a { 
+.ResponseShow pre a {
     background-color: #ff0;
 }
 
@@ -172,5 +183,11 @@ th {
     -webkit-box-shadow: inset 5px 5px 5px rgba(0,0,0,0.25);
 }
 
-#lasturl { font-size: x-large; font-family: monospace; color: #ff0; margin: 2px; padding: 2px; }
+#lasturl {
+    font-size: x-large;
+    font-family: monospace;
+    color: #ff0;
+    margin: 2px;
+    padding: 2px;
+}
 

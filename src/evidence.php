@@ -37,7 +37,6 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
 
     $evobj = new Flexplorer($evidence);
 
-
     if (array_key_exists('evidence.php?evidence=' . $evidence,
                     $_SESSION['evidence-menu'][constant('ABRAFLEXI_COMPANY')])) {
         $evidenceLicensed = true;

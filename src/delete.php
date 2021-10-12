@@ -25,7 +25,6 @@ if (is_null($id)) {
 
 $engine = new Flexplorer($evidence);
 
-
 $delete = $oPage->getGetValue('delete', 'bool');
 if ($delete === true) {
     if ($engine->deleteFromAbraFlexi($id)) {
@@ -58,9 +57,7 @@ $deleteTabs->addTab(_('AbraFlexi'),
                         $engine->getEvidenceURL() . '/' . $engine->getMyKey() . '.' . $engine->format . '?inDesktopApp=true'),
                 ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
 
-
 $oPage->container->addItem($deleteTabs);
-
 
 $oPage->addItem(new ui\PageBottom());
 

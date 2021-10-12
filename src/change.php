@@ -38,7 +38,6 @@ $sender->info['url'] = 'file://' . $file;
 
 $oPage->addItem(new ui\PageTop(_('Changes recieved') . ': ' . $file));
 
-
 $oPage->container->addItem(new ui\ShowResponse($sender));
 
 $testForm = new \Ease\TWB\Form('probechange', 'fakechange.php');
@@ -61,7 +60,6 @@ $optionsRow->addColumn(2,
                 new \Ease\TWB\GlyphIcon('trash') . ' ' . _('Delete'), 'danger'));
 
 $testForm->addItem($optionsRow);
-
 
 $oPage->container->addItem($testForm);
 

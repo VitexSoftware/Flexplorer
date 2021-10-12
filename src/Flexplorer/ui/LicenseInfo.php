@@ -29,7 +29,6 @@ class LicenseInfo extends \Ease\Html\TableTag {
         $licenseInfo['modules'] = implode(',',
                 $licenseInfo['modules']['module']);
 
-
         foreach ($licenseInfo as $licenseKey => $licenseValue) {
             switch ($licenseKey) {
                 case 'modules':

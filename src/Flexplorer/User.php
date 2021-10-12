@@ -86,7 +86,6 @@ class User extends \Ease\User {
         $licenseInfo = $this->abraFlexi->performRequest('default-license.json');
         $_SESSION['license'] = $licenseInfo['license'];
 
-
         return parent::loginSuccess();
     }
 

@@ -13,7 +13,6 @@ namespace Flexplorer;
 
 require_once 'includes/Init.php';
 
-
 $oPage->onlyForLogged();
 
 $company = $_SESSION['company'];
@@ -46,7 +45,6 @@ $saveForm->addItem(new \Ease\TWB\SubmitButton(new \Ease\TWB\GlyphIcon('floppy-sa
                 'success',
                 ['onClick' => "$('#Preloader').css('visibility', 'visible');"]));
 
-
 $saveRow = new \Ease\TWB\Row();
 $saveRow->addColumn(6, $saveForm);
 
@@ -61,7 +59,6 @@ $oPage->addItem(new ui\PageBottom());
 
 WebPage::singleton()->body->setTagClass('fuelux');
 WebPage::singleton()->body->addItem(new ui\FXPreloader('Preloader'));
-
 
 $oPage->draw();
 

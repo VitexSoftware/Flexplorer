@@ -17,7 +17,6 @@ $oPage->onlyForLogged();
 
 $oPage->addItem(new ui\PageTop(_('Evidences')));
 
-
 $evidencer = new \AbraFlexi\EvidenceList();
 
 $myEvidencies = \Ease\Functions::reindexArrayBy($evidencer->getAllFromAbraFlexi(),
@@ -26,7 +25,7 @@ $myEvidencies = \Ease\Functions::reindexArrayBy($evidencer->getAllFromAbraFlexi(
 $headerColumns = array_keys(\AbraFlexi\EvidenceList::$evidences['adresar']);
 
 $allEvidencesTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
-$allEvidencesTable->addRowHeaderColumns(array_merge($headerColumns,[_('License')]));
+$allEvidencesTable->addRowHeaderColumns(array_merge($headerColumns, [_('License')]));
 
 $availbleEvidencesTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
 $availbleEvidencesTable->addRowHeaderColumns($headerColumns);
@@ -54,13 +53,10 @@ $unlicensedEvidencesLabel = new \Ease\TWB\Label('warning', $unlicensedCount);
 $unlicensed = $evidenceTabs->addTab(sprintf(_('Unlicensed %s'),
                 $unlicensedEvidencesLabel), $unlicensedEvidencesTable);
 
-
 $allEvidencesLabel = new \Ease\TWB\Label('info', $allCount);
 
 $allEvidences = $evidenceTabs->addTab(sprintf(_('All %s'),
                 $allEvidencesLabel->__toString()), $allEvidencesTable);
-
-
 
 foreach (\AbraFlexi\EvidenceList::$evidences as $evidence) {
     $path = $evidence['evidencePath'];
@@ -72,7 +68,6 @@ foreach (\AbraFlexi\EvidenceList::$evidences as $evidence) {
                 'DISALLOWED', 'NOT_DIRECT'],
                     ['success', 'default', 'danger', 'warning'],
                     $evidence['importStatus']), $evidence['importStatus']);
-
 
     if (array_key_exists($path, $myEvidencies)) {
         $availbleEvidencesTable->addRowColumns($evidence);
@@ -88,7 +83,6 @@ foreach (\AbraFlexi\EvidenceList::$evidences as $evidence) {
 
 
 $oPage->container->addItem($evidenceTabs);
-
 
 $oPage->addItem(new ui\PageBottom());
 

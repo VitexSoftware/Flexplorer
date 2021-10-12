@@ -55,7 +55,7 @@ class ColumnsForm extends \Ease\TWB\Form {
     public function __construct($engine, $formContents = null,
             $tagProperties = null) {
         $this->engine = $engine;
-        parent::__construct(['name'=>get_class($engine), 'method'=> 'POST'], $formContents, $tagProperties );
+        parent::__construct(['name' => get_class($engine), 'method' => 'POST'], $formContents, $tagProperties);
         $this->newRow();
         $this->savers = new \Ease\Html\DivTag(null,
                 ['style' => 'text-align: right']);
@@ -145,7 +145,7 @@ class ColumnsForm extends \Ease\TWB\Form {
 
             switch ($type) {
                 case 'BOOL':
-                    $input_widget = new \Ease\ui\TWBSwitch($col_name, $value);
+                    $input_widget = new \Ease\TWB\Widgets\TWBSwitch($col_name, $value);
                     break;
                 case 'INT':
                     $input_widget = new \Ease\Html\InputTextTag($col_name,

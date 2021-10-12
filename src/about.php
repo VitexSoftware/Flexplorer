@@ -26,7 +26,6 @@ $oPage->container->addItem(new \Ease\Html\DivTag($converter->convertToHtml(file_
                 ['class' => 'jumbotron']));
 $oPage->container->addItem('<br/><br/><br/><br/>');
 
-
 $oPage->addItem(new ui\PageBottom());
 
 $oPage->draw();

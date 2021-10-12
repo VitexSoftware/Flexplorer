@@ -15,7 +15,6 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-
 $oPage->addItem(new ui\PageTop(_('Main Page')));
 
 $oPage->addItem(new ui\PageBottom());

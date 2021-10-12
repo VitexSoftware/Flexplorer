@@ -13,7 +13,6 @@ namespace Flexplorer;
 
 require_once 'includes/Init.php';
 
-
 $oPage->onlyForLogged();
 
 $name = $oPage->getRequestValue('nazev');

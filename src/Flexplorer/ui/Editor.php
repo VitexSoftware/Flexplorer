@@ -42,7 +42,7 @@ class Editor extends ColumnsForm {
         }
 
         WebPage::singleton()->includeJavaScript('js/datasaver.js');
-        $this->addItem(new \Ease\ui\TWBSwitch('toAbraFlexi', false, 'on',
+        $this->addItem(new \Ease\TWB\Widgets\TWBSwitch('toAbraFlexi', false, 'on',
                         ['onText' => _('Save to AbraFlexi'), 'offText' => _('Show in editor')]));
         $this->addItem(new \Ease\TWB\SubmitButton(_('OK') . ' ' . new \Ease\TWB\GlyphIcon('save')));
         $this->engine = $engine;
@@ -190,7 +190,6 @@ class Editor extends ColumnsForm {
                     new \Ease\Html\IframeTag(str_replace('.json', '.html',
                                     $this->engine->getEvidenceURL() . '/' . $id . '.' . $this->engine->format . '?inDesktopApp=true'),
                             ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
-
 
             $this->addItem($editorTabs);
         }

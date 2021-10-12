@@ -19,10 +19,11 @@ $class = $oPage->getRequestValue('class');
 /**
  * @var Engine Data Source
  */
-$engine = new $class(null, ['evidence' => ui\WebPage::getRequestValue('evidence')]);
+$engine = new $class(ui\WebPage::getRequestValue('evidence'));
 
 unset($_REQUEST['class']);
 unset($_REQUEST['_']);
+unset($_REQUEST['XDEBUG_SESSION_START']);
 
 $dataRaw = $engine->getColumnsFromAbraFlexi('*', $_REQUEST);
 

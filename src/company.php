@@ -33,9 +33,7 @@ if (empty($company)) {
 
     $oPage->addItem(new ui\PageTop($companer->getDataValue('nazev')));
 
-
     $companyActions = new \Ease\TWB\Row();
-
 
     $companyActions->addColumn(2,
             new \Ease\TWB\LinkButton('resetcompany.php',
@@ -54,7 +52,6 @@ if (empty($company)) {
                     new \Ease\TWB\GlyphIcon('floppy-open') . ' ' . _('Restore'), 'warning',
                     ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Restore previously saved state')]));
 
-
     $companyActions->addColumn(1,
             new \Ease\TWB\LinkButton('savecompany.php',
                     new \Ease\TWB\GlyphIcon('floppy-save') . ' ' . _('Save'), 'success',
@@ -70,14 +67,10 @@ if (empty($company)) {
                     new \Ease\TWB\GlyphIcon('wrench') . ' ' . _('Settings'), 'info',
                     ['title' => 'Serveral company settings']));
 
-
     $companyActions->addColumn(2,
             new \Ease\TWB\LinkButton('newcompany.php',
                     new \Ease\TWB\GlyphIcon('plus') . ' ' . _('Create company'), 'success',
                     ['title' => 'Create new company']));
-
-
-
 
     $companyInfo = new \Ease\Html\TableTag(null, ['class' => 'table']);
 
@@ -88,7 +81,6 @@ if (empty($company)) {
     $created = \AbraFlexi\RO::flexiDateTimeToDateTime($companer->getDataValue('createDt'))->getTimestamp();
     $companyInfo->addRowColumns([_('created'), strftime('%a %d. %m. %Y  - %X',
                 $created) . ' ' . '(' . _('before') . ' ' . new \Ease\TWB\Widgets\LiveAge($created) . ')']);
-
 
     $companyInfo->addRowColumns([_('Watching changes'), new ui\WatchingChangesStatus($companer->getDataValue('watchingChanges') == 'true')]);
 
@@ -112,7 +104,6 @@ if (empty($company)) {
 
     WebPage::singleton()->body->setTagClass('fuelux');
     WebPage::singleton()->body->addItem(new ui\FXPreloader('Preloader'));
-
 
     $oPage->draw();
 }

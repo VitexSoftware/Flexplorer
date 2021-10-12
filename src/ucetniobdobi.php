@@ -87,7 +87,6 @@ $settingsForm->addItem(new \Ease\TWB\SubmitButton(_('Perform operation'),
                 'warning'));
 $toolRow->addColumn(6, new \Ease\TWB\Well($settingsForm));
 
-
 $ucetniObdobi = $uo->getFlexiData();
 if (!isset($ucetniObdobi['message']) && count($ucetniObdobi)) {
     $ucetniObdobiTable = new \Ease\Html\TableTag(null, ['class' => 'table']);

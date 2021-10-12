@@ -364,7 +364,6 @@ class DataSource extends \Ease\Brick {
 // This method has several options, check the source code documentation for more information.
         $this->pdf->AddPage();
 
-
 // ---------------------------------------------------------
 // Close and output PDF document
 // This method has several options, check the source code documentation for more information.

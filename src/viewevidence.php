@@ -47,7 +47,6 @@ $tabs->addTab(_('Query'),
         new \Ease\TWB\Panel(_('Custom query'), 'warning',
                 new ui\SendForm($url, $method, $body)));
 
-
 $oPage->container->addItem($tabs);
 
 $oPage->addItem(new ui\PageBottom());

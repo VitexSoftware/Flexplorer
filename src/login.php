@@ -4,7 +4,7 @@
  * Flexplorer - Sign in page.
  *
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016-2020 Vitex Software
+ * @copyright  2016-2021 Vitex Software
  */
 
 namespace Flexplorer;
@@ -103,17 +103,17 @@ $loginPanel = new \Ease\TWB\Panel(new \Ease\Html\ImgTag('images/flexplorer-logo.
                 'FlexPlorer', ['class' => 'img-responsive']), 'success', null, $submit);
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('AbraFlexi'),
                 new \Ease\Html\InputTextTag('server',
-                        $server ? $server : constant('DEFAULT_ABRAFLEXI_URL') ),
-                constant('DEFAULT_ABRAFLEXI_URL'),
+                        $server ? $server : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_URL') ),
+                \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_URL'),
                 _('AbraFlexi server URL. ex.:') . ' <a href="?server=https://localhost:5434">https://localhost:5434</a>'));
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('User name'),
                 new \Ease\Html\InputTextTag('login',
-                        $login ? $login : constant('DEFAULT_ABRAFLEXI_LOGIN')
-                ), constant('DEFAULT_ABRAFLEXI_LOGIN'), _('Login name')));
+                        $login ? $login : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_LOGIN')
+                ), \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_LOGIN'), _('Login name')));
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('Password'),
                 new \Ease\TWB\Widgets\PasswordInput('password',
-                        $password ? $password : constant('DEFAULT_ABRAFLEXI_PASSWORD')),
-                constant('DEFAULT_ABRAFLEXI_PASSWORD'), _('User\'s password')));
+                        $password ? $password : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_PASSWORD')),
+                \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_PASSWORD'), _('User\'s password')));
 $loginPanel->addItem(new \Ease\TWB\FormGroup(_('Remeber me'),
                 new \Ease\TWB\Widgets\TWBSwitch('remember-me', true), null,
                 _('Add this to Login History')));

@@ -21,7 +21,6 @@ class PageBottom extends \Ease\TWB\Container {
 
         $appInfo = json_decode(file_get_contents($composer));
 
-
         $rowFluid1 = new \Ease\TWB\Row();
         $colA = $rowFluid1->addItem(new \Ease\TWB\Col(2));
         $listA1 = $colA->addItem(new \Ease\Html\UlTag(_('Sources'),

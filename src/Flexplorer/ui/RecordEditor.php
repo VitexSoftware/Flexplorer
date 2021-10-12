@@ -40,7 +40,6 @@ class RecordEditor extends \Ease\TWB\Panel {
         WebPage::singleton()->includeJavaScript('js/datasaver.js');
         $this->form = new ColumnsForm($engine);
 
-
         $this->form->addItem(new \Ease\Html\InputHiddenTag($engine->getKeyColumn(),
                         $engine->getMyKey(), ['class' => 'keyId']));
 

@@ -11,10 +11,7 @@ namespace Flexplorer;
 
 require_once 'includes/Init.php';
 
-
-
 $oPage->addItem(new ui\PageTop(_('AbraFlexi Buttons')));
-
 
 $evidenceButtonInfo = new \Ease\TWB\Panel(_('Evidence'), 'info',
         _('This button open current AbraFlexi evidence in FlexPlorer'),
@@ -25,7 +22,6 @@ $evidenceButtonInfo = new \Ease\TWB\Panel(_('Evidence'), 'info',
             '<i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
  ' . _('Install Buttons into AbraFlexi'), 'success')
         ]);
-
 
 //$oPage->container->addItem( new \Ease\TWB\LinkButton('getbuttonxml.php?type=structure', _('Structure')) );
 //$oPage->container->addItem( new \Ease\TWB\LinkButton('getbuttonxml.php?type=editor', _('Edit Record')) );

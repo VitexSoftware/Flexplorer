@@ -42,7 +42,6 @@ class BootstrapMenu extends \Ease\TWB\Navbar {
                             'permissions.php' => _('Role Permissions')
                 ]);
 
-
                 $this->addMenuItem(new \Ease\Html\ATag('about.php', _('About')),
                         'right');
 

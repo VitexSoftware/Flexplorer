@@ -41,7 +41,6 @@ class SendForm extends \Ease\TWB\Form {
         $this->addInput(new \Ease\Html\InputTextTag('sourceurl', $sourceurl),
                 _('Source URL'), $sourceurl, _('Get Query Body from url'));
 
-
         $this->addInput(new \Ease\Html\SelectTag('method',
                         ['GET' => 'GET', 'POST' => 'POST', 'PUT' => 'PUT', 'PATCH' => 'PATCH',
                     'DELETE' => 'DELETE'], $method), _('Method'), null,

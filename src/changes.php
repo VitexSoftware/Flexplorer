@@ -46,7 +46,6 @@ if (count($chages)) {
                     _('Target to FlexPlorer'), 'success',
                     ['class' => 'button button-xs']));
 
-
     $oPage->addStatusMessage('WebHook not triggered yet');
 }
 $oPage->addItem(new ui\PageBottom());

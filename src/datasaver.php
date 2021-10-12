@@ -31,8 +31,6 @@ $evidence = $oPage->getRequestValue('Evidence', 'string');
 $saver = new $saverClass($evidence);
 $saver->setMyKey($key);
 
-
-
 if (is_null($saverClass) || is_null($field) || is_null($value) || is_null($key)) {
     header('HTTP/1.1 400 Bad Request', 400);
     die(_('Bad call'));

@@ -13,13 +13,11 @@ namespace Flexplorer;
 
 require_once 'includes/Init.php';
 
-
 $oPage->onlyForLogged();
 
 $backup = $oPage->getRequestValue('backup');
 $company = $_SESSION['company'];
 $loader = new \AbraFlexi\Company(['dbNazev' => $company]);
-
 
 if (empty($backup)) {
     $oPage->addItem(new ui\PageTop(_('Backup restore')));
@@ -28,8 +26,6 @@ if (empty($backup)) {
     $oPage->container->addItem(new \Ease\TWB\Panel(_('Backups'), 'success',
                     new ui\BackupsTool(constant('BACKUP_DIRECTORY'),
                             $company . '.*\.winstrom-backup')));
-
-
 
     $oPage->addItem(new ui\PageBottom());
 
