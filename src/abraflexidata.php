@@ -25,13 +25,13 @@ unset($_REQUEST['class']);
 unset($_REQUEST['_']);
 unset($_REQUEST['XDEBUG_SESSION_START']);
 
-$dataRaw = $engine->getColumnsFromAbraFlexi('*', $_REQUEST);
+$dataRaw = $engine->getColumnsFromAbraFlexi('*', array_merge($_REQUEST, ['add-row-count' => true]));
 
 foreach ($dataRaw as $row => $columns) {
     $dataRaw[$row]['lastUpdate'] = $dataRaw[$row]['lastUpdate']->format(\AbraFlexi\RO::$DateTimeFormat);
 }
 
-echo json_encode(['data' => $dataRaw, 'recordsTotal' => count($dataRaw)]);
+echo json_encode(['recordsTotal' => $engine->rowCount, 'recordsFiltered'=> $engine->rowCount, 'data' => $dataRaw]);
 
 exit;
 

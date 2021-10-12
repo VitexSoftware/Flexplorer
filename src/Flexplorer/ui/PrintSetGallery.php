@@ -25,7 +25,7 @@ class PrintSetGallery extends \Ease\TWB\Tabs {
         if (count($printSets)) {
             foreach ($printSets as $reportId => $printSet) {
                 $this->addAjaxTab(
-                        htmlentities($printSet['reportName']),
+                        ($printSet['reportName']),
                         'document.php?evidence=' . $engine->getEvidence() . '&id=' . $engine->getMyKey() . '&report-name=' . $reportId . '&embed=true',
                         $printSet['isDefault'] == 'true'
                 );
