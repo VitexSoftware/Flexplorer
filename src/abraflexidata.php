@@ -6,7 +6,7 @@ namespace Flexplorer;
  * Flexplorer - DataTables data source.
  *
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016-2020 Vitex Software
+ * @copyright  2016-2021 Vitex Software
  */
 require_once 'includes/Init.php';
 

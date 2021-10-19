@@ -4,7 +4,7 @@
  * Flexplorer - RecordEditor
  *
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2018 Vitex Software
+ * @copyright  2018-2021 Vitex Software
  */
 
 namespace Flexplorer\ui;

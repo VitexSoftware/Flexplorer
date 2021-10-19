@@ -55,18 +55,24 @@ class User extends \Ease\User {
         $this->abraFlexi->company = null;
         $this->abraFlexi->prefix = null;
         $this->abraFlexi->curlInit();
-        $companies = $this->abraFlexi->performRequest('c.json');
-        if (isset($companies['companies'])) {
-            if (isset($companies['companies']['company'])) {
-                $this->abraFlexi->company = array_key_exists('dbNazev', $companies['companies']['company']) ? $companies['companies']['company']['dbNazev'] : end($companies['companies']['company'])['dbNazev'];
+
+        try {
+            $companies = $this->abraFlexi->performRequest('c.json');
+            if (isset($companies['companies'])) {
+                if (isset($companies['companies']['company'])) {
+                    $this->abraFlexi->company = array_key_exists('dbNazev', $companies['companies']['company']) ? $companies['companies']['company']['dbNazev'] : end($companies['companies']['company'])['dbNazev'];
+                } else {
+                    $this->abraFlexi->company = $companies['companies']['company']['dbNazev'];
+                }
+                $this->setMyKey(true);
+                $loginStatus = $this->loginSuccess();
             } else {
-                $this->abraFlexi->company = $companies['companies']['company']['dbNazev'];
+                $this->addStatusMessage(_('Login Failed'), 'warning');
             }
-            $this->setMyKey(true);
-            $loginStatus = $this->loginSuccess();
-        } else {
-            $this->addStatusMessage(_('Login Failed'), 'warning');
+        } catch (\AbraFlexi\Exception $exc) {
+            $this->addStatusMessage($exc->getMessage(), 'error');
         }
+
         return $loginStatus;
     }
 
