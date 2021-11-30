@@ -132,26 +132,30 @@ $settingsForm->addItem(new \Ease\TWB\SubmitButton(_('Perform operation'),
 $toolRow->addColumn(4, new \Ease\TWB\Well($settingsForm));
 
 if ($chapistatus) {
-    $hooks = $hooker->getFlexiData();
-    if (!isset($hooks['message']) && is_array($hooks) && count(current($hooks))) {
-        $hooksTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
-        $hooksTable->addRowHeaderColumns(array_merge(array_keys(current($hooks)), [_('Reset'), _('Test'), _('Remove')]));
-        foreach ($hooks as $hookinfo) {
-            $hookinfo[] = new \Ease\TWB\LinkButton('?refresh=' . $hookinfo['id'],
-                    new \Ease\TWB\GlyphIcon('refresh'), 'success');
-            $hookinfo[] = new \Ease\TWB\LinkButton('fakechange.php?hookurl=' . $hookinfo['url'],
-                    new \Ease\TWB\GlyphIcon('export'), 'info',
-                    ['title' => _('Test')]);
-            $hookinfo[] = new \Ease\TWB\LinkButton('?linkdel=' . $hookinfo['id'],
-                    new \Ease\TWB\GlyphIcon('remove'), 'danger');
-            $hookinfo['url'] = new \Ease\Html\ATag($hookinfo['url'],
-                    $hookinfo['url']);
+    try {
+        $hooks = $hooker->getFlexiData();
+        if (!isset($hooks['message']) && is_array($hooks) && count(current($hooks))) {
+            $hooksTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
+            $hooksTable->addRowHeaderColumns(array_merge(array_keys(current($hooks)), [_('Reset'), _('Test'), _('Remove')]));
+            foreach ($hooks as $hookinfo) {
+                $hookinfo[] = new \Ease\TWB\LinkButton('?refresh=' . $hookinfo['id'],
+                        new \Ease\TWB\GlyphIcon('refresh'), 'success');
+                $hookinfo[] = new \Ease\TWB\LinkButton('fakechange.php?hookurl=' . $hookinfo['url'],
+                        new \Ease\TWB\GlyphIcon('export'), 'info',
+                        ['title' => _('Test')]);
+                $hookinfo[] = new \Ease\TWB\LinkButton('?linkdel=' . $hookinfo['id'],
+                        new \Ease\TWB\GlyphIcon('remove'), 'danger');
+                $hookinfo['url'] = new \Ease\Html\ATag($hookinfo['url'],
+                        $hookinfo['url']);
 
-            $hooksTable->addRowColumns($hookinfo);
+                $hooksTable->addRowColumns($hookinfo);
+            }
+
+            $toolRow->addColumn(8,
+                    new \Ease\TWB\Panel(_('Webhooks registered'), 'info', $hooksTable));
         }
-
-        $toolRow->addColumn(8,
-                new \Ease\TWB\Panel(_('Webhooks registered'), 'info', $hooksTable));
+    } catch (\AbraFlexi\Exception $exc) {
+        echo $hooker->addStatusMessage($exc->getMessage(), 'error');
     }
 }
 $oPage->container->addItem(new \Ease\TWB\Panel(_('ChangesAPI & WebHooks'),
