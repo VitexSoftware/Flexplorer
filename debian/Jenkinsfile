@@ -27,6 +27,8 @@ pipeline {
             steps {
                 dir('build/debian/package') {
                     checkout scm
+		    sh 'sudo apt update'
+		    sh 'apt-get -y install php-vitexsoftware-ease-bootstrap-widgets-abraflexi'
 	            buildPackage()
 	            installPackages()
                 }
