@@ -134,7 +134,7 @@ $toolRow->addColumn(4, new \Ease\TWB\Well($settingsForm));
 if ($chapistatus) {
     try {
         $hooks = $hooker->getFlexiData();
-        if (!isset($hooks['message']) && is_array($hooks) && count(current($hooks))) {
+        if (!isset($hooks['message']) && is_array($hooks) && !empty(current($hooks))) {
             $hooksTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
             $hooksTable->addRowHeaderColumns(array_merge(array_keys(current($hooks)), [_('Reset'), _('Test'), _('Remove')]));
             foreach ($hooks as $hookinfo) {
