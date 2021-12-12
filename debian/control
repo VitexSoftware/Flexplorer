@@ -7,8 +7,8 @@ Priority: optional
 Homepage: https://github.com/VitexSoftware/Flexplorer
 
 Package: flexplorer
-Depends: ${misc:Depends}, debian-composer, php-intl, libjs-font-awesome, abraflexi-client-config, php-vitexsoftware-ease-bricks, php-vitexsoftware-abraflexi-bricks, php-vitexsoftware-ease-bootstrap-widgets, php-vitexsoftware-datatables-abraflexi, php-vitexsoftware-ease-bootstrap-widgets-abraflexi
-Recommends: flexibee-server
+Depends: ${misc:Depends}, debian-composer, php-intl, libjs-font-awesome,php-vitexsoftware-ease-bootstrap-widgets-abraflexi , php-vitexsoftware-ease-bricks, php-vitexsoftware-abraflexi-bricks, php-vitexsoftware-ease-bootstrap-widgets, php-vitexsoftware-datatables-abraflexi, 
+Recommends: flexibee-server, abraflexi-client-config
 Architecture: all
 Section: web
 Priority: optional
