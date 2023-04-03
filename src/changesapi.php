@@ -16,7 +16,12 @@ $changer = new \AbraFlexi\Changes();
 $hooker = new \AbraFlexi\Hooks();
 $chapistatus = $changer->getStatus();
 $invoicer = new \AbraFlexi\FakturaVydana();
-$globalVersion = $changer->getGlobalVersion();
+try {
+    $globalVersion = $changer->getGlobalVersion();
+} catch (\AbraFlexi\Exception $exc) {
+    $globalVersion = null;
+}
+
 $hookurl = $oPage->getRequestValue('hookurl');
 
 if ($oPage->isPosted()) {
