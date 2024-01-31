@@ -62,13 +62,13 @@ if (count($flexidata)) {
 
 $oPage->addItem(new ui\PageTop(_('WebHook test')));
 
-$changeTabs = new \Ease\TWB\Tabs('changetabs');
+$changeTabs = new \Ease\TWB5\Tabs('changetabs');
 
-$toolRow = new \Ease\TWB\Row();
-$settingsForm = new \Ease\TWB\Form(['name' => 'settings']);
+$toolRow = new \Ease\TWB5\Row();
+$settingsForm = new \Ease\TWB5\Form(['name' => 'settings']);
 
-//TODO \Ease\TWB4\Widgets\Toggle
-$settingsForm->addInput(new \Ease\TWB\Widgets\TWBSwitch('changesformat', true, 'JSON',
+//TODO \Ease\TWB5\Widgets\Toggle
+$settingsForm->addInput(new \Ease\TWB5\Widgets\TWBSwitch('changesformat', true, 'JSON',
                 ['onText' => 'JSON', 'offText' => 'XML', 'disabled' => true]),
         _('Data format'));
 
@@ -89,26 +89,26 @@ $settingsForm->addInput(new \Ease\Html\InputNumberTag('id', $id, ['min' => 0]),
 $settingsForm->addInput(new \Ease\Html\InputTextTag('extid', $extid),
         _('External number'), $extid, _('External number of record edited'));
 
-$settingsForm->addItem(new \Ease\TWB\SubmitButton(_('Build change'), 'warning'));
-$toolRow->addColumn(4, new \Ease\TWB\Well($settingsForm));
+$settingsForm->addItem(new \Ease\TWB5\SubmitButton(_('Build change'), 'warning'));
+$toolRow->addColumn(4, new \Ease\TWB5\Well($settingsForm));
 
-$hookForm = new \Ease\TWB\Form(['name' => 'TriggerHook']);
+$hookForm = new \Ease\TWB5\Form(['name' => 'TriggerHook']);
 $hookForm->addInput(new \Ease\Html\InputTextTag('hookurl', $hookurl),
         _('Web Hook'), 'http://server/getchanges.php',
-        [new \Ease\TWB\LinkButton('changesapi.php', _('Choose Registered')),
+        [new \Ease\TWB5\LinkButton('changesapi.php', _('Choose Registered')),
             new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/web-hooks',
                     _('When the database AbraFlexi is changed the POST HTTP request sent to all registered URL'))]
 );
 
 $hookForm->addInput(new ui\JsonTextarea('code',
                 json_encode($changeData, JSON_PRETTY_PRINT)));
-$hookForm->addItem(new \Ease\TWB\SubmitButton(_('Send'), 'success'));
+$hookForm->addItem(new \Ease\TWB5\SubmitButton(_('Send'), 'success'));
 
-$toolRow->addColumn(8, new \Ease\TWB\Well($hookForm));
+$toolRow->addColumn(8, new \Ease\TWB5\Well($hookForm));
 
 if (strlen($responseBody)) {
 
-    $responseBlock = new \Ease\TWB\Panel(new \Ease\Html\H1Tag($prober->lastResponseCode),
+    $responseBlock = new \Ease\TWB5\Panel(new \Ease\Html\H1Tag($prober->lastResponseCode),
             'info');
 
     $responseBlock->addItem('<pre><code class="' . $format . '">' .
@@ -125,7 +125,7 @@ if (strlen($responseBody)) {
 }
 $changeTabs->addTab(_('Request'), $toolRow);
 
-$oPage->container->addItem(new \Ease\TWB\Panel(_('WebHook probe'), 'info',
+$oPage->container->addItem(new \Ease\TWB5\Panel(_('WebHook probe'), 'info',
                 $changeTabs));
 
 $oPage->addItem(new ui\PageBottom());

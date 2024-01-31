@@ -31,9 +31,9 @@ class LabelGroup extends \Ease\Container {
                 $stitkyArr = explode(',', $stitky);
             }
             foreach ($stitkyArr as $code => $stitek) {
-                $this->addItem(new \Ease\TWB\Label('info',
+                $this->addItem(new \Ease\TWB5\Label('info',
                                 new \Ease\Html\ATag('listbylabel.php?label=' . trim($stitek) . '&evidence=' . $abraflexi->getEvidence(),
-                                        is_numeric($code) ? trim($stitek) : new \Ease\TWB\Label('info',
+                                        is_numeric($code) ? trim($stitek) : new \Ease\TWB5\Label('info',
                                                         $code, ['title' => trim($stitek)]))));
                 $this->addItem(' ');
             }

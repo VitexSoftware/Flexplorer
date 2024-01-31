@@ -13,7 +13,7 @@ namespace Flexplorer\ui;
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
-class PrintSetGallery extends \Ease\TWB\Tabs {
+class PrintSetGallery extends \Ease\TWB5\Tabs {
 
     /**
      * 

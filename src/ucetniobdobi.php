@@ -74,8 +74,8 @@ if (!is_null($yeardel)) {
 
 $oPage->addItem(new ui\PageTop(_('Accounting period')));
 
-$toolRow = new \Ease\TWB\Row();
-$settingsForm = new \Ease\TWB\Form('settings');
+$toolRow = new \Ease\TWB5\Row();
+$settingsForm = new \Ease\TWB5\Form('settings');
 
 $settingsForm->addInput(new \Ease\Html\InputNumberTag('od', null,
                 ['min' => 1980]), _('From Year'), date('Y') - 2);
@@ -83,27 +83,27 @@ $settingsForm->addInput(new \Ease\Html\InputNumberTag('od', null,
 $settingsForm->addInput(new \Ease\Html\InputNumberTag('od', date('Y'),
                 ['min' => 1980]), _('To Year'), date('Y') + 2);
 
-$settingsForm->addItem(new \Ease\TWB\SubmitButton(_('Perform operation'),
+$settingsForm->addItem(new \Ease\TWB5\SubmitButton(_('Perform operation'),
                 'warning'));
-$toolRow->addColumn(6, new \Ease\TWB\Well($settingsForm));
+$toolRow->addColumn(6, new \Ease\TWB5\Well($settingsForm));
 
 $ucetniObdobi = $uo->getFlexiData();
 if (!isset($ucetniObdobi['message']) && count($ucetniObdobi)) {
     $ucetniObdobiTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
     $ucetniObdobiTable->addRowHeaderColumns(array_keys(current($ucetniObdobi)));
     foreach ($ucetniObdobi as $hookinfo) {
-        $hookinfo[] = new \Ease\TWB\LinkButton('?yeardel=' . $hookinfo['id'],
-                new \Ease\TWB\GlyphIcon('remove'), 'warning');
+        $hookinfo[] = new \Ease\TWB5\LinkButton('?yeardel=' . $hookinfo['id'],
+                new \Ease\TWB5\GlyphIcon('remove'), 'warning');
         $ucetniObdobiTable->addRowColumns($hookinfo);
     }
 
     $toolRow->addColumn(6,
-            new \Ease\TWB\Panel(_('Registered Accounting periods'), 'info',
+            new \Ease\TWB5\Panel(_('Registered Accounting periods'), 'info',
                     $ucetniObdobiTable,
-                    new \Ease\TWB\LinkButton('?yeardel=0', _('Remove unused'), 'warning')));
+                    new \Ease\TWB5\LinkButton('?yeardel=0', _('Remove unused'), 'warning')));
 }
 
-$oPage->container->addItem(new \Ease\TWB\Panel(_('Tool for massive creating Accounting periods'),
+$oPage->container->addItem(new \Ease\TWB5\Panel(_('Tool for massive creating Accounting periods'),
                 'info', $toolRow));
 
 $oPage->addItem(new ui\PageBottom());

@@ -36,23 +36,23 @@ if (!empty($saveTo)) {
 
 $oPage->addItem(new ui\PageTop(_('Company Backup')));
 
-$saveForm = new \Ease\TWB\Form('Save');
+$saveForm = new \Ease\TWB5\Form('Save');
 
 $saveForm->addInput(new \Ease\Html\InputTextTag('saveto',
                 empty($saveTo) ? $defaultSaveTo : $saveTo ));
 
-$saveForm->addItem(new \Ease\TWB\SubmitButton(new \Ease\TWB\GlyphIcon('floppy-save') . ' ' . _('Save'),
+$saveForm->addItem(new \Ease\TWB5\SubmitButton(new \Ease\TWB5\GlyphIcon('floppy-save') . ' ' . _('Save'),
                 'success',
                 ['onClick' => "$('#Preloader').css('visibility', 'visible');"]));
 
-$saveRow = new \Ease\TWB\Row();
+$saveRow = new \Ease\TWB5\Row();
 $saveRow->addColumn(6, $saveForm);
 
 $saveRow->addColumn(6,
         new ui\BackupsListing(constant('BACKUP_DIRECTORY'),
                 $company . '.*\.winstrom-backup'));
 
-$oPage->container->addItem(new \Ease\TWB\Panel(_('Save Company As'), 'success',
+$oPage->container->addItem(new \Ease\TWB5\Panel(_('Save Company As'), 'success',
                 $saveRow));
 
 $oPage->addItem(new ui\PageBottom());

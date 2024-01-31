@@ -17,9 +17,9 @@ class BackupsTool extends BackupsListing {
 
     public function addFileToListing($fileInfo) {
         $infoRow = parent::addFileToListing($fileInfo);
-        $infoRow->addItem(new \Ease\Html\TdTag(new \Ease\TWB\LinkButton('restorecompany.php?backup=' . $fileInfo['filename'],
+        $infoRow->addItem(new \Ease\Html\TdTag(new \Ease\TWB5\LinkButton('restorecompany.php?backup=' . $fileInfo['filename'],
                                 _('Restore'), 'success')));
-        $infoRow->addItem(new \Ease\Html\TdTag(new \Ease\TWB\LinkButton('?delete=' . $fileInfo['filename'],
+        $infoRow->addItem(new \Ease\Html\TdTag(new \Ease\TWB5\LinkButton('?delete=' . $fileInfo['filename'],
                                 _('Delete'), 'danger')));
     }
 

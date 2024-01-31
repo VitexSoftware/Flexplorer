@@ -8,7 +8,7 @@
 
 namespace Flexplorer\ui;
 
-use Ease\TWB\Form;
+use Ease\TWB5\Form;
 use Ease\Html\InputTextTag;
 
 /**
@@ -61,7 +61,7 @@ class LoginForm extends Form {
         $this->addInput(new InputTextTag($this->passwordField),
                 _('Rest API Password'));
  
-        $this->addItem( new \Ease\TWB\SubmitButton(_('Sign in')) );
+        $this->addItem( new \Ease\TWB5\SubmitButton(_('Sign in')) );
         
         $this->fillUp($options);
     }

@@ -14,7 +14,7 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class SendForm extends \Ease\TWB\Form {
+class SendForm extends \Ease\TWB5\Form {
 
     /**
      * Formulář pro odeslání uživatelského požadavku
@@ -51,7 +51,7 @@ class SendForm extends \Ease\TWB\Form {
                         ['json' => 'JSON', 'xml' => 'XML', 'csv' => 'CSV'], $format),
                 _('Format'));
 
-        $this->addItem(new \Ease\TWB\SubmitButton(_('Send'), 'success'));
+        $this->addItem(new \Ease\TWB5\SubmitButton(_('Send'), 'success'));
     }
 
 }

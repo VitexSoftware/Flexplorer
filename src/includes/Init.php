@@ -13,13 +13,10 @@ use Ease\Locale;
 use Ease\Shared;
 use Flexplorer\ui\WebPage;
 
-require_once 'includes/config.php';
 require_once '../vendor/autoload.php';
-
+require_once 'includes/config.php';
 new Locale('UTF-8', '../i18n', 'flexplorer');
-
 session_start();
-
 if (isset($_SESSION['user'])) {
     define('ABRAFLEXI_LOGIN', $_SESSION['user']);
 }
@@ -48,26 +45,26 @@ if (isset($_SESSION['sessionid'])) {
  *
  * @global User|Anonym
  */
-define('EASE_LOGGER', 'syslog');
+if (file_exists('../.env')) {
+    \Ease\Shared::init(['ABRAFLEXI_URL', 'ABRAFLEXI_LOGIN', 'ABRAFLEXI_PASSWORD', 'ABRAFLEXI_COMPANY'], '../.env');
+}
 
 $oUser = Shared::user(null, 'Flexplorer\User');
 $oUser->settingsColumn = 'settings';
-
-if (PHP_SAPI != 'clie') {
+if (PHP_SAPI != 'cli') {
     /* @var $oPage WebPage */
     $oPage = new WebPage();
-
-    $serverURL = $oPage->getRequestValue('serveruri');
+    $serverURL = \Ease\Document::getRequestValue('serveruri');
     if ($serverURL) {
         define('ABRAFLEXI_URL', $serverURL);
     }
 
-    $sessionID = $oPage->getRequestValue('sessionid');
+    $sessionID = \Ease\Document::getRequestValue('sessionid');
     if ($sessionID) {
         define('ABRAFLEXI_AUTHSESSID', $sessionID);
     }
 
-    $company = $oPage->getRequestValue('company');
+    $company = \Ease\Document::getRequestValue('company');
     if ($sessionID) {
         define('ABRAFLEXI_COMPANY', $sessionID);
     }

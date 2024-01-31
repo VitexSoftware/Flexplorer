@@ -9,7 +9,7 @@
 
 namespace Flexplorer\ui;
 
-class BootstrapMenu extends \Ease\TWB\Navbar {
+class BootstrapMenu extends \Ease\TWB5\Navbar {
 
     /**
      * Navigace.
@@ -33,7 +33,7 @@ class BootstrapMenu extends \Ease\TWB\Navbar {
                 ['class' => 'navbar-fixed-top']);
 
         $user = \Ease\Shared::user();
-        \Ease\TWB\Part::twBootstrapize();
+        \Ease\TWB5\Part::twBootstrapize();
         if (!$user->getUserID()) {
             if (get_class($user) != 'EaseAnonym') {
 
@@ -65,13 +65,13 @@ class BootstrapMenu extends \Ease\TWB\Navbar {
         } else {
             $userMenu = '<li class="dropdown" style="width: 120px; text-align: right;"><a href="#" class="dropdown-toggle" data-toggle="dropdown">' . $_SESSION['user'] . ' <b class="caret"></b></a>
 <ul class="dropdown-menu" style="text-align: left; left: -60px;">
-<li><a href="settings.php">' . \Ease\TWB\Part::GlyphIcon('wrench') . '<i class="icon-cog"></i> ' . _('Settings') . '</a></li>
+<li><a href="settings.php">🛠️ ' . _('Settings') . '</a></li>
 ';
 
             $this->addMenuItem($userMenu . '
-<li><a href="about.php">' . \Ease\TWB\Part::GlyphIcon('info-sign') . ' ' . _('About') . '</a></li>
+<li><a href="about.php">🤬 ' . _('About') . '</a></li>
 <li class="divider"></li>
-<li><a href="logout.php">' . \Ease\TWB\Part::GlyphIcon('off') . ' ' . _('Sign off') . '</a></li>
+<li><a href="logout.php">🚪 ' . _('Sign off') . '</a></li>
 </ul>
 </li>
 ', 'right');

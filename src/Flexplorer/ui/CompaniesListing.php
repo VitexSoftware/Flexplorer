@@ -67,7 +67,7 @@ class CompaniesListing extends \Ease\Html\DivTag {
                 $companyDataRaw['nazev']);
 
         $created = \AbraFlexi\RO::flexiDateTimeToDateTime($companyDataRaw['createDt'])->getTimestamp();
-        $companyData['created'] = strftime('%a %d. %m. %Y  - %X', $created) . ' ' . '(' . _('before') . ' ' . new \Ease\TWB\Widgets\LiveAge($created) . ')';
+        $companyData['created'] = strftime('%a %d. %m. %Y  - %X', $created) . ' ' . '(' . _('before') . ' ' . new \Ease\TWB5\Widgets\LiveAge($created) . ')';
         $companyData['databaze'] = new CopyToClipBoard(new \Ease\Html\InputTextTag('dbNazev',
                         $companyDataRaw['dbNazev'], ['id' => 'dbNazev', 'readonly']));
 

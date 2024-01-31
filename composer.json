@@ -15,8 +15,8 @@
         "league/commonmark": "^1.5",
         "spojenet/flexibee": "main-dev",
         "vitexsoftware/abraflexi-bricks": "dev-main",
-        "vitexsoftware/ease-twbootstrap-widgets": "*",
-        "vitexsoftware/datatables-abraflexi": "dev-abraflexi"
+        "vitexsoftware/datatables-abraflexi": "dev-abraflexi",
+        "vitexsoftware/ease-twbootstrap5": "dev-main"
     },
     "autoload": {
         "psr-4": {

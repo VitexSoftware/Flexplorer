@@ -14,7 +14,7 @@ namespace Flexplorer\ui;
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
-class RecordEditor extends \Ease\TWB\Panel {
+class RecordEditor extends \Ease\TWB5\Panel {
 
     /**
      *
@@ -54,7 +54,7 @@ class RecordEditor extends \Ease\TWB\Panel {
         }
 
         if (empty($engine->getMyKey())) {
-            $this->form->addInput(new \Ease\TWB\SubmitButton(_('Save new record'),
+            $this->form->addInput(new \Ease\TWB5\SubmitButton(_('Save new record'),
                             'success'));
         }
 
@@ -120,11 +120,11 @@ class RecordEditor extends \Ease\TWB\Panel {
                         $value, $inputProperties);
 
                 $note = [new \Ease\Html\ATag('evidence.php?evidence=' . $evidence,
-                            new \Ease\TWB\GlyphIcon('list') . ' ' . $evidence)];
+                            new \Ease\TWB5\GlyphIcon('list') . ' ' . $evidence)];
 
                 if (strlen($value)) {
                     $note[] = new \Ease\Html\ATag('editor.php?evidence=' . $evidence . '&id=' . urlencode($value),
-                            new \Ease\TWB\GlyphIcon('edit') . ' ' . _('Edit targeted record'));
+                            new \Ease\TWB5\GlyphIcon('edit') . ' ' . _('Edit targeted record'));
                 }
                 break;
 

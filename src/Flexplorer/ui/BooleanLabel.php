@@ -13,7 +13,7 @@ namespace Flexplorer\ui;
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
-class BooleanLabel extends \Ease\TWB\Label {
+class BooleanLabel extends \Ease\TWB5\Label {
 
     /**
      * Show boolean Label

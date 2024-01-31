@@ -53,7 +53,7 @@ if ($operation == 'install') {
     $results = $engine->performRequest('', 'POST', 'xml');
     foreach ($results as $result) {
         list($evidence, $recordId) = extract('/', $result);
-        $oPage->container->addItem(new \Ease\TWB\LinkButton('editor.php?evidence=' . $evidence . '&id=' . $recordId,
+        $oPage->container->addItem(new \Ease\TWB5\LinkButton('editor.php?evidence=' . $evidence . '&id=' . $recordId,
                         $result));
     }
 

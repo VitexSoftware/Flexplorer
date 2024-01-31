@@ -34,7 +34,7 @@ class LabelSwitches extends \Ease\Html\DivTag {
         }
         parent::__construct(null, $properties);
         foreach ($allLabels as $code => $title) {
-            $twbsw = $this->addItem(new \Ease\TWB\Widgets\TWBSwitch($code,
+            $twbsw = $this->addItem(new \Ease\TWB5\Widgets\TWBSwitch($code,
                             array_key_exists($code, $enabledLabels), 1,
                             ['onText' => $code, 'offText' => $title, 'onColor' => 'success',
                         'offColor' => 'default', 'labelWidth' => 10, 'handleWidth' => 200
@@ -45,7 +45,7 @@ class LabelSwitches extends \Ease\Html\DivTag {
     }
 
     public function finalize() {
-        \Ease\TWB\Part::twBootstrapize();
+        \Ease\TWB5\Part::twBootstrapize();
         $this->addJavaScript('
 
 $(\'#' . $this->getTagID() . ' input\').on(\'switchChange.bootstrapSwitch\', function(event, state) {

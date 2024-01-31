@@ -17,13 +17,13 @@ $oPage->addItem(new ui\PageTop(_('Permissions overview')));
 
 $oPage->container->addItem(new ui\PermissionsViewer('download/permissions.csv'));
 
-$oPage->container->addItem(new \Ease\TWB\Well([
-            new \Ease\TWB\LinkButton('download/permissions.csv',
-                    new \Ease\TWB\GlyphIcon('download') . ' ' . _('Get CSV'), 'info'),
-            new \Ease\TWB\LinkButton('download/permissions.xlsx',
-                    new \Ease\TWB\GlyphIcon('download') . ' ' . _('Get XLSx'), 'info'),
-            new \Ease\TWB\LinkButton('download/permissions.html',
-                    new \Ease\TWB\GlyphIcon('download') . ' ' . _('Get html'), 'info'),
+$oPage->container->addItem(new \Ease\TWB5\Well([
+            new \Ease\TWB5\LinkButton('download/permissions.csv',
+                    new \Ease\TWB5\GlyphIcon('download') . ' ' . _('Get CSV'), 'info'),
+            new \Ease\TWB5\LinkButton('download/permissions.xlsx',
+                    new \Ease\TWB5\GlyphIcon('download') . ' ' . _('Get XLSx'), 'info'),
+            new \Ease\TWB5\LinkButton('download/permissions.html',
+                    new \Ease\TWB5\GlyphIcon('download') . ' ' . _('Get html'), 'info'),
         ]));
 
 $oPage->addItem(new ui\PageBottom());

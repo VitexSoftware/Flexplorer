@@ -9,7 +9,7 @@
 
 namespace Flexplorer\ui;
 
-class RecordShow extends \Ease\TWB\Panel {
+class RecordShow extends \Ease\TWB5\Panel {
 
     /**
      * Zobrazí přehled záznamu.
@@ -27,7 +27,7 @@ class RecordShow extends \Ease\TWB\Panel {
 
         $this->addItem('ExtID:' . $recordObject->getExternalID());
 
-        $row = new \Ease\TWB\Row();
+        $row = new \Ease\TWB5\Row();
 
         if (method_exists($recordObject, 'htmlizeRow')) {
             $recordObject->setData($recordObject->htmlizeRow($recordObject->getData()));
@@ -41,7 +41,7 @@ class RecordShow extends \Ease\TWB\Panel {
                 $def = new \Ease\Html\DlTag();
                 $def->addDef($kinfo['title'],
                         $recordObject->getDataValue($keyword));
-                $row->addItem(new \Ease\TWB\Col(4, $def));
+                $row->addItem(new \Ease\TWB5\Col(4, $def));
             }
         }
 

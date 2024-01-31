@@ -42,9 +42,9 @@ class Editor extends ColumnsForm {
         }
 
         WebPage::singleton()->includeJavaScript('js/datasaver.js');
-        $this->addItem(new \Ease\TWB\Widgets\TWBSwitch('toAbraFlexi', false, 'on',
+        $this->addItem(new \Ease\TWB5\Widgets\TWBSwitch('toAbraFlexi', false, 'on',
                         ['onText' => _('Save to AbraFlexi'), 'offText' => _('Show in editor')]));
-        $this->addItem(new \Ease\TWB\SubmitButton(_('OK') . ' ' . new \Ease\TWB\GlyphIcon('save')));
+        $this->addItem(new \Ease\TWB5\SubmitButton(_('OK') . ' ' . new \Ease\TWB5\GlyphIcon('save')));
         $this->engine = $engine;
     }
 
@@ -101,11 +101,11 @@ class Editor extends ColumnsForm {
                         $value, $inputProperties);
 
                 $note = [new \Ease\Html\ATag('evidence.php?evidence=' . $evidence,
-                            new \Ease\TWB\GlyphIcon('list') . ' ' . $evidence)];
+                            new \Ease\TWB5\GlyphIcon('list') . ' ' . $evidence)];
 
                 if (strlen($value)) {
                     $note[] = new \Ease\Html\ATag('editor.php?evidence=' . $evidence . '&id=' . urlencode($value),
-                            new \Ease\TWB\GlyphIcon('edit') . ' ' . _('Edit targeted record'));
+                            new \Ease\TWB5\GlyphIcon('edit') . ' ' . _('Edit targeted record'));
                 }
                 break;
 
@@ -178,7 +178,7 @@ class Editor extends ColumnsForm {
             $contents = $this->pageParts;
             $this->emptyContents();
 
-            $editorTabs = new \Ease\TWB\Tabs('EditorTabs');
+            $editorTabs = new \Ease\TWB5\Tabs('EditorTabs');
             $editorTabs->addTab(_('Columns'), $contents);
             $editorTabs->addTab(_('External IDs'), $this->extIDsEditor());
             $editorTabs->addTab(_('Labels'), new LabelSwitches($this->engine));
@@ -198,10 +198,10 @@ class Editor extends ColumnsForm {
     /**
      * External IDs editor
      *
-     * @return \Ease\TWB\Container
+     * @return \Ease\TWB5\Container
      */
     public function extIDsEditor() {
-        $extIDsEditor = new \Ease\TWB\Container(new \Ease\Html\InputHiddenTag('id',
+        $extIDsEditor = new \Ease\TWB5\Container(new \Ease\Html\InputHiddenTag('id',
                         $this->engine->getDataValue('id')));
         $externalIDs = $this->engine->getDataValue('external-ids');
         if (count($externalIDs)) {
@@ -214,12 +214,12 @@ class Editor extends ColumnsForm {
                     $idParts[2] = '';
                 }
 
-                $extIDrow = new \Ease\TWB\Row();
+                $extIDrow = new \Ease\TWB5\Row();
                 $extIDrow->addColumn(4,
-                        new \Ease\TWB\Checkbox('deleteExtID[' . $idParts[1] . ']',
+                        new \Ease\TWB5\Checkbox('deleteExtID[' . $idParts[1] . ']',
                                 $externalID, _('Remove')));
                 $extIDrow->addColumn(8,
-                        new \Ease\TWB\FormGroup($idParts[1],
+                        new \Ease\TWB5\FormGroup($idParts[1],
                                 new \Ease\Html\InputTextTag('external-ids[' . $idParts[1] . ']',
                                         $idParts[2], ['maxlength' => '20']), $idParts[1],
                                 $externalID));
@@ -227,12 +227,12 @@ class Editor extends ColumnsForm {
             }
         }
 
-        $extIDsEditor->addItem(new \Ease\TWB\FormGroup(_('New'),
+        $extIDsEditor->addItem(new \Ease\TWB5\FormGroup(_('New'),
                         new \Ease\Html\InputTextTag('external-ids[]'), 'ext:..',
                         new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/identifiers/',
                                 _('External IDs'))));
 
-        $extIDsEditor->addItem(new \Ease\TWB\SubmitButton(_('OK') . ' ' . new \Ease\TWB\GlyphIcon('save')));
+        $extIDsEditor->addItem(new \Ease\TWB5\SubmitButton(_('OK') . ' ' . new \Ease\TWB5\GlyphIcon('save')));
         return $extIDsEditor;
     }
 

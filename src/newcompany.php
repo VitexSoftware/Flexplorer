@@ -48,7 +48,7 @@ if (empty($name)) {
 
 $oPage->addItem(new ui\PageTop(_('Main Page')));
 
-$oPage->container->addItem(new \Ease\TWB\Panel(_('Create New Company'),
+$oPage->container->addItem(new \Ease\TWB5\Panel(_('Create New Company'),
                 'success', new ui\CompanyForm($companer)));
 
 $oPage->addItem(new ui\PageBottom());

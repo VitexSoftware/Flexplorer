@@ -23,24 +23,24 @@ class EvidenceCustomButtons extends \Ease\Html\DivTag {
         parent::__construct();
         $buttons = $this->getButtonsForEvidence($source);
 
-        $buttonTabs = new \Ease\TWB\Tabs('butonTabs');
+        $buttonTabs = new \Ease\TWB5\Tabs('butonTabs');
 
         if (!empty($buttons)) {
             $buttonsTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
             $buttonsTable->addRowHeaderColumns([_('Code'), _('Url'), _('Button'),
                 _('Edit'), _('Delete')]);
             foreach ($buttons as $button) {
-                $button['title'] = new \Ease\TWB\LinkButton($button['url'],
+                $button['title'] = new \Ease\TWB5\LinkButton($button['url'],
                         $button['title'],
                         ($button['location'] == 'list') ? 'info' : 'default',
                         ['title' => $button['description']]);
                 unset($button['description']);
                 unset($button['location']);
 
-                $button['edit'] = new \Ease\TWB\LinkButton('editor.php?evidence=custom-button&id=' . $button['id'],
-                        new \Ease\TWB\GlyphIcon('wrench'), 'warning');
-                $button['delete'] = new \Ease\TWB\LinkButton('delete.php?evidence=custom-button&action=delete&id=' . $button['id'],
-                        new \Ease\TWB\GlyphIcon('remove'), 'danger');
+                $button['edit'] = new \Ease\TWB5\LinkButton('editor.php?evidence=custom-button&id=' . $button['id'],
+                        new \Ease\TWB5\GlyphIcon('wrench'), 'warning');
+                $button['delete'] = new \Ease\TWB5\LinkButton('delete.php?evidence=custom-button&action=delete&id=' . $button['id'],
+                        new \Ease\TWB5\GlyphIcon('remove'), 'danger');
 
                 unset($button['id']);
                 $buttonsTable->addRowColumns($button);
@@ -49,9 +49,9 @@ class EvidenceCustomButtons extends \Ease\Html\DivTag {
         }
 
         $buttonTabs->addTab(_('New Button'),
-                new \Ease\TWB\Container(new ButtonForm($source->getEvidence())));
+                new \Ease\TWB5\Container(new ButtonForm($source->getEvidence())));
 
-        $this->addItem(new \Ease\TWB\Container($buttonTabs));
+        $this->addItem(new \Ease\TWB5\Container($buttonTabs));
     }
 
     /**

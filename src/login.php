@@ -4,61 +4,37 @@
  * Flexplorer - Sign in page.
  *
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016-2021 Vitex Software
+ * @copyright  2016-2023 Vitex Software
  */
 
 namespace Flexplorer;
 
+use \Ease\Html\DivTag,
+    \Ease\Html\ImgTag,
+    \Ease\Html\InputPasswordTag,
+    \Ease\Html\InputTextTag,
+    \Ease\Shared,
+    \Ease\TWB5\Card,
+    \Ease\TWB5\Col,
+    \Ease\Html\Form,
+    \Ease\TWB5\LinkButton,
+    \Ease\TWB5\Panel,
+    \Ease\TWB5\Row,
+    \Ease\TWB5\SubmitButton,
+    \Ease\TWB5\InputGroup,
+    \Flexplorer\ui\PageBottom,
+    \Flexplorer\ui\PageTop;
+
 require_once 'includes/Init.php';
-
-$login = $oPage->getRequestValue('login');
-$password = $oPage->getRequestValue('password');
-$server = $oPage->getRequestValue('server');
-$backurl = $oPage->getRequestValue('backurl');
-
-if (empty($login) === true) {
-    $forceID = $oPage->getRequestValue('force_id', 'int');
-    if (!is_null($forceID)) {
-        \Ease\Shared::user(new User($forceID));
-        $oUser->setSettingValue('admin', true);
-        $oUser->addStatusMessage(_('Signed in as: ') . $oUser->getUserLogin(),
-                'success');
-        \Ease\Shared::user()->loginSuccess();
-
-        if (!is_null($backurl)) {
-            $oPage->redirect($backurl);
-        } else {
-            $oPage->redirect('index.php');
-        }
-    } else {
-        $oPage->addStatusMessage(_('Please confirm your login credentials'));
-    }
-} else {
-    $oUser = \Ease\Shared::user(new User());
-    if ($oUser->tryToLogin($_REQUEST)) {
-        if ($oPage->getRequestValue('remember-me')) {
-            $_SESSION['bookmarks'][] = ['login' => $login, 'password' => $password,
-                'server' => $server];
-            $oPage->addStatusMessage(_('Server added to bookmarks'));
-        }
-        if (isset($_SESSION['backurl'])) {
-            $oPage->redirect($_SESSION['backurl']);
-            unset($_SESSION['backurl']);
-        } else {
-            $oPage->redirect('index.php');
-        }
-    }
-}
-
 // $oPage->addItem(new ui\PageTop(_('Sign in')));
 //$loginFace = new \Ease\Html\DivTag(null, ['id' => 'LoginFace']);
 //
 //$oPage->container->addItem($loginFace);
 //
-//$loginRow = new \Ease\TWB\Row();
-//$infoColumn = $loginRow->addItem(new \Ease\TWB\Col(4));
+//$loginRow = new \Ease\TWB5\Row();
+//$infoColumn = $loginRow->addItem(new \Ease\TWB5\Col(4));
 //
-//$infoBlock = $infoColumn->addItem(new \Ease\TWB\Well(new \Ease\Html\ImgTag('images/password.png')));
+//$infoBlock = $infoColumn->addItem(new \Ease\TWB5\Well(new \Ease\Html\ImgTag('images/password.png')));
 //$infoBlock->addItem(_('Login Bookmarks'));
 //
 //$_SESSION['bookmarks']['demo'] = ['login' => 'winstrom', 'password' => 'winstrom',
@@ -94,74 +70,154 @@ if (empty($login) === true) {
 //}
 ////$infoBlock->addItem($bookmarks);
 //
-//$loginColumn = $loginRow->addItem(new \Ease\TWB\Col(4));
+//$loginColumn = $loginRow->addItem(new \Ease\TWB5\Col(4));
 //
-//$submit = new \Ease\TWB\SubmitButton(_('Sign in'), 'success');
+//$submit = new \Ease\TWB5\SubmitButton(_('Sign in'), 'success');
 //
-//$loginPanel = new \Ease\TWB\Panel(new \Ease\Html\ImgTag('images/flexplorer-logo.png',
+//$loginPanel = new \Ease\TWB5\Panel(new \Ease\Html\ImgTag('images/flexplorer-logo.png',
 //                'FlexPlorer', ['class' => 'img-responsive']), 'success', null, $submit);
-//$loginPanel->addItem(new \Ease\TWB\FormGroup(_('AbraFlexi'),
+//$loginPanel->addItem(new \Ease\TWB5\FormGroup(_('AbraFlexi'),
 //                new \Ease\Html\InputTextTag('server',
 //                        $server ? $server : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_URL') ),
 //                \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_URL'),
 //                _('AbraFlexi server URL. ex.:') . ' <a href="?server=https://localhost:5434">https://localhost:5434</a>'));
-//$loginPanel->addItem(new \Ease\TWB\FormGroup(_('User name'),
+//$loginPanel->addItem(new \Ease\TWB5\FormGroup(_('User name'),
 //                new \Ease\Html\InputTextTag('login',
 //                        $login ? $login : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_LOGIN')
 //                ), \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_LOGIN'), _('Login name')));
-//$loginPanel->addItem(new \Ease\TWB\FormGroup(_('Password'),
-//                new \Ease\TWB\Widgets\PasswordInput('password',
+//$loginPanel->addItem(new \Ease\TWB5\FormGroup(_('Password'),
+//                new \Ease\TWB5\Widgets\PasswordInput('password',
 //                        $password ? $password : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_PASSWORD')),
 //                \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_PASSWORD'), _('User\'s password')));
-//$loginPanel->addItem(new \Ease\TWB\FormGroup(_('Remeber me'),
-//                new \Ease\TWB\Widgets\TWBSwitch('remember-me', true), null,
+//$loginPanel->addItem(new \Ease\TWB5\FormGroup(_('Remeber me'),
+//                new \Ease\TWB5\Widgets\TWBSwitch('remember-me', true), null,
 //                _('Add this to Login History')));
 //
 //$loginPanel->body->setTagCss(['margin' => '20px']);
 //
 //$loginColumn->addItem($loginPanel);
 //
-//$featureList = new \Ease\Html\UlTag(null, ['class' => 'list-group']);
-//$featureList->addItemSmart(_('display the contents of all the available records in all companies'),
-//        ['class' => 'list-group-item']);
-//$featureList->addItemSmart(_('show the structure of evidence'),
-//        ['class' => 'list-group-item']);
-//$featureList->addItemSmart(_('send direct requests to the server and display results'),
-//        ['class' => 'list-group-item']);
-//$featureList->addItemSmart(_('set up ChangesAPI and add WebHooks'),
-//        ['class' => 'list-group-item']);
-//$featureList->addItemSmart(_('Test WebHook script processing changes from AbraFlexi answers'),
-//        ['class' => 'list-group-item']);
-//$featureList->addItemSmart(_('Collectively establish and abolish the accounting period'),
-//        ['class' => 'list-group-item']);
-//$featureList->addItemSmart(_('Evidnece distinguish which are inaccessible because of the license'),
-//        ['class' => 'list-group-item']);
-//$featureList->addItemSmart(_('Shown next to json result of the request and page AbraFlexi'),
-//        ['class' => 'list-group-item']);
-//$featureList->addItemSmart(_('Edit External ID numbers'),
-//        ['class' => 'list-group-item']);
-//$featureList->addItemSmart(_('PDF Preview of edited record'),
-//        ['class' => 'list-group-item']);
 //
-//$featuresPanel = new \Ease\TWB\Panel(_('Features'), 'info');
+//$oPage->container->addItem(new \Ease\TWB5\Form(['name' => 'Login'], $loginRow));
+//$login = $oPage->getRequestValue('login');
+//$password = $oPage->getRequestValue('password');
+//$server = $oPage->getRequestValue('server');
+//$backurl = $oPage->getRequestValue('backurl');
 //
-//\Ease\WebPage::addItemCustom($featureList, $featuresPanel);
-//$loginRow->addColumn(4, $featuresPanel);
+//if (empty($login) === true) {
+//    $forceID = $oPage->getRequestValue('force_id', 'int');
+//    if (!is_null($forceID)) {
+//        \Ease\Shared::user(new User($forceID));
+//        $oUser->setSettingValue('admin', true);
+//        $oUser->addStatusMessage(_('Signed in as: ') . $oUser->getUserLogin(),
+//                'success');
+//        \Ease\Shared::user()->loginSuccess();
 //
-//$oPage->container->addItem(new \Ease\TWB\Form(['name' => 'Login'], $loginRow));
+//        if (!is_null($backurl)) {
+//            $oPage->redirect($backurl);
+//        } else {
+//            $oPage->redirect('index.php');
+//        }
+//    } else {
+//        $oPage->addStatusMessage(_('Please confirm your login credentials'));
+//    }
+//} else {
+//    $oUser = \Ease\Shared::user(new User());
+//    if ($oUser->tryToLogin($_REQUEST)) {
+//        if ($oPage->getRequestValue('remember-me')) {
+//            $_SESSION['bookmarks'][] = ['login' => $login, 'password' => $password,
+//                'server' => $server];
+//            $oPage->addStatusMessage(_('Server added to bookmarks'));
+//        }
+//        if (isset($_SESSION['backurl'])) {
+//            $oPage->redirect($_SESSION['backurl']);
+//            unset($_SESSION['backurl']);
+//        } else {
+//            $oPage->redirect('index.php');
+//        }
+//    }
+//}
+//
+//
+//$connectionOptions = [
+//    'url' => $server ? $server : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_URL'),
+//    'user' => $login ? $login : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_LOGIN'),
+//    'password' => $password ? $password : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_PASSWORD')
+//];
+//
+////$loginPanel = new \Ease\TWB5\Panel(new \Ease\Html\ImgTag('images/flexplorer-logo.png',
+////                'FlexPlorer', ['class' => 'img-responsive']), 'success', null, $submit);
+//
+//
+//$oPage->addItem(new \Ease\TWB5\Container(new ui\LoginForm($connectionOptions)));
+//
+//$oPage->addItem(new ui\PageBottom());
+//
+//$oPage->draw();
+//
 
-$connectionOptions = [
-    'url' => $server ? $server : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_URL'),
-    'user' => $login ? $login : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_LOGIN'),
-    'password' => $password ? $password : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_PASSWORD')
-];
+$server = ui\WebPage::getRequestValue('server') ?? \Ease\Shared::cfg('ABRAFLEXI_URL');
 
-//$loginPanel = new \Ease\TWB\Panel(new \Ease\Html\ImgTag('images/flexplorer-logo.png',
-//                'FlexPlorer', ['class' => 'img-responsive']), 'success', null, $submit);
+$shared = Shared::singleton();
+$login = \Ease\Document::getRequestValue('login');
+if ($login) {
+    try {
+        $oUser = Shared::user(new User());
+    } catch (PDOException $e) {
+        echo 'Caught exception: ', $e->getMessage(), "\n";
+    }
+    if ($oUser->tryToLogin($_POST)) {
+        $oPage->redirect('main.php');
+        session_write_close();
+        exit;
+    }
+}
 
+// $oPage->addItem(new PageTop(_('Sign In')));
+$loginFace = new DivTag(null, ['id' => 'LoginFace']);
+$oPage->container->addItem($loginFace);
+$loginRow = new Row();
+$infoColumn = $loginRow->addItem(new Col(4));
+$infoBlock = $infoColumn->addItem(new Card(new ImgTag('images/flexplorer-logo.png')));
+$infoBlock->addItem(new DivTag(_('Welcome to FlexPlorer'), ['style' => 'text-align: center;']));
+$loginColumn = $loginRow->addItem(new Col(4));
+$submit = new SubmitButton(_('Sign in'), 'success', ['id' => 'signin']);
+$loginPanel = new Panel(new ImgTag('images/flexplorer-logo.png', 'logo', ['width' => 20]),
+        'inverse', null, $submit);
+$loginPanel->addItem(new InputGroup(_('Username'), new InputTextTag('login', $login, null, ['class' => 'form-control']), '', _('the username you chose')));
+$loginPanel->addItem(new InputGroup(_('Password'), new InputPasswordTag('password', $login)));
+$loginPanel->addItem(new InputGroup(_('Server'), new InputTextTag('server', $server)));
+$loginPanel->body->setTagCss(['margin' => '20px']);
+$loginColumn->addItem($loginPanel);
 
-$oPage->addItem(new \Ease\TWB\Container(new ui\LoginForm($connectionOptions)));
+$featureList = new \Ease\Html\UlTag(null, ['class' => 'list-group']);
+$featureList->addItemSmart(_('display the contents of all the available records in all companies'),
+        ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('show the structure of evidence'),
+        ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('send direct requests to the server and display results'),
+        ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('set up ChangesAPI and add WebHooks'),
+        ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('Test WebHook script processing changes from AbraFlexi answers'),
+        ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('Collectively establish and abolish the accounting period'),
+        ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('Evidnece distinguish which are inaccessible because of the license'),
+        ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('Shown next to json result of the request and page AbraFlexi'),
+        ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('Edit External ID numbers'),
+        ['class' => 'list-group-item']);
+$featureList->addItemSmart(_('PDF Preview of edited record'),
+        ['class' => 'list-group-item']);
 
-$oPage->addItem(new ui\PageBottom());
+$featuresPanel = new \Ease\TWB5\Panel(_('Features'), 'info');
 
+\Ease\WebPage::addItemCustom($featureList, $featuresPanel);
+$loginRow->addColumn(4, $featuresPanel);
+
+$oPage->container->addItem(new Form([], $loginRow));
+
+$oPage->addItem(new PageBottom());
 $oPage->draw();

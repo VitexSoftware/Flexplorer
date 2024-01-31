@@ -31,7 +31,7 @@ if (!empty($delete)) {
 
 $oPage->addItem(new ui\PageTop(_('Backups')));
 
-$oPage->container->addItem(new \Ease\TWB\Panel(_('Backups'), 'success',
+$oPage->container->addItem(new \Ease\TWB5\Panel(_('Backups'), 'success',
                 new ui\BackupsTool(constant('BACKUP_DIRECTORY'), '.*\.winstrom-backup')));
 
 $oPage->addItem(new ui\PageBottom());

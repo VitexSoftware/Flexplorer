@@ -52,7 +52,7 @@ class ModulesOverview extends \Ease\Html\UlTag {
             } else {
                 $type = 'default';
             }
-            $this->addItemSmart(new \Ease\TWB\Label($type, $code . ' - ' . $name), ['class' => 'list-group-item']);
+            $this->addItemSmart(new \Ease\TWB5\Label($type, $code . ' - ' . $name), ['class' => 'list-group-item']);
         }
     }
 

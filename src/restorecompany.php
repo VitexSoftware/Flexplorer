@@ -23,7 +23,7 @@ if (empty($backup)) {
     $oPage->addItem(new ui\PageTop(_('Backup restore')));
     $oPage->addStatusMessage('Specify backup to restore', 'warning');
 
-    $oPage->container->addItem(new \Ease\TWB\Panel(_('Backups'), 'success',
+    $oPage->container->addItem(new \Ease\TWB5\Panel(_('Backups'), 'success',
                     new ui\BackupsTool(constant('BACKUP_DIRECTORY'),
                             $company . '.*\.winstrom-backup')));
 

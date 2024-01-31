@@ -13,7 +13,7 @@ namespace Flexplorer\ui;
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
-class RecordDownloader extends \Ease\TWB\Panel {
+class RecordDownloader extends \Ease\TWB5\Panel {
 
     /**
      * 
@@ -25,12 +25,12 @@ class RecordDownloader extends \Ease\TWB\Panel {
         $info = $engine->getEvidenceInfo();
         if (array_key_exists('formats', $info)) {
             foreach ($info['formats'] as $format => $suffix) {
-                $this->addItem(new \Ease\TWB\LinkButton('getinformat.php?format=' . $suffix . '&id=' . $engine->getRecordID() . '&evidence=' . $evidence,
+                $this->addItem(new \Ease\TWB5\LinkButton('getinformat.php?format=' . $suffix . '&id=' . $engine->getRecordID() . '&evidence=' . $evidence,
                                 $format, 'success'));
             }
 
             if (!array_key_exists('PDF', $info['formats'])) {
-                $this->addItem(new \Ease\TWB\LinkButton('getinformat.php?format=pdf&id=' . $engine->getRecordID() . '&evidence=' . $evidence,
+                $this->addItem(new \Ease\TWB5\LinkButton('getinformat.php?format=pdf&id=' . $engine->getRecordID() . '&evidence=' . $evidence,
                                 'PDF'));
             }
         } else {

@@ -62,10 +62,10 @@ if ($oPage->isPosted() && is_null($oPage->getRequestValue('toAbraFlexi'))) {
     $method = 'POST';
     $body = $engine->getJsonizedData($engine->getData());
 
-    $oPage->container->addItem(new \Ease\TWB\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence=' . $evidence . '">' . $evidence . '</a> <a href="editor.php?evidence=' . $evidence . '&id=' . $id . '">' . $recordInfo),
+    $oPage->container->addItem(new \Ease\TWB5\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence=' . $evidence . '">' . $evidence . '</a> <a href="editor.php?evidence=' . $evidence . '&id=' . $id . '">' . $recordInfo),
                     'info', new ui\SendForm($url, $method, $body)));
 } else {
-    $oPage->container->addItem(new \Ease\TWB\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence=' . $evidence . '">' . $evidence . '</a> <a href="editor.php?evidence=' . $evidence . '&id=' . $id . '">' . $recordInfo . '</a>'),
+    $oPage->container->addItem(new \Ease\TWB5\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence=' . $evidence . '">' . $evidence . '</a> <a href="editor.php?evidence=' . $evidence . '&id=' . $id . '">' . $recordInfo . '</a>'),
                     'info', new ui\Editor($engine)));
 }
 

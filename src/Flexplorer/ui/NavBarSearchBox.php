@@ -4,12 +4,12 @@
  * Flexplorer - Vyhledávací políčko.
  *
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016 Vitex Software
+ * @copyright  2016-2024 Vitex Software
  */
 
 namespace Flexplorer\ui;
 
-class NavBarSearchBox extends \Ease\TWB\Form {
+class NavBarSearchBox extends \Ease\Html\Form {
 
     /**
      * Formulář Bootstrapu.

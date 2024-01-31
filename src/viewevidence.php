@@ -27,7 +27,7 @@ $oPage->addItem(new ui\PageTop(_('Evidence proprties overview')));
 
 $evobj = new Flexplorer($evidence);
 
-$tabs = new \Ease\TWB\Tabs('EviTabs');
+$tabs = new \Ease\TWB5\Tabs('EviTabs');
 $tabs->addTab(_('Listing'), new ui\FlexiBsGrid(new DataSource($evobj)));
 $tabs->addTab(_('Structure'), new ui\BsEvidenceProperties($evobj));
 
@@ -44,7 +44,7 @@ if (is_null($body)) {
 }
 
 $tabs->addTab(_('Query'),
-        new \Ease\TWB\Panel(_('Custom query'), 'warning',
+        new \Ease\TWB5\Panel(_('Custom query'), 'warning',
                 new ui\SendForm($url, $method, $body)));
 
 $oPage->container->addItem($tabs);

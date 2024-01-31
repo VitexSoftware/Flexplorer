@@ -29,7 +29,7 @@ class ShowResponse extends \Ease\Html\DivTag {
 
     public function finalize() {
         $formatedResponse = '';
-        /* @var $webPage \Ease\TWB\WebPage */
+        /* @var $webPage \Ease\TWB5\WebPage */
         $webPage = WebPage::singleton();
 
         $this->addItem(new \Ease\Html\H1Tag($this->sender->lastResponseCode . ': ' . self::responseCodeMessage($this->sender->lastResponseCode)));
@@ -92,12 +92,12 @@ function downloadResponse(){
                         ', null, false);
                 $this->addItem(new \Ease\Html\DivTag($formatedResponse,
                                 ['id' => 'formatedResponse', 'style' => 'visibility: hidden; height: 0px;']));
-                $this->addItem(new \Ease\TWB\LinkButton('#',
-                                _('Make new request from this response') . new \Ease\TWB\GlyphIcon('repeat'),
+                $this->addItem(new \Ease\TWB5\LinkButton('#',
+                                _('Make new request from this response') . new \Ease\TWB5\GlyphIcon('repeat'),
                                 'success', ['onClick' => 'responseToRequest();']));
 
-                $this->addItem(new \Ease\TWB\LinkButton('#',
-                                _('Save this response to file') . new \Ease\TWB\GlyphIcon('floppy-save'),
+                $this->addItem(new \Ease\TWB5\LinkButton('#',
+                                _('Save this response to file') . new \Ease\TWB5\GlyphIcon('floppy-save'),
                                 'success', ['onClick' => 'downloadResponse();']));
             }
         }

@@ -14,7 +14,7 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class JsonTextarea extends \Ease\TWB\Textarea {
+class JsonTextarea extends \Ease\TWB5\Textarea {
 
     /**
      * Add scripts

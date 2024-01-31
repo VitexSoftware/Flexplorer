@@ -14,7 +14,7 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class ColumnsGroups extends \Ease\TWB\Tabs {
+class ColumnsGroups extends \Ease\TWB5\Tabs {
 
     function __construct($evobj, $column) {
         parent::__construct(_('ColumnsGroups'));

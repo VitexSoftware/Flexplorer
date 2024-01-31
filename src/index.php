@@ -24,7 +24,7 @@ foreach ($statuser->getData() as $property => $value) {
 
     switch ($property) {
         case 'startupTime':
-            $value = new \Ease\TWB\Widgets\LiveAge(\AbraFlexi\RO::flexiDateTimeToDateTime($value)->getTimestamp());
+            $value = new \Ease\TWB5\Widgets\LiveAge(\AbraFlexi\RO::flexiDateTimeToDateTime($value)->getTimestamp());
             break;
         case 'memoryHeap':
         case 'memoryUsed':
@@ -36,10 +36,10 @@ foreach ($statuser->getData() as $property => $value) {
 }
 
 
-$infoRow = new \Ease\TWB\Row();
-$infoRow->addColumn(6, new \Ease\TWB\Panel(_('server info'), 'info', $infoTable));
+$infoRow = new \Ease\TWB5\Row();
+$infoRow->addColumn(6, new \Ease\TWB5\Panel(_('server info'), 'info', $infoTable));
 $infoRow->addColumn(6,
-        new \Ease\TWB\Panel(_('license info'), 'info',
+        new \Ease\TWB5\Panel(_('license info'), 'info',
                 new ui\LicenseInfo($_SESSION['license'])));
 $oPage->container->addItem($infoRow);
 

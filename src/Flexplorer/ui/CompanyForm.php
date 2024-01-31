@@ -13,7 +13,7 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class CompanyForm extends \Ease\TWB\Form {
+class CompanyForm extends \Ease\TWB5\Form {
 
     /**
      *
@@ -34,7 +34,7 @@ class CompanyForm extends \Ease\TWB\Form {
 //            _('Fill database with demo content'));
 
 
-        $this->addItem(new \Ease\TWB\SubmitButton(_('Save'), 'success',
+        $this->addItem(new \Ease\TWB5\SubmitButton(_('Save'), 'success',
                         ['onClick' => "$('#Preloader').css('visibility', 'visible');"]));
     }
 

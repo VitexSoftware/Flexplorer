@@ -94,9 +94,9 @@ if (!is_null($linkrefresh)) {
 }
 
 $oPage->addItem(new ui\PageTop(_('ChangesAPI Tool')));
-$toolRow = new \Ease\TWB\Row();
-$settingsForm = new \Ease\TWB\Form(['name' => 'settings']);
-$settingsForm->addInput(new \Ease\TWB\Widgets\TWBSwitch('changesapi', $chapistatus, 'enable',
+$toolRow = new \Ease\TWB5\Row();
+$settingsForm = new \Ease\TWB5\Form(['name' => 'settings']);
+$settingsForm->addInput(new \Ease\TWB5\Widgets\TWBSwitch('changesapi', $chapistatus, 'enable',
                 ['onText' => _('Enable'), 'offText' => _('Disable')]), _('Changes API'),
         null,
         new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/changes-api/',
@@ -111,13 +111,13 @@ $settingsForm->addInput(new \Ease\Html\InputTextTag('hookurl', $hookurl),
                 _('When the database AbraFlexi to change the POST HTTP request sent to all registered URL'))
 );
 
-$settingsForm->addItem(new \Ease\TWB\LinkButton("?hookurl=" . urlencode($webHookUrl),
+$settingsForm->addItem(new \Ease\TWB5\LinkButton("?hookurl=" . urlencode($webHookUrl),
                 _('Target to FlexPlorer'), 'success', ['class' => 'button button-xs']));
 
-$settingsForm->addInput(new \Ease\TWB\Widgets\TWBSwitch('changesformat', true, 'JSON',
+$settingsForm->addInput(new \Ease\TWB5\Widgets\TWBSwitch('changesformat', true, 'JSON',
                 ['onText' => 'JSON', 'offText' => 'XML']), _('Data format'));
 
-$settingsForm->addInput(new \Ease\TWB\Widgets\TWBSwitch('hookurltest', true, 'skip'),
+$settingsForm->addInput(new \Ease\TWB5\Widgets\TWBSwitch('hookurltest', true, 'skip'),
         _('Skip URL test'), null, _('Suppress URL functionality test'));
 
 $settingsForm->addInput(new \Ease\Html\InputNumberTag('lastVersion', null,
@@ -132,9 +132,9 @@ $settingsForm->addInput(new \Ease\Html\InputTextTag('secKey'),
                 $randstr)
 );
 
-$settingsForm->addItem(new \Ease\TWB\SubmitButton(_('Perform operation'),
+$settingsForm->addItem(new \Ease\TWB5\SubmitButton(_('Perform operation'),
                 'warning'));
-$toolRow->addColumn(4, new \Ease\TWB\Well($settingsForm));
+$toolRow->addColumn(4, new \Ease\TWB5\Well($settingsForm));
 
 if ($chapistatus) {
     try {
@@ -143,13 +143,13 @@ if ($chapistatus) {
             $hooksTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
             $hooksTable->addRowHeaderColumns(array_merge(array_keys(current($hooks)), [_('Reset'), _('Test'), _('Remove')]));
             foreach ($hooks as $hookinfo) {
-                $hookinfo[] = new \Ease\TWB\LinkButton('?refresh=' . $hookinfo['id'],
-                        new \Ease\TWB\GlyphIcon('refresh'), 'success');
-                $hookinfo[] = new \Ease\TWB\LinkButton('fakechange.php?hookurl=' . $hookinfo['url'],
-                        new \Ease\TWB\GlyphIcon('export'), 'info',
+                $hookinfo[] = new \Ease\TWB5\LinkButton('?refresh=' . $hookinfo['id'],
+                        new \Ease\TWB5\GlyphIcon('refresh'), 'success');
+                $hookinfo[] = new \Ease\TWB5\LinkButton('fakechange.php?hookurl=' . $hookinfo['url'],
+                        new \Ease\TWB5\GlyphIcon('export'), 'info',
                         ['title' => _('Test')]);
-                $hookinfo[] = new \Ease\TWB\LinkButton('?linkdel=' . $hookinfo['id'],
-                        new \Ease\TWB\GlyphIcon('remove'), 'danger');
+                $hookinfo[] = new \Ease\TWB5\LinkButton('?linkdel=' . $hookinfo['id'],
+                        new \Ease\TWB5\GlyphIcon('remove'), 'danger');
                 $hookinfo['url'] = new \Ease\Html\ATag($hookinfo['url'],
                         $hookinfo['url']);
 
@@ -157,13 +157,13 @@ if ($chapistatus) {
             }
 
             $toolRow->addColumn(8,
-                    new \Ease\TWB\Panel(_('Webhooks registered'), 'info', $hooksTable));
+                    new \Ease\TWB5\Panel(_('Webhooks registered'), 'info', $hooksTable));
         }
     } catch (\AbraFlexi\Exception $exc) {
         echo $hooker->addStatusMessage($exc->getMessage(), 'error');
     }
 }
-$oPage->container->addItem(new \Ease\TWB\Panel(_('ChangesAPI & WebHooks'),
+$oPage->container->addItem(new \Ease\TWB5\Panel(_('ChangesAPI & WebHooks'),
                 'info', $toolRow));
 
 $oPage->addItem(new ui\PageBottom());

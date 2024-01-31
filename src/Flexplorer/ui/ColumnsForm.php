@@ -9,7 +9,7 @@
 
 namespace Flexplorer\ui;
 
-class ColumnsForm extends \Ease\TWB\Form {
+class ColumnsForm extends \Ease\TWB5\Form {
 
     /**
      * Column width.
@@ -21,7 +21,7 @@ class ColumnsForm extends \Ease\TWB\Form {
     /**
      * Row.
      *
-     * @var \Ease\TWB\Row
+     * @var \Ease\TWB5\Row
      */
     public $row = null;
 
@@ -64,10 +64,10 @@ class ColumnsForm extends \Ease\TWB\Form {
     /**
      * Přidá další řadu formuláře.
      *
-     * @return \Ease\TWB\Row Nově vložený řádek formuláře
+     * @return \Ease\TWB5\Row Nově vložený řádek formuláře
      */
     public function newRow() {
-        return $this->row = $this->addItem(new \Ease\TWB\Row());
+        return $this->row = $this->addItem(new \Ease\TWB5\Row());
     }
 
     /**
@@ -82,11 +82,11 @@ class ColumnsForm extends \Ease\TWB\Form {
     public function addInput($input, $caption = null, $placeholder = null,
             $helptext = null, $addTagClass = 'form-control') {
         if ($this->row->getItemsCount() > $this->itemsPerRow) {
-            $this->row = $this->addItem(new \Ease\TWB\Row());
+            $this->row = $this->addItem(new \Ease\TWB5\Row());
         }
 
-        return $this->row->addItem(new \Ease\TWB\Col($this->colsize,
-                                new \Ease\TWB\FormGroup($caption, $input, $placeholder,
+        return $this->row->addItem(new \Ease\TWB5\Col($this->colsize,
+                                new \Ease\TWB5\FormGroup($caption, $input, $placeholder,
                                         $helptext, $addTagClass)));
     }
 
@@ -94,7 +94,7 @@ class ColumnsForm extends \Ease\TWB\Form {
      * Přidá do formuláře tlačítko "Uložit".
      */
     public function addSubmitSave() {
-        $this->savers->addItem(new \Ease\TWB\SubmitButton(_('Save'), 'default'),
+        $this->savers->addItem(new \Ease\TWB5\SubmitButton(_('Save'), 'default'),
                 ['style' => 'text-align: right']);
     }
 
@@ -145,7 +145,7 @@ class ColumnsForm extends \Ease\TWB\Form {
 
             switch ($type) {
                 case 'BOOL':
-                    $input_widget = new \Ease\TWB\Widgets\TWBSwitch($col_name, $value);
+                    $input_widget = new \Ease\TWB5\Widgets\TWBSwitch($col_name, $value);
                     break;
                 case 'INT':
                     $input_widget = new \Ease\Html\InputTextTag($col_name,

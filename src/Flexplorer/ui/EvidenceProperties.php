@@ -64,7 +64,7 @@ class EvidenceProperties extends \Ease\Html\TableTag {
                             if (isset($propValues['url'])) {
                                 $tmp = explode('/', $propValues['url']);
                                 $revidence = 'evidence.php?evidence=' . end($tmp);
-                                $props[$value] = '<a href="' . $revidence . '">' . \Ease\TWB\Part::glyphIcon('link',
+                                $props[$value] = '<a href="' . $revidence . '">' . \Ease\TWB5\Part::glyphIcon('link',
                                                 ['title' => $propValues['fkName']])->__toString() . $propValues[$value] . '</a> ';
                             } else {
                                 $props[$value] = $propValues[$value];
@@ -81,7 +81,7 @@ class EvidenceProperties extends \Ease\Html\TableTag {
                             break;
                         case 'values':
                             foreach ($propValues[$value]['value'] as $defineKey => $defineValue) {
-                                $label = new \Ease\TWB\Badge(
+                                $label = new \Ease\TWB5\Badge(
                                         $defineValue['@key'],
                                         ['title' => $defineValue['$']]);
                                 if (array_key_exists($value, $props)) {
@@ -97,10 +97,10 @@ class EvidenceProperties extends \Ease\Html\TableTag {
 
                             switch ($propValues[$value]) {
                                 case 'true':
-                                    $props[$value] = \Ease\TWB\Part::glyphIcon('unchecked')->__toString();
+                                    $props[$value] = \Ease\TWB5\Part::glyphIcon('unchecked')->__toString();
                                     break;
                                 case 'false':
-                                    $props[$value] = \Ease\TWB\Part::glyphIcon('check')->__toString();
+                                    $props[$value] = \Ease\TWB5\Part::glyphIcon('check')->__toString();
                                     break;
                                 default :
                                     if (isset($_SESSION['searchQuery'])) {

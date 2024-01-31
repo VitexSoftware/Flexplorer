@@ -40,17 +40,17 @@ if ($delete === true) {
 
 $oPage->addItem(new ui\PageTop(_('Record Delete')));
 
-$buttonRow = new \Ease\TWB\Row();
+$buttonRow = new \Ease\TWB5\Row();
 $buttonRow->addColumn(4);
 $buttonRow->addColumn(4,
-        new \Ease\TWB\LinkButton('evidence.php?evidence=' . $evidence,
-                _('Keep record') . ' ' . new \Ease\TWB\GlyphIcon('ok-sign'), 'info',
+        new \Ease\TWB5\LinkButton('evidence.php?evidence=' . $evidence,
+                _('Keep record') . ' ' . new \Ease\TWB5\GlyphIcon('ok-sign'), 'info',
                 ['class' => 'btn btn-default clearfix pull-right']));
 $buttonRow->addColumn(4,
-        new \Ease\TWB\LinkButton('delete.php?evidence=' . $evidence . '&delete=true&id=' . $id,
-                _('Delete record') . ' ' . new \Ease\TWB\GlyphIcon('remove-sign'), 'danger'));
+        new \Ease\TWB5\LinkButton('delete.php?evidence=' . $evidence . '&delete=true&id=' . $id,
+                _('Delete record') . ' ' . new \Ease\TWB5\GlyphIcon('remove-sign'), 'danger'));
 
-$deleteTabs = new \Ease\TWB\Tabs('DeleteTabs');
+$deleteTabs = new \Ease\TWB5\Tabs('DeleteTabs');
 $deleteTabs->addTab(_('Overview'), new ui\RecordShow($engine, $buttonRow));
 $deleteTabs->addTab(_('AbraFlexi'),
         new \Ease\Html\IframeTag(str_replace('.json', '.html',

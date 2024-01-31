@@ -13,7 +13,7 @@ namespace Flexplorer\ui;
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
-class extIDsEditor extends \Ease\TWB\Container {
+class extIDsEditor extends \Ease\TWB5\Container {
 
     public function __construct($engine) {
         $this->engine = $engine;
@@ -34,12 +34,12 @@ class extIDsEditor extends \Ease\TWB\Container {
                     $idParts[2] = '';
                 }
 
-                $extIDrow = new \Ease\TWB\Row();
+                $extIDrow = new \Ease\TWB5\Row();
                 $extIDrow->addColumn(4,
-                        new \Ease\TWB\Checkbox('deleteExtID[' . $idParts[1] . ']',
+                        new \Ease\TWB5\Checkbox('deleteExtID[' . $idParts[1] . ']',
                                 $externalID, _('Remove')));
                 $extIDrow->addColumn(8,
-                        new \Ease\TWB\FormGroup($idParts[1],
+                        new \Ease\TWB5\FormGroup($idParts[1],
                                 new \Ease\Html\InputTextTag('external-ids[' . $idParts[1] . ']',
                                         $idParts[2], ['maxlength' => '20']), $idParts[1],
                                 $externalID));
@@ -47,12 +47,12 @@ class extIDsEditor extends \Ease\TWB\Container {
             }
         }
 
-        $this->addItem(new \Ease\TWB\FormGroup(_('New'),
+        $this->addItem(new \Ease\TWB5\FormGroup(_('New'),
                         new \Ease\Html\InputTextTag('external-ids[]'), 'ext:..',
                         new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/identifiers/',
                                 _('External IDs'))));
 
-        $this->addItem(new \Ease\TWB\SubmitButton(_('OK') . ' ' . new \Ease\TWB\GlyphIcon('save'), 'success'));
+        $this->addItem(new \Ease\TWB5\SubmitButton(_('OK') . ' ' . new \Ease\TWB5\GlyphIcon('save'), 'success'));
     }
 
 }

@@ -4,11 +4,16 @@
  * Flexplorer - Application Menu.
  *
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016 Vitex Software
+ * @copyright  2016-2024 Vitex Software
  */
 
 namespace Flexplorer\ui;
 
+/**
+ * Description of MainMenu
+ *
+ * @author vitex
+ */
 class MainMenu extends \Ease\Html\DivTag {
 
     /**
@@ -35,7 +40,7 @@ class MainMenu extends \Ease\Html\DivTag {
         $itemList = [];
         if ($lister) {
             foreach ($lister as $uID => $uInfo) {
-                $itemList[$source->keyword . '.php?' . $keycolumn . '=' . $uInfo[$keycolumn]] = \Ease\TWB\Part::GlyphIcon($icon) . '&nbsp;' . $uInfo[$namecolumn];
+                $itemList[$source->keyword . '.php?' . $keycolumn . '=' . $uInfo[$keycolumn]] = \Ease\TWB5\Part::GlyphIcon($icon) . '&nbsp;' . $uInfo[$namecolumn];
             }
         }
 
@@ -43,7 +48,7 @@ class MainMenu extends \Ease\Html\DivTag {
     }
 
     /**
-     * Vložení menu.
+     * Insert menu.
      */
     public function afterAdd() {
         $nav = $this->addItem(new BootstrapMenu());
@@ -73,10 +78,10 @@ class MainMenu extends \Ease\Html\DivTag {
             } else {
                 $infoLabel = $url;
             }
-            $nav->addMenuItem(new \Ease\Html\DivTag(new \Ease\TWB\Label('success',
-                                    new \Ease\Html\ATag($infoLabel, $infoLabel),
-                                    ['class' => 'navbar-text', 'style' => 'color: yellow; font-size: 12px; max-width: 800px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;']),
-                            ['class' => 'collapse navbar-collapse']));
+//            $nav->addMenuItem(new \Ease\Html\DivTag(new \Ease\TWB5\Label('success',
+//                                    new \Ease\Html\ATag($infoLabel, $infoLabel),
+//                                    ['class' => 'navbar-text', 'style' => 'color: yellow; font-size: 12px; max-width: 800px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;']),
+//                            ['class' => 'collapse navbar-collapse']));
 
             $companiesToMenu = [];
 
@@ -89,13 +94,12 @@ class MainMenu extends \Ease\Html\DivTag {
                 asort($companiesToMenu);
 
                 $companyTools = [
-                    'newcompany.php' => new \Ease\TWB\GlyphIcon('plus') . ' ' . _('New'),
-                    'companies.php' => new \Ease\TWB\GlyphIcon('list') . ' ' . _('Listing'),
+                    'newcompany.php' => '➕ ' . _('New'),
+                    'companies.php' => '🏭 ' . _('Listing'),
                     '' => ''
                 ];
 
-                $nav->addDropDownMenu(_('Company'),
-                        array_merge($companyTools, $companiesToMenu));
+                $nav->addDropDownMenu(_('Company'), array_merge($companyTools, $companiesToMenu));
 
                 if (!isset($_SESSION['company'])) { //Auto choose first company
                     $_SESSION['company'] = $companies[0]['dbNazev'];
@@ -157,11 +161,9 @@ class MainMenu extends \Ease\Html\DivTag {
      * Přidá do stránky javascript pro skrývání oblasti stavových zpráv.
      */
     public function finalize() {
-        $this->addCss('body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }');
-
+        if (\Ease\Shared::user()->isLogged()) { //Authenticated user
+            $this->addItem(new Breadcrumb());
+        }
         if (!empty(\Ease\Shared::logger()->getMessages())) {
 
             WebPage::singleton()->addCss('

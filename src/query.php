@@ -64,10 +64,10 @@ if (strlen($action)) {
 
 $oPage->addItem(new ui\PageTop(_('Query') . ': ' . $url));
 
-$requestTabs = new \Ease\TWB\Tabs('Request');
+$requestTabs = new \Ease\TWB5\Tabs('Request');
 
 $requestTabs->addTab(_('Request'),
-        new \Ease\TWB\Panel(_('Custom request'), 'warning',
+        new \Ease\TWB5\Panel(_('Custom request'), 'warning',
                 new ui\SendForm($url, $method, $body, $format)));
 
 $requestTabs->addTab(_('Response'), new ui\ShowResponse($sender),

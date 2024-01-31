@@ -27,7 +27,7 @@ if (empty($name)) {
     $newCompany = preg_replace('/[0-9]+$/', '', $company);
 
     $companer->setDataValue('nazev', $newCompany . $companyNewIndex);
-    $oPage->container->addItem(new \Ease\TWB\Panel(_('Clone to'), 'success',
+    $oPage->container->addItem(new \Ease\TWB5\Panel(_('Clone to'), 'success',
                     new ui\CompanyForm($companer)));
 
     $oPage->addItem(new ui\PageBottom());

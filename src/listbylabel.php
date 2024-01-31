@@ -21,7 +21,7 @@ $oPage->addItem(new ui\PageTop(sprintf(_('Label %s occurencies'), $label)));
 if (isset($label)) {
     if (isset($evidence)) {
         $evobj = new SearchFlexplorer(['evidence' => $evidence, 'stitky' => $label]);
-        $oPage->container->addItem(new \Ease\TWB\LinkButton('listbylabel.php?label=' . $label,
+        $oPage->container->addItem(new \Ease\TWB5\LinkButton('listbylabel.php?label=' . $label,
                         _('All Evidencies'), 'success'));
     } else {
         $evobj = new SearchFlexplorer(['stitky' => $label]);

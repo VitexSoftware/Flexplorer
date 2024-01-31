@@ -117,10 +117,10 @@ class Flexplorer extends \AbraFlexi\RW {
                             $row[$key] = '<em>NULL</em>';
                         } else {
                             if (($value === '0') || ($value === 'false')) {
-                                $row[$key] = \Ease\TWB\Part::glyphIcon('unchecked')->__toString();
+                                $row[$key] = \Ease\TWB5\Part::glyphIcon('unchecked')->__toString();
                             } else {
                                 if (($value === '1') || ($value === 'true')) {
-                                    $row[$key] = \Ease\TWB\Part::glyphIcon('check')->__toString();
+                                    $row[$key] = \Ease\TWB5\Part::glyphIcon('check')->__toString();
                                 }
                             }
                         }
@@ -130,7 +130,7 @@ class Flexplorer extends \AbraFlexi\RW {
                             $tmp = explode('/',
                                     $this->evidenceStructure[$key]['url']);
                             $revidence = 'evidence.php?evidence=' . end($tmp);
-                            $row[$key] = '<a href="' . $revidence . '">' . \Ease\TWB\Part::glyphIcon('link',
+                            $row[$key] = '<a href="' . $revidence . '">' . \Ease\TWB5\Part::glyphIcon('link',
                                             ['title' => $this->evidenceStructure[$key]['fkName']])->__toString() . '</a> ' . $value;
                         }
                         break;
@@ -158,7 +158,7 @@ class Flexplorer extends \AbraFlexi\RW {
                                     if ($id) {
                                         $values[$id] = '<a title="' . $table . '" href="' . $target . '?' . $idcolumn . '=' . $id . '">' . $name . '</a>';
                                     } else {
-                                        $values[$id] = '<a title="' . $table . '" href="search.php?search=' . $name . '&table=' . $table . '&column=' . $searchColumn . '">' . $name . '</a> ' . \Ease\TWB\Part::glyphIcon('search');
+                                        $values[$id] = '<a title="' . $table . '" href="search.php?search=' . $name . '&table=' . $table . '&column=' . $searchColumn . '">' . $name . '</a> ' . \Ease\TWB5\Part::glyphIcon('search');
                                     }
                                 }
                             }
@@ -170,7 +170,7 @@ class Flexplorer extends \AbraFlexi\RW {
                         if (isset($this->keywordsInfo[$key]['refdata']) && strlen(trim($value))) {
                             $table = $this->keywordsInfo[$key]['refdata']['table'];
                             $searchColumn = $this->keywordsInfo[$key]['refdata']['captioncolumn'];
-                            $row[$key] = '<a title="' . $table . '" href="search.php?search=' . $value . '&table=' . $table . '&column=' . $searchColumn . '">' . $value . '</a> ' . \Ease\TWB\Part::glyphIcon('search');
+                            $row[$key] = '<a title="' . $table . '" href="search.php?search=' . $value . '&table=' . $table . '&column=' . $searchColumn . '">' . $value . '</a> ' . \Ease\TWB5\Part::glyphIcon('search');
                         }
                         if (strstr($key, 'url')) {
                             $row[$key] = '<a href="' . $value . '">' . $value . '</a>';

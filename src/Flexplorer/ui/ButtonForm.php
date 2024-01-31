@@ -13,7 +13,7 @@ namespace Flexplorer\ui;
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
-class ButtonForm extends \Ease\TWB\Form {
+class ButtonForm extends \Ease\TWB5\Form {
 
     /**
      * Form for new Custom Button in given evidence
@@ -50,7 +50,7 @@ class ButtonForm extends \Ease\TWB\Form {
                         ['automatic' => _('Automatic'), 'desktop' => _('Desktop')]),
                 _('Browser used'));
 
-        $this->addInput(new \Ease\TWB\SubmitButton(_('Save New Button'),
+        $this->addInput(new \Ease\TWB5\SubmitButton(_('Save New Button'),
                         'success'));
     }
 

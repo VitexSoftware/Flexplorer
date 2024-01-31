@@ -44,7 +44,7 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
         $evidenceLicensed = false;
     }
 
-    $tabs = new \Ease\TWB\Tabs('EviTabs');
+    $tabs = new \Ease\TWB5\Tabs('EviTabs');
     if ($evidenceLicensed === true) {
         $tabs->addTab(_('Listing'), new \Flexplorer\ui\DataTable($evobj));
     }
@@ -60,7 +60,7 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
 
     if ($evidenceLicensed === true) {
         $tabs->addTab(_('Query'),
-                new \Ease\TWB\Panel(_('User Query'), 'warning',
+                new \Ease\TWB5\Panel(_('User Query'), 'warning',
                         new ui\SendForm($url, $method, $body)));
         $overviewUrl = $evobj->getEvidenceUrl() . '/properties.html?inDesktopApp=true';
 
@@ -98,13 +98,13 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
     }
 
     if (is_null($myEvidenceRaw)) {
-        $state = new \Ease\TWB\Label('danger', _('no'));
+        $state = new \Ease\TWB5\Label('danger', _('no'));
     } else {
-        $state = new \Ease\TWB\Label('success', _('yes'));
+        $state = new \Ease\TWB5\Label('success', _('yes'));
     }
     $evidenceTable->addRowColumns([_('Allowed by license'), $state]);
 
-    $infoRow = new \Ease\TWB\Row();
+    $infoRow = new \Ease\TWB5\Row();
     $infoRow->addColumn(6, $evidenceTable);
 
     $relationsList = new \Ease\Html\UlTag();
@@ -132,13 +132,13 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
         }
     }
     $relations = $infoRow->addColumn(6,
-            new \Ease\TWB\Panel(_('Relations'), 'info', $relationsList));
+            new \Ease\TWB5\Panel(_('Relations'), 'info', $relationsList));
 
     $relations->addItem(
             [
-                new \Ease\TWB\LinkButton($evobj->getEvidenceURL() . '/schema-import.xsd',
+                new \Ease\TWB5\LinkButton($evobj->getEvidenceURL() . '/schema-import.xsd',
                         'XSD Import'),
-                new \Ease\TWB\LinkButton($evobj->getEvidenceURL() . '/schema-export.xsd',
+                new \Ease\TWB5\LinkButton($evobj->getEvidenceURL() . '/schema-export.xsd',
                         'XSD Export')
             ]
     );
@@ -148,7 +148,7 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
     if (array_key_exists('stitky', $evobj->getColumnsInfo())) {
         $evobj->setDataValue('stitky',
                 \AbraFlexi\Stitek::getAvailbleLabels($evobj));
-        $infoTab->addItem(new \Ease\TWB\Panel(_('Labels Availble'), 'info',
+        $infoTab->addItem(new \Ease\TWB5\Panel(_('Labels Availble'), 'info',
                         new ui\LabelGroup($evobj)));
     }
 
