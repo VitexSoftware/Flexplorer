@@ -7,8 +7,8 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class ShowResponse extends \Ease\Html\DivTag {
-
+class ShowResponse extends \Ease\Html\DivTag
+{
     /**
      * Class for AbraFlexi interaction
      * @var \AbraFlexi\RW
@@ -21,13 +21,15 @@ class ShowResponse extends \Ease\Html\DivTag {
      * @param string $url
      * @param \AbraFlexi\RW $engine custom engine for request performing
      */
-    public function __construct($engine) {
+    public function __construct($engine)
+    {
         $this->sender = $engine;
         $this->setTagClass('ResponseShow');
         parent::__construct();
     }
 
-    public function finalize() {
+    public function finalize()
+    {
         $formatedResponse = '';
         /* @var $webPage \Ease\TWB5\WebPage */
         $webPage = WebPage::singleton();
@@ -42,27 +44,35 @@ class ShowResponse extends \Ease\Html\DivTag {
                     $format = 'json';
                     $formated = self::jsonpp($this->sender->lastCurlResponse);
                     $formatedResponse = $formated;
-                    $formated = preg_replace('/ref":"(.*)"/',
-                            'ref":"<a href="query.php?show=result&url=' . $this->sender->url . '$1">$1</a>"',
-                            $formated);
-                    $formated = preg_replace('/@evidence":"(.*)"/',
-                            '@evidence":"<a href="evidence.php?evidence=$1">$1</a>"',
-                            $formated);
+                    $formated = preg_replace(
+                        '/ref":"(.*)"/',
+                        'ref":"<a href="query.php?show=result&url=' . $this->sender->url . '$1">$1</a>"',
+                        $formated
+                    );
+                    $formated = preg_replace(
+                        '/@evidence":"(.*)"/',
+                        '@evidence":"<a href="evidence.php?evidence=$1">$1</a>"',
+                        $formated
+                    );
                     break;
                 case 'application/xml':
                 case 'xml':
                     $format = 'xml';
                     $formatedResponse = $this->sender->lastCurlResponse;
                     $formated = htmlentities($this->sender->lastCurlResponse);
-                    $formated = preg_replace('/ref=&quot;(.*)&quot;/',
-                            'ref=&quot;<a href="query.php?show=result&url=' . $this->sender->url . '$1">$1</a>&quot;',
-                            $formated);
-                    $formated = preg_replace('/evidence=&quot;(.*)&quot;/',
-                            'evidence=&quot;<a href="evidence.php?evidence=$1">$1</a>&quot;',
-                            $formated);
+                    $formated = preg_replace(
+                        '/ref=&quot;(.*)&quot;/',
+                        'ref=&quot;<a href="query.php?show=result&url=' . $this->sender->url . '$1">$1</a>&quot;',
+                        $formated
+                    );
+                    $formated = preg_replace(
+                        '/evidence=&quot;(.*)&quot;/',
+                        'evidence=&quot;<a href="evidence.php?evidence=$1">$1</a>&quot;',
+                        $formated
+                    );
                     break;
                 case 'txt':
-                default :
+                default:
                     $formated = $this->sender->lastCurlResponse;
                     break;
             }
@@ -90,15 +100,23 @@ function downloadResponse(){
     a.click(); // Trigger a click on the element
 }
                         ', null, false);
-                $this->addItem(new \Ease\Html\DivTag($formatedResponse,
-                                ['id' => 'formatedResponse', 'style' => 'visibility: hidden; height: 0px;']));
-                $this->addItem(new \Ease\TWB5\LinkButton('#',
-                                _('Make new request from this response') . new \Ease\TWB5\GlyphIcon('repeat'),
-                                'success', ['onClick' => 'responseToRequest();']));
+                $this->addItem(new \Ease\Html\DivTag(
+                    $formatedResponse,
+                    ['id' => 'formatedResponse', 'style' => 'visibility: hidden; height: 0px;']
+                ));
+                $this->addItem(new \Ease\TWB5\LinkButton(
+                    '#',
+                    _('Make new request from this response') . new \Ease\TWB5\GlyphIcon('repeat'),
+                    'success',
+                    ['onClick' => 'responseToRequest();']
+                ));
 
-                $this->addItem(new \Ease\TWB5\LinkButton('#',
-                                _('Save this response to file') . new \Ease\TWB5\GlyphIcon('floppy-save'),
-                                'success', ['onClick' => 'downloadResponse();']));
+                $this->addItem(new \Ease\TWB5\LinkButton(
+                    '#',
+                    _('Save this response to file') . new \Ease\TWB5\GlyphIcon('floppy-save'),
+                    'success',
+                    ['onClick' => 'downloadResponse();']
+                ));
             }
         }
 
@@ -124,7 +142,8 @@ function downloadResponse(){
      *
      * @return string
      */
-    static public function jsonpp($json, $istr = '  ') {
+    public static function jsonpp($json, $istr = '  ')
+    {
         $result = '';
         for ($p = $q = $i = 0; isset($json[$p]); $p++) {
             $json[$p] == '"' && ($p > 0 ? $json[$p - 1] : '') != '\\' && $q = !$q;
@@ -132,14 +151,18 @@ function downloadResponse(){
                 continue;
             }
             if (strchr('}]', $json[$p]) && !$q && $i--) {
-                strchr('{[', $json[$p - 1]) || $result .= "\n" . str_repeat($istr,
-                                $i);
+                strchr('{[', $json[$p - 1]) || $result .= "\n" . str_repeat(
+                    $istr,
+                    $i
+                );
             }
             $result .= $json[$p];
             if (strchr(',{[', $json[$p]) && !$q) {
-                $i += strchr('{[', $json[$p]) === FALSE ? 0 : 1;
-                strchr('}]', $json[$p + 1]) || $result .= "\n" . str_repeat($istr,
-                                $i);
+                $i += strchr('{[', $json[$p]) === false ? 0 : 1;
+                strchr('}]', $json[$p + 1]) || $result .= "\n" . str_repeat(
+                    $istr,
+                    $i
+                );
             }
         }
         return $result;
@@ -151,81 +174,119 @@ function downloadResponse(){
      * @param int $code ex. 200|500|...
      * @return string code message
      */
-    static public function responseCodeMessage($code) {
+    public static function responseCodeMessage($code)
+    {
         switch ($code) {
-            case 100: $text = 'Continue';
+            case 100:
+                $text = 'Continue';
                 break;
-            case 101: $text = 'Switching Protocols';
+            case 101:
+                $text = 'Switching Protocols';
                 break;
-            case 200: $text = 'OK';
+            case 200:
+                $text = 'OK';
                 break;
-            case 201: $text = 'Created';
+            case 201:
+                $text = 'Created';
                 break;
-            case 202: $text = 'Accepted';
+            case 202:
+                $text = 'Accepted';
                 break;
-            case 203: $text = 'Non-Authoritative Information';
+            case 203:
+                $text = 'Non-Authoritative Information';
                 break;
-            case 204: $text = 'No Content';
+            case 204:
+                $text = 'No Content';
                 break;
-            case 205: $text = 'Reset Content';
+            case 205:
+                $text = 'Reset Content';
                 break;
-            case 206: $text = 'Partial Content';
+            case 206:
+                $text = 'Partial Content';
                 break;
-            case 300: $text = 'Multiple Choices';
+            case 300:
+                $text = 'Multiple Choices';
                 break;
-            case 301: $text = 'Moved Permanently';
+            case 301:
+                $text = 'Moved Permanently';
                 break;
-            case 302: $text = 'Moved Temporarily';
+            case 302:
+                $text = 'Moved Temporarily';
                 break;
-            case 303: $text = 'See Other';
+            case 303:
+                $text = 'See Other';
                 break;
-            case 304: $text = 'Not Modified';
+            case 304:
+                $text = 'Not Modified';
                 break;
-            case 305: $text = 'Use Proxy';
+            case 305:
+                $text = 'Use Proxy';
                 break;
-            case 400: $text = 'Bad Request';
+            case 400:
+                $text = 'Bad Request';
                 break;
-            case 401: $text = 'Unauthorized';
+            case 401:
+                $text = 'Unauthorized';
                 break;
-            case 402: $text = 'Payment Required';
+            case 402:
+                $text = 'Payment Required';
                 break;
-            case 403: $text = 'Forbidden';
+            case 403:
+                $text = 'Forbidden';
                 break;
-            case 404: $text = 'Not Found';
+            case 404:
+                $text = 'Not Found';
                 break;
-            case 405: $text = 'Method Not Allowed';
+            case 405:
+                $text = 'Method Not Allowed';
                 break;
-            case 406: $text = 'Not Acceptable';
+            case 406:
+                $text = 'Not Acceptable';
                 break;
-            case 407: $text = 'Proxy Authentication Required';
+            case 407:
+                $text = 'Proxy Authentication Required';
                 break;
-            case 408: $text = 'Request Time-out';
+            case 408:
+                $text = 'Request Time-out';
                 break;
-            case 409: $text = 'Conflict';
+            case 409:
+                $text = 'Conflict';
                 break;
-            case 410: $text = 'Gone';
+            case 410:
+                $text = 'Gone';
                 break;
-            case 411: $text = 'Length Required';
+            case 411:
+                $text = 'Length Required';
                 break;
-            case 412: $text = 'Precondition Failed';
+            case 412:
+                $text = 'Precondition Failed';
                 break;
-            case 413: $text = 'Request Entity Too Large';
+            case 413:
+                $text = 'Request Entity Too Large';
                 break;
-            case 414: $text = 'Request-URI Too Large';
+            case 414:
+                $text = 'Request-URI Too Large';
                 break;
-            case 415: $text = 'Unsupported Media Type';
+            case 415:
+                $text = 'Unsupported Media Type';
                 break;
-            case 500: $text = 'Internal Server Error';
+            case 500:
+                $text = 'Internal Server Error';
                 break;
-            case 501: $text = 'Not Implemented';
+            case 501:
+                $text = 'Not Implemented';
                 break;
-            case 502: $text = 'Bad Gateway';
+            case 502:
+                $text = 'Bad Gateway';
                 break;
-            case 503: $text = 'Service Unavailable';
+            case 503:
+                $text = 'Service Unavailable';
                 break;
-            case 504: $text = 'Gateway Time-out';
+            case 504:
+                $text = 'Gateway Time-out';
                 break;
-            case 505: $text = 'HTTP Version not supported';
+            case 505:
+                $text = 'HTTP Version not supported';
                 break;
             default:
                 $text = 'Unknown http status code "' . htmlentities($code) . '"';
@@ -236,11 +297,12 @@ function downloadResponse(){
 
     /**
      * Make Link from alle evidencies names
-     * 
+     *
      * @param string $formated
      * @return string with links
      */
-    public function addEvidenciesLinks($formated, $separator = '"') {
+    public function addEvidenciesLinks($formated, $separator = '"')
+    {
         $links = [];
         $names = [];
         foreach (\AbraFlexi\EvidenceList::$name as $code => $name) {
@@ -252,13 +314,13 @@ function downloadResponse(){
 
     /**
      * Make link from evidence name
-     * 
+     *
      * @param string $evidence
      * @param string $name Human readable name
      * @return string hyperlink code to evidence
      */
-    static public function addEvidenceLink($evidence, $name = '') {
+    public static function addEvidenceLink($evidence, $name = '')
+    {
         return '<a href="evidence.php?evidence=' . $evidence . '" title="' . $name . '">' . $evidence . '</a>';
     }
-
 }

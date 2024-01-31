@@ -13,14 +13,15 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class FlexiURL extends \Ease\Html\DivTag {
-
+class FlexiURL extends \Ease\Html\DivTag
+{
     /**
      *
      * @param type $url
      * @param type $properties
      */
-    public function __construct($url = null, $properties = null) {
+    public function __construct($url = null, $properties = null)
+    {
         if (is_null($url)) {
             $url = WebPage::singleton()->getRequestValue('url');
         }
@@ -46,5 +47,4 @@ class FlexiURL extends \Ease\Html\DivTag {
         });
     }, 1000);", null, true);
     }
-
 }

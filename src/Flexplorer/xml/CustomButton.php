@@ -13,8 +13,7 @@ namespace Flexplorer\xml;
  *
  * @author vitex
  */
-class CustomButton extends \Ease\Html\PairTag {
-
+class CustomButton extends \Ease\Html\PairTag
+{
     public $tagType = 'custom-button';
-
 }

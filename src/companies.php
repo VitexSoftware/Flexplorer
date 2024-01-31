@@ -24,4 +24,3 @@ $oPage->setRequestURL($cListing->companer->curlInfo['url']);
 $oPage->addItem(new ui\PageBottom());
 
 $oPage->draw();
-

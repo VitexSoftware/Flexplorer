@@ -8,6 +8,7 @@ namespace Flexplorer;
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Vitex Software
  */
+
 require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
@@ -42,20 +43,37 @@ $oPage->addItem(new ui\PageTop(_('Record Delete')));
 
 $buttonRow = new \Ease\TWB5\Row();
 $buttonRow->addColumn(4);
-$buttonRow->addColumn(4,
-        new \Ease\TWB5\LinkButton('evidence.php?evidence=' . $evidence,
-                _('Keep record') . ' ' . new \Ease\TWB5\GlyphIcon('ok-sign'), 'info',
-                ['class' => 'btn btn-default clearfix pull-right']));
-$buttonRow->addColumn(4,
-        new \Ease\TWB5\LinkButton('delete.php?evidence=' . $evidence . '&delete=true&id=' . $id,
-                _('Delete record') . ' ' . new \Ease\TWB5\GlyphIcon('remove-sign'), 'danger'));
+$buttonRow->addColumn(
+    4,
+    new \Ease\TWB5\LinkButton(
+        'evidence.php?evidence=' . $evidence,
+        _('Keep record') . ' ' . new \Ease\TWB5\GlyphIcon('ok-sign'),
+        'info',
+        ['class' => 'btn btn-default clearfix pull-right']
+    )
+);
+$buttonRow->addColumn(
+    4,
+    new \Ease\TWB5\LinkButton(
+        'delete.php?evidence=' . $evidence . '&delete=true&id=' . $id,
+        _('Delete record') . ' ' . new \Ease\TWB5\GlyphIcon('remove-sign'),
+        'danger'
+    )
+);
 
 $deleteTabs = new \Ease\TWB5\Tabs('DeleteTabs');
 $deleteTabs->addTab(_('Overview'), new ui\RecordShow($engine, $buttonRow));
-$deleteTabs->addTab(_('AbraFlexi'),
-        new \Ease\Html\IframeTag(str_replace('.json', '.html',
-                        $engine->getEvidenceURL() . '/' . $engine->getMyKey() . '.' . $engine->format . '?inDesktopApp=true'),
-                ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
+$deleteTabs->addTab(
+    _('AbraFlexi'),
+    new \Ease\Html\IframeTag(
+        str_replace(
+            '.json',
+            '.html',
+            $engine->getEvidenceURL() . '/' . $engine->getMyKey() . '.' . $engine->format . '?inDesktopApp=true'
+        ),
+        ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]
+    )
+);
 
 $oPage->container->addItem($deleteTabs);
 

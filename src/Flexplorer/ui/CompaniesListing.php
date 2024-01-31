@@ -13,8 +13,8 @@ namespace Flexplorer\ui;
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
-class CompaniesListing extends \Ease\Html\DivTag {
-
+class CompaniesListing extends \Ease\Html\DivTag
+{
     /**
      *
      * @var \Ease\Html\ThTag
@@ -40,9 +40,12 @@ class CompaniesListing extends \Ease\Html\DivTag {
      * @param string $regex
      * @param array $properties
      */
-    public function __construct($properties = []) {
-        parent::__construct(new \Ease\Html\H1Tag(_('Companies Listing')),
-                $properties);
+    public function __construct($properties = [])
+    {
+        parent::__construct(
+            new \Ease\Html\H1Tag(_('Companies Listing')),
+            $properties
+        );
         $this->contents = new \Ease\Html\TableTag('', ['class' => 'table']);
         $this->companer = new \AbraFlexi\Company(null, ['company' => null]);
         foreach ($this->getListing() as $companyInfo) {
@@ -53,7 +56,8 @@ class CompaniesListing extends \Ease\Html\DivTag {
         $this->addItem($this->contents);
     }
 
-    public function getListing() {
+    public function getListing()
+    {
         $companies = [];
         $companiesRaw = $this->companer->getFlexiData();
         if (count($companiesRaw)) {
@@ -62,16 +66,21 @@ class CompaniesListing extends \Ease\Html\DivTag {
         return $companies;
     }
 
-    public function companyRow($companyDataRaw) {
-        $companyData['name'] = new \Ease\Html\ATag('company.php?company=' . $companyDataRaw['dbNazev'],
-                $companyDataRaw['nazev']);
+    public function companyRow($companyDataRaw)
+    {
+        $companyData['name'] = new \Ease\Html\ATag(
+            'company.php?company=' . $companyDataRaw['dbNazev'],
+            $companyDataRaw['nazev']
+        );
 
         $created = \AbraFlexi\RO::flexiDateTimeToDateTime($companyDataRaw['createDt'])->getTimestamp();
         $companyData['created'] = strftime('%a %d. %m. %Y  - %X', $created) . ' ' . '(' . _('before') . ' ' . new \Ease\TWB5\Widgets\LiveAge($created) . ')';
-        $companyData['databaze'] = new CopyToClipBoard(new \Ease\Html\InputTextTag('dbNazev',
-                        $companyDataRaw['dbNazev'], ['id' => 'dbNazev', 'readonly']));
+        $companyData['databaze'] = new CopyToClipBoard(new \Ease\Html\InputTextTag(
+            'dbNazev',
+            $companyDataRaw['dbNazev'],
+            ['id' => 'dbNazev', 'readonly']
+        ));
 
         return $companyData;
     }
-
 }

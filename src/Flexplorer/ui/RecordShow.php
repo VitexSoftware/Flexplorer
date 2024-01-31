@@ -9,21 +9,28 @@
 
 namespace Flexplorer\ui;
 
-class RecordShow extends \Ease\TWB5\Panel {
-
+class RecordShow extends \Ease\TWB5\Panel
+{
     /**
      * Zobrazí přehled záznamu.
      *
      * @param \Flexplorer\Flexplorer $recordObject
      * @param mixed $bootom Obsah spodní části panelu
      */
-    public function __construct($recordObject, $bottom = null) {
+    public function __construct($recordObject, $bottom = null)
+    {
         $evidence = $recordObject->getEvidence();
         parent::__construct(
-                new \Ease\Html\H3Tag(
-                        new \Ease\Html\ATag('evidence.php?evidence=' . $evidence,
-                                $evidence . ' ' . $recordObject)
-                ), 'warning', null, $bottom);
+            new \Ease\Html\H3Tag(
+                new \Ease\Html\ATag(
+                    'evidence.php?evidence=' . $evidence,
+                    $evidence . ' ' . $recordObject
+                )
+            ),
+            'warning',
+            null,
+            $bottom
+        );
 
         $this->addItem('ExtID:' . $recordObject->getExternalID());
 
@@ -39,13 +46,14 @@ class RecordShow extends \Ease\TWB5\Panel {
             }
             if (isset($kinfo['title'])) {
                 $def = new \Ease\Html\DlTag();
-                $def->addDef($kinfo['title'],
-                        $recordObject->getDataValue($keyword));
+                $def->addDef(
+                    $kinfo['title'],
+                    $recordObject->getDataValue($keyword)
+                );
                 $row->addItem(new \Ease\TWB5\Col(4, $def));
             }
         }
 
         $this->addItem($row);
     }
-
 }

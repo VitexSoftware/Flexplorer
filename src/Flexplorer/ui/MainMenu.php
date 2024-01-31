@@ -14,12 +14,13 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class MainMenu extends \Ease\Html\DivTag {
-
+class MainMenu extends \Ease\Html\DivTag
+{
     /**
      * MainMenu.
      */
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct(null, ['id' => 'MainMenu']);
     }
 
@@ -31,11 +32,16 @@ class MainMenu extends \Ease\Html\DivTag {
      *
      * @return string
      */
-    protected function getMenuList($source, $icon = '') {
+    protected function getMenuList($source, $icon = '')
+    {
         $keycolumn = $source->getkeyColumn();
         $namecolumn = $source->nameColumn;
-        $lister = $source->getColumnsFromSQL([$source->getkeyColumn(), $namecolumn],
-                [$keycolumn => true], $namecolumn, $keycolumn);
+        $lister = $source->getColumnsFromSQL(
+            [$source->getkeyColumn(), $namecolumn],
+            [$keycolumn => true],
+            $namecolumn,
+            $keycolumn
+        );
 
         $itemList = [];
         if ($lister) {
@@ -50,7 +56,8 @@ class MainMenu extends \Ease\Html\DivTag {
     /**
      * Insert menu.
      */
-    public function afterAdd() {
+    public function afterAdd()
+    {
         $nav = $this->addItem(new BootstrapMenu());
         $webPage = WebPage::singleton();
         $myCompany = isset($_SESSION['company']) ? $_SESSION['company'] : '';
@@ -111,7 +118,6 @@ class MainMenu extends \Ease\Html\DivTag {
                 }
 
                 if (!array_key_exists($_SESSION['company'], $companiesToMenu)) {
-
                     $lister = new \AbraFlexi\EvidenceList(null, $_SESSION);
                     $evidences = $lister->getFlexiData();
 
@@ -122,19 +128,22 @@ class MainMenu extends \Ease\Html\DivTag {
                         asort($evidenciesToMenu);
                         $_SESSION['evidence-menu'][$_SESSION['company']] = $evidenciesToMenu;
                     } else {
-                        $lister->addStatusMessage(_('Loading evidence list failed'),
-                                'error');
+                        $lister->addStatusMessage(
+                            _('Loading evidence list failed'),
+                            'error'
+                        );
                     }
                 }
 
 
                 if (array_key_exists('', $companiesToMenu)) {
-                    
                 }
 
-                $evidenciesToMenu = array_merge(['evidences.php' => _('Overview')],
-                        WebPage::singleton()->getEvidenceHistory(),
-                        $_SESSION['evidence-menu'][$_SESSION['company']]);
+                $evidenciesToMenu = array_merge(
+                    ['evidences.php' => _('Overview')],
+                    WebPage::singleton()->getEvidenceHistory(),
+                    $_SESSION['evidence-menu'][$_SESSION['company']]
+                );
 
                 if (count($evidenciesToMenu)) {
                     $nav->addDropDownMenu(_('Evidence'), $evidenciesToMenu);
@@ -142,10 +151,11 @@ class MainMenu extends \Ease\Html\DivTag {
             }
 
 
-            $nav->addDropDownMenu(_('Tools'),
-                    [
+            $nav->addDropDownMenu(
+                _('Tools'),
+                [
                         'query.php' => _('Query'),
-//                'xslt.php' => _('XSLT'),
+                //                'xslt.php' => _('XSLT'),
                         'buttons.php' => _('Buttons'),
                         'changesapi.php' => _('Changes API'),
                         'changes.php' => _('Changes Recieved'),
@@ -153,19 +163,20 @@ class MainMenu extends \Ease\Html\DivTag {
                         'ucetniobdobi.php' => _('Accounting period'),
                         'permissions.php' => _('Role Permissions'),
                         'backups.php' => _('Backups')
-            ]);
+                ]
+            );
         }
     }
 
     /**
      * Přidá do stránky javascript pro skrývání oblasti stavových zpráv.
      */
-    public function finalize() {
+    public function finalize()
+    {
         if (\Ease\Shared::user()->isLogged()) { //Authenticated user
             $this->addItem(new Breadcrumb());
         }
         if (!empty(\Ease\Shared::logger()->getMessages())) {
-
             WebPage::singleton()->addCss('
 #smdrag { height: 8px; 
           background-image:  url( images/slidehandle.png ); 
@@ -182,10 +193,12 @@ class MainMenu extends \Ease\Html\DivTag {
             $this->addItem(new \Ease\Html\DivTag(null, ['id' => 'smdrag', 'style' => 'margin-bottom: 5px']));
             \Ease\Shared::logger()->cleanMessages();
             WebPage::singleton()->addCss('.dropdown-menu { overflow-y: auto } ');
-            WebPage::singleton()->addJavaScript("$('.dropdown-menu').css('max-height',$(window).height()-100);",
-                    null, true);
+            WebPage::singleton()->addJavaScript(
+                "$('.dropdown-menu').css('max-height',$(window).height()-100);",
+                null,
+                true
+            );
             WebPage::singleton()->includeJavaScript('js/slideupmessages.js');
         }
     }
-
 }

@@ -21,8 +21,11 @@ $oPage->addItem(new ui\PageTop(sprintf(_('Label %s occurencies'), $label)));
 if (isset($label)) {
     if (isset($evidence)) {
         $evobj = new SearchFlexplorer(['evidence' => $evidence, 'stitky' => $label]);
-        $oPage->container->addItem(new \Ease\TWB5\LinkButton('listbylabel.php?label=' . $label,
-                        _('All Evidencies'), 'success'));
+        $oPage->container->addItem(new \Ease\TWB5\LinkButton(
+            'listbylabel.php?label=' . $label,
+            _('All Evidencies'),
+            'success'
+        ));
     } else {
         $evobj = new SearchFlexplorer(['stitky' => $label]);
     }
@@ -39,13 +42,16 @@ if (isset($label)) {
 
 foreach ($evobj->getData() as $evidence => $occurencies) {
     if (count($occurencies)) {
-        $oPage->container->addItem(new \Ease\Html\H2Tag(new \Ease\Html\ATag('evidence.php?evidence=' . $evidence,
-                                $evidence)));
-        $results = new \Ease\Html\TableTag(null,
-                ['class' => 'table']);
+        $oPage->container->addItem(new \Ease\Html\H2Tag(new \Ease\Html\ATag(
+            'evidence.php?evidence=' . $evidence,
+            $evidence
+        )));
+        $results = new \Ease\Html\TableTag(
+            null,
+            ['class' => 'table']
+        );
         $evobj->evidenceStructure = $evobj->getColumnsInfo();
         foreach ($evobj->htmlizeData($occurencies) as $data) {
-
             $results->addRowColumns($data);
         }
         $oPage->container->addItem($results);
@@ -56,4 +62,3 @@ foreach ($evobj->getData() as $evidence => $occurencies) {
 $oPage->addItem(new ui\PageBottom());
 
 $oPage->draw();
-

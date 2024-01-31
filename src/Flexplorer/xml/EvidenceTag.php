@@ -13,10 +13,10 @@ namespace Flexplorer\xml;
  *
  * @author vitex
  */
-class EvidenceTag extends \Ease\Html\PairTag {
-
-    public function __construct($content = null) {
+class EvidenceTag extends \Ease\Html\PairTag
+{
+    public function __construct($content = null)
+    {
         parent::__construct('evidence', null, $content);
     }
-
 }

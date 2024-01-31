@@ -7,16 +7,22 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class FXPreloader extends \Ease\Html\DivTag {
-
-    public function __construct($id = null) {
-        parent::__construct(null,
-                ['class' => 'loader', 'data-initialize' => 'loader', 'id' => $id]);
+class FXPreloader extends \Ease\Html\DivTag
+{
+    public function __construct($id = null)
+    {
+        parent::__construct(
+            null,
+            ['class' => 'loader', 'data-initialize' => 'loader', 'id' => $id]
+        );
     }
 
-    public function finalize() {
-        WebPage::singleton()->includeCss('https://cdnjs.cloudflare.com/ajax/libs/fuelux/3.16.7/css/fuelux.css',
-                true);
+    public function finalize()
+    {
+        WebPage::singleton()->includeCss(
+            'https://cdnjs.cloudflare.com/ajax/libs/fuelux/3.16.7/css/fuelux.css',
+            true
+        );
         WebPage::singleton()->includeJavascript('https://cdnjs.cloudflare.com/ajax/libs/fuelux/3.16.7/js/fuelux.js');
         WebPage::singleton()->addJavascript("$('#" . $this->getTagID() . "').loader();");
         WebPage::singleton()->addCSS('
@@ -32,5 +38,4 @@ class FXPreloader extends \Ease\Html\DivTag {
 }​
             ');
     }
-
 }

@@ -14,8 +14,8 @@ namespace Flexplorer;
  *
  * @author vitex
  */
-class User extends \Ease\User {
-
+class User extends \Ease\User
+{
     /**
      * AbraFlexi engine
      * @var \AbraFlexi\RO
@@ -33,7 +33,8 @@ class User extends \Ease\User {
      * Uživatel autentizovaný vůči abraflexi
      * @param int $userID
      */
-    public function __construct($userID = null) {
+    public function __construct($userID = null)
+    {
         parent::__construct();
         $this->abraFlexi = new \AbraFlexi\RO();
 //        $this->abraFlexi->setEvidence('uzivatel');
@@ -41,11 +42,12 @@ class User extends \Ease\User {
 
     /**
      * Perform logIn action
-     * 
+     *
      * @param array $creds
      * @return boolean
      */
-    public function tryToLogin($creds) {
+    public function tryToLogin($creds)
+    {
         $loginStatus = false;
         $this->abraFlexi->disconnect();
         $this->abraFlexi->user = trim($creds['login']);
@@ -78,10 +80,11 @@ class User extends \Ease\User {
 
     /**
      * Provede přihlášení uživatele
-     * 
+     *
      * @return type
      */
-    public function loginSuccess() {
+    public function loginSuccess()
+    {
         $_SESSION['user'] = $this->abraFlexi->user;
         $_SESSION['password'] = $this->abraFlexi->password;
         $_SESSION['url'] = $this->abraFlexi->url;
@@ -94,5 +97,4 @@ class User extends \Ease\User {
 
         return parent::loginSuccess();
     }
-
 }

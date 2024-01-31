@@ -13,16 +13,16 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class FlexiBsGrid extends BsGrid {
-
+class FlexiBsGrid extends BsGrid
+{
     /**
      * Zdroj dat
      * @var \Flexplorer\Flexplorer
      */
     public $dataSource = null;
 
-    public function __construct($dataSource, $properties = null) {
+    public function __construct($dataSource, $properties = null)
+    {
         parent::__construct($dataSource->getEvidence(), $properties);
     }
-
 }

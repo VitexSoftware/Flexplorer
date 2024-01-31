@@ -8,6 +8,7 @@ namespace Flexplorer;
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016-2021 Vitex Software
  */
+
 require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
@@ -31,7 +32,7 @@ foreach ($dataRaw as $row => $columns) {
     $dataRaw[$row]['lastUpdate'] = $dataRaw[$row]['lastUpdate']->format(\AbraFlexi\RO::$DateTimeFormat);
 }
 
-echo json_encode(['recordsTotal' => $engine->rowCount, 'recordsFiltered'=> $engine->rowCount, 'data' => $dataRaw]);
+echo json_encode(['recordsTotal' => $engine->rowCount, 'recordsFiltered' => $engine->rowCount, 'data' => $dataRaw]);
 
 exit;
 

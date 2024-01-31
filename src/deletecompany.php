@@ -24,4 +24,3 @@ if ($saver->deleteFromAbraFlexi()) {
 }
 
 $oPage->redirect('index.php');
-

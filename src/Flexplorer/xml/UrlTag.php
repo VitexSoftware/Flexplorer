@@ -13,10 +13,10 @@ namespace Flexplorer\xml;
  *
  * @author vitex
  */
-class UrlTag extends \Ease\Html\PairTag {
-
-    public function __construct($url) {
+class UrlTag extends \Ease\Html\PairTag
+{
+    public function __construct($url)
+    {
         parent::__construct('url', null, '<![CDATA[' . $url . ']]>');
     }
-
 }

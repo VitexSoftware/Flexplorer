@@ -12,8 +12,8 @@ namespace Flexplorer;
 /**
  * Flexplorer main data handling class
  */
-class Flexplorer extends \AbraFlexi\RW {
-
+class Flexplorer extends \AbraFlexi\RW
+{
     /**
      * @var array Pole HTTP hlaviček odesílaných s každým požadavkem
      */
@@ -29,7 +29,8 @@ class Flexplorer extends \AbraFlexi\RW {
      *
      * @param type $evidence
      */
-    public function __construct($evidence = null) {
+    public function __construct($evidence = null)
+    {
         if (is_null($evidence)) {
             $evidence = $this->getEvidence();
         }
@@ -46,10 +47,11 @@ class Flexplorer extends \AbraFlexi\RW {
      * @param string $urlRaw
      *
      * @deprecated since version 1.0
-     * 
+     *
      * @return string url with default params added
      */
-    public function addDefaultUrlParams($urlRaw) {
+    public function addDefaultUrlParams($urlRaw)
+    {
         return \Ease\Functions::addUrlParams($urlRaw, $this->defaultUrlParams);
     }
 
@@ -59,7 +61,8 @@ class Flexplorer extends \AbraFlexi\RW {
      * @param array $data
      * @return array
      */
-    public function htmlizeData($data) {
+    public function htmlizeData($data)
+    {
         if (is_array($data) && count($data)) {
             foreach ($data as $rowId => $row) {
                 $htmlized = $this->htmlizeRow($row);
@@ -67,7 +70,6 @@ class Flexplorer extends \AbraFlexi\RW {
                 if (is_array($htmlized)) {
                     foreach ($htmlized as $key => $value) {
                         if (!is_null($value)) {
-
                             if ($key == 'stitky') {
                                 $data[$rowId][$key] = '';
                                 foreach (is_string($value) ? \AbraFlexi\Stitek::listToArray($value) : $value as $stitek) {
@@ -99,13 +101,18 @@ class Flexplorer extends \AbraFlexi\RW {
      * @param array $row
      * @return array
      */
-    public function htmlizeRow($row) {
+    public function htmlizeRow($row)
+    {
         if (is_array($row) && count($row)) {
             foreach ($row as $key => $value) {
                 $fieldType = 'STRING';
 
-                if (isset($this->evidenceStructure[$key]['type']) && !strstr($key,
-                                '@')) {
+                if (
+                    isset($this->evidenceStructure[$key]['type']) && !strstr(
+                        $key,
+                        '@'
+                    )
+                ) {
                     $fieldType = $this->evidenceStructure[$key]['type'];
                 }
 
@@ -127,15 +134,18 @@ class Flexplorer extends \AbraFlexi\RW {
                         break;
                     case 'RELATION':
                         if (isset($this->evidenceStructure[$key]['url'])) {
-                            $tmp = explode('/',
-                                    $this->evidenceStructure[$key]['url']);
+                            $tmp = explode(
+                                '/',
+                                $this->evidenceStructure[$key]['url']
+                            );
                             $revidence = 'evidence.php?evidence=' . end($tmp);
-                            $row[$key] = '<a href="' . $revidence . '">' . \Ease\TWB5\Part::glyphIcon('link',
-                                            ['title' => $this->evidenceStructure[$key]['fkName']])->__toString() . '</a> ' . $value;
+                            $row[$key] = '<a href="' . $revidence . '">' . \Ease\TWB5\Part::glyphIcon(
+                                'link',
+                                ['title' => $this->evidenceStructure[$key]['fkName']]
+                            )->__toString() . '</a> ' . $value;
                         }
                         break;
                     case 'SELECT':
-
                         break;
                     case 'IDLIST':
                         if (!is_array($value) && strlen($value)) {
@@ -145,15 +155,21 @@ class Flexplorer extends \AbraFlexi\RW {
                                 $values = ['0' => $value];
                             }
                             if (!is_array($values)) {
-                                $this->addStatusMessage(sprintf(_('Unserialization error %s #%s '),
-                                                $value, $key));
+                                $this->addStatusMessage(sprintf(
+                                    _('Unserialization error %s #%s '),
+                                    $value,
+                                    $key
+                                ));
                             }
                             if (isset($this->keywordsInfo[$key]['refdata'])) {
                                 $idcolumn = $this->keywordsInfo[$key]['refdata']['idcolumn'];
                                 $table = $this->keywordsInfo[$key]['refdata']['table'];
                                 $searchColumn = $this->keywordsInfo[$key]['refdata']['captioncolumn'];
-                                $target = str_replace('_id', '.php',
-                                        $idcolumn);
+                                $target = str_replace(
+                                    '_id',
+                                    '.php',
+                                    $idcolumn
+                                );
                                 foreach ($values as $id => $name) {
                                     if ($id) {
                                         $values[$id] = '<a title="' . $table . '" href="' . $target . '?' . $idcolumn . '=' . $id . '">' . $name . '</a>';
@@ -166,7 +182,7 @@ class Flexplorer extends \AbraFlexi\RW {
                             $row[$key] = $value;
                         }
                         break;
-                    default :
+                    default:
                         if (isset($this->keywordsInfo[$key]['refdata']) && strlen(trim($value))) {
                             $table = $this->keywordsInfo[$key]['refdata']['table'];
                             $searchColumn = $this->keywordsInfo[$key]['refdata']['captioncolumn'];
@@ -181,8 +197,10 @@ class Flexplorer extends \AbraFlexi\RW {
             }
         }
 
-        $row['external-ids'] = isset($row['external-ids']) ? implode(',',
-                        $row['external-ids']) : '';
+        $row['external-ids'] = isset($row['external-ids']) ? implode(
+            ',',
+            $row['external-ids']
+        ) : '';
         return $row;
     }
 
@@ -192,7 +210,8 @@ class Flexplorer extends \AbraFlexi\RW {
      * @param string $what co hledat
      * @return string vyhledávací výraz
      */
-    public function searchString($what) {
+    public function searchString($what)
+    {
         $query = '';
         $conds = [];
         foreach ($this->evidenceStructure as $columnInfo) {
@@ -207,8 +226,10 @@ class Flexplorer extends \AbraFlexi\RW {
                 $conds[$columnInfo['propertyName']] = $columnInfo['propertyName'] . " like '" . $what . "'";
             }
         }
-        return $this->getColumnsFromAbraFlexi(array_keys($conds),
-                        implode(' or ', $conds));
+        return $this->getColumnsFromAbraFlexi(
+            array_keys($conds),
+            implode(' or ', $conds)
+        );
     }
 
     /**
@@ -217,7 +238,8 @@ class Flexplorer extends \AbraFlexi\RW {
      * @param array $data vstupní data
      * @return array políčka evidence
      */
-    public function takeData($data) {
+    public function takeData($data)
+    {
 
         $fbColumns = $this->getColumnsInfo();
         $relations = $this->getRelationsInfo();
@@ -241,12 +263,18 @@ class Flexplorer extends \AbraFlexi\RW {
 
                 if (!array_key_exists($key, $fbColumns)) {
                     if (!array_key_exists($key, $fbRelations)) {
-                        $this->addStatusMessage(sprintf('unknown column %s for evidence %s',
-                                        $key, $this->getEvidence()), 'warning');
+                        $this->addStatusMessage(sprintf(
+                            'unknown column %s for evidence %s',
+                            $key,
+                            $this->getEvidence()
+                        ), 'warning');
                     } else {
                         if (!is_array($value)) {
-                            $this->addStatusMessage(sprintf('subevidence %s in evidence %s must bee an array',
-                                            $key, $this->getEvidence()), 'warning');
+                            $this->addStatusMessage(sprintf(
+                                'subevidence %s in evidence %s must bee an array',
+                                $key,
+                                $this->getEvidence()
+                            ), 'warning');
                         }
                     }
                 }
@@ -262,7 +290,8 @@ class Flexplorer extends \AbraFlexi\RW {
      * @param $string the string to search
      * @return boolean true if $substring is found in $string, false otherwise
      */
-    public static function contains($substring, $string) {
+    public static function contains($substring, $string)
+    {
         $found = true;
         $pos = strpos(strtolower($string), strtolower($substring));
         if ($pos === false) {
@@ -272,10 +301,11 @@ class Flexplorer extends \AbraFlexi\RW {
     }
 
     /**
-     * 
+     *
      * @param type $originalIDs
      */
-    public function changeExternalIDs($originalIDs) {
+    public function changeExternalIDs($originalIDs)
+    {
         $extidToRemove = [];
         foreach ($this->getDataValue('external-id') as $extid) {
             if (!array_search($extid, $originalIDs)) {
@@ -283,15 +313,18 @@ class Flexplorer extends \AbraFlexi\RW {
             }
         }
         if (count($extidToRemove)) {
-            $this->setDataValue('@removeExternalIds',
-                    implode(',', $extidToRemove));
+            $this->setDataValue(
+                '@removeExternalIds',
+                implode(',', $extidToRemove)
+            );
         }
     }
 
     /**
      * Interact with AbraFlexi
      */
-    public function performQuery() {
+    public function performQuery()
+    {
         $webPage = ui\WebPage::singleton();
 
         $id = $webPage->getRequestValue('id');
@@ -304,8 +337,10 @@ class Flexplorer extends \AbraFlexi\RW {
 
         if (isset($_FILES['upload']) && strlen($_FILES['upload']['tmp_name'])) {
             $body = file_get_contents($_FILES['upload']['tmp_name']);
-            $this->addStatusMessage(sprintf(_('File %s was used'),
-                            $_FILES['upload']['name']), 'success');
+            $this->addStatusMessage(sprintf(
+                _('File %s was used'),
+                $_FILES['upload']['name']
+            ), 'success');
         }
 
 
@@ -313,11 +348,16 @@ class Flexplorer extends \AbraFlexi\RW {
             $this->doCurlRequest($sourceurl, 'get');
             if ($this->lastResponseCode == 200) {
                 $body = $this->lastCurlResponse;
-                $this->addStatusMessage(sprintf(_('URL %s was used'), $sourceurl),
-                        'success');
+                $this->addStatusMessage(
+                    sprintf(_('URL %s was used'), $sourceurl),
+                    'success'
+                );
             } else {
-                $this->addStatusMessage(sprintf(_('Error %s obataing %s'),
-                                $this->lastResponseCode, $sourceurl), 'success');
+                $this->addStatusMessage(sprintf(
+                    _('Error %s obataing %s'),
+                    $this->lastResponseCode,
+                    $sourceurl
+                ), 'success');
             }
         }
 
@@ -356,7 +396,8 @@ class Flexplorer extends \AbraFlexi\RW {
      * @param string $evidence
      * @return array Evidence structure
      */
-    public function getColumnsInfo($evidence = null) {
+    public function getColumnsInfo($evidence = null)
+    {
         $columnsInfoFinal = [];
         $columnsInfo = parent::getColumnsInfo($evidence);
         if (is_array($columnsInfo) && array_key_exists('id', $columnsInfo)) {
@@ -382,7 +423,8 @@ class Flexplorer extends \AbraFlexi\RW {
      *
      * @return int HTTP Response CODE
      */
-    public function doCurlRequest($url = null, $method = 'GET', $format = null) {
+    public function doCurlRequest($url = null, $method = 'GET', $format = null)
+    {
         $result = parent::doCurlRequest($url, $method, $format);
         $_SESSION['lasturl'] = $this->curlInfo['url'];
         return $result;
@@ -393,16 +435,18 @@ class Flexplorer extends \AbraFlexi\RW {
      *
      * @param array $results
      */
-    public static function extractResults($results) {
+    public static function extractResults($results)
+    {
         $results = [];
         if (isset($results['results'][0]['result'])) {
             foreach ($results['results'][0]['result'] as $result) {
-                list($null, $prefix, $company, $evidence, $recordId) = explode('/',
-                        $result['ref']);
+                list($null, $prefix, $company, $evidence, $recordId) = explode(
+                    '/',
+                    $result['ref']
+                );
                 $results[] = $evidence . '/' . $recordId;
             }
         }
         return $results;
     }
-
 }

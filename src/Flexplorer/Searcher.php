@@ -8,8 +8,8 @@ namespace Flexplorer;
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Vitex Software
  */
-class Searcher extends \Ease\Atom {
-
+class Searcher extends \Ease\Atom
+{
     /**
      * Prohledávaná tabulka.
      *
@@ -36,7 +36,8 @@ class Searcher extends \Ease\Atom {
      *
      * @param string $evidence Třída použitá k hledání
      */
-    public function __construct($evidence = null) {
+    public function __construct($evidence = null)
+    {
         if (is_null($evidence)) {
             $this->sysClasses['evidencies'] = new Evidencer();
             $this->sysClasses['column'] = new Columner();
@@ -55,7 +56,8 @@ class Searcher extends \Ease\Atom {
      *
      * @param string $evidence
      */
-    public function registerEvidence($evidence) {
+    public function registerEvidence($evidence)
+    {
         $this->sysClasses[$evidence] = new Flexplorer($evidence);
     }
 
@@ -66,7 +68,8 @@ class Searcher extends \Ease\Atom {
      *
      * @return array
      */
-    public function searchAll($term) {
+    public function searchAll($term)
+    {
         $results = [];
         foreach ($this->sysClasses as $searched) {
             if (!is_null($this->evidence) && ($searched->getEvidence() != $this->evidence)) {
@@ -84,10 +87,12 @@ class Searcher extends \Ease\Atom {
                     if (isset($values['what'])) {
                         $found[$lineNo]['what'] = $values['what'];
                     } else {
-                        $found[$lineNo]['what'] = current(array_keys(array_filter($values,
-                                                function ($var) use ($term) {
-                                                    return preg_match("/\b$term\b/i", $var);
-                                                })));
+                        $found[$lineNo]['what'] = current(array_keys(array_filter(
+                            $values,
+                            function ($var) use ($term) {
+                                return preg_match("/\b$term\b/i", $var);
+                            }
+                        )));
 
                         if ($found[$lineNo]['what'] === false) {
                             foreach ($values as $column => $value) {
@@ -107,5 +112,4 @@ class Searcher extends \Ease\Atom {
         }
         return $results;
     }
-
 }

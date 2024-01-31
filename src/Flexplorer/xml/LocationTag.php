@@ -13,10 +13,10 @@ namespace Flexplorer\xml;
  *
  * @author vitex
  */
-class LocationTag extends \Ease\Html\PairTag {
-
-    public function __construct($location) {
+class LocationTag extends \Ease\Html\PairTag
+{
+    public function __construct($location)
+    {
         parent::__construct('location', null, $location);
     }
-
 }

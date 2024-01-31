@@ -20,21 +20,27 @@ if (!empty($delete)) {
     $filename = constant('BACKUP_DIRECTORY') . '/' . basename($delete);
     if (file_exists($filename)) {
         if (unlink($filename)) {
-            $oPage->addStatusMessage(sprintf(_('%s was deleted'), $delete),
-                    'success');
+            $oPage->addStatusMessage(
+                sprintf(_('%s was deleted'), $delete),
+                'success'
+            );
         } else {
-            $oPage->addStatusMessage(sprintf(_('%s was not deleted'), $filename),
-                    'warning');
+            $oPage->addStatusMessage(
+                sprintf(_('%s was not deleted'), $filename),
+                'warning'
+            );
         }
     }
 }
 
 $oPage->addItem(new ui\PageTop(_('Backups')));
 
-$oPage->container->addItem(new \Ease\TWB5\Panel(_('Backups'), 'success',
-                new ui\BackupsTool(constant('BACKUP_DIRECTORY'), '.*\.winstrom-backup')));
+$oPage->container->addItem(new \Ease\TWB5\Panel(
+    _('Backups'),
+    'success',
+    new ui\BackupsTool(constant('BACKUP_DIRECTORY'), '.*\.winstrom-backup')
+));
 
 $oPage->addItem(new ui\PageBottom());
 
 $oPage->draw();
-

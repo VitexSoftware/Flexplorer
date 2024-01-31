@@ -14,11 +14,11 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class Editor extends ColumnsForm {
-
+class Editor extends ColumnsForm
+{
     /**
      * Data Source Object
-     * @var \AbraFlexi 
+     * @var \AbraFlexi
      */
     public $engine = null;
 
@@ -26,7 +26,8 @@ class Editor extends ColumnsForm {
      *
      * @param \Flexplorer\Flexplorer $engine
      */
-    public function __construct($engine) {
+    public function __construct($engine)
+    {
         parent::__construct($engine);
         $id = $this->engine->getDataValue('id');
         if (is_array($id)) {
@@ -42,8 +43,12 @@ class Editor extends ColumnsForm {
         }
 
         WebPage::singleton()->includeJavaScript('js/datasaver.js');
-        $this->addItem(new \Ease\TWB5\Widgets\TWBSwitch('toAbraFlexi', false, 'on',
-                        ['onText' => _('Save to AbraFlexi'), 'offText' => _('Show in editor')]));
+        $this->addItem(new \Ease\TWB5\Widgets\TWBSwitch(
+            'toAbraFlexi',
+            false,
+            'on',
+            ['onText' => _('Save to AbraFlexi'), 'offText' => _('Show in editor')]
+        ));
         $this->addItem(new \Ease\TWB5\SubmitButton(_('OK') . ' ' . new \Ease\TWB5\GlyphIcon('save')));
         $this->engine = $engine;
     }
@@ -53,7 +58,8 @@ class Editor extends ColumnsForm {
      *
      * @param array $colProperties
      */
-    public function addFlexiInput($colProperties) {
+    public function addFlexiInput($colProperties)
+    {
         $type = $colProperties['type'];
         $name = $colProperties['name'];
         $propertyName = isset($colProperties['propertyName']) ? $colProperties['propertyName'] : $colProperties['name'];
@@ -78,17 +84,26 @@ class Editor extends ColumnsForm {
         switch ($type) {
             case 'numeric':
                 $inputProperties['pattern'] = '^\d+(\.|\,)\d{2}$';
-                $widget = new \Ease\Html\InputNumberTag($propertyName,
-                        $value, $inputProperties);
+                $widget = new \Ease\Html\InputNumberTag(
+                    $propertyName,
+                    $value,
+                    $inputProperties
+                );
                 break;
             case 'integer':
-                $widget = new \Ease\Html\InputNumberTag($propertyName,
-                        $value, $inputProperties);
+                $widget = new \Ease\Html\InputNumberTag(
+                    $propertyName,
+                    $value,
+                    $inputProperties
+                );
                 break;
             case 'logic':
-
-                $widget = new TWBSwitch($propertyName, $value, true,
-                        $inputProperties);
+                $widget = new TWBSwitch(
+                    $propertyName,
+                    $value,
+                    true,
+                    $inputProperties
+                );
                 break;
             case 'relation':
                 $evidence = '';
@@ -97,42 +112,67 @@ class Editor extends ColumnsForm {
                     $evidence = end($tmp);
                 }
                 $colProperties['data-evidence'] = $evidence;
-                $widget = new RelationSelect($propertyName,
-                        $value, $inputProperties);
+                $widget = new RelationSelect(
+                    $propertyName,
+                    $value,
+                    $inputProperties
+                );
 
-                $note = [new \Ease\Html\ATag('evidence.php?evidence=' . $evidence,
-                            new \Ease\TWB5\GlyphIcon('list') . ' ' . $evidence)];
+                $note = [new \Ease\Html\ATag(
+                    'evidence.php?evidence=' . $evidence,
+                    new \Ease\TWB5\GlyphIcon('list') . ' ' . $evidence
+                )];
 
                 if (strlen($value)) {
-                    $note[] = new \Ease\Html\ATag('editor.php?evidence=' . $evidence . '&id=' . urlencode($value),
-                            new \Ease\TWB5\GlyphIcon('edit') . ' ' . _('Edit targeted record'));
+                    $note[] = new \Ease\Html\ATag(
+                        'editor.php?evidence=' . $evidence . '&id=' . urlencode($value),
+                        new \Ease\TWB5\GlyphIcon('edit') . ' ' . _('Edit targeted record')
+                    );
                 }
                 break;
 
             case 'select':
-                $widget = new \Ease\Html\SelectTag($propertyName,
-                        $this->colValues($colProperties), $value, null,
-                        $inputProperties);
+                $widget = new \Ease\Html\SelectTag(
+                    $propertyName,
+                    $this->colValues($colProperties),
+                    $value,
+                    null,
+                    $inputProperties
+                );
                 break;
             case 'date':
                 $inputProperties['data-format'] = 'YYYY-MM-DD+01:00';
-                $widget = new DateTimePicker($propertyName,
-                        $value, $inputProperties);
+                $widget = new DateTimePicker(
+                    $propertyName,
+                    $value,
+                    $inputProperties
+                );
                 break;
             case 'datetime':
                 $inputProperties['data-format'] = 'YYYY-MM-DD\'T\'HH:mm:ss.SSS';
-                $widget = new DateTimePicker($propertyName,
-                        $value, $inputProperties);
+                $widget = new DateTimePicker(
+                    $propertyName,
+                    $value,
+                    $inputProperties
+                );
                 break;
             case 'string':
-                $widget = new \Ease\Html\InputTextTag($propertyName,
-                        $value, $inputProperties);
+                $widget = new \Ease\Html\InputTextTag(
+                    $propertyName,
+                    $value,
+                    $inputProperties
+                );
                 break;
             default:
-                $this->addStatusMessage(sprintf(_('Unknown type of data %s'),
-                                $type), 'warning');
-                $widget = new \Ease\Html\InputTag($propertyName,
-                        $value, $inputProperties);
+                $this->addStatusMessage(sprintf(
+                    _('Unknown type of data %s'),
+                    $type
+                ), 'warning');
+                $widget = new \Ease\Html\InputTag(
+                    $propertyName,
+                    $value,
+                    $inputProperties
+                );
                 $note = '?: ' . $type;
                 break;
         }
@@ -153,7 +193,8 @@ class Editor extends ColumnsForm {
      * @param array $colProperties
      * @return array
      */
-    private function colValues($colProperties) {
+    private function colValues($colProperties)
+    {
         $options = [];
         if (isset($colProperties['values'])) {
             foreach ($colProperties['values']['value'] as $colValue) {
@@ -166,7 +207,8 @@ class Editor extends ColumnsForm {
     /**
      * Add ExtIDs form
      */
-    public function finalize() {
+    public function finalize()
+    {
         parent::finalize();
         \Ease\JQuery\Part::jQueryze();
         $id = $this->engine->getDataValue('id');
@@ -182,14 +224,26 @@ class Editor extends ColumnsForm {
             $editorTabs->addTab(_('Columns'), $contents);
             $editorTabs->addTab(_('External IDs'), $this->extIDsEditor());
             $editorTabs->addTab(_('Labels'), new LabelSwitches($this->engine));
-            $editorTabs->addTab(_('Query'),
-                    new SendForm($this->engine->getEvidenceURL(), 'PUT',
-                            $this->engine->getJsonizedData($this->engine->getData())));
+            $editorTabs->addTab(
+                _('Query'),
+                new SendForm(
+                    $this->engine->getEvidenceURL(),
+                    'PUT',
+                    $this->engine->getJsonizedData($this->engine->getData())
+                )
+            );
 
-            $editorTabs->addTab(_('AbraFlexi'),
-                    new \Ease\Html\IframeTag(str_replace('.json', '.html',
-                                    $this->engine->getEvidenceURL() . '/' . $id . '.' . $this->engine->format . '?inDesktopApp=true'),
-                            ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
+            $editorTabs->addTab(
+                _('AbraFlexi'),
+                new \Ease\Html\IframeTag(
+                    str_replace(
+                        '.json',
+                        '.html',
+                        $this->engine->getEvidenceURL() . '/' . $id . '.' . $this->engine->format . '?inDesktopApp=true'
+                    ),
+                    ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]
+                )
+            );
 
             $this->addItem($editorTabs);
         }
@@ -200,9 +254,12 @@ class Editor extends ColumnsForm {
      *
      * @return \Ease\TWB5\Container
      */
-    public function extIDsEditor() {
-        $extIDsEditor = new \Ease\TWB5\Container(new \Ease\Html\InputHiddenTag('id',
-                        $this->engine->getDataValue('id')));
+    public function extIDsEditor()
+    {
+        $extIDsEditor = new \Ease\TWB5\Container(new \Ease\Html\InputHiddenTag(
+            'id',
+            $this->engine->getDataValue('id')
+        ));
         $externalIDs = $this->engine->getDataValue('external-ids');
         if (count($externalIDs)) {
             foreach ($externalIDs as $externalID) {
@@ -215,22 +272,40 @@ class Editor extends ColumnsForm {
                 }
 
                 $extIDrow = new \Ease\TWB5\Row();
-                $extIDrow->addColumn(4,
-                        new \Ease\TWB5\Checkbox('deleteExtID[' . $idParts[1] . ']',
-                                $externalID, _('Remove')));
-                $extIDrow->addColumn(8,
-                        new \Ease\TWB5\FormGroup($idParts[1],
-                                new \Ease\Html\InputTextTag('external-ids[' . $idParts[1] . ']',
-                                        $idParts[2], ['maxlength' => '20']), $idParts[1],
-                                $externalID));
+                $extIDrow->addColumn(
+                    4,
+                    new \Ease\TWB5\Checkbox(
+                        'deleteExtID[' . $idParts[1] . ']',
+                        $externalID,
+                        _('Remove')
+                    )
+                );
+                $extIDrow->addColumn(
+                    8,
+                    new \Ease\TWB5\FormGroup(
+                        $idParts[1],
+                        new \Ease\Html\InputTextTag(
+                            'external-ids[' . $idParts[1] . ']',
+                            $idParts[2],
+                            ['maxlength' => '20']
+                        ),
+                        $idParts[1],
+                        $externalID
+                    )
+                );
                 $extIDsEditor->addItem($extIDrow);
             }
         }
 
-        $extIDsEditor->addItem(new \Ease\TWB5\FormGroup(_('New'),
-                        new \Ease\Html\InputTextTag('external-ids[]'), 'ext:..',
-                        new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/identifiers/',
-                                _('External IDs'))));
+        $extIDsEditor->addItem(new \Ease\TWB5\FormGroup(
+            _('New'),
+            new \Ease\Html\InputTextTag('external-ids[]'),
+            'ext:..',
+            new \Ease\Html\ATag(
+                'https://www.flexibee.eu/api/dokumentace/ref/identifiers/',
+                _('External IDs')
+            )
+        ));
 
         $extIDsEditor->addItem(new \Ease\TWB5\SubmitButton(_('OK') . ' ' . new \Ease\TWB5\GlyphIcon('save')));
         return $extIDsEditor;
@@ -242,14 +317,17 @@ class Editor extends ColumnsForm {
      * @param string $fieldName
      * @return string javascript
      */
-    public function onChangeCode($fieldName) {
+    public function onChangeCode($fieldName)
+    {
         $chCode = '';
         $id = $this->engine->getMyKey();
         if (!is_null($id)) {
-            $chCode = 'saveColumnData(\'' . str_replace('\\', '-',
-                            get_class($this->engine)) . '\', \'' . $id . '\', \'' . $fieldName . '\', \'' . $this->engine->getEvidence() . '\')';
+            $chCode = 'saveColumnData(\'' . str_replace(
+                '\\',
+                '-',
+                get_class($this->engine)
+            ) . '\', \'' . $id . '\', \'' . $fieldName . '\', \'' . $this->engine->getEvidence() . '\')';
         }
         return $chCode;
     }
-
 }

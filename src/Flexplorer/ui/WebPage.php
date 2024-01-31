@@ -9,8 +9,8 @@
 
 namespace Flexplorer\ui;
 
-class WebPage extends \Ease\TWB5\WebPage {
-
+class WebPage extends \Ease\TWB5\WebPage
+{
     public $requestURL = null;
 
     /**
@@ -46,7 +46,8 @@ class WebPage extends \Ease\TWB5\WebPage {
      *
      * @param string $pageTitle
      */
-    public function __construct($pageTitle = null) {
+    public function __construct($pageTitle = null)
+    {
         parent::__construct($pageTitle);
         $this->includeCss('css/default.css');
         $this->head->addItem('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
@@ -65,10 +66,13 @@ class WebPage extends \Ease\TWB5\WebPage {
      *
      * @param string $loginPage
      */
-    public function onlyForAdmin($loginPage = 'login.php') {
+    public function onlyForAdmin($loginPage = 'login.php')
+    {
         if (!$this->user->getSettingValue('admin')) {
-            \Ease\Shared::user()->addStatusMessage(_('Please sign in as admin first'),
-                    'warning');
+            \Ease\Shared::user()->addStatusMessage(
+                _('Please sign in as admin first'),
+                'warning'
+            );
             $this->redirect($loginPage);
         }
     }
@@ -79,7 +83,8 @@ class WebPage extends \Ease\TWB5\WebPage {
      * @param string $loginPage adresa přihlašovací stránky
      * @param string $message Custom message for redirected
      */
-    public function onlyForLogged($loginPage = 'login.php', $message = NULL) {
+    public function onlyForLogged($loginPage = 'login.php', $message = null)
+    {
         if (!isset($_SESSION['backurl'])) {
             $_SESSION['backurl'] = $_SERVER['REQUEST_URI'];
         }
@@ -91,7 +96,8 @@ class WebPage extends \Ease\TWB5\WebPage {
      *
      * @param arrya $evidence
      */
-    public function addEvidenceToHistory($evidence) {
+    public function addEvidenceToHistory($evidence)
+    {
         if (isset($_SESSION['evidence_history'])) {
             $newHistory = ['evidence.php?evidence=' . $evidence => $evidence];
             foreach ($_SESSION['evidence_history'] as $link => $oldevidence) {
@@ -106,22 +112,25 @@ class WebPage extends \Ease\TWB5\WebPage {
     }
 
     /**
-     * Set URL of request to show 
+     * Set URL of request to show
      * @param string $url
      */
-    public function setRequestURL($url) {
+    public function setRequestURL($url)
+    {
         $_SESSION['lasturl'] = $this->requestURL = $url;
     }
 
-    public function getRequestURL() {
+    public function getRequestURL()
+    {
         return is_null($this->requestURL) ? isset($_SESSION['lasturl']) ? $_SESSION['lasturl'] : '' : $this->requestURL;
     }
 
     /**
-     * 
+     *
      * @return type
      */
-    public function getEvidenceHistory() {
+    public function getEvidenceHistory()
+    {
         if (!empty($_SESSION['evidence_history'])) {
             $history = array_merge([''], $_SESSION['evidence_history'], ['']);
         } else {
@@ -131,22 +140,26 @@ class WebPage extends \Ease\TWB5\WebPage {
         return $history;
     }
 
-    public function draw() {
+    public function draw()
+    {
         if (\Ease\Shared::user()->getUserID()) { //Authenticated user
-            $this->body->addAsFirst(new FlexiURL($this->getRequestURL(),
-                            ['id' => 'lasturl', 'class' => 'innershadow']));
+            $this->body->addAsFirst(new FlexiURL(
+                $this->getRequestURL(),
+                ['id' => 'lasturl', 'class' => 'innershadow']
+            ));
         }
         return parent::draw();
     }
 
     /**
      * Human readable size interpretation
-     * 
+     *
      * @param long $a_bytes
-     * 
+     *
      * @return string
      */
-    static function formatBytes($a_bytes) {
+    static function formatBytes($a_bytes)
+    {
         $a_bytes = doubleval($a_bytes);
         if ($a_bytes < 1024) {
             return $a_bytes . ' B';
@@ -168,5 +181,4 @@ class WebPage extends \Ease\TWB5\WebPage {
             return round($a_bytes / 1208925819614629174706176, 2) . ' YiB';
         }
     }
-
 }

@@ -8,6 +8,7 @@ namespace Flexplorer;
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Vitex Software
  */
+
 require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
@@ -54,4 +55,3 @@ if (strlen($query)) {
     }
     echo json_encode($found);
 }
-

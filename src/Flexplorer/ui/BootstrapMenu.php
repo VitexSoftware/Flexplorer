@@ -9,8 +9,8 @@
 
 namespace Flexplorer\ui;
 
-class BootstrapMenu extends \Ease\TWB5\Navbar {
-
+class BootstrapMenu extends \Ease\TWB5\Navbar
+{
     /**
      * Navigace.
      *
@@ -25,28 +25,39 @@ class BootstrapMenu extends \Ease\TWB5\Navbar {
      * @param mixed  $content
      * @param array  $properties
      */
-    public function __construct($name = null, $content = null,
-            $properties = null) {
-        parent::__construct('Menu',
-                new \Ease\Html\ImgTag('images/flexplorer-logo.png', 'Flexplorer',
-                        ['class' => 'img-rounded', 'width' => 24]),
-                ['class' => 'navbar-fixed-top']);
+    public function __construct(
+        $name = null,
+        $content = null,
+        $properties = null
+    ) {
+        parent::__construct(
+            'Menu',
+            new \Ease\Html\ImgTag(
+                'images/flexplorer-logo.png',
+                'Flexplorer',
+                ['class' => 'img-rounded', 'width' => 24]
+            ),
+            ['class' => 'navbar-fixed-top']
+        );
 
         $user = \Ease\Shared::user();
         \Ease\TWB5\Part::twBootstrapize();
         if (!$user->getUserID()) {
             if (get_class($user) != 'EaseAnonym') {
-
-                $this->addDropDownMenu(_('Tools'),
-                        [
+                $this->addDropDownMenu(
+                    _('Tools'),
+                    [
                             'permissions.php' => _('Role Permissions')
-                ]);
-
-                $this->addMenuItem(new \Ease\Html\ATag('about.php', _('About')),
-                        'right');
+                    ]
+                );
 
                 $this->addMenuItem(
-                        '
+                    new \Ease\Html\ATag('about.php', _('About')),
+                    'right'
+                );
+
+                $this->addMenuItem(
+                    '
 <li class="divider-vertical"></li>
 <li class="dropdown">
 <a class="dropdown-toggle" href="login.php" data-toggle="dropdown"><i class="icon-circle-arrow-left"></i> ' . _('Sign in') . '<strong class="caret"></strong></a>
@@ -59,7 +70,8 @@ class BootstrapMenu extends \Ease\TWB5\Navbar {
 <label class="string optional" for="remember-me"> ' . _('Remeber me') . '</label>
 <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="' . _('Sign in') . '">
 </form>
-</div>', 'right'
+</div>',
+                    'right'
                 );
             }
         } else {
@@ -81,10 +93,10 @@ class BootstrapMenu extends \Ease\TWB5\Navbar {
     /**
      * Přidá do stránky javascript pro skrývání oblasti stavových zpráv.
      */
-    public function finalize() {
+    public function finalize()
+    {
 
         if (!empty(\Ease\Shared::logger()->getMessages())) {
-
             WebPage::singleton()->addCss('
 #smdrag { height: 8px; 
           background-image:  url( images/slidehandle.png ); 
@@ -101,10 +113,12 @@ class BootstrapMenu extends \Ease\TWB5\Navbar {
             $this->addItem(new \Ease\Html\DivTag(null, ['id' => 'smdrag', 'style' => 'margin-bottom: 5px']));
             \Ease\Shared::logger()->cleanMessages();
             WebPage::singleton()->addCss('.dropdown-menu { overflow-y: auto } ');
-            WebPage::singleton()->addJavaScript("$('.dropdown-menu').css('max-height',$(window).height()-100);",
-                    null, true);
+            WebPage::singleton()->addJavaScript(
+                "$('.dropdown-menu').css('max-height',$(window).height()-100);",
+                null,
+                true
+            );
             $this->includeJavaScript('js/slideupmessages.js');
         }
     }
-
 }

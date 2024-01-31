@@ -14,12 +14,13 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class JsonTextarea extends \Ease\TWB5\Textarea {
-
+class JsonTextarea extends \Ease\TWB5\Textarea
+{
     /**
      * Add scripts
      */
-    public function finalize() {
+    public function finalize()
+    {
         WebPage::singleton()->includeJavaScript('js/jquery.autosize.min.js');
         WebPage::singleton()->addJavaScript('
          var textarea = $("textarea[name=\'' . $this->getTagName() . '\']");
@@ -31,5 +32,4 @@ class JsonTextarea extends \Ease\TWB5\Textarea {
          }
         ');
     }
-
 }

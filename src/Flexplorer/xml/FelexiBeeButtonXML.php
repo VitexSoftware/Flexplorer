@@ -23,9 +23,10 @@ namespace Flexplorer\xml;
  *
  * @author vitex
  */
-class FelexiBeeButtonXML extends CustomButton {
-
-    public function __construct($code, $url, $title, $desc, $evidence, $location, $browser) {
+class FelexiBeeButtonXML extends CustomButton
+{
+    public function __construct($code, $url, $title, $desc, $evidence, $location, $browser)
+    {
         parent::__construct($this->tagType, null, [
             new IdTag(\AbraFlexi\RO::code($code)),
             new UrlTag($url),
@@ -36,5 +37,4 @@ class FelexiBeeButtonXML extends CustomButton {
             new BrowserTag($browser)
         ]);
     }
-
 }

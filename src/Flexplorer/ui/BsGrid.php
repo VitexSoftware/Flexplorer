@@ -15,20 +15,22 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class BsGrid extends \Ease\Html\Div {
-
+class BsGrid extends \Ease\Html\Div
+{
     /**
      * Pole vlastností gridu
      * @var array
      */
     public $options = [];
 
-    public function __construct($id, $properties = null) {
+    public function __construct($id, $properties = null)
+    {
         $properties['id'] = $id;
         parent::__construct(null, $properties);
     }
 
-    public function finalize() {
+    public function finalize()
+    {
 
         WebPage::singleton()->includeCss('css/jquery-ui-timepicker-addon.min.css');
         WebPage::singleton()->includeJavaScript('js/jquery-ui-timepicker-addon.min.js');
@@ -52,5 +54,4 @@ $("#' . $this->getTagID() . '").bs_grid(' . json_encode($this->options) . ');
             ');
         \Ease\JQuery\UIPart::jQueryze();
     }
-
 }

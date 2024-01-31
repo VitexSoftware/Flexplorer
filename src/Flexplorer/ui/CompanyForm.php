@@ -13,18 +13,24 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class CompanyForm extends \Ease\TWB5\Form {
-
+class CompanyForm extends \Ease\TWB5\Form
+{
     /**
      *
      * @param \AbraFlexi\Company $company
      */
-    public function __construct($company) {
+    public function __construct($company)
+    {
         parent::__construct('company');
 
-        $this->addInput(new \Ease\Html\InputTextTag('nazev',
-                        $company->getDataValue('nazev')), _('Company name'),
-                _('My Company'));
+        $this->addInput(
+            new \Ease\Html\InputTextTag(
+                'nazev',
+                $company->getDataValue('nazev')
+            ),
+            _('Company name'),
+            _('My Company')
+        );
 
 //        $this->addInput(new \Ease\Html\InputTextTag('country',
 //                $company->getDataValue('country')), _('Country'), _('Country'));
@@ -34,14 +40,17 @@ class CompanyForm extends \Ease\TWB5\Form {
 //            _('Fill database with demo content'));
 
 
-        $this->addItem(new \Ease\TWB5\SubmitButton(_('Save'), 'success',
-                        ['onClick' => "$('#Preloader').css('visibility', 'visible');"]));
+        $this->addItem(new \Ease\TWB5\SubmitButton(
+            _('Save'),
+            'success',
+            ['onClick' => "$('#Preloader').css('visibility', 'visible');"]
+        ));
     }
 
-    public function finalize() {
+    public function finalize()
+    {
         WebPage::singleton()->body->setTagClass('fuelux');
         WebPage::singleton()->body->addItem(new FXPreloader('Preloader'));
         parent::finalize();
     }
-
 }

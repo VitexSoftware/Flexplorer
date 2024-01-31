@@ -43,9 +43,14 @@ if (is_null($body)) {
     $body = $evobj->getJsonizedData([]);
 }
 
-$tabs->addTab(_('Query'),
-        new \Ease\TWB5\Panel(_('Custom query'), 'warning',
-                new ui\SendForm($url, $method, $body)));
+$tabs->addTab(
+    _('Query'),
+    new \Ease\TWB5\Panel(
+        _('Custom query'),
+        'warning',
+        new ui\SendForm($url, $method, $body)
+    )
+);
 
 $oPage->container->addItem($tabs);
 

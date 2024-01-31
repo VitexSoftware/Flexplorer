@@ -8,6 +8,7 @@ namespace Flexplorer;
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Vitex Software
  */
+
 require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
@@ -30,7 +31,6 @@ if (strlen($query) > 1) {
     }
 
     if (count($results)) {
-
         $resultTables = [];
         foreach ($results as $evidenceName => $evidenceResults) {
             $resultTables[] = new \Ease\Html\H3Tag($evidenceName);
@@ -45,9 +45,11 @@ if (strlen($query) > 1) {
             $resultTable->addRowHeaderColumns($columnNames);
             foreach ($evidenceResults as $key => $values) {
                 foreach ($values as $vkey => $vvalue) {
-                    $values[$vkey] = '<a href="' . $values['url'] . '">' . str_replace($query,
-                                    "<strong style=\"background-color: yellow\">$query</strong>",
-                                    $vvalue) . '</a>';
+                    $values[$vkey] = '<a href="' . $values['url'] . '">' . str_replace(
+                        $query,
+                        "<strong style=\"background-color: yellow\">$query</strong>",
+                        $vvalue
+                    ) . '</a>';
                 }
                 if (count($columnNames) > 4) {
                     unset($values['what']);
@@ -58,8 +60,11 @@ if (strlen($query) > 1) {
             }
             $resultTables[] = $resultTable;
         }
-        $oPage->container->addItem(new \Ease\TWB5\Panel(sprintf(_('Search for %s results in %s'),
-                                "<strong>$query</strong>", $evidenceName), 'info', $resultTables));
+        $oPage->container->addItem(new \Ease\TWB5\Panel(sprintf(
+            _('Search for %s results in %s'),
+            "<strong>$query</strong>",
+            $evidenceName
+        ), 'info', $resultTables));
     }
 }
 

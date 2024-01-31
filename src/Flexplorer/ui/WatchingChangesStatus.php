@@ -13,18 +13,21 @@ namespace Flexplorer\ui;
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
-class WatchingChangesStatus extends \Ease\Html\SpanTag {
-
+class WatchingChangesStatus extends \Ease\Html\SpanTag
+{
     /**
-     * 
+     *
      * @param boolean $status
      * @param options $properties
      */
-    public function __construct($status, $properties = []) {
+    public function __construct($status, $properties = [])
+    {
         parent::__construct(new BooleanLabel($status), $properties);
-        $this->addItem(new \Ease\TWB5\LinkButton('changesapi.php',
-                        new \Ease\TWB5\GlyphIcon('wrench'), 'default btn-sm',
-                        ['title' => _('Chanes API Settings')]));
+        $this->addItem(new \Ease\TWB5\LinkButton(
+            'changesapi.php',
+            new \Ease\TWB5\GlyphIcon('wrench'),
+            'default btn-sm',
+            ['title' => _('Chanes API Settings')]
+        ));
     }
-
 }

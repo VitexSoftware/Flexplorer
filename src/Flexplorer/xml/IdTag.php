@@ -13,10 +13,10 @@ namespace Flexplorer\xml;
  *
  * @author vitex
  */
-class IdTag extends \Ease\Html\PairTag {
-
-    public function __construct($id) {
+class IdTag extends \Ease\Html\PairTag
+{
+    public function __construct($id)
+    {
         parent::__construct('id', null, $id);
     }
-
 }

@@ -26,12 +26,16 @@ if (empty($name)) {
     $companer->addStatusMessage(_('Please enter company name'), 'warning');
 } else {
     if ($companer->recordExists(['nazev' => $name])) {
-        $companer->addStatusMessage(sprintf(_('Company %s already exists'),
-                        $name), 'warning');
+        $companer->addStatusMessage(sprintf(
+            _('Company %s already exists'),
+            $name
+        ), 'warning');
     } else {
         if ($companer->createNew($name)) {
-            $companer->addStatusMessage(sprintf(_('Company %s was created'),
-                            $name), 'success');
+            $companer->addStatusMessage(sprintf(
+                _('Company %s was created'),
+                $name
+            ), 'success');
             $companies = $companer->getColumnsFromAbraFlexi(['dbNazev',
                 'createDt'], [], 'createDt');
             ksort($companies);
@@ -40,16 +44,21 @@ if (empty($name)) {
             $_SESSION['company'] = $myCompany['dbNazev'];
             $oPage->redirect('index.php?company=' . $myCompany['dbNazev']);
         } else {
-            $companer->addStatusMessage(sprintf(_('Creating company %s failed'),
-                            $name), 'error');
+            $companer->addStatusMessage(sprintf(
+                _('Creating company %s failed'),
+                $name
+            ), 'error');
         }
     }
 }
 
 $oPage->addItem(new ui\PageTop(_('Main Page')));
 
-$oPage->container->addItem(new \Ease\TWB5\Panel(_('Create New Company'),
-                'success', new ui\CompanyForm($companer)));
+$oPage->container->addItem(new \Ease\TWB5\Panel(
+    _('Create New Company'),
+    'success',
+    new ui\CompanyForm($companer)
+));
 
 $oPage->addItem(new ui\PageBottom());
 

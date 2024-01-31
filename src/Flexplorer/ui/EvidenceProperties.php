@@ -9,15 +9,16 @@
 
 namespace Flexplorer\ui;
 
-class EvidenceProperties extends \Ease\Html\TableTag {
-
+class EvidenceProperties extends \Ease\Html\TableTag
+{
     /**
      * Show evidence columns properties
      *
      * @param string $evidence to describe
      * @param string $hlcolumn to highlight
      */
-    public function __construct($evidence, $hlcolumn = null, $cond = null) {
+    public function __construct($evidence, $hlcolumn = null, $cond = null)
+    {
         parent::__construct(null, ['class' => 'table table-hover']);
         $this->setTagId('structOf' . $evidence->getEvidence() . $cond);
         if (is_string($evidence)) {
@@ -48,7 +49,6 @@ class EvidenceProperties extends \Ease\Html\TableTag {
         }
 
         foreach ($proprtiesData as $propName => $propValues) {
-
             if (!is_null($cond)) {
                 if (isset($propValues[$cond])) {
                     if ($propValues[$cond] != $req) {
@@ -64,16 +64,20 @@ class EvidenceProperties extends \Ease\Html\TableTag {
                             if (isset($propValues['url'])) {
                                 $tmp = explode('/', $propValues['url']);
                                 $revidence = 'evidence.php?evidence=' . end($tmp);
-                                $props[$value] = '<a href="' . $revidence . '">' . \Ease\TWB5\Part::glyphIcon('link',
-                                                ['title' => $propValues['fkName']])->__toString() . $propValues[$value] . '</a> ';
+                                $props[$value] = '<a href="' . $revidence . '">' . \Ease\TWB5\Part::glyphIcon(
+                                    'link',
+                                    ['title' => $propValues['fkName']]
+                                )->__toString() . $propValues[$value] . '</a> ';
                             } else {
                                 $props[$value] = $propValues[$value];
                             }
                             break;
                         case 'evidenceVariants':
                             if (is_array($propValues[$value]['evidenceVariant'])) {
-                                $props[$value] = implode(', ',
-                                        $propValues[$value]['evidenceVariant']);
+                                $props[$value] = implode(
+                                    ', ',
+                                    $propValues[$value]['evidenceVariant']
+                                );
                             }
                             break;
                         case 'url':
@@ -82,8 +86,9 @@ class EvidenceProperties extends \Ease\Html\TableTag {
                         case 'values':
                             foreach ($propValues[$value]['value'] as $defineKey => $defineValue) {
                                 $label = new \Ease\TWB5\Badge(
-                                        $defineValue['@key'],
-                                        ['title' => $defineValue['$']]);
+                                    $defineValue['@key'],
+                                    ['title' => $defineValue['$']]
+                                );
                                 if (array_key_exists($value, $props)) {
                                     $props[$value] .= $label->__toString();
                                 } else {
@@ -93,8 +98,7 @@ class EvidenceProperties extends \Ease\Html\TableTag {
 
                             break;
 
-                        default :
-
+                        default:
                             switch ($propValues[$value]) {
                                 case 'true':
                                     $props[$value] = \Ease\TWB5\Part::glyphIcon('unchecked')->__toString();
@@ -102,12 +106,14 @@ class EvidenceProperties extends \Ease\Html\TableTag {
                                 case 'false':
                                     $props[$value] = \Ease\TWB5\Part::glyphIcon('check')->__toString();
                                     break;
-                                default :
+                                default:
                                     if (isset($_SESSION['searchQuery'])) {
                                         $term = $_SESSION['searchQuery'];
-                                        $props[$value] = str_ireplace($term,
-                                                "<strong>$term</strong>",
-                                                $propValues[$value]);
+                                        $props[$value] = str_ireplace(
+                                            $term,
+                                            "<strong>$term</strong>",
+                                            $propValues[$value]
+                                        );
                                     } else {
                                         $props[$value] = $propValues[$value];
                                     }
@@ -123,15 +129,18 @@ class EvidenceProperties extends \Ease\Html\TableTag {
                 }
             }
             if ($propName == $hlcolumn) {
-                $this->addRowColumns($props,
-                        ['style' => 'background-color: yellow']);
+                $this->addRowColumns(
+                    $props,
+                    ['style' => 'background-color: yellow']
+                );
             } else {
                 $this->addRowColumns($props);
             }
         }
     }
 
-    public function finalize() {
+    public function finalize()
+    {
         $this->includeJavaScript('js/jquery.fixedheadertable.min.js');
         $this->includeCss('css/defaultTheme.css');
         $this->addJavaScript('$("#' . $this->getTagID() . '").fixedHeaderTable({
@@ -141,5 +150,4 @@ class EvidenceProperties extends \Ease\Html\TableTag {
 
         return parent::finalize();
     }
-
 }

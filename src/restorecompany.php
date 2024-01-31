@@ -23,15 +23,19 @@ if (empty($backup)) {
     $oPage->addItem(new ui\PageTop(_('Backup restore')));
     $oPage->addStatusMessage('Specify backup to restore', 'warning');
 
-    $oPage->container->addItem(new \Ease\TWB5\Panel(_('Backups'), 'success',
-                    new ui\BackupsTool(constant('BACKUP_DIRECTORY'),
-                            $company . '.*\.winstrom-backup')));
+    $oPage->container->addItem(new \Ease\TWB5\Panel(
+        _('Backups'),
+        'success',
+        new ui\BackupsTool(
+            constant('BACKUP_DIRECTORY'),
+            $company . '.*\.winstrom-backup'
+        )
+    ));
 
     $oPage->addItem(new ui\PageBottom());
 
     $oPage->draw();
 } else {
-
     if ($loader->deleteFromAbraFlexi()) {
         $loader->addStatusMessage(_('company removed before restore'), 'warning');
     } else {
@@ -41,10 +45,11 @@ if (empty($backup)) {
     if ($loader->restoreBackupFrom(constant('BACKUP_DIRECTORY') . $company . '.winstrom-backup')) {
         $loader->addStatusMessage(_('backup restored'), 'success');
     } else {
-        $loader->addStatusMessage(sprintf(_('company %s was not restored'),
-                        $company), 'warning');
+        $loader->addStatusMessage(sprintf(
+            _('company %s was not restored'),
+            $company
+        ), 'warning');
     }
 
     $oPage->redirect('company.php?company=' . $company);
 }
-

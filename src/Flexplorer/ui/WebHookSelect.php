@@ -13,10 +13,14 @@ namespace Flexplorer\ui;
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
-class WebHookSelect extends \Ease\Html\Select {
-
-    public function __construct($name, $items = null, $defaultValue = null,
-            $properties = array()) {
+class WebHookSelect extends \Ease\Html\Select
+{
+    public function __construct(
+        $name,
+        $items = null,
+        $defaultValue = null,
+        $properties = array()
+    ) {
         $items = [];
         $hooker = new \AbraFlexi\Hooks();
         $hooks = $hooker->getFlexiData();
@@ -27,5 +31,4 @@ class WebHookSelect extends \Ease\Html\Select {
         }
         parent::__construct($name, $items, $defaultValue, null, $properties);
     }
-
 }

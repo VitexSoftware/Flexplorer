@@ -13,16 +13,21 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class ChangesLister extends \Ease\Html\UlTag {
-
-    public function &addItemSmart($pageItem, $properties = []) {
+class ChangesLister extends \Ease\Html\UlTag
+{
+    public function &addItemSmart($pageItem, $properties = [])
+    {
         list($tmp, $stamp) = explode('_', $pageItem);
         $age = new \Ease\ui\LiveAge(str_replace('.json', '', $stamp));
-        $pageItem = new \Ease\Html\ATag('change.php?file=' . $pageItem,
-                str_replace(['flexplorer-changes-', '_'], ['', '&nbsp;<strong>'],
-                        $pageItem) . '</strong> ' . $age);
+        $pageItem = new \Ease\Html\ATag(
+            'change.php?file=' . $pageItem,
+            str_replace(
+                ['flexplorer-changes-', '_'],
+                ['', '&nbsp;<strong>'],
+                $pageItem
+            ) . '</strong> ' . $age
+        );
         $item = parent::addItemSmart($pageItem, $properties);
         return $item;
     }
-
 }

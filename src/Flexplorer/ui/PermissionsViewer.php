@@ -10,13 +10,14 @@
 namespace Flexplorer\ui;
 
 /**
- * CSV to HTML Permissions 
+ * CSV to HTML Permissions
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
-class PermissionsViewer extends \Ease\Html\TableTag {
-
-    public function __construct($permissionsCsv) {
+class PermissionsViewer extends \Ease\Html\TableTag
+{
+    public function __construct($permissionsCsv)
+    {
         parent::__construct(null, ['class' => 'table table-striped table-hover']);
         if (is_file($permissionsCsv)) {
             $permissionsDataRaw = file($permissionsCsv);
@@ -26,8 +27,10 @@ class PermissionsViewer extends \Ease\Html\TableTag {
             $this->addRowHeaderColumns($roles);
             array_shift($permissionsDataRaw);
             foreach ($permissionsDataRaw as $permissionsDataRow) {
-                $row = $this->addRowColumns(explode(';',
-                                trim($permissionsDataRow)));
+                $row = $this->addRowColumns(explode(
+                    ';',
+                    trim($permissionsDataRow)
+                ));
                 $columnID = 0;
                 foreach ($row->getContents() as $column) {
                     switch (current($column->getContents())) {
@@ -41,7 +44,7 @@ class PermissionsViewer extends \Ease\Html\TableTag {
                             $column->setTagProperties(['title' => _('false') . ' ' . $roles[$columnID]]);
                             $column->pageParts[0] = new \Ease\TWB5\GlyphIcon('remove');
                             break;
-                        default :
+                        default:
                             $column->setTagCss(['font-weight' => 'bold']);
                             break;
                     }
@@ -52,5 +55,4 @@ class PermissionsViewer extends \Ease\Html\TableTag {
             $this->addItem(sprintf(_('Error reading file %s'), $permissionsCsv));
         }
     }
-
 }

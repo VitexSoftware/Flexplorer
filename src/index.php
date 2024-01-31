@@ -21,7 +21,6 @@ $oPage->addItem(new ui\PageTop(_('AbraFlexi info')));
 $infoTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
 
 foreach ($statuser->getData() as $property => $value) {
-
     switch ($property) {
         case 'startupTime':
             $value = new \Ease\TWB5\Widgets\LiveAge(\AbraFlexi\RO::flexiDateTimeToDateTime($value)->getTimestamp());
@@ -38,9 +37,14 @@ foreach ($statuser->getData() as $property => $value) {
 
 $infoRow = new \Ease\TWB5\Row();
 $infoRow->addColumn(6, new \Ease\TWB5\Panel(_('server info'), 'info', $infoTable));
-$infoRow->addColumn(6,
-        new \Ease\TWB5\Panel(_('license info'), 'info',
-                new ui\LicenseInfo($_SESSION['license'])));
+$infoRow->addColumn(
+    6,
+    new \Ease\TWB5\Panel(
+        _('license info'),
+        'info',
+        new ui\LicenseInfo($_SESSION['license'])
+    )
+);
 $oPage->container->addItem($infoRow);
 
 $oPage->addItem(new ui\PageBottom());

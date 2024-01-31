@@ -16,8 +16,8 @@ use Ease\Html\InputTextTag;
  *
  * @author vitex
  */
-class LoginForm extends Form {
-
+class LoginForm extends Form
+{
     /**
      * Abraflexi URL Input name
      * @var string eg. https://demo.abraflexi.eu:5434
@@ -44,25 +44,32 @@ class LoginForm extends Form {
 
     /**
      * Abraflexi Server connection form
-     * 
+     *
      * @param array $options           ConnectionOptions options
      * @param array $formProperties    FormTag properties eg. ['enctype' => 'multipart/form-data']
      * @param mixed $formContents      Any other initial content
      */
-    public function __construct(array $options,  array $formProperties = [], $formContents = null) {
+    public function __construct(array $options, array $formProperties = [], $formContents = null)
+    {
         parent::__construct($formProperties, $formContents);
 
-        $this->addInput(new InputTextTag($this->urlField),
-                _('RestAPI endpoint url'));
+        $this->addInput(
+            new InputTextTag($this->urlField),
+            _('RestAPI endpoint url')
+        );
 
-        $this->addInput(new InputTextTag($this->usernameField),
-                _('REST API Username'));
+        $this->addInput(
+            new InputTextTag($this->usernameField),
+            _('REST API Username')
+        );
 
-        $this->addInput(new InputTextTag($this->passwordField),
-                _('Rest API Password'));
- 
-        $this->addItem( new \Ease\TWB5\SubmitButton(_('Sign in')) );
-        
+        $this->addInput(
+            new InputTextTag($this->passwordField),
+            _('Rest API Password')
+        );
+
+        $this->addItem(new \Ease\TWB5\SubmitButton(_('Sign in')));
+
         $this->fillUp($options);
     }
 }

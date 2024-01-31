@@ -8,6 +8,7 @@ namespace Flexplorer;
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Vitex Software
  */
+
 require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
@@ -66,22 +67,37 @@ $oPage->addItem(new ui\PageTop(_('Query') . ': ' . $url));
 
 $requestTabs = new \Ease\TWB5\Tabs('Request');
 
-$requestTabs->addTab(_('Request'),
-        new \Ease\TWB5\Panel(_('Custom request'), 'warning',
-                new ui\SendForm($url, $method, $body, $format)));
+$requestTabs->addTab(
+    _('Request'),
+    new \Ease\TWB5\Panel(
+        _('Custom request'),
+        'warning',
+        new ui\SendForm($url, $method, $body, $format)
+    )
+);
 
-$requestTabs->addTab(_('Response'), new ui\ShowResponse($sender),
-        $oPage->isPosted() || ($oPage->getRequestValue('show') == 'result'));
+$requestTabs->addTab(
+    _('Response'),
+    new ui\ShowResponse($sender),
+    $oPage->isPosted() || ($oPage->getRequestValue('show') == 'result')
+);
 
 if (strstr($url, '?')) {
     $overviewUrl = $url . '&inDesktopApp=true';
 } else {
     $overviewUrl = $url . '?inDesktopApp=true';
 }
-$requestTabs->addTab(_('AbraFlexi'),
-        new \Ease\Html\IframeTag(str_replace(['.json', '.xml', '.csv'], '.html',
-                        $overviewUrl),
-                ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]));
+$requestTabs->addTab(
+    _('AbraFlexi'),
+    new \Ease\Html\IframeTag(
+        str_replace(
+            ['.json', '.xml', '.csv'],
+            '.html',
+            $overviewUrl
+        ),
+        ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]
+    )
+);
 
 $oPage->container->addItem($requestTabs);
 

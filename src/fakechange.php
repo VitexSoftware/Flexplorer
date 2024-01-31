@@ -8,6 +8,7 @@ namespace Flexplorer;
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Vitex Software
  */
+
 require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
@@ -44,9 +45,11 @@ if ($oPage->isPosted() || (!empty($change) && file_exists($changeFile))) {
 
     if (($responseCode == 200) && !strlen($responseBody)) {
         $prober->addStatusMessage(_('WebHook successfully triggered'), 'success');
-    } else if (strlen($responseBody)) {
-        $prober->addStatusMessage(_('WebHook returns non empty response'),
-                'warning');
+    } elseif (strlen($responseBody)) {
+        $prober->addStatusMessage(
+            _('WebHook returns non empty response'),
+            'warning'
+        );
     }
 }
 
@@ -68,48 +71,81 @@ $toolRow = new \Ease\TWB5\Row();
 $settingsForm = new \Ease\TWB5\Form(['name' => 'settings']);
 
 //TODO \Ease\TWB5\Widgets\Toggle
-$settingsForm->addInput(new \Ease\TWB5\Widgets\TWBSwitch('changesformat', true, 'JSON',
-                ['onText' => 'JSON', 'offText' => 'XML', 'disabled' => true]),
-        _('Data format'));
+$settingsForm->addInput(
+    new \Ease\TWB5\Widgets\TWBSwitch(
+        'changesformat',
+        true,
+        'JSON',
+        ['onText' => 'JSON', 'offText' => 'XML', 'disabled' => true]
+    ),
+    _('Data format')
+);
 
-$settingsForm->addInput(new \Ease\Html\InputNumberTag('lastversion',
-                $lastversion, ['min' => 0]), _('Last version'), $lastversion,
-        _('Which version of the changes will begin sending following changes'));
+$settingsForm->addInput(
+    new \Ease\Html\InputNumberTag(
+        'lastversion',
+        $lastversion,
+        ['min' => 0]
+    ),
+    _('Last version'),
+    $lastversion,
+    _('Which version of the changes will begin sending following changes')
+);
 
-$settingsForm->addInput(new \Ease\Html\SelectTag('evidence', $evidenciesToMenu,
-                $evidence), _('Evidence'));
+$settingsForm->addInput(new \Ease\Html\SelectTag(
+    'evidence',
+    $evidenciesToMenu,
+    $evidence
+), _('Evidence'));
 
-$settingsForm->addInput(new \Ease\Html\SelectTag('operation',
-                ['create' => 'Create', 'update' => 'Update', 'delete' => 'Delete'],
-                $operation), _('Operation'), null);
+$settingsForm->addInput(new \Ease\Html\SelectTag(
+    'operation',
+    ['create' => 'Create', 'update' => 'Update', 'delete' => 'Delete'],
+    $operation
+), _('Operation'), null);
 
-$settingsForm->addInput(new \Ease\Html\InputNumberTag('id', $id, ['min' => 0]),
-        _('Record number'), $id, _('Internal number of record edited'));
+$settingsForm->addInput(
+    new \Ease\Html\InputNumberTag('id', $id, ['min' => 0]),
+    _('Record number'),
+    $id,
+    _('Internal number of record edited')
+);
 
-$settingsForm->addInput(new \Ease\Html\InputTextTag('extid', $extid),
-        _('External number'), $extid, _('External number of record edited'));
+$settingsForm->addInput(
+    new \Ease\Html\InputTextTag('extid', $extid),
+    _('External number'),
+    $extid,
+    _('External number of record edited')
+);
 
 $settingsForm->addItem(new \Ease\TWB5\SubmitButton(_('Build change'), 'warning'));
 $toolRow->addColumn(4, new \Ease\TWB5\Well($settingsForm));
 
 $hookForm = new \Ease\TWB5\Form(['name' => 'TriggerHook']);
-$hookForm->addInput(new \Ease\Html\InputTextTag('hookurl', $hookurl),
-        _('Web Hook'), 'http://server/getchanges.php',
-        [new \Ease\TWB5\LinkButton('changesapi.php', _('Choose Registered')),
-            new \Ease\Html\ATag('https://www.flexibee.eu/api/dokumentace/ref/web-hooks',
-                    _('When the database AbraFlexi is changed the POST HTTP request sent to all registered URL'))]
+$hookForm->addInput(
+    new \Ease\Html\InputTextTag('hookurl', $hookurl),
+    _('Web Hook'),
+    'http://server/getchanges.php',
+    [new \Ease\TWB5\LinkButton('changesapi.php', _('Choose Registered')),
+            new \Ease\Html\ATag(
+                'https://www.flexibee.eu/api/dokumentace/ref/web-hooks',
+                _('When the database AbraFlexi is changed the POST HTTP request sent to all registered URL')
+            )]
 );
 
-$hookForm->addInput(new ui\JsonTextarea('code',
-                json_encode($changeData, JSON_PRETTY_PRINT)));
+$hookForm->addInput(new ui\JsonTextarea(
+    'code',
+    json_encode($changeData, JSON_PRETTY_PRINT)
+));
 $hookForm->addItem(new \Ease\TWB5\SubmitButton(_('Send'), 'success'));
 
 $toolRow->addColumn(8, new \Ease\TWB5\Well($hookForm));
 
 if (strlen($responseBody)) {
-
-    $responseBlock = new \Ease\TWB5\Panel(new \Ease\Html\H1Tag($prober->lastResponseCode),
-            'info');
+    $responseBlock = new \Ease\TWB5\Panel(
+        new \Ease\Html\H1Tag($prober->lastResponseCode),
+        'info'
+    );
 
     $responseBlock->addItem('<pre><code class="' . $format . '">' .
             nl2br(htmlentities($prober->lastCurlResponse))
@@ -125,8 +161,11 @@ if (strlen($responseBody)) {
 }
 $changeTabs->addTab(_('Request'), $toolRow);
 
-$oPage->container->addItem(new \Ease\TWB5\Panel(_('WebHook probe'), 'info',
-                $changeTabs));
+$oPage->container->addItem(new \Ease\TWB5\Panel(
+    _('WebHook probe'),
+    'info',
+    $changeTabs
+));
 
 $oPage->addItem(new ui\PageBottom());
 

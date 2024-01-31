@@ -11,7 +11,6 @@ namespace Flexplorer\ui;
 
 class PageBottom extends \Ease\TWB5\Container
 {
-
     public const BUILD = '';
 
     public function __construct($content = null)
@@ -27,36 +26,60 @@ class PageBottom extends \Ease\TWB5\Container
 
         $rowFluid1 = new \Ease\TWB5\Row();
         $colA = $rowFluid1->addItem(new \Ease\TWB5\Col(2));
-        $listA1 = $colA->addItem(new \Ease\Html\UlTag(_('Sources'),
-                        ['style' => 'list-style-type: none']));
-        $listA1->addItemSmart(new \Ease\Html\ATag('https://github.com/VitexSoftware/Flexplorer',
-                        'Flexiplorer'));
-        $listA1->addItemSmart(new \Ease\Html\ATag('https://github.com/Spoje-NET/AbraFlexi',
-                        'AbraFlexi'));
-        $listA1->addItemSmart(new \Ease\Html\ATag('https://github.com/VitexSoftware/EaseFramework',
-                        'PHP Ease Framework'));
+        $listA1 = $colA->addItem(new \Ease\Html\UlTag(
+            _('Sources'),
+            ['style' => 'list-style-type: none']
+        ));
+        $listA1->addItemSmart(new \Ease\Html\ATag(
+            'https://github.com/VitexSoftware/Flexplorer',
+            'Flexiplorer'
+        ));
+        $listA1->addItemSmart(new \Ease\Html\ATag(
+            'https://github.com/Spoje-NET/AbraFlexi',
+            'AbraFlexi'
+        ));
+        $listA1->addItemSmart(new \Ease\Html\ATag(
+            'https://github.com/VitexSoftware/EaseFramework',
+            'PHP Ease Framework'
+        ));
 
         $colB = $rowFluid1->addItem(new \Ease\TWB5\Col(2));
-        $listB1 = $colB->addItem(new \Ease\Html\UlTag(_('Support'),
-                        ['style' => 'list-style-type: none']));
-        $listB1->addItemSmart(new \Ease\Html\ATag('https://www.flexibee.eu/podpora/Tickets/ViewList',
-                        'My issues'));
-        $listB1->addItemSmart(new \Ease\Html\ATag('https://www.flexibee.eu/podpora/Tickets/Submit',
-                        'Enter issue'));
+        $listB1 = $colB->addItem(new \Ease\Html\UlTag(
+            _('Support'),
+            ['style' => 'list-style-type: none']
+        ));
+        $listB1->addItemSmart(new \Ease\Html\ATag(
+            'https://www.flexibee.eu/podpora/Tickets/ViewList',
+            'My issues'
+        ));
+        $listB1->addItemSmart(new \Ease\Html\ATag(
+            'https://www.flexibee.eu/podpora/Tickets/Submit',
+            'Enter issue'
+        ));
 
         $colC = $rowFluid1->addItem(new \Ease\TWB5\Col(2));
-        $listC1 = $colC->addItem(new \Ease\Html\UlTag(_('Services'),
-                        ['style' => 'list-style-type: none']));
-        $listC1->addItemSmart(new \Ease\Html\ATag('https://www.flexibee.eu/podpora/stazeni-abraflexi/',
-                        'Download'));
-        $listC1->addItemSmart(new \Ease\Html\ATag('https://www.flexibee.eu/api/licence-pro-vyvojare/zadost-o-vyvojarskou-licenci/',
-                        'Deverloper License request'));
+        $listC1 = $colC->addItem(new \Ease\Html\UlTag(
+            _('Services'),
+            ['style' => 'list-style-type: none']
+        ));
+        $listC1->addItemSmart(new \Ease\Html\ATag(
+            'https://www.flexibee.eu/podpora/stazeni-abraflexi/',
+            'Download'
+        ));
+        $listC1->addItemSmart(new \Ease\Html\ATag(
+            'https://www.flexibee.eu/api/licence-pro-vyvojare/zadost-o-vyvojarskou-licenci/',
+            'Deverloper License request'
+        ));
 
         $colD = $rowFluid1->addItem(new \Ease\TWB5\Col(2));
-        $listD1 = $colD->addItem(new \Ease\Html\UlTag(_('Docs'),
-                        ['style' => 'list-style-type: none']));
-        $listD1->addItemSmart(new \Ease\Html\ATag('https://demo.flexibee.eu/devdoc/',
-                        'REST API'));
+        $listD1 = $colD->addItem(new \Ease\Html\UlTag(
+            _('Docs'),
+            ['style' => 'list-style-type: none']
+        ));
+        $listD1->addItemSmart(new \Ease\Html\ATag(
+            'https://demo.flexibee.eu/devdoc/',
+            'REST API'
+        ));
 
         $colE = $rowFluid1->addItem(new \Ease\TWB5\Col(2));
         $listE1 = $colE->addItem(new \Ease\Html\UlTag(_('Author'), ['style' => 'list-style-type: none']));

@@ -27,8 +27,11 @@ if (empty($name)) {
     $newCompany = preg_replace('/[0-9]+$/', '', $company);
 
     $companer->setDataValue('nazev', $newCompany . $companyNewIndex);
-    $oPage->container->addItem(new \Ease\TWB5\Panel(_('Clone to'), 'success',
-                    new ui\CompanyForm($companer)));
+    $oPage->container->addItem(new \Ease\TWB5\Panel(
+        _('Clone to'),
+        'success',
+        new ui\CompanyForm($companer)
+    ));
 
     $oPage->addItem(new ui\PageBottom());
 } else {
@@ -41,13 +44,17 @@ if (empty($name)) {
             $cloner->addStatusMessage(_('backup restored'), 'success');
             $oPage->redirect('company.php?company=' . $name);
         } else {
-            $cloner->addStatusMessage(sprintf(_('company %s was not restored'),
-                            $company), 'warning');
+            $cloner->addStatusMessage(sprintf(
+                _('company %s was not restored'),
+                $company
+            ), 'warning');
             $oPage->redirect('company.php?company=' . $company);
         }
     } else {
-        $cloner->addStatusMessage(sprintf(_('Saving company %s failed'),
-                        $company), 'error');
+        $cloner->addStatusMessage(sprintf(
+            _('Saving company %s failed'),
+            $company
+        ), 'error');
 
         $oPage->redirect('company.php?company=' . $company);
     }

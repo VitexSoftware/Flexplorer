@@ -8,6 +8,7 @@ namespace Flexplorer;
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Vitex Software
  */
+
 require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
@@ -18,7 +19,7 @@ $id = $oPage->getRequestValue('id');
 $engine = new Flexplorer($evidence);
 
 if (!is_null($id)) {
-    $engine->loadFromAbraFlexi(is_numeric($id) ? intval($id) : $id );
+    $engine->loadFromAbraFlexi(is_numeric($id) ? intval($id) : $id);
     $originalData = $engine->getData();
     $recordInfo = $engine->__toString();
 } else {
@@ -56,17 +57,22 @@ if ($oPage->isPosted()) {
 $oPage->addItem(new ui\PageTop(_('Editor') . ' ' . $evidence . ' ' . $recordInfo));
 
 if ($oPage->isPosted() && is_null($oPage->getRequestValue('toAbraFlexi'))) {
-
     $url = $engine->getEvidenceURL();
 
     $method = 'POST';
     $body = $engine->getJsonizedData($engine->getData());
 
-    $oPage->container->addItem(new \Ease\TWB5\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence=' . $evidence . '">' . $evidence . '</a> <a href="editor.php?evidence=' . $evidence . '&id=' . $id . '">' . $recordInfo),
-                    'info', new ui\SendForm($url, $method, $body)));
+    $oPage->container->addItem(new \Ease\TWB5\Panel(
+        new \Ease\Html\H1Tag('<a href="evidence.php?evidence=' . $evidence . '">' . $evidence . '</a> <a href="editor.php?evidence=' . $evidence . '&id=' . $id . '">' . $recordInfo),
+        'info',
+        new ui\SendForm($url, $method, $body)
+    ));
 } else {
-    $oPage->container->addItem(new \Ease\TWB5\Panel(new \Ease\Html\H1Tag('<a href="evidence.php?evidence=' . $evidence . '">' . $evidence . '</a> <a href="editor.php?evidence=' . $evidence . '&id=' . $id . '">' . $recordInfo . '</a>'),
-                    'info', new ui\Editor($engine)));
+    $oPage->container->addItem(new \Ease\TWB5\Panel(
+        new \Ease\Html\H1Tag('<a href="evidence.php?evidence=' . $evidence . '">' . $evidence . '</a> <a href="editor.php?evidence=' . $evidence . '&id=' . $id . '">' . $recordInfo . '</a>'),
+        'info',
+        new ui\Editor($engine)
+    ));
 }
 
 $oPage->addItem(new ui\PageBottom());

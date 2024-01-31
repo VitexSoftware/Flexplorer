@@ -14,15 +14,16 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class LabelSwitches extends \Ease\Html\DivTag {
-
+class LabelSwitches extends \Ease\Html\DivTag
+{
     /**
      * AbraFlexi Label Switches
      *
      * @param \AbraFlexi\RW $abraflexi
      * @param array $properties
      */
-    public function __construct($abraflexi, $properties = []) {
+    public function __construct($abraflexi, $properties = [])
+    {
         $allLabels = \AbraFlexi\Stitek::getAvailbleLabels($abraflexi);
         $enabledLabels = \AbraFlexi\Stitek::getLabels($abraflexi);
         if (empty($enabledLabels)) {
@@ -34,17 +35,21 @@ class LabelSwitches extends \Ease\Html\DivTag {
         }
         parent::__construct(null, $properties);
         foreach ($allLabels as $code => $title) {
-            $twbsw = $this->addItem(new \Ease\TWB5\Widgets\TWBSwitch($code,
-                            array_key_exists($code, $enabledLabels), 1,
-                            ['onText' => $code, 'offText' => $title, 'onColor' => 'success',
+            $twbsw = $this->addItem(new \Ease\TWB5\Widgets\TWBSwitch(
+                $code,
+                array_key_exists($code, $enabledLabels),
+                1,
+                ['onText' => $code, 'offText' => $title, 'onColor' => 'success',
                         'offColor' => 'default', 'labelWidth' => 10, 'handleWidth' => 200
-            ]));
+                ]
+            ));
             $twbsw->setTagProperties(['data-evidence' => $abraflexi->getEvidence(),
                 'data-record' => $abraflexi->getMyKey()]);
         }
     }
 
-    public function finalize() {
+    public function finalize()
+    {
         \Ease\TWB5\Part::twBootstrapize();
         $this->addJavaScript('
 
@@ -70,5 +75,4 @@ $.ajax({
 });
 ');
     }
-
 }

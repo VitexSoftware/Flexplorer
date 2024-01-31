@@ -19,8 +19,10 @@ $evidence = $oPage->getRequestValue('evidence');
 $result = false;
 
 if ($id && $label && $evidence) {
-    $abraFlexi = new \AbraFlexi\RW(['id' => $id],
-            ['evidence' => $evidence]);
+    $abraFlexi = new \AbraFlexi\RW(
+        ['id' => $id],
+        ['evidence' => $evidence]
+    );
 
     if ($oPage->getRequestValue('state', 'boolean')) {
         $result = \AbraFlexi\Stitek::setLabel($label, $abraFlexi);
@@ -28,14 +30,13 @@ if ($id && $label && $evidence) {
         $urlparbac = $abraFlexi->defaultUrlParams;
         $abraFlexi->defaultUrlParams['detail'] = 'custom:id,stitky';
         $abraFlexi->loadFromAbraFlexi(is_numeric($id) ? intval($id) : $id);
-        $result = \AbraFlexi\Stitek::unsetLabel($label,
-                        $abraFlexi);
+        $result = \AbraFlexi\Stitek::unsetLabel(
+            $label,
+            $abraFlexi
+        );
         $abraFlexi->defaultUrlParams = $urlparbac;
     }
     http_response_code($abraFlexi->lastResponseCode);
 } else {
     http_response_code(404);
 }
-
-
-

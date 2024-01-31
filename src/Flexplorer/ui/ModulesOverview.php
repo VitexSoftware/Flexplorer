@@ -13,15 +13,16 @@ namespace Flexplorer\ui;
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
-class ModulesOverview extends \Ease\Html\UlTag {
-
+class ModulesOverview extends \Ease\Html\UlTag
+{
     /**
      * Language Dependencies
-     * @var array 
+     * @var array
      */
     public $translations = [];
 
-    public function __construct($ulContents = null) {
+    public function __construct($ulContents = null)
+    {
         $this->translations = [
             'FAP' => _('Invoices Received'),
             'FAV' => _('Invoices Issued'),
@@ -55,5 +56,4 @@ class ModulesOverview extends \Ease\Html\UlTag {
             $this->addItemSmart(new \Ease\TWB5\Label($type, $code . ' - ' . $name), ['class' => 'list-group-item']);
         }
     }
-
 }

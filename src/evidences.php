@@ -19,8 +19,10 @@ $oPage->addItem(new ui\PageTop(_('Evidences')));
 
 $evidencer = new \AbraFlexi\EvidenceList();
 
-$myEvidencies = \Ease\Functions::reindexArrayBy($evidencer->getAllFromAbraFlexi(),
-                'evidencePath');
+$myEvidencies = \Ease\Functions::reindexArrayBy(
+    $evidencer->getAllFromAbraFlexi(),
+    'evidencePath'
+);
 
 $headerColumns = array_keys(\AbraFlexi\EvidenceList::$evidences['adresar']);
 
@@ -46,28 +48,38 @@ foreach (\AbraFlexi\EvidenceList::$evidences as $evidence) {
 
 $availbleEvidencesLabel = new \Ease\TWB5\Label('success', $availbleCount);
 
-$availble = $evidenceTabs->addTab(sprintf(_('Availble %s'),
-                $availbleEvidencesLabel), $availbleEvidencesTable);
+$availble = $evidenceTabs->addTab(sprintf(
+    _('Availble %s'),
+    $availbleEvidencesLabel
+), $availbleEvidencesTable);
 
 $unlicensedEvidencesLabel = new \Ease\TWB5\Label('warning', $unlicensedCount);
-$unlicensed = $evidenceTabs->addTab(sprintf(_('Unlicensed %s'),
-                $unlicensedEvidencesLabel), $unlicensedEvidencesTable);
+$unlicensed = $evidenceTabs->addTab(sprintf(
+    _('Unlicensed %s'),
+    $unlicensedEvidencesLabel
+), $unlicensedEvidencesTable);
 
 $allEvidencesLabel = new \Ease\TWB5\Label('info', $allCount);
 
-$allEvidences = $evidenceTabs->addTab(sprintf(_('All %s'),
-                $allEvidencesLabel->__toString()), $allEvidencesTable);
+$allEvidences = $evidenceTabs->addTab(sprintf(
+    _('All %s'),
+    $allEvidencesLabel->__toString()
+), $allEvidencesTable);
 
 foreach (\AbraFlexi\EvidenceList::$evidences as $evidence) {
     $path = $evidence['evidencePath'];
 
-    $evidence['evidencePath'] = new \Ease\Html\ATag('evidence.php?evidence=' . $evidence['evidencePath'],
-            $evidence['evidencePath']);
+    $evidence['evidencePath'] = new \Ease\Html\ATag(
+        'evidence.php?evidence=' . $evidence['evidencePath'],
+        $evidence['evidencePath']
+    );
 
-    $evidence['importStatus'] = new \Ease\TWB5\Label(str_replace(['SUPPORTED', 'NOT_DOCUMENTED',
+    $evidence['importStatus'] = new \Ease\TWB5\Label(str_replace(
+        ['SUPPORTED', 'NOT_DOCUMENTED',
                 'DISALLOWED', 'NOT_DIRECT'],
-                    ['success', 'default', 'danger', 'warning'],
-                    $evidence['importStatus']), $evidence['importStatus']);
+        ['success', 'default', 'danger', 'warning'],
+        $evidence['importStatus']
+    ), $evidence['importStatus']);
 
     if (array_key_exists($path, $myEvidencies)) {
         $availbleEvidencesTable->addRowColumns($evidence);

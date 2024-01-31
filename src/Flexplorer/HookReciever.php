@@ -14,8 +14,8 @@ namespace Flexplorer;
  *
  * @author vitex
  */
-class HookReciever extends \Ease\Brick {
-
+class HookReciever extends \Ease\Brick
+{
     public $format = 'json';
     public $changes = null;
     public $globalVersion = null;
@@ -30,12 +30,14 @@ class HookReciever extends \Ease\Brick {
     /**
      * Prijmac WebHooku
      */
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->lastProcessedVersion = $this->getLastProcessedVersion();
     }
 
-    public static function getSaveDir() {
+    public static function getSaveDir()
+    {
         $tmpDir = sys_get_temp_dir();
         if (!is_writable($tmpDir)) { // IIS & C:\WINDOWS\TEMP
             $tmpDir = __DIR__; //Try to use current directory
@@ -48,7 +50,8 @@ class HookReciever extends \Ease\Brick {
      *
      * @return string zaslaná data
      */
-    public function listen($filename = null) {
+    public function listen($filename = null)
+    {
         $input = null;
         $inputJSON = file_get_contents('php://input');
         if (strlen($inputJSON)) {
@@ -57,7 +60,7 @@ class HookReciever extends \Ease\Brick {
             }
             file_put_contents(self::getSaveDir() . '/' . $filename, $inputJSON);
             $this->lastFileName = $filename;
-            $input = json_decode($inputJSON, TRUE); //convert JSON into array
+            $input = json_decode($inputJSON, true); //convert JSON into array
         }
 
         return $input;
@@ -66,7 +69,8 @@ class HookReciever extends \Ease\Brick {
     /**
      * Zpracuje změny
      */
-    function processChanges() {
+    function processChanges()
+    {
         if (count($this->changes)) {
             foreach ($this->changes as $change) {
                 $evidence = $change['@evidence'];
@@ -83,9 +87,13 @@ class HookReciever extends \Ease\Brick {
 
                 $this->saveLastProcessedVersion($inVersion);
 
-                $this->addStatusMessage(sprintf(_('WebHook %s triggered'),
-                                '<a href="changes.php?file=' . $this->lastFileName . '">' . $this->lastFileName . '</a>'),
-                        'info');
+                $this->addStatusMessage(
+                    sprintf(
+                        _('WebHook %s triggered'),
+                        '<a href="changes.php?file=' . $this->lastFileName . '">' . $this->lastFileName . '</a>'
+                    ),
+                    'info'
+                );
             }
         } else {
             $this->addStatusMessage('No Data To Process', 'warning');
@@ -94,17 +102,20 @@ class HookReciever extends \Ease\Brick {
 
     /**
      * Převezme změny
-     * 
+     *
      * @link https://www.flexibee.eu/api/dokumentace/ref/changes-api/ Changes API
      * @param array $changes pole změn
-     * 
+     *
      * @return int Globální verze poslední změny
      */
-    public function takeChanges($changes) {
+    public function takeChanges($changes)
+    {
         $result = null;
         if (!is_array($changes)) {
-            \Ease\Shared::logger()->addToLog(_('Empty WebHook request'),
-                    'Warning');
+            \Ease\Shared::logger()->addToLog(
+                _('Empty WebHook request'),
+                'Warning'
+            );
         } else {
             if (array_key_exists('winstrom', $changes)) {
                 $this->globalVersion = intval($changes['winstrom']['@globalVersion']);
@@ -120,10 +131,13 @@ class HookReciever extends \Ease\Brick {
      *
      * @param int $version
      */
-    public function saveLastProcessedVersion($version) {
+    public function saveLastProcessedVersion($version)
+    {
         $this->lastProcessedVersion = $version;
-        file_put_contents(sys_get_temp_dir() . '/lastAbraFlexiVersion',
-                $this->lastProcessedVersion);
+        file_put_contents(
+            sys_get_temp_dir() . '/lastAbraFlexiVersion',
+            $this->lastProcessedVersion
+        );
     }
 
     /**
@@ -131,7 +145,8 @@ class HookReciever extends \Ease\Brick {
      *
      * @return int $version
      */
-    public function getLastProcessedVersion() {
+    public function getLastProcessedVersion()
+    {
         $lastProcessedVersion = null;
         $versionFile = sys_get_temp_dir() . '/lastAbraFlexiVersion';
         if (file_exists($versionFile)) {
@@ -143,9 +158,9 @@ class HookReciever extends \Ease\Brick {
     /**
      * @return string Filename for current webhook data save
      */
-    public function getSaveName() {
+    public function getSaveName()
+    {
         $host = isset($_SERVER['REMOTE_HOST']) ? $_SERVER['REMOTE_HOST'] : $_SERVER['REMOTE_ADDR'];
         return ('flexplorer-changes-' . $host . '_' . time() . '.json');
     }
-
 }

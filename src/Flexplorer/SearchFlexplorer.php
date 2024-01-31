@@ -13,15 +13,16 @@ namespace Flexplorer;
  *
  * @author vitex
  */
-class SearchFlexplorer extends \Flexplorer\Flexplorer {
-
+class SearchFlexplorer extends \Flexplorer\Flexplorer
+{
     private $occurencies = [];
 
     /**
      * Search All
      * @param type $query
      */
-    public function __construct($query) {
+    public function __construct($query)
+    {
         if (is_array($query)) {
             if (array_key_exists('stitky', $query)) {
                 $queryString = 'stitky=\'code:' . $query['stitky'] . '\'';
@@ -35,8 +36,12 @@ class SearchFlexplorer extends \Flexplorer\Flexplorer {
                 $this->defaultUrlParams = [];
                 parent::__construct();
                 foreach (\AbraFlexi\EvidenceList::$evidences as $evidenceName => $evidenceInfo) {
-                    if (isset(\AbraFlexi\Properties::$$evidenceName) && array_key_exists('stitky',
-                                    \AbraFlexi\Properties::$$evidenceName) && !($evidenceName == 'prodejka')) {
+                    if (
+                        isset(\AbraFlexi\Properties::$$evidenceName) && array_key_exists(
+                            'stitky',
+                            \AbraFlexi\Properties::$$evidenceName
+                        ) && !($evidenceName == 'prodejka')
+                    ) {
                         $this->setEvidence($evidenceName);
                         $occurencies[$evidenceName] = $this->getFlexiData(isset($queryString) ? $queryString : $query);
                     }
@@ -46,7 +51,8 @@ class SearchFlexplorer extends \Flexplorer\Flexplorer {
         }
     }
 
-    public function getData() {
+    public function getData()
+    {
         if ($this->occurencies) {
             $data = $this->occurencies;
         } else {
@@ -54,5 +60,4 @@ class SearchFlexplorer extends \Flexplorer\Flexplorer {
         }
         return $data;
     }
-
 }

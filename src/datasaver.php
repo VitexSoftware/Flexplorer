@@ -8,6 +8,7 @@ namespace Flexplorer;
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Vitex Software
  */
+
 require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
@@ -49,4 +50,3 @@ if ($saver->lastResponseCode != 201) {
 } else {
     header("HTTP/1.1 200 OK");
 }
-

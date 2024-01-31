@@ -9,8 +9,8 @@
 
 namespace Flexplorer\ui;
 
-class NavBarSearchBox extends \Ease\Html\Form {
-
+class NavBarSearchBox extends \Ease\Html\Form
+{
     /**
      * Formulář Bootstrapu.
      *
@@ -21,34 +21,48 @@ class NavBarSearchBox extends \Ease\Html\Form {
      * @param array  $tagProperties vlastnosti tagu například:
      *                              array('enctype' => 'multipart/form-data')
      */
-    public function __construct($formName, $formAction = null,
-            $term = null,
-            $tagProperties = []) {
+    public function __construct(
+        $formName,
+        $formAction = null,
+        $term = null,
+        $tagProperties = []
+    ) {
         parent::__construct(array_merge(['name' => $formName, 'action' => $formAction, 'method' => 'post'], $tagProperties));
 
         $this->setTagProperties(['class' => 'navbar-form', 'role' => 'search']);
         $group = $this->addItem(
-                new \Ease\Html\DivTag(new \Ease\Html\InputTextTag(
-                                'search', $term,
-                                [
+            new \Ease\Html\DivTag(new \Ease\Html\InputTextTag(
+                'search',
+                $term,
+                [
                             'class' => 'form-control pull-right typeahead input-sm',
                             'style' => 'width: 200px; margin-right: 35px, border: 1px solid black; background-color: #e5e5e5; height: 27px',
                             'placeholder' => _('Search'),
-                                ]), ['class' => 'input-group'])
+                    ]
+            ), ['class' => 'input-group'])
         );
-        $buttons = $group->addItem(new \Ease\Html\SpanTag(null,
-                        ['class' => 'input-group-btn']));
-        $buttons->addItem(new \Ease\Html\ButtonTag(new \Ease\Html\SpanTag(
-                                new \Ease\Html\SpanTag(_('Close'), ['class' => 'sr-only']),
-                                ['class' => 'glyphicon glyphicon-remove']),
-                        ['type' => 'reset', 'class' => 'btn btn-default btn-sm']));
-        $buttons->addItem(new \Ease\Html\ButtonTag(new \Ease\Html\SpanTag(
-                                new \Ease\Html\SpanTag(_('Search'), ['class' => 'sr-only']),
-                                ['class' => 'glyphicon glyphicon-search']),
-                        ['type' => 'submit', 'class' => 'btn btn-default btn-sm ']));
+        $buttons = $group->addItem(new \Ease\Html\SpanTag(
+            null,
+            ['class' => 'input-group-btn']
+        ));
+        $buttons->addItem(new \Ease\Html\ButtonTag(
+            new \Ease\Html\SpanTag(
+                new \Ease\Html\SpanTag(_('Close'), ['class' => 'sr-only']),
+                ['class' => 'glyphicon glyphicon-remove']
+            ),
+            ['type' => 'reset', 'class' => 'btn btn-default btn-sm']
+        ));
+        $buttons->addItem(new \Ease\Html\ButtonTag(
+            new \Ease\Html\SpanTag(
+                new \Ease\Html\SpanTag(_('Search'), ['class' => 'sr-only']),
+                ['class' => 'glyphicon glyphicon-search']
+            ),
+            ['type' => 'submit', 'class' => 'btn btn-default btn-sm ']
+        ));
     }
 
-    public function finalize() {
+    public function finalize()
+    {
         WebPage::singleton()->includeJavaScript('js/handlebars.js');
         WebPage::singleton()->includeJavaScript('js/typeahead.bundle.js');
 
@@ -127,5 +141,4 @@ $(\'input[name="search"]\').typeahead(null, {
 
             ', null, true);
     }
-
 }

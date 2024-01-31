@@ -13,8 +13,8 @@ namespace Flexplorer\ui;
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
-class BackupsListing extends \Ease\Html\DivTag {
-
+class BackupsListing extends \Ease\Html\DivTag
+{
     /**
      *
      * @var \Ease\Html\ThTag
@@ -34,7 +34,8 @@ class BackupsListing extends \Ease\Html\DivTag {
      * @param string $regex
      * @param array $properties
      */
-    public function __construct($backupDir, $regex, $properties = []) {
+    public function __construct($backupDir, $regex, $properties = [])
+    {
         parent::__construct(new \Ease\Html\H1Tag($backupDir), $properties);
         $this->contents = new \Ease\Html\TableTag('', ['class' => 'table']);
         foreach ($this->getListing($backupDir, $regex) as $fileInfo) {
@@ -45,7 +46,8 @@ class BackupsListing extends \Ease\Html\DivTag {
         $this->addItem($this->contents);
     }
 
-    public function getListing($backupDir, $regex) {
+    public function getListing($backupDir, $regex)
+    {
         $files = [];
         $d = dir($backupDir);
         while (false !== ($entry = $d->read())) {
@@ -62,12 +64,12 @@ class BackupsListing extends \Ease\Html\DivTag {
         return $files;
     }
 
-    public function addFileToListing($fileInfo) {
+    public function addFileToListing($fileInfo)
+    {
         return $this->contents->addRowColumns([
                     $fileInfo['filename'],
                     \Ease\Page::humanFilesize($fileInfo['size']),
                     new \Ease\ui\LiveAge($fileInfo['age'])
         ]);
     }
-
 }

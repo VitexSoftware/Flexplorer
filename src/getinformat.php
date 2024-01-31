@@ -19,8 +19,10 @@ $id = $oPage->getRequestValue('id');
 $evidence = $oPage->getRequestValue('evidence');
 $format = $oPage->getRequestValue('format');
 
-$document = new \AbraFlexi\RO(is_numeric($id) ? intval($id) : $id,
-        ['evidence' => $evidence]);
+$document = new \AbraFlexi\RO(
+    is_numeric($id) ? intval($id) : $id,
+    ['evidence' => $evidence]
+);
 
 if (empty($evidence)) {
     die(_('Wrong call'));

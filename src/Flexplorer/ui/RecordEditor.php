@@ -14,8 +14,8 @@ namespace Flexplorer\ui;
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
-class RecordEditor extends \Ease\TWB5\Panel {
-
+class RecordEditor extends \Ease\TWB5\Panel
+{
     /**
      *
      * @var ColumnsForm
@@ -32,19 +32,30 @@ class RecordEditor extends \Ease\TWB5\Panel {
      * Ajax Record Editor
      * @param \AbraFlexi\RW $engine
      */
-    public function __construct($engine) {
-        parent::__construct(new \Ease\Html\H3Tag(new \Ease\Html\ATag('evidence.php?evidence=' . $engine->getEvidence(),
-                                \AbraFlexi\EvidenceList::$evidences[$engine->getEvidence()]['evidenceName']) . ' #' . $engine->getMyKey()),
-                'info');
+    public function __construct($engine)
+    {
+        parent::__construct(
+            new \Ease\Html\H3Tag(new \Ease\Html\ATag(
+                'evidence.php?evidence=' . $engine->getEvidence(),
+                \AbraFlexi\EvidenceList::$evidences[$engine->getEvidence()]['evidenceName']
+            ) . ' #' . $engine->getMyKey()),
+            'info'
+        );
         $columns = $engine->getColumnsInfo();
         WebPage::singleton()->includeJavaScript('js/datasaver.js');
         $this->form = new ColumnsForm($engine);
 
-        $this->form->addItem(new \Ease\Html\InputHiddenTag($engine->getKeyColumn(),
-                        $engine->getMyKey(), ['class' => 'keyId']));
+        $this->form->addItem(new \Ease\Html\InputHiddenTag(
+            $engine->getKeyColumn(),
+            $engine->getMyKey(),
+            ['class' => 'keyId']
+        ));
 
-        $this->form->addItem(new \Ease\Html\InputHiddenTag('evidence',
-                        $engine->getEvidence(), ['class' => 'evidence']));
+        $this->form->addItem(new \Ease\Html\InputHiddenTag(
+            'evidence',
+            $engine->getEvidence(),
+            ['class' => 'evidence']
+        ));
 
         $this->engine = $engine;
         foreach ($engine->evidenceStructure as $columnName => $column) {
@@ -54,8 +65,10 @@ class RecordEditor extends \Ease\TWB5\Panel {
         }
 
         if (empty($engine->getMyKey())) {
-            $this->form->addInput(new \Ease\TWB5\SubmitButton(_('Save new record'),
-                            'success'));
+            $this->form->addInput(new \Ease\TWB5\SubmitButton(
+                _('Save new record'),
+                'success'
+            ));
         }
 
         $this->addItem($this->form);
@@ -66,7 +79,8 @@ class RecordEditor extends \Ease\TWB5\Panel {
      *
      * @param array $colProperties
      */
-    public function addFlexiInput($colProperties) {
+    public function addFlexiInput($colProperties)
+    {
         $type = $colProperties['type'];
         $name = $colProperties['name'];
         $propertyName = isset($colProperties['propertyName']) ? $colProperties['propertyName'] : $colProperties['name'];
@@ -97,17 +111,26 @@ class RecordEditor extends \Ease\TWB5\Panel {
         switch ($type) {
             case 'numeric':
                 $inputProperties['pattern'] = '^\d+(\.|\,)\d{2}$';
-                $widget = new \Ease\Html\InputNumberTag($propertyName,
-                        $value, $inputProperties);
+                $widget = new \Ease\Html\InputNumberTag(
+                    $propertyName,
+                    $value,
+                    $inputProperties
+                );
                 break;
             case 'integer':
-                $widget = new \Ease\Html\InputNumberTag($propertyName,
-                        $value, $inputProperties);
+                $widget = new \Ease\Html\InputNumberTag(
+                    $propertyName,
+                    $value,
+                    $inputProperties
+                );
                 break;
             case 'logic':
-
-                $widget = new YesNoSwitch($propertyName, $value, true,
-                        $inputProperties);
+                $widget = new YesNoSwitch(
+                    $propertyName,
+                    $value,
+                    true,
+                    $inputProperties
+                );
                 break;
             case 'relation':
                 $evidence = '';
@@ -116,42 +139,69 @@ class RecordEditor extends \Ease\TWB5\Panel {
                     $evidence = end($tmp);
                 }
                 $colProperties['data-evidence'] = $evidence;
-                $widget = new RelationSelect($propertyName,
-                        $value, $inputProperties);
+                $widget = new RelationSelect(
+                    $propertyName,
+                    $value,
+                    $inputProperties
+                );
 
-                $note = [new \Ease\Html\ATag('evidence.php?evidence=' . $evidence,
-                            new \Ease\TWB5\GlyphIcon('list') . ' ' . $evidence)];
+                $note = [new \Ease\Html\ATag(
+                    'evidence.php?evidence=' . $evidence,
+                    new \Ease\TWB5\GlyphIcon('list') . ' ' . $evidence
+                )];
 
                 if (strlen($value)) {
-                    $note[] = new \Ease\Html\ATag('editor.php?evidence=' . $evidence . '&id=' . urlencode($value),
-                            new \Ease\TWB5\GlyphIcon('edit') . ' ' . _('Edit targeted record'));
+                    $note[] = new \Ease\Html\ATag(
+                        'editor.php?evidence=' . $evidence . '&id=' . urlencode($value),
+                        new \Ease\TWB5\GlyphIcon('edit') . ' ' . _('Edit targeted record')
+                    );
                 }
                 break;
 
             case 'select':
-                $widget = new \Ease\Html\SelectTag($propertyName,
-                        $this->colValues($colProperties), $value, null,
-                        $inputProperties);
+                $widget = new \Ease\Html\SelectTag(
+                    $propertyName,
+                    $this->colValues($colProperties),
+                    $value,
+                    null,
+                    $inputProperties
+                );
                 break;
             case 'date':
                 $inputProperties['data-format'] = 'YYYY-MM-DD';
-                $widget = new DateTimePicker($propertyName,
-                        $value, $inputProperties, $this->onChangeCode($propertyName));
+                $widget = new DateTimePicker(
+                    $propertyName,
+                    $value,
+                    $inputProperties,
+                    $this->onChangeCode($propertyName)
+                );
                 break;
             case 'datetime':
                 $inputProperties['data-format'] = 'YYYY-MM-DDTHH:mm:ss';
-                $widget = new DateTimePicker($propertyName,
-                        $value, $inputProperties, $this->onChangeCode($propertyName));
+                $widget = new DateTimePicker(
+                    $propertyName,
+                    $value,
+                    $inputProperties,
+                    $this->onChangeCode($propertyName)
+                );
                 break;
             case 'string':
-                $widget = new \Ease\Html\InputTextTag($propertyName,
-                        $value, $inputProperties);
+                $widget = new \Ease\Html\InputTextTag(
+                    $propertyName,
+                    $value,
+                    $inputProperties
+                );
                 break;
             default:
-                $this->addStatusMessage(sprintf(_('Unknown type of data %s'),
-                                $type), 'warning');
-                $widget = new \Ease\Html\InputTag($propertyName,
-                        $value, $inputProperties);
+                $this->addStatusMessage(sprintf(
+                    _('Unknown type of data %s'),
+                    $type
+                ), 'warning');
+                $widget = new \Ease\Html\InputTag(
+                    $propertyName,
+                    $value,
+                    $inputProperties
+                );
                 $note = '?: ' . $type;
                 break;
         }
@@ -163,8 +213,12 @@ class RecordEditor extends \Ease\TWB5\Panel {
             $note .= ' ' . _('Type') . ': ' . $type;
         }
 
-        $this->form->addInput($widget, $propertyName . ': ' . $name, $placeholder,
-                $note);
+        $this->form->addInput(
+            $widget,
+            $propertyName . ': ' . $name,
+            $placeholder,
+            $note
+        );
     }
 
     /**
@@ -173,7 +227,8 @@ class RecordEditor extends \Ease\TWB5\Panel {
      * @param array $colProperties
      * @return array
      */
-    private function colValues($colProperties) {
+    private function colValues($colProperties)
+    {
         $options = [];
         if (isset($colProperties['values'])) {
             foreach ($colProperties['values']['value'] as $colValue) {
@@ -187,17 +242,20 @@ class RecordEditor extends \Ease\TWB5\Panel {
      * Vraci kod pro ukladani policka formulare po editaci
      *
      * @param string $fieldName
-     * 
+     *
      * @return string javascript
      */
-    public function onChangeCode($fieldName) {
+    public function onChangeCode($fieldName)
+    {
         $chCode = '';
         $id = $this->engine->getMyKey();
         if (!is_null($id)) {
-            $chCode = 'saveColumnData(\'' . str_replace('\\', '-',
-                            get_class($this->engine)) . '\', \'' . $id . '\', \'' . $fieldName . '\', \'' . $this->engine->getEvidence() . '\')';
+            $chCode = 'saveColumnData(\'' . str_replace(
+                '\\',
+                '-',
+                get_class($this->engine)
+            ) . '\', \'' . $id . '\', \'' . $fieldName . '\', \'' . $this->engine->getEvidence() . '\')';
         }
         return $chCode;
     }
-
 }

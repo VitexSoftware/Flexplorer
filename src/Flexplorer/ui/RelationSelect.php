@@ -9,9 +9,10 @@
 
 namespace Flexplorer\ui;
 
-class RelationSelect extends \Ease\Html\InputTextTag {
-
-    public function finalize() {
+class RelationSelect extends \Ease\Html\InputTextTag
+{
+    public function finalize()
+    {
         $this->setTagID('AdresarSelect');
         WebPage::singleton()->includeJavaScript('js/handlebars.js');
         WebPage::singleton()->includeJavaScript('js/typeahead.bundle.js');
@@ -46,5 +47,4 @@ $(\'input[name="' . $this->getTagName() . '"]\').typeahead(null, {
 $(".twitter-typeahead").css("display","block");
 ', null, true);
     }
-
 }

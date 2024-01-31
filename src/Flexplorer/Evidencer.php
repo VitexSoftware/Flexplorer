@@ -14,8 +14,8 @@ namespace Flexplorer;
  *
  * @author vitex
  */
-class Evidencer extends Flexplorer {
-
+class Evidencer extends Flexplorer
+{
     /**
      * Evidence used.
      * @var string
@@ -33,17 +33,19 @@ class Evidencer extends Flexplorer {
      *
      * @param string $evidence
      */
-    public function __construct($evidence = null) {
+    public function __construct($evidence = null)
+    {
         parent::__construct($evidence);
         $this->evidencies = \AbraFlexi\EvidenceList::$name;
     }
 
     /**
      * Only way how to set unexistent evidence.
-     * 
+     *
      * @param string $evidence
      */
-    public function setEvidence($evidence) {
+    public function setEvidence($evidence)
+    {
         $this->evidence = $evidence;
     }
 
@@ -53,12 +55,17 @@ class Evidencer extends Flexplorer {
      * @param string $what
      * @return array
      */
-    public function searchString($what) {
+    public function searchString($what)
+    {
         $results = [];
         $evidenceID = 0;
         foreach ($this->evidencies as $evidencePath => $evidenceName) {
-            if ($this->contains($what, $evidenceName) || $this->contains($what,
-                            $evidencePath)) {
+            if (
+                $this->contains($what, $evidenceName) || $this->contains(
+                    $what,
+                    $evidencePath
+                )
+            ) {
                 $evidence['id'] = $evidenceID++;
                 $evidence['name'] = $evidenceName;
                 $evidence['what'] = $evidencePath;
@@ -75,8 +82,8 @@ class Evidencer extends Flexplorer {
      * @param string $evidence
      * @return array Evidence structure
      */
-    public function getColumnsInfo($evidence = null) {
+    public function getColumnsInfo($evidence = null)
+    {
         return [];
     }
-
 }

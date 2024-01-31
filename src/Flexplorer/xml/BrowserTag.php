@@ -13,14 +13,14 @@ namespace Flexplorer\xml;
  *
  * @author vitex
  */
-class BrowserTag extends \Ease\Html\PairTag {
-
+class BrowserTag extends \Ease\Html\PairTag
+{
     /**
-     * 
+     *
      * @param type $content
      */
-    public function __construct($content = null) {
+    public function __construct($content = null)
+    {
         parent::__construct('browser', null, $content);
     }
-
 }

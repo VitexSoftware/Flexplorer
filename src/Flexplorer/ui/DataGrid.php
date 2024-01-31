@@ -14,8 +14,8 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class DataGrid extends \Ease\Html\TableTag {
-
+class DataGrid extends \Ease\Html\TableTag
+{
     /**
      * Extra filtr výsledků
      * @var string
@@ -73,7 +73,8 @@ class DataGrid extends \Ease\Html\TableTag {
      * @param string $datasource URL
      * @param array $properties vlastnosti elementu
      */
-    public function __construct($name, $datasource, $properties = null) {
+    public function __construct($name, $datasource, $properties = null)
+    {
         $this->dataSource = $datasource;
         $this->options['title'] = $name;
         $this->setTagID();
@@ -97,14 +98,14 @@ class DataGrid extends \Ease\Html\TableTag {
     /**
      * Set up DataGrid buttons
      */
-    public function setUpButtons() {
+    public function setUpButtons()
+    {
         $this->addJsonButton(_('Json'));
         $this->addXmlButton(_('XML'));
         $this->addPdfButton(_('PDF'));
         $actions = $this->dataSource->handledObejct->getActionsInfo();
         if (count($actions)) {
             foreach ($actions as $action => $actionInfo) {
-
                 switch ($action) {
                     case 'new':
                     case 'add':
@@ -117,8 +118,10 @@ class DataGrid extends \Ease\Html\TableTag {
                         $this->addDeleteButton(_('Delete'));
                         break;
                     default:
-                        $this->addActionButton($actionInfo['actionName'],
-                                $action);
+                        $this->addActionButton(
+                            $actionInfo['actionName'],
+                            $action
+                        );
                         break;
                 }
             }
@@ -132,7 +135,8 @@ class DataGrid extends \Ease\Html\TableTag {
      * @param string $title  Buttin title
      * @param string $action AbraFlexi action
      */
-    public function addActionButton($title, $action) {
+    public function addActionButton($title, $action)
+    {
         $show = false;
 
         $actionFunction = str_replace('-', '_', $action);
@@ -171,7 +175,8 @@ class DataGrid extends \Ease\Html\TableTag {
     /**
      * Nastaví vlastností sloupečků datagridu
      */
-    public function setUpColumns() {
+    public function setUpColumns()
+    {
 
         foreach ($this->dataSource->keywordsInfo as $keyword => $properties) {
             $colProperties = [];
@@ -184,14 +189,19 @@ class DataGrid extends \Ease\Html\TableTag {
 
 
             if (!isset($this->dataSource->keywordsInfo[$keyword]['title']) || !strlen(trim($this->dataSource->keywordsInfo[$keyword]['title']))) {
-                $this->addStatusMessage(_('Title missing') . ' ' . $this->dataSource->keyword . ': ' . $keyword,
-                        'warning');
+                $this->addStatusMessage(
+                    _('Title missing') . ' ' . $this->dataSource->keyword . ': ' . $keyword,
+                    'warning'
+                );
                 $this->dataSource->keywordsInfo[$keyword]['title'] = $keyword;
             }
 
-            $this->setColumn($keyword,
-                    $this->dataSource->keywordsInfo[$keyword]['title'], true,
-                    $colProperties);
+            $this->setColumn(
+                $keyword,
+                $this->dataSource->keywordsInfo[$keyword]['title'],
+                true,
+                $colProperties
+            );
         }
     }
 
@@ -201,7 +211,8 @@ class DataGrid extends \Ease\Html\TableTag {
      * @param string $title Popisek tlačítka
      * @param string $class CSS třída tlačítka
      */
-    public function addButton($title, $class, $onpress = null) {
+    public function addButton($title, $class, $onpress = null)
+    {
         if ($onpress) {
             $this->options['buttons'][] = ['name' => $title, 'bclass' => $class,
                 'onpress: ' . $onpress];
@@ -216,7 +227,8 @@ class DataGrid extends \Ease\Html\TableTag {
      * @param string $title  Nadpis gridu
      * @param string $target Url
      */
-    public function addAddButton($title, $target = null) {
+    public function addAddButton($title, $target = null)
+    {
         $show = false;
         if (is_null($target)) {
             $target = $this->options['url'];
@@ -239,7 +251,8 @@ background: url(images/add.png) no-repeat center left;
      * @param type $title
      * @param type $target
      */
-    public function addSelectAllButton($title, $target = null) {
+    public function addSelectAllButton($title, $target = null)
+    {
         $this->addButton($title, 'selectAll', 'selectAll');
         $this->addJavaScript('function selectAll(com, grid) {
                 $(\'tr\', grid).each(function() {
@@ -254,7 +267,8 @@ background: url(images/add.png) no-repeat center left;
      * @param type $title
      * @param type $target
      */
-    public function addEditButton($title, $target = null) {
+    public function addEditButton($title, $target = null)
+    {
         $this->addButton($title, 'edit', 'editRecord');
 
         $this->addCss('.flexigrid div.fbutton .edit {
@@ -290,7 +304,8 @@ background: url(images/edit.png) no-repeat center left;
         ', null, true);
     }
 
-    public function addXmlButton($title, $target = null) {
+    public function addXmlButton($title, $target = null)
+    {
         $this->addButton($title, 'xml', 'xmlRecord');
 
         $this->addCss('.flexigrid div.fbutton .xml {
@@ -326,7 +341,8 @@ background: url(images/xml.svg) no-repeat center left;
         ', null, true);
     }
 
-    public function addJsonButton($title, $target = null) {
+    public function addJsonButton($title, $target = null)
+    {
         $this->addButton($title, 'json', 'jsonRecord');
 
         $this->addCss('.flexigrid div.fbutton .json {
@@ -362,7 +378,8 @@ background: url(images/json.svg) no-repeat center left;
         ', null, true);
     }
 
-    public function addPdfButton($title, $target = null) {
+    public function addPdfButton($title, $target = null)
+    {
         $this->addButton($title, 'pdf', 'pdfRecord');
 
         $this->addCss('.flexigrid div.fbutton .pdf {
@@ -404,7 +421,8 @@ background: url(images/pdf.svg) no-repeat center left;
      * @param string $title  popisek tlačítka
      * @param string $target výkonný skript
      */
-    public function addDeleteButton($title, $target = null) {
+    public function addDeleteButton($title, $target = null)
+    {
         if (is_null($target)) {
             $target = $this->options['url'];
         }
@@ -450,8 +468,12 @@ background: url(images/delete.png) no-repeat center left;
      * @param boolean $search           nabídnout pro sloupec vyhledávání
      * @param array   $columnProperties další vlastnosti v poli
      */
-    public function setColumn($name, $title, $search = false,
-            $columnProperties = null) {
+    public function setColumn(
+        $name,
+        $title,
+        $search = false,
+        $columnProperties = null
+    ) {
         if (!isset($this->options['colModel'])) {
             $this->options['colModel'] = [];
         }
@@ -462,8 +484,10 @@ background: url(images/delete.png) no-repeat center left;
         $properties['name'] = $name;
         $properties['display'] = $title;
         if (is_array($columnProperties)) {
-            $this->options['colModel'][] = array_merge($columnProperties,
-                    $properties);
+            $this->options['colModel'][] = array_merge(
+                $columnProperties,
+                $properties
+            );
         } else {
             $this->options['colModel'][] = $properties;
         }
@@ -494,7 +518,8 @@ background: url(images/delete.png) no-repeat center left;
     /**
      * Vložení skriptu
      */
-    public function finalize() {
+    public function finalize()
+    {
         $grid_id = $this->getTagID();
         if ($this->getTagProperty('columnsAutoSize')) {
             $this->options['onSuccess'] = 'function() { addGrid($("#' . $grid_id . '"), this)}';
@@ -560,9 +585,11 @@ background: url(images/delete.png) no-repeat center left;
             }';
         }
         $this->options['getGridClass'] = 'function(g) { this.g=g; return g; }';
-        WebPage::singleton()->addJavaScript("\n"
+        WebPage::singleton()->addJavaScript(
+            "\n"
                 . '$(\'#' . $grid_id . '\').flexigrid({ ' . \Ease\Part::partPropertiesToString($this->options) . ' }); ' . $grid_js,
-                null, true);
+            null,
+            true
+        );
     }
-
 }

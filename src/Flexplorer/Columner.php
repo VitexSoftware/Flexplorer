@@ -14,8 +14,8 @@ namespace Flexplorer;
  *
  * @author vitex
  */
-class Columner extends Flexplorer {
-
+class Columner extends Flexplorer
+{
     /**
      * Evidence used.
      * @var string
@@ -30,10 +30,11 @@ class Columner extends Flexplorer {
 
     /**
      * Evidence handling class
-     * 
+     *
      * @param string $evidence
      */
-    public function __construct($evidence = null) {
+    public function __construct($evidence = null)
+    {
         parent::__construct($evidence);
     }
 
@@ -42,7 +43,8 @@ class Columner extends Flexplorer {
      *
      * @param string $evidence
      */
-    public function setEvidence($evidence) {
+    public function setEvidence($evidence)
+    {
         $this->evidence = $evidence;
     }
 
@@ -52,7 +54,8 @@ class Columner extends Flexplorer {
      * @param string $what
      * @return array
      */
-    public function searchString($what) {
+    public function searchString($what)
+    {
         $results = [];
         foreach (\AbraFlexi\EvidenceList::$name as $evidencePath => $evidenceName) {
             $evidenceProperties = $this->getColumnsInfo($evidencePath);
@@ -62,9 +65,15 @@ class Columner extends Flexplorer {
                     if (!array_key_exists('title', $evidenceProperties[$columnName])) {
                         $evidenceProperties[$columnName]['title'] = '';
                     }
-                    if ($this->contains($what, $columnName) || $this->contains($what,
-                                    $evidenceProperties[$columnName]['name']) || $this->contains($what,
-                                    $evidenceProperties[$columnName]['title'])) { //Column names
+                    if (
+                        $this->contains($what, $columnName) || $this->contains(
+                            $what,
+                            $evidenceProperties[$columnName]['name']
+                        ) || $this->contains(
+                            $what,
+                            $evidenceProperties[$columnName]['title']
+                        )
+                    ) { //Column names
                         $results[] = ['id' => $columnId, 'name' => $columnName . ' @ ' . $evidencePath,
                             'what' => $evidenceProperties[$columnName]['name'] . ' / ' . $evidenceName,
                             'url' => 'evidence.php?evidence=' . $evidencePath . '&column=' . $columnName];
@@ -74,5 +83,4 @@ class Columner extends Flexplorer {
         }
         return $results;
     }
-
 }

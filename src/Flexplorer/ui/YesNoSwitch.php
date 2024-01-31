@@ -15,16 +15,21 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class YesNoSwitch extends \Ease\TWB5\Widgets\TWBSwitch {
-
+class YesNoSwitch extends \Ease\TWB5\Widgets\TWBSwitch
+{
     public $keyCode = 'var key = $(".keyId").val();';
 
-    function __construct($name, $checked = false, $value = null,
-            $properties = null) {
+    function __construct(
+        $name,
+        $checked = false,
+        $value = null,
+        $properties = null
+    ) {
         parent::__construct($name, $checked, 'on', $properties);
     }
 
-    function finalize() {
+    function finalize()
+    {
         parent::finalize();
         $this->addJavascript('$("[name=\'' . $this->getTagName() . '\']").on(\'switchChange.bootstrapSwitch\', function(event, state) {
 
@@ -56,5 +61,4 @@ class YesNoSwitch extends \Ease\TWB5\Widgets\TWBSwitch {
         });
             ', null, true);
     }
-
 }

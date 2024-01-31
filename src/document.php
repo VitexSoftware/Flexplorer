@@ -34,8 +34,10 @@ if (empty($embed)) {
 if (isset($ids)) {
     $document = new \AbraFlexi\RO(null, ['evidence' => $evidence]);
 } else {
-    $document = new \AbraFlexi\RO(is_numeric($id) ? intval($id) : $id,
-            ['evidence' => $evidence, 'list' => 'id']);
+    $document = new \AbraFlexi\RO(
+        is_numeric($id) ? intval($id) : $id,
+        ['evidence' => $evidence, 'list' => 'id']
+    );
 }
 
 if (empty($embed)) {

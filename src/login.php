@@ -9,7 +9,8 @@
 
 namespace Flexplorer;
 
-use \Ease\Html\DivTag,
+use Ease\Html\DivTag,
+
     \Ease\Html\ImgTag,
     \Ease\Html\InputPasswordTag,
     \Ease\Html\InputTextTag,
@@ -182,8 +183,12 @@ $infoBlock = $infoColumn->addItem(new Card(new ImgTag('images/flexplorer-logo.pn
 $infoBlock->addItem(new DivTag(_('Welcome to FlexPlorer'), ['style' => 'text-align: center;']));
 $loginColumn = $loginRow->addItem(new Col(4));
 $submit = new SubmitButton(_('Sign in'), 'success', ['id' => 'signin']);
-$loginPanel = new Panel(new ImgTag('images/flexplorer-logo.png', 'logo', ['width' => 20]),
-        'inverse', null, $submit);
+$loginPanel = new Panel(
+    new ImgTag('images/flexplorer-logo.png', 'logo', ['width' => 20]),
+    'inverse',
+    null,
+    $submit
+);
 $loginPanel->addItem(new InputGroup(_('Username'), new InputTextTag('login', $login, null, ['class' => 'form-control']), '', _('the username you chose')));
 $loginPanel->addItem(new InputGroup(_('Password'), new InputPasswordTag('password', $login)));
 $loginPanel->addItem(new InputGroup(_('Server'), new InputTextTag('server', $server)));
@@ -191,26 +196,46 @@ $loginPanel->body->setTagCss(['margin' => '20px']);
 $loginColumn->addItem($loginPanel);
 
 $featureList = new \Ease\Html\UlTag(null, ['class' => 'list-group']);
-$featureList->addItemSmart(_('display the contents of all the available records in all companies'),
-        ['class' => 'list-group-item']);
-$featureList->addItemSmart(_('show the structure of evidence'),
-        ['class' => 'list-group-item']);
-$featureList->addItemSmart(_('send direct requests to the server and display results'),
-        ['class' => 'list-group-item']);
-$featureList->addItemSmart(_('set up ChangesAPI and add WebHooks'),
-        ['class' => 'list-group-item']);
-$featureList->addItemSmart(_('Test WebHook script processing changes from AbraFlexi answers'),
-        ['class' => 'list-group-item']);
-$featureList->addItemSmart(_('Collectively establish and abolish the accounting period'),
-        ['class' => 'list-group-item']);
-$featureList->addItemSmart(_('Evidnece distinguish which are inaccessible because of the license'),
-        ['class' => 'list-group-item']);
-$featureList->addItemSmart(_('Shown next to json result of the request and page AbraFlexi'),
-        ['class' => 'list-group-item']);
-$featureList->addItemSmart(_('Edit External ID numbers'),
-        ['class' => 'list-group-item']);
-$featureList->addItemSmart(_('PDF Preview of edited record'),
-        ['class' => 'list-group-item']);
+$featureList->addItemSmart(
+    _('display the contents of all the available records in all companies'),
+    ['class' => 'list-group-item']
+);
+$featureList->addItemSmart(
+    _('show the structure of evidence'),
+    ['class' => 'list-group-item']
+);
+$featureList->addItemSmart(
+    _('send direct requests to the server and display results'),
+    ['class' => 'list-group-item']
+);
+$featureList->addItemSmart(
+    _('set up ChangesAPI and add WebHooks'),
+    ['class' => 'list-group-item']
+);
+$featureList->addItemSmart(
+    _('Test WebHook script processing changes from AbraFlexi answers'),
+    ['class' => 'list-group-item']
+);
+$featureList->addItemSmart(
+    _('Collectively establish and abolish the accounting period'),
+    ['class' => 'list-group-item']
+);
+$featureList->addItemSmart(
+    _('Evidnece distinguish which are inaccessible because of the license'),
+    ['class' => 'list-group-item']
+);
+$featureList->addItemSmart(
+    _('Shown next to json result of the request and page AbraFlexi'),
+    ['class' => 'list-group-item']
+);
+$featureList->addItemSmart(
+    _('Edit External ID numbers'),
+    ['class' => 'list-group-item']
+);
+$featureList->addItemSmart(
+    _('PDF Preview of edited record'),
+    ['class' => 'list-group-item']
+);
 
 $featuresPanel = new \Ease\TWB5\Panel(_('Features'), 'info');
 

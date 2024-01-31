@@ -6,6 +6,7 @@
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Spoje.Net
  */
+
 define('LOG_NAME', 'Flexplorer');
 define('LOG_TYPE', 'syslog');
 define('CONFIGS', '../configurations/');
@@ -17,8 +18,10 @@ define('CONFIGS', '../configurations/');
 define('EMAIL_FROM', 'flexplorer@localhost');
 
 if (file_exists(constant('CONFIGS') . '/default.json')) {
-    $clientConfig = json_decode(file_get_contents(constant('CONFIGS') . '/default.json'),
-            true);
+    $clientConfig = json_decode(
+        file_get_contents(constant('CONFIGS') . '/default.json'),
+        true
+    );
 } else {
     $clientConfig = [
         'ABRAFLEXI_URL' => 'https://demo.flexibee.eu:5434',

@@ -7,11 +7,11 @@ namespace Flexplorer\xml;
  *
  * @author vitex
  */
-class Winstrom extends \Ease\Html\PairTag {
-
-    public function __construct($content = null, $tagProperties = []) {
+class Winstrom extends \Ease\Html\PairTag
+{
+    public function __construct($content = null, $tagProperties = [])
+    {
         $tagProperties['version'] = '1.0';
         parent::__construct('winstrom', $tagProperties, $content);
     }
-
 }

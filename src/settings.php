@@ -8,6 +8,7 @@ namespace Flexplorer;
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2016 Vitex Software
  */
+
 require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
@@ -19,8 +20,11 @@ if ($oPage->getRequestValue('reset') == 'history') {
 
 $oPage->addItem(new ui\PageTop(_('Settings')));
 
-$oPage->container->addItem(new \Ease\TWB5\LinkButton('?reset=history',
-                _('Reset history'), 'success'));
+$oPage->container->addItem(new \Ease\TWB5\LinkButton(
+    '?reset=history',
+    _('Reset history'),
+    'success'
+));
 
 $oPage->addItem(new ui\PageBottom());
 
