@@ -163,7 +163,7 @@ $shared = Shared::singleton();
 $login = \Ease\Document::getRequestValue('login');
 if ($login) {
     try {
-        $oUser = Shared::user(new User());
+        $oUser = Shared::user(null, 'Flexplorer\User');
     } catch (PDOException $e) {
         echo 'Caught exception: ', $e->getMessage(), "\n";
     }

@@ -14,6 +14,7 @@ namespace Flexplorer\ui;
  */
 class PageTop extends \Ease\Html\DivTag
 {
+
     /**
      * Titulek stránky.
      *
@@ -32,7 +33,6 @@ class PageTop extends \Ease\Html\DivTag
         if (!is_null($pageTitle)) {
             WebPage::singleton()->setPageTitle($pageTitle);
         }
-        WebPage::singleton()->body->addAsFirst(new MainMenu());
     }
 
     /**
@@ -41,7 +41,8 @@ class PageTop extends \Ease\Html\DivTag
     public function finalize()
     {
         if ($this->finalized != true) {
-            $this->addItem(new MainMenu());
+//            WebPage::singleton()->body->addAsFirst(new MainMenu());
+//            $this->addItem(new MainMenu());
 //            $this->addItem(new \Ease\TWB5\Widgets\BrowsingHistory());
             $this->finalized = true;
         }

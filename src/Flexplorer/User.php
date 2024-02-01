@@ -16,6 +16,7 @@ namespace Flexplorer;
  */
 class User extends \Ease\User
 {
+
     /**
      * AbraFlexi engine
      * @var \AbraFlexi\RO
@@ -44,6 +45,7 @@ class User extends \Ease\User
      * Perform logIn action
      *
      * @param array $creds
+     * 
      * @return boolean
      */
     public function tryToLogin($creds)
@@ -96,5 +98,23 @@ class User extends \Ease\User
         $_SESSION['license'] = $licenseInfo['license'];
 
         return parent::loginSuccess();
+    }
+
+    /**
+     * Common instance of User class
+     *
+     * @return User
+     */
+    public static function singleton($user = null)
+    {
+        if (!isset(self::$instance)) {
+            self::$instance = is_null($user) ? new self() : $user;
+        }
+        return self::$instance;
+    }
+
+    public function __wakeup()
+    {
+        $this->abraFlexi = new \AbraFlexi\RO();
     }
 }

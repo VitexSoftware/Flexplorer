@@ -4,7 +4,7 @@
  * Flexplorer - An evidence page.
  *
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016 Vitex Software
+ * @copyright  2016-2024 Vitex Software
  */
 
 namespace Flexplorer;
@@ -16,7 +16,7 @@ $oPage->onlyForLogged();
 $evidence = $oPage->getRequestValue('evidence');
 $column = $oPage->getRequestValue('column');
 $label = $oPage->getRequestValue('label');
-$url = constant('ABRAFLEXI_URL') . '/c/' . constant('ABRAFLEXI_COMPANY');
+$url = \Ease\Shared::cfg('ABRAFLEXI_URL') . '/c/' . \Ease\Shared::cfg('ABRAFLEXI_COMPANY');
 if ($evidence) {
     $url .= '/' . $evidence;
 }
@@ -26,66 +26,58 @@ if (is_null($evidence)) {
 }
 
 if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
-    $oPage->addStatusMessage(
-        sprintf(_('Evidence %s does not exist'), $evidence),
-        'warning'
-    );
+    $oPage->addStatusMessage(sprintf(_('Evidence %s does not exist'), $evidence), 'warning');
     $oPage->redirect('evidences.php');
 } else {
+
+
+
     $oPage->addEvidenceToHistory($evidence);
 
-    $oPage->addItem(new ui\PageTop(sprintf(
-        _('Evidence %s'),
-        \AbraFlexi\EvidenceList::$name[$evidence]
-    )));
+    $oPage->addItem(new ui\PageTop(sprintf(_('Evidence %s'), \AbraFlexi\EvidenceList::$name[$evidence])));
 
     $evobj = new Flexplorer($evidence);
 
-    if (
-        array_key_exists(
-            'evidence.php?evidence=' . $evidence,
-            $_SESSION['evidence-menu'][constant('ABRAFLEXI_COMPANY')]
-        )
-    ) {
+    if (array_key_exists('evidence.php?evidence=' . $evidence, $_SESSION['evidence-menu'][\Ease\Shared::cfg('ABRAFLEXI_COMPANY')])) {
         $evidenceLicensed = true;
     } else {
         $evidenceLicensed = false;
     }
 
-    $tabs = new \Ease\TWB5\Tabs('EviTabs');
+    $tabs = new \Ease\TWB5\Tabs([], ['id' => 'EviTabs']);
     if ($evidenceLicensed === true) {
         $tabs->addTab(_('Listing'), new \Flexplorer\ui\DataTable($evobj));
     }
     $tabs->addTab(
-        _('Column Groups'),
-        new ui\ColumnsGroups($evobj, $column),
-        isset($column)
+            _('Column Groups'),
+            new ui\ColumnsGroups($evobj, $column),
+            isset($column)
     );
 
     $method = $oPage->getRequestValue('method');
     $body = $oPage->getRequestValue('body');
     if (is_null($body)) {
-        $body = $evobj->getJsonizedData([]);
+        $body = $evobj->getJsonizedData(['evidence' => $evidence]);
     }
 
 
     if ($evidenceLicensed === true) {
         $tabs->addTab(
-            _('Query'),
-            new \Ease\TWB5\Panel(
-                _('User Query'),
-                'warning',
-                new ui\SendForm($url, $method, $body)
-            )
+                _('Query'),
+                new \Ease\TWB5\Panel(
+                        _('User Query'),
+                        'warning',
+                        new ui\SendForm($url, $method, $body)
+                )
         );
         $overviewUrl = $evobj->getEvidenceUrl() . '/properties.html?inDesktopApp=true';
 
         $tabs->addTab(
-            _('Items overview'),
-            new \Ease\Html\IframeTag(
-                $overviewUrl,
-                ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]
-            )
+                _('Items overview'),
+                new \Ease\Html\IframeTag(
+                        $overviewUrl,
+                        ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]
+                )
         );
         if (strstr($url, '?')) {
             $overviewUrl = $url . '&inDesktopApp=true';
@@ -94,11 +86,11 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
         }
 
         $tabs->addTab(
-            _('AbraFlexi'),
-            new \Ease\Html\IframeTag(
-                str_replace('.json', '.html', $overviewUrl),
-                ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]
-            )
+                _('AbraFlexi'),
+                new \Ease\Html\IframeTag(
+                        str_replace('.json', '.html', $overviewUrl),
+                        ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]
+                )
         );
     }
 
@@ -122,9 +114,9 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
     }
 
     if (is_null($myEvidenceRaw)) {
-        $state = new \Ease\TWB5\Label('danger', _('no'));
+        $state = new \Ease\TWB5\Badge(_('no'), 'danger');
     } else {
-        $state = new \Ease\TWB5\Label('success', _('yes'));
+        $state = new \Ease\TWB5\Badge(_('yes'), 'success');
     }
     $evidenceTable->addRowColumns([_('Allowed by license'), $state]);
 
@@ -138,17 +130,17 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
     $relations = $evobj->getRelationsInfo();
     if (count($relations)) {
         $evidenciesByType = \Ease\Functions::reindexArrayBy(
-            \AbraFlexi\EvidenceList::$evidences,
-            'evidenceType'
+                        \AbraFlexi\EvidenceList::$evidences,
+                        'evidenceType'
         );
 
         foreach ($relations as $relation) {
             if (is_array($relation)) {
                 if (
-                    array_key_exists(
-                        $relation['evidenceType'],
-                        $evidenciesByType
-                    )
+                        array_key_exists(
+                                $relation['evidenceType'],
+                                $evidenciesByType
+                        )
                 ) {
                     $relationsList->addItemSmart(' <a href="evidence.php?evidence=' . $evidenciesByType[$relation['evidenceType']]['evidencePath'] . '">' .
                             $relation['name'] . ' (<strong>' . $relation['evidenceType'] . '</strong> ' . $relation['url'] . ')</a>');
@@ -161,19 +153,19 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
         }
     }
     $relations = $infoRow->addColumn(
-        6,
-        new \Ease\TWB5\Panel(_('Relations'), 'info', $relationsList)
+            6,
+            new \Ease\TWB5\Panel(_('Relations'), 'info', $relationsList)
     );
 
     $relations->addItem(
-        [
+            [
                 new \Ease\TWB5\LinkButton(
-                    $evobj->getEvidenceURL() . '/schema-import.xsd',
-                    'XSD Import'
+                        $evobj->getEvidenceURL() . '/schema-import.xsd',
+                        'XSD Import'
                 ),
                 new \Ease\TWB5\LinkButton(
-                    $evobj->getEvidenceURL() . '/schema-export.xsd',
-                    'XSD Export'
+                        $evobj->getEvidenceURL() . '/schema-export.xsd',
+                        'XSD Export'
                 )
             ]
     );
@@ -182,20 +174,20 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
 
     if (array_key_exists('stitky', $evobj->getColumnsInfo())) {
         $evobj->setDataValue(
-            'stitky',
-            \AbraFlexi\Stitek::getAvailbleLabels($evobj)
+                'stitky',
+                \AbraFlexi\Stitek::getAvailbleLabels($evobj)
         );
         $infoTab->addItem(new \Ease\TWB5\Panel(
-            _('Labels Availble'),
-            'info',
-            new ui\LabelGroup($evobj)
+                        _('Labels Availble'),
+                        'info',
+                        new ui\LabelGroup($evobj)
         ));
     }
 
     $buttonsTab = $tabs->addTab(
-        _('Custom Buttons'),
-        new ui\EvidenceCustomButtons($evobj),
-        ($evidenceLicensed === false)
+            _('Custom Buttons'),
+            new ui\EvidenceCustomButtons($evobj),
+            ($evidenceLicensed === false)
     );
 
     $tabs->addTab(_('Print Sets'), new ui\PrintSetGallery($evobj));

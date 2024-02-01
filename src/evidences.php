@@ -20,8 +20,8 @@ $oPage->addItem(new ui\PageTop(_('Evidences')));
 $evidencer = new \AbraFlexi\EvidenceList();
 
 $myEvidencies = \Ease\Functions::reindexArrayBy(
-    $evidencer->getAllFromAbraFlexi(),
-    'evidencePath'
+                $evidencer->getAllFromAbraFlexi(),
+                'evidencePath'
 );
 
 $headerColumns = array_keys(\AbraFlexi\EvidenceList::$evidences['adresar']);
@@ -35,7 +35,7 @@ $availbleEvidencesTable->addRowHeaderColumns($headerColumns);
 $unlicensedEvidencesTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
 $unlicensedEvidencesTable->addRowHeaderColumns($headerColumns);
 
-$evidenceTabs = new \Ease\TWB5\Tabs('EvidenceTabs');
+$evidenceTabs = new \Ease\TWB5\Tabs([], ['id' => 'EvidenceTabs']);
 
 $availbleCount = count($myEvidencies);
 $allCount = count(\AbraFlexi\EvidenceList::$evidences);
@@ -46,40 +46,31 @@ foreach (\AbraFlexi\EvidenceList::$evidences as $evidence) {
     }
 }
 
-$availbleEvidencesLabel = new \Ease\TWB5\Label('success', $availbleCount);
+$availbleEvidencesLabel = new \Ease\TWB5\Badge($availbleCount, 'success');
 
-$availble = $evidenceTabs->addTab(sprintf(
-    _('Availble %s'),
-    $availbleEvidencesLabel
-), $availbleEvidencesTable);
+$availble = $evidenceTabs->addTab(sprintf(_('Availble %s'), $availbleEvidencesLabel), $availbleEvidencesTable);
 
-$unlicensedEvidencesLabel = new \Ease\TWB5\Label('warning', $unlicensedCount);
-$unlicensed = $evidenceTabs->addTab(sprintf(
-    _('Unlicensed %s'),
-    $unlicensedEvidencesLabel
-), $unlicensedEvidencesTable);
+$unlicensedEvidencesLabel = new \Ease\TWB5\Badge($unlicensedCount, 'warning');
+$unlicensed = $evidenceTabs->addTab(sprintf(_('Unlicensed %s'), $unlicensedEvidencesLabel), $unlicensedEvidencesTable);
 
-$allEvidencesLabel = new \Ease\TWB5\Label('info', $allCount);
+$allEvidencesLabel = new \Ease\TWB5\Badge($allCount, 'info');
 
-$allEvidences = $evidenceTabs->addTab(sprintf(
-    _('All %s'),
-    $allEvidencesLabel->__toString()
-), $allEvidencesTable);
+$allEvidences = $evidenceTabs->addTab(sprintf(_('All %s'),$allEvidencesLabel->__toString()), $allEvidencesTable);
 
 foreach (\AbraFlexi\EvidenceList::$evidences as $evidence) {
     $path = $evidence['evidencePath'];
 
     $evidence['evidencePath'] = new \Ease\Html\ATag(
-        'evidence.php?evidence=' . $evidence['evidencePath'],
-        $evidence['evidencePath']
+            'evidence.php?evidence=' . $evidence['evidencePath'],
+            $evidence['evidencePath']
     );
 
-    $evidence['importStatus'] = new \Ease\TWB5\Label(str_replace(
-        ['SUPPORTED', 'NOT_DOCUMENTED',
-                'DISALLOWED', 'NOT_DIRECT'],
-        ['success', 'default', 'danger', 'warning'],
-        $evidence['importStatus']
-    ), $evidence['importStatus']);
+    $evidence['importStatus'] = new \Ease\TWB5\Badge(str_replace(
+                    ['SUPPORTED', 'NOT_DOCUMENTED',
+                        'DISALLOWED', 'NOT_DIRECT'],
+                    ['success', 'default', 'danger', 'warning'],
+                    $evidence['importStatus']
+            ), $evidence['importStatus']);
 
     if (array_key_exists($path, $myEvidencies)) {
         $availbleEvidencesTable->addRowColumns($evidence);

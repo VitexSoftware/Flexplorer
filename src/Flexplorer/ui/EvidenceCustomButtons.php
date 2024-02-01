@@ -24,7 +24,7 @@ class EvidenceCustomButtons extends \Ease\Html\DivTag
         parent::__construct();
         $buttons = $this->getButtonsForEvidence($source);
 
-        $buttonTabs = new \Ease\TWB5\Tabs('butonTabs');
+        $buttonTabs = new \Ease\TWB5\Tabs([],['id'=>'butonTabs']);
 
         if (!empty($buttons)) {
             $buttonsTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
@@ -42,12 +42,12 @@ class EvidenceCustomButtons extends \Ease\Html\DivTag
 
                 $button['edit'] = new \Ease\TWB5\LinkButton(
                     'editor.php?evidence=custom-button&id=' . $button['id'],
-                    new \Ease\TWB5\GlyphIcon('wrench'),
+                    '🛠️',
                     'warning'
                 );
                 $button['delete'] = new \Ease\TWB5\LinkButton(
                     'delete.php?evidence=custom-button&action=delete&id=' . $button['id'],
-                    new \Ease\TWB5\GlyphIcon('remove'),
+                    '🪓',
                     'danger'
                 );
 

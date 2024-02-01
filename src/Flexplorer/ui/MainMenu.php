@@ -14,50 +14,16 @@ namespace Flexplorer\ui;
  *
  * @author vitex
  */
-class MainMenu extends \Ease\Html\DivTag
+class MainMenu extends BootstrapMenu
 {
+
     /**
      * MainMenu.
      */
     public function __construct()
     {
-        parent::__construct(null, ['id' => 'MainMenu']);
-    }
-
-    /**
-     * Data source.
-     *
-     * @param type   $source
-     * @param string $icon   Description
-     *
-     * @return string
-     */
-    protected function getMenuList($source, $icon = '')
-    {
-        $keycolumn = $source->getkeyColumn();
-        $namecolumn = $source->nameColumn;
-        $lister = $source->getColumnsFromSQL(
-            [$source->getkeyColumn(), $namecolumn],
-            [$keycolumn => true],
-            $namecolumn,
-            $keycolumn
-        );
-
-        $itemList = [];
-        if ($lister) {
-            foreach ($lister as $uID => $uInfo) {
-                $itemList[$source->keyword . '.php?' . $keycolumn . '=' . $uInfo[$keycolumn]] = \Ease\TWB5\Part::GlyphIcon($icon) . '&nbsp;' . $uInfo[$namecolumn];
-            }
-        }
-
-        return $itemList;
-    }
-
-    /**
-     * Insert menu.
-     */
-    public function afterAdd()
-    {
+        parent::__construct(_('Flexplorer'), 'navbar', ['id' => 'MainMenu']);
+        
         $nav = $this->addItem(new BootstrapMenu());
         $webPage = WebPage::singleton();
         $myCompany = isset($_SESSION['company']) ? $_SESSION['company'] : '';
@@ -106,7 +72,7 @@ class MainMenu extends \Ease\Html\DivTag
                     '' => ''
                 ];
 
-                $nav->addDropDownMenu(_('Company'), array_merge($companyTools, $companiesToMenu));
+                $this->addDropDownMenu(_('Company'), array_merge($companyTools, $companiesToMenu));
 
                 if (!isset($_SESSION['company'])) { //Auto choose first company
                     $_SESSION['company'] = $companies[0]['dbNazev'];
@@ -129,33 +95,34 @@ class MainMenu extends \Ease\Html\DivTag
                         $_SESSION['evidence-menu'][$_SESSION['company']] = $evidenciesToMenu;
                     } else {
                         $lister->addStatusMessage(
-                            _('Loading evidence list failed'),
-                            'error'
+                                _('Loading evidence list failed'),
+                                'error'
                         );
                     }
                 }
 
 
                 if (array_key_exists('', $companiesToMenu)) {
+                    
                 }
 
                 $evidenciesToMenu = array_merge(
-                    ['evidences.php' => _('Overview')],
-                    WebPage::singleton()->getEvidenceHistory(),
-                    $_SESSION['evidence-menu'][$_SESSION['company']]
+                        ['evidences.php' => _('Overview')],
+                        WebPage::singleton()->getEvidenceHistory(),
+                        $_SESSION['evidence-menu'][$_SESSION['company']]
                 );
 
                 if (count($evidenciesToMenu)) {
-                    $nav->addDropDownMenu(_('Evidence'), $evidenciesToMenu);
+                    $this->addDropDownMenu(_('Evidence'), $evidenciesToMenu);
                 }
             }
 
 
-            $nav->addDropDownMenu(
-                _('Tools'),
-                [
+            $this->addDropDownMenu(
+                    _('Tools'),
+                    [
                         'query.php' => _('Query'),
-                //                'xslt.php' => _('XSLT'),
+                        //                'xslt.php' => _('XSLT'),
                         'buttons.php' => _('Buttons'),
                         'changesapi.php' => _('Changes API'),
                         'changes.php' => _('Changes Recieved'),
@@ -163,7 +130,7 @@ class MainMenu extends \Ease\Html\DivTag
                         'ucetniobdobi.php' => _('Accounting period'),
                         'permissions.php' => _('Role Permissions'),
                         'backups.php' => _('Backups')
-                ]
+                    ]
             );
         }
     }
@@ -173,32 +140,32 @@ class MainMenu extends \Ease\Html\DivTag
      */
     public function finalize()
     {
-        if (\Ease\Shared::user()->isLogged()) { //Authenticated user
-            $this->addItem(new Breadcrumb());
-        }
-        if (!empty(\Ease\Shared::logger()->getMessages())) {
-            WebPage::singleton()->addCss('
-#smdrag { height: 8px; 
-          background-image:  url( images/slidehandle.png ); 
-          background-color: #ccc; 
-          background-repeat: no-repeat; 
-          background-position: top center; 
-          cursor: ns-resize;
-}
-#smdrag:hover { background-color: #f5ad66; }
-
-');
-
-            $this->addItem(WebPage::singleton()->getStatusMessagesBlock(['id' => 'status-messages', 'title' => _('Click to hide messages')]));
-            $this->addItem(new \Ease\Html\DivTag(null, ['id' => 'smdrag', 'style' => 'margin-bottom: 5px']));
-            \Ease\Shared::logger()->cleanMessages();
-            WebPage::singleton()->addCss('.dropdown-menu { overflow-y: auto } ');
-            WebPage::singleton()->addJavaScript(
-                "$('.dropdown-menu').css('max-height',$(window).height()-100);",
-                null,
-                true
-            );
-            WebPage::singleton()->includeJavaScript('js/slideupmessages.js');
-        }
+//        if (\Ease\Shared::user()->isLogged()) { //Authenticated user
+////            $this->addItem(new Breadcrumb());        }
+//            if (!empty(\Ease\Shared::logger()->getMessages())) {
+//                WebPage::singleton()->addCss('
+//#smdrag { height: 8px; 
+//          background-image:  url( images/slidehandle.png ); 
+//          background-color: #ccc; 
+//          background-repeat: no-repeat; 
+//          background-position: top center; 
+//          cursor: ns-resize;
+//}
+//#smdrag:hover { background-color: #f5ad66; }
+//
+//');
+//
+//                $this->addItem(WebPage::singleton()->getStatusMessagesBlock(['id' => 'status-messages', 'title' => _('Click to hide messages')]));
+//                $this->addItem(new \Ease\Html\DivTag(null, ['id' => 'smdrag', 'style' => 'margin-bottom: 5px']));
+//                \Ease\Shared::logger()->cleanMessages();
+//                WebPage::singleton()->addCss('.dropdown-menu { overflow-y: auto } ');
+//                WebPage::singleton()->addJavaScript(
+//                        "$('.dropdown-menu').css('max-height',$(window).height()-100);",
+//                        null,
+//                        true
+//                );
+//                WebPage::singleton()->includeJavaScript('js/slideupmessages.js');
+//            }
+//        }
     }
 }

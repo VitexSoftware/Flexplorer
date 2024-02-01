@@ -22,7 +22,7 @@ class PrintSetGallery extends \Ease\TWB5\Tabs
     public function __construct($engine)
     {
         $printSets = $engine->getReportsInfo();
-        parent::__construct('PrintSet');
+        parent::__construct([],['id'=>'PrintSet']);
         if (count($printSets)) {
             foreach ($printSets as $reportId => $printSet) {
                 $this->addAjaxTab(
@@ -32,7 +32,7 @@ class PrintSetGallery extends \Ease\TWB5\Tabs
                 );
             }
         } else {
-            $this->addTab(_('none'));
+            $this->addTab(_('none'),'');
         }
     }
 }

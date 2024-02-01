@@ -4,7 +4,7 @@
  * Flexplorer - Hlavní strana.
  *
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016-2017 Vitex Software
+ * @copyright  2016-2024 Vitex Software
  */
 
 namespace Flexplorer;
@@ -23,7 +23,7 @@ $infoTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
 foreach ($statuser->getData() as $property => $value) {
     switch ($property) {
         case 'startupTime':
-            $value = new \Ease\TWB5\Widgets\LiveAge(\AbraFlexi\RO::flexiDateTimeToDateTime($value)->getTimestamp());
+            $value = new \Ease\Html\Widgets\LiveAge(\AbraFlexi\RO::flexiDateTimeToDateTime($value)->getTimestamp());
             break;
         case 'memoryHeap':
         case 'memoryUsed':
@@ -38,12 +38,12 @@ foreach ($statuser->getData() as $property => $value) {
 $infoRow = new \Ease\TWB5\Row();
 $infoRow->addColumn(6, new \Ease\TWB5\Panel(_('server info'), 'info', $infoTable));
 $infoRow->addColumn(
-    6,
-    new \Ease\TWB5\Panel(
-        _('license info'),
-        'info',
-        new ui\LicenseInfo($_SESSION['license'])
-    )
+        6,
+        new \Ease\TWB5\Panel(
+                _('license info'),
+                'info',
+                new ui\LicenseInfo($_SESSION['license'])
+        )
 );
 $oPage->container->addItem($infoRow);
 

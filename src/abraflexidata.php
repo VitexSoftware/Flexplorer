@@ -6,9 +6,8 @@ namespace Flexplorer;
  * Flexplorer - DataTables data source.
  *
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016-2021 Vitex Software
+ * @copyright  2016-2024 Vitex Software
  */
-
 require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
@@ -29,7 +28,10 @@ unset($_REQUEST['XDEBUG_SESSION_START']);
 $dataRaw = $engine->getColumnsFromAbraFlexi('*', array_merge($_REQUEST, ['add-row-count' => true]));
 
 foreach ($dataRaw as $row => $columns) {
-    $dataRaw[$row]['lastUpdate'] = $dataRaw[$row]['lastUpdate']->format(\AbraFlexi\RO::$DateTimeFormat);
+    $dataRaw[$row]['lastUpdate'] = (array_key_exists('lastUpdate', $dataRaw) && $dataRaw[$row]['lastUpdate']) ? $dataRaw[$row]['lastUpdate']->format(\AbraFlexi\DateTime::$format) : '';
+    foreach ($columns as $column => $value) {
+        $dataRaw[$row][$column] = strval($dataRaw[$row][$column]);
+    }
 }
 
 echo json_encode(['recordsTotal' => $engine->rowCount, 'recordsFiltered' => $engine->rowCount, 'data' => $dataRaw]);

@@ -16,6 +16,9 @@ use Flexplorer\ui\WebPage;
 require_once '../vendor/autoload.php';
 require_once 'includes/config.php';
 new Locale('UTF-8', '../i18n', 'flexplorer');
+
+define('APP_NAME', 'Flexplorer');
+
 session_start();
 if (isset($_SESSION['user'])) {
     define('ABRAFLEXI_LOGIN', $_SESSION['user']);
@@ -45,27 +48,39 @@ if (isset($_SESSION['sessionid'])) {
  *
  * @global User|Anonym
  */
-if (file_exists('../.env')) {
-    \Ease\Shared::init(['ABRAFLEXI_URL', 'ABRAFLEXI_LOGIN', 'ABRAFLEXI_PASSWORD', 'ABRAFLEXI_COMPANY'], '../.env');
-}
-
 $oUser = Shared::user(null, 'Flexplorer\User');
 $oUser->settingsColumn = 'settings';
+
 if (PHP_SAPI != 'cli') {
     /* @var $oPage WebPage */
     $oPage = new WebPage();
-    $serverURL = \Ease\Document::getRequestValue('serveruri');
-    if ($serverURL) {
-        define('ABRAFLEXI_URL', $serverURL);
-    }
 
-    $sessionID = \Ease\Document::getRequestValue('sessionid');
-    if ($sessionID) {
-        define('ABRAFLEXI_AUTHSESSID', $sessionID);
-    }
+    if (WebPage::isPosted()) {
+        $serverURL = \Ease\Document::getRequestValue('serveruri');
+        if ($serverURL) {
+            define('ABRAFLEXI_URL', $serverURL);
+        }
 
-    $company = \Ease\Document::getRequestValue('company');
-    if ($sessionID) {
-        define('ABRAFLEXI_COMPANY', $sessionID);
+        $sessionID = \Ease\Document::getRequestValue('sessionid');
+        if ($sessionID) {
+            define('ABRAFLEXI_AUTHSESSID', $sessionID);
+        }
+
+        $company = \Ease\Document::getRequestValue('company');
+        if ($sessionID) {
+            define('ABRAFLEXI_COMPANY', $sessionID);
+        }
+    } else {
+
+        if (file_exists('../.env')) {
+            \Ease\Shared::init(['ABRAFLEXI_URL', 'ABRAFLEXI_LOGIN', 'ABRAFLEXI_PASSWORD', 'ABRAFLEXI_COMPANY'], '../.env');
+            if ($oUser->isLogged() === false) {
+                $oUser->tryToLogin([
+                    'server' => \Ease\Shared::cfg('ABRAFLEXI_URL'),
+                    'login' => \Ease\Shared::cfg('ABRAFLEXI_LOGIN'),
+                    'password' => \Ease\Shared::cfg('ABRAFLEXI_PASSWORD')
+                ]);
+            }
+        }
     }
 }

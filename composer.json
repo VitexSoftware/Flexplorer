@@ -16,7 +16,8 @@
         "spojenet/flexibee": "main-dev",
         "vitexsoftware/abraflexi-bricks": "dev-main",
         "vitexsoftware/datatables-abraflexi": "dev-abraflexi",
-        "vitexsoftware/ease-twbootstrap5": "dev-main"
+        "vitexsoftware/ease-twbootstrap5": "dev-main",
+        "vitexsoftware/ease-html-widgets": "dev-main"
     },
     "autoload": {
         "psr-4": {
