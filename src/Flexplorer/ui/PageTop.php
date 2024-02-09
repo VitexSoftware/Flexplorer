@@ -14,7 +14,6 @@ namespace Flexplorer\ui;
  */
 class PageTop extends \Ease\Html\DivTag
 {
-
     /**
      * Titulek stránky.
      *
@@ -41,7 +40,8 @@ class PageTop extends \Ease\Html\DivTag
     public function finalize()
     {
         if ($this->finalized != true) {
-//            WebPage::singleton()->body->addAsFirst(new MainMenu());
+#            WebPage::singleton()->body->addAsFirst(new MainMenu());
+            WebPage::singleton()->body->addAsFirst(new Menu());
 //            $this->addItem(new MainMenu());
 //            $this->addItem(new \Ease\TWB5\Widgets\BrowsingHistory());
             $this->finalized = true;

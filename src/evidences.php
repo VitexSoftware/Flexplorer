@@ -20,8 +20,8 @@ $oPage->addItem(new ui\PageTop(_('Evidences')));
 $evidencer = new \AbraFlexi\EvidenceList();
 
 $myEvidencies = \Ease\Functions::reindexArrayBy(
-                $evidencer->getAllFromAbraFlexi(),
-                'evidencePath'
+    $evidencer->getAllFromAbraFlexi(),
+    'evidencePath'
 );
 
 $headerColumns = array_keys(\AbraFlexi\EvidenceList::$evidences['adresar']);
@@ -55,22 +55,22 @@ $unlicensed = $evidenceTabs->addTab(sprintf(_('Unlicensed %s'), $unlicensedEvide
 
 $allEvidencesLabel = new \Ease\TWB5\Badge($allCount, 'info');
 
-$allEvidences = $evidenceTabs->addTab(sprintf(_('All %s'),$allEvidencesLabel->__toString()), $allEvidencesTable);
+$allEvidences = $evidenceTabs->addTab(sprintf(_('All %s'), $allEvidencesLabel->__toString()), $allEvidencesTable);
 
 foreach (\AbraFlexi\EvidenceList::$evidences as $evidence) {
     $path = $evidence['evidencePath'];
 
     $evidence['evidencePath'] = new \Ease\Html\ATag(
-            'evidence.php?evidence=' . $evidence['evidencePath'],
-            $evidence['evidencePath']
+        'evidence.php?evidence=' . $evidence['evidencePath'],
+        $evidence['evidencePath']
     );
 
     $evidence['importStatus'] = new \Ease\TWB5\Badge(str_replace(
-                    ['SUPPORTED', 'NOT_DOCUMENTED',
+        ['SUPPORTED', 'NOT_DOCUMENTED',
                         'DISALLOWED', 'NOT_DIRECT'],
-                    ['success', 'default', 'danger', 'warning'],
-                    $evidence['importStatus']
-            ), $evidence['importStatus']);
+        ['success', 'default', 'danger', 'warning'],
+        $evidence['importStatus']
+    ), $evidence['importStatus']);
 
     if (array_key_exists($path, $myEvidencies)) {
         $availbleEvidencesTable->addRowColumns($evidence);

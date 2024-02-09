@@ -75,7 +75,7 @@ class ButtonForm extends \Ease\TWB5\Form
             _('Browser used')
         );
 
-        $this->addItem(new \Ease\TWB5\SubmitButton(_('Save New Button'),'success'));
+        $this->addItem(new \Ease\TWB5\SubmitButton(_('Save New Button'), 'success'));
     }
 
     /**

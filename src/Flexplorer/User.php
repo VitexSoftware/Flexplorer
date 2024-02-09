@@ -16,7 +16,6 @@ namespace Flexplorer;
  */
 class User extends \Ease\User
 {
-
     /**
      * AbraFlexi engine
      * @var \AbraFlexi\RO
@@ -45,7 +44,7 @@ class User extends \Ease\User
      * Perform logIn action
      *
      * @param array $creds
-     * 
+     *
      * @return boolean
      */
     public function tryToLogin($creds)

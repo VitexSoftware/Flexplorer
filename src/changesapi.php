@@ -6,7 +6,7 @@ namespace Flexplorer;
  * Flexplorer - Changes API.
  *
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016 Vitex Software
+ * @copyright  2016-2024 Vitex Software
  */
 
 require_once 'includes/Init.php';
@@ -101,10 +101,9 @@ $oPage->addItem(new ui\PageTop(_('ChangesAPI Tool')));
 $toolRow = new \Ease\TWB5\Row();
 $settingsForm = new \Ease\TWB5\Form(['name' => 'settings']);
 $settingsForm->addInput(
-    new \Ease\TWB5\Widgets\TWBSwitch(
+    new \Ease\Html\Widgets\Toggle(
         'changesapi',
         $chapistatus,
-        'enable',
         ['onText' => _('Enable'), 'offText' => _('Disable')]
     ),
     _('Changes API'),
@@ -138,15 +137,14 @@ $settingsForm->addItem(new \Ease\TWB5\LinkButton(
     ['class' => 'button button-xs']
 ));
 
-$settingsForm->addInput(new \Ease\TWB5\Widgets\TWBSwitch(
+$settingsForm->addInput(new \Ease\Html\Widgets\Toggle(
     'changesformat',
-    true,
     'JSON',
     ['onText' => 'JSON', 'offText' => 'XML']
 ), _('Data format'));
 
 $settingsForm->addInput(
-    new \Ease\TWB5\Widgets\TWBSwitch('hookurltest', true, 'skip'),
+    new \Ease\Html\Widgets\Toggle('hookurltest', 'skip'),
     _('Skip URL test'),
     null,
     _('Suppress URL functionality test')
@@ -181,7 +179,7 @@ $settingsForm->addItem(new \Ease\TWB5\SubmitButton(
     _('Perform operation'),
     'warning'
 ));
-$toolRow->addColumn(4, new \Ease\TWB5\Well($settingsForm));
+$toolRow->addColumn(4, new \Ease\TWB5\Panel($settingsForm));
 
 if ($chapistatus) {
     try {
@@ -192,18 +190,18 @@ if ($chapistatus) {
             foreach ($hooks as $hookinfo) {
                 $hookinfo[] = new \Ease\TWB5\LinkButton(
                     '?refresh=' . $hookinfo['id'],
-                    new \Ease\TWB5\GlyphIcon('refresh'),
+                    '♻️',
                     'success'
                 );
                 $hookinfo[] = new \Ease\TWB5\LinkButton(
                     'fakechange.php?hookurl=' . $hookinfo['url'],
-                    new \Ease\TWB5\GlyphIcon('export'),
+                    '📤',
                     'info',
                     ['title' => _('Test')]
                 );
                 $hookinfo[] = new \Ease\TWB5\LinkButton(
                     '?linkdel=' . $hookinfo['id'],
-                    new \Ease\TWB5\GlyphIcon('remove'),
+                    '🪦',
                     'danger'
                 );
                 $hookinfo['url'] = new \Ease\Html\ATag(

@@ -16,14 +16,13 @@ namespace Flexplorer\ui;
  */
 class MainMenu extends BootstrapMenu
 {
-
     /**
      * MainMenu.
      */
     public function __construct()
     {
         parent::__construct(_('Flexplorer'), 'navbar', ['id' => 'MainMenu']);
-        
+
         $nav = $this->addItem(new BootstrapMenu());
         $webPage = WebPage::singleton();
         $myCompany = isset($_SESSION['company']) ? $_SESSION['company'] : '';
@@ -95,21 +94,20 @@ class MainMenu extends BootstrapMenu
                         $_SESSION['evidence-menu'][$_SESSION['company']] = $evidenciesToMenu;
                     } else {
                         $lister->addStatusMessage(
-                                _('Loading evidence list failed'),
-                                'error'
+                            _('Loading evidence list failed'),
+                            'error'
                         );
                     }
                 }
 
 
                 if (array_key_exists('', $companiesToMenu)) {
-                    
                 }
 
                 $evidenciesToMenu = array_merge(
-                        ['evidences.php' => _('Overview')],
-                        WebPage::singleton()->getEvidenceHistory(),
-                        $_SESSION['evidence-menu'][$_SESSION['company']]
+                    ['evidences.php' => _('Overview')],
+                    WebPage::singleton()->getEvidenceHistory(),
+                    $_SESSION['evidence-menu'][$_SESSION['company']]
                 );
 
                 if (count($evidenciesToMenu)) {
@@ -119,8 +117,8 @@ class MainMenu extends BootstrapMenu
 
 
             $this->addDropDownMenu(
-                    _('Tools'),
-                    [
+                _('Tools'),
+                [
                         'query.php' => _('Query'),
                         //                'xslt.php' => _('XSLT'),
                         'buttons.php' => _('Buttons'),
@@ -144,11 +142,11 @@ class MainMenu extends BootstrapMenu
 ////            $this->addItem(new Breadcrumb());        }
 //            if (!empty(\Ease\Shared::logger()->getMessages())) {
 //                WebPage::singleton()->addCss('
-//#smdrag { height: 8px; 
-//          background-image:  url( images/slidehandle.png ); 
-//          background-color: #ccc; 
-//          background-repeat: no-repeat; 
-//          background-position: top center; 
+//#smdrag { height: 8px;
+//          background-image:  url( images/slidehandle.png );
+//          background-color: #ccc;
+//          background-repeat: no-repeat;
+//          background-position: top center;
 //          cursor: ns-resize;
 //}
 //#smdrag:hover { background-color: #f5ad66; }

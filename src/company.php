@@ -40,7 +40,7 @@ if (empty($company)) {
         2,
         new \Ease\TWB5\LinkButton(
             'resetcompany.php',
-            new \Ease\TWB5\GlyphIcon('repeat') . ' ' . _('Reset'),
+            '♻️ ' . _('Reset'),
             'danger',
             ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Drop company and create again')]
         )
@@ -50,7 +50,7 @@ if (empty($company)) {
         1,
         new \Ease\TWB5\LinkButton(
             'copycompany.php',
-            new \Ease\TWB5\GlyphIcon('duplicate') . ' ' . _('Duplicate'),
+            '🖇️ ' . _('Duplicate'),
             'success',
             ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Create copy')]
         )
@@ -62,7 +62,7 @@ if (empty($company)) {
         2,
         new \Ease\TWB5\LinkButton(
             'restorecompany.php',
-            new \Ease\TWB5\GlyphIcon('floppy-open') . ' ' . _('Restore'),
+            '📤 ' . _('Restore'),
             'warning',
             ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Restore previously saved state')]
         )
@@ -72,7 +72,7 @@ if (empty($company)) {
         1,
         new \Ease\TWB5\LinkButton(
             'savecompany.php',
-            new \Ease\TWB5\GlyphIcon('floppy-save') . ' ' . _('Save'),
+            '📥 ' . _('Save'),
             'success',
             ['title' => _('Save current state')]
         )
@@ -82,7 +82,7 @@ if (empty($company)) {
         2,
         new \Ease\TWB5\LinkButton(
             'deletecompany.php',
-            new \Ease\TWB5\GlyphIcon('remove') . ' ' . _('Remove'),
+            '🪦 ' . _('Remove'),
             'danger',
             ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => 'Drop all company data']
         )
@@ -92,7 +92,7 @@ if (empty($company)) {
         2,
         new \Ease\TWB5\LinkButton(
             'editor.php?evidence=nastaveni&company=' . $company . '&id=1',
-            new \Ease\TWB5\GlyphIcon('wrench') . ' ' . _('Settings'),
+            '🛠️ ' . _('Settings'),
             'info',
             ['title' => 'Serveral company settings']
         )
@@ -102,7 +102,7 @@ if (empty($company)) {
         2,
         new \Ease\TWB5\LinkButton(
             'newcompany.php',
-            new \Ease\TWB5\GlyphIcon('plus') . ' ' . _('Create company'),
+            '⛑️ ' . _('Create company'),
             'success',
             ['title' => 'Create new company']
         )
@@ -117,10 +117,7 @@ if (empty($company)) {
     ))]);
 
     $created = \AbraFlexi\RO::flexiDateTimeToDateTime($companer->getDataValue('createDt'))->getTimestamp();
-    $companyInfo->addRowColumns([_('created'), strftime(
-        '%a %d. %m. %Y  - %X',
-        $created
-    ) . ' ' . '(' . _('before') . ' ' . new \Ease\TWB5\Widgets\LiveAge($created) . ')']);
+    $companyInfo->addRowColumns([_('created'), \AbraFlexi\RO::flexiDateTimeToDateTime($companer->getDataValue('createDt'))->format('d.m. Y') . ' ' . '(' . _('before') . ' ' . new \Ease\Html\Widgets\LiveAge($created) . ')']);
 
     $companyInfo->addRowColumns([_('Watching changes'), new ui\WatchingChangesStatus($companer->getDataValue('watchingChanges') == 'true')]);
 
@@ -128,7 +125,7 @@ if (empty($company)) {
 
     $companyInfo->addRowColumns([_('License Group'), $companer->getDataValue('licenseGroup')]);
 
-    $companyInfo->addRowColumns([_('Status'), new \Ease\TWB5\Label(
+    $companyInfo->addRowColumns([_('Status'), new \Ease\TWB5\Badge(
         $companer->getDataValue('stavEnum') == 'ESTABLISHED' ? 'success' : 'warning',
         $companer->getDataValue('stavEnum')
     )]);

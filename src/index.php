@@ -38,12 +38,12 @@ foreach ($statuser->getData() as $property => $value) {
 $infoRow = new \Ease\TWB5\Row();
 $infoRow->addColumn(6, new \Ease\TWB5\Panel(_('server info'), 'info', $infoTable));
 $infoRow->addColumn(
-        6,
-        new \Ease\TWB5\Panel(
-                _('license info'),
-                'info',
-                new ui\LicenseInfo($_SESSION['license'])
-        )
+    6,
+    new \Ease\TWB5\Panel(
+        _('license info'),
+        'info',
+        new ui\LicenseInfo($_SESSION['license'])
+    )
 );
 $oPage->container->addItem($infoRow);
 

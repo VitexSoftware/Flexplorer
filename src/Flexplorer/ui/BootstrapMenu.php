@@ -11,7 +11,6 @@ namespace Flexplorer\ui;
 
 class BootstrapMenu extends \Ease\TWB5\Navbar
 {
-
     /**
      * Navigace.
      *
@@ -20,8 +19,8 @@ class BootstrapMenu extends \Ease\TWB5\Navbar
     public $nav = null;
 
     /**
-     * 
-     * @var 
+     *
+     * @var
      */
     public $container;
 
@@ -33,17 +32,16 @@ class BootstrapMenu extends \Ease\TWB5\Navbar
      * @param array  $properties
      */
     public function __construct(
-            $name = null,
-            $content = null,
-            $properties = null
-    )
-    {
-        parent::__construct('','',['class' => 'navbar']);
+        $name = null,
+        $content = null,
+        $properties = null
+    ) {
+        parent::__construct('', '', ['class' => 'navbar']);
 
-        $this->container = $this->addItem(new \Ease\Html\DivTag( new \Ease\Html\ATag('index.php', new \Ease\Html\ImgTag('images/flexplorer-logo.png', 'Flexplorer', ['class' => 'img-rounded', 'width' => 24]),['class'=>'navbar-brand']) , ['class' => 'container-fluid']));
+        $this->container = $this->addItem(new \Ease\Html\DivTag(new \Ease\Html\ATag('index.php', new \Ease\Html\ImgTag('images/flexplorer-logo.png', 'Flexplorer', ['class' => 'img-rounded', 'width' => 24]), ['class' => 'navbar-brand']), ['class' => 'container-fluid']));
 
-        $this->container->addItem(new \Ease\Html\ButtonTag(new \Ease\Html\SpanTag('',['class'=>'navbar-toggler-icon']),['class'=>'navbar-toggler', 'type'=>'button', 'data-bs-toggle'=>'collapse', 'data-bs-target'=>'#navbarSupportedContent', 'aria-controls'=>'navbarSupportedContent', 'aria-expanded'=>false, 'aria-label'=> _('Toggle navigation')]));
-        
+        $this->container->addItem(new \Ease\Html\ButtonTag(new \Ease\Html\SpanTag('', ['class' => 'navbar-toggler-icon']), ['class' => 'navbar-toggler', 'type' => 'button', 'data-bs-toggle' => 'collapse', 'data-bs-target' => '#navbarSupportedContent', 'aria-controls' => 'navbarSupportedContent', 'aria-expanded' => false, 'aria-label' => _('Toggle navigation')]));
+
 //        $user = \Ease\Shared::user();
 //        \Ease\TWB5\Part::twBootstrapize();
 //        if (!$user->getUserID()) {
@@ -93,5 +91,4 @@ class BootstrapMenu extends \Ease\TWB5\Navbar
 //', 'right');
 //        }
     }
-
 }

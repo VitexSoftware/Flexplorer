@@ -15,7 +15,6 @@ namespace Flexplorer\ui;
  */
 class ModulesOverview extends \Ease\Html\UlTag
 {
-
     /**
      * Language Dependencies
      * @var array

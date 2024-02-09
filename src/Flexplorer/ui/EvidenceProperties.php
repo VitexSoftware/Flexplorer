@@ -64,7 +64,7 @@ class EvidenceProperties extends \Ease\Html\TableTag
                             if (isset($propValues['url'])) {
                                 $tmp = explode('/', $propValues['url']);
                                 $revidence = 'evidence.php?evidence=' . end($tmp);
-                                $props[$value] = '<a href="' . $revidence . '" title="'.$propValues['fkName'].'">🔗' . $propValues[$value] . '</a> ';
+                                $props[$value] = '<a href="' . $revidence . '" title="' . $propValues['fkName'] . '">🔗' . $propValues[$value] . '</a> ';
                             } else {
                                 $props[$value] = $propValues[$value];
                             }
@@ -82,7 +82,7 @@ class EvidenceProperties extends \Ease\Html\TableTag
                             break;
                         case 'values':
                             foreach ($propValues[$value]['value'] as $defineKey => $defineValue) {
-                                $label = new \Ease\TWB5\Badge($defineValue['@key'],'default',['title' => $defineValue['$']]);
+                                $label = new \Ease\TWB5\Badge($defineValue['@key'], 'default', ['title' => $defineValue['$']]);
                                 if (array_key_exists($value, $props)) {
                                     $props[$value] .= $label->__toString();
                                 } else {

@@ -71,7 +71,6 @@ if (PHP_SAPI != 'cli') {
             define('ABRAFLEXI_COMPANY', $sessionID);
         }
     } else {
-
         if (file_exists('../.env')) {
             \Ease\Shared::init(['ABRAFLEXI_URL', 'ABRAFLEXI_LOGIN', 'ABRAFLEXI_PASSWORD', 'ABRAFLEXI_COMPANY'], '../.env');
             if ($oUser->isLogged() === false) {

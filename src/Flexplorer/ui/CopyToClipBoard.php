@@ -19,7 +19,7 @@ class CopyToClipBoard extends \Ease\Container
     {
         parent::__construct($initialContent);
         $this->addItem(new \Ease\Html\ButtonTag(
-            new \Ease\TWB5\GlyphIcon('copy'),
+            '🖇️',
             ['class' => 'btn copy', 'data-clipboard-target' => '#' . $initialContent->getTagID()]
         ));
         WebPage::singleton()->includeJavaScript('js/clipboard.js');
