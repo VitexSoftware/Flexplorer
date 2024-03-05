@@ -35,11 +35,11 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
 
     $evobj = new Flexplorer($evidence);
 
-    if (array_key_exists('evidence.php?evidence=' . $evidence, $_SESSION['evidence-menu'][\Ease\Shared::cfg('ABRAFLEXI_COMPANY')])) {
+//    if (array_key_exists('evidence.php?evidence=' . $evidence, $_SESSION['evidence-menu'][\Ease\Shared::cfg('ABRAFLEXI_COMPANY')])) {
         $evidenceLicensed = true;
-    } else {
-        $evidenceLicensed = false;
-    }
+//    } else {
+//        $evidenceLicensed = false;
+//    }
 
     $tabs = new \Ease\TWB5\Tabs([], ['id' => 'EviTabs']);
     if ($evidenceLicensed === true) {
