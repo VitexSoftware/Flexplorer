@@ -103,7 +103,7 @@ $settingsForm = new \Ease\TWB5\Form(['name' => 'settings']);
 $settingsForm->addInput(
     new \Ease\Html\Widgets\Toggle(
         'changesapi',
-        $chapistatus,
+        'enable',
         ['onText' => _('Enable'), 'offText' => _('Disable')]
     ),
     _('Changes API'),
