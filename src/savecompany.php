@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Flexplorer;
 
 /**
@@ -19,14 +32,15 @@ $company = $_SESSION['company'];
 
 $saveTo = $oPage->getRequestValue('saveto');
 
-$defaultSaveTo = $company . '-' . date('Y-m-d-Hi') . '.winstrom-backup';
+$defaultSaveTo = $company.'-'.date('Y-m-d-Hi').'.winstrom-backup';
 
 $saver = new \AbraFlexi\Company(['dbNazev' => $company]);
+
 if (!empty($saveTo)) {
-    if ($saver->saveBackupTo(constant('BACKUP_DIRECTORY') . '/' . $saveTo)) {
+    if ($saver->saveBackupTo(\constant('BACKUP_DIRECTORY').'/'.$saveTo)) {
         $saver->addStatusMessage(
             sprintf(_('backup %s saved'), $saveTo),
-            'success'
+            'success',
         );
     } else {
         $saver->addStatusMessage(_('backup save failed'), 'error');
@@ -35,20 +49,19 @@ if (!empty($saveTo)) {
     $saver->addStatusMessage(_('Please enter backup file name'), 'warning');
 }
 
-
 $oPage->addItem(new ui\PageTop(_('Company Backup')));
 
 $saveForm = new \Ease\TWB5\Form('Save');
 
 $saveForm->addInput(new \Ease\Html\InputTextTag(
     'saveto',
-    empty($saveTo) ? $defaultSaveTo : $saveTo
+    empty($saveTo) ? $defaultSaveTo : $saveTo,
 ));
 
 $saveForm->addItem(new \Ease\TWB5\SubmitButton(
-    new \Ease\TWB5\GlyphIcon('floppy-save') . ' ' . _('Save'),
+    new \Ease\TWB5\GlyphIcon('floppy-save').' '._('Save'),
     'success',
-    ['onClick' => "$('#Preloader').css('visibility', 'visible');"]
+    ['onClick' => "$('#Preloader').css('visibility', 'visible');"],
 ));
 
 $saveRow = new \Ease\TWB5\Row();
@@ -57,15 +70,15 @@ $saveRow->addColumn(6, $saveForm);
 $saveRow->addColumn(
     6,
     new ui\BackupsListing(
-        constant('BACKUP_DIRECTORY'),
-        $company . '.*\.winstrom-backup'
-    )
+        \constant('BACKUP_DIRECTORY'),
+        $company.'.*\.winstrom-backup',
+    ),
 );
 
 $oPage->container->addItem(new \Ease\TWB5\Panel(
     _('Save Company As'),
     'success',
-    $saveRow
+    $saveRow,
 ));
 
 $oPage->addItem(new ui\PageBottom());

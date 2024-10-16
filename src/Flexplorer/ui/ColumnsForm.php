@@ -1,10 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Flexplorer - vícesloupcový formulář.
+ * This file is part of the Flexplorer package
  *
- * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016 Vitex Software
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
@@ -13,36 +19,24 @@ class ColumnsForm extends \Ease\TWB5\Form
 {
     /**
      * Column width.
-     *
-     * @var int
      */
-    public $colsize = 4;
+    public int $colsize = 4;
 
     /**
      * Row.
-     *
-     * @var \Ease\TWB5\Row
      */
-    public $row = null;
+    public \Ease\TWB5\Row $row = null;
 
     /**
      * Number of items in row.
-     *
-     * @var int
      */
-    public $itemsPerRow = 4;
-
-    /**
-     * @var \Flexplorer\Flexplorer
-     */
-    public $engine = null;
+    public int $itemsPerRow = 4;
+    public \Flexplorer\Flexplorer $engine = null;
 
     /**
      * Send buttons.
-     *
-     * @var \Ease\Html\Div
      */
-    public $savers = null;
+    public \Ease\Html\Div $savers = null;
 
     /**
      * Bootstrapu form.
@@ -58,11 +52,11 @@ class ColumnsForm extends \Ease\TWB5\Form
         $tagProperties = null
     ) {
         $this->engine = $engine;
-        parent::__construct(['name' => get_class($engine), 'method' => 'POST'], $formContents, $tagProperties);
+        parent::__construct(['name' => \get_class($engine), 'method' => 'POST'], $formContents, $tagProperties);
         $this->newRow();
         $this->savers = new \Ease\Html\DivTag(
             null,
-            ['style' => 'text-align: right']
+            ['style' => 'text-align: right'],
         );
     }
 
@@ -103,43 +97,43 @@ class ColumnsForm extends \Ease\TWB5\Form
                 $input,
                 $placeholder,
                 $helptext,
-                $addTagClass
-            )
+                $addTagClass,
+            ),
         ));
     }
 
     /**
      * Přidá do formuláře tlačítko "Uložit".
      */
-    public function addSubmitSave()
+    public function addSubmitSave(): void
     {
         $this->savers->addItem(
             new \Ease\TWB5\SubmitButton(_('Save'), 'default'),
-            ['style' => 'text-align: right']
+            ['style' => 'text-align: right'],
         );
     }
 
     /**
      * Přidá do formuláře tlačítko "Uložit a zpět na přehled".
      */
-    public function addSubmitSaveAndList()
+    public function addSubmitSaveAndList(): void
     {
         $this->savers->addItem(new \Ease\Html\InputSubmitTag(
             'gotolist',
             _('Save & go to listing'),
-            ['class' => 'btn btn-info']
+            ['class' => 'btn btn-info'],
         ));
     }
 
     /**
      * Přidá do formuláře tlačítko "Uložit a další".
      */
-    public function addSubmitSaveAndNext()
+    public function addSubmitSaveAndNext(): void
     {
         $this->savers->addItem(new \Ease\Html\InputSubmitTag(
             'gotonew',
             _('Save and next'),
-            ['class' => 'btn btn-success']
+            ['class' => 'btn btn-success'],
         ));
     }
 
@@ -148,29 +142,33 @@ class ColumnsForm extends \Ease\TWB5\Form
      *
      * @param SysEngine $datasource
      */
-    public function populate($datasource)
+    public function populate($datasource): void
     {
         $recordID = $datasource->getMyKey();
 
         foreach ($datasource->keywordsInfo as $col_name => $col_info) {
-            if (isset($datasource->myLastModifiedColumn) && ($datasource->myLastModifiedColumn == $col_name)) {
+            if (isset($datasource->myLastModifiedColumn) && ($datasource->myLastModifiedColumn === $col_name)) {
                 continue;
             }
-            if (isset($datasource->myCreateColumn) && ($datasource->myCreateColumn == $col_name)) {
+
+            if (isset($datasource->myCreateColumn) && ($datasource->myCreateColumn === $col_name)) {
                 continue;
             }
+
             $placeholder = $helptext = '';
             $value = $datasource->getDataValue($col_name);
+
             if (isset($col_info['title'])) {
                 $caption = $col_info['title'];
             } else {
                 $caption = $col_name;
             }
+
             if (isset($datasource->useKeywords[$col_name])) {
                 $type = preg_replace(
                     '/[^A-Z]+/',
                     '',
-                    $datasource->useKeywords[$col_name]
+                    $datasource->useKeywords[$col_name],
                 );
             } else {
                 $type = 'text';
@@ -179,30 +177,36 @@ class ColumnsForm extends \Ease\TWB5\Form
             switch ($type) {
                 case 'BOOL':
                     $input_widget = new \Ease\TWB5\Widgets\TWBSwitch($col_name, $value);
+
                     break;
                 case 'INT':
                     $input_widget = new \Ease\Html\InputTextTag(
                         $col_name,
                         $value,
-                        ['type' => 'number']
+                        ['type' => 'number'],
                     );
+
                     break;
                 case 'DATE':
                     $input_widget = new DateTimePicker($col_name, $value);
+
                     break;
                 case 'TEXT':
                     $input_widget = new \Ease\Html\TextareaTag(
                         $col_name,
                         $value,
-                        ['class' => 'form-control']
+                        ['class' => 'form-control'],
                     );
+
                     break;
                 case 'STRING':
                     $input_widget = new \Ease\Html\InputTag(
                         $col_name,
                         $value,
-                        ['class' => 'form-control']
+                        ['class' => 'form-control'],
                     );
+
+                    // no break
                 default:
                     break;
             }
@@ -216,14 +220,16 @@ class ColumnsForm extends \Ease\TWB5\Form
         $recordID = $this->engine->getMyKey();
         $this->addItem(new \Ease\Html\InputHiddenTag(
             'class',
-            get_class($this->engine)
+            \get_class($this->engine),
         ));
-        if (!is_null($recordID)) {
+
+        if (null !== $recordID) {
             $this->addItem(new \Ease\Html\InputHiddenTag(
                 $this->engine->keyColumn,
-                $recordID
+                $recordID,
             ));
         }
+
         $this->addItem($this->savers);
         WebPage::singleton()->includeJavaScript('js/jquery.validate.js');
         WebPage::singleton()->includeJavaScript('js/messages_cs.js');

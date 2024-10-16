@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Flexplorer;
 
 /**
@@ -17,6 +30,7 @@ $changer = new \AbraFlexi\Changes();
 $hooker = new \AbraFlexi\Hooks();
 $chapistatus = $changer->getStatus();
 $invoicer = new \AbraFlexi\FakturaVydana();
+
 try {
     $globalVersion = $changer->getGlobalVersion();
 } catch (\AbraFlexi\Exception $exc) {
@@ -40,60 +54,69 @@ if ($oPage->isPosted()) {
         }
     }
 
-    if (strlen($hookurl)) {
+    if (\strlen($hookurl)) {
         if ($oPage->getRequestValue('changesformat') === 'JSON') {
             $format = 'json';
         } else {
             $format = 'xml';
         }
+
         if ($oPage->getRequestValue('hookurltest') === 'skip') {
             $hooker->setDataValue('skipUrlTest', 'true');
         } else {
             $hooker->setDataValue('skipUrlTest', 'false');
         }
+
         $lastversion = $oPage->getRequestValue('lastVersion', 'int');
-        if (!is_null($lastversion) && $lastversion) {
+
+        if (null !== $lastversion && $lastversion) {
             $hooker->setDataValue('lastVersion', $lastversion);
         }
 
         $secKey = $oPage->getRequestValue('secKey');
-        if (strlen($secKey)) {
+
+        if (\strlen($secKey)) {
             $hooker->setDataValue('secKey', $secKey);
         }
 
         $hookResult = $hooker->register($hookurl, $format);
+
         if ($hookResult) {
             $hooker->addStatusMessage(sprintf(
                 _('Hook %s was registered'),
-                $hookurl
+                $hookurl,
             ), 'success');
             $hookurl = '';
         } else {
             $hooker->addStatusMessage(sprintf(
                 _('Hook %s not registered'),
-                $hookurl
+                $hookurl,
             ), 'warning');
         }
     }
 }
 
 $linkdel = $oPage->getRequestValue('linkdel', 'int');
-if (!is_null($linkdel)) {
+
+if (null !== $linkdel) {
     if ($hooker->unregister($linkdel)) {
         $hooker->addStatusMessage(_('Hook was unregistered'), 'success');
     } else {
         $hooker->addStatusMessage(_('Hook was not unregistered'), 'warning');
     }
+
     $oPage->redirect('changesapi.php');
 }
 
 $linkrefresh = $oPage->getRequestValue('refresh', 'int');
-if (!is_null($linkrefresh)) {
+
+if (null !== $linkrefresh) {
     if ($hooker->refreshWebHook($linkrefresh)) {
         $hooker->addStatusMessage(_('Hook refreshed'), 'success');
     } else {
         $hooker->addStatusMessage(_('Hook refresh failed'), 'warning');
     }
+
     $oPage->redirect('changesapi.php');
 }
 
@@ -104,20 +127,20 @@ $settingsForm->addInput(
     new \Ease\Html\Widgets\Toggle(
         'changesapi',
         'enable',
-        ['onText' => _('Enable'), 'offText' => _('Disable')]
+        ['onText' => _('Enable'), 'offText' => _('Disable')],
     ),
     _('Changes API'),
     null,
     new \Ease\Html\ATag(
         'https://www.flexibee.eu/api/dokumentace/ref/changes-api/',
-        _('If it is turned on , AbraFlexi records all changes made to the database company in the changelog and provides a list of changes recovered')
-    )
+        _('If it is turned on , AbraFlexi records all changes made to the database company in the changelog and provides a list of changes recovered'),
+    ),
 );
 
 $webHookUrl = str_replace(
     basename(__FILE__),
     'webhook.php',
-    \Ease\Document::phpSelf()
+    \Ease\Document::phpSelf(),
 );
 
 $settingsForm->addInput(
@@ -126,42 +149,42 @@ $settingsForm->addInput(
     $webHookUrl,
     new \Ease\Html\ATag(
         'https://www.flexibee.eu/api/dokumentace/ref/web-hooks',
-        _('When the database AbraFlexi to change the POST HTTP request sent to all registered URL')
-    )
+        _('When the database AbraFlexi to change the POST HTTP request sent to all registered URL'),
+    ),
 );
 
 $settingsForm->addItem(new \Ease\TWB5\LinkButton(
-    "?hookurl=" . urlencode($webHookUrl),
+    '?hookurl='.urlencode($webHookUrl),
     _('Target to FlexPlorer'),
     'success',
-    ['class' => 'button button-xs']
+    ['class' => 'button button-xs'],
 ));
 
 $settingsForm->addInput(new \Ease\Html\Widgets\Toggle(
     'changesformat',
     'JSON',
-    ['onText' => 'JSON', 'offText' => 'XML']
+    ['onText' => 'JSON', 'offText' => 'XML'],
 ), _('Data format'));
 
 $settingsForm->addInput(
     new \Ease\Html\Widgets\Toggle('hookurltest', 'skip'),
     _('Skip URL test'),
     null,
-    _('Suppress URL functionality test')
+    _('Suppress URL functionality test'),
 );
 
 $settingsForm->addInput(
     new \Ease\Html\InputNumberTag(
         'lastVersion',
         null,
-        ['min' => 0, 'max' => $globalVersion]
+        ['min' => 0, 'max' => $globalVersion],
     ),
     _('Last version'),
     $globalVersion,
     sprintf(
-        _('Version of which will begin sending FOLLOW changes , ie. The next higher version . The default value is equal to the current global version ( globalVersion ) at the moment of registration Hook. Permissible values ​​are in the range [ 0 , % s ]'),
-        $globalVersion
-    )
+        _('Version of which will begin sending FOLLOW changes , ie. The next higher version . The default value is equal to the current global version ( globalVersion ) at the moment of registration Hook. Permissible values are in the range [ 0 , % s ]'),
+        $globalVersion,
+    ),
 );
 
 $randstr = \Ease\Functions::randomString(30);
@@ -171,62 +194,58 @@ $settingsForm->addInput(
     $randstr,
     sprintf(
         _('Any string (eg. %s) that will be sent with each change notifications in the HTTP header. Used to easily verify that include incoming notifications you registered Hook. Key name is in the HTTP header X-FB-Hook-SecKey .'),
-        $randstr
-    )
+        $randstr,
+    ),
 );
 
 $settingsForm->addItem(new \Ease\TWB5\SubmitButton(
     _('Perform operation'),
-    'warning'
+    'warning',
 ));
 $toolRow->addColumn(4, new \Ease\TWB5\Panel($settingsForm));
 
 if ($chapistatus) {
     try {
         $hooks = $hooker->getFlexiData();
-        if (!isset($hooks['message']) && is_array($hooks) && !empty(current($hooks))) {
+
+        if (!isset($hooks['message']) && \is_array($hooks) && !empty(current($hooks))) {
             $hooksTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
             $hooksTable->addRowHeaderColumns(array_merge(array_keys(current($hooks)), [_('Reset'), _('Test'), _('Remove')]));
+
             foreach ($hooks as $hookinfo) {
                 $hookinfo[] = new \Ease\TWB5\LinkButton(
-                    '?refresh=' . $hookinfo['id'],
+                    '?refresh='.$hookinfo['id'],
                     '♻️',
-                    'success'
+                    'success',
                 );
                 $hookinfo[] = new \Ease\TWB5\LinkButton(
-                    'fakechange.php?hookurl=' . $hookinfo['url'],
+                    'fakechange.php?hookurl='.$hookinfo['url'],
                     '📤',
                     'info',
-                    ['title' => _('Test')]
+                    ['title' => _('Test')],
                 );
                 $hookinfo[] = new \Ease\TWB5\LinkButton(
-                    '?linkdel=' . $hookinfo['id'],
+                    '?linkdel='.$hookinfo['id'],
                     '🪦',
-                    'danger'
+                    'danger',
                 );
                 $hookinfo['url'] = new \Ease\Html\ATag(
                     $hookinfo['url'],
-                    $hookinfo['url']
+                    $hookinfo['url'],
                 );
 
                 $hooksTable->addRowColumns($hookinfo);
             }
 
-            $toolRow->addColumn(
-                8,
-                new \Ease\TWB5\Panel(_('Webhooks registered'), 'info', $hooksTable)
-            );
+            $toolRow->addColumn(8, new \Ease\TWB5\Panel(_('Webhooks registered'), 'info', $hooksTable));
         }
     } catch (\AbraFlexi\Exception $exc) {
         echo $hooker->addStatusMessage($exc->getMessage(), 'error');
     }
 }
-$oPage->container->addItem(new \Ease\TWB5\Panel(
-    _('ChangesAPI & WebHooks'),
-    'info',
-    $toolRow
-));
 
-$oPage->addItem(new ui\PageBottom());
+$oPage->addToMain(new \Ease\TWB5\Panel(_('ChangesAPI & WebHooks'), 'inverse', $toolRow));
+
+$oPage->addToFooter(new ui\PageBottom());
 
 $oPage->draw();

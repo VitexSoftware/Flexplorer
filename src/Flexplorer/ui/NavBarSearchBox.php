@@ -1,10 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Flexplorer - Vyhledávací políčko.
+ * This file is part of the Flexplorer package
  *
- * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016-2024 Vitex Software
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
@@ -14,12 +20,11 @@ class NavBarSearchBox extends \Ease\Html\Form
     /**
      * Formulář Bootstrapu.
      *
-     * @param string $formName      jméno formuláře
-     * @param string $formAction    cíl formulář např login.php
-     * @param string $formMethod    metoda odesílání POST|GET
-     * @param mixed  $formContents  prvky uvnitř formuláře
-     * @param array  $tagProperties vlastnosti tagu například:
-     *                              array('enctype' => 'multipart/form-data')
+     * @param string     $formName      jméno formuláře
+     * @param string     $formAction    cíl formulář např login.php
+     * @param null|mixed $term
+     * @param array      $tagProperties vlastnosti tagu například:
+     *                                  array('enctype' => 'multipart/form-data')
      */
     public function __construct(
         $formName,
@@ -35,110 +40,64 @@ class NavBarSearchBox extends \Ease\Html\Form
                 'search',
                 $term,
                 [
-                            'class' => 'form-control pull-right typeahead input-sm',
-                            'style' => 'width: 200px; margin-right: 35px, border: 1px solid black; background-color: #e5e5e5; height: 27px',
-                            'placeholder' => _('Search'),
-                    ]
-            ), ['class' => 'input-group'])
+                    'class' => 'form-control pull-right typeahead input-sm',
+                    'style' => 'width: 200px; margin-right: 35px, border: 1px solid black; background-color: #e5e5e5; height: 27px',
+                    'placeholder' => _('Search'),
+                ],
+            ), ['class' => 'input-group']),
         );
         $buttons = $group->addItem(new \Ease\Html\SpanTag(
             null,
-            ['class' => 'input-group-btn']
+            ['class' => 'input-group-btn'],
         ));
         $buttons->addItem(new \Ease\Html\ButtonTag(
             new \Ease\Html\SpanTag(
                 new \Ease\Html\SpanTag(_('Close'), ['class' => 'sr-only']),
-                ['class' => 'glyphicon glyphicon-remove']
+                ['class' => 'glyphicon glyphicon-remove'],
             ),
-            ['type' => 'reset', 'class' => 'btn btn-default btn-sm']
+            ['type' => 'reset', 'class' => 'btn btn-default btn-sm'],
         ));
         $buttons->addItem(new \Ease\Html\ButtonTag(
             new \Ease\Html\SpanTag(
                 new \Ease\Html\SpanTag(_('Search'), ['class' => 'sr-only']),
-                ['class' => 'glyphicon glyphicon-search']
+                ['class' => 'glyphicon glyphicon-search'],
             ),
-            ['type' => 'submit', 'class' => 'btn btn-default btn-sm ']
+            ['type' => 'submit', 'class' => 'btn btn-default btn-sm '],
         ));
     }
 
-    public function finalize()
+    public function finalize(): void
     {
         WebPage::singleton()->includeJavaScript('js/handlebars.js');
         WebPage::singleton()->includeJavaScript('js/typeahead.bundle.js');
-
-        /*
-          WebPage::singleton()->addCss('
-
-          .tt-hint {
-          }
-
-          .tt-input {
-          }
-
-          .tt-hint {
-          color: #999
-          }
-
-          .tt-dropdown-menu {
-          width: 422px;
-          margin-top: 12px;
-          padding: 8px 0;
-          background-color: #fff;
-          border: 1px solid #ccc;
-          border: 1px solid rgba(0, 0, 0, 0.2);
-          border-radius: 8px;
-          box-shadow: 0 5px 10px rgba(0,0,0,.2);
-          overflow-y: auto;
-          max-height: 500px;
-          }
-
-          .tt-suggestion {
-          padding: 3px 20px;
-          }
-
-          .tt-suggestion.tt-cursor {
-          color: #fff;
-          background-color: #0097cf;
-
-          }
-
-          .tt-suggestion.tt-cursor a {
-          color: black;
-          }
-
-          .tt-suggestion p {
-          margin: 0;
-          }
-          ');
-
-         */
-        WebPage::singleton()->addJavaScript('
-
+        WebPage::singleton()->addJavaScript(<<<'EOD'
 
 var bestPictures = new Bloodhound({
     limit: 1000,
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace(\'value\'),
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     remote: {
-      url: \'searcher.php?q=%QUERY\',
-      wildcard: \'%QUERY\'
+      url: 'searcher.php?q=%QUERY',
+      wildcard: '%QUERY'
     }
 });
 
 bestPictures.initialize();
 
-$(\'input[name="search"]\').typeahead(null, {
-    name: \'best-pictures\',
-    displayKey: \'name\',
+$('input[name="search"]').typeahead(null, {
+    name: 'best-pictures',
+    displayKey: 'name',
     limit: 1000,
     minLength: 3,
     highlight: true,
     source: bestPictures.ttAdapter(),
      templates: {
-        suggestion: Handlebars.compile(\'<p><small>{{type}}</small><br><a href="{{url}}"><strong>{{name}}</strong> – {{what}}</a></p>\')
+        suggestion: Handlebars.compile('<p><small>{{type}}</small><br><a href="{{url}}"><strong>{{name}}</strong> – {{what}}</a></p>')
 }
 });
 
-            ', null, true);
+
+EOD, null, true);
+        parent::finalize();
     }
 }

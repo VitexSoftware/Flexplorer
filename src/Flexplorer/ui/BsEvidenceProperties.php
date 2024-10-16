@@ -1,10 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Flexplorer - Přehled vlastností evidence.
+ * This file is part of the Flexplorer package
  *
- * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016 Vitex Software
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
@@ -14,9 +20,10 @@ class BsEvidenceProperties extends BsGrid
     public function __construct($evidence)
     {
         parent::__construct(null, ['class' => 'table table-hover']);
-        if (is_string($evidence)) {
+
+        if (\is_string($evidence)) {
             $properter = new \AbraFlexi\RO();
-            $properter->setEvidence($evidence . '/properties');
+            $properter->setEvidence($evidence.'/properties');
             $proprtiesData = $properter->getFlexiData();
             $proprtiesData = $proprtiesData['properties']['property'];
         } else {
@@ -30,7 +37,8 @@ class BsEvidenceProperties extends BsGrid
                 }
             }
         }
-//        $this->addRowHeaderColumns($columns);
+
+        //        $this->addRowHeaderColumns($columns);
 
         foreach ($proprtiesData as $propName => $propValues) {
             foreach ($columns as $value) {
@@ -39,31 +47,34 @@ class BsEvidenceProperties extends BsGrid
                         case 'fkName':
                             if (isset($propValues['url'])) {
                                 $tmp = explode('/', $propValues['url']);
-                                $revidence = 'evidence.php?evidence=' . end($tmp);
-                                $props[$value] = '<a href="' . $revidence . '">' . \Ease\TWB5\Part::glyphIcon(
+                                $revidence = 'evidence.php?evidence='.end($tmp);
+                                $props[$value] = '<a href="'.$revidence.'">'.\Ease\TWB5\Part::glyphIcon(
                                     'link',
-                                    ['title' => $propValues['fkName']]
-                                )->__toString() . $propValues[$value] . '</a> ';
+                                    ['title' => $propValues['fkName']],
+                                )->__toString().$propValues[$value].'</a> ';
                             } else {
                                 $props[$value] = $propValues[$value];
                             }
+
                             break;
                         case 'evidenceVariants':
-                            if (is_array($propValues[$value]['evidenceVariant'])) {
+                            if (\is_array($propValues[$value]['evidenceVariant'])) {
                                 $props[$value] = implode(
                                     ', ',
-                                    $propValues[$value]['evidenceVariant']
+                                    $propValues[$value]['evidenceVariant'],
                                 );
                             }
+
                             break;
                         case 'url':
-                            $props[$value] = '<a href="' . $propValues[$value] . '">' . $propValues[$value] . '</a>';
+                            $props[$value] = '<a href="'.$propValues[$value].'">'.$propValues[$value].'</a>';
+
                             break;
                         case 'values':
                             foreach ($propValues[$value]['value'] as $defineKey => $defineValue) {
                                 $label = new \Ease\TWB5\Badge(
                                     $defineValue['@key'],
-                                    ['title' => $defineValue['$']]
+                                    ['title' => $defineValue['$']],
                                 );
                                 $props[$value] .= $label->__toString();
                             }
@@ -74,16 +85,18 @@ class BsEvidenceProperties extends BsGrid
                             switch ($propValues[$value]) {
                                 case 'true':
                                     $props[$value] = \Ease\TWB5\Part::glyphIcon('unchecked')->__toString();
+
                                     break;
                                 case 'false':
                                     $props[$value] = \Ease\TWB5\Part::glyphIcon('check')->__toString();
+
                                     break;
+
                                 default:
                                     $props[$value] = $propValues[$value];
+
                                     break;
                             }
-
-
 
                             break;
                     }
@@ -91,7 +104,7 @@ class BsEvidenceProperties extends BsGrid
                     $props[$value] = '';
                 }
             }
-            //$this->addRowColumns($props);
+            // $this->addRowColumns($props);
         }
     }
 }

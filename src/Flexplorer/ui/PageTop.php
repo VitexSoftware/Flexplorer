@@ -1,10 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Flexplorer - vršek stránky.
+ * This file is part of the Flexplorer package
  *
- * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016 Vitex Software
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
@@ -16,35 +22,31 @@ class PageTop extends \Ease\Html\DivTag
 {
     /**
      * Titulek stránky.
-     *
-     * @var string
      */
-    public $pageTitle = null;
+    public string $pageTitle = '';
 
     /**
      * Nastavuje titulek.
      *
      * @param string $pageTitle
      */
-    public function __construct($pageTitle = null)
+    public function __construct($pageTitle = '')
     {
         parent::__construct();
-        if (!is_null($pageTitle)) {
-            WebPage::singleton()->setPageTitle($pageTitle);
+
+        if ($pageTitle) {
+            \Ease\WebPage::singleton()->setPageTitle($pageTitle);
         }
+
+        $this->setTagID('header');
     }
 
     /**
      * Vloží vršek stránky a hlavní menu.
      */
-    public function finalize()
+    public function finalize(): void
     {
-        if ($this->finalized != true) {
-#            WebPage::singleton()->body->addAsFirst(new MainMenu());
-            WebPage::singleton()->body->addAsFirst(new Menu());
-//            $this->addItem(new MainMenu());
-//            $this->addItem(new \Ease\TWB5\Widgets\BrowsingHistory());
-            $this->finalized = true;
-        }
+        $this->addItem(new MainMenu('menu', new \Ease\Html\ATag('index.php', new \Ease\Html\ImgTag('images/flexplorer-logo.png', 'Flexplorer', ['width' => 25]))));
+        parent::finalize();
     }
 }

@@ -1,25 +1,31 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
 
 /**
- * Description of ModulesOverview
+ * Description of ModulesOverview.
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
 class ModulesOverview extends \Ease\Html\UlTag
 {
     /**
-     * Language Dependencies
-     * @var array
+     * Language Dependencies.
      */
-    public $translations = [];
+    public array $translations = [];
 
     public function __construct($ulContents = null)
     {
@@ -33,7 +39,6 @@ class ModulesOverview extends \Ease\Html\UlTag
             'PHL' => _('Receivables'),
             'ZAV' => _('Commitments'),
             'SES' => _('Sessions'),
-            'MAJ' => _('Assets'),
             'MZD' => _('Wages'),
             'CRM' => _('CRM'),
             'PPP' => _('Inquiries received'),
@@ -42,18 +47,20 @@ class ModulesOverview extends \Ease\Html\UlTag
             'NAV' => _('bids received'),
             'OBP' => _('Orders Received'),
             'OBV' => _('Orders will issue'),
-            'MAJ' => _('Assets')
+            'MAJ' => _('Assets'),
         ];
 
         parent::__construct(null, ['class' => 'list-group']);
         asort($this->translations);
+
         foreach ($this->translations as $code => $name) {
-            if (array_key_exists($code, $ulContents)) {
+            if (\array_key_exists($code, $ulContents)) {
                 $type = 'success';
             } else {
                 $type = 'default';
             }
-            $this->addItemSmart(new \Ease\TWB5\Badge($code . ' - ' . $name, $type), ['class' => 'list-group-item']);
+
+            $this->addItemSmart(new \Ease\TWB5\Badge($code.' - '.$name, $type), ['class' => 'list-group-item']);
         }
     }
 }

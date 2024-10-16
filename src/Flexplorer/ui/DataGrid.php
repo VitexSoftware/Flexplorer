@@ -1,38 +1,41 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Flexplorer - DataGrid.
+ * This file is part of the Flexplorer package
  *
- * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016-2017 Vitex Software
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
 
 /**
- * Description of DataGrid
+ * Description of DataGrid.
  *
  * @author vitex
  */
 class DataGrid extends \Ease\Html\TableTag
 {
     /**
-     * Extra filtr výsledků
-     * @var string
+     * Extra filtr výsledků.
      */
-    public $select;
+    public string $select;
 
     /**
-     * Default column settings
-     * @var array
+     * Default column settings.
      */
-    public $defaultColProp = ['sortable' => true];
+    public array $defaultColProp = ['sortable' => true];
 
     /**
-     * Options
-     * @var array
+     * Options.
      */
-    public $options = [
+    public array $options = [
         'method' => 'GET',
         'dataType' => 'json',
         'height' => 'auto',
@@ -46,32 +49,30 @@ class DataGrid extends \Ease\Html\TableTag
         'showTableToggleBtn' => true,
         'add' => [],
         'edit' => [],
-//        'buttons' => [
-//            ['name' => 'CSV Export', 'bclass' => 'csvexport']
-//        , array('name' => 'PDF Export', 'bclass' => 'pdfexport')
-//        ]
+        //        'buttons' => [
+        //            ['name' => 'CSV Export', 'bclass' => 'csvexport']
+        //        , array('name' => 'PDF Export', 'bclass' => 'pdfexport')
+        //        ]
     ];
     public $addFormItems = [['name' => 'action', 'value' => 'add', 'type' => 'hidden']];
     public $editFormItems = [['name' => 'action', 'value' => 'edit', 'type' => 'hidden']];
 
     /**
-     * Objekt jehož data jsou zobrazována
-     * @var \Flexplorer\DataSource
+     * Objekt jehož data jsou zobrazována.
      */
-    public $dataSource = null;
+    public \Flexplorer\DataSource $dataSource = null;
 
     /**
-     * Klik na řádku vede na editor záznamu
-     * @var type
+     * Klik na řádku vede na editor záznamu.
      */
-    public $dblclk2edit = true;
+    public type $dblclk2edit = true;
 
     /**
-     * Zdroj dat pro flexigrid
+     * Zdroj dat pro flexigrid.
      *
-     * @param string $name ID elementu
+     * @param string $name       ID elementu
      * @param string $datasource URL
-     * @param array $properties vlastnosti elementu
+     * @param array  $properties vlastnosti elementu
      */
     public function __construct($name, $datasource, $properties = null)
     {
@@ -79,9 +80,10 @@ class DataGrid extends \Ease\Html\TableTag
         $this->options['title'] = $name;
         $this->setTagID();
 
-        $this->options['url'] = 'datasource.php?evidence=' . urlencode($datasource->getEvidence());
+        $this->options['url'] = 'datasource.php?evidence='.urlencode($datasource->getEvidence());
+
         if (isset($properties['label'])) {
-            $this->options['url'] .= '&stitek=' . urlencode($properties['label']);
+            $this->options['url'] .= '&stitek='.urlencode($properties['label']);
         }
 
         $this->options['sortname'] = $datasource->getKeyColumn();
@@ -96,102 +98,116 @@ class DataGrid extends \Ease\Html\TableTag
     }
 
     /**
-     * Set up DataGrid buttons
+     * Set up DataGrid buttons.
      */
-    public function setUpButtons()
+    public function setUpButtons(): void
     {
         $this->addJsonButton(_('Json'));
         $this->addXmlButton(_('XML'));
         $this->addPdfButton(_('PDF'));
         $actions = $this->dataSource->handledObejct->getActionsInfo();
-        if (count($actions)) {
+
+        if (\count($actions)) {
             foreach ($actions as $action => $actionInfo) {
                 switch ($action) {
                     case 'new':
                     case 'add':
                         $this->addAddButton(_('Add'));
+
                         break;
                     case 'edit':
                         $this->addEditButton(_('Edit'));
+
                         break;
                     case 'delete':
                         $this->addDeleteButton(_('Delete'));
+
                         break;
+
                     default:
                         $this->addActionButton(
                             $actionInfo['actionName'],
-                            $action
+                            $action,
                         );
+
                         break;
                 }
             }
         }
+
         $this->addSelectAllButton(_('Select All'));
     }
 
     /**
-     * Add an Action button
+     * Add an Action button.
      *
      * @param string $title  Buttin title
      * @param string $action AbraFlexi action
      */
-    public function addActionButton($title, $action)
+    public function addActionButton($title, $action): void
     {
         $show = false;
 
         $actionFunction = str_replace('-', '_', $action);
 
-        $this->addButton($title, $action, 'action' . $actionFunction);
+        $this->addButton($title, $action, 'action'.$actionFunction);
 
-        $this->addJavaScript('function action' . $actionFunction . '(com, grid) {
+        $this->addJavaScript('function action'.$actionFunction.<<<'EOD'
+(com, grid) {
               var action = $("div span" ,this).attr("class");
 
-                var numItems = $(\'.trSelected\').length
+                var numItems = $('.trSelected').length
                 if(numItems){
                     if(numItems == 1) {
-                        $(\'.trSelected\', grid).each(function() {
-                            var id = $(this).attr(\'id\');
-                            id = id.substring(id.lastIndexOf(\'row\')+3);
-                            $(location).attr(\'href\',\'query.php?show=result&evidence=' . $this->dataSource->getEvidence() . '&action=\' + action + \'&' . $this->dataSource->getKeyColumn() . '=\' +id);
+                        $('.trSelected', grid).each(function() {
+                            var id = $(this).attr('id');
+                            id = id.substring(id.lastIndexOf('row')+3);
+                            $(location).attr('href','query.php?show=result&evidence=
+EOD.$this->dataSource->getEvidence().'&action=\' + action + \'&'.$this->dataSource->getKeyColumn().<<<'EOD'
+=' +id);
                         });
 
                     } else {
-                        $(\'.trSelected\', grid).each(function() {
-                            var id = $(this).attr(\'id\');
-                            id = id.substring(id.lastIndexOf(\'row\')+3);
-                            var url =\'query.php?show=result&evidence=' . $this->dataSource->getEvidence() . '&action=\' + action + \'&' . $this->dataSource->getKeyColumn() . '=\' +id;
-                            var win = window.open(url, \'_blank\');
+                        $('.trSelected', grid).each(function() {
+                            var id = $(this).attr('id');
+                            id = id.substring(id.lastIndexOf('row')+3);
+                            var url ='query.php?show=result&evidence=
+EOD.$this->dataSource->getEvidence().'&action=\' + action + \'&'.$this->dataSource->getKeyColumn().<<<'EOD'
+=' +id;
+                            var win = window.open(url, '_blank');
                             win.focus();
                         });
                     }
                 } else {
-                      $(location).attr(\'href\',\'evidence.php?evidence=' . $this->dataSource->getEvidence() . '&action=\' + action);
+                      $(location).attr('href','evidence.php?evidence=
+EOD.$this->dataSource->getEvidence().<<<'EOD'
+&action=' + action);
                 }
 
             }
-        ', null, true);
+
+EOD, null, true);
     }
 
     /**
-     * Nastaví vlastností sloupečků datagridu
+     * Nastaví vlastností sloupečků datagridu.
      */
-    public function setUpColumns()
+    public function setUpColumns(): void
     {
-
         foreach ($this->dataSource->keywordsInfo as $keyword => $properties) {
             $colProperties = [];
             $type = $properties['type'];
-            if ($properties['isSortable'] == 'true') {
+
+            if ($properties['isSortable'] === 'true') {
                 $colProperties['sortable'] = 'true';
             } else {
                 $colProperties['sortable'] = 'false';
             }
 
-
-            if (!isset($this->dataSource->keywordsInfo[$keyword]['title']) || !strlen(trim($this->dataSource->keywordsInfo[$keyword]['title']))) {
+            if (!isset($this->dataSource->keywordsInfo[$keyword]['title']) || !\strlen(trim($this->dataSource->keywordsInfo[$keyword]['title']))) {
                 $this->addStatusMessage(
-                    _('Title missing') . ' ' . $this->dataSource->keyword . ': ' . $keyword,
-                    'warning'
+                    _('Title missing').' '.$this->dataSource->keyword.': '.$keyword,
+                    'warning',
                 );
                 $this->dataSource->keywordsInfo[$keyword]['title'] = $keyword;
             }
@@ -200,304 +216,372 @@ class DataGrid extends \Ease\Html\TableTag
                 $keyword,
                 $this->dataSource->keywordsInfo[$keyword]['title'],
                 true,
-                $colProperties
+                $colProperties,
             );
         }
     }
 
     /**
-     * Přidá tlačítko
+     * Přidá tlačítko.
      *
-     * @param string $title Popisek tlačítka
-     * @param string $class CSS třída tlačítka
+     * @param string     $title   Popisek tlačítka
+     * @param string     $class   CSS třída tlačítka
+     * @param null|mixed $onpress
      */
-    public function addButton($title, $class, $onpress = null)
+    public function addButton($title, $class, $onpress = null): void
     {
         if ($onpress) {
             $this->options['buttons'][] = ['name' => $title, 'bclass' => $class,
-                'onpress: ' . $onpress];
+                'onpress: '.$onpress];
         } else {
             $this->options['buttons'][] = ['name' => $title, 'bclass' => $class];
         }
     }
 
     /**
-     * Vloží přidávací tlačítko
+     * Vloží přidávací tlačítko.
      *
      * @param string $title  Nadpis gridu
      * @param string $target Url
      */
-    public function addAddButton($title, $target = null)
+    public function addAddButton($title, $target = null): void
     {
         $show = false;
-        if (is_null($target)) {
+
+        if (null === $target) {
             $target = $this->options['url'];
         }
+
         $this->addButton($title, 'add', 'addRecord');
 
-        $this->addCSS('.flexigrid div.fbutton .add {
+        $this->addCSS(<<<'EOD'
+.flexigrid div.fbutton .add {
 background: url(images/add.png) no-repeat center left;
-}');
+}
+EOD);
 
-        $this->addJavaScript('function addRecord(com, grid) {
-              $(location).attr(\'href\',\'editor.php?evidence=' . $this->dataSource->getEvidence() . '\');
+        $this->addJavaScript(<<<'EOD'
+function addRecord(com, grid) {
+              $(location).attr('href','editor.php?evidence=
+EOD.$this->dataSource->getEvidence().<<<'EOD'
+');
             }
-        ', null, true);
+
+EOD, null, true);
     }
 
     /**
-     * Vloží tlačítko výběru všech zobrazených záznamů
+     * Vloží tlačítko výběru všech zobrazených záznamů.
      *
      * @param type $title
      * @param type $target
      */
-    public function addSelectAllButton($title, $target = null)
+    public function addSelectAllButton($title, $target = null): void
     {
         $this->addButton($title, 'selectAll', 'selectAll');
-        $this->addJavaScript('function selectAll(com, grid) {
-                $(\'tr\', grid).each(function() {
+        $this->addJavaScript(<<<'EOD'
+function selectAll(com, grid) {
+                $('tr', grid).each(function() {
                     $(this).click();
                 });
-}');
+}
+EOD);
     }
 
     /**
-     * Vloží editační tlačítko
+     * Vloží editační tlačítko.
      *
      * @param type $title
      * @param type $target
      */
-    public function addEditButton($title, $target = null)
+    public function addEditButton($title, $target = null): void
     {
         $this->addButton($title, 'edit', 'editRecord');
 
-        $this->addCss('.flexigrid div.fbutton .edit {
+        $this->addCss(<<<'EOD'
+.flexigrid div.fbutton .edit {
 background: url(images/edit.png) no-repeat center left;
 }
-');
 
-        $this->addJavaScript('function editRecord(com, grid) {
+EOD);
 
-        var numItems = $(\'.trSelected\').length
+        $this->addJavaScript(<<<'EOD'
+function editRecord(com, grid) {
+
+        var numItems = $('.trSelected').length
         if(numItems){
             if(numItems == 1) {
-                $(\'.trSelected\', grid).each(function() {
-                    var id = $(this).attr(\'id\');
-                    id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\'editor.php?evidence=' . $this->dataSource->getEvidence() . '&' . $this->dataSource->getKeyColumn() . '=\' +id);
+                $('.trSelected', grid).each(function() {
+                    var id = $(this).attr('id');
+                    id = id.substring(id.lastIndexOf('row')+3);
+                    $(location).attr('href','editor.php?evidence=
+EOD.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().<<<'EOD'
+=' +id);
                 });
 
             } else {
-                $(\'.trSelected\', grid).each(function() {
-                    var id = $(this).attr(\'id\');
-                    id = id.substring(id.lastIndexOf(\'row\')+3);
-                    var url =\'editor.php?evidence=' . $this->dataSource->getEvidence() . '&' . $this->dataSource->getKeyColumn() . '=\' +id;
-                    var win = window.open(url, \'_blank\');
+                $('.trSelected', grid).each(function() {
+                    var id = $(this).attr('id');
+                    id = id.substring(id.lastIndexOf('row')+3);
+                    var url ='editor.php?evidence=
+EOD.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().<<<'EOD'
+=' +id;
+                    var win = window.open(url, '_blank');
                     win.focus();
                 });
             }
         } else {
-            alert("' . _('Please mark some rows') . '");
+            alert("
+EOD._('Please mark some rows').<<<'EOD'
+");
         }
 
             }
-        ', null, true);
+
+EOD, null, true);
     }
 
-    public function addXmlButton($title, $target = null)
+    public function addXmlButton($title, $target = null): void
     {
         $this->addButton($title, 'xml', 'xmlRecord');
 
-        $this->addCss('.flexigrid div.fbutton .xml {
+        $this->addCss(<<<'EOD'
+.flexigrid div.fbutton .xml {
 background: url(images/xml.svg) no-repeat center left;
 }
-');
 
-        $this->addJavaScript('function xmlRecord(com, grid) {
+EOD);
 
-        var numItems = $(\'.trSelected\').length
+        $this->addJavaScript(<<<'EOD'
+function xmlRecord(com, grid) {
+
+        var numItems = $('.trSelected').length
         if(numItems){
             if(numItems == 1) {
-                $(\'.trSelected\', grid).each(function() {
-                    var id = $(this).attr(\'id\');
-                    id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\'query.php?format=xml&show=result&evidence=' . $this->dataSource->getEvidence() . '&' . $this->dataSource->getKeyColumn() . '=\' +id);
+                $('.trSelected', grid).each(function() {
+                    var id = $(this).attr('id');
+                    id = id.substring(id.lastIndexOf('row')+3);
+                    $(location).attr('href','query.php?format=xml&show=result&evidence=
+EOD.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().<<<'EOD'
+=' +id);
                 });
 
             } else {
                 var ids = [];
-                $(\'.trSelected\', grid).each(function() {
-                    var id = $(this).attr(\'id\');
-                    id = id.substring(id.lastIndexOf(\'row\')+3);
+                $('.trSelected', grid).each(function() {
+                    var id = $(this).attr('id');
+                    id = id.substring(id.lastIndexOf('row')+3);
                     ids.push( id );
                 });
-                $(location).attr(\'href\',\'query.php?format=xml&show=result&evidence=' . $this->dataSource->getEvidence() . '&' . $this->dataSource->getKeyColumn() . '=\' + ids.join());
+                $(location).attr('href','query.php?format=xml&show=result&evidence=
+EOD.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().<<<'EOD'
+=' + ids.join());
             }
         } else {
-            alert("' . _('Please mark some rows') . '");
+            alert("
+EOD._('Please mark some rows').<<<'EOD'
+");
         }
 
             }
-        ', null, true);
+
+EOD, null, true);
     }
 
-    public function addJsonButton($title, $target = null)
+    public function addJsonButton($title, $target = null): void
     {
         $this->addButton($title, 'json', 'jsonRecord');
 
-        $this->addCss('.flexigrid div.fbutton .json {
+        $this->addCss(<<<'EOD'
+.flexigrid div.fbutton .json {
 background: url(images/json.svg) no-repeat center left;
 }
-');
 
-        $this->addJavaScript('function jsonRecord(com, grid) {
+EOD);
 
-        var numItems = $(\'.trSelected\').length
+        $this->addJavaScript(<<<'EOD'
+function jsonRecord(com, grid) {
+
+        var numItems = $('.trSelected').length
         if(numItems){
             if(numItems == 1) {
-                $(\'.trSelected\', grid).each(function() {
-                    var id = $(this).attr(\'id\');
-                    id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\'query.php?format=json&show=result&evidence=' . $this->dataSource->getEvidence() . '&' . $this->dataSource->getKeyColumn() . '=\' +id);
+                $('.trSelected', grid).each(function() {
+                    var id = $(this).attr('id');
+                    id = id.substring(id.lastIndexOf('row')+3);
+                    $(location).attr('href','query.php?format=json&show=result&evidence=
+EOD.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().<<<'EOD'
+=' +id);
                 });
 
             } else {
                 var ids = [];
-                $(\'.trSelected\', grid).each(function() {
-                    var id = $(this).attr(\'id\');
-                    id = id.substring(id.lastIndexOf(\'row\')+3);
+                $('.trSelected', grid).each(function() {
+                    var id = $(this).attr('id');
+                    id = id.substring(id.lastIndexOf('row')+3);
                     ids.push( id );
                 });
-                $(location).attr(\'href\',\'query.php?format=json&show=result&evidence=' . $this->dataSource->getEvidence() . '&' . $this->dataSource->getKeyColumn() . '=\' + ids.join());
+                $(location).attr('href','query.php?format=json&show=result&evidence=
+EOD.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().<<<'EOD'
+=' + ids.join());
             }
         } else {
-            alert("' . _('Please mark some rows') . '");
+            alert("
+EOD._('Please mark some rows').<<<'EOD'
+");
         }
 
             }
-        ', null, true);
+
+EOD, null, true);
     }
 
-    public function addPdfButton($title, $target = null)
+    public function addPdfButton($title, $target = null): void
     {
         $this->addButton($title, 'pdf', 'pdfRecord');
 
-        $this->addCss('.flexigrid div.fbutton .pdf {
+        $this->addCss(<<<'EOD'
+.flexigrid div.fbutton .pdf {
 background: url(images/pdf.svg) no-repeat center left;
 }
-');
 
-        $this->addJavaScript('function pdfRecord(com, grid) {
+EOD);
 
-        var numItems = $(\'.trSelected\').length
+        $this->addJavaScript(<<<'EOD'
+function pdfRecord(com, grid) {
+
+        var numItems = $('.trSelected').length
         if(numItems){
             if(numItems == 1) {
-                $(\'.trSelected\', grid).each(function() {
-                    var id = $(this).attr(\'id\');
-                    id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\'document.php?format=pdf&show=result&evidence=' . $this->dataSource->getEvidence() . '&' . $this->dataSource->getKeyColumn() . '=\' +id);
+                $('.trSelected', grid).each(function() {
+                    var id = $(this).attr('id');
+                    id = id.substring(id.lastIndexOf('row')+3);
+                    $(location).attr('href','document.php?format=pdf&show=result&evidence=
+EOD.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().<<<'EOD'
+=' +id);
                 });
 
             } else {
                 var ids = [];
-                $(\'.trSelected\', grid).each(function() {
-                    var id = $(this).attr(\'id\');
-                    id = id.substring(id.lastIndexOf(\'row\')+3);
+                $('.trSelected', grid).each(function() {
+                    var id = $(this).attr('id');
+                    id = id.substring(id.lastIndexOf('row')+3);
                     ids.push( id );
                 });
-                $(location).attr(\'href\',\'document.php?format=pdf&show=result&evidence=' . $this->dataSource->getEvidence() . '&' . $this->dataSource->getKeyColumn() . '=\' + ids.join());
+                $(location).attr('href','document.php?format=pdf&show=result&evidence=
+EOD.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().<<<'EOD'
+=' + ids.join());
             }
         } else {
-            alert("' . _('Please mark some rows') . '");
+            alert("
+EOD._('Please mark some rows').<<<'EOD'
+");
         }
 
             }
-        ', null, true);
+
+EOD, null, true);
     }
 
     /**
-     * Přidá tlačítko pro smazání záznamu
+     * Přidá tlačítko pro smazání záznamu.
      *
      * @param string $title  popisek tlačítka
      * @param string $target výkonný skript
      */
-    public function addDeleteButton($title, $target = null)
+    public function addDeleteButton($title, $target = null): void
     {
-        if (is_null($target)) {
+        if (null === $target) {
             $target = $this->options['url'];
         }
+
         $this->addButton($title, 'delete', 'deleteRecord');
 
-        $this->addCss('.flexigrid div.fbutton .delete {
+        $this->addCss(<<<'EOD'
+.flexigrid div.fbutton .delete {
 background: url(images/delete.png) no-repeat center left;
-}');
+}
+EOD);
 
-        $this->addJavaScript('function deleteRecord(com, grid) {
+        $this->addJavaScript(<<<'EOD'
+function deleteRecord(com, grid) {
 
-        var numItems = $(\'.trSelected\').length
+        var numItems = $('.trSelected').length
         if(numItems){
             if(numItems == 1) {
-                $(\'.trSelected\', grid).each(function() {
-                    var id = $(this).attr(\'id\');
-                    id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\'delete.php?evidence=' . $this->dataSource->getEvidence() . '&action=delete&' . $this->dataSource->getKeyColumn() . '=\' +id);
+                $('.trSelected', grid).each(function() {
+                    var id = $(this).attr('id');
+                    id = id.substring(id.lastIndexOf('row')+3);
+                    $(location).attr('href','delete.php?evidence=
+EOD.$this->dataSource->getEvidence().'&action=delete&'.$this->dataSource->getKeyColumn().<<<'EOD'
+=' +id);
                 });
 
             } else {
-                $(\'.trSelected\', grid).each(function() {
-                    var id = $(this).attr(\'id\');
-                    id = id.substring(id.lastIndexOf(\'row\')+3);
-                    var url =\'delete.php?evidence=' . $this->dataSource->getEvidence() . '&action=delete&' . $this->dataSource->getKeyColumn() . '=\' +id;
-                    var win = window.open(url, \'_blank\');
+                $('.trSelected', grid).each(function() {
+                    var id = $(this).attr('id');
+                    id = id.substring(id.lastIndexOf('row')+3);
+                    var url ='delete.php?evidence=
+EOD.$this->dataSource->getEvidence().'&action=delete&'.$this->dataSource->getKeyColumn().<<<'EOD'
+=' +id;
+                    var win = window.open(url, '_blank');
                     win.focus();
                 });
             }
         } else {
-            alert("' . _('Please mark some rows') . '");
+            alert("
+EOD._('Please mark some rows').<<<'EOD'
+");
         }
 
             }
-        ', null, true);
+
+EOD, null, true);
     }
 
     /**
-     * Nastaví parametry sloupečky
+     * Nastaví parametry sloupečky.
      *
-     * @param string  $name             jméno z databáze
-     * @param string  $title            popisek sloupce
-     * @param boolean $search           nabídnout pro sloupec vyhledávání
-     * @param array   $columnProperties další vlastnosti v poli
+     * @param string $name             jméno z databáze
+     * @param string $title            popisek sloupce
+     * @param bool   $search           nabídnout pro sloupec vyhledávání
+     * @param array  $columnProperties další vlastnosti v poli
      */
     public function setColumn(
         $name,
         $title,
         $search = false,
         $columnProperties = null
-    ) {
+    ): void {
         if (!isset($this->options['colModel'])) {
             $this->options['colModel'] = [];
         }
+
         if (!isset($columnProperties['editable'])) {
             $columnProperties['editable'] = false;
         }
+
         $properties = $this->defaultColProp;
         $properties['name'] = $name;
         $properties['display'] = $title;
-        if (is_array($columnProperties)) {
+
+        if (\is_array($columnProperties)) {
             $this->options['colModel'][] = array_merge(
                 $columnProperties,
-                $properties
+                $properties,
             );
         } else {
             $this->options['colModel'][] = $properties;
         }
+
         if ($search) {
-            if (is_array($search)) {
+            if (\is_array($search)) {
                 foreach ($search as $sid => $srch) {
                     $search[$sid] .= ' LIKE "%"';
                 }
+
                 $search = implode(' OR ', $search);
             }
+
             $this->options['searchitems'][] = ['display' => $title, 'name' => $name,
                 'where' => addslashes($search)];
         }
@@ -506,9 +590,11 @@ background: url(images/delete.png) no-repeat center left;
             if (!isset($columnProperties['label'])) {
                 $columnProperties['label'] = $title;
             }
+
             if (!isset($columnProperties['value'])) {
                 $columnProperties['value'] = WebPage::singleton()->getRequestValue($name);
             }
+
             $columnProperties['name'] = $name;
             $this->editFormItems[$name] = $columnProperties;
             $this->addFormItems[$name] = $columnProperties;
@@ -516,15 +602,17 @@ background: url(images/delete.png) no-repeat center left;
     }
 
     /**
-     * Vložení skriptu
+     * Vložení skriptu.
      */
-    public function finalize()
+    public function finalize(): void
     {
         $grid_id = $this->getTagID();
+
         if ($this->getTagProperty('columnsAutoSize')) {
-            $this->options['onSuccess'] = 'function() { addGrid($("#' . $grid_id . '"), this)}';
-            //Patch Grid Responisive
-            $grid_js = '
+            $this->options['onSuccess'] = 'function() { addGrid($("#'.$grid_id.'"), this)}';
+            // Patch Grid Responisive
+            $grid_js = <<<'EOD'
+
         var grids=[];
             $(window).resize(function() {
                 //Resize all the grids on the page
@@ -534,16 +622,20 @@ background: url(images/delete.png) no-repeat center left;
                         sizeGrid(grids[i]);
                     }
                 }
-            });';
-            $grid_js .= '
+            });
+EOD;
+            $grid_js .= <<<'EOD'
+
             //Keep track of all grid elements and current sizes
             public function addGrid($table, grid) {
-                var $grid = $table.closest(\'.flexigrid\');
+                var $grid = $table.closest('.flexigrid');
                 var data = {$table:$table, $grid:$grid, grid:grid, width:$grid.width()};
                 grids.push(data);
                 sizeGrid(data);
-            }';
-            $grid_js .= '
+            }
+EOD;
+            $grid_js .= <<<'EOD'
+
             //Make all cols with auto size fill remaining width..
             public function sizeGrid(data) {
                 //Auto size the middle col.
@@ -553,7 +645,7 @@ background: url(images/delete.png) no-repeat center left;
                 var fluidCols = [];
                 for(var i=0; i<data.grid.colModel.length; i++ ) {
                     if( !isNaN(data.grid.colModel[i].width) ) {
-                        fixedWidth+=data.$table.find(\'tr:eq(\'+i+\') td:eq(\'+i+\'):visible\').outerWidth(true);
+                        fixedWidth+=data.$table.find('tr:eq('+i+') td:eq('+i+'):visible').outerWidth(true);
                     } else {
                         fluidCols.push(i);
                     }
@@ -566,7 +658,8 @@ background: url(images/delete.png) no-repeat center left;
                 }
 
                 data.width = data.$grid.width();
-            }';
+            }
+EOD;
         } else {
             $grid_js = '';
         }
@@ -577,19 +670,24 @@ background: url(images/delete.png) no-repeat center left;
         }
 
         if ($this->dblclk2edit) {
-            $this->options['onDoubleClick'] = 'function(g) {
-                    var id = $(g).attr(\'id\');
-                    id = id.substring(id.lastIndexOf(\'row\')+3);
-                    $(location).attr(\'href\',\'editor.php?evidence=' . $this->dataSource->getEvidence() . '&' . $this->dataSource->getKeyColumn() . '=\' +id);
+            $this->options['onDoubleClick'] = <<<'EOD'
+function(g) {
+                    var id = $(g).attr('id');
+                    id = id.substring(id.lastIndexOf('row')+3);
+                    $(location).attr('href','editor.php?evidence=
+EOD.$this->dataSource->getEvidence().'&'.$this->dataSource->getKeyColumn().<<<'EOD'
+=' +id);
 
-            }';
+            }
+EOD;
         }
+
         $this->options['getGridClass'] = 'function(g) { this.g=g; return g; }';
         WebPage::singleton()->addJavaScript(
             "\n"
-                . '$(\'#' . $grid_id . '\').flexigrid({ ' . \Ease\Part::partPropertiesToString($this->options) . ' }); ' . $grid_js,
+                .'$(\'#'.$grid_id.'\').flexigrid({ '.\Ease\Part::partPropertiesToString($this->options).' }); '.$grid_js,
             null,
-            true
+            true,
         );
     }
 }

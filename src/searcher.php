@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Flexplorer;
 
 /**
@@ -15,7 +28,8 @@ $oPage->onlyForLogged();
 
 $evidence = $oPage->getRequestValue('evidence');
 $query = $oPage->getRequestValue('q');
-if (strlen($query)) {
+
+if (\strlen($query)) {
     $_SESSION['searchQuery'] = $query;
 
     $found = [];
@@ -24,7 +38,7 @@ if (strlen($query)) {
 
     header('ContentType: text/json');
 
-    if (strlen($query) > 1) {
+    if (\strlen($query) > 1) {
         $results = $searcher->searchAll($query);
 
         foreach ($results as $rectype => $records) {
@@ -32,8 +46,9 @@ if (strlen($query)) {
                 if (isset($record['url'])) {
                     $url = $record['url'];
                 } else {
-                    $url = 'evidence.php?evidence=' . $rectype . '&amp;id=' . $record['id'];
+                    $url = 'evidence.php?evidence='.$rectype.'&amp;id='.$record['id'];
                 }
+
                 if (isset($record['name'])) {
                     $name = $record['name'];
                 } else {
@@ -53,5 +68,6 @@ if (strlen($query)) {
             }
         }
     }
+
     echo json_encode($found);
 }

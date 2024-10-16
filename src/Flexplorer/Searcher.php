@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Flexplorer;
 
 /**
@@ -12,24 +25,18 @@ class Searcher extends \Ease\Atom
 {
     /**
      * Prohledávaná tabulka.
-     *
-     * @var string
      */
-    public $evidence = null;
+    public string $evidence;
 
     /**
      * Prohledávaný sloupeček.
-     *
-     * @var string
      */
-    public $column = null;
+    public string $column;
 
     /**
      * Pole prohledávacích obejktů.
-     *
-     * @var array
      */
-    public $sysClasses = [];
+    public array $sysClasses = [];
 
     /**
      * Třída pro hromadné operace s konfigurací.
@@ -38,14 +45,14 @@ class Searcher extends \Ease\Atom
      */
     public function __construct($evidence = null)
     {
-        if (is_null($evidence)) {
+        if (null === $evidence) {
             $this->sysClasses['evidencies'] = new Evidencer();
             $this->sysClasses['column'] = new Columner();
-//            $lister    = new \AbraFlexi\EvidenceList();
-//            $flexidata = $lister->getFlexiData();
-//            foreach ($flexidata as $evidence) {
-//                $this->registerEvidence($evidence['evidencePath']);
-//            }
+            //            $lister    = new \AbraFlexi\EvidenceList();
+            //            $flexidata = $lister->getFlexiData();
+            //            foreach ($flexidata as $evidence) {
+            //                $this->registerEvidence($evidence['evidencePath']);
+            //            }
         } else {
             $this->registerEvidence($evidence);
         }
@@ -56,7 +63,7 @@ class Searcher extends \Ease\Atom
      *
      * @param string $evidence
      */
-    public function registerEvidence($evidence)
+    public function registerEvidence($evidence): void
     {
         $this->sysClasses[$evidence] = new Flexplorer($evidence);
     }
@@ -71,45 +78,52 @@ class Searcher extends \Ease\Atom
     public function searchAll($term)
     {
         $results = [];
+
         foreach ($this->sysClasses as $searched) {
-            if (!is_null($this->evidence) && ($searched->getEvidence() != $this->evidence)) {
+            if (null !== $this->evidence && ($searched->getEvidence() !== $this->evidence)) {
                 continue;
             }
-            if (!is_null($this->column)) {
+
+            if (null !== $this->column) {
                 if (isset($searched->useKeywords[$this->column])) {
                     $searched->useKeywords = [$this->column => $searched->useKeywords[$this->column]];
                 }
             }
+
             $found = $searched->searchString($term);
 
-            if (count($found)) {
+            if (\count($found)) {
                 foreach ($found as $lineNo => $values) {
                     if (isset($values['what'])) {
                         $found[$lineNo]['what'] = $values['what'];
                     } else {
                         $found[$lineNo]['what'] = current(array_keys(array_filter(
                             $values,
-                            function ($var) use ($term) {
-                                return preg_match("/\b$term\b/i", $var);
-                            }
+                            static function ($var) use ($term) {
+                                return preg_match("/\\b{$term}\\b/i", $var);
+                            },
                         )));
 
                         if ($found[$lineNo]['what'] === false) {
                             foreach ($values as $column => $value) {
                                 if (stristr($value, $term)) {
                                     $found[$lineNo]['what'] = $column;
+
                                     break;
                                 }
                             }
                         }
                     }
                 }
+
                 $results[$searched->evidence] = $found;
             }
         }
-        if (!count($results)) {
+
+        if (!\count($results)) {
             $this->addStatusMessage(_('No search results'));
         }
+
         return $results;
     }
 }

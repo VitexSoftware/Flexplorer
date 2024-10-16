@@ -1,53 +1,64 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * AbraFlexi Bricks - Connection Config Form
+ * This file is part of the Flexplorer package
  *
- * @author Vítězslav Dvořák <info@vitexsoftware.cz>
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
 
-use Ease\TWB5\Form;
 use Ease\Html\InputTextTag;
+use Ease\TWB5\Form;
 
 /**
- * Form to configure used Abraflexi instance
+ * Form to configure used Abraflexi instance.
  *
  * @author vitex
  */
 class LoginForm extends Form
 {
     /**
-     * Abraflexi URL Input name
+     * Abraflexi URL Input name.
+     *
      * @var string eg. https://demo.abraflexi.eu:5434
      */
-    public $urlField = 'server';
+    public string $urlField = 'server';
 
     /**
-     * Abraflexi User Input name
+     * Abraflexi User Input name.
+     *
      * @var string eg. winstrom
      */
-    public $usernameField = 'login';
+    public string $usernameField = 'login';
 
     /**
-     * Abraflexi Password Input name
+     * Abraflexi Password Input name.
+     *
      * @var string eg. winstrom
      */
-    public $passwordField = 'password';
+    public string $passwordField = 'password';
 
     /**
-     * Abraflexi Company Input name
+     * Abraflexi Company Input name.
+     *
      * @var string eg. demo_s_r_o_
      */
-    public $companyField = 'company';
+    public string $companyField = 'company';
 
     /**
-     * Abraflexi Server connection form
+     * Abraflexi Server connection form.
      *
-     * @param array $options           ConnectionOptions options
-     * @param array $formProperties    FormTag properties eg. ['enctype' => 'multipart/form-data']
-     * @param mixed $formContents      Any other initial content
+     * @param array $options        ConnectionOptions options
+     * @param array $formProperties FormTag properties eg. ['enctype' => 'multipart/form-data']
+     * @param mixed $formContents   Any other initial content
      */
     public function __construct(array $options, array $formProperties = [], $formContents = null)
     {
@@ -55,17 +66,17 @@ class LoginForm extends Form
 
         $this->addInput(
             new InputTextTag($this->urlField),
-            _('RestAPI endpoint url')
+            _('RestAPI endpoint url'),
         );
 
         $this->addInput(
             new InputTextTag($this->usernameField),
-            _('REST API Username')
+            _('REST API Username'),
         );
 
         $this->addInput(
             new InputTextTag($this->passwordField),
-            _('Rest API Password')
+            _('Rest API Password'),
         );
 
         $this->addItem(new \Ease\TWB5\SubmitButton(_('Sign in')));

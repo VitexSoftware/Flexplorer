@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Flexplorer;
 
 /**
@@ -25,7 +38,7 @@ if (empty($company)) {
     $setinger = new \AbraFlexi\Nastaveni();
     $settings = $setinger->getColumnsFromAbraFlexi(
         '*',
-        ['nazFirmy' => $company, 'detail' => 'full']
+        ['nazFirmy' => $company, 'detail' => 'full'],
     );
 
     $companer = new \AbraFlexi\Company($company);
@@ -40,72 +53,72 @@ if (empty($company)) {
         2,
         new \Ease\TWB5\LinkButton(
             'resetcompany.php',
-            '♻️ ' . _('Reset'),
+            '♻️ '._('Reset'),
             'danger',
-            ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Drop company and create again')]
-        )
+            ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Drop company and create again')],
+        ),
     );
 
     $companyActions->addColumn(
         1,
         new \Ease\TWB5\LinkButton(
             'copycompany.php',
-            '🖇️ ' . _('Duplicate'),
+            '🖇️ '._('Duplicate'),
             'success',
-            ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Create copy')]
-        )
+            ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Create copy')],
+        ),
     );
 
-    $backupFile = '../backups/' . $company . '.winstrom-backup';
+    $backupFile = '../backups/'.$company.'.winstrom-backup';
 
     $companyActions->addColumn(
         2,
         new \Ease\TWB5\LinkButton(
             'restorecompany.php',
-            '📤 ' . _('Restore'),
+            '📤 '._('Restore'),
             'warning',
-            ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Restore previously saved state')]
-        )
+            ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Restore previously saved state')],
+        ),
     );
 
     $companyActions->addColumn(
         1,
         new \Ease\TWB5\LinkButton(
             'savecompany.php',
-            '📥 ' . _('Save'),
+            '📥 '._('Save'),
             'success',
-            ['title' => _('Save current state')]
-        )
+            ['title' => _('Save current state')],
+        ),
     );
 
     $companyActions->addColumn(
         2,
         new \Ease\TWB5\LinkButton(
             'deletecompany.php',
-            '🪦 ' . _('Remove'),
+            '🪦 '._('Remove'),
             'danger',
-            ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => 'Drop all company data']
-        )
+            ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => 'Drop all company data'],
+        ),
     );
 
     $companyActions->addColumn(
         2,
         new \Ease\TWB5\LinkButton(
-            'editor.php?evidence=nastaveni&company=' . $company . '&id=1',
-            '🛠️ ' . _('Settings'),
+            'editor.php?evidence=nastaveni&company='.$company.'&id=1',
+            '🛠️ '._('Settings'),
             'info',
-            ['title' => 'Serveral company settings']
-        )
+            ['title' => 'Serveral company settings'],
+        ),
     );
 
     $companyActions->addColumn(
         2,
         new \Ease\TWB5\LinkButton(
             'newcompany.php',
-            '⛑️ ' . _('Create company'),
+            '⛑️ '._('Create company'),
             'success',
-            ['title' => 'Create new company']
-        )
+            ['title' => 'Create new company'],
+        ),
     );
 
     $companyInfo = new \Ease\Html\TableTag(null, ['class' => 'table']);
@@ -113,34 +126,34 @@ if (empty($company)) {
     $companyInfo->addRowColumns([_('database'), new ui\CopyToClipBoard(new \Ease\Html\InputTextTag(
         'dbNazev',
         $companer->getDataValue('dbNazev'),
-        ['id' => 'dbNazev', 'readonly']
+        ['id' => 'dbNazev', 'readonly'],
     ))]);
 
     $created = \AbraFlexi\RO::flexiDateTimeToDateTime($companer->getDataValue('createDt'))->getTimestamp();
-    $companyInfo->addRowColumns([_('created'), \AbraFlexi\RO::flexiDateTimeToDateTime($companer->getDataValue('createDt'))->format('d.m. Y') . ' ' . '(' . _('before') . ' ' . new \Ease\Html\Widgets\LiveAge($created) . ')']);
+    $companyInfo->addRowColumns([_('created'), \AbraFlexi\RO::flexiDateTimeToDateTime($companer->getDataValue('createDt'))->format('d.m. Y').' ('._('before').' '.new \Ease\Html\Widgets\LiveAge($created).')']);
 
-    $companyInfo->addRowColumns([_('Watching changes'), new ui\WatchingChangesStatus($companer->getDataValue('watchingChanges') == 'true')]);
+    $companyInfo->addRowColumns([_('Watching changes'), new ui\WatchingChangesStatus($companer->getDataValue('watchingChanges') === 'true')]);
 
-    $companyInfo->addRowColumns([_('Show in listing'), new ui\BooleanLabel($companer->getDataValue('watchingChanges') == 'true')]);
+    $companyInfo->addRowColumns([_('Show in listing'), new ui\BooleanLabel($companer->getDataValue('watchingChanges') === 'true')]);
 
     $companyInfo->addRowColumns([_('License Group'), $companer->getDataValue('licenseGroup')]);
 
     $companyInfo->addRowColumns([_('Status'), new \Ease\TWB5\Badge(
-        $companer->getDataValue('stavEnum') == 'ESTABLISHED' ? 'success' : 'warning',
-        $companer->getDataValue('stavEnum')
+        $companer->getDataValue('stavEnum') === 'ESTABLISHED' ? 'success' : 'warning',
+        $companer->getDataValue('stavEnum'),
     )]);
 
     $companyPanel = new \Ease\TWB5\Panel(
         new \Ease\Html\H2Tag($companer->getDataValue('nazev')),
         'info',
         $companyInfo,
-        $companyActions
+        $companyActions,
     );
 
     $oPage->container->addItem(new \Ease\Html\DivTag('<br>'));
     $oPage->container->addItem(new ui\FlexiURL(
         $oPage->getRequestURL(),
-        ['id' => 'lasturl', 'class' => 'innershadow']
+        ['id' => 'lasturl', 'class' => 'innershadow'],
     ));
 
     $oPage->container->addItem($companyPanel);

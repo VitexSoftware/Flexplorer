@@ -1,42 +1,46 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Flexplorer - Editor záznamu evidence.
+ * This file is part of the Flexplorer package
  *
- * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016 Vitex Software
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
 
 /**
- * Description of Editor
+ * Description of Editor.
  *
  * @author vitex
  */
 class Editor extends ColumnsForm
 {
     /**
-     * Data Source Object
-     * @var \AbraFlexi
+     * Data Source Object.
      */
-    public $engine = null;
+    public \AbraFlexi $engine = null;
 
     /**
-     *
      * @param \Flexplorer\Flexplorer $engine
      */
     public function __construct($engine)
     {
         parent::__construct($engine);
         $id = $this->engine->getDataValue('id');
-        if (is_array($id)) {
+
+        if (\is_array($id)) {
             $externalIDs = [];
             $this->engine->setDataValue('id', current($id));
             array_shift($id);
             $this->engine->setDataValue('external-ids', $id);
         }
-
 
         foreach ($engine->evidenceStructure as $column) {
             $this->addFlexiInput($column);
@@ -47,35 +51,37 @@ class Editor extends ColumnsForm
             'toAbraFlexi',
             false,
             'on',
-            ['onText' => _('Save to AbraFlexi'), 'offText' => _('Show in editor')]
+            ['onText' => _('Save to AbraFlexi'), 'offText' => _('Show in editor')],
         ));
-        $this->addItem(new \Ease\TWB5\SubmitButton(_('OK') . ' ' . new \Ease\TWB5\GlyphIcon('save')));
+        $this->addItem(new \Ease\TWB5\SubmitButton(_('OK').' '.new \Ease\TWB5\GlyphIcon('save')));
         $this->engine = $engine;
     }
 
     /**
-     * Add an AbraFlexi column type input field
+     * Add an AbraFlexi column type input field.
      *
      * @param array $colProperties
      */
-    public function addFlexiInput($colProperties)
+    public function addFlexiInput($colProperties): void
     {
         $type = $colProperties['type'];
         $name = $colProperties['name'];
-        $propertyName = isset($colProperties['propertyName']) ? $colProperties['propertyName'] : $colProperties['name'];
+        $propertyName = $colProperties['propertyName'] ?? $colProperties['name'];
         $value = $this->engine->getDataValue($propertyName);
         $note = '';
 
         $inputProperties = ['OnChange' => $this->onChangeCode($propertyName)];
+
         if (isset($colProperties['mandatory']) && ($colProperties['mandatory'] === 'true')) {
             $inputProperties[] = 'required';
-            $note .= '<span class="error">' . _('Required') . '</span> ';
+            $note .= '<span class="error">'._('Required').'</span> ';
         }
+
         if (isset($colProperties['isWritable']) && ($colProperties['isWritable'] === 'false')) {
             $inputProperties[] = 'disabled';
         }
 
-        if (is_null($value)) {
+        if (null === $value) {
             $placeholder = 'null';
         } else {
             $placeholder = $value;
@@ -87,132 +93,126 @@ class Editor extends ColumnsForm
                 $widget = new \Ease\Html\InputNumberTag(
                     $propertyName,
                     $value,
-                    $inputProperties
+                    $inputProperties,
                 );
+
                 break;
             case 'integer':
                 $widget = new \Ease\Html\InputNumberTag(
                     $propertyName,
                     $value,
-                    $inputProperties
+                    $inputProperties,
                 );
+
                 break;
             case 'logic':
                 $widget = new TWBSwitch(
                     $propertyName,
                     $value,
                     true,
-                    $inputProperties
+                    $inputProperties,
                 );
+
                 break;
             case 'relation':
                 $evidence = '';
+
                 if (isset($colProperties['url'])) {
                     $tmp = explode('/', $colProperties['url']);
                     $evidence = end($tmp);
                 }
+
                 $colProperties['data-evidence'] = $evidence;
                 $widget = new RelationSelect(
                     $propertyName,
                     $value,
-                    $inputProperties
+                    $inputProperties,
                 );
 
                 $note = [new \Ease\Html\ATag(
-                    'evidence.php?evidence=' . $evidence,
-                    new \Ease\TWB5\GlyphIcon('list') . ' ' . $evidence
+                    'evidence.php?evidence='.$evidence,
+                    new \Ease\TWB5\GlyphIcon('list').' '.$evidence,
                 )];
 
-                if (strlen($value)) {
+                if (\strlen($value)) {
                     $note[] = new \Ease\Html\ATag(
-                        'editor.php?evidence=' . $evidence . '&id=' . urlencode($value),
-                        new \Ease\TWB5\GlyphIcon('edit') . ' ' . _('Edit targeted record')
+                        'editor.php?evidence='.$evidence.'&id='.urlencode($value),
+                        new \Ease\TWB5\GlyphIcon('edit').' '._('Edit targeted record'),
                     );
                 }
-                break;
 
+                break;
             case 'select':
                 $widget = new \Ease\Html\SelectTag(
                     $propertyName,
                     $this->colValues($colProperties),
                     $value,
                     null,
-                    $inputProperties
+                    $inputProperties,
                 );
+
                 break;
             case 'date':
                 $inputProperties['data-format'] = 'YYYY-MM-DD+01:00';
                 $widget = new DateTimePicker(
                     $propertyName,
                     $value,
-                    $inputProperties
+                    $inputProperties,
                 );
+
                 break;
             case 'datetime':
                 $inputProperties['data-format'] = 'YYYY-MM-DD\'T\'HH:mm:ss.SSS';
                 $widget = new DateTimePicker(
                     $propertyName,
                     $value,
-                    $inputProperties
+                    $inputProperties,
                 );
+
                 break;
             case 'string':
                 $widget = new \Ease\Html\InputTextTag(
                     $propertyName,
                     $value,
-                    $inputProperties
+                    $inputProperties,
                 );
+
                 break;
+
             default:
                 $this->addStatusMessage(sprintf(
                     _('Unknown type of data %s'),
-                    $type
+                    $type,
                 ), 'warning');
                 $widget = new \Ease\Html\InputTag(
                     $propertyName,
                     $value,
-                    $inputProperties
+                    $inputProperties,
                 );
-                $note = '?: ' . $type;
+                $note = '?: '.$type;
+
                 break;
         }
 
-
-        if (is_array($note)) {
-            $note[] = ' ' . _('Type') . ': ' . $type;
+        if (\is_array($note)) {
+            $note[] = ' '._('Type').': '.$type;
         } else {
-            $note .= ' ' . _('Type') . ': ' . $type;
+            $note .= ' '._('Type').': '.$type;
         }
 
-        $this->addInput($widget, $propertyName . ': ' . $name, $placeholder, $note);
+        $this->addInput($widget, $propertyName.': '.$name, $placeholder, $note);
     }
 
     /**
-     * Vrací pole možností pro select
-     *
-     * @param array $colProperties
-     * @return array
+     * Add ExtIDs form.
      */
-    private function colValues($colProperties)
-    {
-        $options = [];
-        if (isset($colProperties['values'])) {
-            foreach ($colProperties['values']['value'] as $colValue) {
-                $options[$colValue['@key']] = $colValue['$'];
-            }
-        }
-        return $options;
-    }
-
-    /**
-     * Add ExtIDs form
-     */
-    public function finalize()
+    public function finalize(): void
     {
         parent::finalize();
         \Ease\JQuery\Part::jQueryze();
         $id = $this->engine->getDataValue('id');
-        if (is_array($id)) {
+
+        if (\is_array($id)) {
             $id = current($id);
         }
 
@@ -229,8 +229,8 @@ class Editor extends ColumnsForm
                 new SendForm(
                     $this->engine->getEvidenceURL(),
                     'PUT',
-                    $this->engine->getJsonizedData($this->engine->getData())
-                )
+                    $this->engine->getJsonizedData($this->engine->getData()),
+                ),
             );
 
             $editorTabs->addTab(
@@ -239,10 +239,10 @@ class Editor extends ColumnsForm
                     str_replace(
                         '.json',
                         '.html',
-                        $this->engine->getEvidenceURL() . '/' . $id . '.' . $this->engine->format . '?inDesktopApp=true'
+                        $this->engine->getEvidenceURL().'/'.$id.'.'.$this->engine->format.'?inDesktopApp=true',
                     ),
-                    ['style' => 'width: 100%; height: 600px', 'frameborder' => 0]
-                )
+                    ['style' => 'width: 100%; height: 600px', 'frameborder' => 0],
+                ),
             );
 
             $this->addItem($editorTabs);
@@ -250,7 +250,7 @@ class Editor extends ColumnsForm
     }
 
     /**
-     * External IDs editor
+     * External IDs editor.
      *
      * @return \Ease\TWB5\Container
      */
@@ -258,15 +258,18 @@ class Editor extends ColumnsForm
     {
         $extIDsEditor = new \Ease\TWB5\Container(new \Ease\Html\InputHiddenTag(
             'id',
-            $this->engine->getDataValue('id')
+            $this->engine->getDataValue('id'),
         ));
         $externalIDs = $this->engine->getDataValue('external-ids');
-        if (count($externalIDs)) {
+
+        if (\count($externalIDs)) {
             foreach ($externalIDs as $externalID) {
-                if (!strlen($externalID)) {
+                if (!\strlen($externalID)) {
                     continue;
                 }
+
                 $idParts = explode(':', $externalID);
+
                 if (!isset($idParts[2])) {
                     $idParts[2] = '';
                 }
@@ -275,23 +278,23 @@ class Editor extends ColumnsForm
                 $extIDrow->addColumn(
                     4,
                     new \Ease\TWB5\Checkbox(
-                        'deleteExtID[' . $idParts[1] . ']',
+                        'deleteExtID['.$idParts[1].']',
                         $externalID,
-                        _('Remove')
-                    )
+                        _('Remove'),
+                    ),
                 );
                 $extIDrow->addColumn(
                     8,
                     new \Ease\TWB5\FormGroup(
                         $idParts[1],
                         new \Ease\Html\InputTextTag(
-                            'external-ids[' . $idParts[1] . ']',
+                            'external-ids['.$idParts[1].']',
                             $idParts[2],
-                            ['maxlength' => '20']
+                            ['maxlength' => '20'],
                         ),
                         $idParts[1],
-                        $externalID
-                    )
+                        $externalID,
+                    ),
                 );
                 $extIDsEditor->addItem($extIDrow);
             }
@@ -303,31 +306,55 @@ class Editor extends ColumnsForm
             'ext:..',
             new \Ease\Html\ATag(
                 'https://www.flexibee.eu/api/dokumentace/ref/identifiers/',
-                _('External IDs')
-            )
+                _('External IDs'),
+            ),
         ));
 
-        $extIDsEditor->addItem(new \Ease\TWB5\SubmitButton(_('OK') . ' ' . new \Ease\TWB5\GlyphIcon('save')));
+        $extIDsEditor->addItem(new \Ease\TWB5\SubmitButton(_('OK').' '.new \Ease\TWB5\GlyphIcon('save')));
+
         return $extIDsEditor;
     }
 
     /**
-     * Vraci kod pro ukladani policka formulare po editaci
+     * Vraci kod pro ukladani policka formulare po editaci.
      *
      * @param string $fieldName
+     *
      * @return string javascript
      */
     public function onChangeCode($fieldName)
     {
         $chCode = '';
         $id = $this->engine->getMyKey();
-        if (!is_null($id)) {
-            $chCode = 'saveColumnData(\'' . str_replace(
+
+        if (null !== $id) {
+            $chCode = 'saveColumnData(\''.str_replace(
                 '\\',
                 '-',
-                get_class($this->engine)
-            ) . '\', \'' . $id . '\', \'' . $fieldName . '\', \'' . $this->engine->getEvidence() . '\')';
+                \get_class($this->engine),
+            ).'\', \''.$id.'\', \''.$fieldName.'\', \''.$this->engine->getEvidence().'\')';
         }
+
         return $chCode;
+    }
+
+    /**
+     * Vrací pole možností pro select.
+     *
+     * @param array $colProperties
+     *
+     * @return array
+     */
+    private function colValues($colProperties)
+    {
+        $options = [];
+
+        if (isset($colProperties['values'])) {
+            foreach ($colProperties['values']['value'] as $colValue) {
+                $options[$colValue['@key']] = $colValue['$'];
+            }
+        }
+
+        return $options;
     }
 }

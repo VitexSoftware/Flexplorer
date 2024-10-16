@@ -1,25 +1,31 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
 
 /**
- * Description of FlexiBsGrid
+ * Description of FlexiBsGrid.
  *
  * @author vitex
  */
 class FlexiBsGrid extends BsGrid
 {
     /**
-     * Zdroj dat
-     * @var \Flexplorer\Flexplorer
+     * Zdroj dat.
      */
-    public $dataSource = null;
+    public \Flexplorer\Flexplorer $dataSource = null;
 
     public function __construct($dataSource, $properties = null)
     {

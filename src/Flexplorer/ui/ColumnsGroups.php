@@ -1,22 +1,28 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Flexplorer - Column Groups tabs.
+ * This file is part of the Flexplorer package
  *
- * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016 Vitex Software
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
 
 /**
- * Description of ColumnsVisibility
+ * Description of ColumnsVisibility.
  *
  * @author vitex
  */
 class ColumnsGroups extends \Ease\TWB5\Tabs
 {
-    function __construct($evobj, $column)
+    public function __construct($evobj, $column)
     {
         parent::__construct([], ['id' => _('ColumnsGroups')]);
         $this->addTab(_('Mandatory'), new EvidenceProperties($evobj, $column, 'mandatory'));

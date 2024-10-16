@@ -1,10 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Flexplorer - Hlavní strana.
+ * This file is part of the Flexplorer package
  *
- * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016-2024 Vitex Software
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer;
@@ -16,7 +22,7 @@ $oPage->onlyForLogged();
 $statuser = new \AbraFlexi\Status();
 $_SESSION['lasturl'] = $statuser->curlInfo['url'];
 
-$oPage->addItem(new ui\PageTop(_('AbraFlexi info')));
+$oPage->addToHeader(new ui\PageTop(_('AbraFlexi info')));
 
 $infoTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
 
@@ -24,29 +30,23 @@ foreach ($statuser->getData() as $property => $value) {
     switch ($property) {
         case 'startupTime':
             $value = new \Ease\Html\Widgets\LiveAge(\AbraFlexi\RO::flexiDateTimeToDateTime($value)->getTimestamp());
+
             break;
         case 'memoryHeap':
         case 'memoryUsed':
-            $value = ui\WebPage::formatBytes($value);
+            $value = \Ease\Functions::formatBytes($value);
+
             break;
     }
 
     $infoTable->addRowColumns([$property, $value]);
 }
 
-
 $infoRow = new \Ease\TWB5\Row();
 $infoRow->addColumn(6, new \Ease\TWB5\Panel(_('server info'), 'info', $infoTable));
-$infoRow->addColumn(
-    6,
-    new \Ease\TWB5\Panel(
-        _('license info'),
-        'info',
-        new ui\LicenseInfo($_SESSION['license'])
-    )
-);
-$oPage->container->addItem($infoRow);
+$infoRow->addColumn(6, new \Ease\TWB5\Panel(_('license info'), 'info', new ui\LicenseInfo($_SESSION['license'])));
+$oPage->addToMain($infoRow);
 
-$oPage->addItem(new ui\PageBottom());
+$oPage->addToFooter(new ui\PageBottom());
 
 $oPage->draw();

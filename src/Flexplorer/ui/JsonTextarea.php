@@ -1,35 +1,45 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Flexplorer - textarea pro vložení jsonu
+ * This file is part of the Flexplorer package
  *
- * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016 Vitex Software
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
 
 /**
- * Description of JsonForm
+ * Description of JsonForm.
  *
  * @author vitex
  */
 class JsonTextarea extends \Ease\Html\TextareaTag
 {
     /**
-     * Add scripts
+     * Add scripts.
      */
-    public function finalize()
+    public function finalize(): void
     {
         WebPage::singleton()->includeJavaScript('js/jquery.autosize.min.js');
-        WebPage::singleton()->addJavaScript('
-         var textarea = $("textarea[name=\'' . $this->getTagName() . '\']");
+        WebPage::singleton()->addJavaScript(<<<'EOD'
+
+         var textarea = $("textarea[name='
+EOD.$this->getTagName().<<<'EOD'
+']");
          textarea.autosize();
          var unformated = textarea.val();
          if( unformated != "" ) {
             var formated = JSON.stringify($.parseJSON( unformated ),undefined, 4);
             textarea.val(formated)
          }
-        ');
+
+EOD);
     }
 }

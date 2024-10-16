@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Flexplorer;
 
 /**
@@ -22,16 +35,15 @@ $class = $oPage->getRequestValue('class');
  */
 $engine = new $class(ui\WebPage::getRequestValue('evidence'));
 
-unset($_REQUEST['class']);
-unset($_REQUEST['_']);
-unset($_REQUEST['XDEBUG_SESSION_START']);
+unset($_REQUEST['class'], $_REQUEST['_'], $_REQUEST['XDEBUG_SESSION_START']);
 
 $dataRaw = $engine->getColumnsFromAbraFlexi('*', array_merge($_REQUEST, ['add-row-count' => true]));
 
 foreach ($dataRaw as $row => $columns) {
-    $dataRaw[$row]['lastUpdate'] = (array_key_exists('lastUpdate', $dataRaw) && $dataRaw[$row]['lastUpdate']) ? $dataRaw[$row]['lastUpdate']->format(\AbraFlexi\DateTime::$format) : '';
+    $dataRaw[$row]['lastUpdate'] = (\array_key_exists('lastUpdate', $dataRaw) && $dataRaw[$row]['lastUpdate']) ? $dataRaw[$row]['lastUpdate']->format(\AbraFlexi\DateTime::$format) : '';
+
     foreach ($columns as $column => $value) {
-        $dataRaw[$row][$column] = strval($dataRaw[$row][$column]);
+        $dataRaw[$row][$column] = (string) $dataRaw[$row][$column];
     }
 }
 
@@ -40,12 +52,14 @@ echo json_encode(['recordsTotal' => $engine->rowCount, 'recordsFiltered' => $eng
 exit;
 
 $evidence = $oPage->getRequestValue('evidence');
-if (strlen($evidence)) {
+
+if (\strlen($evidence)) {
     $datasource = new DataSource(new Flexplorer($evidence));
     $datasource->output();
 } else {
     $stitek = $oPage->getRequestValue('stitek');
-    if (strlen($stitek)) {
+
+    if (\strlen($stitek)) {
         $datasource = new DataSource(new SearchFlexplorer(['stitek' => $stitek]));
         $datasource->output();
     }

@@ -1,10 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Flexplorer - An evidence page.
+ * This file is part of the Flexplorer package
  *
- * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016 Vitex Software
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer;
@@ -22,9 +28,9 @@ if (isset($label)) {
     if (isset($evidence)) {
         $evobj = new SearchFlexplorer(['evidence' => $evidence, 'stitky' => $label]);
         $oPage->container->addItem(new \Ease\TWB5\LinkButton(
-            'listbylabel.php?label=' . $label,
+            'listbylabel.php?label='.$label,
             _('All Evidencies'),
-            'success'
+            'success',
         ));
     } else {
         $evobj = new SearchFlexplorer(['stitky' => $label]);
@@ -37,27 +43,25 @@ if (isset($label)) {
     }
 }
 
-
-
-
 foreach ($evobj->getData() as $evidence => $occurencies) {
-    if (count($occurencies)) {
+    if (\count($occurencies)) {
         $oPage->container->addItem(new \Ease\Html\H2Tag(new \Ease\Html\ATag(
-            'evidence.php?evidence=' . $evidence,
-            $evidence
+            'evidence.php?evidence='.$evidence,
+            $evidence,
         )));
         $results = new \Ease\Html\TableTag(
             null,
-            ['class' => 'table']
+            ['class' => 'table'],
         );
         $evobj->evidenceStructure = $evobj->getColumnsInfo();
+
         foreach ($evobj->htmlizeData($occurencies) as $data) {
             $results->addRowColumns($data);
         }
+
         $oPage->container->addItem($results);
     }
 }
-
 
 $oPage->addItem(new ui\PageBottom());
 

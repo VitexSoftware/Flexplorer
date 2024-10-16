@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Flexplorer;
 
 /**
@@ -22,14 +35,15 @@ $id = $oPage->getRequestValue('id', 'int');
 $change = $oPage->getRequestValue('changefile');
 $format = 'json';
 
-$changeFile = HookReciever::getSaveDir() . '/' . basename($change);
+$changeFile = HookReciever::getSaveDir().'/'.basename($change);
 
 $changeData = ['winstrom' => ['@globalVersion' => $lastversion, 'changes' => ['@evidence' => $evidence,
-            '@in-version' => $lastversion,
-            '@operation' => $operation, 'id' => $id, 'external-ids' => [$extid]]]];
+    '@in-version' => $lastversion,
+    '@operation' => $operation, 'id' => $id, 'external-ids' => [$extid]]]];
 
 $responseBody = null;
 $responseCode = null;
+
 if ($oPage->isPosted() || (!empty($change) && file_exists($changeFile))) {
     $prober = new \AbraFlexi\RW();
 
@@ -43,12 +57,12 @@ if ($oPage->isPosted() || (!empty($change) && file_exists($changeFile))) {
     $responseCode = $prober->doCurlRequest($hookurl, 'POST', $format);
     $responseBody = $prober->lastCurlResponse;
 
-    if (($responseCode == 200) && !strlen($responseBody)) {
+    if (($responseCode === 200) && !\strlen($responseBody)) {
         $prober->addStatusMessage(_('WebHook successfully triggered'), 'success');
-    } elseif (strlen($responseBody)) {
+    } elseif (\strlen($responseBody)) {
         $prober->addStatusMessage(
             _('WebHook returns non empty response'),
-            'warning'
+            'warning',
         );
     }
 }
@@ -56,10 +70,11 @@ if ($oPage->isPosted() || (!empty($change) && file_exists($changeFile))) {
 $lister = new \AbraFlexi\EvidenceList();
 $flexidata = $lister->getFlexiData();
 
-if (count($flexidata)) {
+if (\count($flexidata)) {
     foreach ($flexidata as $evidence) {
         $evidenciesToMenu[$evidence['evidencePath']] = $evidence['evidenceName'];
     }
+
     asort($evidenciesToMenu);
 }
 
@@ -70,52 +85,52 @@ $changeTabs = new \Ease\TWB5\Tabs('changetabs');
 $toolRow = new \Ease\TWB5\Row();
 $settingsForm = new \Ease\TWB5\Form(['name' => 'settings']);
 
-//TODO \Ease\TWB5\Widgets\Toggle
+// TODO \Ease\TWB5\Widgets\Toggle
 $settingsForm->addInput(
     new \Ease\TWB5\Widgets\TWBSwitch(
         'changesformat',
         true,
         'JSON',
-        ['onText' => 'JSON', 'offText' => 'XML', 'disabled' => true]
+        ['onText' => 'JSON', 'offText' => 'XML', 'disabled' => true],
     ),
-    _('Data format')
+    _('Data format'),
 );
 
 $settingsForm->addInput(
     new \Ease\Html\InputNumberTag(
         'lastversion',
         $lastversion,
-        ['min' => 0]
+        ['min' => 0],
     ),
     _('Last version'),
     $lastversion,
-    _('Which version of the changes will begin sending following changes')
+    _('Which version of the changes will begin sending following changes'),
 );
 
 $settingsForm->addInput(new \Ease\Html\SelectTag(
     'evidence',
     $evidenciesToMenu,
-    $evidence
+    $evidence,
 ), _('Evidence'));
 
 $settingsForm->addInput(new \Ease\Html\SelectTag(
     'operation',
     ['create' => 'Create', 'update' => 'Update', 'delete' => 'Delete'],
-    $operation
+    $operation,
 ), _('Operation'), null);
 
 $settingsForm->addInput(
     new \Ease\Html\InputNumberTag('id', $id, ['min' => 0]),
     _('Record number'),
     $id,
-    _('Internal number of record edited')
+    _('Internal number of record edited'),
 );
 
 $settingsForm->addInput(
     new \Ease\Html\InputTextTag('extid', $extid),
     _('External number'),
     $extid,
-    _('External number of record edited')
+    _('External number of record edited'),
 );
 
 $settingsForm->addItem(new \Ease\TWB5\SubmitButton(_('Build change'), 'warning'));
@@ -127,44 +142,47 @@ $hookForm->addInput(
     _('Web Hook'),
     'http://server/getchanges.php',
     [new \Ease\TWB5\LinkButton('changesapi.php', _('Choose Registered')),
-            new \Ease\Html\ATag(
-                'https://www.flexibee.eu/api/dokumentace/ref/web-hooks',
-                _('When the database AbraFlexi is changed the POST HTTP request sent to all registered URL')
-            )]
+        new \Ease\Html\ATag(
+            'https://www.flexibee.eu/api/dokumentace/ref/web-hooks',
+            _('When the database AbraFlexi is changed the POST HTTP request sent to all registered URL'),
+        )],
 );
 
 $hookForm->addInput(new ui\JsonTextarea(
     'code',
-    json_encode($changeData, JSON_PRETTY_PRINT)
+    json_encode($changeData, \JSON_PRETTY_PRINT),
 ));
 $hookForm->addItem(new \Ease\TWB5\SubmitButton(_('Send'), 'success'));
 
 $toolRow->addColumn(8, new \Ease\TWB5\Well($hookForm));
 
-if (strlen($responseBody)) {
+if (\strlen($responseBody)) {
     $responseBlock = new \Ease\TWB5\Panel(
         new \Ease\Html\H1Tag($prober->lastResponseCode),
-        'info'
+        'info',
     );
 
-    $responseBlock->addItem('<pre><code class="' . $format . '">' .
+    $responseBlock->addItem('<pre><code class="'.$format.'">'.
             nl2br(htmlentities($prober->lastCurlResponse))
-            . '</code></pre>');
+            .'</code></pre>');
 
     $oPage->includeCss('css/github.css');
     $oPage->includeJavaScript('js/highlight.min.js');
-    $oPage->addJavascript('$(\'pre code\').each(function(i, block) {
+    $oPage->addJavascript(<<<'EOD'
+$('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
-  });');
+  });
+EOD);
 
     $changeTabs->addTab(_('Response'), $responseBlock);
 }
+
 $changeTabs->addTab(_('Request'), $toolRow);
 
 $oPage->container->addItem(new \Ease\TWB5\Panel(
     _('WebHook probe'),
     'info',
-    $changeTabs
+    $changeTabs,
 ));
 
 $oPage->addItem(new ui\PageBottom());

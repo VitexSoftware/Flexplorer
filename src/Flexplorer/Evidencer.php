@@ -1,16 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Flexplorer - Search in evidence names.
+ * This file is part of the Flexplorer package
  *
- * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016 Vitex Software
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer;
 
 /**
- * Search in evidence names
+ * Search in evidence names.
  *
  * @author vitex
  */
@@ -18,18 +24,16 @@ class Evidencer extends Flexplorer
 {
     /**
      * Evidence used.
-     * @var string
      */
-    public $evidence = 'evidence-list';
+    public ?string $evidence = 'evidence-list';
 
     /**
-     * Evidencies listing
-     * @var array
+     * Evidencies listing.
      */
-    public $evidencies = [];
+    public array $evidencies = [];
 
     /**
-     * Evidence name searcher
+     * Evidence name searcher.
      *
      * @param string $evidence
      */
@@ -44,42 +48,46 @@ class Evidencer extends Flexplorer
      *
      * @param string $evidence
      */
-    public function setEvidence($evidence)
+    public function setEvidence($evidence): void
     {
         $this->evidence = $evidence;
     }
 
     /**
-     * Search for match in evidences list
+     * Search for match in evidences list.
      *
      * @param string $what
+     *
      * @return array
      */
     public function searchString($what)
     {
         $results = [];
         $evidenceID = 0;
+
         foreach ($this->evidencies as $evidencePath => $evidenceName) {
             if (
                 $this->contains($what, $evidenceName) || $this->contains(
                     $what,
-                    $evidencePath
+                    $evidencePath,
                 )
             ) {
                 $evidence['id'] = $evidenceID++;
                 $evidence['name'] = $evidenceName;
                 $evidence['what'] = $evidencePath;
-                $evidence['url'] = 'evidence.php?evidence=' . $evidencePath;
+                $evidence['url'] = 'evidence.php?evidence='.$evidencePath;
                 $results[] = $evidence;
             }
         }
+
         return $results;
     }
 
     /**
-     * Obtain no evidence structure
+     * Obtain no evidence structure.
      *
      * @param string $evidence
+     *
      * @return array Evidence structure
      */
     public function getColumnsInfo($evidence = null)

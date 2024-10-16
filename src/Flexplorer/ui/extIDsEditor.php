@@ -1,15 +1,22 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
 
 /**
- * Description of extIDsEditor
+ * Description of extIDsEditor.
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
@@ -20,21 +27,24 @@ class extIDsEditor extends \Ease\TWB5\Container
         $this->engine = $engine;
         parent::__construct(new \Ease\Html\InputHiddenTag(
             'id',
-            $this->engine->getDataValue('id')
+            $this->engine->getDataValue('id'),
         ));
 
         $this->addItem(new \Ease\Html\InputHiddenTag(
             'evidence',
-            $this->engine->getEvidence()
+            $this->engine->getEvidence(),
         ));
 
         $externalIDs = $this->engine->getDataValue('external-ids');
+
         if (!empty($externalIDs)) {
             foreach ($externalIDs as $externalID) {
-                if (!strlen($externalID)) {
+                if (!\strlen($externalID)) {
                     continue;
                 }
+
                 $idParts = explode(':', $externalID);
+
                 if (!isset($idParts[2])) {
                     $idParts[2] = '';
                 }
@@ -43,23 +53,23 @@ class extIDsEditor extends \Ease\TWB5\Container
                 $extIDrow->addColumn(
                     4,
                     new \Ease\TWB5\Checkbox(
-                        'deleteExtID[' . $idParts[1] . ']',
+                        'deleteExtID['.$idParts[1].']',
                         $externalID,
-                        _('Remove')
-                    )
+                        _('Remove'),
+                    ),
                 );
                 $extIDrow->addColumn(
                     8,
                     new \Ease\TWB5\FormGroup(
                         $idParts[1],
                         new \Ease\Html\InputTextTag(
-                            'external-ids[' . $idParts[1] . ']',
+                            'external-ids['.$idParts[1].']',
                             $idParts[2],
-                            ['maxlength' => '20']
+                            ['maxlength' => '20'],
                         ),
                         $idParts[1],
-                        $externalID
-                    )
+                        $externalID,
+                    ),
                 );
                 $this->addItem($extIDrow);
             }
@@ -71,10 +81,10 @@ class extIDsEditor extends \Ease\TWB5\Container
             'ext:..',
             new \Ease\Html\ATag(
                 'https://www.flexibee.eu/api/dokumentace/ref/identifiers/',
-                _('External IDs')
-            )
+                _('External IDs'),
+            ),
         ));
 
-        $this->addItem(new \Ease\TWB5\SubmitButton(_('OK') . ' ' . new \Ease\TWB5\GlyphIcon('save'), 'success'));
+        $this->addItem(new \Ease\TWB5\SubmitButton(_('OK').' '.new \Ease\TWB5\GlyphIcon('save'), 'success'));
     }
 }

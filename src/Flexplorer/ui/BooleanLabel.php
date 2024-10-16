@@ -1,32 +1,39 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
 
 /**
- * Description of BooleanLabel
+ * Description of BooleanLabel.
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
 class BooleanLabel extends \Ease\TWB5\Badge
 {
     /**
-     * Show boolean Label
+     * Show boolean Label.
      *
-     * @param boolean $bool       state
-     * @param array   $properties options
+     * @param bool  $bool       state
+     * @param array $properties options
      */
     public function __construct($bool, $properties = [])
     {
         parent::__construct(
             $bool ? 'success' : 'default',
             $bool ? _('Yes') : _('No'),
-            $properties
+            $properties,
         );
     }
 }

@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Flexplorer;
 
 require_once 'includes/Init.php';
@@ -7,7 +20,7 @@ require_once 'includes/Init.php';
 $type = $oPage->getRequestValue('type');
 $operation = $oPage->getRequestValue('operation');
 
-$appurl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . dirname(\Ease\WebPage::getUri()) . '/';
+$appurl = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].\dirname(\Ease\WebPage::getUri()).'/';
 
 $xml = new xml\Winstrom();
 
@@ -18,75 +31,76 @@ foreach (\AbraFlexi\EvidenceList::$name as $evidence => $evidenceName) {
         case 'evidence':
             $xml->addItem(new \Flexplorer\xml\FelexiBeeButtonXML(
                 $engine->getKod(
-                    $evidence . '-FLEV',
-                    true
+                    $evidence.'-FLEV',
+                    true,
                 ),
-                $appurl . 'evidence.php?evidence=' . $evidence,
+                $appurl.'evidence.php?evidence='.$evidence,
                 sprintf(_('Open %s in Flexplorer'), $evidence),
                 $evidenceName,
                 $evidence,
                 'list',
-                'desktop'
+                'desktop',
             ));
 
             $xml->addItem(new \Flexplorer\xml\FelexiBeeButtonXML(
                 $engine->getKod(
-                    $evidence . '-FLED',
-                    true
+                    $evidence.'-FLED',
+                    true,
                 ),
-                $appurl . 'editor.php?evidence=' . $evidence . '&id=${object.id}',
+                $appurl.'editor.php?evidence='.$evidence.'&id=${object.id}',
                 _('Edit Record in Flexplorer'),
                 $evidenceName,
                 $evidence,
                 'list',
-                'desktop'
+                'desktop',
             ));
 
             $xml->addItem(new \Flexplorer\xml\FelexiBeeButtonXML(
                 $engine->getKod(
-                    $evidence . '-JSONROW',
-                    true
+                    $evidence.'-JSONROW',
+                    true,
                 ),
-                $appurl . 'query.php?format=json&show=result&evidence=' . $evidence . '&id=${objectIds}',
+                $appurl.'query.php?format=json&show=result&evidence='.$evidence.'&id=${objectIds}',
                 _('JSON in Flexplorer'),
                 $evidenceName,
                 $evidence,
                 'list',
-                'desktop'
+                'desktop',
             ));
 
             $xml->addItem(new \Flexplorer\xml\FelexiBeeButtonXML(
                 $engine->getKod(
-                    $evidence . '-XMLROW',
-                    true
+                    $evidence.'-XMLROW',
+                    true,
                 ),
-                $appurl . 'query.php?format=json&show=result&evidence=' . $evidence . '&id=${objectIds}',
+                $appurl.'query.php?format=json&show=result&evidence='.$evidence.'&id=${objectIds}',
                 _('XML in Flexplorer'),
                 $evidenceName,
                 $evidence,
                 'list',
-                'desktop'
+                'desktop',
             ));
 
             break;
     }
 }
 
-if ($operation == 'install') {
+if ($operation === 'install') {
     $oPage->addItem(new ui\PageTop(sprintf(
         _('flexplorer %s lexibee-buttons'),
-        $type
+        $type,
     )));
 
     $engine->setEvidence('custom-button');
     $engine->setPostFields($xml);
 
     $results = $engine->performRequest('', 'POST', 'xml');
+
     foreach ($results as $result) {
-        list($evidence, $recordId) = extract('/', $result);
+        [$evidence, $recordId] = extract('/', $result);
         $oPage->container->addItem(new \Ease\TWB5\LinkButton(
-            'editor.php?evidence=' . $evidence . '&id=' . $recordId,
-            $result
+            'editor.php?evidence='.$evidence.'&id='.$recordId,
+            $result,
         ));
     }
 
@@ -95,6 +109,6 @@ if ($operation == 'install') {
     $oPage->draw();
 } else {
     header('Content-Type: application/xml');
-    header('Content-disposition: attachment; filename="flexplorer-' . $type . '-abraflexi-buttons.xml"');
+    header('Content-disposition: attachment; filename="flexplorer-'.$type.'-abraflexi-buttons.xml"');
     echo $xml;
 }

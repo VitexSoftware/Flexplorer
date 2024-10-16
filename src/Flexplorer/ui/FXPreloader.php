@@ -1,9 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Flexplorer\ui;
 
 /**
- * Description of UI\FXPreloader
+ * Description of UI\FXPreloader.
  *
  * @author vitex
  */
@@ -13,20 +26,23 @@ class FXPreloader extends \Ease\Html\DivTag
     {
         parent::__construct(
             null,
-            ['class' => 'loader', 'data-initialize' => 'loader', 'id' => $id]
+            ['class' => 'loader', 'data-initialize' => 'loader', 'id' => $id],
         );
     }
 
-    public function finalize()
+    public function finalize(): void
     {
         WebPage::singleton()->includeCss(
             'https://cdnjs.cloudflare.com/ajax/libs/fuelux/3.16.7/css/fuelux.css',
-            true
+            true,
         );
         WebPage::singleton()->includeJavascript('https://cdnjs.cloudflare.com/ajax/libs/fuelux/3.16.7/js/fuelux.js');
-        WebPage::singleton()->addJavascript("$('#" . $this->getTagID() . "').loader();");
-        WebPage::singleton()->addCSS('
-#' . $this->getTagID() . '{
+        WebPage::singleton()->addJavascript("$('#".$this->getTagID()."').loader();");
+        WebPage::singleton()->addCSS(<<<'EOD'
+
+#
+EOD.$this->getTagID().<<<'EOD'
+{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -35,7 +51,8 @@ class FXPreloader extends \Ease\Html\DivTag
     width: 100px;
     height: 100px;
     visibility: hidden;S
-}​
-            ');
+}
+
+EOD);
     }
 }

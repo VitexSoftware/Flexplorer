@@ -1,25 +1,22 @@
 <?php
 
-/*
-  <winstrom version="1.0">
-  <custom-button>
-  <id>code:PRESYPAT-POLOZKY</id>
-  <url>
-  <![CDATA[__URL__?objid=${object.id}]]>
-  </url>
-  <title>ORGANIZOVAT</title>
-  <description>Zvolit položky přijaté objednávky ze kterých bude sestavena objednávka vydaná </description>
-  <evidence>objednavka-prijata</evidence>
-  <location>detail</location>
-  <browser>desktop</browser>
-  </custom-button>
-  </winstrom>
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\xml;
 
 /**
- * Description of CustomButton
+ * Description of CustomButton.
  *
  * @author vitex
  */
@@ -34,7 +31,7 @@ class FelexiBeeButtonXML extends CustomButton
             new DescriptionTag($desc),
             new EvidenceTag($evidence),
             new LocationTag($location),
-            new BrowserTag($browser)
+            new BrowserTag($browser),
         ]);
     }
 }

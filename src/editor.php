@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Flexplorer;
 
 /**
@@ -24,7 +37,7 @@ if (empty($id)) {
         $engine->takeData($_POST);
         $oPage->addStatusMessage(
             _('New record save'),
-            $engine->sync() ? 'success' : 'error'
+            $engine->sync() ? 'success' : 'error',
         );
         $id = $engine->getRecordID();
     } else {
@@ -32,12 +45,12 @@ if (empty($id)) {
         $originalData = null;
     }
 } else {
-    $engine->loadFromAbraFlexi(is_numeric($id) ? intval($id) : $id);
+    $engine->loadFromAbraFlexi(is_numeric($id) ? (int) $id : $id);
     $originalData = $engine->getData();
     $recordInfo = $engine->__toString();
 }
 
-$oPage->addItem(new ui\PageTop(_('Record Editor') . ' ' . $evidence . ':' . $id));
+$oPage->addItem(new ui\PageTop(_('Record Editor').' '.$evidence.':'.$id));
 
 $editorTabs = new \Ease\TWB5\Tabs('EditorTabs');
 $editorTabs->addTab(_('Record Editor'), new ui\RecordEditor($engine));
@@ -46,14 +59,14 @@ $editorTabs->addTab(
     _('External IDs'),
     new \Ease\TWB5\Form(
         ['name' => 'extIDs', 'action' => 'createinsert.php', 'method' => 'POST'],
-        new ui\extIDsEditor($engine)
-    )
+        new ui\extIDsEditor($engine),
+    ),
 );
 $editorTabs->addTab(_('Labels'), new ui\LabelSwitches($engine));
 
 $editorTabs->addAjaxTab(
     _('PDF'),
-    'document.php?embed=true&evidence=' . $evidence . '&id=' . $engine->getMyKey()
+    'document.php?embed=true&evidence='.$evidence.'&id='.$engine->getMyKey(),
 );
 $editorTabs->addTab(_('Print Sets'), new ui\PrintSetGallery($engine));
 $editorTabs->addTab(_('Downloads'), new ui\RecordDownloader($engine));

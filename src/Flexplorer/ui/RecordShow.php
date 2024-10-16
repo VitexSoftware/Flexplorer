@@ -1,10 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Flexplorer - přehled dat záznamu.
+ * This file is part of the Flexplorer package
  *
- * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016 Vitex Software
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
@@ -15,7 +21,7 @@ class RecordShow extends \Ease\TWB5\Panel
      * Zobrazí přehled záznamu.
      *
      * @param \Flexplorer\Flexplorer $recordObject
-     * @param mixed $bootom Obsah spodní části panelu
+     * @param null|mixed             $bottom
      */
     public function __construct($recordObject, $bottom = null)
     {
@@ -23,16 +29,16 @@ class RecordShow extends \Ease\TWB5\Panel
         parent::__construct(
             new \Ease\Html\H3Tag(
                 new \Ease\Html\ATag(
-                    'evidence.php?evidence=' . $evidence,
-                    $evidence . ' ' . $recordObject
-                )
+                    'evidence.php?evidence='.$evidence,
+                    $evidence.' '.$recordObject,
+                ),
             ),
             'warning',
             null,
-            $bottom
+            $bottom,
         );
 
-        $this->addItem('ExtID:' . $recordObject->getExternalID());
+        $this->addItem('ExtID:'.$recordObject->getExternalID());
 
         $row = new \Ease\TWB5\Row();
 
@@ -41,14 +47,15 @@ class RecordShow extends \Ease\TWB5\Panel
         }
 
         foreach ($recordObject->evidenceStructure as $keyword => $kinfo) {
-            if ($keyword == $recordObject->nameColumn) {
+            if ($keyword === $recordObject->nameColumn) {
                 continue;
             }
+
             if (isset($kinfo['title'])) {
                 $def = new \Ease\Html\DlTag();
                 $def->addDef(
                     $kinfo['title'],
-                    $recordObject->getDataValue($keyword)
+                    $recordObject->getDataValue($keyword),
                 );
                 $row->addItem(new \Ease\TWB5\Col(4, $def));
             }

@@ -1,52 +1,50 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Flexplorer - Appplication menu.
+ * This file is part of the Flexplorer package
  *
- * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016-2024 Vitex Software
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
 
 class WebPage extends \Ease\TWB5\WebPage
 {
-    public $requestURL = null;
+    public $requestURL;
 
     /**
      * Main block of page.
-     *
-     * @var \Ease\Html\DivTag
      */
-    public $container = null;
+    public \Ease\Html\DivTag $container;
 
     /**
      * First column.
-     *
-     * @var \Ease\Html\DivTag
      */
-    public $columnI = null;
+    public \Ease\Html\DivTag $columnI;
 
     /**
      * Druhý sloupec.
-     *
-     * @var \Ease\Html\DivTag
      */
-    public $columnII = null;
+    public \Ease\Html\DivTag $columnII;
 
     /**
      * Třetí sloupec.
-     *
-     * @var \Ease\Html\DivTag
      */
-    public $columnIII = null;
+    public \Ease\Html\DivTag $columnIII;
 
     /**
      * Základní objekt stránky.
      *
      * @param string $pageTitle
      */
-    public function __construct($pageTitle = null)
+    public function __construct($pageTitle = '')
     {
         parent::__construct($pageTitle);
         $this->includeCss('css/default.css');
@@ -56,7 +54,6 @@ class WebPage extends \Ease\TWB5\WebPage
         $this->head->addItem('<link rel="stylesheet" href="/javascript/font-awesome/css/font-awesome.min.css">');
 
         $this->container = $this->addItem(new \Ease\TWB5\Container());
-
         $this->includeJavaScript('js/jquery.keepAlive.js');
         $this->addJavaScript('$.fn.keepAlive({timer: 300000});');
     }
@@ -66,12 +63,12 @@ class WebPage extends \Ease\TWB5\WebPage
      *
      * @param string $loginPage
      */
-    public function onlyForAdmin($loginPage = 'login.php')
+    public function onlyForAdmin($loginPage = 'login.php'): void
     {
         if (!$this->user->getSettingValue('admin')) {
             \Ease\Shared::user()->addStatusMessage(
                 _('Please sign in as admin first'),
-                'warning'
+                'warning',
             );
             $this->redirect($loginPage);
         }
@@ -81,52 +78,55 @@ class WebPage extends \Ease\TWB5\WebPage
      * Nepřihlášeného uživatele přesměruje na přihlašovací stránku.
      *
      * @param string $loginPage adresa přihlašovací stránky
-     * @param string $message Custom message for redirected
+     * @param string $message   Custom message for redirected
      */
     public function onlyForLogged($loginPage = 'login.php', $message = null)
     {
         if (!isset($_SESSION['backurl'])) {
             $_SESSION['backurl'] = $_SERVER['REQUEST_URI'];
         }
+
         return parent::onlyForLogged($loginPage, $message);
     }
 
     /**
-     * Add given evidence to the top of history
+     * Add given evidence to the top of history.
      *
      * @param arrya $evidence
      */
-    public function addEvidenceToHistory($evidence)
+    public function addEvidenceToHistory($evidence): void
     {
         if (isset($_SESSION['evidence_history'])) {
-            $newHistory = ['evidence.php?evidence=' . $evidence => $evidence];
+            $newHistory = ['evidence.php?evidence='.$evidence => $evidence];
+
             foreach ($_SESSION['evidence_history'] as $link => $oldevidence) {
-                if ($oldevidence != $evidence) {
+                if ($oldevidence !== $evidence) {
                     $newHistory[$link] = $oldevidence;
                 }
             }
+
             $_SESSION['evidence_history'] = $newHistory;
         } else {
-            $_SESSION['evidence_history']['evidence.php?evidence=' . $evidence] = $evidence;
+            $_SESSION['evidence_history']['evidence.php?evidence='.$evidence] = $evidence;
         }
     }
 
     /**
-     * Set URL of request to show
+     * Set URL of request to show.
+     *
      * @param string $url
      */
-    public function setRequestURL($url)
+    public function setRequestURL($url): void
     {
         $_SESSION['lasturl'] = $this->requestURL = $url;
     }
 
     public function getRequestURL()
     {
-        return is_null($this->requestURL) ? isset($_SESSION['lasturl']) ? $_SESSION['lasturl'] : '' : $this->requestURL;
+        return null === $this->requestURL ? $_SESSION['lasturl'] ?? '' : $this->requestURL;
     }
 
     /**
-     *
      * @return type
      */
     public function getEvidenceHistory()
@@ -140,45 +140,12 @@ class WebPage extends \Ease\TWB5\WebPage
         return $history;
     }
 
-    public function draw()
+    public function finalize(): void
     {
-        if (\Ease\Shared::user()->getUserID()) { //Authenticated user
-            $this->body->addAsFirst(new FlexiURL(
-                $this->getRequestURL(),
-                ['id' => 'lasturl', 'class' => 'innershadow']
-            ));
+        if (\Ease\Shared::user()->getUserID()) { // Authenticated user
+            $this->body->addAsFirst(new FlexiURL($this->getRequestURL(), ['id' => 'lasturl', 'class' => 'innershadow']));
         }
-        return parent::draw();
-    }
 
-    /**
-     * Human readable size interpretation
-     *
-     * @param long $a_bytes
-     *
-     * @return string
-     */
-    static function formatBytes($a_bytes)
-    {
-        $a_bytes = doubleval($a_bytes);
-        if ($a_bytes < 1024) {
-            return $a_bytes . ' B';
-        } elseif ($a_bytes < 1048576) {
-            return round($a_bytes / 1024, 2) . ' KiB';
-        } elseif ($a_bytes < 1073741824) {
-            return round($a_bytes / 1048576, 2) . ' MiB';
-        } elseif ($a_bytes < 1099511627776) {
-            return round($a_bytes / 1073741824, 2) . ' GiB';
-        } elseif ($a_bytes < 1125899906842624) {
-            return round($a_bytes / 1099511627776, 2) . ' TiB';
-        } elseif ($a_bytes < 1152921504606846976) {
-            return round($a_bytes / 1125899906842624, 2) . ' PiB';
-        } elseif ($a_bytes < 1180591620717411303424) {
-            return round($a_bytes / 1152921504606846976, 2) . ' EiB';
-        } elseif ($a_bytes < 1208925819614629174706176) {
-            return round($a_bytes / 1180591620717411303424, 2) . ' ZiB';
-        } else {
-            return round($a_bytes / 1208925819614629174706176, 2) . ' YiB';
-        }
+        parent::finalize();
     }
 }

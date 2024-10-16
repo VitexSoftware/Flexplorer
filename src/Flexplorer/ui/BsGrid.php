@@ -1,27 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Flexplorer - bs_grid.
+ * This file is part of the Flexplorer package
  *
- * @link http://www.pontikis.net/labs/bs_grid/ Bootstrap Datagrid
- * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2016 Vitex Software
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer\ui;
 
 /**
- * Description of BsGrid
+ * Description of BsGrid.
  *
  * @author vitex
  */
 class BsGrid extends \Ease\Html\Div
 {
     /**
-     * Pole vlastností gridu
-     * @var array
+     * Pole vlastností gridu.
      */
-    public $options = [];
+    public array $options = [];
 
     public function __construct($id, $properties = null)
     {
@@ -29,9 +33,8 @@ class BsGrid extends \Ease\Html\Div
         parent::__construct(null, $properties);
     }
 
-    public function finalize()
+    public function finalize(): void
     {
-
         WebPage::singleton()->includeCss('css/jquery-ui-timepicker-addon.min.css');
         WebPage::singleton()->includeJavaScript('js/jquery-ui-timepicker-addon.min.js');
         WebPage::singleton()->includeJavaScript('js/jquery.ui.touch-punch.min.js');
@@ -49,9 +52,13 @@ class BsGrid extends \Ease\Html\Div
         WebPage::singleton()->includeJavaScript('js/jquery.bs_grid.min.js');
         WebPage::singleton()->includeJavaScript('js/bs_grid/localization/en.min.js');
 
-        WebPage::singleton()->addJavaScript('
-$("#' . $this->getTagID() . '").bs_grid(' . json_encode($this->options) . ');
-            ');
+        WebPage::singleton()->addJavaScript(<<<'EOD'
+
+$("#
+EOD.$this->getTagID().'").bs_grid('.json_encode($this->options).<<<'EOD'
+);
+
+EOD);
         \Ease\JQuery\UIPart::jQueryze();
     }
 }

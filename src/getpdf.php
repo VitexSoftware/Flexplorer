@@ -1,5 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of the Flexplorer package
+ *
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Flexplorer;
 
 /**
@@ -21,26 +34,27 @@ $evidence = $oPage->getRequestValue('evidence');
 $report = $oPage->getRequestValue('report-name');
 
 $document = new \AbraFlexi\RO(
-    is_numeric($id) ? intval($id) : $id,
-    ['evidence' => $evidence]
+    is_numeric($id) ? (int) $id : $id,
+    ['evidence' => $evidence],
 );
 
 if (empty($evidence)) {
-    die(_('Wrong call'));
-} else {
-    $documentBody = $document->getInFormat('pdf', urldecode($report));
-
-    if ($embed != 'true') {
-        header('Content-Description: File Transfer');
-        header('Content-Disposition: attachment; filename=' . $document->getEvidence() . '_' . $document . '.pdf');
-        header('Content-Type: application/octet-stream');
-        header('Content-Transfer-Encoding: binary');
-    } else {
-        header('Content-Type: application/pdf');
-    }
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-    header('Pragma: public');
-    header('Content-Length: ' . strlen($documentBody));
-    echo $documentBody;
+    exit(_('Wrong call'));
 }
+
+$documentBody = $document->getInFormat('pdf', urldecode($report));
+
+if ($embed !== 'true') {
+    header('Content-Description: File Transfer');
+    header('Content-Disposition: attachment; filename='.$document->getEvidence().'_'.$document.'.pdf');
+    header('Content-Type: application/octet-stream');
+    header('Content-Transfer-Encoding: binary');
+} else {
+    header('Content-Type: application/pdf');
+}
+
+header('Expires: 0');
+header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+header('Pragma: public');
+header('Content-Length: '.\strlen($documentBody));
+echo $documentBody;

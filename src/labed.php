@@ -1,10 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * Flexplorer - Label Assigment Change saver.
+ * This file is part of the Flexplorer package
  *
- * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2017 Vitex Software
+ * github.com/VitexSoftware/Flexplorer
+ *
+ * (c) Vítězslav Dvořák <http://vitexsoftware.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace Flexplorer;
@@ -21,7 +27,7 @@ $result = false;
 if ($id && $label && $evidence) {
     $abraFlexi = new \AbraFlexi\RW(
         ['id' => $id],
-        ['evidence' => $evidence]
+        ['evidence' => $evidence],
     );
 
     if ($oPage->getRequestValue('state', 'boolean')) {
@@ -29,13 +35,14 @@ if ($id && $label && $evidence) {
     } else {
         $urlparbac = $abraFlexi->defaultUrlParams;
         $abraFlexi->defaultUrlParams['detail'] = 'custom:id,stitky';
-        $abraFlexi->loadFromAbraFlexi(is_numeric($id) ? intval($id) : $id);
+        $abraFlexi->loadFromAbraFlexi(is_numeric($id) ? (int) $id : $id);
         $result = \AbraFlexi\Stitek::unsetLabel(
             $label,
-            $abraFlexi
+            $abraFlexi,
         );
         $abraFlexi->defaultUrlParams = $urlparbac;
     }
+
     http_response_code($abraFlexi->lastResponseCode);
 } else {
     http_response_code(404);
