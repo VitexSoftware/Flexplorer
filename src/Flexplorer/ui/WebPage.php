@@ -54,8 +54,6 @@ class WebPage extends \Ease\TWB5\WebPage
         $this->head->addItem('<link rel="stylesheet" href="/javascript/font-awesome/css/font-awesome.min.css">');
 
         $this->container = $this->addItem(new \Ease\TWB5\Container());
-        $this->includeJavaScript('js/jquery.keepAlive.js');
-        $this->addJavaScript('$.fn.keepAlive({timer: 300000});');
     }
 
     /**
@@ -145,6 +143,9 @@ class WebPage extends \Ease\TWB5\WebPage
         if (\Ease\Shared::user()->getUserID()) { // Authenticated user
             $this->body->addAsFirst(new FlexiURL($this->getRequestURL(), ['id' => 'lasturl', 'class' => 'innershadow']));
         }
+
+        $this->includeJavaScript('js/jquery.keepAlive.js');
+        $this->addJavaScript('$.fn.keepAlive({timer: 300000});');
 
         parent::finalize();
     }

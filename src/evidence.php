@@ -38,7 +38,7 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
 } else {
     $oPage->addEvidenceToHistory($evidence);
 
-    $oPage->addItem(new ui\PageTop(sprintf(_('Evidence %s'), \AbraFlexi\EvidenceList::$name[$evidence])));
+    $oPage->addToHeader(new ui\PageTop(sprintf(_('Evidence %s'), \AbraFlexi\EvidenceList::$name[$evidence])));
 
     $evobj = new Flexplorer($evidence);
 
@@ -203,9 +203,8 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
 
     $tabs->addTab(_('Print Sets'), new ui\PrintSetGallery($evobj));
 
-    $oPage->container->addItem($tabs);
-
-    $oPage->addItem(new ui\PageBottom());
+    $oPage->addToMain($tabs);
+    $oPage->addToFooter(new ui\PageBottom());
 
     $oPage->draw();
 }

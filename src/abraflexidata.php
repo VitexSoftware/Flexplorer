@@ -43,7 +43,17 @@ foreach ($dataRaw as $row => $columns) {
     $dataRaw[$row]['lastUpdate'] = (\array_key_exists('lastUpdate', $dataRaw) && $dataRaw[$row]['lastUpdate']) ? $dataRaw[$row]['lastUpdate']->format(\AbraFlexi\DateTime::$format) : '';
 
     foreach ($columns as $column => $value) {
-        $dataRaw[$row][$column] = (string) $dataRaw[$row][$column];
+        switch (\gettype($dataRaw[$row][$column])) {
+            case 'array':
+                break;
+            case 'object':
+                $dataRaw[$row][$column] = (string) $dataRaw[$row][$column];
+
+                break;
+
+            default:
+                break;
+        }
     }
 }
 

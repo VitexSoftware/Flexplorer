@@ -84,7 +84,7 @@ class MainMenu extends \Ease\TWB5\Navbar
                     '' => '',
                 ];
 
-                $this->addDropDownMenu(_('Company'), array_merge($companyTools, $companiesToMenu));
+                $this->addDropDownMenu('🏭 '._('Company'), array_merge($companyTools, $companiesToMenu));
 
                 if (!isset($_SESSION['company'])) { // Auto choose first company
                     $_SESSION['company'] = $companies[0]['dbNazev'];
@@ -121,12 +121,12 @@ class MainMenu extends \Ease\TWB5\Navbar
                 );
 
                 if (\count($evidenciesToMenu)) {
-                    $this->addDropDownMenu(_('Evidence'), $evidenciesToMenu);
+                    $this->addDropDownMenu('🗃️ '._('Evidence'), $evidenciesToMenu);
                 }
             }
 
             $this->addDropDownMenu(
-                _('Tools'),
+                '🛠️ '._('Tools'),
                 [
                     'query.php' => _('Query'),
                     //                'xslt.php' => _('XSLT'),
@@ -139,45 +139,7 @@ class MainMenu extends \Ease\TWB5\Navbar
                     'backups.php' => _('Backups'),
                 ],
             );
+            $this->addMenuItem(new \Ease\Html\ATag('logout.php','🚪 '._('Sign off')));
         }
-    }
-
-    /**
-     * Přidá do stránky javascript pro skrývání oblasti stavových zpráv.
-     */
-    public function finalize(): void
-    {
-        //        if (\Ease\Shared::user()->isLogged()) { //Authenticated user
-        // //            $this->addItem(new Breadcrumb());        }
-        if (!empty(\Ease\Shared::logger()->getMessages())) {
-            WebPage::singleton()->addCss(<<<'EOD'
-
-         #smdrag { height: 8px;
-                  background-image:  url( images/slidehandle.png );
-                  background-color: #ccc;
-                  background-repeat: no-repeat;
-                  background-position: top center;
-                  cursor: ns-resize;
-         }
-         #smdrag:hover { background-color: #f5ad66; }
-
-
-EOD);
-
-            $this->addItem(WebPage::singleton()->getStatusMessagesBlock(['id' => 'status-messages', 'title' => _('Click to hide messages')]));
-            $this->addItem(new \Ease\Html\DivTag(null, ['id' => 'smdrag', 'style' => 'margin-bottom: 5px']));
-            \Ease\Shared::logger()->cleanMessages();
-            WebPage::singleton()->addCss('.dropdown-menu { overflow-y: auto } ');
-            WebPage::singleton()->addJavaScript(
-                "$('.dropdown-menu').css('max-height',$(window).height()-100);",
-                null,
-                true,
-            );
-            WebPage::singleton()->includeJavaScript('js/slideupmessages.js');
-            //           WebPage::singleton()->includeJavaScript('https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js');
-        }
-
-        //        }
-        parent::finalize();
     }
 }

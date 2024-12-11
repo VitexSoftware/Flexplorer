@@ -12,13 +12,13 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "league/commonmark": "^1.5",
-        "spojenet/flexibee": "main-dev",
-        "vitexsoftware/ease-core-bricks": "dev-master",
-        "vitexsoftware/abraflexi-bricks": "dev-main",
-        "vitexsoftware/datatables-abraflexi": "dev-abraflexi",
-        "vitexsoftware/ease-twbootstrap5": "dev-main",
-        "vitexsoftware/ease-html-widgets": "dev-main"
+        "league/commonmark": "^1.6",
+        "spojenet/flexibee": "^3.3",
+        "vitexsoftware/ease-core-bricks": "^1.2",
+        "vitexsoftware/abraflexi-bricks": "^1.1",
+        "vitexsoftware/datatables-abraflexi": "^0.2",
+        "vitexsoftware/ease-twbootstrap5": "^1.0",
+        "vitexsoftware/ease-html-widgets": "^1.1"
     },
     "autoload": {
         "psr-4": {

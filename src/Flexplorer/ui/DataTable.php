@@ -22,8 +22,8 @@ namespace Flexplorer\ui;
  */
 class DataTable extends \AbraFlexi\ui\DataTables\DataTable
 {
-    public $js = '/javascript/jquery-datatables/dataTables.bootstrap.min.js';
-    public $css = '/javascript/jquery-datatables/css/dataTables.bootstrap.min.css';
+    public $js = '/javascript/jquery-datatables/dataTables.bootstrap5.min.js';
+    public $css = '/javascript/jquery-datatables/css/dataTables.bootstrap5.min.css';
 
     /**
      * Prepare DataSource URI.

@@ -48,13 +48,13 @@ require_once 'includes/Init.php';
 // $_SESSION['bookmarks']['localhost'] = ['login' => '', 'password' => '',
 //    'server' => 'https://localhost:5434'];
 //
-// if (is_dir(\Ease\Functions::cfg('CONFIGS'))) {
-//    foreach (scandir(\Ease\Functions::cfg('CONFIGS')) as $candidat) {
+// if (is_dir(\Ease\Shared::cfg('CONFIGS'))) {
+//    foreach (scandir(\Ease\Shared::cfg('CONFIGS')) as $candidat) {
 //        if ($candidat[0] == '.') {
 //            continue;
 //        }
 //        if (strtolower(pathinfo($candidat, PATHINFO_EXTENSION)) == 'json') {
-//            $configRaw = json_decode(file_get_contents(\Ease\Functions::cfg('CONFIGS') . $candidat),
+//            $configRaw = json_decode(file_get_contents(\Ease\Shared::cfg('CONFIGS') . $candidat),
 //                    true);
 //            if (array_key_exists('ABRAFLEXI_URL', $configRaw)) {
 //                $_SESSION['bookmarks'][pathinfo($candidat, PATHINFO_FILENAME)] = [
@@ -83,17 +83,17 @@ require_once 'includes/Init.php';
 //                'FlexPlorer', ['class' => 'img-responsive']), 'success', null, $submit);
 // $loginPanel->addItem(new \Ease\TWB5\FormGroup(_('AbraFlexi'),
 //                new \Ease\Html\InputTextTag('server',
-//                        $server ? $server : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_URL') ),
-//                \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_URL'),
+//                        $server ? $server : \Ease\Shared::cfg('DEFAULT_ABRAFLEXI_URL') ),
+//                \Ease\Shared::cfg('DEFAULT_ABRAFLEXI_URL'),
 //                _('AbraFlexi server URL. ex.:') . ' <a href="?server=https://localhost:5434">https://localhost:5434</a>'));
 // $loginPanel->addItem(new \Ease\TWB5\FormGroup(_('User name'),
 //                new \Ease\Html\InputTextTag('login',
-//                        $login ? $login : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_LOGIN')
-//                ), \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_LOGIN'), _('Login name')));
+//                        $login ? $login : \Ease\Shared::cfg('DEFAULT_ABRAFLEXI_LOGIN')
+//                ), \Ease\Shared::cfg('DEFAULT_ABRAFLEXI_LOGIN'), _('Login name')));
 // $loginPanel->addItem(new \Ease\TWB5\FormGroup(_('Password'),
 //                new \Ease\TWB5\Widgets\PasswordInput('password',
-//                        $password ? $password : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_PASSWORD')),
-//                \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_PASSWORD'), _('User\'s password')));
+//                        $password ? $password : \Ease\Shared::cfg('DEFAULT_ABRAFLEXI_PASSWORD')),
+//                \Ease\Shared::cfg('DEFAULT_ABRAFLEXI_PASSWORD'), _('User\'s password')));
 // $loginPanel->addItem(new \Ease\TWB5\FormGroup(_('Remeber me'),
 //                new \Ease\TWB5\Widgets\TWBSwitch('remember-me', true), null,
 //                _('Add this to Login History')));
@@ -145,9 +145,9 @@ require_once 'includes/Init.php';
 //
 //
 // $connectionOptions = [
-//    'url' => $server ? $server : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_URL'),
-//    'user' => $login ? $login : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_LOGIN'),
-//    'password' => $password ? $password : \Ease\Functions::cfg('DEFAULT_ABRAFLEXI_PASSWORD')
+//    'url' => $server ? $server : \Ease\Shared::cfg('DEFAULT_ABRAFLEXI_URL'),
+//    'user' => $login ? $login : \Ease\Shared::cfg('DEFAULT_ABRAFLEXI_LOGIN'),
+//    'password' => $password ? $password : \Ease\Shared::cfg('DEFAULT_ABRAFLEXI_PASSWORD')
 // ];
 //
 // //$loginPanel = new \Ease\TWB5\Panel(new \Ease\Html\ImgTag('images/flexplorer-logo.png',
