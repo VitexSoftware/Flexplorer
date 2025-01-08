@@ -6,13 +6,11 @@
 /testing/PHPUnit/build/
 /debian/flexplorer/
 /vendor/
-/composer.lock
 /docs/
 /ubuntu-xenial-16.04-cloudimg-console.log
 /.vagrant/
 /backups/
 /configurations/
 .phpdoc
-
 /.env
 /.build/
