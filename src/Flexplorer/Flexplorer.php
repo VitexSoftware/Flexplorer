@@ -265,7 +265,7 @@ class Flexplorer extends \AbraFlexi\RW
      *
      * @return array políčka evidence
      */
-    public function takeData($data)
+    public function takeData(array $data):int
     {
         $fbColumns = $this->getColumnsInfo();
         $relations = $this->getRelationsInfo();

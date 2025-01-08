@@ -15,9 +15,9 @@
         "league/commonmark": "^1.6",
         "spojenet/flexibee": "^3.3",
         "vitexsoftware/ease-core-bricks": "^1.2",
-        "vitexsoftware/abraflexi-bricks": "^1.1",
-        "vitexsoftware/datatables-abraflexi": "^0.2",
-        "vitexsoftware/ease-twbootstrap5": "^1.0",
+        "vitexsoftware/abraflexi-bricks": "*",
+        "vitexsoftware/datatables-abraflexi": "dev-main",
+        "vitexsoftware/ease-twbootstrap5": "*",
         "vitexsoftware/ease-html-widgets": "^1.1"
     },
     "autoload": {

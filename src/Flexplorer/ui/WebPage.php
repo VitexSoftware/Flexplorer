@@ -47,6 +47,8 @@ class WebPage extends \Ease\TWB5\WebPage
     public function __construct($pageTitle = '')
     {
         parent::__construct($pageTitle);
+        \Ease\Part::jQueryze();
+
         $this->includeCss('css/default.css');
         $this->head->addItem('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
         $this->head->addItem('<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="favicon.ico">');

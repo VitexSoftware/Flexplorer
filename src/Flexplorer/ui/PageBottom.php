@@ -99,7 +99,7 @@ class PageBottom extends \Ease\TWB5\Container
 
         $rowFluid2 = new \Ease\TWB5\Row();
 
-        $rowFluid2->addItem([new \Ease\TWB5\Col(8, '<strong>FlexPlorer</strong> '.\Ease\Shared::appVersion().(empty(self::BUILD) ? '' : '&nbsp;'._('build').' #'.self::BUILD).'<br>'._('the age of the installation').'&nbsp;'.new \Ease\Html\Widgets\LiveAge(filemtime($composer))), new \Ease\TWB5\Col(4, _('&copy; 2016-2024 Vítězslav "Vitex" Dvořák'))]);
+        $rowFluid2->addItem([new \Ease\TWB5\Col(8, '<strong>FlexPlorer</strong> '.\Ease\Shared::appVersion().(empty(self::BUILD) ? '' : '&nbsp;'._('build').' #'.self::BUILD).'<br>'._('the age of the installation').'&nbsp;'.new \Ease\Html\Widgets\LiveAge( (new \DateTime())->setTimestamp(filemtime($composer)) )), new \Ease\TWB5\Col(4, _('&copy; 2016-2024 Vítězslav "Vitex" Dvořák'))]);
 
         $this->addItem($rowFluid2);
     }

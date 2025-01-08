@@ -129,7 +129,7 @@ if (empty($company)) {
         ['id' => 'dbNazev', 'readonly'],
     ))]);
 
-    $created = \AbraFlexi\RO::flexiDateTimeToDateTime($companer->getDataValue('createDt'))->getTimestamp();
+    $created = \AbraFlexi\RO::flexiDateTimeToDateTime($companer->getDataValue('createDt'));
     $companyInfo->addRowColumns([_('created'), \AbraFlexi\RO::flexiDateTimeToDateTime($companer->getDataValue('createDt'))->format('d.m. Y').' ('._('before').' '.new \Ease\Html\Widgets\LiveAge($created).')']);
 
     $companyInfo->addRowColumns([_('Watching changes'), new ui\WatchingChangesStatus($companer->getDataValue('watchingChanges') === 'true')]);
@@ -139,13 +139,13 @@ if (empty($company)) {
     $companyInfo->addRowColumns([_('License Group'), $companer->getDataValue('licenseGroup')]);
 
     $companyInfo->addRowColumns([_('Status'), new \Ease\TWB5\Badge(
-        $companer->getDataValue('stavEnum') === 'ESTABLISHED' ? 'success' : 'warning',
         $companer->getDataValue('stavEnum'),
+        $companer->getDataValue('stavEnum') === 'ESTABLISHED' ? 'success' : 'warning',
     )]);
 
     $companyPanel = new \Ease\TWB5\Panel(
         new \Ease\Html\H2Tag($companer->getDataValue('nazev')),
-        'info',
+        'inverse',
         $companyInfo,
         $companyActions,
     );

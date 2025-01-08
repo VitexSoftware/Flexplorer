@@ -31,8 +31,8 @@ class BooleanLabel extends \Ease\TWB5\Badge
     public function __construct($bool, $properties = [])
     {
         parent::__construct(
-            $bool ? 'success' : 'default',
             $bool ? _('Yes') : _('No'),
+            $bool ? 'success' : 'warning',
             $properties,
         );
     }
