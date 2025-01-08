@@ -139,7 +139,7 @@ class MainMenu extends \Ease\TWB5\Navbar
                     'backups.php' => _('Backups'),
                 ],
             );
-            $this->addMenuItem(new \Ease\Html\ATag('logout.php','🚪 '._('Sign off')));
+            $this->addMenuItem(new \Ease\Html\ATag('logout.php', '🚪 '._('Sign off')));
         }
     }
 }

@@ -79,7 +79,7 @@ EOD);
         }
 
         //        }
-        
+
         parent::finalize();
     }
 }

@@ -25,7 +25,7 @@ class ChangesLister extends \Ease\Html\UlTag
     public function &addItemSmart($pageItem, $properties = [])
     {
         [$tmp, $stamp] = explode('_', $pageItem);
-        $age = new \Ease\ui\LiveAge((new \DateTime())->setTimestamp((int)str_replace('.json', '', $stamp)));
+        $age = new \Ease\ui\LiveAge((new \DateTime())->setTimestamp((int) str_replace('.json', '', $stamp)));
         $pageItem = new \Ease\Html\ATag(
             'change.php?file='.$pageItem,
             str_replace(

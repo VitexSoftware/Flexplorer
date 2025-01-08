@@ -186,7 +186,7 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
     if (\array_key_exists('stitky', $evobj->getColumnsInfo())) {
         $evobj->setDataValue(
             'stitky',
-            \AbraFlexi\Stitek::getAvailableLabels($evobj)
+            \AbraFlexi\Stitek::getAvailableLabels($evobj),
         );
         $infoTab->addItem(new \Ease\TWB5\Panel(
             _('Labels Availble'),
