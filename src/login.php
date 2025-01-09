@@ -31,7 +31,7 @@ use Flexplorer\ui\PageBottom;
 use Flexplorer\ui\PageTop;
 
 require_once 'includes/Init.php';
-// $oPage->addItem(new ui\PageTop(_('Sign in')));
+$oPage->addItem(new PageTop(_('Sign in')));
 // $loginFace = new \Ease\Html\DivTag(null, ['id' => 'LoginFace']);
 //
 // $oPage->container->addItem($loginFace);
@@ -165,6 +165,7 @@ $server = ui\WebPage::getRequestValue('server') ?? \Ease\Shared::cfg('ABRAFLEXI_
 
 $shared = Shared::singleton();
 $login = \Ease\Document::getRequestValue('login');
+$password = \Ease\Document::getRequestValue('password');
 
 if ($login) {
     try {
@@ -197,7 +198,7 @@ $loginPanel = new Panel(
     $submit,
 );
 $loginPanel->addItem(new InputGroup(_('Username'), new InputTextTag('login', $login, null, ['class' => 'form-control']), '', _('the username you chose')));
-$loginPanel->addItem(new InputGroup(_('Password'), new InputPasswordTag('password', $login)));
+$loginPanel->addItem(new InputGroup(_('Password'), new InputPasswordTag('password', $password)));
 $loginPanel->addItem(new InputGroup(_('Server'), new InputTextTag('server', $server)));
 $loginPanel->body->setTagCss(['margin' => '20px']);
 $loginColumn->addItem($loginPanel);
