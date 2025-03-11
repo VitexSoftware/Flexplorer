@@ -30,7 +30,7 @@ class NavBarSearchBox extends \Ease\Html\Form
         $formName,
         $formAction = null,
         $term = null,
-        $tagProperties = []
+        $tagProperties = [],
     ) {
         parent::__construct(array_merge(['name' => $formName, 'action' => $formAction, 'method' => 'post'], $tagProperties));
 

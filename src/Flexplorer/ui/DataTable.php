@@ -34,7 +34,7 @@ class DataTable extends \AbraFlexi\ui\DataTables\DataTable
      */
     public function dataSourceURI($engine)
     {
-        $conds = ['class' => \get_class($engine), 'evidence' => $engine->getEvidence()];
+        $conds = ['class' => $engine::class, 'evidence' => $engine->getEvidence()];
 
         if (null !== $engine->filter) {
             $conds = array_merge($engine->filter, $conds);

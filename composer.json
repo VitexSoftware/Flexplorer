@@ -1,8 +1,7 @@
 {
     "name": "spoje.net/flexplorer",
     "description": "Průzkumník a editor evidencí FlexiBee",
-    "version": "1.4",
-    "license": "GPL-2.0",
+    "license": "MIT",
     "type": "project",
     "authors": [
         {
@@ -13,7 +12,7 @@
     "minimum-stability": "dev",
     "require": {
         "league/commonmark": "^2.6",
-        "spojenet/flexibee": "^3.3",
+        "spojenet/flexibee": "^3.4",
         "vitexsoftware/ease-core-bricks": "^1.2",
         "vitexsoftware/abraflexi-bricks": "*",
         "vitexsoftware/datatables-abraflexi": "dev-main",
@@ -37,9 +36,9 @@
     "require-dev": {
         "phpunit/phpunit": "*",
         "phpstan/phpstan": "*",
-        "friendsofphp/php-cs-fixer": "^3.61",
-        "ergebnis/composer-normalize": "^2.43",
-        "ergebnis/php-cs-fixer-config": "^6.34"
+        "friendsofphp/php-cs-fixer": "^3.71",
+        "ergebnis/composer-normalize": "^2.45",
+        "ergebnis/php-cs-fixer-config": "^6.45"
     },
     "config": {
         "allow-plugins": {

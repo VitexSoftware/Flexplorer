@@ -550,7 +550,7 @@ EOD, null, true);
         $name,
         $title,
         $search = false,
-        $columnProperties = null
+        $columnProperties = null,
     ): void {
         if (!isset($this->options['colModel'])) {
             $this->options['colModel'] = [];

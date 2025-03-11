@@ -46,13 +46,13 @@ class PermissionsViewer extends \Ease\Html\TableTag
                         case 'true':
                             $column->setTagCss(['background-color' => '#58d68d']);
                             $column->setTagProperties(['title' => _('true').' '.$roles[$columnID]]);
-                            $column->pageParts[0] = new \Ease\TWB5\GlyphIcon('ok');
+                            $column->pageParts[0] = '✅';
 
                             break;
                         case 'false':
                             $column->setTagCss(['background-color' => '#ec7063']);
                             $column->setTagProperties(['title' => _('false').' '.$roles[$columnID]]);
-                            $column->pageParts[0] = new \Ease\TWB5\GlyphIcon('remove');
+                            $column->pageParts[0] = '❌';
 
                             break;
 

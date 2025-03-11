@@ -28,7 +28,7 @@ class YesNoSwitch extends \Ease\TWB5\Widgets\TWBSwitch
         $name,
         $checked = false,
         $value = null,
-        $properties = null
+        $properties = null,
     ) {
         parent::__construct($name, $checked, 'on', $properties);
     }

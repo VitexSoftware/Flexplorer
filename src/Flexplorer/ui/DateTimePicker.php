@@ -28,7 +28,7 @@ class DateTimePicker extends \Ease\Html\DivTag
         $name,
         $value = null,
         $properties = null,
-        $addScript = null
+        $addScript = null,
     ) {
         $properties['class'] = 'form-control';
 

@@ -31,7 +31,7 @@ class SendForm extends \Ease\TWB5\Form
         string $url,
         string $method = 'GET',
         string $body = '',
-        string $format = 'json'
+        string $format = 'json',
     ) {
         $sourceurl = '';
         parent::__construct(['name' => 'Req', 'action' => 'query.php', 'method' => 'POST', 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data']);

@@ -49,10 +49,10 @@ class ColumnsForm extends \Ease\TWB5\Form
     public function __construct(
         $engine,
         $formContents = null,
-        $tagProperties = null
+        $tagProperties = null,
     ) {
         $this->engine = $engine;
-        parent::__construct(['name' => \get_class($engine), 'method' => 'POST'], $formContents, $tagProperties);
+        parent::__construct(['name' => $engine::class, 'method' => 'POST'], $formContents, $tagProperties);
         $this->newRow();
         $this->savers = new \Ease\Html\DivTag(
             null,
@@ -84,7 +84,7 @@ class ColumnsForm extends \Ease\TWB5\Form
         $caption = null,
         $placeholder = null,
         $helptext = null,
-        $addTagClass = 'form-control'
+        $addTagClass = 'form-control',
     ) {
         if ($this->row->getItemsCount() > $this->itemsPerRow) {
             $this->row = $this->addItem(new \Ease\TWB5\Row());

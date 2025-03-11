@@ -26,7 +26,7 @@ class WebHookSelect extends \Ease\Html\Select
         $name,
         $items = null,
         $defaultValue = null,
-        $properties = []
+        $properties = [],
     ) {
         $items = [];
         $hooker = new \AbraFlexi\Hooks();
