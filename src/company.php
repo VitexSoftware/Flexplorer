@@ -36,10 +36,12 @@ if (empty($company)) {
     $oPage->redirect('companies.php');
 } else {
     $setinger = new \AbraFlexi\Nastaveni();
-    $settings = $setinger->getColumnsFromAbraFlexi(
-        '*',
-        ['nazFirmy' => $company, 'detail' => 'full'],
-    );
+
+    try {
+        $settings = $setinger->getColumnsFromAbraFlexi('*', ['nazFirmy' => $company, 'detail' => 'full']);
+    } catch (\AbraFlexi\Exception $exc) {
+        $setinger->addStatusMessage($exc->getMessage());
+    }
 
     $companer = new \AbraFlexi\Company($company);
 

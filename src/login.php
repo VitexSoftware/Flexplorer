@@ -32,6 +32,9 @@ use Flexplorer\ui\PageTop;
 
 require_once 'includes/Init.php';
 $oPage->addItem(new PageTop(_('Sign in')));
+
+$oPage->addAsFirst(new \Ease\Html\ImgTag('images\flexibeetop.png', 'top', ['class' => 'img-fluid', 'width' => '100%']));
+
 // $loginFace = new \Ease\Html\DivTag(null, ['id' => 'LoginFace']);
 //
 // $oPage->container->addItem($loginFace);
@@ -184,6 +187,7 @@ if ($login) {
 
 // $oPage->addItem(new PageTop(_('Sign In')));
 $loginFace = new DivTag(null, ['id' => 'LoginFace']);
+
 $oPage->container->addItem($loginFace);
 $loginRow = new Row();
 $infoColumn = $loginRow->addItem(new Col(4));
