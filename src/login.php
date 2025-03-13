@@ -172,7 +172,7 @@ $password = \Ease\Document::getRequestValue('password');
 
 if ($login) {
     try {
-        $oUser = Shared::user(null, 'Flexplorer\User');
+        $oUser = Shared::user(new User(), 'Flexplorer\User');
     } catch (PDOException $e) {
         echo 'Caught exception: ', $e->getMessage(), "\n";
     }

@@ -67,7 +67,7 @@ class User extends \Ease\User
         try {
             $companies = $this->abraFlexi->performRequest('c.json');
 
-            if (isset($companies['companies'])) {
+            if (\array_key_exists('companies', $companies)) {
                 if (isset($companies['companies']['company'])) {
                     $this->abraFlexi->company = \array_key_exists('dbNazev', $companies['companies']['company']) ? $companies['companies']['company']['dbNazev'] : end($companies['companies']['company'])['dbNazev'];
                 } else {

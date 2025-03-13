@@ -71,58 +71,56 @@ class MainMenu extends \Ease\TWB5\Navbar
 
             $companies = $companer->getFlexiData();
 
-            if (isset($companies) && \count($companies)) {
-                foreach ($companies as $company) {
-                    $companiesToMenu['company.php?company='.$company['dbNazev']] = $company['nazev'];
-                }
+            foreach ($companies as $company) {
+                $companiesToMenu['company.php?company='.$company['dbNazev']] = $company['nazev'];
+            }
 
-                asort($companiesToMenu);
+            asort($companiesToMenu);
 
-                $companyTools = [
-                    'newcompany.php' => '➕ '._('New'),
-                    'companies.php' => '🏭 '._('Listing'),
-                    '' => '',
-                ];
+            $companyTools = [
+                'newcompany.php' => '➕ '._('New'),
+                'companies.php' => '🏭 '._('Listing'),
+                '' => '',
+            ];
 
-                $this->addDropDownMenu('🏭 '._('Company'), array_merge($companyTools, $companiesToMenu));
+            $this->addDropDownMenu('🏭 '._('Company'), array_merge($companyTools, $companiesToMenu));
 
-                if (!isset($_SESSION['company'])) { // Auto choose first company
-                    $_SESSION['company'] = $companies[0]['dbNazev'];
-                    \define('ABRAFLEXI_COMPANY', $_SESSION['company']);
-                }
+            if (!isset($_SESSION['company'])) { // Auto choose first company
+                $_SESSION['company'] = $companies[0]['dbNazev'];
+                \define('ABRAFLEXI_COMPANY', $_SESSION['company']);
+            }
 
-                if (!\array_key_exists('evidence-menu', $_SESSION)) {
-                    $_SESSION['evidence-menu'] = [];
-                }
+            if (!\array_key_exists('evidence-menu', $_SESSION)) {
+                $_SESSION['evidence-menu'] = [];
+            }
 
-                if (!\array_key_exists($_SESSION['company'], $companiesToMenu)) {
-                    $lister = new \AbraFlexi\EvidenceList(null, $_SESSION);
-                    $evidences = $lister->getFlexiData();
+            if (!\array_key_exists($_SESSION['company'], $companiesToMenu)) {
+                $lister = new \AbraFlexi\EvidenceList(null, $_SESSION);
+                $evidences = $lister->getFlexiData();
 
-                    if (\count($evidences)) {
-                        foreach ($evidences as $evidence) {
-                            $evidenciesToMenu['evidence.php?evidence='.$evidence['evidencePath']] = $evidence['evidenceName'];
-                        }
-
-                        asort($evidenciesToMenu);
-                        $_SESSION['evidence-menu'][$_SESSION['company']] = $evidenciesToMenu;
-                    } else {
-                        $lister->addStatusMessage(_('Loading evidence list failed'), 'error');
+                if (\count($evidences)) {
+                    foreach ($evidences as $evidence) {
+                        $evidenciesToMenu['evidence.php?evidence='.$evidence['evidencePath']] = $evidence['evidenceName'];
                     }
-                }
 
-                if (\array_key_exists('', $companiesToMenu)) {
+                    asort($evidenciesToMenu);
+                    $_SESSION['evidence-menu'][$_SESSION['company']] = $evidenciesToMenu;
+                } else {
+                    $lister->addStatusMessage(_('Loading evidence list failed'), 'error');
                 }
+            }
 
-                $evidenciesToMenu = array_merge(
-                    ['evidences.php' => _('Overview')],
-                    WebPage::singleton()->getEvidenceHistory(),
-                    $_SESSION['evidence-menu'][$_SESSION['company']],
-                );
+            if (\array_key_exists('', $companiesToMenu)) {
+            }
 
-                if (\count($evidenciesToMenu)) {
-                    $this->addDropDownMenu('🗃️ '._('Evidence'), $evidenciesToMenu);
-                }
+            $evidenciesToMenu = array_merge(
+                ['evidences.php' => _('Overview')],
+                WebPage::singleton()->getEvidenceHistory(),
+                $_SESSION['evidence-menu'][$_SESSION['company']],
+            );
+
+            if (\count($evidenciesToMenu)) {
+                $this->addDropDownMenu('🗃️ '._('Evidence'), $evidenciesToMenu);
             }
 
             $this->addDropDownMenu(
