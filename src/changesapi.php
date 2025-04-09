@@ -202,7 +202,7 @@ $settingsForm->addItem(new \Ease\TWB5\SubmitButton(
     _('Perform operation'),
     'warning',
 ));
-$toolRow->addColumn(4, new \Ease\TWB5\Panel($settingsForm));
+$toolRow->addColumn(4, new \Ease\TWB5\Panel($settingsForm,'default'));
 
 if ($chapistatus) {
     try {

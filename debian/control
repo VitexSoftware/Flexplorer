@@ -7,7 +7,7 @@ Priority: optional
 Homepage: https://github.com/VitexSoftware/Flexplorer
 
 Package: flexplorer
-Depends: ${misc:Depends}, composer-debian, php-intl, libjs-font-awesome,php-vitexsoftware-ease-bootstrap-widgets-abraflexi , php-vitexsoftware-ease-bricks, php-vitexsoftware-abraflexi-bricks, php-vitexsoftware-ease-bootstrap-widgets, php-vitexsoftware-datatables-abraflexi
+Depends: ${misc:Depends}, composer-debian, php-intl
 Architecture: all
 Section: web
 Priority: optional
