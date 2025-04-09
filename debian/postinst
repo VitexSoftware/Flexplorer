@@ -30,7 +30,7 @@ apache_install() {
 
     . /usr/share/debconf/confmodule
 
-    debian-composer flexplorer
+    composer-debian flexplorer
 
     db_get flexplorer/FLEXIBEE_URL
     sed -i "/DEFAULT_FLEXIBEE_URL/c\define('DEFAULT_FLEXIBEE_URL', '${RET}');" /usr/share/flexplorer/includes/config.php
