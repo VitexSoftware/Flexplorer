@@ -54,11 +54,11 @@
         },
         {
             "type": "path",
-            "url": "/usr/share/php/EaseTWBWidgets/"
+            "url": "/usr/share/php/EaseTWB5Widgets/"
         },
         {
             "type": "path",
-            "url": "/usr/share/php/EaseTWBWidgetsAbraFlexi/"
+            "url": "/usr/share/php/EaseTWB5WidgetsAbraFlexi/"
         },
         {
             "type": "path",
