@@ -12,7 +12,7 @@ src/Flexplorer/xml/*.php		usr/share/flexplorer/classes/xml/
 src/download/*                  usr/share/flexplorer/download/
 debian/conf/flexplorer.conf	etc/apache2/conf-available/
 debian/conf/flexplorer.service  etc/avahi/services/
-debian/conf/composer.json       usr/share/flexplorer/
+debian/conf/composer.json       usr/lib/flexplorer/
 debian/conf/flexplorer.desktop  etc/flexplorer/
 debian/conf/io.github.vitexsoftware.flexplorer.metainfo.xml usr/share/metainfo/
 
