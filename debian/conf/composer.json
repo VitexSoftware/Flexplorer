@@ -17,7 +17,7 @@
         "league/commonmark": "^1.5",
         "deb/abraflexi": "*",
         "deb/abraflexi-bricks": "*",
-        "deb/ease-bootstrap-widgets": "*",
+        "deb/ease-bootstrap5-widgets": "*",
         "deb/datatables-abraflexi": "*"
     },
     "autoload": {
