@@ -28,49 +28,52 @@ $oPage->onlyForLogged();
 
 header('Content-Type: application/json');
 
-$class = $oPage->getRequestValue('class');
+// Start output buffering to prevent unintended output
+ob_start();
 
-/**
- * @var Engine Data Source
- */
-$engine = new $class(ui\WebPage::getRequestValue('evidence'));
+try {
+    $class = $oPage->getRequestValue('class');
+    $engine = new $class(ui\WebPage::getRequestValue('evidence'));
 
-unset($_REQUEST['class'], $_REQUEST['_'], $_REQUEST['XDEBUG_SESSION_START']);
+    unset($_REQUEST['class'], $_REQUEST['_'], $_REQUEST['XDEBUG_SESSION_START']);
 
-$dataRaw = $engine->getColumnsFromAbraFlexi('*', array_merge($_REQUEST, ['add-row-count' => true]));
+    $dataRaw = $engine->getColumnsFromAbraFlexi('*', array_merge($_REQUEST, ['add-row-count' => true]));
 
-foreach ($dataRaw as $row => $columns) {
-    $dataRaw[$row]['lastUpdate'] = (\array_key_exists('lastUpdate', $dataRaw) && $dataRaw[$row]['lastUpdate']) ? $dataRaw[$row]['lastUpdate']->format(\AbraFlexi\DateTime::$format) : '';
+    foreach ($dataRaw as $row => $columns) {
+        $dataRaw[$row]['lastUpdate'] = (\array_key_exists('lastUpdate', $dataRaw) && $dataRaw[$row]['lastUpdate']) 
+            ? $dataRaw[$row]['lastUpdate']->format(\AbraFlexi\DateTime::$format) 
+            : '';
 
-    foreach ($columns as $column => $value) {
-        switch (\gettype($dataRaw[$row][$column])) {
-            case 'array':
-                break;
-            case 'object':
-                $dataRaw[$row][$column] = (string) $dataRaw[$row][$column];
-
-                break;
-
-            default:
-                break;
+        foreach ($columns as $column => $value) {
+            switch (\gettype($dataRaw[$row][$column])) {
+                case 'array':
+                    break;
+                case 'object':
+                    $dataRaw[$row][$column] = (string) $dataRaw[$row][$column];
+                    break;
+                default:
+                    break;
+            }
         }
     }
-}
 
-echo json_encode(['recordsTotal' => $engine->rowCount, 'recordsFiltered' => $engine->rowCount, 'data' => $dataRaw]);
+    $response = [
+        'recordsTotal' => $engine->rowCount,
+        'recordsFiltered' => $engine->rowCount,
+        'data' => $dataRaw,
+    ];
+
+    // Clear any buffered output before sending JSON
+    ob_clean();
+    echo json_encode($response, JSON_OBJECT_AS_ARRAY);
+} catch (\Throwable $e) {
+    // Handle exceptions and return a JSON error response
+    ob_clean();
+    http_response_code(500);
+    echo json_encode(['error' => $e->getMessage()]);
+} finally {
+    // End output buffering
+    ob_end_flush();
+}
 
 exit;
-
-$evidence = $oPage->getRequestValue('evidence');
-
-if (\strlen($evidence)) {
-    $datasource = new DataSource(new Flexplorer($evidence));
-    $datasource->output();
-} else {
-    $stitek = $oPage->getRequestValue('stitek');
-
-    if (\strlen($stitek)) {
-        $datasource = new DataSource(new SearchFlexplorer(['stitek' => $stitek]));
-        $datasource->output();
-    }
-}

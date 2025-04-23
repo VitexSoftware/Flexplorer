@@ -35,7 +35,7 @@ $id = $oPage->getRequestValue('id', 'int');
 $change = $oPage->getRequestValue('changefile');
 $format = 'json';
 
-$changeFile = HookReciever::getSaveDir().'/'.basename($change);
+$changeFile = HookReciever::getSaveDir().'/'.basename($change ? $change : 'flexplorer_changes.json');
 
 $changeData = ['winstrom' => ['@globalVersion' => $lastversion, 'changes' => ['@evidence' => $evidence,
     '@in-version' => $lastversion,
@@ -71,8 +71,8 @@ $lister = new \AbraFlexi\EvidenceList();
 $flexidata = $lister->getFlexiData();
 
 if (\count($flexidata)) {
-    foreach ($flexidata as $evidence) {
-        $evidenciesToMenu[$evidence['evidencePath']] = $evidence['evidenceName'];
+    foreach ($flexidata as $evidenceData) {
+        $evidenciesToMenu[$evidenceData['evidencePath']] = $evidenceData['evidenceName'];
     }
 
     asort($evidenciesToMenu);
@@ -80,14 +80,14 @@ if (\count($flexidata)) {
 
 $oPage->addItem(new ui\PageTop(_('WebHook test')));
 
-$changeTabs = new \Ease\TWB5\Tabs('changetabs');
+$changeTabs = new \Ease\TWB5\Tabs([],['name'=>'changetabs']);
 
 $toolRow = new \Ease\TWB5\Row();
 $settingsForm = new \Ease\TWB5\Form(['name' => 'settings']);
 
 // TODO \Ease\TWB5\Widgets\Toggle
 $settingsForm->addInput(
-    new \Ease\TWB5\Widgets\TWBSwitch(
+    new \Ease\TWB5\Widgets\Toggle(
         'changesformat',
         true,
         'JSON',
@@ -110,13 +110,13 @@ $settingsForm->addInput(
 $settingsForm->addInput(new \Ease\Html\SelectTag(
     'evidence',
     $evidenciesToMenu,
-    $evidence,
+    (string)$evidence,
 ), _('Evidence'));
 
 $settingsForm->addInput(new \Ease\Html\SelectTag(
     'operation',
     ['create' => 'Create', 'update' => 'Update', 'delete' => 'Delete'],
-    $operation,
+    (string)$operation,
 ), _('Operation'), null);
 
 $settingsForm->addInput(
@@ -134,7 +134,7 @@ $settingsForm->addInput(
 );
 
 $settingsForm->addItem(new \Ease\TWB5\SubmitButton(_('Build change'), 'warning'));
-$toolRow->addColumn(4, new \Ease\TWB5\Well($settingsForm));
+$toolRow->addColumn(4, new \Ease\TWB5\Container($settingsForm));
 
 $hookForm = new \Ease\TWB5\Form(['name' => 'TriggerHook']);
 $hookForm->addInput(
@@ -154,17 +154,17 @@ $hookForm->addInput(new ui\JsonTextarea(
 ));
 $hookForm->addItem(new \Ease\TWB5\SubmitButton(_('Send'), 'success'));
 
-$toolRow->addColumn(8, new \Ease\TWB5\Well($hookForm));
+$toolRow->addColumn(8, new \Ease\TWB5\Card($hookForm));
 
-if (\strlen($responseBody)) {
+if (empty($responseBody) === false) {
     $responseBlock = new \Ease\TWB5\Panel(
         new \Ease\Html\H1Tag($prober->lastResponseCode),
         'info',
     );
 
-    $responseBlock->addItem('<pre><code class="'.$format.'">'.
+    $responseBlock->addItem(new \Ease\Html\DivTag('<pre><code class="'.$format.'">'.
             nl2br(htmlentities($prober->lastCurlResponse))
-            .'</code></pre>');
+            .'</code></pre>'));
 
     $oPage->includeCss('css/github.css');
     $oPage->includeJavaScript('js/highlight.min.js');

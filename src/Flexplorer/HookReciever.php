@@ -30,7 +30,7 @@ class HookReciever extends \Ease\Brick
     /**
      * Posledni zpracovana verze.
      */
-    public int $lastProcessedVersion = null;
+    public ?int $lastProcessedVersion = null;
 
     /**
      * Prijmac WebHooku.

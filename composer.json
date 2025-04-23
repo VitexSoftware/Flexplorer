@@ -17,7 +17,8 @@
         "vitexsoftware/abraflexi-bricks": "*",
         "vitexsoftware/datatables-abraflexi": "dev-main",
         "vitexsoftware/ease-twbootstrap5": "*",
-        "vitexsoftware/ease-html-widgets": "^1.1"
+        "vitexsoftware/ease-html-widgets": "^1.1",
+        "vitexsoftware/ease-bootstrap5-widgets": "^1.4"
     },
     "autoload": {
         "psr-4": {

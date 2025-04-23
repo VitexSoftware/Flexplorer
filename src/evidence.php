@@ -138,8 +138,8 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
 
     $relations = $evobj->getRelationsInfo();
 
-    if (\count($relations)) {
-        $evidenciesByType = \Ease\Functions::reindexArrayBy(
+    if (empty(($relations) === false)) {
+            $evidenciesByType = \Ease\Functions::reindexArrayBy(
             \AbraFlexi\EvidenceList::$evidences,
             'evidenceType',
         );

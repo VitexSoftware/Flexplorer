@@ -56,6 +56,8 @@ class WebPage extends \Ease\TWB5\WebPage
         $this->head->addItem('<link rel="stylesheet" href="/javascript/font-awesome/css/font-awesome.min.css">');
 
         $this->container = $this->addItem(new \Ease\TWB5\Container());
+        $this->addToMain(new \Ease\Html\DivTag('<br/>'));
+        
     }
 
     /**
