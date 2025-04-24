@@ -50,6 +50,10 @@
         },
         {
             "type": "path",
+            "url": "/usr/share/php/EaseHtmlWidgets/"
+        },
+        {
+            "type": "path",
             "url": "/usr/share/php/AbraFlexiBricks/"
         },
         {
