@@ -16,6 +16,7 @@
     "require": {
         "league/commonmark": "^1.5",
         "deb/abraflexi": "*",
+        "deb/ease-html-widgets":"*",
         "deb/abraflexi-bricks": "*",
         "deb/ease-bootstrap5-widgets": "*",
         "deb/datatables-abraflexi": "*"
