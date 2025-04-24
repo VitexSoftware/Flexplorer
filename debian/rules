@@ -19,6 +19,7 @@ override_dh_install:
 	sed -i -e 's/\.\.\//.\//g' debian/flexplorer/usr/share/flexplorer/about.php
 	sed -i -e 's/..\/vendor/\/var\/lib\/composer\/flexplorer/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
 	sed -i -e 's/..\/i18n/\/usr\/share\/locale/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
+	jq '.version = "'`dpkg-parsechangelog | sed -n 's/^Version: //p'| sed 's/~.*//'`'"'  debian/conf/composer.json |sponge debian/flexplorer/usr/lib/flexplorer/composer.json
 
 override_dh_clean:
 	debconf-updatepo
