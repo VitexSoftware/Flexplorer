@@ -1,8 +1,15 @@
-flexplorer (1.5) UNRELEASED; urgency=medium
+flexplorer (1.5.1) UNRELEASED; urgency=medium
 
+  * Bootstrap5 used
+
+ -- vitex <info@vitexsoftware.cz>  Thu, 24 Apr 2025 10:59:09 +0200
+
+flexplorer (1.5) noble; urgency=medium
+
+  [ CyberVitexus ]
   * Datatables used
 
- -- CyberVitexus <vitex@exiv.jinonice.czf>  Sat, 16 Jan 2021 18:51:36 +0100
+ -- vitex <info@vitexsoftware.cz>  Thu, 24 Apr 2025 10:58:51 +0200
 
 flexplorer (1.4.5) experimental; urgency=medium
 

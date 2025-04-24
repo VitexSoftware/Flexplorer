@@ -6,9 +6,9 @@ src/css/images/*                usr/share/flexplorer/css/images/
 src/js/*.js                     usr/share/flexplorer/js/
 src/images/*                    usr/share/flexplorer/images/
 src/includes/*.php		usr/share/flexplorer/includes/
-src/Flexplorer/*.php		usr/share/flexplorer/classes/
-src/Flexplorer/ui/*.php		usr/share/flexplorer/classes/ui/
-src/Flexplorer/xml/*.php		usr/share/flexplorer/classes/xml/
+src/Flexplorer/*.php		usr/lib/flexplorer/classes/
+src/Flexplorer/ui/*.php		usr/lib/flexplorer/classes/ui/
+src/Flexplorer/xml/*.php	usr/lib/flexplorer/classes/xml/
 src/download/*                  usr/share/flexplorer/download/
 debian/conf/flexplorer.conf	etc/apache2/conf-available/
 debian/conf/flexplorer.service  etc/avahi/services/

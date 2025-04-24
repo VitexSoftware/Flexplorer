@@ -14,3 +14,9 @@
 .phpdoc
 /.env
 /.build/
+/debian/.debhelper/
+/debian/debhelper-build-stamp
+/debian/flexplorer.debhelper.log
+/debian/flexplorer.postrm.debhelper
+/debian/flexplorer.substvars
+/debian/files
