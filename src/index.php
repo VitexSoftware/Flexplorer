@@ -42,7 +42,6 @@ foreach ($statuser->getData() as $property => $value) {
     $infoTable->addRowColumns([$property, $value]);
 }
 
-
 $infoRow = new \Ease\TWB5\Row();
 $infoRow->addColumn(6, new \Ease\TWB5\Panel(_('server info'), 'default', $infoTable));
 $infoRow->addColumn(6, new \Ease\TWB5\Panel(_('license info'), 'default', new ui\LicenseInfo($_SESSION['license'])));

@@ -23,10 +23,9 @@ namespace Flexplorer\ui;
 class FlexiURL extends \Ease\Html\DivTag
 {
     /**
-     * @param type $url
-     * @param type $properties
+     * @param array<string, string> $properties
      */
-    public function __construct($url = null, $properties = null)
+    public function __construct(string $url, $properties = null)
     {
         if (null === $url) {
             $url = WebPage::singleton()->getRequestValue('url');
@@ -58,5 +57,12 @@ EOD.$id.<<<'EOD'
         });
     }, 1000);
 EOD, null, true);
+    }
+
+    public function finalize(): void
+    {
+        if ($this->finalized === false) {
+            parent::finalize();
+        }
     }
 }

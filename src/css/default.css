@@ -116,11 +116,19 @@
     background-color: #ff0;
 }
 
-#lasturl {
-    font-size: x-large;
+#lasturl a {
+    font-weight: 900;
     font-family: monospace;
-    color: #ff0;
-    margin: 2px;
-    padding: 2px;
+    color: hsl(76, 87%, 76%);
+    text-shadow: 1px 1px 2px #006400, 0 0 1em #8fbc8f, 0 0 0.2em #8fbc8f;
+    font-size: 48px;
+    font-family: "Courier New", Courier, monospace;
+    background: #0a0;
+    background: -webkit-radial-gradient(center, ellipse, #4d4, #006400);
+    background: -moz-radial-gradient(center, ellipse, #4d4, #006400);
+    background: radial-gradient(ellipse at center, #4d4, #006400);
+    border: 5px solid #6b8e23;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px #006400, 0 0 10px #8fbc8f;
 }
 

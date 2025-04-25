@@ -178,7 +178,7 @@ if ($login) {
     }
 
     if ($oUser->tryToLogin($_POST)) {
-        $oPage->redirect('main.php');
+        $oPage->redirect('companies.php');
         session_write_close();
 
         exit;

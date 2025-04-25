@@ -35,7 +35,7 @@ $id = $oPage->getRequestValue('id', 'int');
 $change = $oPage->getRequestValue('changefile');
 $format = 'json';
 
-$changeFile = HookReciever::getSaveDir().'/'.basename($change ? $change : 'flexplorer_changes.json');
+$changeFile = HookReciever::getSaveDir().'/'.basename($change ?: 'flexplorer_changes.json');
 
 $changeData = ['winstrom' => ['@globalVersion' => $lastversion, 'changes' => ['@evidence' => $evidence,
     '@in-version' => $lastversion,
@@ -80,7 +80,7 @@ if (\count($flexidata)) {
 
 $oPage->addItem(new ui\PageTop(_('WebHook test')));
 
-$changeTabs = new \Ease\TWB5\Tabs([],['name'=>'changetabs']);
+$changeTabs = new \Ease\TWB5\Tabs([], ['name' => 'changetabs']);
 
 $toolRow = new \Ease\TWB5\Row();
 $settingsForm = new \Ease\TWB5\Form(['name' => 'settings']);
@@ -110,13 +110,13 @@ $settingsForm->addInput(
 $settingsForm->addInput(new \Ease\Html\SelectTag(
     'evidence',
     $evidenciesToMenu,
-    (string)$evidence,
+    (string) $evidence,
 ), _('Evidence'));
 
 $settingsForm->addInput(new \Ease\Html\SelectTag(
     'operation',
     ['create' => 'Create', 'update' => 'Update', 'delete' => 'Delete'],
-    (string)$operation,
+    (string) $operation,
 ), _('Operation'), null);
 
 $settingsForm->addInput(

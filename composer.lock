@@ -968,12 +968,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/VitexSoftware/php-abraflexi-bricks.git",
-                "reference": "c13239eb16e5e0f8850a21850adda12dfe7f80ab"
+                "reference": "d0bf8c45468550e1c5d48d1de66aff25386aa8f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VitexSoftware/php-abraflexi-bricks/zipball/c13239eb16e5e0f8850a21850adda12dfe7f80ab",
-                "reference": "c13239eb16e5e0f8850a21850adda12dfe7f80ab",
+                "url": "https://api.github.com/repos/VitexSoftware/php-abraflexi-bricks/zipball/d0bf8c45468550e1c5d48d1de66aff25386aa8f3",
+                "reference": "d0bf8c45468550e1c5d48d1de66aff25386aa8f3",
                 "shasum": ""
             },
             "require": {
@@ -1011,7 +1011,7 @@
                 "issues": "https://github.com/VitexSoftware/php-abraflexi-bricks/issues",
                 "source": "https://github.com/VitexSoftware/php-abraflexi-bricks/tree/main"
             },
-            "time": "2025-03-13T11:40:30+00:00"
+            "time": "2025-04-25T07:35:51+00:00"
         },
         {
             "name": "vitexsoftware/datatables-abraflexi",
@@ -3004,12 +3004,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "975afcdae530fd1561bcf5076d4d01691df7359e"
+                "reference": "46e08840c7bf08787b910899ec13c702a663205c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/975afcdae530fd1561bcf5076d4d01691df7359e",
-                "reference": "975afcdae530fd1561bcf5076d4d01691df7359e",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/46e08840c7bf08787b910899ec13c702a663205c",
+                "reference": "46e08840c7bf08787b910899ec13c702a663205c",
                 "shasum": ""
             },
             "require": {
@@ -3055,7 +3055,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-04-23T11:18:17+00:00"
+            "time": "2025-04-25T15:07:42+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -3450,12 +3450,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "58e364eec03ffd034b6380ab3c1ab26ed8f8da4b"
+                "reference": "86a98dbe33698e0570c131c4a8b272f5d4de783e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/58e364eec03ffd034b6380ab3c1ab26ed8f8da4b",
-                "reference": "58e364eec03ffd034b6380ab3c1ab26ed8f8da4b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/86a98dbe33698e0570c131c4a8b272f5d4de783e",
+                "reference": "86a98dbe33698e0570c131c4a8b272f5d4de783e",
                 "shasum": ""
             },
             "require": {
@@ -3548,7 +3548,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-04-23T14:02:54+00:00"
+            "time": "2025-04-25T14:29:40+00:00"
         },
         {
             "name": "psr/container",
@@ -6419,7 +6419,7 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
