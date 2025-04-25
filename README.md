@@ -39,7 +39,7 @@ Umožňuje:
 
 Vyzkoušejte: 
 
-  * Stabilní verze: http://abraflexi-dev.spoje.net/ (vždy funguje)
+  * Stabilní verze: http://flexplorer.vitexsoftware.com/ (vždy funguje)
   * Vývojová verze: https://vitexsoftware.cz/flexplorer/ ( poslední novinky )
 
 Instalace
