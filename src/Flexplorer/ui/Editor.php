@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Flexplorer\ui;
 
+use Ease\Html\Widgets\Toggle;
+
 /**
  * Description of Editor.
  *
@@ -106,7 +108,7 @@ class Editor extends ColumnsForm
 
                 break;
             case 'logic':
-                $widget = new TWBSwitch(
+                $widget = new Toggle(
                     $propertyName,
                     $value,
                     true,
@@ -341,11 +343,11 @@ class Editor extends ColumnsForm
     /**
      * Vrací pole možností pro select.
      *
-     * @param array $colProperties
+     * @param array<string, string> $colProperties
      *
-     * @return array
+     * @return array<string, string>
      */
-    private function colValues($colProperties)
+    private function colValues(array $colProperties)
     {
         $options = [];
 

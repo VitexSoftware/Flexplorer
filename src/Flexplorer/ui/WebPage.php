@@ -17,14 +17,12 @@ namespace Flexplorer\ui;
 
 class WebPage extends \Ease\TWB5\WebPage
 {
-    
     /**
      * Where to look for bootstrap stylesheet.
      *
      * @var string path or url
      */
     public string $bootstrapCSS = 'css/bootstrap.min.css';
-    
     public string $requestURL = '';
 
     /**
@@ -74,7 +72,7 @@ class WebPage extends \Ease\TWB5\WebPage
     public function onlyForAdmin($loginPage = 'login.php'): void
     {
         if (!$this->user->getSettingValue('admin')) {
-            \Ease\Shared::user()->addStatusMessage(_('Please sign in as admin first'),'warning',);
+            \Ease\Shared::user()->addStatusMessage(_('Please sign in as admin first'), 'warning');
             $this->redirect($loginPage);
         }
     }
@@ -149,7 +147,7 @@ class WebPage extends \Ease\TWB5\WebPage
     {
         if ($this->finalized === false) {
             if (\Ease\Shared::user()->getUserID()) { // Authenticated user
-                $urlPanel = new \Ease\Html\DivTag(null,['style'=>'height: 50px; margin-top: 50px; margin-bottom: 20px;']);
+                $urlPanel = new \Ease\Html\DivTag(null, ['style' => 'height: 50px; margin-top: 50px; margin-bottom: 20px;']);
                 $urlPanel->addItem(new FlexiURL(self::singleton()->getRequestURL(), ['id' => 'lasturl', 'class' => 'innershadow']));
                 $this->body->addAsFirst($urlPanel);
             }

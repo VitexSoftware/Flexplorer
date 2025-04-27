@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Flexplorer\ui;
 
+use Ease\Html\Widgets\LiveAge;
+
 /**
  * Description of ChangesLister.
  *
@@ -22,10 +24,16 @@ namespace Flexplorer\ui;
  */
 class ChangesLister extends \Ease\Html\UlTag
 {
+    /**
+     * Summary of addItemSmart.
+     *
+     * @param mixed                 $pageItem
+     * @param array<string, string> $properties
+     */
     public function &addItemSmart($pageItem, $properties = [])
     {
         [$tmp, $stamp] = explode('_', $pageItem);
-        $age = new \Ease\ui\LiveAge((new \DateTime())->setTimestamp((int) str_replace('.json', '', $stamp)));
+        $age = new LiveAge((new \DateTime())->setTimestamp((int) str_replace('.json', '', $stamp)));
         $pageItem = new \Ease\Html\ATag(
             'change.php?file='.$pageItem,
             str_replace(

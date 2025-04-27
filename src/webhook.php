@@ -18,5 +18,5 @@ namespace Flexplorer;
 require_once 'includes/Init.php';
 
 $hooker = new \AbraFlexi\Bricks\HookReciever();
-$hooker->takeChanges($hooker->listen());
+$hooker->takeChanges((array) $hooker->listen());
 $hooker->processChanges();
