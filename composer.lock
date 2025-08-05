@@ -756,16 +756,16 @@
         },
         {
             "name": "spojenet/flexibee",
-            "version": "3.5.4",
+            "version": "v3.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Spoje-NET/php-abraflexi.git",
-                "reference": "cddea58779cfa93d974a0ae26382cb3c105ef3e7"
+                "reference": "bd919a2aeabaf5058faefad63ebec81619eabdcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Spoje-NET/php-abraflexi/zipball/cddea58779cfa93d974a0ae26382cb3c105ef3e7",
-                "reference": "cddea58779cfa93d974a0ae26382cb3c105ef3e7",
+                "url": "https://api.github.com/repos/Spoje-NET/php-abraflexi/zipball/bd919a2aeabaf5058faefad63ebec81619eabdcb",
+                "reference": "bd919a2aeabaf5058faefad63ebec81619eabdcb",
                 "shasum": ""
             },
             "require": {
@@ -809,9 +809,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Spoje-NET/php-abraflexi/issues",
-                "source": "https://github.com/Spoje-NET/php-abraflexi/tree/3.5.4"
+                "source": "https://github.com/Spoje-NET/php-abraflexi/tree/v3.5.6"
             },
-            "time": "2025-06-26T21:48:07+00:00"
+            "time": "2025-07-24T14:08:20+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
