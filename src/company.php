@@ -152,12 +152,6 @@ if (empty($company)) {
         $companyActions,
     );
 
-    $oPage->addItem(new \Ease\Html\DivTag('<br>'));
-    $oPage->addItem(new ui\FlexiURL(
-        $oPage->getRequestURL(),
-        ['id' => 'lasturl', 'class' => 'innershadow'],
-    ));
-
     $oPage->addItem($companyPanel);
 
     $oPage->addItem(new ui\PageBottom());
