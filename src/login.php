@@ -188,7 +188,7 @@ if ($login) {
 // $oPage->addItem(new PageTop(_('Sign In')));
 $loginFace = new DivTag(null, ['id' => 'LoginFace']);
 
-$oPage->container->addItem($loginFace);
+$oPage->addItem($loginFace);
 $loginRow = new Row();
 $infoColumn = $loginRow->addItem(new Col(4));
 $infoBlock = $infoColumn->addItem(new Card(new ImgTag('images/flexplorer-logo.png')));
@@ -253,7 +253,7 @@ $featuresPanel = new \Ease\TWB5\Panel(_('Features'), 'primary');
 $featuresPanel->addItem($featureList);
 $loginRow->addColumn(4, $featuresPanel);
 
-$oPage->container->addItem(new Form([], $loginRow));
+$loginFace->addItem(new Form([], $loginRow));
 
 $oPage->addItem(new PageBottom());
 $oPage->draw();
