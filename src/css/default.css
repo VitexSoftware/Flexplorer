@@ -157,3 +157,8 @@
     text-decoration: none;
 }
 
+.flexibee-top-image {
+    filter: hue-rotate(240deg) saturate(1.5) brightness(0.9);
+    opacity: 0.85;
+}
+

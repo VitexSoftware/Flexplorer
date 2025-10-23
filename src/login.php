@@ -33,7 +33,7 @@ use Flexplorer\ui\PageTop;
 require_once 'includes/Init.php';
 $oPage->addItem(new PageTop(_('Sign in')));
 
-$oPage->addAsFirst(new \Ease\Html\ImgTag('images\flexibeetop.png', 'top', ['class' => 'img-fluid', 'width' => '100%']));
+$oPage->addAsFirst(new \Ease\Html\ImgTag('images\flexibeetop.png', 'top', ['class' => 'img-fluid flexibee-top-image', 'width' => '100%']));
 
 // $loginFace = new \Ease\Html\DivTag(null, ['id' => 'LoginFace']);
 //
@@ -249,7 +249,7 @@ $featureList->addItemSmart(
     ['class' => 'list-group-item'],
 );
 
-$featuresPanel = new \Ease\TWB5\Panel(_('Features'), 'info');
+$featuresPanel = new \Ease\TWB5\Panel(_('Features'), 'primary');
 $featuresPanel->addItem($featureList);
 $loginRow->addColumn(4, $featuresPanel);
 
