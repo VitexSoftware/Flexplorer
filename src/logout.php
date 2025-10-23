@@ -33,7 +33,7 @@ if ($oUser->getUserID()) {
     \Ease\Shared::user(new \Ease\Anonym());
 
     foreach ($messagesBackup as $message) {
-        $oPage->addStatusMessage($message);
+        $oPage->addStatusMessage($message->body, $message->type);
     }
 
     ui\WebPage::redirect('login.php');
