@@ -79,6 +79,17 @@ if ($action && \strlen($action)) {
     $body = $sender->postFields;
 }
 
+// Ensure default values for form
+if (null === $method || !\strlen($method)) {
+    $method = 'GET';
+}
+if (null === $body) {
+    $body = '';
+}
+if (null === $format || !\strlen($format)) {
+    $format = 'json';
+}
+
 $oPage->addItem(new ui\PageTop(_('Query').': '.$url));
 
 $requestTabs = new \Ease\TWB5\Tabs([], ['id' => 'Request']);
@@ -88,7 +99,7 @@ $requestTabs->addTab(
     new \Ease\TWB5\Panel(
         _('Custom request'),
         'warning',
-        new ui\SendForm($url, $method ?? 'GET', $body ?? '', $format ?? 'json'),
+        new ui\SendForm($url, $method, $body, $format),
     ),
     !($oPage->isPosted() || ($oPage->getRequestValue('show') === 'result')),
 );
