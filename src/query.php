@@ -90,6 +90,7 @@ $requestTabs->addTab(
         'warning',
         new ui\SendForm($url, $method ?? 'GET', $body ?? '', $format ?? 'json'),
     ),
+    !($oPage->isPosted() || ($oPage->getRequestValue('show') === 'result')),
 );
 
 $requestTabs->addTab(
