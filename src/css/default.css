@@ -141,9 +141,10 @@
 
 #footer {
     background-color: #2c1454;
-    padding: 10px;
-    width: 90%;
+    padding: 20px;
+    width: 100%;
     color: #00d9ff;
+    margin-top: 40px;
 }
 
 #footer a {
