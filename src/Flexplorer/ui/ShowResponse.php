@@ -25,7 +25,7 @@ class ShowResponse extends \Ease\Html\DivTag
     /**
      * Class for AbraFlexi interaction.
      */
-    public \AbraFlexi\RW $sender = null;
+    public ?\AbraFlexi\RW $sender = null;
 
     /**
      * Recieve AbraFlexi reuest response.
