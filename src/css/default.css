@@ -125,6 +125,12 @@
     background-color: #ff0;
 }
 
+#lasturl {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+}
+
 #lasturl a {
     font-weight: 900;
     font-family: monospace;
@@ -139,5 +145,13 @@
     border: 5px solid #6b8e23;
     border-radius: 10px;
     box-shadow: inset 0 0 10px #006400, 0 0 10px #8fbc8f;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    white-space: normal;
+    text-decoration: none;
 }
 
