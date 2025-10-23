@@ -41,6 +41,10 @@ class ShowResponse extends \Ease\Html\DivTag
 
     public function finalize(): void
     {
+        if ($this->finalized) {
+            return;
+        }
+
         $formatedResponse = '';
         /** @var \Ease\TWB5\WebPage $webPage */
         $webPage = WebPage::singleton();
@@ -149,6 +153,7 @@ $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
 EOD);
+      parent::finalize();
     }
 
     /**
