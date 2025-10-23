@@ -94,13 +94,16 @@ $oPage->addItem(new ui\PageTop(_('Query').': '.$url));
 
 $requestTabs = new \Ease\TWB5\Tabs([], ['id' => 'Request']);
 
+$requestForm = new ui\SendForm($url, $method, $body, $format);
+$requestPanel = new \Ease\TWB5\Panel(
+    _('Custom request'),
+    'warning',
+);
+$requestPanel->addItem($requestForm);
+
 $requestTabs->addTab(
     _('Request'),
-    new \Ease\TWB5\Panel(
-        _('Custom request'),
-        'warning',
-        new ui\SendForm($url, $method, $body, $format),
-    ),
+    $requestPanel,
     !($oPage->isPosted() || ($oPage->getRequestValue('show') === 'result')),
 );
 
