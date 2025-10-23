@@ -138,6 +138,10 @@ class MainMenu extends \Ease\TWB5\Navbar
                 ],
             );
             $this->addMenuItem(new \Ease\Html\ATag('logout.php', '🚪 '._('Sign off')));
+        } else {
+            // Menu for non-authenticated users
+            $this->addMenuItem(new \Ease\Html\ATag('permissions.php', '🔐 '._('Role Permissions')));
+            $this->addMenuItem(new \Ease\Html\ATag('login.php', '🔑 '._('Sign in')));
         }
     }
 }
