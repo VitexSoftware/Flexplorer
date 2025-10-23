@@ -147,9 +147,9 @@ class WebPage extends \Ease\TWB5\WebPage
     {
         if ($this->finalized === false) {
             if (\Ease\Shared::user()->getUserID()) { // Authenticated user
-                $urlPanel = new \Ease\Html\DivTag(null, ['style' => 'margin-top: 50px; margin-bottom: 20px; clear: both;']);
+                $urlPanel = new \Ease\Html\DivTag(null, ['style' => 'margin-bottom: 20px; clear: both;']);
                 $urlPanel->addItem(new FlexiURL(self::singleton()->getRequestURL(), ['id' => 'lasturl', 'class' => 'innershadow']));
-                $this->body->addAsFirst($urlPanel);
+                $this->addItem($urlPanel);
             }
 
             $this->includeJavaScript('js/jquery.keepAlive.js');
