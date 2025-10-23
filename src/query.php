@@ -131,7 +131,7 @@ $requestTabs->addTab(
     ),
 );
 
-$oPage->container->addItem($requestTabs);
+$oPage->addItem($requestTabs);
 
 $oPage->addItem(new ui\PageBottom());
 

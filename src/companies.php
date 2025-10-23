@@ -30,7 +30,7 @@ $oPage->onlyForLogged();
 
 $oPage->addItem(new ui\PageTop(_('Companies')));
 
-$cListing = $oPage->container->addItem(new ui\CompaniesListing());
+$cListing = $oPage->addItem(new ui\CompaniesListing());
 
 $oPage->setRequestURL($cListing->companer->curlInfo['url']);
 

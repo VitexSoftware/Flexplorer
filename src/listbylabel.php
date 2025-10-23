@@ -27,7 +27,7 @@ $oPage->addItem(new ui\PageTop(sprintf(_('Label %s occurencies'), $label)));
 if (isset($label)) {
     if (isset($evidence)) {
         $evobj = new SearchFlexplorer(['evidence' => $evidence, 'stitky' => $label]);
-        $oPage->container->addItem(new \Ease\TWB5\LinkButton(
+        $oPage->addItem(new \Ease\TWB5\LinkButton(
             'listbylabel.php?label='.$label,
             _('All Evidencies'),
             'success',
@@ -45,7 +45,7 @@ if (isset($label)) {
 
 foreach ($evobj->getData() as $evidence => $occurencies) {
     if (\count($occurencies)) {
-        $oPage->container->addItem(new \Ease\Html\H2Tag(new \Ease\Html\ATag(
+        $oPage->addItem(new \Ease\Html\H2Tag(new \Ease\Html\ATag(
             'evidence.php?evidence='.$evidence,
             $evidence,
         )));
@@ -59,7 +59,7 @@ foreach ($evobj->getData() as $evidence => $occurencies) {
             $results->addRowColumns($data);
         }
 
-        $oPage->container->addItem($results);
+        $oPage->addItem($results);
     }
 }
 

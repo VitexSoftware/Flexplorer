@@ -37,7 +37,7 @@ $oPage->addItem(new \Ease\Html\ImgTag('images\flexibeetop.png', 'top', ['class' 
 
 // $loginFace = new \Ease\Html\DivTag(null, ['id' => 'LoginFace']);
 //
-// $oPage->container->addItem($loginFace);
+// $oPage->addItem($loginFace);
 //
 // $loginRow = new \Ease\TWB5\Row();
 // $infoColumn = $loginRow->addItem(new \Ease\TWB5\Col(4));
@@ -106,7 +106,7 @@ $oPage->addItem(new \Ease\Html\ImgTag('images\flexibeetop.png', 'top', ['class' 
 // $loginColumn->addItem($loginPanel);
 //
 //
-// $oPage->container->addItem(new \Ease\TWB5\Form(['name' => 'Login'], $loginRow));
+// $oPage->addItem(new \Ease\TWB5\Form(['name' => 'Login'], $loginRow));
 // $login = $oPage->getRequestValue('login');
 // $password = $oPage->getRequestValue('password');
 // $server = $oPage->getRequestValue('server');

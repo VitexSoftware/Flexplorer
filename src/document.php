@@ -60,7 +60,7 @@ if (empty($embed)) {
 $embeded = new \AbraFlexi\ui\EmbedResponsivePDF($document, 'getpdf.php', $report);
 
 if (empty($embed)) {
-    $oPage->container->addItem($embeded);
+    $oPage->addItem($embeded);
     $oPage->addItem(new ui\PageBottom());
 } else {
     $oPage->addItem($embeded);

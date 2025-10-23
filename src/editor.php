@@ -71,7 +71,7 @@ $editorTabs->addAjaxTab(
 $editorTabs->addTab(_('Print Sets'), new ui\PrintSetGallery($engine));
 $editorTabs->addTab(_('Downloads'), new ui\RecordDownloader($engine));
 
-$oPage->container->addItem($editorTabs);
+$oPage->addItem($editorTabs);
 
 $oPage->addItem(new ui\PageBottom());
 

@@ -179,7 +179,7 @@ EOD);
 
 $changeTabs->addTab(_('Request'), $toolRow);
 
-$oPage->container->addItem(new \Ease\TWB5\Panel(
+$oPage->addItem(new \Ease\TWB5\Panel(
     _('WebHook probe'),
     'info',
     $changeTabs,

@@ -98,7 +98,7 @@ if ($operation === 'install') {
 
     foreach ($results as $result) {
         [$evidence, $recordId] = extract('/', $result);
-        $oPage->container->addItem(new \Ease\TWB5\LinkButton(
+        $oPage->addItem(new \Ease\TWB5\LinkButton(
             'editor.php?evidence='.$evidence.'&id='.$recordId,
             $result,
         ));

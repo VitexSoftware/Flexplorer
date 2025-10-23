@@ -56,7 +56,7 @@ $sender->info['url'] = 'file://'.$file;
 
 $oPage->addItem(new ui\PageTop(_('Changes recieved').': '.$file));
 
-$oPage->container->addItem(new ui\ShowResponse($sender));
+$oPage->addItem(new ui\ShowResponse($sender));
 
 $testForm = new \Ease\TWB5\Form('probechange', 'fakechange.php');
 
@@ -96,7 +96,7 @@ $optionsRow->addColumn(
 
 $testForm->addItem($optionsRow);
 
-$oPage->container->addItem($testForm);
+$oPage->addItem($testForm);
 
 $oPage->addItem(new ui\PageBottom());
 

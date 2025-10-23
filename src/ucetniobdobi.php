@@ -145,7 +145,7 @@ if (!isset($ucetniObdobi['message']) && \count($ucetniObdobi)) {
     );
 }
 
-$oPage->container->addItem(new \Ease\TWB5\Panel(
+$oPage->addItem(new \Ease\TWB5\Panel(
     _('Tool for massive creating Accounting periods'),
     'info',
     $toolRow,

@@ -89,7 +89,7 @@ $deleteTabs->addTab(
     ),
 );
 
-$oPage->container->addItem($deleteTabs);
+$oPage->addItem($deleteTabs);
 
 $oPage->addItem(new ui\PageBottom());
 

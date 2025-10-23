@@ -97,7 +97,7 @@ foreach (\AbraFlexi\EvidenceList::$evidences as $evidence) {
     $allEvidences->addRowColumns($evidence);
 }
 
-$oPage->container->addItem($evidenceTabs);
+$oPage->addItem($evidenceTabs);
 
 $oPage->addItem(new ui\PageBottom());
 

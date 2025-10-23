@@ -42,11 +42,11 @@ EOD._('Install Buttons into AbraFlexi'),
     ],
 );
 
-// $oPage->container->addItem( new \Ease\TWB5\LinkButton('getbuttonxml.php?type=structure', _('Structure')) );
-// $oPage->container->addItem( new \Ease\TWB5\LinkButton('getbuttonxml.php?type=editor', _('Edit Record')) );
-$oPage->container->addItem($evidenceButtonInfo);
+// $oPage->addItem( new \Ease\TWB5\LinkButton('getbuttonxml.php?type=structure', _('Structure')) );
+// $oPage->addItem( new \Ease\TWB5\LinkButton('getbuttonxml.php?type=editor', _('Edit Record')) );
+$oPage->addItem($evidenceButtonInfo);
 
-// $oPage->container->addItem( new \Ease\TWB5\LinkButton('getbuttonxml.php?type=webui', _('WebUI')) );
+// $oPage->addItem( new \Ease\TWB5\LinkButton('getbuttonxml.php?type=webui', _('WebUI')) );
 
 $oPage->addItem(new ui\PageBottom());
 
