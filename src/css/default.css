@@ -158,7 +158,32 @@
 }
 
 .flexibee-top-image {
-    filter: hue-rotate(240deg) saturate(1.5) brightness(0.9);
-    opacity: 0.85;
+    filter: hue-rotate(260deg) saturate(2) brightness(0.8) contrast(1.1);
+    opacity: 0.8;
+    mix-blend-mode: screen;
+}
+
+#LoginFace .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+#LoginFace .list-group-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+#LoginFace .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+#LoginFace .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #00ffaa;
+    box-shadow: 0 0 5px rgba(0, 255, 170, 0.5);
+    color: #ffffff;
 }
 
