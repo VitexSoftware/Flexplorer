@@ -64,9 +64,10 @@ class PageTop extends \Ease\Html\DivTag
 
 
 EOD);
-            $this->addItem(new \Ease\Html\DivTag('<br>'));
-            $this->addItem(WebPage::singleton()->getStatusMessagesBlock(['id' => 'status-messages', 'title' => _('Click to hide messages')]));
-            $this->addItem(new \Ease\Html\DivTag(null, ['id' => 'smdrag', 'style' => 'margin-bottom: 5px']));
+            $statusBlock = new \Ease\Html\DivTag(null, ['id' => 'status-block', 'style' => 'width: 100%;']);
+            $statusBlock->addItem(WebPage::singleton()->getStatusMessagesBlock(['id' => 'status-messages', 'title' => _('Click to hide messages')]));
+            $statusBlock->addItem(new \Ease\Html\DivTag(null, ['id' => 'smdrag']));
+            $this->addItem($statusBlock);
             \Ease\Shared::logger()->cleanMessages();
             WebPage::singleton()->addCss('.dropdown-menu { overflow-y: auto } ');
             WebPage::singleton()->addJavaScript(

@@ -37,16 +37,25 @@
     overflow-y: auto;
 }
 
-#status-messages {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    right: 0;
+#status-block {
     width: 100%;
-    z-index: 1000;
+    margin-bottom: 10px;
+}
+
+#status-messages {
+    position: relative;
+    width: 100%;
+    z-index: 100;
     margin: 0;
     background-color: rgba(0, 0, 0, 0.9);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #1a0033;
 }
 
 #smdrag {
@@ -56,6 +65,9 @@
     background-repeat: no-repeat;
     background-position: top center;
     cursor: ns-resize;
+    width: 100%;
+    margin: 0;
+    position: relative;
 }
 
 #smdrag:hover {
