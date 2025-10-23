@@ -88,7 +88,7 @@ $requestTabs->addTab(
     new \Ease\TWB5\Panel(
         _('Custom request'),
         'warning',
-        new ui\SendForm($url, $method, $body, $format),
+        new ui\SendForm($url, $method ?? 'GET', $body ?? '', $format ?? 'json'),
     ),
 );
 
