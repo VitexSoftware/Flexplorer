@@ -250,8 +250,7 @@ $featureList->addItemSmart(
 );
 
 $featuresPanel = new \Ease\TWB5\Panel(_('Features'), 'info');
-
-\Ease\WebPage::addItemCustom($featureList, $featuresPanel);
+$featuresPanel->addItem($featureList);
 $loginRow->addColumn(4, $featuresPanel);
 
 $oPage->container->addItem(new Form([], $loginRow));
