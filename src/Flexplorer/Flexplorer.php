@@ -44,7 +44,10 @@ class Flexplorer extends \AbraFlexi\RW
         }
 
         parent::__construct();
-        $this->evidenceStructure = $this->getColumnsInfo();
+        
+        if (!empty($this->getEvidence())) {
+            $this->evidenceStructure = $this->getColumnsInfo();
+        }
     }
 
     /**
