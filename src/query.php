@@ -46,7 +46,7 @@ if (!\strlen($url)) {
     }
 
     if (null !== $id) {
-        if (strstr($id, ',')) {
+        if ($id && strstr($id, ',')) {
             $ids = [];
 
             foreach (explode(',', $id) as $oneID) {
@@ -74,7 +74,7 @@ if ($oPage->isPosted() || \strlen($url)) {
     $sender->performQuery();
 }
 
-if (\strlen($action)) {
+if ($action && \strlen($action)) {
     $method = 'POST';
     $body = $sender->postFields;
 }

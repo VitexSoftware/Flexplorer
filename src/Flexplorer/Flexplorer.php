@@ -379,7 +379,7 @@ class Flexplorer extends \AbraFlexi\RW
             ), 'success');
         }
 
-        if (\strlen($sourceurl)) {
+        if ($sourceurl && \strlen($sourceurl)) {
             $this->doCurlRequest($sourceurl, 'get');
 
             if ($this->lastResponseCode === 200) {
@@ -401,7 +401,7 @@ class Flexplorer extends \AbraFlexi\RW
             $method = 'GET';
         }
 
-        if (!\strlen($url)) {
+        if (!$url || !\strlen($url)) {
             $url = $this->url;
             $body = null;
         } else {
@@ -411,14 +411,14 @@ class Flexplorer extends \AbraFlexi\RW
         }
 
         if (null === $format) {
-            if (strstr($url, '.xml')) {
+            if ($url && strstr($url, '.xml')) {
                 $format = 'xml';
             } else {
                 $format = 'json';
             }
         }
 
-        if (\strlen($action)) {
+        if ($action && \strlen($action)) {
             $this->setMyKey($id);
             $result = $this->performAction($action, 'int');
         } else {
