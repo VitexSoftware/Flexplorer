@@ -128,7 +128,7 @@ if (!isset($ucetniObdobi['message']) && \count($ucetniObdobi)) {
     foreach ($ucetniObdobi as $hookinfo) {
         $hookinfo[] = new \Ease\TWB5\LinkButton(
             '?yeardel='.$hookinfo['id'],
-            new \Ease\TWB5\GlyphIcon('remove'),
+            '❌',
             'warning',
         );
         $ucetniObdobiTable->addRowColumns($hookinfo);

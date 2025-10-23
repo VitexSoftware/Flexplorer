@@ -153,13 +153,13 @@ class RecordEditor extends \Ease\TWB5\Panel
 
                 $note = [new \Ease\Html\ATag(
                     'evidence.php?evidence='.$evidence,
-                    new \Ease\TWB5\GlyphIcon('list').' '.$evidence,
+                    '📋 '.$evidence,
                 )];
 
                 if (\strlen($value)) {
                     $note[] = new \Ease\Html\ATag(
                         'editor.php?evidence='.$evidence.'&id='.urlencode($value),
-                        new \Ease\TWB5\GlyphIcon('edit').' '._('Edit targeted record'),
+                        '✏️ '._('Edit targeted record'),
                     );
                 }
 

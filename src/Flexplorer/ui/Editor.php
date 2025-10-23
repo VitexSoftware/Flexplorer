@@ -55,7 +55,7 @@ class Editor extends ColumnsForm
             'on',
             ['onText' => _('Save to AbraFlexi'), 'offText' => _('Show in editor')],
         ));
-        $this->addItem(new \Ease\TWB5\SubmitButton(_('OK').' '.new \Ease\TWB5\GlyphIcon('save')));
+        $this->addItem(new \Ease\TWB5\SubmitButton(_('OK').' 💾'));
         $this->engine = $engine;
     }
 
@@ -133,13 +133,13 @@ class Editor extends ColumnsForm
 
                 $note = [new \Ease\Html\ATag(
                     'evidence.php?evidence='.$evidence,
-                    new \Ease\TWB5\GlyphIcon('list').' '.$evidence,
+                    '📋 '.$evidence,
                 )];
 
                 if ($value && \strlen($value)) {
                     $note[] = new \Ease\Html\ATag(
                         'editor.php?evidence='.$evidence.'&id='.urlencode($value),
-                        new \Ease\TWB5\GlyphIcon('edit').' '._('Edit targeted record'),
+                        '✏️ '._('Edit targeted record'),
                     );
                 }
 
@@ -312,7 +312,7 @@ class Editor extends ColumnsForm
             ),
         ));
 
-        $extIDsEditor->addItem(new \Ease\TWB5\SubmitButton(_('OK').' '.new \Ease\TWB5\GlyphIcon('save')));
+        $extIDsEditor->addItem(new \Ease\TWB5\SubmitButton(_('OK').' 💾'));
 
         return $extIDsEditor;
     }

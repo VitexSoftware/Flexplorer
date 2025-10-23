@@ -85,6 +85,6 @@ class extIDsEditor extends \Ease\TWB5\Container
             ),
         ));
 
-        $this->addItem(new \Ease\TWB5\SubmitButton(_('OK').' '.new \Ease\TWB5\GlyphIcon('save'), 'success'));
+        $this->addItem(new \Ease\TWB5\SubmitButton(_('OK').' 💾', 'success'));
     }
 }

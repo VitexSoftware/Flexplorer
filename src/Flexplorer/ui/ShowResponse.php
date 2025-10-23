@@ -128,14 +128,14 @@ EOD, null, false);
                 ));
                 $this->addItem(new \Ease\TWB5\LinkButton(
                     '#',
-                    _('Make new request from this response').new \Ease\TWB5\GlyphIcon('repeat'),
+                    _('Make new request from this response').' 🔄',
                     'success',
                     ['onClick' => 'responseToRequest();'],
                 ));
 
                 $this->addItem(new \Ease\TWB5\LinkButton(
                     '#',
-                    _('Save this response to file').new \Ease\TWB5\GlyphIcon('floppy-save'),
+                    _('Save this response to file').' 💾',
                     'success',
                     ['onClick' => 'downloadResponse();'],
                 ));

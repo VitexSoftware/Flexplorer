@@ -59,7 +59,7 @@ $saveForm->addInput(new \Ease\Html\InputTextTag(
 ));
 
 $saveForm->addItem(new \Ease\TWB5\SubmitButton(
-    new \Ease\TWB5\GlyphIcon('floppy-save').' '._('Save'),
+    '💾 '._('Save'),
     'success',
     ['onClick' => "$('#Preloader').css('visibility', 'visible');"],
 ));

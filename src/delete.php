@@ -61,7 +61,7 @@ $buttonRow->addColumn(
     4,
     new \Ease\TWB5\LinkButton(
         'evidence.php?evidence='.$evidence,
-        _('Keep record').' '.new \Ease\TWB5\GlyphIcon('ok-sign'),
+        _('Keep record').' ✅',
         'info',
         ['class' => 'btn btn-default clearfix pull-right'],
     ),
@@ -70,7 +70,7 @@ $buttonRow->addColumn(
     4,
     new \Ease\TWB5\LinkButton(
         'delete.php?evidence='.$evidence.'&delete=true&id='.$id,
-        _('Delete record').' '.new \Ease\TWB5\GlyphIcon('remove-sign'),
+        _('Delete record').' 🚫',
         'danger',
     ),
 );

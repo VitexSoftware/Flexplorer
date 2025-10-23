@@ -139,10 +139,10 @@ class Flexplorer extends \AbraFlexi\RW
                             $row[$key] = '<em>NULL</em>';
                         } else {
                             if (($value === '0') || ($value === 'false')) {
-                                $row[$key] = \Ease\TWB5\Part::glyphIcon('unchecked')->__toString();
+                                $row[$key] = '☐';
                             } else {
                                 if (($value === '1') || ($value === 'true')) {
-                                    $row[$key] = \Ease\TWB5\Part::glyphIcon('check')->__toString();
+                                    $row[$key] = '✓';
                                 }
                             }
                         }
@@ -155,10 +155,7 @@ class Flexplorer extends \AbraFlexi\RW
                                 $this->evidenceStructure[$key]['url'],
                             );
                             $revidence = 'evidence.php?evidence='.end($tmp);
-                            $row[$key] = '<a href="'.$revidence.'">'.\Ease\TWB5\Part::glyphIcon(
-                                'link',
-                                ['title' => $this->evidenceStructure[$key]['fkName']],
-                            )->__toString().'</a> '.$value;
+                            $row[$key] = '<a href="'.$revidence.'" title="'.$this->evidenceStructure[$key]['fkName'].'">🔗</a> '.$value;
                         }
 
                         break;
@@ -194,7 +191,7 @@ class Flexplorer extends \AbraFlexi\RW
                                     if ($id) {
                                         $values[$id] = '<a title="'.$table.'" href="'.$target.'?'.$idcolumn.'='.$id.'">'.$name.'</a>';
                                     } else {
-                                        $values[$id] = '<a title="'.$table.'" href="search.php?search='.$name.'&table='.$table.'&column='.$searchColumn.'">'.$name.'</a> '.\Ease\TWB5\Part::glyphIcon('search');
+                                        $values[$id] = '<a title="'.$table.'" href="search.php?search='.$name.'&table='.$table.'&column='.$searchColumn.'">'.$name.'</a> 🔍';
                                     }
                                 }
                             }
@@ -209,7 +206,7 @@ class Flexplorer extends \AbraFlexi\RW
                         if (isset($this->keywordsInfo[$key]['refdata']) && \strlen(trim($value))) {
                             $table = $this->keywordsInfo[$key]['refdata']['table'];
                             $searchColumn = $this->keywordsInfo[$key]['refdata']['captioncolumn'];
-                            $row[$key] = '<a title="'.$table.'" href="search.php?search='.$value.'&table='.$table.'&column='.$searchColumn.'">'.$value.'</a> '.\Ease\TWB5\Part::glyphIcon('search');
+                            $row[$key] = '<a title="'.$table.'" href="search.php?search='.$value.'&table='.$table.'&column='.$searchColumn.'">'.$value.'</a> 🔍';
                         }
 
                         if (strstr($key, 'url')) {

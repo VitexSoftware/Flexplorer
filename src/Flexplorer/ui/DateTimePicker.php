@@ -43,7 +43,7 @@ class DateTimePicker extends \Ease\Html\DivTag
         ));
         $this->setTagId($name);
         $this->addItem(new \Ease\Html\Span(
-            new \Ease\TWB5\GlyphIcon('calendar'),
+            '📅',
             ['class' => 'input-group-addon'],
         ));
         WebPage::singleton()->addJavascript("$('#".$this->getTagID().<<<'EOD'
