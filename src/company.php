@@ -131,8 +131,8 @@ if (empty($company)) {
         ['id' => 'dbNazev', 'readonly'],
     ))]);
 
-    $created = \AbraFlexi\RO::flexiDateTimeToDateTime($companer->getDataValue('createDt'));
-    $companyInfo->addRowColumns([_('created'), \AbraFlexi\RO::flexiDateTimeToDateTime($companer->getDataValue('createDt'))->format('d.m. Y').' ('._('before').' '.new \Ease\Html\Widgets\LiveAge($created).')']);
+    $created = \AbraFlexi\Functions::flexiDateTimeToDateTime($companer->getDataValue('createDt'));
+    $companyInfo->addRowColumns([_('created'), \AbraFlexi\Functions::flexiDateTimeToDateTime($companer->getDataValue('createDt'))->format('d.m. Y').' ('._('before').' '.new \Ease\Html\Widgets\LiveAge($created).')']);
 
     $companyInfo->addRowColumns([_('Watching changes'), new ui\WatchingChangesStatus($companer->getDataValue('watchingChanges') === 'true')]);
 

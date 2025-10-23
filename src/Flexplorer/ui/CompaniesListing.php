@@ -71,8 +71,8 @@ class CompaniesListing extends \Ease\Html\DivTag
             $companyDataRaw['nazev'],
         );
 
-        $created = \AbraFlexi\RO::flexiDateTimeToDateTime($companyDataRaw['createDt']);
-        $companyData['created'] = \AbraFlexi\RO::flexiDateTimeToDateTime($companyDataRaw['createDt'])->format('d.m. Y').' ('._('before').' '.new \Ease\Html\Widgets\LiveAge($created).')';
+        $created = \AbraFlexi\Functions::flexiDateTimeToDateTime($companyDataRaw['createDt']);
+        $companyData['created'] = \AbraFlexi\Functions::flexiDateTimeToDateTime($companyDataRaw['createDt'])->format('d.m. Y').' ('._('before').' '.new \Ease\Html\Widgets\LiveAge($created).')'.
         $companyData['databaze'] = new CopyToClipBoard(new \Ease\Html\InputTextTag(
             'dbNazev',
             $companyDataRaw['dbNazev'],
