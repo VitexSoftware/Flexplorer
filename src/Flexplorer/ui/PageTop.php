@@ -79,6 +79,13 @@ EOD);
             //           WebPage::singleton()->includeJavaScript('https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js');
         }
 
+        // Add lasturl panel for authenticated users
+        if (\Ease\Shared::user()->getUserID()) {
+            $urlPanel = new \Ease\Html\DivTag(null, ['style' => 'margin-bottom: 20px; clear: both;']);
+            $urlPanel->addItem(new FlexiURL(WebPage::singleton()->getRequestURL(), ['id' => 'lasturl', 'class' => 'innershadow']));
+            $this->addItem($urlPanel);
+        }
+
         //        }
 
         parent::finalize();

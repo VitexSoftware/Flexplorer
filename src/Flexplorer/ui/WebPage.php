@@ -146,12 +146,6 @@ class WebPage extends \Ease\TWB5\WebPage
     public function finalize(): void
     {
         if ($this->finalized === false) {
-            if (\Ease\Shared::user()->getUserID()) { // Authenticated user
-                $urlPanel = new \Ease\Html\DivTag(null, ['style' => 'margin-bottom: 20px; clear: both;']);
-                $urlPanel->addItem(new FlexiURL(self::singleton()->getRequestURL(), ['id' => 'lasturl', 'class' => 'innershadow']));
-                $this->addItem($urlPanel);
-            }
-
             $this->includeJavaScript('js/jquery.keepAlive.js');
             $this->addJavaScript('$.fn.keepAlive({timer: 300000});');
 
