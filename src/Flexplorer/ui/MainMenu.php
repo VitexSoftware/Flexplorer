@@ -31,7 +31,7 @@ class MainMenu extends \Ease\TWB5\Navbar
     public function __construct(string $name, $brand, $properties = [])
     {
         parent::__construct($brand, $name, $properties);
-        $this->addTagClass('navbar-inverse bg-inverse navbar-toggleable-sm  navbar-expand-lg bg-secondary text-uppercase fixed-top');
+        $this->addTagClass('navbar-inverse bg-inverse navbar-toggleable-sm  navbar-expand-lg bg-secondary text-uppercase');
 
         $myCompany = $_SESSION['company'] ?? '';
         $userID = \Ease\Shared::user()->getUserID();

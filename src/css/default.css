@@ -40,12 +40,14 @@
 #status-block {
     width: 100%;
     margin-bottom: 10px;
+    position: relative;
+    clear: both;
 }
 
 #status-messages {
     position: relative;
     width: 100%;
-    z-index: 100;
+    z-index: 1;
     margin: 0;
     background-color: rgba(0, 0, 0, 0.9);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
@@ -53,9 +55,13 @@
 
 #header {
     position: relative;
-    z-index: 10;
+    z-index: 1001;
     background-color: #1a0033;
     width: 100%;
+}
+
+#header .navbar {
+    z-index: 1001;
 }
 
 #smdrag {
@@ -68,6 +74,9 @@
     width: 100%;
     margin: 0;
     position: relative;
+    z-index: 1000;
+    display: block !important;
+    visibility: visible !important;
 }
 
 #smdrag:hover {
