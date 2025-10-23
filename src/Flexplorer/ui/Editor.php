@@ -222,7 +222,7 @@ class Editor extends ColumnsForm
             $contents = $this->pageParts;
             $this->emptyContents();
 
-            $editorTabs = new \Ease\TWB5\Tabs('EditorTabs');
+            $editorTabs = new \Ease\TWB5\Tabs([], ['id' => 'EditorTabs']);
             $editorTabs->addTab(_('Columns'), $contents);
             $editorTabs->addTab(_('External IDs'), $this->extIDsEditor());
             $editorTabs->addTab(_('Labels'), new LabelSwitches($this->engine));

@@ -75,7 +75,7 @@ $buttonRow->addColumn(
     ),
 );
 
-$deleteTabs = new \Ease\TWB5\Tabs('DeleteTabs');
+$deleteTabs = new \Ease\TWB5\Tabs([], ['id' => 'DeleteTabs']);
 $deleteTabs->addTab(_('Overview'), new ui\RecordShow($engine, $buttonRow));
 $deleteTabs->addTab(
     _('AbraFlexi'),

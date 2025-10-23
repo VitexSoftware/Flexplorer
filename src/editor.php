@@ -52,7 +52,7 @@ if (empty($id)) {
 
 $oPage->addItem(new ui\PageTop(_('Record Editor').' '.$evidence.':'.$id));
 
-$editorTabs = new \Ease\TWB5\Tabs('EditorTabs');
+$editorTabs = new \Ease\TWB5\Tabs([], ['id' => 'EditorTabs']);
 $editorTabs->addTab(_('Record Editor'), new ui\RecordEditor($engine));
 
 $editorTabs->addTab(

@@ -81,7 +81,7 @@ if ($action && \strlen($action)) {
 
 $oPage->addItem(new ui\PageTop(_('Query').': '.$url));
 
-$requestTabs = new \Ease\TWB5\Tabs('Request');
+$requestTabs = new \Ease\TWB5\Tabs([], ['id' => 'Request']);
 
 $requestTabs->addTab(
     _('Request'),
