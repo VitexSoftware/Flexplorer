@@ -37,6 +37,14 @@
     overflow-y: auto;
 }
 
+#status-messages {
+    position: relative;
+    width: 100%;
+    z-index: 1000;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
 #smdrag {
     height: 8px;
     background-image:  url( ../images/slidehandle.png );
