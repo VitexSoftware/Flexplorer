@@ -145,6 +145,29 @@
     width: 100%;
     color: #00d9ff;
     margin-top: 40px;
+    position: relative;
+}
+
+#footer::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    background: linear-gradient(to right, rgba(26, 0, 51, 1), rgba(44, 20, 84, 1));
+    pointer-events: none;
+}
+
+#footer::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    background: linear-gradient(to left, rgba(26, 0, 51, 1), rgba(44, 20, 84, 1));
+    pointer-events: none;
 }
 
 #footer a {
