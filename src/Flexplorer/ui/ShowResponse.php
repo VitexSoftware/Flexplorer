@@ -106,10 +106,11 @@ class ShowResponse extends \Ease\Html\DivTag
                 $this->addJavaScript(<<<'EOD'
 
                         function responseToRequest() {
-                            $("#editor").val( $("#formatedResponse").html() );
-                            $("#Request a:first").tab("show");
-                            $("#editor").focus();
-                            $("#editor").change();
+                            $("textarea[name='body']").val( $("#formatedResponse").html() );
+                            var requestTab = new bootstrap.Tab(document.getElementById('Request-Request-tab'));
+                            requestTab.show();
+                            $("textarea[name='body']").focus();
+                            $("textarea[name='body']").change();
                         };
 
 function downloadResponse(){
