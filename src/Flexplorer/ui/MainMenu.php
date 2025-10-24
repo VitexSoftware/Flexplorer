@@ -153,10 +153,12 @@ class MainMenu extends \Ease\TWB5\Navbar
         if ($this->searchBox !== null) {
             // Get the first child (containerFluid) and insert search box after brand and toggler
             $children = $this->getContents();
+
             if (isset($children[0]) && method_exists($children[0], 'addItem')) {
                 $children[0]->addItem($this->searchBox);
             }
         }
+
         parent::finalize();
     }
 }

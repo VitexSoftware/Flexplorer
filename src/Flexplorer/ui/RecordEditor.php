@@ -167,7 +167,7 @@ class RecordEditor extends \Ease\TWB5\Panel
             case 'select':
                 $widget = new \Ease\Html\SelectTag(
                     $propertyName,
-                    $this->colValues($colProperties),
+                    self::colValues($colProperties),
                     $value,
                     null,
                     $inputProperties,
@@ -262,7 +262,7 @@ class RecordEditor extends \Ease\TWB5\Panel
      *
      * @return array
      */
-    private function colValues($colProperties)
+    private static function colValues($colProperties)
     {
         $options = [];
 

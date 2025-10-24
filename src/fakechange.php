@@ -40,7 +40,6 @@ $changeFile = HookReciever::getSaveDir().'/'.basename($change ?: 'flexplorer_cha
 $changeData = ['winstrom' => ['@globalVersion' => $lastversion, 'changes' => ['@evidence' => $evidence,
     '@in-version' => $lastversion,
     '@operation' => $operation, 'id' => $id, 'external-ids' => [$extid]]]];
-
 $responseBody = null;
 $responseCode = null;
 

@@ -154,7 +154,7 @@ $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
 EOD);
-      parent::finalize();
+        parent::finalize();
     }
 
     /**
@@ -364,7 +364,7 @@ EOD);
                 break;
 
             default:
-                $text = 'Unknown http status code "'.htmlentities($code).'"';
+                $text = 'Unknown http status code "'.htmlentities((string) $code).'"';
 
                 break;
         }

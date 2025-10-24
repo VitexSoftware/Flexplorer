@@ -46,27 +46,28 @@ class Searcher extends \Ease\Atom
     public function __construct($evidence = null)
     {
         $this->evidence = $evidence;
-        
+
         if (null === $evidence || empty($evidence)) {
             // Search system evidences
             $this->sysClasses['evidencies'] = new Evidencer();
-            
+
             // Search in all available evidences
             try {
                 $lister = new \AbraFlexi\EvidenceList();
                 $flexidata = $lister->getFlexiData();
+
                 foreach ($flexidata as $evidenceInfo) {
                     if (isset($evidenceInfo['evidencePath'])) {
                         try {
                             $this->registerEvidence($evidenceInfo['evidencePath']);
                         } catch (\Exception $e) {
                             // Skip evidences that cannot be registered
-                            error_log('Cannot register evidence ' . $evidenceInfo['evidencePath'] . ': ' . $e->getMessage());
+                            error_log('Cannot register evidence '.$evidenceInfo['evidencePath'].': '.$e->getMessage());
                         }
                     }
                 }
             } catch (\Exception $e) {
-                error_log('Cannot load evidence list: ' . $e->getMessage());
+                error_log('Cannot load evidence list: '.$e->getMessage());
             }
         } else {
             $this->registerEvidence($evidence);
@@ -136,10 +137,10 @@ class Searcher extends \Ease\Atom
                 }
             } catch (\Exception $e) {
                 // Skip evidences that fail during search
-                error_log('Search error in evidence ' . ($searched->evidence ?? 'unknown') . ': ' . $e->getMessage());
+                error_log('Search error in evidence '.($searched->evidence ?? 'unknown').': '.$e->getMessage());
             } catch (\TypeError $e) {
                 // Skip type errors from malformed data
-                error_log('Type error in evidence ' . ($searched->evidence ?? 'unknown') . ': ' . $e->getMessage());
+                error_log('Type error in evidence '.($searched->evidence ?? 'unknown').': '.$e->getMessage());
             }
         }
 

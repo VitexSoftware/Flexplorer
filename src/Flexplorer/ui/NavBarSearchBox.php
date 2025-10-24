@@ -34,7 +34,7 @@ class NavBarSearchBox extends \Ease\Html\Form
         parent::__construct(array_merge(['name' => $formName, 'action' => $formAction, 'method' => 'post'], $tagProperties));
 
         $this->setTagProperties(['class' => 'd-flex align-items-center ms-3', 'role' => 'search']);
-        
+
         // Add typeahead input with Bootstrap 5 styling
         $this->addItem(new \Ease\Html\InputTextTag(
             'q',
@@ -48,7 +48,7 @@ class NavBarSearchBox extends \Ease\Html\Form
                 'style' => 'width: 250px;',
             ],
         ));
-        
+
         // Add submit button
         $this->addItem(new \Ease\Html\ButtonTag(
             _('Search'),

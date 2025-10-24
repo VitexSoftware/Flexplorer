@@ -44,7 +44,7 @@ class Flexplorer extends \AbraFlexi\RW
         }
 
         parent::__construct();
-        
+
         if (!empty($this->getEvidence())) {
             $this->evidenceStructure = $this->getColumnsInfo();
         }
@@ -444,7 +444,6 @@ class Flexplorer extends \AbraFlexi\RW
             $columnsInfoFinal['id'] = $idBackup;
             $columnsInfoFinal['external-ids'] = ['name' => 'ExtID', 'title' => _('External ID'),
                 'type' => 'string', 'isSortable' => 'false'];
-
             $columnsInfoFinal = array_merge($columnsInfoFinal, $columnsInfo);
         }
 

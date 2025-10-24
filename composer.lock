@@ -1368,12 +1368,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/VitexSoftware/php-ease-twbootstrap5.git",
-                "reference": "58be3ba26995b6e20d4c350ff43745a72af03b42"
+                "reference": "eabc5889eba79c545356c5b63868fb5d2410aa62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VitexSoftware/php-ease-twbootstrap5/zipball/58be3ba26995b6e20d4c350ff43745a72af03b42",
-                "reference": "58be3ba26995b6e20d4c350ff43745a72af03b42",
+                "url": "https://api.github.com/repos/VitexSoftware/php-ease-twbootstrap5/zipball/eabc5889eba79c545356c5b63868fb5d2410aa62",
+                "reference": "eabc5889eba79c545356c5b63868fb5d2410aa62",
                 "shasum": ""
             },
             "require": {
@@ -1408,7 +1408,7 @@
                 "issues": "https://github.com/VitexSoftware/php-ease-twbootstrap5/issues",
                 "source": "https://github.com/VitexSoftware/php-ease-twbootstrap5/tree/main"
             },
-            "time": "2025-10-24T00:07:47+00:00"
+            "time": "2025-10-24T12:27:04+00:00"
         }
     ],
     "packages-dev": [

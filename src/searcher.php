@@ -30,13 +30,14 @@ header('Content-Type: application/json');
 // Check if user is logged in without redirect
 if (!\Ease\Shared::user()->getUserID()) {
     echo json_encode([]);
+
     exit;
 }
 
 $evidence = $oPage->getRequestValue('evidence');
 $query = $oPage->getRequestValue('q');
 
-if ($query !== null && \strlen($query) > 0) {
+if ($query !== null && $query !== '') {
     $_SESSION['searchQuery'] = $query;
 
     $found = [];
@@ -76,7 +77,7 @@ if ($query !== null && \strlen($query) > 0) {
         }
     } catch (\Exception $e) {
         // Log error but return empty results for AJAX
-        error_log('Searcher error: ' . $e->getMessage());
+        error_log('Searcher error: '.$e->getMessage());
     }
 
     echo json_encode($found);

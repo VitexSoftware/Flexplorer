@@ -147,7 +147,7 @@ class Editor extends ColumnsForm
             case 'select':
                 $widget = new \Ease\Html\SelectTag(
                     $propertyName,
-                    $this->colValues($colProperties),
+                    self::colValues($colProperties),
                     $value,
                     null,
                     $inputProperties,
@@ -347,7 +347,7 @@ class Editor extends ColumnsForm
      *
      * @return array<string, string>
      */
-    private function colValues(array $colProperties)
+    private static function colValues(array $colProperties)
     {
         $options = [];
 

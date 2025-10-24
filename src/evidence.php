@@ -201,7 +201,7 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
         $evidenceLicensed === false,
     );
 
-    $tabs->addTab(_('Print Sets'), new ui\PrintSetGallery($evobj));
+    $tabs->addTab(_('Print Sets'), new ui\PrintSetGallery($evobj, 'list'));
 
     $oPage->addToMain($tabs);
     $oPage->addToFooter(new ui\PageBottom());

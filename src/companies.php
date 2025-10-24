@@ -32,7 +32,7 @@ $oPage->addItem(new ui\PageTop(_('Companies')));
 
 $cListing = new ui\CompaniesListing();
 
-$oPage->addItem( new \Ease\TWB5\Container( $cListing ));
+$oPage->addItem(new \Ease\TWB5\Container($cListing));
 
 $oPage->setRequestURL($cListing->companer->curlInfo['url']);
 

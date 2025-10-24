@@ -71,7 +71,19 @@ if (!\strlen($url)) {
 $sender = new Flexplorer($evidence);
 
 if ($oPage->isPosted() || \strlen($url)) {
-    $sender->performQuery();
+    try {
+        $sender->performQuery();
+    } catch (\AbraFlexi\Exception $e) {
+        $sender->addStatusMessage(
+            sprintf(_('AbraFlexi Error: %s'), $e->getMessage()),
+            'error',
+        );
+    } catch (\Exception $e) {
+        $sender->addStatusMessage(
+            sprintf(_('Error: %s'), $e->getMessage()),
+            'error',
+        );
+    }
 }
 
 if ($action && \strlen($action)) {
@@ -83,9 +95,11 @@ if ($action && \strlen($action)) {
 if (null === $method || !\strlen($method)) {
     $method = 'GET';
 }
+
 if (null === $body) {
     $body = '';
 }
+
 if (null === $format || !\strlen($format)) {
     $format = 'json';
 }
