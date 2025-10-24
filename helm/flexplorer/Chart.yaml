@@ -1,0 +1,17 @@
+apiVersion: v2
+name: flexplorer
+description: A Helm chart for Flexplorer - ABRA Flexi API Developer Tool
+type: application
+version: 1.6.0
+appVersion: "1.6.0"
+home: https://github.com/VitexSoftware/Flexplorer
+sources:
+  - https://github.com/VitexSoftware/Flexplorer
+maintainers:
+  - name: Vítězslav Dvořák
+    email: info@vitexsoftware.cz
+keywords:
+  - flexplorer
+  - abraflexi
+  - erp
+  - api-explorer

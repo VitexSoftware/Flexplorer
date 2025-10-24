@@ -129,12 +129,29 @@ and the version from the latest Debian package at [http://localhost:8080/flexplo
 Docker
 ------
 
-A Docker image is also available. The following command makes FlexPlorer accessible at: [localhost:2323](http://0.0.0.0:2323/)
+A multi-architecture Docker image is available for **amd64** and **arm64** platforms.
 
-    docker run  -dit --name flexplorer -p 2323:80 vitexsoftware/flexplorer
+### Run with Docker
 
-```    
-vitex@docker:~$ docker run  -dit --name flexplorer -p 2323:80 vitexsoftware/flexplorer
+The following command makes FlexPlorer accessible at: [localhost:2323](http://0.0.0.0:2323/)
+
+    docker run -dit --name flexplorer -p 2323:80 vitexsoftware/flexplorer
+
+### Run with custom configuration
+
+```bash
+docker run -dit --name flexplorer -p 2323:80 \
+  -e FLEXIBEE_URL=https://your-server.com \
+  -e FLEXIBEE_LOGIN=username \
+  -e FLEXIBEE_PASSWORD=password \
+  -e FLEXIBEE_COMPANY=company \
+  vitexsoftware/flexplorer
+```
+
+### Example Docker output
+
+```bash
+vitex@docker:~$ docker run -dit --name flexplorer -p 2323:80 vitexsoftware/flexplorer
 Unable to find image 'vitexsoftware/flexplorer:latest' locally
 latest: Pulling from vitexsoftware/flexplorer
 cc1a78bfd46b: Pull complete 
@@ -155,9 +172,33 @@ Status: Downloaded newer image for vitexsoftware/flexplorer:latest
 396261e16a3adb66faf8f63a3f518b3c10331cc9c0f575c73cd86df3899b8f87
 ```
 
+Kubernetes / Helm
+-----------------
 
+A Helm chart is available for easy deployment to Kubernetes clusters.
 
+### Install with Helm
 
+```bash
+# Install with default values (demo server)
+helm install flexplorer ./helm/flexplorer
+
+# Install with custom configuration
+helm install flexplorer ./helm/flexplorer \
+  --set flexplorer.flexibeeUrl=https://your-server.com \
+  --set flexplorer.flexibeeLogin=username \
+  --set flexplorer.flexibeePassword=password \
+  --set flexplorer.flexibeeCompany=company
+
+# Install with Ingress enabled
+helm install flexplorer ./helm/flexplorer \
+  --set ingress.enabled=true \
+  --set ingress.hosts[0].host=flexplorer.example.com \
+  --set ingress.hosts[0].paths[0].path=/ \
+  --set ingress.hosts[0].paths[0].pathType=Prefix
+```
+
+For more details, see the [Helm chart documentation](helm/flexplorer/README.md).
 
 Configuration
 -------------
