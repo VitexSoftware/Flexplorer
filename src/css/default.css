@@ -257,3 +257,20 @@
     color: #ffffff !important;
 }
 
+/* Warning panel styling to match purple theme */
+.card.bg-warning {
+    background-color: #6b4c8a !important;
+    border-color: #8b6cb8 !important;
+}
+
+.card.bg-warning .card-header {
+    background-color: #5a3d73 !important;
+    color: #e0d0ff !important;
+    border-bottom: 1px solid #8b6cb8 !important;
+}
+
+.card.bg-warning .card-body {
+    background-color: #6b4c8a !important;
+    color: #ffffff !important;
+}
+
