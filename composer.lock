@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f3e47d76fdfd1dffc2b4fe3996ffce9",
+    "content-hash": "cd34deb86385ad13a9862c7632eccd66",
     "packages": [
         {
             "name": "dflydev/dot-access-data",
@@ -762,16 +762,16 @@
         },
         {
             "name": "spojenet/flexibee",
-            "version": "v3.6.2",
+            "version": "v3.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Spoje-NET/php-abraflexi.git",
-                "reference": "b9a1ee1b896e13e5ab6487b60a669a8c78542df4"
+                "reference": "d0c73851480c5a2ef4abb2db5bd7f496abd9588f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Spoje-NET/php-abraflexi/zipball/b9a1ee1b896e13e5ab6487b60a669a8c78542df4",
-                "reference": "b9a1ee1b896e13e5ab6487b60a669a8c78542df4",
+                "url": "https://api.github.com/repos/Spoje-NET/php-abraflexi/zipball/d0c73851480c5a2ef4abb2db5bd7f496abd9588f",
+                "reference": "d0c73851480c5a2ef4abb2db5bd7f496abd9588f",
                 "shasum": ""
             },
             "require": {
@@ -783,9 +783,9 @@
             },
             "require-dev": {
                 "ergebnis/composer-normalize": "^2.48",
-                "ergebnis/php-cs-fixer-config": "^6.54",
+                "ergebnis/php-cs-fixer-config": "^6.55",
                 "ext-iconv": "*",
-                "friendsofphp/php-cs-fixer": "^3.87",
+                "friendsofphp/php-cs-fixer": "^3.88",
                 "phing/phing": "*",
                 "phpstan/phpstan": "*",
                 "phpunit/phpunit": "*",
@@ -816,9 +816,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Spoje-NET/php-abraflexi/issues",
-                "source": "https://github.com/Spoje-NET/php-abraflexi/tree/v3.6.2"
+                "source": "https://github.com/Spoje-NET/php-abraflexi/tree/v3.6.3"
             },
-            "time": "2025-09-12T18:41:53+00:00"
+            "time": "2025-10-24T11:00:15+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -1032,12 +1032,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/VitexSoftware/php-abraflexi-datatables.git",
-                "reference": "e776a4c5da9c5dc94931ea1190fa326b58626f89"
+                "reference": "35ec5df31bd68906b54e5fda47d18973d4335e23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VitexSoftware/php-abraflexi-datatables/zipball/e776a4c5da9c5dc94931ea1190fa326b58626f89",
-                "reference": "e776a4c5da9c5dc94931ea1190fa326b58626f89",
+                "url": "https://api.github.com/repos/VitexSoftware/php-abraflexi-datatables/zipball/35ec5df31bd68906b54e5fda47d18973d4335e23",
+                "reference": "35ec5df31bd68906b54e5fda47d18973d4335e23",
                 "shasum": ""
             },
             "require": {
@@ -1081,7 +1081,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2025-10-07T20:01:07+00:00"
+            "time": "2025-10-24T01:16:13+00:00"
         },
         {
             "name": "vitexsoftware/ease-bootstrap5-widgets",
@@ -2842,12 +2842,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "0da2d6679a3df45d6d720aa2e0d4568f82a32e46"
+                "reference": "3a454ca033b9e06b63282ce19562e892747449bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/0da2d6679a3df45d6d720aa2e0d4568f82a32e46",
-                "reference": "0da2d6679a3df45d6d720aa2e0d4568f82a32e46",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/3a454ca033b9e06b63282ce19562e892747449bb",
+                "reference": "3a454ca033b9e06b63282ce19562e892747449bb",
                 "shasum": ""
             },
             "require": {
@@ -2893,7 +2893,7 @@
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
                 "source": "https://github.com/nikic/PHP-Parser/tree/master"
             },
-            "time": "2025-09-08T07:54:25+00:00"
+            "time": "2025-10-21T19:32:17+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -3019,8 +3019,8 @@
             "version": "2.1.x-dev",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/6c44887423faf584640fdddc650b817699849e25",
-                "reference": "6c44887423faf584640fdddc650b817699849e25",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/fa997420f9e3827c02b5f8fb9c1bc201fca0a999",
+                "reference": "fa997420f9e3827c02b5f8fb9c1bc201fca0a999",
                 "shasum": ""
             },
             "require": {
@@ -3066,7 +3066,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-10-17T15:16:49+00:00"
+            "time": "2025-10-24T09:00:35+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -3461,12 +3461,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "33d931d538fb5fc3600273e629299c9638b761bd"
+                "reference": "a96c61dfc29d9827155ee9771454967bd57bef5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/33d931d538fb5fc3600273e629299c9638b761bd",
-                "reference": "33d931d538fb5fc3600273e629299c9638b761bd",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a96c61dfc29d9827155ee9771454967bd57bef5d",
+                "reference": "a96c61dfc29d9827155ee9771454967bd57bef5d",
                 "shasum": ""
             },
             "require": {
@@ -3559,7 +3559,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-10-16T06:58:55+00:00"
+            "time": "2025-10-22T06:18:11+00:00"
         },
         {
             "name": "psr/container",
@@ -3672,12 +3672,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/cache.git",
-                "reference": "0156560fabadb75faa57ca8a34b335e51305ff9b"
+                "reference": "845e157750daa2f7c67b7fab63b46fb909bb8464"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/cache/zipball/0156560fabadb75faa57ca8a34b335e51305ff9b",
-                "reference": "0156560fabadb75faa57ca8a34b335e51305ff9b",
+                "url": "https://api.github.com/repos/reactphp/cache/zipball/845e157750daa2f7c67b7fab63b46fb909bb8464",
+                "reference": "845e157750daa2f7c67b7fab63b46fb909bb8464",
                 "shasum": ""
             },
             "require": {
@@ -3736,7 +3736,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2025-10-15T07:30:12+00:00"
+            "time": "2025-10-19T18:29:29+00:00"
         },
         {
             "name": "react/child-process",
@@ -3819,12 +3819,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/dns.git",
-                "reference": "30c355a16e4a6be09c45ed291d2dfb5cf5295ace"
+                "reference": "57a623adf5a97be31d1749cd069a813bf97bd786"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/dns/zipball/30c355a16e4a6be09c45ed291d2dfb5cf5295ace",
-                "reference": "30c355a16e4a6be09c45ed291d2dfb5cf5295ace",
+                "url": "https://api.github.com/repos/reactphp/dns/zipball/57a623adf5a97be31d1749cd069a813bf97bd786",
+                "reference": "57a623adf5a97be31d1749cd069a813bf97bd786",
                 "shasum": ""
             },
             "require": {
@@ -3887,7 +3887,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2025-10-13T11:10:50+00:00"
+            "time": "2025-10-19T20:50:30+00:00"
         },
         {
             "name": "react/event-loop",
@@ -4041,12 +4041,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "23e4ff33ea3e160d2d1f59a0e6050e4b0fb0eac1"
+                "reference": "def0730288b2a321db04f22caf86259ab2975cc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/23e4ff33ea3e160d2d1f59a0e6050e4b0fb0eac1",
-                "reference": "23e4ff33ea3e160d2d1f59a0e6050e4b0fb0eac1",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/def0730288b2a321db04f22caf86259ab2975cc7",
+                "reference": "def0730288b2a321db04f22caf86259ab2975cc7",
                 "shasum": ""
             },
             "require": {
@@ -4105,7 +4105,7 @@
             ],
             "support": {
                 "issues": "https://github.com/reactphp/socket/issues",
-                "source": "https://github.com/reactphp/socket/tree/v1.16.0"
+                "source": "https://github.com/reactphp/socket/tree/1.x"
             },
             "funding": [
                 {
@@ -4113,7 +4113,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-07-26T10:38:09+00:00"
+            "time": "2025-10-19T20:51:52+00:00"
         },
         {
             "name": "react/stream",

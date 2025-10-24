@@ -18,13 +18,12 @@ namespace Flexplorer\ui;
 class NavBarSearchBox extends \Ease\Html\Form
 {
     /**
-     * Formulář Bootstrapu.
+     * Bootstrap 5 Search Form for Navbar.
      *
-     * @param string     $formName      jméno formuláře
-     * @param string     $formAction    cíl formulář např login.php
-     * @param null|mixed $term
-     * @param array      $tagProperties vlastnosti tagu například:
-     *                                  array('enctype' => 'multipart/form-data')
+     * @param string     $formName      form name
+     * @param string     $formAction    form target
+     * @param null|mixed $term          initial search term
+     * @param array      $tagProperties additional tag properties
      */
     public function __construct(
         $formName,
@@ -34,35 +33,26 @@ class NavBarSearchBox extends \Ease\Html\Form
     ) {
         parent::__construct(array_merge(['name' => $formName, 'action' => $formAction, 'method' => 'post'], $tagProperties));
 
-        $this->setTagProperties(['class' => 'navbar-form', 'role' => 'search']);
-        $group = $this->addItem(
-            new \Ease\Html\DivTag(new \Ease\Html\InputTextTag(
-                'search',
-                $term,
-                [
-                    'class' => 'form-control pull-right typeahead input-sm',
-                    'style' => 'width: 200px; margin-right: 35px, border: 1px solid black; background-color: #e5e5e5; height: 27px',
-                    'placeholder' => _('Search'),
-                ],
-            ), ['class' => 'input-group']),
-        );
-        $buttons = $group->addItem(new \Ease\Html\SpanTag(
-            null,
-            ['class' => 'input-group-btn'],
+        $this->setTagProperties(['class' => 'd-flex align-items-center ms-3', 'role' => 'search']);
+        
+        // Add typeahead input with Bootstrap 5 styling
+        $this->addItem(new \Ease\Html\InputTextTag(
+            'q',
+            $term,
+            [
+                'class' => 'form-control me-2 typeahead',
+                'type' => 'search',
+                'placeholder' => _('Search'),
+                'aria-label' => _('Search'),
+                'autocomplete' => 'off',
+                'style' => 'width: 250px;',
+            ],
         ));
-        $buttons->addItem(new \Ease\Html\ButtonTag(
-            new \Ease\Html\SpanTag(
-                new \Ease\Html\SpanTag(_('Close'), ['class' => 'sr-only']),
-                ['class' => 'glyphicon glyphicon-remove'],
-            ),
-            ['type' => 'reset', 'class' => 'btn btn-default btn-sm'],
-        ));
-        $buttons->addItem(new \Ease\Html\ButtonTag(
-            new \Ease\Html\SpanTag(
-                new \Ease\Html\SpanTag(_('Search'), ['class' => 'sr-only']),
-                ['class' => 'glyphicon glyphicon-search'],
-            ),
-            ['type' => 'submit', 'class' => 'btn btn-default btn-sm '],
+        
+        // Add submit button
+        $this->addItem(new \Ease\Html\ButtonTag(
+            _('Search'),
+            ['type' => 'submit', 'class' => 'btn btn-outline-light'],
         ));
     }
 
@@ -72,30 +62,31 @@ class NavBarSearchBox extends \Ease\Html\Form
         WebPage::singleton()->includeJavaScript('js/typeahead.bundle.js');
         WebPage::singleton()->addJavaScript(<<<'EOD'
 
-var bestPictures = new Bloodhound({
+var searchEngine = new Bloodhound({
     limit: 1000,
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     remote: {
-      url: 'searcher.php?q=%QUERY',
-      wildcard: '%QUERY'
+        url: 'searcher.php?q=%QUERY',
+        wildcard: '%QUERY'
     }
 });
 
-bestPictures.initialize();
-
-$('input[name="search"]').typeahead(null, {
-    name: 'best-pictures',
-    displayKey: 'name',
-    limit: 1000,
+$('input[name="q"]').typeahead({
     minLength: 3,
     highlight: true,
-    source: bestPictures.ttAdapter(),
-     templates: {
-        suggestion: Handlebars.compile('<p><small>{{type}}</small><br><a href="{{url}}"><strong>{{name}}</strong> – {{what}}</a></p>')
-}
+    hint: false
+}, {
+    name: 'flexplorer-search',
+    display: 'name',
+    limit: 1000,
+    source: searchEngine,
+    templates: {
+        suggestion: Handlebars.compile('<div><small class="text-muted">{{type}}</small><br><strong>{{name}}</strong> <span class="text-muted">– {{what}}</span></div>')
+    }
+}).on('typeahead:select', function(evt, item) {
+    window.location.href = item.url;
 });
-
 
 EOD, null, true);
         parent::finalize();

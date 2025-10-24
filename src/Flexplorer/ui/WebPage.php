@@ -60,8 +60,6 @@ class WebPage extends \Ease\TWB5\WebPage
         $this->head->addItem('<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="favicon.ico">');
         $this->head->addItem('<link rel="apple-touch-icon-precomposed"  type="image/png" href="images/flexplorer-logo.png">');
         $this->head->addItem('<link rel="stylesheet" href="/javascript/font-awesome/css/font-awesome.min.css">');
-
-        $this->container = $this->addItem(new \Ease\TWB5\Container());
     }
 
     /**
