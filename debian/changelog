@@ -1,8 +1,12 @@
-flexplorer (1.5.1) UNRELEASED; urgency=medium
+flexplorer (1.6) trixie; urgency=medium
 
   * Bootstrap5 used
+  * Updated Containerfile for Debian 13 Trixie
+  * Multi-architecture Docker image support (amd64, arm64)
+  * Added Helm chart for Kubernetes deployment
+  * Updated to modern Dockerfile syntax
 
- -- vitex <info@vitexsoftware.cz>  Thu, 24 Apr 2025 10:59:09 +0200
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Fri, 24 Oct 2025 03:20:00 +0200
 
 flexplorer (1.5) noble; urgency=medium
 

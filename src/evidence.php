@@ -138,8 +138,8 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
 
     $relations = $evobj->getRelationsInfo();
 
-    if (empty(($relations) === false)) {
-            $evidenciesByType = \Ease\Functions::reindexArrayBy(
+    if (empty($relations === false)) {
+        $evidenciesByType = \Ease\Functions::reindexArrayBy(
             \AbraFlexi\EvidenceList::$evidences,
             'evidenceType',
         );
@@ -201,7 +201,7 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
         $evidenceLicensed === false,
     );
 
-    $tabs->addTab(_('Print Sets'), new ui\PrintSetGallery($evobj));
+    $tabs->addTab(_('Print Sets'), new ui\PrintSetGallery($evobj, 'list'));
 
     $oPage->addToMain($tabs);
     $oPage->addToFooter(new ui\PageBottom());

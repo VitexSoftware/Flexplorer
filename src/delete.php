@@ -61,7 +61,7 @@ $buttonRow->addColumn(
     4,
     new \Ease\TWB5\LinkButton(
         'evidence.php?evidence='.$evidence,
-        _('Keep record').' '.new \Ease\TWB5\GlyphIcon('ok-sign'),
+        _('Keep record').' ✅',
         'info',
         ['class' => 'btn btn-default clearfix pull-right'],
     ),
@@ -70,12 +70,12 @@ $buttonRow->addColumn(
     4,
     new \Ease\TWB5\LinkButton(
         'delete.php?evidence='.$evidence.'&delete=true&id='.$id,
-        _('Delete record').' '.new \Ease\TWB5\GlyphIcon('remove-sign'),
+        _('Delete record').' 🚫',
         'danger',
     ),
 );
 
-$deleteTabs = new \Ease\TWB5\Tabs('DeleteTabs');
+$deleteTabs = new \Ease\TWB5\Tabs([], ['id' => 'DeleteTabs']);
 $deleteTabs->addTab(_('Overview'), new ui\RecordShow($engine, $buttonRow));
 $deleteTabs->addTab(
     _('AbraFlexi'),
@@ -89,7 +89,7 @@ $deleteTabs->addTab(
     ),
 );
 
-$oPage->container->addItem($deleteTabs);
+$oPage->addItem($deleteTabs);
 
 $oPage->addItem(new ui\PageBottom());
 

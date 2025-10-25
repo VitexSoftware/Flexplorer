@@ -80,7 +80,7 @@ if (\strlen($query) > 1) {
             $resultTables[] = $resultTable;
         }
 
-        $oPage->container->addItem(new \Ease\TWB5\Panel(sprintf(
+        $oPage->addItem(new \Ease\TWB5\Panel(sprintf(
             _('Search for %s results in %s'),
             "<strong>{$query}</strong>",
             $evidenceName,

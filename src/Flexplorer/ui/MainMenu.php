@@ -28,22 +28,21 @@ class MainMenu extends \Ease\TWB5\Navbar
      * @param string $brand
      * @param array  $properties
      */
+    private ?NavBarSearchBox $searchBox = null;
+
     public function __construct(string $name, $brand, $properties = [])
     {
         parent::__construct($brand, $name, $properties);
-        $this->addTagClass('navbar-inverse bg-inverse navbar-toggleable-sm  navbar-expand-lg bg-secondary text-uppercase fixed-top');
+        $this->addTagClass('navbar-inverse bg-inverse navbar-toggleable-sm  navbar-expand-lg bg-secondary text-uppercase');
 
         $myCompany = $_SESSION['company'] ?? '';
         $userID = \Ease\Shared::user()->getUserID();
 
         if ($userID) { // Authenticated user
-            if (isset($_SESSION['searchQuery'])) {
-                $term = $_SESSION['searchQuery'];
-            } else {
-                $term = null;
-            }
+            // Prepare search box for authenticated users
+            $term = $_SESSION['searchQuery'] ?? null;
+            $this->searchBox = new NavBarSearchBox('search', 'searcher.php', $term);
 
-            //            $this->addMenuItem(new NavBarSearchBox('search', 'search.php', $term));
             $companer = new \AbraFlexi\Company(null, ['company' => null]);
 
             $url = WebPage::getRequestValue('url');
@@ -138,6 +137,28 @@ class MainMenu extends \Ease\TWB5\Navbar
                 ],
             );
             $this->addMenuItem(new \Ease\Html\ATag('logout.php', '🚪 '._('Sign off')));
+        } else {
+            // Menu for non-authenticated users
+            $this->addMenuItem(new \Ease\Html\ATag('permissions.php', '🔐 '._('Role Permissions')));
+            $this->addMenuItem(new \Ease\Html\ATag('login.php', '🔑 '._('Sign in')));
         }
+    }
+
+    /**
+     * Finalize navbar and add search box after brand.
+     */
+    public function finalize(): void
+    {
+        // Add search box directly to navbar before menu collapse
+        if ($this->searchBox !== null) {
+            // Get the first child (containerFluid) and insert search box after brand and toggler
+            $children = $this->getContents();
+
+            if (isset($children[0]) && method_exists($children[0], 'addItem')) {
+                $children[0]->addItem($this->searchBox);
+            }
+        }
+
+        parent::finalize();
     }
 }

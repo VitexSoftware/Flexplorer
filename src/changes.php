@@ -41,10 +41,10 @@ arsort($chages);
 
 $oPage->addItem(new ui\PageTop(_('AbraFlexi WebHook income')));
 
-$oPage->container->addItem(new ui\ChangesLister($chages));
+$oPage->addItem(new ui\ChangesLister($chages));
 
 if (\count($chages)) {
-    $oPage->container->addItem(new \Ease\TWB5\LinkButton(
+    $oPage->addItem(new \Ease\TWB5\LinkButton(
         '?delete=all',
         _('Delete All'),
         'danger',
@@ -52,7 +52,7 @@ if (\count($chages)) {
 } else {
     $webHookUrl = str_replace(basename(__FILE__), 'webhook.php', \Ease\Document::phpSelf());
 
-    $oPage->container->addItem(new \Ease\TWB5\LinkButton(
+    $oPage->addItem(new \Ease\TWB5\LinkButton(
         'changesapi.php?hookurl='.urlencode($webHookUrl),
         _('Target to FlexPlorer'),
         'success',

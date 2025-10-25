@@ -56,7 +56,7 @@ $sender->info['url'] = 'file://'.$file;
 
 $oPage->addItem(new ui\PageTop(_('Changes recieved').': '.$file));
 
-$oPage->container->addItem(new ui\ShowResponse($sender));
+$oPage->addItem(new ui\ShowResponse($sender));
 
 $testForm = new \Ease\TWB5\Form('probechange', 'fakechange.php');
 
@@ -65,14 +65,14 @@ $testForm->addItem(new \Ease\Html\InputHiddenTag('changefile', $file));
 $optionsRow = new \Ease\TWB5\Row();
 $optionsRow->addColumn(6, new ui\WebHookSelect('hookurl'))->addItem(new \Ease\TWB5\LinkButton(
     'changesapi.php',
-    new \Ease\TWB5\GlyphIcon('plus'),
+    '➕',
     'success',
     ['title' => _('Add new webhook')],
 ));
 $optionsRow->addColumn(
     2,
     new \Ease\TWB5\SubmitButton(
-        new \Ease\TWB5\GlyphIcon('flash').' '._('Probe'),
+        '⚡ '._('Probe'),
         'warning',
     ),
 );
@@ -81,7 +81,7 @@ $optionsRow->addColumn(
     2,
     new \Ease\TWB5\LinkButton(
         'change.php?download='.$file,
-        new \Ease\TWB5\GlyphIcon('download').' '._('Download'),
+        '⬇️ '._('Download'),
         'info',
     ),
 );
@@ -89,14 +89,14 @@ $optionsRow->addColumn(
     2,
     new \Ease\TWB5\LinkButton(
         'change.php?delete='.$file,
-        new \Ease\TWB5\GlyphIcon('trash').' '._('Delete'),
+        '🗑️ '._('Delete'),
         'danger',
     ),
 );
 
 $testForm->addItem($optionsRow);
 
-$oPage->container->addItem($testForm);
+$oPage->addItem($testForm);
 
 $oPage->addItem(new ui\PageBottom());
 

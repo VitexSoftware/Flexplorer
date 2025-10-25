@@ -3,32 +3,52 @@ Flexplorer
 
 ![Flexplorer Logo](flexplorer-logo.png?raw=true "Project Logo")
 
-Vývojářský nástroj pro AbraFlexi API. Napsaný s využitím knihovny [PHP AbraFlexi](https://github.com/Spoje-NET/php-abraflexi)
-Umožňuje:
+## 🔍 Developer Console for ABRA Flexi API
 
-  * Pracovat s formáty JSON,XML a CSV
-  * zobrazovat obsah všech dostupných evidencí ve všech firmách
-  * zobrazovat strukturu evidence
-  * odesílat přímé požadavky na server a zobrazovat výsledky
-  * Nastavovat ChangesAPI a přidávat WebHooks
-  * Zobrazovat data změn přijatá z ChangesAPI
-  * Zasílat přijatá data změn na url webhooku aplikace a zobrazit problémy
-  * Test odpovědi WebHook skriptu zpracovávajícího změny z AbraFlexi
-  * Hromadně zakládat a rušit účetní období
-  * Rozlišit evidnece které jsou z důvodu licence nedostupné
-  * Zobrazovat vedle json výsledku požadavku i stránku z AbraFlexi
-  * Zobrazovat PDF náhled editovaného dokladu
-  * Upravovat Externí ID záznamů
-  * Měnit stav přiřazení štítků k evidenci
-  * Doplnit AbraFlexi GUI o tlačítka odkazující do FlexPloreru
-  * Zakládat a mazat firmy
-  * Resetovat firmu (smazat a znovu založit )
-  * Klonovat firmu
-  * Uložit a znovu načíst výchozí zálohu firmy
-  * Filtrovat záznamy dle ID nebo Externího ID
-  * Definovat Uživatelská tlačítka
-  * Zobrazovat oprávnění k rolím
-  * Zobrazovat PDF tiskové sestavy k záznamu i výpisu evidence
+**Flexplorer** is an alternative web interface for the **ABRA Flexi** ERP system (formerly FlexiBee), designed primarily for **developers and integrators**. It allows you to explore, test, and manipulate data via REST API without writing code.
+
+Built using the [PHP AbraFlexi](https://github.com/Spoje-NET/php-abraflexi) library
+
+### ⚡ Main Features
+
+#### 📊 Data Management
+  * **Evidence browsing** - display all available evidences across all companies
+  * **DataGrids** - dynamic tables with filtering, sorting, and pagination
+  * **Record editor** - create, update, and delete data
+  * **Evidence structure display** - metadata, fields, relations
+  * **Format support** - JSON, XML, and CSV
+  * **External IDs** - manage external record identifiers
+  * **Labels** - modify label assignments to evidences
+  * **Permissions** - view roles and access rights
+
+#### 🔧 API Testing & Debugging
+  * **Query Builder** - send direct requests to the server
+  * **Response Viewer** - display server responses with syntax highlighting
+  * **Parallel View** - JSON/XML result alongside AbraFlexi GUI
+  * **Filtering** - advanced filters by ID, external ID, and other parameters
+
+#### 🪝 WebHooks & ChangesAPI
+  * **WebHook Manager** - configure and manage webhooks
+  * **ChangesAPI Monitor** - view received change data
+  * **WebHook Tester** - test webhook script responses
+  * **Change Data Replay** - resend change data to webhooks
+
+#### 🎨 Custom Buttons
+  * **Button Designer** - create custom buttons in AbraFlexi GUI
+  * **Integration Links** - connect AbraFlexi with FlexPlorer
+  * **Action Configuration** - define button actions
+
+#### 🏢 Company Management
+  * **Create and delete companies**
+  * **Company reset** - delete and recreate
+  * **Cloning** - create company copies
+  * **Backup & Restore** - save and load backups
+  * **Accounting periods** - batch create and cancel
+
+#### 📄 Documents and Printing
+  * **PDF previews** - view print reports
+  * **Print reports** - access PDFs for records and entire evidences
+  * **Document preview** - preview edited documents
   
 
 [![Source Code](http://img.shields.io/badge/source-VitexSoftware/Flexplorer-blue.svg?style=flat-square)](https://github.com/VitexSoftware/Flexplorer)
@@ -37,15 +57,14 @@ Umožňuje:
 [![Build Status](https://img.shields.io/travis/VitexSoftware/Flexplorer/master.svg?style=flat-square)](https://travis-ci.org/VitexSoftware/Flexplorer)
 [![Coverage Status](https://img.shields.io/coveralls/VitexSoftware/Flexplorer/master.svg?style=flat-square)](https://coveralls.io/r/VitexSoftware/Flexplorer?branch=master)
 
-Vyzkoušejte: 
+Try it out: 
 
-  * Stabilní verze: http://flexplorer.vitexsoftware.com/ (vždy funguje)
-  * Vývojová verze: https://vitexsoftware.cz/flexplorer/ ( poslední novinky )
+  * Stable version: http://abraflexi-dev.spoje.net/ (always working)
+  * Development version: https://vitexsoftware.cz/flexplorer/ (latest features)
+Installation
+-----------
 
-Instalace
----------
-
-Pro Debian či Ubuntu prosím použijte [repozitář](http://vitexsoftware.cz/repos.php):
+For Debian or Ubuntu, please use the [repository](http://vitexsoftware.cz/repos.php):
 
 ```shell
 sudo apt install lsb-release wget
@@ -55,25 +74,24 @@ sudo apt update
 sudo apt install flexplorer
 ```	                
 
-Poté budou zobrazeny dialogy pro zadání výchozího serveru, jména a hesla.
-Takto zadané údaje budou zapsány do konfiguráku aplikace a nabízeny jako 
-předvyplněné.
+During installation, dialogs will prompt for the default server, username, and password.
+These values will be written to the application configuration file and offered as defaults.
 
-![Debian Configure](screenshots/flexplorer-debian-configure.png?raw=true "Konfigurace v Debianu")
+![Debian Configure](screenshots/flexplorer-debian-configure.png?raw=true "Debian Configuration")
 
-Po instalaci balíčku a reloadu webserveru bude aplikace nainstalována do složky 
-/usr/share/flexplorer a dostupná jako http://localhost/flexplorer/ 
-( konfigurováno v  /etc/apache2/conf-enabled/flexplorer.conf ) 
-Pokud je nainstalován démon avahi, bude tento propagovat aplikaci jako službu.
-Aplikaci je pak možné spustit z nabídky programů v sekci "programování"
+After package installation and web server reload, the application will be installed in the 
+/usr/share/flexplorer directory and accessible at http://localhost/flexplorer/ 
+(configured in /etc/apache2/conf-enabled/flexplorer.conf).
+If the avahi daemon is installed, it will advertise the application as a service.
+The application can then be launched from the program menu in the "programming" section.
 
 
-Přihlášení
-----------
+Authentication
+--------------
 
-Nepřihlášený uživatel je přesměrován na stránku login.php s přihlašovacím dialogem. Zde je možné vyplnit přihlašovací údaje, nebo kliknot na link v záložkách po levé straně.
-Novou záložku je možné přidat buď volbou přepínače pod přihlašovacím dialogem nebo přidáním json souboru do složky /etc/abraflexi/. 
-Formát těchto souborů musí být kompatibilní s https://github.com/VitexSoftware/abraflexi-client-config tzn.
+Unauthenticated users are redirected to login.php with a login dialog. Here you can enter credentials or click on links in the left-side tabs.
+New tabs can be added either by selecting the switch below the login dialog or by adding a JSON file to the /etc/abraflexi/ directory.
+The format of these files must be compatible with https://github.com/VitexSoftware/abraflexi-client-config, meaning:
 
 ```json
 {
@@ -84,39 +102,56 @@ Formát těchto souborů musí být kompatibilní s https://github.com/VitexSoft
 }
 ```
 
-Nově je také možné se přihašovat přímo do aplikace s použitím url serveru a authtokenu. Ukázková adresa vypadá takto:
+It is now also possible to log in directly to the application using the server URL and auth token. An example URL looks like this:
 
 evidence.php?serveruri=https%3A%2F%2Fdemo.abraflexi.eu%3A5434&
 
 
 
-Aktualizace
------------
+Updates
+-------
 
-Pokud máte balíček nainstalovný ze zdroje, aktualizace probíhají tak jak je v debianu zvykem: 
+If you have the package installed from the repository, updates work as is customary in Debian:
 
-![Debian Upgrade](screenshots/flexplorer-debian-upgrade.png?raw=true "Aktualizace balíčku")
+![Debian Upgrade](screenshots/flexplorer-debian-upgrade.png?raw=true "Package Upgrade")
 
 
 Vagrant
 -------
-K dispozici je také [Box](https://atlas.hashicorp.com/vitexsoftware/boxes/flexplorer) pro Vagrant. Po doběhnutí příkazu
+A [Box](https://atlas.hashicorp.com/vitexsoftware/boxes/flexplorer) for Vagrant is also available. After running the command:
 
     vagrant init vitexsoftware/flexplorer; vagrant up --provider virtualbox
 
-bude možné aktuální vývojovou zobrazit na adrese [http://localhost:8080/src/]
-a verzi z nejnovějšího debianího balíčku na adrese [http://localhost:8080/flexplorer/]
+you will be able to view the current development version at [http://localhost:8080/src/]
+and the version from the latest Debian package at [http://localhost:8080/flexplorer/]
 
 
 Docker
 ------
 
-K dispozici je také obraz pro docker. Následující příkaz zpřístupní FlexPlorer na adrese: [localhost:2323](http://0.0.0.0:2323/)
+A multi-architecture Docker image is available for **amd64** and **arm64** platforms.
 
-    docker run  -dit --name flexplorer -p 2323:80 vitexsoftware/flexplorer
+### Run with Docker
 
-```    
-vitex@docker:~$ docker run  -dit --name flexplorer -p 2323:80 vitexsoftware/flexplorer
+The following command makes FlexPlorer accessible at: [localhost:2323](http://0.0.0.0:2323/)
+
+    docker run -dit --name flexplorer -p 2323:80 vitexsoftware/flexplorer
+
+### Run with custom configuration
+
+```bash
+docker run -dit --name flexplorer -p 2323:80 \
+  -e FLEXIBEE_URL=https://your-server.com \
+  -e FLEXIBEE_LOGIN=username \
+  -e FLEXIBEE_PASSWORD=password \
+  -e FLEXIBEE_COMPANY=company \
+  vitexsoftware/flexplorer
+```
+
+### Example Docker output
+
+```bash
+vitex@docker:~$ docker run -dit --name flexplorer -p 2323:80 vitexsoftware/flexplorer
 Unable to find image 'vitexsoftware/flexplorer:latest' locally
 latest: Pulling from vitexsoftware/flexplorer
 cc1a78bfd46b: Pull complete 
@@ -137,115 +172,139 @@ Status: Downloaded newer image for vitexsoftware/flexplorer:latest
 396261e16a3adb66faf8f63a3f518b3c10331cc9c0f575c73cd86df3899b8f87
 ```
 
+Kubernetes / Helm
+-----------------
 
+A Helm chart is available for easy deployment to Kubernetes clusters.
 
+### Install with Helm
 
+```bash
+# Install with default values (demo server)
+helm install flexplorer ./helm/flexplorer
 
-Konfigurace
------------
+# Install with custom configuration
+helm install flexplorer ./helm/flexplorer \
+  --set flexplorer.flexibeeUrl=https://your-server.com \
+  --set flexplorer.flexibeeLogin=username \
+  --set flexplorer.flexibeePassword=password \
+  --set flexplorer.flexibeeCompany=company
 
-Konfigurační soubor config.php se náchází ve složce src/includes. Výchozí konfigurace vypadá takto:
+# Install with Ingress enabled
+helm install flexplorer ./helm/flexplorer \
+  --set ingress.enabled=true \
+  --set ingress.hosts[0].host=flexplorer.example.com \
+  --set ingress.hosts[0].paths[0].path=/ \
+  --set ingress.hosts[0].paths[0].pathType=Prefix
+```
 
-    define('LOG_NAME', 'Flexplorer'); //Identifikace logu
-    define('LOG_TYPE', 'syslog'); //Možné hodnoty: memory, syslog, file
+For more details, see the [Helm chart documentation](helm/flexplorer/README.md).
+
+Configuration
+-------------
+
+The configuration file config.php is located in the src/includes directory. The default configuration looks like this:
+
+    define('LOG_NAME', 'Flexplorer'); //Log identifier
+    define('LOG_TYPE', 'syslog'); //Possible values: memory, syslog, file
 
     /*
-     * Výchozí odesilatel zpráv
+     * Default message sender
      */
     define('EMAIL_FROM', 'flexplorer@localhost');
 
     /*
-     * URL AbraFlexi API
+     * AbraFlexi API URL
      */
     define('DEFAULT_ABRAFLEXI_URL', 'https://demo.flexibee.eu');
     /*
-     * Uživatel AbraFlexi API
+     * AbraFlexi API user
      */
     define('DEFAULT_ABRAFLEXI_LOGIN', 'winstrom');
     /*
-     * Heslo AbraFlexi API
+     * AbraFlexi API password
      */
 
     define('DEFAULT_ABRAFLEXI_PASSWORD', 'winstrom');
     /*
-     * Společnost v AbraFlexi
+     * Company in AbraFlexi
      */
 
     define('DEFAULT_ABRAFLEXI_COMPANY', 'demo');
 
 
-Poděkování
-----------
+Acknowledgments
+---------------
 
-Vznik tohoto nástroje by nebyl možný bez laskavé podpory společnosti [Spoje.Net](http://www.spoje.net), 
+The creation of this tool would not have been possible without the kind support of [Spoje.Net](http://www.spoje.net).
 
-U společnosti Spoje.Net, je možné si objednat komerční podporu pro integraci
-knihovny [PHP AbraFlexi](https://github.com/Spoje-NET/FlexiPeeHP) do vašich projektů. 
+At Spoje.Net, you can order commercial support for integrating
+the [PHP AbraFlexi](https://github.com/Spoje-NET/FlexiPeeHP) library into your projects.
 
 ![Spoje.Net](spoje-net_logo.gif?raw=true "Spoje.Net")
 
 [Statistiky Projektu na Wakatime](https://wakatime.com/@5abba9ca-813e-43ac-9b5f-b1cfdf3dc1c7/projects/wvloiziluw)
 
-Obrázky aplikace
-================
+Application Screenshots
+======================
 
-Pro přihlášení se používá jména a hesla uživatele aplikace s oprávněním používat REST API. Záložky po levé straně jsou načítány z konfigruračních souborů ve složce /etc/abraflexi/
+Login uses the application user's name and password with REST API permissions. The tabs on the left side are loaded from configuration files in the /etc/abraflexi/ directory.
 
-![Mobilní přihlášení](screenshots/flexplorer-login.png?raw=true "Screenshot přihlášení")
+![Mobile Login](screenshots/flexplorer-login.png?raw=true "Login Screenshot")
 
-FlexPlorer zobrazuje odpověď požadavku:
+FlexPlorer displays request responses:
 
-![Odpověď serveru](screenshots/flexplorer-response_serveru.png?raw=true "Screenshot odpovědi")
+![Server Response](screenshots/flexplorer-response_serveru.png?raw=true "Response Screenshot")
 
-Je možné si zvolit libovolnou evidenci AbraFlexi a její obsah si vypsat:
+You can select any AbraFlexi evidence and list its contents:
 
-![Výpis evidence](screenshots/flexplorer-vypis_evidence.png?raw=true "Screenshot výpisu evidence")
+![Evidence Listing](screenshots/flexplorer-vypis_evidence.png?raw=true "Evidence Listing Screenshot")
 
-Data můžeme editovat a uložit, pokud k tomu má přihlášený uživatel práva:
+Data can be edited and saved if the logged-in user has the appropriate permissions:
 
-![Editor Evidence](screenshots/flexplorer-editor-evidence.png "Screenshot Editoru Evidence")
+![Evidence Editor](screenshots/flexplorer-editor-evidence.png "Evidence Editor Screenshot")
 
-Nad otevřenou evidencí je možné snadno provádět dotazy:
+You can easily perform queries on an open evidence:
 
-![JSON Editor](screenshots/flexplorer-json-editor.png "Screenshot JSON Editoru")
+![JSON Editor](screenshots/flexplorer-json-editor.png "JSON Editor Screenshot")
 
-Smazání záznamu z evidence je třeba potvrdit:
+Deleting a record from an evidence must be confirmed:
 
-![Potvrzení před smazáním](screenshots/flexplorer-potvrzeni-pred-smazanim.png "Přehledu a potvrzení před smazáním záznamu")
+![Confirmation Before Deletion](screenshots/flexplorer-potvrzeni-pred-smazanim.png "Overview and Confirmation Before Record Deletion")
 
-Při testování WebHooku pomůže tento nástroj, který sestaví maketu záznamu ChangesAPI a odešle jí na zvolený WebHook:
+When testing WebHooks, this tool helps by composing a ChangesAPI record mock and sending it to the selected WebHook:
 
-![WebHook Request](screenshots/flexplorer-webhook-request.png "Screenshot Požadavku na webhook")
+![WebHook Request](screenshots/flexplorer-webhook-request.png "WebHook Request Screenshot")
 
-Je možné také použít data změn došlá na webhook FlexPloreru a zvolit si na který webhook testované aplikace budou tato odesílána:
+You can also use change data received on the FlexPlorer webhook and choose which webhook of the tested application to send it to:
 
-![Change Data reuse](screenshots/flexplorer-reuse-change-data.png "Screenshot přijatých dat změny")
+![Change Data Reuse](screenshots/flexplorer-reuse-change-data.png "Received Change Data Screenshot")
 
-Správná je prázdná odpověď. Ačkoliv funguje, tak by se tento skript AbraFlexi nelíbil. Zde vidíme co vrací:
+The correct response is empty. Although it works, AbraFlexi would not like this script. Here we see what it returns:
 
-![WebHook Response](screenshots/flexplorer-webhook-response.png "Screenshot Odpovědi webhooku")
+![WebHook Response](screenshots/flexplorer-webhook-response.png "WebHook Response Screenshot")
 
-Pro hledání v evidencích je k dispozici vyhledávací políčko:
+A search field is available for searching evidences:
 
-![WebHook Response](screenshots/flexplorer-hinter_evidence.png "Našeptávač evidencí")
+![WebHook Response](screenshots/flexplorer-hinter_evidence.png "Evidence Autocomplete")
 
-Po stisku entru se zobrazí podrobnější výsledky:
+After pressing enter, more detailed results are displayed:
 
-![WebHook Response](screenshots/flexplorer-nalezene_evidence.png "Nalezené evidence")
+![WebHook Response](screenshots/flexplorer-nalezene_evidence.png "Found Evidences")
 
-Vyhledávat je také možné v názvech sloupců jednotlivých evidencí a jejich popiscích:
+It is also possible to search in column names of individual evidences and their descriptions:
 
-![Columns Search](screenshots/flexplorer-nalezene_sloupce.png "Nalezené sloupce")
+![Columns Search](screenshots/flexplorer-nalezene_sloupce.png "Found Columns")
 
-Tělo požadavku je možné načítat ze souboru:
+Request body can be loaded from a file:
 
-![File Upload](screenshots/flexplorer-xml-file-upload.png "Upload Souboru")
+![File Upload](screenshots/flexplorer-xml-file-upload.png "File Upload")
 
-Odpověď požadavku může být v podporovaných formátech (zde XML):
+Request response can be in supported formats (XML here):
 
 ![XML Response](screenshots/flexplorer-xml-response.png "XML Response")
 
-Základní přehled firmy
+Company overview:
 
 ![Company overview](screenshots/flexplorer-company-page.png "Company Page")
 

@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Flexplorer\ui;
 
+use Ease\Html\Widgets\Toggle;
+
 /**
  * Description of Editor.
  *
@@ -53,7 +55,7 @@ class Editor extends ColumnsForm
             'on',
             ['onText' => _('Save to AbraFlexi'), 'offText' => _('Show in editor')],
         ));
-        $this->addItem(new \Ease\TWB5\SubmitButton(_('OK').' '.new \Ease\TWB5\GlyphIcon('save')));
+        $this->addItem(new \Ease\TWB5\SubmitButton(_('OK').' 💾'));
         $this->engine = $engine;
     }
 
@@ -106,7 +108,7 @@ class Editor extends ColumnsForm
 
                 break;
             case 'logic':
-                $widget = new TWBSwitch(
+                $widget = new Toggle(
                     $propertyName,
                     $value,
                     true,
@@ -131,13 +133,13 @@ class Editor extends ColumnsForm
 
                 $note = [new \Ease\Html\ATag(
                     'evidence.php?evidence='.$evidence,
-                    new \Ease\TWB5\GlyphIcon('list').' '.$evidence,
+                    '📋 '.$evidence,
                 )];
 
-                if (\strlen($value)) {
+                if ($value && \strlen($value)) {
                     $note[] = new \Ease\Html\ATag(
                         'editor.php?evidence='.$evidence.'&id='.urlencode($value),
-                        new \Ease\TWB5\GlyphIcon('edit').' '._('Edit targeted record'),
+                        '✏️ '._('Edit targeted record'),
                     );
                 }
 
@@ -145,7 +147,7 @@ class Editor extends ColumnsForm
             case 'select':
                 $widget = new \Ease\Html\SelectTag(
                     $propertyName,
-                    $this->colValues($colProperties),
+                    self::colValues($colProperties),
                     $value,
                     null,
                     $inputProperties,
@@ -220,7 +222,7 @@ class Editor extends ColumnsForm
             $contents = $this->pageParts;
             $this->emptyContents();
 
-            $editorTabs = new \Ease\TWB5\Tabs('EditorTabs');
+            $editorTabs = new \Ease\TWB5\Tabs([], ['id' => 'EditorTabs']);
             $editorTabs->addTab(_('Columns'), $contents);
             $editorTabs->addTab(_('External IDs'), $this->extIDsEditor());
             $editorTabs->addTab(_('Labels'), new LabelSwitches($this->engine));
@@ -264,7 +266,7 @@ class Editor extends ColumnsForm
 
         if (\count($externalIDs)) {
             foreach ($externalIDs as $externalID) {
-                if (!\strlen($externalID)) {
+                if (!$externalID || !\strlen($externalID)) {
                     continue;
                 }
 
@@ -310,7 +312,7 @@ class Editor extends ColumnsForm
             ),
         ));
 
-        $extIDsEditor->addItem(new \Ease\TWB5\SubmitButton(_('OK').' '.new \Ease\TWB5\GlyphIcon('save')));
+        $extIDsEditor->addItem(new \Ease\TWB5\SubmitButton(_('OK').' 💾'));
 
         return $extIDsEditor;
     }
@@ -341,11 +343,11 @@ class Editor extends ColumnsForm
     /**
      * Vrací pole možností pro select.
      *
-     * @param array $colProperties
+     * @param array<string, string> $colProperties
      *
-     * @return array
+     * @return array<string, string>
      */
-    private function colValues($colProperties)
+    private static function colValues(array $colProperties)
     {
         $options = [];
 

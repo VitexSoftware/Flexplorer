@@ -128,7 +128,7 @@ if (!isset($ucetniObdobi['message']) && \count($ucetniObdobi)) {
     foreach ($ucetniObdobi as $hookinfo) {
         $hookinfo[] = new \Ease\TWB5\LinkButton(
             '?yeardel='.$hookinfo['id'],
-            new \Ease\TWB5\GlyphIcon('remove'),
+            '❌',
             'warning',
         );
         $ucetniObdobiTable->addRowColumns($hookinfo);
@@ -145,7 +145,7 @@ if (!isset($ucetniObdobi['message']) && \count($ucetniObdobi)) {
     );
 }
 
-$oPage->container->addItem(new \Ease\TWB5\Panel(
+$oPage->addItem(new \Ease\TWB5\Panel(
     _('Tool for massive creating Accounting periods'),
     'info',
     $toolRow,

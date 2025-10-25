@@ -25,7 +25,7 @@ class ShowResponse extends \Ease\Html\DivTag
     /**
      * Class for AbraFlexi interaction.
      */
-    public \AbraFlexi\RW $sender = null;
+    public ?\AbraFlexi\RW $sender = null;
 
     /**
      * Recieve AbraFlexi reuest response.
@@ -41,6 +41,10 @@ class ShowResponse extends \Ease\Html\DivTag
 
     public function finalize(): void
     {
+        if ($this->finalized) {
+            return;
+        }
+
         $formatedResponse = '';
         /** @var \Ease\TWB5\WebPage $webPage */
         $webPage = WebPage::singleton();
@@ -102,10 +106,11 @@ class ShowResponse extends \Ease\Html\DivTag
                 $this->addJavaScript(<<<'EOD'
 
                         function responseToRequest() {
-                            $("#editor").val( $("#formatedResponse").html() );
-                            $("#Request a:first").tab("show");
-                            $("#editor").focus();
-                            $("#editor").change();
+                            $("textarea[name='body']").val( $("#formatedResponse").html() );
+                            var requestTab = new bootstrap.Tab(document.getElementById('Request-Request-tab'));
+                            requestTab.show();
+                            $("textarea[name='body']").focus();
+                            $("textarea[name='body']").change();
                         };
 
 function downloadResponse(){
@@ -128,14 +133,14 @@ EOD, null, false);
                 ));
                 $this->addItem(new \Ease\TWB5\LinkButton(
                     '#',
-                    _('Make new request from this response').new \Ease\TWB5\GlyphIcon('repeat'),
+                    _('Make new request from this response').' 🔄',
                     'success',
                     ['onClick' => 'responseToRequest();'],
                 ));
 
                 $this->addItem(new \Ease\TWB5\LinkButton(
                     '#',
-                    _('Save this response to file').new \Ease\TWB5\GlyphIcon('floppy-save'),
+                    _('Save this response to file').' 💾',
                     'success',
                     ['onClick' => 'downloadResponse();'],
                 ));
@@ -149,6 +154,7 @@ $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
 EOD);
+        parent::finalize();
     }
 
     /**
@@ -358,7 +364,7 @@ EOD);
                 break;
 
             default:
-                $text = 'Unknown http status code "'.htmlentities($code).'"';
+                $text = 'Unknown http status code "'.htmlentities((string) $code).'"';
 
                 break;
         }

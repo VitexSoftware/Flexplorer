@@ -38,11 +38,11 @@ if (null === $evidence) {
 
 $oPage->addItem(new ui\PageTop(_('Evidence proprties overview')));
 
-// $oPage->container->addItem(new );
+// $oPage->addItem(new );
 
 $evobj = new Flexplorer($evidence);
 
-$tabs = new \Ease\TWB5\Tabs('EviTabs');
+$tabs = new \Ease\TWB5\Tabs([], ['id' => 'EviTabs']);
 $tabs->addTab(_('Listing'), new ui\FlexiBsGrid(new DataSource($evobj)));
 $tabs->addTab(_('Structure'), new ui\BsEvidenceProperties($evobj));
 
@@ -69,7 +69,7 @@ $tabs->addTab(
     ),
 );
 
-$oPage->container->addItem($tabs);
+$oPage->addItem($tabs);
 
 $oPage->addItem(new ui\PageBottom());
 

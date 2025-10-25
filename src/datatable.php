@@ -64,7 +64,7 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
 
     $tabler = new \Flexplorer\ui\DataTable($evobj);
 
-    $oPage->container->addItem($tabler);
+    $oPage->addItem($tabler);
 
     $oPage->addItem(new PageBottom());
 

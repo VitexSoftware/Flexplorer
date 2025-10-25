@@ -52,7 +52,7 @@ if (empty($id)) {
 
 $oPage->addItem(new ui\PageTop(_('Record Editor').' '.$evidence.':'.$id));
 
-$editorTabs = new \Ease\TWB5\Tabs('EditorTabs');
+$editorTabs = new \Ease\TWB5\Tabs([], ['id' => 'EditorTabs']);
 $editorTabs->addTab(_('Record Editor'), new ui\RecordEditor($engine));
 
 $editorTabs->addTab(
@@ -71,7 +71,7 @@ $editorTabs->addAjaxTab(
 $editorTabs->addTab(_('Print Sets'), new ui\PrintSetGallery($engine));
 $editorTabs->addTab(_('Downloads'), new ui\RecordDownloader($engine));
 
-$oPage->container->addItem($editorTabs);
+$oPage->addItem($editorTabs);
 
 $oPage->addItem(new ui\PageBottom());
 

@@ -46,7 +46,7 @@ if (!\strlen($url)) {
     }
 
     if (null !== $id) {
-        if (strstr($id, ',')) {
+        if ($id && strstr($id, ',')) {
             $ids = [];
 
             foreach (explode(',', $id) as $oneID) {
@@ -71,25 +71,54 @@ if (!\strlen($url)) {
 $sender = new Flexplorer($evidence);
 
 if ($oPage->isPosted() || \strlen($url)) {
-    $sender->performQuery();
+    try {
+        $sender->performQuery();
+    } catch (\AbraFlexi\Exception $e) {
+        $sender->addStatusMessage(
+            sprintf(_('AbraFlexi Error: %s'), $e->getMessage()),
+            'error',
+        );
+    } catch (\Exception $e) {
+        $sender->addStatusMessage(
+            sprintf(_('Error: %s'), $e->getMessage()),
+            'error',
+        );
+    }
 }
 
-if (\strlen($action)) {
+if ($action && \strlen($action)) {
     $method = 'POST';
     $body = $sender->postFields;
 }
 
+// Ensure default values for form
+if (null === $method || !\strlen($method)) {
+    $method = 'GET';
+}
+
+if (null === $body) {
+    $body = '';
+}
+
+if (null === $format || !\strlen($format)) {
+    $format = 'json';
+}
+
 $oPage->addItem(new ui\PageTop(_('Query').': '.$url));
 
-$requestTabs = new \Ease\TWB5\Tabs('Request');
+$requestTabs = new \Ease\TWB5\Tabs([], ['id' => 'Request']);
+
+$requestForm = new ui\SendForm($url, $method, $body, $format);
+$requestPanel = new \Ease\TWB5\Panel(
+    _('Custom request'),
+    'warning',
+);
+$requestPanel->addItem($requestForm);
 
 $requestTabs->addTab(
     _('Request'),
-    new \Ease\TWB5\Panel(
-        _('Custom request'),
-        'warning',
-        new ui\SendForm($url, $method, $body, $format),
-    ),
+    $requestPanel,
+    !($oPage->isPosted() || ($oPage->getRequestValue('show') === 'result')),
 );
 
 $requestTabs->addTab(
@@ -116,7 +145,7 @@ $requestTabs->addTab(
     ),
 );
 
-$oPage->container->addItem($requestTabs);
+$oPage->addItem($requestTabs);
 
 $oPage->addItem(new ui\PageBottom());
 

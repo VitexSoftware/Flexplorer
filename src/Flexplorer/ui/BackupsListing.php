@@ -22,8 +22,8 @@ namespace Flexplorer\ui;
  */
 class BackupsListing extends \Ease\Html\DivTag
 {
-    public \Ease\Html\ThTag $header = null;
-    public \Ease\Html\TableTag $contents = null;
+    public ?\Ease\Html\ThTag $header = null;
+    public ?\Ease\Html\TableTag $contents = null;
 
     /**
      * Show basic directory listing.

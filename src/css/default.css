@@ -37,6 +37,33 @@
     overflow-y: auto;
 }
 
+#status-block {
+    width: 100%;
+    margin-bottom: 10px;
+    position: relative;
+    clear: both;
+}
+
+#status-messages {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#header {
+    position: relative;
+    z-index: 1001;
+    background-color: #1a0033;
+    width: 100%;
+}
+
+#header .navbar {
+    z-index: 1001;
+}
+
 #smdrag {
     height: 8px;
     background-image:  url( ../images/slidehandle.png );
@@ -44,6 +71,12 @@
     background-repeat: no-repeat;
     background-position: top center;
     cursor: ns-resize;
+    width: 100%;
+    margin: 0;
+    position: relative;
+    z-index: 1000;
+    display: block !important;
+    visibility: visible !important;
 }
 
 #smdrag:hover {
@@ -107,9 +140,49 @@
 }
 
 #footer {
-    background-color: #fff;
-    padding: 10px;
-    width: 90%;
+    background-color: #2c1454;
+    padding: 20px;
+    width: 100%;
+    color: #00d9ff;
+    margin-top: 40px;
+    position: relative;
+}
+
+#footer::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    background: linear-gradient(to right, rgba(26, 0, 51, 1), rgba(44, 20, 84, 1));
+    pointer-events: none;
+    z-index: 0;
+}
+
+#footer::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    background: linear-gradient(to left, rgba(26, 0, 51, 1), rgba(44, 20, 84, 1));
+    pointer-events: none;
+    z-index: 0;
+}
+
+#footer > * {
+    position: relative;
+    z-index: 1;
+}
+
+#footer a {
+    color: #00ffaa;
+}
+
+#footer a:hover {
+    color: #00ff00;
 }
 
 .ResponseShow pre a {
@@ -117,10 +190,87 @@
 }
 
 #lasturl {
-    font-size: x-large;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+#lasturl a {
+    font-weight: 900;
     font-family: monospace;
-    color: #ff0;
-    margin: 2px;
-    padding: 2px;
+    color: hsl(76, 87%, 76%);
+    text-shadow: 1px 1px 2px #006400, 0 0 1em #8fbc8f, 0 0 0.2em #8fbc8f;
+    font-size: 48px;
+    font-family: "Courier New", Courier, monospace;
+    background: #0a0;
+    background: -webkit-radial-gradient(center, ellipse, #4d4, #006400);
+    background: -moz-radial-gradient(center, ellipse, #4d4, #006400);
+    background: radial-gradient(ellipse at center, #4d4, #006400);
+    border: 5px solid #6b8e23;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px #006400, 0 0 10px #8fbc8f;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    white-space: normal;
+    text-decoration: none;
+}
+
+.flexibee-top-image {
+    filter: hue-rotate(260deg) saturate(2) brightness(0.8) contrast(1.1);
+    opacity: 0.8;
+    mix-blend-mode: screen;
+}
+
+#LoginFace .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+#LoginFace .list-group-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+#LoginFace .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+#LoginFace .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #00ffaa;
+    box-shadow: 0 0 5px rgba(0, 255, 170, 0.5);
+    color: #ffffff;
+}
+
+/* Better contrast for success badges */
+.badge.text-bg-success {
+    background-color: #198754 !important;
+    color: #ffffff !important;
+}
+
+/* Warning panel styling to match purple theme */
+.card.bg-warning {
+    background-color: #6b4c8a !important;
+    border-color: #8b6cb8 !important;
+}
+
+.card.bg-warning .card-header {
+    background-color: #5a3d73 !important;
+    color: #e0d0ff !important;
+    border-bottom: 1px solid #8b6cb8 !important;
+}
+
+.card.bg-warning .card-body {
+    background-color: #6b4c8a !important;
+    color: #ffffff !important;
 }
 

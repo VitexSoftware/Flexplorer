@@ -33,11 +33,11 @@ use Flexplorer\ui\PageTop;
 require_once 'includes/Init.php';
 $oPage->addItem(new PageTop(_('Sign in')));
 
-$oPage->addAsFirst(new \Ease\Html\ImgTag('images\flexibeetop.png', 'top', ['class' => 'img-fluid', 'width' => '100%']));
+$oPage->addItem(new \Ease\Html\ImgTag('images\flexibeetop.png', 'top', ['class' => 'img-fluid flexibee-top-image', 'width' => '100%']));
 
 // $loginFace = new \Ease\Html\DivTag(null, ['id' => 'LoginFace']);
 //
-// $oPage->container->addItem($loginFace);
+// $oPage->addItem($loginFace);
 //
 // $loginRow = new \Ease\TWB5\Row();
 // $infoColumn = $loginRow->addItem(new \Ease\TWB5\Col(4));
@@ -106,7 +106,7 @@ $oPage->addAsFirst(new \Ease\Html\ImgTag('images\flexibeetop.png', 'top', ['clas
 // $loginColumn->addItem($loginPanel);
 //
 //
-// $oPage->container->addItem(new \Ease\TWB5\Form(['name' => 'Login'], $loginRow));
+// $oPage->addItem(new \Ease\TWB5\Form(['name' => 'Login'], $loginRow));
 // $login = $oPage->getRequestValue('login');
 // $password = $oPage->getRequestValue('password');
 // $server = $oPage->getRequestValue('server');
@@ -178,7 +178,7 @@ if ($login) {
     }
 
     if ($oUser->tryToLogin($_POST)) {
-        $oPage->redirect('main.php');
+        $oPage->redirect('companies.php');
         session_write_close();
 
         exit;
@@ -188,7 +188,7 @@ if ($login) {
 // $oPage->addItem(new PageTop(_('Sign In')));
 $loginFace = new DivTag(null, ['id' => 'LoginFace']);
 
-$oPage->container->addItem($loginFace);
+$oPage->addItem($loginFace);
 $loginRow = new Row();
 $infoColumn = $loginRow->addItem(new Col(4));
 $infoBlock = $infoColumn->addItem(new Card(new ImgTag('images/flexplorer-logo.png')));
@@ -249,12 +249,11 @@ $featureList->addItemSmart(
     ['class' => 'list-group-item'],
 );
 
-$featuresPanel = new \Ease\TWB5\Panel(_('Features'), 'info');
-
-\Ease\WebPage::addItemCustom($featureList, $featuresPanel);
+$featuresPanel = new \Ease\TWB5\Panel(_('Features'), 'primary');
+$featuresPanel->addItem($featureList);
 $loginRow->addColumn(4, $featuresPanel);
 
-$oPage->container->addItem(new Form([], $loginRow));
+$loginFace->addItem(new Form([], $loginRow));
 
 $oPage->addItem(new PageBottom());
 $oPage->draw();

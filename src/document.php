@@ -29,22 +29,18 @@ require_once 'includes/Init.php';
 $oPage->onlyForLogged();
 
 $id = $oPage->getRequestValue('id');
-
-if (strstr($id, ',')) {
-    $ids = explode(',', $id);
-}
-
 $evidence = $oPage->getRequestValue('evidence');
 $embed = $oPage->getRequestValue('embed');
 $report = $oPage->getRequestValue('report-name');
 
-if (empty($embed)) {
-    $oPage->addItem(new ui\PageTop($evidence.' #'.$id));
-} else {
-    $oPage = new \Ease\WebPage($evidence.' #'.$id);
+if (strstr((string)$id, ',')) {
+    $ids = explode(',', $id);
 }
 
-if (isset($ids)) {
+// For list reports (no ID), create document without specific record
+if (empty($id)) {
+    $document = new \AbraFlexi\RO(null, ['evidence' => $evidence]);
+} elseif (isset($ids)) {
     $document = new \AbraFlexi\RO(null, ['evidence' => $evidence]);
 } else {
     $document = new \AbraFlexi\RO(
@@ -53,17 +49,33 @@ if (isset($ids)) {
     );
 }
 
-if (empty($embed)) {
-    $oPage->addItem(new ui\PageTop($document->getEvidence().' '.$document));
+// For AJAX/embed mode, output only the iframe HTML
+if ($embed === 'true') {
+    // Build URL for getpdf.php
+    $params = ['evidence' => $evidence, 'embed' => 'true'];
+    if (!empty($id)) {
+        $params['id'] = $id;
+    }
+    if (!empty($report)) {
+        $params['report-name'] = $report;
+    }
+    $pdfUrl = 'getpdf.php?' . http_build_query($params);
+    
+    // Output only the iframe, no page wrapper
+    echo '<div style="width:100%; height:80vh;">';
+    echo '<iframe src="' . htmlspecialchars($pdfUrl) . '" ';
+    echo 'style="width:100%; height:100%; border:none;" ';
+    echo 'type="application/pdf"></iframe>';
+    echo '</div>';
+    exit;
 }
 
-$embeded = new \AbraFlexi\ui\EmbedResponsivePDF($document, 'getpdf.php', $report);
+// For non-embed mode, render full page
+$pageTitle = empty($id) ? $evidence : $evidence.' #'.$id;
+$oPage->addItem(new ui\PageTop($pageTitle));
+$oPage->addItem(new ui\PageTop($document->getEvidence().' '.$document));
 
-if (empty($embed)) {
-    $oPage->container->addItem($embeded);
-    $oPage->addItem(new ui\PageBottom());
-} else {
-    $oPage->addItem($embeded);
-}
-
+$embeded = new ui\EmbedResponsivePDF($document, 'getpdf.php', $report);
+$oPage->addItem($embeded);
+$oPage->addItem(new ui\PageBottom());
 $oPage->draw();

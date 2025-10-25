@@ -25,8 +25,8 @@ class BooleanLabel extends \Ease\TWB5\Badge
     /**
      * Show boolean Label.
      *
-     * @param bool  $bool       state
-     * @param array $properties options
+     * @param bool                  $bool       state
+     * @param array<string, string> $properties options
      */
     public function __construct($bool, $properties = [])
     {

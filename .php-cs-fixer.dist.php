@@ -91,7 +91,7 @@ $ruleSet = Php81::create()->withHeader($header)->withRules(Rules::fromArray([
     'php_unit_test_case_static_method_calls' => false,
 ]));
 
-$config = Factory::fromRuleSet($ruleSet);
+$config = Factory::fromRuleSet($ruleSet)->setUnsupportedPhpVersionAllowed(true);
 
 $config->getFinder()
     ->append([

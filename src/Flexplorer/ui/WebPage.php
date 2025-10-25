@@ -17,7 +17,13 @@ namespace Flexplorer\ui;
 
 class WebPage extends \Ease\TWB5\WebPage
 {
-    public $requestURL;
+    /**
+     * Where to look for bootstrap stylesheet.
+     *
+     * @var string path or url
+     */
+    public string $bootstrapCSS = 'css/bootstrap.min.css';
+    public string $requestURL = '';
 
     /**
      * Main block of page.
@@ -54,10 +60,6 @@ class WebPage extends \Ease\TWB5\WebPage
         $this->head->addItem('<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="favicon.ico">');
         $this->head->addItem('<link rel="apple-touch-icon-precomposed"  type="image/png" href="images/flexplorer-logo.png">');
         $this->head->addItem('<link rel="stylesheet" href="/javascript/font-awesome/css/font-awesome.min.css">');
-
-        $this->container = $this->addItem(new \Ease\TWB5\Container());
-        $this->addToMain(new \Ease\Html\DivTag('<br/>'));
-        
     }
 
     /**
@@ -68,10 +70,7 @@ class WebPage extends \Ease\TWB5\WebPage
     public function onlyForAdmin($loginPage = 'login.php'): void
     {
         if (!$this->user->getSettingValue('admin')) {
-            \Ease\Shared::user()->addStatusMessage(
-                _('Please sign in as admin first'),
-                'warning',
-            );
+            \Ease\Shared::user()->addStatusMessage(_('Please sign in as admin first'), 'warning');
             $this->redirect($loginPage);
         }
     }
@@ -144,13 +143,11 @@ class WebPage extends \Ease\TWB5\WebPage
 
     public function finalize(): void
     {
-        if (\Ease\Shared::user()->getUserID()) { // Authenticated user
-            $this->body->addAsFirst(new FlexiURL($this->getRequestURL(), ['id' => 'lasturl', 'class' => 'innershadow']));
+        if ($this->finalized === false) {
+            $this->includeJavaScript('js/jquery.keepAlive.js');
+            $this->addJavaScript('$.fn.keepAlive({timer: 300000});');
+
+            parent::finalize();
         }
-
-        $this->includeJavaScript('js/jquery.keepAlive.js');
-        $this->addJavaScript('$.fn.keepAlive({timer: 300000});');
-
-        parent::finalize();
     }
 }

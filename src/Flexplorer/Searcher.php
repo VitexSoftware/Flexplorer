@@ -26,12 +26,12 @@ class Searcher extends \Ease\Atom
     /**
      * Prohledávaná tabulka.
      */
-    public string $evidence;
+    public ?string $evidence = null;
 
     /**
      * Prohledávaný sloupeček.
      */
-    public string $column;
+    public ?string $column = null;
 
     /**
      * Pole prohledávacích obejktů.
@@ -45,14 +45,30 @@ class Searcher extends \Ease\Atom
      */
     public function __construct($evidence = null)
     {
-        if (null === $evidence) {
+        $this->evidence = $evidence;
+
+        if (null === $evidence || empty($evidence)) {
+            // Search system evidences
             $this->sysClasses['evidencies'] = new Evidencer();
-            $this->sysClasses['column'] = new Columner();
-            //            $lister    = new \AbraFlexi\EvidenceList();
-            //            $flexidata = $lister->getFlexiData();
-            //            foreach ($flexidata as $evidence) {
-            //                $this->registerEvidence($evidence['evidencePath']);
-            //            }
+
+            // Search in all available evidences
+            try {
+                $lister = new \AbraFlexi\EvidenceList();
+                $flexidata = $lister->getFlexiData();
+
+                foreach ($flexidata as $evidenceInfo) {
+                    if (isset($evidenceInfo['evidencePath'])) {
+                        try {
+                            $this->registerEvidence($evidenceInfo['evidencePath']);
+                        } catch (\Exception $e) {
+                            // Skip evidences that cannot be registered
+                            error_log('Cannot register evidence '.$evidenceInfo['evidencePath'].': '.$e->getMessage());
+                        }
+                    }
+                }
+            } catch (\Exception $e) {
+                error_log('Cannot load evidence list: '.$e->getMessage());
+            }
         } else {
             $this->registerEvidence($evidence);
         }
@@ -80,43 +96,51 @@ class Searcher extends \Ease\Atom
         $results = [];
 
         foreach ($this->sysClasses as $searched) {
-            if (null !== $this->evidence && ($searched->getEvidence() !== $this->evidence)) {
-                continue;
-            }
-
-            if (null !== $this->column) {
-                if (isset($searched->useKeywords[$this->column])) {
-                    $searched->useKeywords = [$this->column => $searched->useKeywords[$this->column]];
+            try {
+                if (null !== $this->evidence && ($searched->getEvidence() !== $this->evidence)) {
+                    continue;
                 }
-            }
 
-            $found = $searched->searchString($term);
+                if (null !== $this->column) {
+                    if (isset($searched->useKeywords[$this->column])) {
+                        $searched->useKeywords = [$this->column => $searched->useKeywords[$this->column]];
+                    }
+                }
 
-            if (\count($found)) {
-                foreach ($found as $lineNo => $values) {
-                    if (isset($values['what'])) {
-                        $found[$lineNo]['what'] = $values['what'];
-                    } else {
-                        $found[$lineNo]['what'] = current(array_keys(array_filter(
-                            $values,
-                            static function ($var) use ($term) {
-                                return preg_match("/\\b{$term}\\b/i", $var);
-                            },
-                        )));
+                $found = $searched->searchString($term);
 
-                        if ($found[$lineNo]['what'] === false) {
-                            foreach ($values as $column => $value) {
-                                if (stristr($value, $term)) {
-                                    $found[$lineNo]['what'] = $column;
+                if (\count($found)) {
+                    foreach ($found as $lineNo => $values) {
+                        if (isset($values['what'])) {
+                            $found[$lineNo]['what'] = $values['what'];
+                        } else {
+                            $found[$lineNo]['what'] = current(array_keys(array_filter(
+                                $values,
+                                static function ($var) use ($term) {
+                                    return preg_match("/\\b{$term}\\b/i", $var);
+                                },
+                            )));
 
-                                    break;
+                            if ($found[$lineNo]['what'] === false) {
+                                foreach ($values as $column => $value) {
+                                    if (stristr($value, $term)) {
+                                        $found[$lineNo]['what'] = $column;
+
+                                        break;
+                                    }
                                 }
                             }
                         }
                     }
-                }
 
-                $results[$searched->evidence] = $found;
+                    $results[$searched->evidence] = $found;
+                }
+            } catch (\Exception $e) {
+                // Skip evidences that fail during search
+                error_log('Search error in evidence '.($searched->evidence ?? 'unknown').': '.$e->getMessage());
+            } catch (\TypeError $e) {
+                // Skip type errors from malformed data
+                error_log('Type error in evidence '.($searched->evidence ?? 'unknown').': '.$e->getMessage());
             }
         }
 

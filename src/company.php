@@ -131,8 +131,8 @@ if (empty($company)) {
         ['id' => 'dbNazev', 'readonly'],
     ))]);
 
-    $created = \AbraFlexi\RO::flexiDateTimeToDateTime($companer->getDataValue('createDt'));
-    $companyInfo->addRowColumns([_('created'), \AbraFlexi\RO::flexiDateTimeToDateTime($companer->getDataValue('createDt'))->format('d.m. Y').' ('._('before').' '.new \Ease\Html\Widgets\LiveAge($created).')']);
+    $created = \AbraFlexi\Functions::flexiDateTimeToDateTime($companer->getDataValue('createDt'));
+    $companyInfo->addRowColumns([_('created'), \AbraFlexi\Functions::flexiDateTimeToDateTime($companer->getDataValue('createDt'))->format('d.m. Y').' ('._('before').' '.new \Ease\Html\Widgets\LiveAge($created).')']);
 
     $companyInfo->addRowColumns([_('Watching changes'), new ui\WatchingChangesStatus($companer->getDataValue('watchingChanges') === 'true')]);
 
@@ -152,13 +152,7 @@ if (empty($company)) {
         $companyActions,
     );
 
-    $oPage->container->addItem(new \Ease\Html\DivTag('<br>'));
-    $oPage->container->addItem(new ui\FlexiURL(
-        $oPage->getRequestURL(),
-        ['id' => 'lasturl', 'class' => 'innershadow'],
-    ));
-
-    $oPage->container->addItem($companyPanel);
+    $oPage->addItem($companyPanel);
 
     $oPage->addItem(new ui\PageBottom());
 

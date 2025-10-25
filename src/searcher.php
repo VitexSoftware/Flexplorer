@@ -24,50 +24,63 @@ namespace Flexplorer;
 
 require_once 'includes/Init.php';
 
-$oPage->onlyForLogged();
+// Set JSON header early to prevent HTML output
+header('Content-Type: application/json');
+
+// Check if user is logged in without redirect
+if (!\Ease\Shared::user()->getUserID()) {
+    echo json_encode([]);
+
+    exit;
+}
 
 $evidence = $oPage->getRequestValue('evidence');
 $query = $oPage->getRequestValue('q');
 
-if (\strlen($query)) {
+if ($query !== null && $query !== '') {
     $_SESSION['searchQuery'] = $query;
 
     $found = [];
 
-    $searcher = new Searcher($evidence);
+    try {
+        $searcher = new Searcher($evidence);
 
-    header('ContentType: text/json');
+        if (\strlen($query) > 1) {
+            $results = $searcher->searchAll($query);
 
-    if (\strlen($query) > 1) {
-        $results = $searcher->searchAll($query);
+            foreach ($results as $rectype => $records) {
+                foreach ($records as $recid => $record) {
+                    if (isset($record['url'])) {
+                        $url = $record['url'];
+                    } else {
+                        $url = 'evidence.php?evidence='.$rectype.'&amp;id='.$record['id'];
+                    }
 
-        foreach ($results as $rectype => $records) {
-            foreach ($records as $recid => $record) {
-                if (isset($record['url'])) {
-                    $url = $record['url'];
-                } else {
-                    $url = 'evidence.php?evidence='.$rectype.'&amp;id='.$record['id'];
+                    if (isset($record['name'])) {
+                        $name = $record['name'];
+                    } else {
+                        $name = $record[$record['what']];
+                    }
+
+                    if (isset($record['what'])) {
+                        $what = $record['what'];
+                    } else {
+                        $what = $record[$record['what']];
+                    }
+
+                    $found[] = ['id' => $record['id'], 'url' => $url,
+                        'name' => $name,
+                        'type' => $rectype,
+                        'what' => $what];
                 }
-
-                if (isset($record['name'])) {
-                    $name = $record['name'];
-                } else {
-                    $name = $record[$record['what']];
-                }
-
-                if (isset($record['what'])) {
-                    $what = $record['what'];
-                } else {
-                    $what = $record[$record['what']];
-                }
-
-                $found[] = ['id' => $record['id'], 'url' => $url,
-                    'name' => $name,
-                    'type' => $rectype,
-                    'what' => $what];
             }
         }
+    } catch (\Exception $e) {
+        // Log error but return empty results for AJAX
+        error_log('Searcher error: '.$e->getMessage());
     }
 
     echo json_encode($found);
+} else {
+    echo json_encode([]);
 }

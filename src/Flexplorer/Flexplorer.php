@@ -44,7 +44,10 @@ class Flexplorer extends \AbraFlexi\RW
         }
 
         parent::__construct();
-        $this->evidenceStructure = $this->getColumnsInfo();
+
+        if (!empty($this->getEvidence())) {
+            $this->evidenceStructure = $this->getColumnsInfo();
+        }
     }
 
     /**
@@ -136,10 +139,10 @@ class Flexplorer extends \AbraFlexi\RW
                             $row[$key] = '<em>NULL</em>';
                         } else {
                             if (($value === '0') || ($value === 'false')) {
-                                $row[$key] = \Ease\TWB5\Part::glyphIcon('unchecked')->__toString();
+                                $row[$key] = '☐';
                             } else {
                                 if (($value === '1') || ($value === 'true')) {
-                                    $row[$key] = \Ease\TWB5\Part::glyphIcon('check')->__toString();
+                                    $row[$key] = '✓';
                                 }
                             }
                         }
@@ -152,10 +155,7 @@ class Flexplorer extends \AbraFlexi\RW
                                 $this->evidenceStructure[$key]['url'],
                             );
                             $revidence = 'evidence.php?evidence='.end($tmp);
-                            $row[$key] = '<a href="'.$revidence.'">'.\Ease\TWB5\Part::glyphIcon(
-                                'link',
-                                ['title' => $this->evidenceStructure[$key]['fkName']],
-                            )->__toString().'</a> '.$value;
+                            $row[$key] = '<a href="'.$revidence.'" title="'.$this->evidenceStructure[$key]['fkName'].'">🔗</a> '.$value;
                         }
 
                         break;
@@ -191,7 +191,7 @@ class Flexplorer extends \AbraFlexi\RW
                                     if ($id) {
                                         $values[$id] = '<a title="'.$table.'" href="'.$target.'?'.$idcolumn.'='.$id.'">'.$name.'</a>';
                                     } else {
-                                        $values[$id] = '<a title="'.$table.'" href="search.php?search='.$name.'&table='.$table.'&column='.$searchColumn.'">'.$name.'</a> '.\Ease\TWB5\Part::glyphIcon('search');
+                                        $values[$id] = '<a title="'.$table.'" href="search.php?search='.$name.'&table='.$table.'&column='.$searchColumn.'">'.$name.'</a> 🔍';
                                     }
                                 }
                             }
@@ -206,7 +206,7 @@ class Flexplorer extends \AbraFlexi\RW
                         if (isset($this->keywordsInfo[$key]['refdata']) && \strlen(trim($value))) {
                             $table = $this->keywordsInfo[$key]['refdata']['table'];
                             $searchColumn = $this->keywordsInfo[$key]['refdata']['captioncolumn'];
-                            $row[$key] = '<a title="'.$table.'" href="search.php?search='.$value.'&table='.$table.'&column='.$searchColumn.'">'.$value.'</a> '.\Ease\TWB5\Part::glyphIcon('search');
+                            $row[$key] = '<a title="'.$table.'" href="search.php?search='.$value.'&table='.$table.'&column='.$searchColumn.'">'.$value.'</a> 🔍';
                         }
 
                         if (strstr($key, 'url')) {
@@ -361,7 +361,8 @@ class Flexplorer extends \AbraFlexi\RW
 
         $id = $webPage->getRequestValue('id');
         $url = $webPage->getRequestValue('url');
-        $body = urldecode($webPage->getRequestValue('body'));
+        $bodyRaw = $webPage->getRequestValue('body');
+        $body = $bodyRaw !== null ? urldecode($bodyRaw) : null;
         $action = $webPage->getRequestValue('action');
         $method = $webPage->getRequestValue('method');
         $format = $webPage->getRequestValue('format');
@@ -375,7 +376,7 @@ class Flexplorer extends \AbraFlexi\RW
             ), 'success');
         }
 
-        if (\strlen($sourceurl)) {
+        if ($sourceurl && \strlen($sourceurl)) {
             $this->doCurlRequest($sourceurl, 'get');
 
             if ($this->lastResponseCode === 200) {
@@ -397,7 +398,7 @@ class Flexplorer extends \AbraFlexi\RW
             $method = 'GET';
         }
 
-        if (!\strlen($url)) {
+        if (!$url || !\strlen($url)) {
             $url = $this->url;
             $body = null;
         } else {
@@ -407,14 +408,14 @@ class Flexplorer extends \AbraFlexi\RW
         }
 
         if (null === $format) {
-            if (strstr($url, '.xml')) {
+            if ($url && strstr($url, '.xml')) {
                 $format = 'xml';
             } else {
                 $format = 'json';
             }
         }
 
-        if (\strlen($action)) {
+        if ($action && \strlen($action)) {
             $this->setMyKey($id);
             $result = $this->performAction($action, 'int');
         } else {
@@ -443,7 +444,6 @@ class Flexplorer extends \AbraFlexi\RW
             $columnsInfoFinal['id'] = $idBackup;
             $columnsInfoFinal['external-ids'] = ['name' => 'ExtID', 'title' => _('External ID'),
                 'type' => 'string', 'isSortable' => 'false'];
-
             $columnsInfoFinal = array_merge($columnsInfoFinal, $columnsInfo);
         }
 

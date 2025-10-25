@@ -60,7 +60,7 @@ class ButtonForm extends \Ease\TWB5\Form
             new \Ease\Html\InputUrlTag('url', $url),
             _('Button target Url'),
             $url,
-            new \Ease\Html\ATag(
+            (string) new \Ease\Html\ATag(
                 'https://www.flexibee.eu/api/dokumentace/ref/uzivatelske-tlacitko/',
                 _('Api Documentation'),
             ),

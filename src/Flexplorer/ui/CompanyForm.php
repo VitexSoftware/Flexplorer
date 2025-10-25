@@ -22,12 +22,9 @@ namespace Flexplorer\ui;
  */
 class CompanyForm extends \Ease\TWB5\Form
 {
-    /**
-     * @param \AbraFlexi\Company $company
-     */
-    public function __construct($company)
+    public function __construct(\AbraFlexi\Company $company)
     {
-        parent::__construct('company');
+        parent::__construct(['id' => 'company']);
 
         $this->addInput(
             new \Ease\Html\InputTextTag(

@@ -29,7 +29,7 @@ $infoTable = new \Ease\Html\TableTag(null, ['class' => 'table']);
 foreach ($statuser->getData() as $property => $value) {
     switch ($property) {
         case 'startupTime':
-            $value = new \Ease\Html\Widgets\LiveAge(\AbraFlexi\RO::flexiDateTimeToDateTime($value));
+            $value = new \Ease\Html\Widgets\LiveAge(\AbraFlexi\Functions::flexiDateTimeToDateTime($value));
 
             break;
         case 'memoryHeap':
@@ -41,7 +41,6 @@ foreach ($statuser->getData() as $property => $value) {
 
     $infoTable->addRowColumns([$property, $value]);
 }
-
 
 $infoRow = new \Ease\TWB5\Row();
 $infoRow->addColumn(6, new \Ease\TWB5\Panel(_('server info'), 'default', $infoTable));

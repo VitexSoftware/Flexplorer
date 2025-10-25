@@ -40,8 +40,8 @@ try {
     $dataRaw = $engine->getColumnsFromAbraFlexi('*', array_merge($_REQUEST, ['add-row-count' => true]));
 
     foreach ($dataRaw as $row => $columns) {
-        $dataRaw[$row]['lastUpdate'] = (\array_key_exists('lastUpdate', $dataRaw) && $dataRaw[$row]['lastUpdate']) 
-            ? $dataRaw[$row]['lastUpdate']->format(\AbraFlexi\DateTime::$format) 
+        $dataRaw[$row]['lastUpdate'] = (\array_key_exists('lastUpdate', $dataRaw) && $dataRaw[$row]['lastUpdate'])
+            ? $dataRaw[$row]['lastUpdate']->format(\AbraFlexi\DateTime::$format)
             : '';
 
         foreach ($columns as $column => $value) {
@@ -50,7 +50,9 @@ try {
                     break;
                 case 'object':
                     $dataRaw[$row][$column] = (string) $dataRaw[$row][$column];
+
                     break;
+
                 default:
                     break;
             }
@@ -65,7 +67,7 @@ try {
 
     // Clear any buffered output before sending JSON
     ob_clean();
-    echo json_encode($response, JSON_OBJECT_AS_ARRAY);
+    echo json_encode($response, \JSON_OBJECT_AS_ARRAY);
 } catch (\Throwable $e) {
     // Handle exceptions and return a JSON error response
     ob_clean();

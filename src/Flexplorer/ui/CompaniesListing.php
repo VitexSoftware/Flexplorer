@@ -41,14 +41,17 @@ class CompaniesListing extends \Ease\Html\DivTag
             new \Ease\Html\H1Tag(_('Companies Listing')),
             $properties,
         );
-        $this->contents = new \Ease\Html\TableTag('', ['class' => 'table']);
+        $this->contents = new \Ease\Html\TableTag('', ['class' => 'table table-striped table-hover']);
         $this->companer = new \AbraFlexi\Company(null, ['company' => null]);
 
+        // Add header first
+        $this->header = $this->contents->addRowHeaderColumns([_('Name'), _('Age'), _('Database')]);
+
+        // Then add data rows
         foreach ($this->getListing() as $companyInfo) {
             $this->contents->addRowColumns($this->companyRow($companyInfo));
         }
 
-        $this->header = $this->contents->addRowHeaderColumns([_('Name'), _('Age'), _('Database')]);
         $this->addItem($this->contents);
     }
 
@@ -71,8 +74,8 @@ class CompaniesListing extends \Ease\Html\DivTag
             $companyDataRaw['nazev'],
         );
 
-        $created = \AbraFlexi\RO::flexiDateTimeToDateTime($companyDataRaw['createDt']);
-        $companyData['created'] = \AbraFlexi\RO::flexiDateTimeToDateTime($companyDataRaw['createDt'])->format('d.m. Y').' ('._('before').' '.new \Ease\Html\Widgets\LiveAge($created).')';
+        $created = \AbraFlexi\Functions::flexiDateTimeToDateTime($companyDataRaw['createDt']);
+        $companyData['created'] = \AbraFlexi\Functions::flexiDateTimeToDateTime($companyDataRaw['createDt'])->format('d.m. Y').' ('._('before').' '.new \Ease\Html\Widgets\LiveAge($created).')';
         $companyData['databaze'] = new CopyToClipBoard(new \Ease\Html\InputTextTag(
             'dbNazev',
             $companyDataRaw['dbNazev'],

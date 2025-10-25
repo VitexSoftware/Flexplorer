@@ -36,7 +36,7 @@ if (empty($backup)) {
     $oPage->addItem(new ui\PageTop(_('Backup restore')));
     $oPage->addStatusMessage('Specify backup to restore', 'warning');
 
-    $oPage->container->addItem(new \Ease\TWB5\Panel(
+    $oPage->addItem(new \Ease\TWB5\Panel(
         _('Backups'),
         'success',
         new ui\BackupsTool(

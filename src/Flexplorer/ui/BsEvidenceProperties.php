@@ -48,10 +48,7 @@ class BsEvidenceProperties extends BsGrid
                             if (isset($propValues['url'])) {
                                 $tmp = explode('/', $propValues['url']);
                                 $revidence = 'evidence.php?evidence='.end($tmp);
-                                $props[$value] = '<a href="'.$revidence.'">'.\Ease\TWB5\Part::glyphIcon(
-                                    'link',
-                                    ['title' => $propValues['fkName']],
-                                )->__toString().$propValues[$value].'</a> ';
+                                $props[$value] = '<a href="'.$revidence.'" title="'.$propValues['fkName'].'">🔗'.$propValues[$value].'</a> ';
                             } else {
                                 $props[$value] = $propValues[$value];
                             }
@@ -84,11 +81,11 @@ class BsEvidenceProperties extends BsGrid
                         default:
                             switch ($propValues[$value]) {
                                 case 'true':
-                                    $props[$value] = \Ease\TWB5\Part::glyphIcon('unchecked')->__toString();
+                                    $props[$value] = '☐';
 
                                     break;
                                 case 'false':
-                                    $props[$value] = \Ease\TWB5\Part::glyphIcon('check')->__toString();
+                                    $props[$value] = '✓';
 
                                     break;
 
