@@ -1085,25 +1085,25 @@
         },
         {
             "name": "vitexsoftware/ease-bootstrap5-widgets",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VitexSoftware/php-ease-twbootstrap5-widgets.git",
-                "reference": "ff040b30c2ac2024dfded9b6e3589f22f969ba80"
+                "reference": "2de48156808c65f878e2eef6d52daec8009477dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VitexSoftware/php-ease-twbootstrap5-widgets/zipball/ff040b30c2ac2024dfded9b6e3589f22f969ba80",
-                "reference": "ff040b30c2ac2024dfded9b6e3589f22f969ba80",
+                "url": "https://api.github.com/repos/VitexSoftware/php-ease-twbootstrap5-widgets/zipball/2de48156808c65f878e2eef6d52daec8009477dc",
+                "reference": "2de48156808c65f878e2eef6d52daec8009477dc",
                 "shasum": ""
             },
             "require": {
-                "vitexsoftware/ease-twbootstrap5": "*"
+                "vitexsoftware/ease-twbootstrap5": "^1.2"
             },
             "require-dev": {
-                "ergebnis/composer-normalize": "^2.45",
-                "ergebnis/php-cs-fixer-config": "^6.45",
-                "friendsofphp/php-cs-fixer": "^3.71",
+                "ergebnis/composer-normalize": "^2.47",
+                "ergebnis/php-cs-fixer-config": "^6.46",
+                "friendsofphp/php-cs-fixer": "^3.75",
                 "phpstan/phpstan": "*",
                 "phpunit/phpunit": "*"
             },
@@ -1127,7 +1127,7 @@
             "description": "EasePHP framework addons and code snipplets",
             "homepage": "https://github.com/VitexSoftware/php-ease-twbootstrap4-widgets-abraflexi",
             "support": {
-                "source": "https://github.com/VitexSoftware/php-ease-twbootstrap5-widgets/tree/1.4.1"
+                "source": "https://github.com/VitexSoftware/php-ease-twbootstrap5-widgets/tree/1.4.2"
             },
             "funding": [
                 {
@@ -1135,7 +1135,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2025-04-08T17:41:39+00:00"
+            "time": "2025-10-10T12:50:48+00:00"
         },
         {
             "name": "vitexsoftware/ease-bootstrap5-widgets-abraflexi",
@@ -1364,29 +1364,28 @@
         },
         {
             "name": "vitexsoftware/ease-twbootstrap5",
-            "version": "dev-main",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VitexSoftware/php-ease-twbootstrap5.git",
-                "reference": "eabc5889eba79c545356c5b63868fb5d2410aa62"
+                "reference": "10f6a0b80f28989dc354a3af246d1d714f507c90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VitexSoftware/php-ease-twbootstrap5/zipball/eabc5889eba79c545356c5b63868fb5d2410aa62",
-                "reference": "eabc5889eba79c545356c5b63868fb5d2410aa62",
+                "url": "https://api.github.com/repos/VitexSoftware/php-ease-twbootstrap5/zipball/10f6a0b80f28989dc354a3af246d1d714f507c90",
+                "reference": "10f6a0b80f28989dc354a3af246d1d714f507c90",
                 "shasum": ""
             },
             "require": {
-                "vitexsoftware/ease-html": "^1.40"
+                "vitexsoftware/ease-html": ">= 1.40"
             },
             "require-dev": {
-                "ergebnis/composer-normalize": "^2.48",
-                "ergebnis/php-cs-fixer-config": "^6.55",
-                "friendsofphp/php-cs-fixer": "^3.88",
-                "phpstan/phpstan": "^2.1",
+                "ergebnis/composer-normalize": "^2.47",
+                "ergebnis/php-cs-fixer-config": "^6.46",
+                "friendsofphp/php-cs-fixer": "^3.75",
+                "phpstan/phpstan": "^2.0",
                 "phpunit/phpunit": "*"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1406,9 +1405,9 @@
             "description": "Set of Twitter Bootstrap 5 rendering objects",
             "support": {
                 "issues": "https://github.com/VitexSoftware/php-ease-twbootstrap5/issues",
-                "source": "https://github.com/VitexSoftware/php-ease-twbootstrap5/tree/main"
+                "source": "https://github.com/VitexSoftware/php-ease-twbootstrap5/tree/v0.2.0"
             },
-            "time": "2025-10-24T12:27:04+00:00"
+            "time": "2025-06-05T14:32:47+00:00"
         }
     ],
     "packages-dev": [
