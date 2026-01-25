@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.vitexsoftware.flexplorer</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <name>flexplorer</name>
+  <summary>Vývojářský nástroj pro FlexiBee API/JSON.</summary>
+  <description>
+    <p>
+      Zobrazuje obsah všech dostpných evidencí ve všech firmách Zobrazuje strukturu evidence odesílá přímé požadavky na server a zobrazuje výsledky
+    </p>
+  </description>
+  <categories>
+    <category>Utility</category>
+  </categories>
+  <url type="homepage">https://github.com/VitexSoftware/Flexplorer</url>
+  <url type="bugtracker">https://github.com/VitexSoftware/Flexplorer/issues</url>
+  <developer id="cz.vitexsoftware">
+    <name>VitexSoftware</name>
+  </developer>
+  <content_rating type="oars-1.1"/>
+</component>
