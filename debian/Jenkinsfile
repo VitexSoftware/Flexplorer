@@ -2,13 +2,7 @@
 
 // Current version of this Pipeline https://github.com/VitexSoftware/BuildImages/blob/main/Test/Jenkinsfile-parael
 
-String[] distributions = [
-    'debian:bookworm',
-    'debian:trixie',
-    'debian:forky',
-    'ubuntu:jammy',
-    'ubuntu:noble'
-]
+String[] distributions = ['debian:bookworm', 'debian:trixie', 'debian:forky', 'ubuntu:jammy', 'ubuntu:noble']
 
 String vendor = 'vitexsoftware'
 //String distroFamily = ''
@@ -25,7 +19,6 @@ node() {
 }
 
 def branches = [:]
-
 distributions.each { distro ->
     branches[distro] = {
         def distroName = distro
@@ -56,7 +49,7 @@ distributions.each { distro ->
                         sh 'dch -b -v ' + buildVer  + ' "' + env.BUILD_TAG  + '"'
                         sh 'sudo apt-get update --allow-releaseinfo-change'
                         sh 'sudo chown jenkins:jenkins ..'
-                        sh 'debuild-pbuilder  -i -us -uc -b'
+                        sh 'debuild-pbuilder -r"sudo -E" -i -us -uc -b'
                         sh 'mkdir -p $WORKSPACE/dist/debian/ ; rm -rf $WORKSPACE/dist/debian/* ; for deb in $(cat debian/files | awk \'{print $1}\'); do mv "../$deb" $WORKSPACE/dist/debian/; done'
                         artifacts = sh (
                             script: "cat debian/files | awk '{print \$1}'",
@@ -72,14 +65,29 @@ distributions.each { distro ->
                         sh 'echo "deb [trusted=yes] file://///$WORKSPACE/dist/debian/ ./" | sudo tee /etc/apt/sources.list.d/local.list'
                         sh 'sudo apt-get update --allow-releaseinfo-change'
                         sh 'echo "INSTALATION"'
-                        artifacts.each { deb_file ->
-                            if (deb_file.endsWith('.deb')) {
-                                def pkgName = deb_file.tokenize('/')[-1].replaceFirst(/_.*/, '')
-                                sh 'echo -e "${GREEN} installing ' + pkgName + ' on `lsb_release -sc` ${ENDCOLOR} "'
-                                sh 'sudo DEBIAN_FRONTEND=noninteractive DEBCONF_DEBUG=' + debconf_debug + ' apt-get -y install ' + pkgName + ' || sudo apt-get -y -f install'
+                      
+// Ensure abraflexi-webhook-acceptor-sqlite is first in the list
+                    def installOrder = [
+                        'abraflexi-webhook-acceptor-sqlite',
+                    ]
+
+                    def sorted_artifacts = artifacts.toList()
+                    installOrder.each { pkgPrefix ->
+                        def debFile = null
+                        for (item in sorted_artifacts) {
+                            def itemStr = item.toString()
+                            if (itemStr.startsWith(pkgPrefix) && itemStr.endsWith('.deb')) {
+                                debFile = itemStr
+                                break
                             }
                         }
+                        if (debFile) {
+                            def pkgName = debFile.tokenize('/')[-1].replaceFirst(/_.*/, '')
+                            sh 'echo -e "${GREEN} installing ' + pkgName + ' on `lsb_release -sc` ${ENDCOLOR} "'
+                            sh 'sudo DEBIAN_FRONTEND=noninteractive DEBCONF_DEBUG=' + debconf_debug + ' apt-get -y install ' + pkgName + ' || sudo apt-get -y -f install'
+                        }
                     }
+
                 }
                 stage('Archive artifacts ' + distroName ) {
                     // Only run if previous stages (Build and Test) succeeded
@@ -109,12 +117,12 @@ distributions.each { distro ->
         }
     }
 }
-
+}
 
 parallel branches
 
 node {
     stage('Publish to Aptly') {
-        publishDebToAptly()
+	publishDebToAptly()
     }
 }
