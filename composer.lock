@@ -552,12 +552,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/Mail_Mime.git",
-                "reference": "4c0d7488e0cdefa5197be0d6c08a277427fa0e89"
+                "reference": "a6f9e1dbf10e06c0306d5c9e127a33794817dc1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear/Mail_Mime/zipball/4c0d7488e0cdefa5197be0d6c08a277427fa0e89",
-                "reference": "4c0d7488e0cdefa5197be0d6c08a277427fa0e89",
+                "url": "https://api.github.com/repos/pear/Mail_Mime/zipball/a6f9e1dbf10e06c0306d5c9e127a33794817dc1f",
+                "reference": "a6f9e1dbf10e06c0306d5c9e127a33794817dc1f",
                 "shasum": ""
             },
             "require": {
@@ -596,11 +596,11 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Mail_Mime",
                 "source": "https://github.com/pear/Mail_Mime"
             },
-            "time": "2025-01-07T08:51:58+00:00"
+            "time": "2026-01-26T13:34:53+00:00"
         },
         {
             "name": "pear/pear-core-minimal",
-            "version": "v1.10.17",
+            "version": "v1.10.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/pear-core-minimal.git",
@@ -653,12 +653,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/PEAR_Exception.git",
-                "reference": "645d1af08bdd9a6b9bb6d3b81eb8e235ca84d1d1"
+                "reference": "e244d44b2774f1fb6b4c911c2a39ba1ec2d93e14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear/PEAR_Exception/zipball/645d1af08bdd9a6b9bb6d3b81eb8e235ca84d1d1",
-                "reference": "645d1af08bdd9a6b9bb6d3b81eb8e235ca84d1d1",
+                "url": "https://api.github.com/repos/pear/PEAR_Exception/zipball/e244d44b2774f1fb6b4c911c2a39ba1ec2d93e14",
+                "reference": "e244d44b2774f1fb6b4c911c2a39ba1ec2d93e14",
                 "shasum": ""
             },
             "require": {
@@ -705,7 +705,7 @@
                 "issues": "https://pear.php.net/bugs/search.php?cmd=display&package_name%5B%5D=PEAR_Exception",
                 "source": "https://github.com/pear/PEAR_Exception"
             },
-            "time": "2024-11-24T18:10:39+00:00"
+            "time": "2026-01-25T18:06:17+00:00"
         },
         {
             "name": "psr/event-dispatcher",
@@ -979,26 +979,25 @@
         },
         {
             "name": "vitexsoftware/abraflexi-bricks",
-            "version": "1.4.1",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VitexSoftware/php-abraflexi-bricks.git",
-                "reference": "cfa4fe1734e389c62163317f2ae3bfa190896cd0"
+                "reference": "33bbeddb49cd71f19ab1fdf8ebb560a812baa0e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VitexSoftware/php-abraflexi-bricks/zipball/cfa4fe1734e389c62163317f2ae3bfa190896cd0",
-                "reference": "cfa4fe1734e389c62163317f2ae3bfa190896cd0",
+                "url": "https://api.github.com/repos/VitexSoftware/php-abraflexi-bricks/zipball/33bbeddb49cd71f19ab1fdf8ebb560a812baa0e7",
+                "reference": "33bbeddb49cd71f19ab1fdf8ebb560a812baa0e7",
                 "shasum": ""
             },
             "require": {
-                "spojenet/flexibee": "^3.5",
-                "vitexsoftware/ease-core-bricks": "^1.2"
+                "spojenet/flexibee": "^3.6"
             },
             "require-dev": {
-                "ergebnis/composer-normalize": "^2.47",
-                "ergebnis/php-cs-fixer-config": "^6.46",
-                "friendsofphp/php-cs-fixer": "^3.75",
+                "ergebnis/composer-normalize": "^2.48",
+                "ergebnis/php-cs-fixer-config": "^6.58",
+                "friendsofphp/php-cs-fixer": "^3.92",
                 "phpstan/phpstan": "*",
                 "phpunit/phpunit": "*"
             },
@@ -1022,9 +1021,9 @@
             "description": "php-abraflexi extending classes and widgets",
             "support": {
                 "issues": "https://github.com/VitexSoftware/php-abraflexi-bricks/issues",
-                "source": "https://github.com/VitexSoftware/php-abraflexi-bricks/tree/1.4.1"
+                "source": "https://github.com/VitexSoftware/php-abraflexi-bricks/tree/v1.5.0"
             },
-            "time": "2025-06-24T12:29:40+00:00"
+            "time": "2026-01-23T18:08:02+00:00"
         },
         {
             "name": "vitexsoftware/datatables-abraflexi",
