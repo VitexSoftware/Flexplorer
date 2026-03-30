@@ -762,30 +762,30 @@
         },
         {
             "name": "spojenet/flexibee",
-            "version": "v3.7.0",
+            "version": "v3.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Spoje-NET/php-abraflexi.git",
-                "reference": "7c068f1ad35672d93d9eb7a35fa12fd9c46f7ba9"
+                "reference": "b9684279d00c66cd1467d05f96e044079d969b89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Spoje-NET/php-abraflexi/zipball/7c068f1ad35672d93d9eb7a35fa12fd9c46f7ba9",
-                "reference": "7c068f1ad35672d93d9eb7a35fa12fd9c46f7ba9",
+                "url": "https://api.github.com/repos/Spoje-NET/php-abraflexi/zipball/b9684279d00c66cd1467d05f96e044079d969b89",
+                "reference": "b9684279d00c66cd1467d05f96e044079d969b89",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "ext-gettext": "*",
                 "ext-json": "*",
-                "php": "^8.1",
+                "php": ">=8.1",
                 "vitexsoftware/ease-core": "^1.50"
             },
             "require-dev": {
-                "ergebnis/composer-normalize": "^2.48",
-                "ergebnis/php-cs-fixer-config": "^6.59",
+                "ergebnis/composer-normalize": "^2.50",
+                "ergebnis/php-cs-fixer-config": "^6.60",
                 "ext-iconv": "*",
-                "friendsofphp/php-cs-fixer": "^3.89",
+                "friendsofphp/php-cs-fixer": "^3.94",
                 "phing/phing": "*",
                 "phpstan/phpstan": "*",
                 "phpunit/phpunit": "*",
@@ -816,9 +816,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Spoje-NET/php-abraflexi/issues",
-                "source": "https://github.com/Spoje-NET/php-abraflexi/tree/v3.7.0"
+                "source": "https://github.com/Spoje-NET/php-abraflexi/tree/v3.7.2"
             },
-            "time": "2026-02-03T19:44:31+00:00"
+            "time": "2026-03-23T20:23:57+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
