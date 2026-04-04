@@ -1,5 +1,5 @@
 Source: flexplorer
-Build-Depends: debhelper (>= 7.0.50~),po-debconf,moreutils, jq, composer, phpdocumentor
+Build-Depends: debhelper (>= 7.0.50~),po-debconf,moreutils, jq, pkg-php-tools, phpdocumentor
 Standards-Version: 3.8.4
 Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
 Uploaders: Vitex <vitex@hippy.cz>
@@ -8,7 +8,7 @@ Homepage: https://github.com/VitexSoftware/Flexplorer
 
 Package: flexplorer
 Depends: ${misc:Depends},
- composer-debian,
+ ${phpcomposer:Debian-require},
  php-intl,
  php-vitexsoftware-ease-bootstrap5-widgets,
  php-vitexsoftware-ease-bootstrap5-widgets-abraflexi,
