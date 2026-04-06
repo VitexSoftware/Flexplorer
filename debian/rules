@@ -5,7 +5,7 @@ nextversion=$(shell echo $(repoversion) | perl -ne 'chomp; print join(".", splic
 
 
 %:
-	dh $@ --with phpcomposer
+	dh $@
 
 
 override_dh_prep:

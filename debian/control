@@ -1,5 +1,5 @@
 Source: flexplorer
-Build-Depends: debhelper (>= 7.0.50~),po-debconf,moreutils, jq, pkg-php-tools, phpdocumentor
+Build-Depends: debhelper (>= 7.0.50~),po-debconf,moreutils, jq, phpdocumentor
 Standards-Version: 3.8.4
 Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
 Uploaders: Vitex <vitex@hippy.cz>
@@ -8,12 +8,17 @@ Homepage: https://github.com/VitexSoftware/Flexplorer
 
 Package: flexplorer
 Depends: ${misc:Depends},
- ${phpcomposer:Debian-require},
+ php-common,
  php-intl,
+ php-league-commonmark,
+ php-spojenet-flexibee,
+ php-vitexsoftware-abraflexi-bricks,
+ php-vitexsoftware-ease-twbootstrap5,
+ php-vitexsoftware-ease-html-widgets,
  php-vitexsoftware-ease-bootstrap5-widgets,
  php-vitexsoftware-ease-bootstrap5-widgets-abraflexi,
- php-vitexsoftware-ease-bricks,php-abraflexi-datatables,
- php-vitexsoftware-ease-html-widgets
+ php-vitexsoftware-ease-bricks,
+ php-abraflexi-datatables
 Architecture: all
 Section: web
 Priority: optional
