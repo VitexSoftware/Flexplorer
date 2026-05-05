@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>io.github.vitexsoftware.flexplorer</id>
+  <icon type="stock">flexplorer</icon>
   
   <name>Flexplorer</name>
   <summary>Developer&apos;s tool for FlexiBee API JSON/XML </summary>
