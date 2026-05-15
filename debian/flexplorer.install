@@ -1,2 +1,26 @@
-flexplorer.svg	usr/share/icons/hicolor/scalable/apps/
-debian/io.github.vitexsoftware.flexplorer.metainfo.xml	usr/share/metainfo/
+README.md			usr/share/flexplorer/
+src/*.php                       usr/share/flexplorer/
+src/*.ico                       usr/share/flexplorer/
+src/css/*.css                   usr/share/flexplorer/css/
+src/css/images/*                usr/share/flexplorer/css/images/
+src/js/*.js                     usr/share/flexplorer/js/
+src/images/*                    usr/share/flexplorer/images/
+src/includes/*.php		usr/share/flexplorer/includes/
+src/Flexplorer/*.php		usr/lib/flexplorer/classes/
+src/Flexplorer/ui/*.php		usr/lib/flexplorer/classes/ui/
+src/Flexplorer/xml/*.php	usr/lib/flexplorer/classes/xml/
+src/download/*                  usr/share/flexplorer/download/
+debian/conf/flexplorer.conf	etc/apache2/conf-available/
+debian/conf/flexplorer.service  etc/avahi/services/
+debian/conf/autoload.php        var/lib/flexplorer/
+debian/conf/flexplorer.desktop  etc/flexplorer/
+
+i18n/cs_CZ/LC_MESSAGES/*.mo     usr/share/locale/cs_CZ/LC_MESSAGES
+i18n/en_US/LC_MESSAGES/*.mo     usr/share/locale/en_US/LC_MESSAGES
+
+debian/icons/16/flexplorer.png  usr/share/icons/hicolor/16x16/apps
+debian/icons/32/flexplorer.png  usr/share/icons/hicolor/32x32/apps
+debian/icons/48/flexplorer.png  usr/share/icons/hicolor/48x48/apps
+debian/icons/256/flexplorer.png usr/share/icons/hicolor/256x256/apps
+flexplorer.svg                  usr/share/icons/hicolor/scalable/apps/
+debian/io.github.vitexsoftware.flexplorer.metainfo.xml usr/share/metainfo/

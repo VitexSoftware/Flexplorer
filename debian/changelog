@@ -1,3 +1,10 @@
+flexplorer (1.9) trixie; urgency=medium
+
+  * Merge debian/install into debian/flexplorer.install to fix
+    dh_install ignoring generic install file
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Fri, 15 May 2026 19:26:41 +0200
+
 flexplorer (1.8) trixie; urgency=medium
 
   * Fix about.php README path without sed; drop fragile dh_install sed
