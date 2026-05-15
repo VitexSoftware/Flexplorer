@@ -36,25 +36,19 @@ class MainPageMenu extends \Ease\Html\Div
                 'class' => 'container', 'style' => 'margin: auto;',
             ],
         );
-        $this->well = $this->addItem(
-            new \Ease\Html\DivTag(null, ['class' => 'well']),
-        );
-        $this->row = $this->well->addItem(
-            new \Ease\Html\DivTag(null, ['class' => 'row']),
-        );
+        $this->well = $this->addItem(new \Ease\Html\DivTag(null, ['class' => 'well']));
+        $this->row = $this->well->addItem(new \Ease\Html\DivTag(null, ['class' => 'row']));
     }
 
     public function addMenuItem($image, $title, $url)
     {
-        return $this->row->addItem(
-            new \Ease\Html\ATag(
-                $url,
-                new \Ease\Html\DivTag(
-                    "{$title}<center><img class=\"mpicon\" src=\"{$image}\" alt=\"{$title}\"></center>",
-                    ['class' => 'col-md-2'],
-                ),
+        return $this->row->addItem(new \Ease\Html\ATag(
+            $url,
+            new \Ease\Html\DivTag(
+                "{$title}<center><img class=\"mpicon\" src=\"{$image}\" alt=\"{$title}\"></center>",
+                ['class' => 'col-md-2'],
             ),
-        );
+        ),);
     }
 
     public function finalize(): void

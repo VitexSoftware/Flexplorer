@@ -27,12 +27,10 @@ class RecordShow extends \Ease\TWB5\Panel
     {
         $evidence = $recordObject->getEvidence();
         parent::__construct(
-            new \Ease\Html\H3Tag(
-                new \Ease\Html\ATag(
-                    'evidence.php?evidence='.$evidence,
-                    $evidence.' '.$recordObject,
-                ),
-            ),
+            new \Ease\Html\H3Tag(new \Ease\Html\ATag(
+                'evidence.php?evidence='.$evidence,
+                $evidence.' '.$recordObject,
+            ),),
             'warning',
             null,
             $bottom,

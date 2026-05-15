@@ -1,16 +1,31 @@
 #!/usr/bin/make -f
 
-PKG_VERSION := $(shell dpkg-parsechangelog -S Version | sed 's/~.*//')
-PKG_SOURCE  := $(shell jq -r '.name' composer.json)
-PKG_TYPE    := $(shell jq -r '.type' composer.json)
-
 repoversion=$(shell LANG=C aptitude show flexplorer | grep Version: | awk '{print $$2}')
 nextversion=$(shell echo $(repoversion) | perl -ne 'chomp; print join(".", splice(@{[split/\./,$$_]}, 0, -1), map {++$$_} pop @{[split/\./,$$_]}), "\n";')
 
 
 %:
-	dh $@
+	dh $@ --with phpcomposer
 
+override_dh_auto_build:
+	# Generate custom Debian autoloader for application
+	cat > debian/autoload.php <<'AUTOLOADER'
+	<?php
+	// Debian autoloader for flexplorer
+	require_once '/usr/share/php/AbraFlexi/autoload.php';
+	require_once '/usr/share/php/AbraFlexiBricks/autoload.php';
+	require_once '/usr/share/php/Ease/autoload.php';
+	require_once '/usr/share/php/EaseTWB5/autoload.php';
+	require_once '/usr/share/php/EaseHtmlWidgets/autoload.php';
+	require_once '/usr/share/php/EaseTWB5Widgets/autoload.php';
+	// PSR-4 autoloader for application classes
+	spl_autoload_register(function (string $$class): void {
+	    if (strncmp('Flexplorer\\', $$class, 11) === 0) {
+	        $$file = '/usr/lib/flexplorer/Flexplorer/' . str_replace('\\', '/', substr($$class, 11)) . '.php';
+	        if (file_exists($$file)) { require $$file; }
+	    }
+	});
+	AUTOLOADER
 
 override_dh_prep:
 	rm -rf docs; mkdir docs
@@ -20,18 +35,16 @@ override_dh_prep:
 
 override_dh_install:
 	dh_install
-	sed -i -e 's/..\/vendor/\/var\/lib\/flexplorer/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
+	# Install Debian autoloader
+	install -D -m 0644 debian/autoload.php debian/flexplorer/usr/share/php/flexplorer/autoload.php
+	sed -i -e 's/\.\.\/\//.\/\//g' debian/flexplorer/usr/share/flexplorer/about.php
+	sed -i -e 's/..../\/usr\/share\/php\/flexplorer/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
 	sed -i -e 's/..\/i18n/\/usr\/share\/locale/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
-	sed -i "1a defined('APP_NAME') || define('APP_NAME', '$(PKG_SOURCE)');" \
-		debian/flexplorer/var/lib/flexplorer/autoload.php
-	sed -i "s|'unknown'|'$(PKG_SOURCE)'|" \
-		debian/flexplorer/var/lib/flexplorer/autoload.php
-	sed -i "s|'0.0.0'|'$(PKG_VERSION)'|" \
-		debian/flexplorer/var/lib/flexplorer/autoload.php
-	sed -i "s|'library'|'$(PKG_TYPE)'|g" \
-		debian/flexplorer/var/lib/flexplorer/autoload.php
-	sed -i "2a defined('APP_VERSION') || define('APP_VERSION', '$(PKG_VERSION)');" \
-		debian/flexplorer/var/lib/flexplorer/autoload.php
+	sed -i "s|'../.env'|'/etc/flexplorer/.env'|g" debian/flexplorer/usr/share/flexplorer/includes/Init.php
+	sed -i -e "s|\.'/composer\.lock'|.'/autoload.php'|g" \
+		-e "s|'../composer.lock'|'/var/lib/flexplorer/autoload.php'|g" \
+		debian/flexplorer/usr/lib/flexplorer/classes/ui/PageBottom.php
+
 
 override_dh_clean:
 	debconf-updatepo

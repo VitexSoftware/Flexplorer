@@ -47,9 +47,7 @@ class FlexplorerTest extends \PHPUnit\Framework\TestCase
     public function testHtmlizeData(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -60,9 +58,7 @@ class FlexplorerTest extends \PHPUnit\Framework\TestCase
     public function testHtmlizeRow(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -73,9 +69,7 @@ class FlexplorerTest extends \PHPUnit\Framework\TestCase
     public function testSearchString(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -86,9 +80,7 @@ class FlexplorerTest extends \PHPUnit\Framework\TestCase
     public function testTakeData(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -99,8 +91,6 @@ class FlexplorerTest extends \PHPUnit\Framework\TestCase
     public function testContains(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 }

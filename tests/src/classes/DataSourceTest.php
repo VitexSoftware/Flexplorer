@@ -47,9 +47,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testGetEvidence(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -60,9 +58,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testSetOrder(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -73,9 +69,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testSetBackUrl(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -86,9 +80,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testAjaxify(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -99,9 +91,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testGetTotal(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -112,9 +102,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testGetListing(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -125,9 +113,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testGetJson(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -138,9 +124,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testGetCsv(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -151,9 +135,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testGetPdf(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -164,9 +146,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testOutput(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -177,9 +157,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testPdfInit(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -190,9 +168,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testGetPDFFromArray(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -203,9 +179,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testGetPDFFile(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -216,9 +190,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testControlColumns(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -229,9 +201,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testControlDeleteColumns(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -242,9 +212,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testControlAddColumns(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -255,9 +223,7 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testControlEditColumns(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -268,8 +234,6 @@ class DataSourceTest extends \PHPUnit\Framework\TestCase
     public function testGetWhere(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 }

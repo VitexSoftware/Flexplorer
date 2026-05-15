@@ -10,10 +10,10 @@ src/Flexplorer/*.php		usr/lib/flexplorer/classes/
 src/Flexplorer/ui/*.php		usr/lib/flexplorer/classes/ui/
 src/Flexplorer/xml/*.php	usr/lib/flexplorer/classes/xml/
 src/download/*                  usr/share/flexplorer/download/
-debian/conf/flexplorer.conf	etc/apache2/conf-available/
-debian/conf/flexplorer.service  etc/avahi/services/
-debian/conf/autoload.php        var/lib/flexplorer/
-debian/conf/flexplorer.desktop  etc/flexplorer/
+debian/flexplorer.conf		etc/apache2/conf-available/
+debian/flexplorer.service	etc/avahi/services/
+debian/autoload.php		var/lib/flexplorer/
+debian/flexplorer.desktop	etc/flexplorer/
 
 i18n/cs_CZ/LC_MESSAGES/*.mo     usr/share/locale/cs_CZ/LC_MESSAGES
 i18n/en_US/LC_MESSAGES/*.mo     usr/share/locale/en_US/LC_MESSAGES

@@ -117,14 +117,14 @@ class EvidenceProperties extends \Ease\Html\TableTag
                                     break;
 
                                 default:
-                                    if (isset($_SESSION['searchQuery']) && is_string($propValues[$value])) {
+                                    if (isset($_SESSION['searchQuery']) && \is_string($propValues[$value])) {
                                         $term = $_SESSION['searchQuery'];
                                         $props[$value] = str_ireplace(
                                             $term,
                                             "<strong>{$term}</strong>",
                                             $propValues[$value],
                                         );
-                                    } elseif (is_array($propValues[$value])) {
+                                    } elseif (\is_array($propValues[$value])) {
                                         $props[$value] = json_encode($propValues[$value]);
                                     } else {
                                         $props[$value] = $propValues[$value];

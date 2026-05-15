@@ -47,9 +47,7 @@ class SearcherTest extends \PHPUnit\Framework\TestCase
     public function testRegisterEvidence(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 
     /**
@@ -60,8 +58,6 @@ class SearcherTest extends \PHPUnit\Framework\TestCase
     public function testSearchAll(): void
     {
         // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.',
-        );
+        $this->markTestIncomplete('This test has not been implemented yet.');
     }
 }

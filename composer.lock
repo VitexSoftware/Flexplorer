@@ -1371,12 +1371,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/VitexSoftware/php-ease-twbootstrap5.git",
-                "reference": "514bb94acdd5e812e90e2140d720062fd0981726"
+                "reference": "a89f0f812af30a47143f1a5854f7b6e4b0986d21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VitexSoftware/php-ease-twbootstrap5/zipball/514bb94acdd5e812e90e2140d720062fd0981726",
-                "reference": "514bb94acdd5e812e90e2140d720062fd0981726",
+                "url": "https://api.github.com/repos/VitexSoftware/php-ease-twbootstrap5/zipball/a89f0f812af30a47143f1a5854f7b6e4b0986d21",
+                "reference": "a89f0f812af30a47143f1a5854f7b6e4b0986d21",
                 "shasum": ""
             },
             "require": {
@@ -1411,7 +1411,7 @@
                 "issues": "https://github.com/VitexSoftware/php-ease-twbootstrap5/issues",
                 "source": "https://github.com/VitexSoftware/php-ease-twbootstrap5/tree/main"
             },
-            "time": "2026-05-06T10:54:43+00:00"
+            "time": "2026-05-05T20:08:47+00:00"
         }
     ],
     "packages-dev": [
@@ -3093,8 +3093,8 @@
             "version": "2.2.x-dev",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/6191283bdeb3b4795816a9fdef130596f340bd88",
-                "reference": "6191283bdeb3b4795816a9fdef130596f340bd88",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/77f24c00c06aaaf28cacd4131fd9d9a56f3dd21e",
+                "reference": "77f24c00c06aaaf28cacd4131fd9d9a56f3dd21e",
                 "shasum": ""
             },
             "require": {
@@ -3151,7 +3151,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-05-06T05:08:59+00:00"
+            "time": "2026-05-05T18:35:13+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -3547,12 +3547,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b780c68a639ca82182231ccb54bc0986decda994"
+                "reference": "6301da994fddabd3fe9f20ee2f789360723b5dd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b780c68a639ca82182231ccb54bc0986decda994",
-                "reference": "b780c68a639ca82182231ccb54bc0986decda994",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6301da994fddabd3fe9f20ee2f789360723b5dd8",
+                "reference": "6301da994fddabd3fe9f20ee2f789360723b5dd8",
                 "shasum": ""
             },
             "require": {
@@ -3632,7 +3632,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2026-05-06T15:49:08+00:00"
+            "time": "2026-05-05T10:25:05+00:00"
         },
         {
             "name": "psr/container",

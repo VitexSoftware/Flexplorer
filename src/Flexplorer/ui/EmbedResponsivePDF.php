@@ -23,34 +23,35 @@ namespace Flexplorer\ui;
 class EmbedResponsivePDF extends \Ease\Html\DivTag
 {
     /**
-     * @param \AbraFlexi\RO $document AbraFlexi document object
-     * @param string $pdfUrl URL to PDF endpoint
-     * @param string|null $reportName Report name parameter
+     * @param \AbraFlexi\RO $document   AbraFlexi document object
+     * @param string        $pdfUrl     URL to PDF endpoint
+     * @param null|string   $reportName Report name parameter
      */
     public function __construct($document, $pdfUrl, $reportName = null)
     {
         parent::__construct(null, ['class' => 'embed-responsive embed-responsive-16by9', 'style' => 'height: 80vh;']);
-        
+
         $params = [
             'evidence' => $document->getEvidence(),
-            'embed' => 'true'
+            'embed' => 'true',
         ];
-        
+
         $recordId = $document->getMyKey();
+
         if (!empty($recordId)) {
             $params['id'] = $recordId;
         }
-        
+
         if (!empty($reportName)) {
             $params['report-name'] = $reportName;
         }
-        
-        $pdfSrc = $pdfUrl . '?' . http_build_query($params);
-        
+
+        $pdfSrc = $pdfUrl.'?'.http_build_query($params);
+
         $this->addItem(new \Ease\Html\IframeTag($pdfSrc, [
             'class' => 'embed-responsive-item',
             'style' => 'width: 100%; height: 100%; border: none;',
-            'type' => 'application/pdf'
+            'type' => 'application/pdf',
         ]));
     }
 }

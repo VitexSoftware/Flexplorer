@@ -33,7 +33,7 @@ $evidence = $oPage->getRequestValue('evidence');
 $embed = $oPage->getRequestValue('embed');
 $report = $oPage->getRequestValue('report-name');
 
-if (strstr((string)$id, ',')) {
+if (strstr((string) $id, ',')) {
     $ids = explode(',', $id);
 }
 
@@ -53,20 +53,24 @@ if (empty($id)) {
 if ($embed === 'true') {
     // Build URL for getpdf.php
     $params = ['evidence' => $evidence, 'embed' => 'true'];
+
     if (!empty($id)) {
         $params['id'] = $id;
     }
+
     if (!empty($report)) {
         $params['report-name'] = $report;
     }
-    $pdfUrl = 'getpdf.php?' . http_build_query($params);
-    
+
+    $pdfUrl = 'getpdf.php?'.http_build_query($params);
+
     // Output only the iframe, no page wrapper
     echo '<div style="width:100%; height:80vh;">';
-    echo '<iframe src="' . htmlspecialchars($pdfUrl) . '" ';
+    echo '<iframe src="'.htmlspecialchars($pdfUrl).'" ';
     echo 'style="width:100%; height:100%; border:none;" ';
     echo 'type="application/pdf"></iframe>';
     echo '</div>';
+
     exit;
 }
 

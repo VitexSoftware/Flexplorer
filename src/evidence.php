@@ -168,18 +168,16 @@ if (!isset(\AbraFlexi\EvidenceList::$name[$evidence])) {
         new \Ease\TWB5\Panel(_('Relations'), 'info', $relationsList),
     );
 
-    $relations->addItem(
-        [
-            new \Ease\TWB5\LinkButton(
-                $evobj->getEvidenceURL().'/schema-import.xsd',
-                'XSD Import',
-            ),
-            new \Ease\TWB5\LinkButton(
-                $evobj->getEvidenceURL().'/schema-export.xsd',
-                'XSD Export',
-            ),
-        ],
-    );
+    $relations->addItem([
+        new \Ease\TWB5\LinkButton(
+            $evobj->getEvidenceURL().'/schema-import.xsd',
+            'XSD Import',
+        ),
+        new \Ease\TWB5\LinkButton(
+            $evobj->getEvidenceURL().'/schema-export.xsd',
+            'XSD Export',
+        ),
+    ],);
 
     $infoTab = $tabs->addTab(_('Info'), $infoRow, $evidenceLicensed === false);
 
