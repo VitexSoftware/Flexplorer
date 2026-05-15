@@ -1,8 +1,15 @@
 #!groovy
 
-// Current version of this Pipeline https://github.com/VitexSoftware/BuildImages/blob/main/Test/Jenkinsfile-parael
+// Current version of this Pipeline https://github.com/VitexSoftware/BuildImages/blob/main/Test/Jenkinsfile
 
-String[] distributions = ['debian:bookworm', 'debian:trixie', 'debian:forky', 'ubuntu:jammy', 'ubuntu:noble']
+String[] distributions = [
+			'debian:bookworm', 
+			'debian:trixie', 
+			'debian:forky', 
+			'ubuntu:jammy', 
+			'ubuntu:noble',
+			'ubuntu:resolute',
+]
 
 String vendor = 'vitexsoftware'
 //String distroFamily = ''
@@ -46,10 +53,22 @@ distributions.each { distro ->
                 }
                 stage('Build ' + distroName) {
                     buildImage.inside {
+                        // Set unique build directories for this parallel build to avoid conflicts
+                        def uniqueBuildId = env.BUILD_NUMBER + '-' + distroCode + '-' + env.EXECUTOR_NUMBER
+                        sh '''
+                            export DH_INTERNAL_BUILDDIR="/tmp/debhelper-build-''' + uniqueBuildId + '''"
+                            export TMPDIR="/tmp/build-''' + uniqueBuildId + '''"
+                            mkdir -p "$DH_INTERNAL_BUILDDIR" "$TMPDIR"
+                        '''
                         sh 'dch -b -v ' + buildVer  + ' "' + env.BUILD_TAG  + '"'
                         sh 'sudo apt-get update --allow-releaseinfo-change'
                         sh 'sudo chown jenkins:jenkins ..'
-                        sh 'debuild-pbuilder -r"sudo -E" -i -us -uc -b'
+                        sh 'sudo rm -rf debian/$(dpkg-parsechangelog --show-field Source)/ debian/.debhelper/ debian/tmp/'
+                        sh '''
+                            export DH_INTERNAL_BUILDDIR="/tmp/debhelper-build-''' + uniqueBuildId + '''"
+                            export TMPDIR="/tmp/build-''' + uniqueBuildId + '''"
+                            debuild-pbuilder -r"sudo -E" -i -us -uc -b
+                        '''
                         sh 'mkdir -p $WORKSPACE/dist/debian/ ; rm -rf $WORKSPACE/dist/debian/* ; for deb in $(cat debian/files | awk \'{print $1}\'); do mv "../$deb" $WORKSPACE/dist/debian/; done'
                         artifacts = sh (
                             script: "cat debian/files | awk '{print \$1}'",
@@ -66,25 +85,37 @@ distributions.each { distro ->
                         sh 'sudo apt-get update --allow-releaseinfo-change'
                         sh 'echo "INSTALATION"'
                       
-// Ensure abraflexi-webhook-acceptor-sqlite is first in the list
-                    def installOrder = [
-                        'abraflexi-webhook-acceptor-sqlite',
-                    ]
+                        def installOrder = [
+//                        '',
+                        ]
 
                     def sorted_artifacts = artifacts.toList()
-                    installOrder.each { pkgPrefix ->
-                        def debFile = null
-                        for (item in sorted_artifacts) {
-                            def itemStr = item.toString()
-                            if (itemStr.startsWith(pkgPrefix) && itemStr.endsWith('.deb')) {
-                                debFile = itemStr
-                                break
+                    
+                    // If installOrder is empty, install all produced packages
+                    if (installOrder.isEmpty()) {
+                        sorted_artifacts.each { deb_file ->
+                            if (deb_file.endsWith('.deb')) {
+                                def pkgName = deb_file.tokenize('/')[-1].replaceFirst(/_.*/, '')
+                                sh 'echo -e "${GREEN} installing ' + pkgName + ' on `lsb_release -sc` ${ENDCOLOR} "'
+                                sh 'sudo DEBIAN_FRONTEND=noninteractive DEBCONF_DEBUG=' + debconf_debug + ' apt-get -y install ' + pkgName
                             }
                         }
-                        if (debFile) {
-                            def pkgName = debFile.tokenize('/')[-1].replaceFirst(/_.*/, '')
-                            sh 'echo -e "${GREEN} installing ' + pkgName + ' on `lsb_release -sc` ${ENDCOLOR} "'
-                            sh 'sudo DEBIAN_FRONTEND=noninteractive DEBCONF_DEBUG=' + debconf_debug + ' apt-get -y install ' + pkgName + ' || sudo apt-get -y -f install'
+                    } else {
+                        // Install packages in specified order
+                        installOrder.each { pkgPrefix ->
+                            def debFile = null
+                            for (item in sorted_artifacts) {
+                                def itemStr = item.toString()
+                                if (itemStr.startsWith(pkgPrefix) && itemStr.endsWith('.deb')) {
+                                    debFile = itemStr
+                                    break
+                                }
+                            }
+                            if (debFile) {
+                                def pkgName = debFile.tokenize('/')[-1].replaceFirst(/_.*/, '')
+                                sh 'echo -e "${GREEN} installing ' + pkgName + ' on `lsb_release -sc` ${ENDCOLOR} "'
+                                sh 'sudo DEBIAN_FRONTEND=noninteractive DEBCONF_DEBUG=' + debconf_debug + ' apt-get -y install ' + pkgName
+                            }
                         }
                     }
 
@@ -100,6 +131,7 @@ distributions.each { distro ->
 
                         // Cleanup: remove any produced files named in debian/files
                         // Try both the dist location and any potential original locations referenced by debian/files
+                        def uniqueBuildId = env.BUILD_NUMBER + '-' + distroCode + '-' + env.EXECUTOR_NUMBER
                         sh '''
                             set -e
                             if [ -f debian/files ]; then
@@ -110,6 +142,9 @@ distributions.each { distro ->
                                 rm -f "$WORKSPACE/$file" || true
                               done < debian/files
                             fi
+                            # Cleanup temporary build directories
+                            rm -rf "/tmp/debhelper-build-''' + uniqueBuildId + '''" || true
+                            rm -rf "/tmp/build-''' + uniqueBuildId + '''" || true
                         '''
                     }
                 }
