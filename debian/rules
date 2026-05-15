@@ -1,5 +1,9 @@
 #!/usr/bin/make -f
 
+PKG_VERSION := $(shell dpkg-parsechangelog -S Version | sed 's/~.*//')
+PKG_SOURCE  := $(shell jq -r '.name' composer.json)
+PKG_TYPE    := $(shell jq -r '.type' composer.json)
+
 repoversion=$(shell LANG=C aptitude show flexplorer | grep Version: | awk '{print $$2}')
 nextversion=$(shell echo $(repoversion) | perl -ne 'chomp; print join(".", splice(@{[split/\./,$$_]}, 0, -1), map {++$$_} pop @{[split/\./,$$_]}), "\n";')
 
@@ -19,6 +23,16 @@ override_dh_install:
 	sed -i -e 's/\.\.\//.\//g' debian/flexplorer/usr/share/flexplorer/about.php
 	sed -i -e 's/..\/vendor/\/var\/lib\/flexplorer/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
 	sed -i -e 's/..\/i18n/\/usr\/share\/locale/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
+	sed -i "1a defined('APP_NAME') || define('APP_NAME', '$(PKG_SOURCE)');" \
+		debian/flexplorer/var/lib/flexplorer/autoload.php
+	sed -i "s|'unknown'|'$(PKG_SOURCE)'|" \
+		debian/flexplorer/var/lib/flexplorer/autoload.php
+	sed -i "s|'0.0.0'|'$(PKG_VERSION)'|" \
+		debian/flexplorer/var/lib/flexplorer/autoload.php
+	sed -i "s|'library'|'$(PKG_TYPE)'|g" \
+		debian/flexplorer/var/lib/flexplorer/autoload.php
+	sed -i "2a defined('APP_VERSION') || define('APP_VERSION', '$(PKG_VERSION)');" \
+		debian/flexplorer/var/lib/flexplorer/autoload.php
 
 override_dh_clean:
 	debconf-updatepo

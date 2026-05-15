@@ -33,7 +33,7 @@ use Flexplorer\ui\PageTop;
 require_once 'includes/Init.php';
 $oPage->addItem(new PageTop(_('Sign in')));
 
-$oPage->addItem(new \Ease\Html\ImgTag('images\flexibeetop.png', 'top', ['class' => 'img-fluid flexibee-top-image', 'width' => '100%']));
+$oPage->addItem(new \Ease\Html\ImgTag('images/flexplorer.svg', 'top', ['class' => 'img-fluid flexibee-top-image', 'width' => '0,1em']));
 
 // $loginFace = new \Ease\Html\DivTag(null, ['id' => 'LoginFace']);
 //
@@ -191,12 +191,12 @@ $loginFace = new DivTag(null, ['id' => 'LoginFace']);
 $oPage->addItem($loginFace);
 $loginRow = new Row();
 $infoColumn = $loginRow->addItem(new Col(4));
-$infoBlock = $infoColumn->addItem(new Card(new ImgTag('images/flexplorer-logo.png')));
+$infoBlock = $infoColumn->addItem(new Card(new ImgTag('images/flexplorer.svg')));
 $infoBlock->addItem(new DivTag(_('Welcome to FlexPlorer'), ['style' => 'text-align: center;']));
 $loginColumn = $loginRow->addItem(new Col(4));
 $submit = new SubmitButton(_('Sign in'), 'success', ['id' => 'signin']);
 $loginPanel = new Panel(
-    new ImgTag('images/flexplorer-logo.png', 'logo', ['width' => 20]),
+    new ImgTag('images/flexplorer.svg', 'logo', ['width' => 20]),
     'inverse',
     null,
     $submit,

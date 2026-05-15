@@ -373,7 +373,7 @@ class DataSource extends \Ease\Brick
         $this->pdf->SetKeywords($title);
 
         // set default header data
-        $this->pdf->SetHeaderData('flexplorer-logo.png', 45, $title, 'Flexprer');
+        $this->pdf->SetHeaderData('flexplorer.svg', 45, $title, 'Flexplorer');
         // set header and footer fonts
         $this->pdf->setHeaderFont(['dejavusans', '', 8]);
         $this->pdf->setFooterFont([PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA]);

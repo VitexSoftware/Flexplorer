@@ -1,3 +1,10 @@
+flexplorer (1.7) trixie; urgency=medium
+
+  * Fix Debian autoloader, AppStream metainfo path, Apache PHP8 config,
+    logo SVG migration
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Fri, 15 May 2026 19:01:06 +0200
+
 flexplorer (1.6) trixie; urgency=medium
 
   * Bootstrap5 used

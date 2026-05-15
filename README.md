@@ -1,7 +1,7 @@
 Flexplorer
 ==========
 
-![Flexplorer Logo](flexplorer-logo.png?raw=true "Project Logo")
+![Flexplorer Logo](src/images/flexplorer.svg?raw=true "Project Logo")
 
 ## 🔍 Developer Console for ABRA Flexi API
 

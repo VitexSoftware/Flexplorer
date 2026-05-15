@@ -46,7 +46,7 @@ class PageTop extends \Ease\Html\DivTag
      */
     public function finalize(): void
     {
-        $this->addItem(new MainMenu('menu', new \Ease\Html\ATag('index.php', new \Ease\Html\ImgTag('images/flexplorer-logo.png', 'Flexplorer', ['width' => 25]))));
+        $this->addItem(new MainMenu('menu', new \Ease\Html\ATag('index.php', new \Ease\Html\ImgTag('images/flexplorer.svg', 'Flexplorer', ['width' => 25]))));
 
         //        if (\Ease\Shared::user()->isLogged()) { //Authenticated user
         // //            $this->addItem(new Breadcrumb());        }
