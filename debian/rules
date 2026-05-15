@@ -5,7 +5,7 @@ nextversion=$(shell echo $(repoversion) | perl -ne 'chomp; print join(".", splic
 
 
 %:
-	dh $@
+	dh $@ --with phpcomposer
 
 override_dh_auto_build:
 	# Generate custom Debian autoloader for application
