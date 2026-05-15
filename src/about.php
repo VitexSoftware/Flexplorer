@@ -36,8 +36,9 @@ $oPage->addItem('<br/><br/><br/><br/>');
 
 $converter = new CommonMarkConverter();
 
+$readmePath = file_exists(__DIR__.'/README.md') ? __DIR__.'/README.md' : __DIR__.'/../README.md';
 $oPage->addItem(new \Ease\Html\DivTag(
-    $converter->convertToHtml(file_get_contents('../README.md')),
+    $converter->convertToHtml(file_get_contents($readmePath)),
     ['class' => 'jumbotron'],
 ));
 $oPage->addItem('<br/><br/><br/><br/>');
