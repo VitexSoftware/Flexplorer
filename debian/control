@@ -17,7 +17,6 @@ Depends: ${misc:Depends},
  php-vitexsoftware-ease-html-widgets,
  php-vitexsoftware-ease-bootstrap5-widgets,
  php-vitexsoftware-ease-bootstrap5-widgets-abraflexi,
- php-vitexsoftware-ease-bricks,
  php-abraflexi-datatables
 Architecture: all
 Section: web
