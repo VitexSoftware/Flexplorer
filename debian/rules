@@ -22,6 +22,8 @@ override_dh_install:
 	sed -i -e 's/..../\/usr\/share\/php\/flexplorer/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
 	sed -i -e 's/..\/i18n/\/usr\/share\/locale/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
 	sed -i "s|'../.env'|'/etc/flexplorer/.env'|g" debian/flexplorer/usr/share/flexplorer/includes/Init.php
+	sed -i "s|'../configurations/'|'/etc/flexplorer/'|g" debian/flexplorer/usr/share/flexplorer/includes/config.php
+	sed -i "s|'../backups'|'/var/lib/flexplorer/backups'|g" debian/flexplorer/usr/share/flexplorer/includes/config.php
 	sed -i -e "s|\.'/composer\.lock'|.'/autoload.php'|g" \
 		-e "s|'../composer.lock'|'/var/lib/flexplorer/autoload.php'|g" \
 		debian/flexplorer/usr/lib/flexplorer/classes/ui/PageBottom.php

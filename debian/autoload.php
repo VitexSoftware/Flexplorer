@@ -1,4 +1,5 @@
 <?php
+defined('APP_NAME') || define('APP_NAME', 'spoje.net/flexplorer');
 // Autoloader shim for package: flexplorer
 // Includes dependency autoloaders and registers PSR-4 for Flexplorer classes.
 

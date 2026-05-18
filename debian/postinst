@@ -31,19 +31,20 @@ apache_install() {
     . /usr/share/debconf/confmodule
 
     db_get flexplorer/FLEXIBEE_URL
-    sed -i "/DEFAULT_FLEXIBEE_URL/c\define('DEFAULT_FLEXIBEE_URL', '${RET}');" /usr/share/flexplorer/includes/config.php
+    sed -i "/DEFAULT_ABRAFLEXI_URL/c\define('DEFAULT_ABRAFLEXI_URL', '${RET}');" /usr/share/flexplorer/includes/config.php
 
     db_get flexplorer/FLEXIBEE_LOGIN
-    sed -i "/DEFAULT_FLEXIBEE_LOGIN/c\define('DEFAULT_FLEXIBEE_LOGIN', '${RET}');" /usr/share/flexplorer/includes/config.php
+    sed -i "/DEFAULT_ABRAFLEXI_LOGIN/c\define('DEFAULT_ABRAFLEXI_LOGIN', '${RET}');" /usr/share/flexplorer/includes/config.php
 
     db_get flexplorer/FLEXIBEE_PASSWORD
-    sed -i "/DEFAULT_FLEXIBEE_PASSWORD/c\define('DEFAULT_FLEXIBEE_PASSWORD', '${RET}');" /usr/share/flexplorer/includes/config.php
+    sed -i "/DEFAULT_ABRAFLEXI_PASSWORD/c\define('DEFAULT_ABRAFLEXI_PASSWORD', '${RET}');" /usr/share/flexplorer/includes/config.php
 
     db_get flexplorer/FLEXIBEE_COMPANY
-    sed -i "/DEFAULT_FLEXIBEE_COMPANY/c\define('DEFAULT_FLEXIBEE_COMPANY', '${RET}');" /usr/share/flexplorer/includes/config.php
+    sed -i "/DEFAULT_ABRAFLEXI_COMPANY/c\define('DEFAULT_ABRAFLEXI_COMPANY', '${RET}');" /usr/share/flexplorer/includes/config.php
 
     db_get flexplorer/BACKUP_DIRECTORY
-    sed -i "/DEFAULT_BACKUP_DIRECTORY/c\define('DEFAULT_BACKUP_DIRECTORY', '${RET}');" /usr/share/flexplorer/includes/config.php
+    sed -i "/BACKUP_DIRECTORY/c\define('BACKUP_DIRECTORY', '${RET}');" /usr/share/flexplorer/includes/config.php
+    mkdir -p "${RET:-/var/lib/flexplorer/backups}"
 
             apache_install $1
                     # Reload webserver in any case, configuration might have changed

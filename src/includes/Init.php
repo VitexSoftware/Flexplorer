@@ -24,7 +24,7 @@ require_once '../vendor/autoload.php';
 require_once 'includes/config.php';
 new Locale('UTF-8', '../i18n', 'flexplorer');
 
-\define('APP_NAME', 'Flexplorer');
+defined('APP_NAME') || \define('APP_NAME', 'Flexplorer');
 
 session_start();
 
