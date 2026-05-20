@@ -55,12 +55,12 @@ class PageBottom extends \Ease\TWB5\Container
             ['style' => 'list-style-type: none'],
         ));
         $listB1->addItemSmart(new \Ease\Html\ATag(
-            'https://www.flexibee.eu/podpora/Tickets/ViewList',
-            'My issues',
+            'https://podpora.flexibee.eu/',
+            'Support Portal',
         ));
         $listB1->addItemSmart(new \Ease\Html\ATag(
-            'https://www.flexibee.eu/podpora/Tickets/Submit',
-            'Enter issue',
+            'https://intercom.help/podpora-flexi/cs/articles/4834863-technicka-podpora',
+            'Technical Support',
         ));
 
         $colC = $rowFluid1->addItem(new \Ease\TWB5\Col(2));
@@ -69,12 +69,12 @@ class PageBottom extends \Ease\TWB5\Container
             ['style' => 'list-style-type: none'],
         ));
         $listC1->addItemSmart(new \Ease\Html\ATag(
-            'https://www.flexibee.eu/podpora/stazeni-abraflexi/',
+            'https://www.abra.eu/flexi/podpora/stazeni-abra-flexi/',
             'Download',
         ));
         $listC1->addItemSmart(new \Ease\Html\ATag(
             'https://www.flexibee.eu/api/licence-pro-vyvojare/zadost-o-vyvojarskou-licenci/',
-            'Deverloper License request',
+            'Developer License request',
         ));
 
         $colD = $rowFluid1->addItem(new \Ease\TWB5\Col(2));
@@ -85,6 +85,10 @@ class PageBottom extends \Ease\TWB5\Container
         $listD1->addItemSmart(new \Ease\Html\ATag(
             'https://demo.flexibee.eu/devdoc/',
             'REST API',
+        ));
+        $listD1->addItemSmart(new \Ease\Html\ATag(
+            'https://podpora.flexibee.eu/',
+            'Knowledge Base',
         ));
 
         $colE = $rowFluid1->addItem(new \Ease\TWB5\Col(2));
