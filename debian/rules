@@ -2,6 +2,7 @@
 
 repoversion=$(shell LANG=C aptitude show flexplorer | grep Version: | awk '{print $$2}')
 nextversion=$(shell echo $(repoversion) | perl -ne 'chomp; print join(".", splice(@{[split/\./,$$_]}, 0, -1), map {++$$_} pop @{[split/\./,$$_]}), "\n";')
+pkgversion=$(shell dpkg-parsechangelog -S Version | sed 's/~.*//')
 
 
 %:
@@ -27,6 +28,9 @@ override_dh_install:
 	sed -i -e "s|\.'/composer\.lock'|.'/autoload.php'|g" \
 		-e "s|'../composer.lock'|'/var/lib/flexplorer/autoload.php'|g" \
 		debian/flexplorer/usr/lib/flexplorer/classes/ui/PageBottom.php
+	sed -i "s/'unknown'/'spoje.net\/flexplorer'/g" debian/flexplorer/var/lib/flexplorer/autoload.php
+	sed -i "s/'0\.0\.0'/'$(pkgversion)'/g" debian/flexplorer/var/lib/flexplorer/autoload.php
+	sed -i "s/'type' => 'library'/'type' => 'project'/g" debian/flexplorer/var/lib/flexplorer/autoload.php
 
 
 override_dh_clean:
