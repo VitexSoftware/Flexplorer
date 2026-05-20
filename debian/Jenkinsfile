@@ -10,7 +10,7 @@ String[] distributions = [
 			//                 // Re-enable once the stack builds cleanly for Forky.
 			'ubuntu:jammy', 
 			'ubuntu:noble',
-			'ubuntu:resolute',
+			// 'ubuntu:resolute', // Disabled: resolute build failing.
 ]
 
 String vendor = 'vitexsoftware'
