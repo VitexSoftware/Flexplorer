@@ -488,12 +488,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/Mail.git",
-                "reference": "40028d27f67dd5b845a8b74ed6d678677d40bd5f"
+                "reference": "f2c5cc6a3afe4c1b11953bbf988d53c5bb7699ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear/Mail/zipball/40028d27f67dd5b845a8b74ed6d678677d40bd5f",
-                "reference": "40028d27f67dd5b845a8b74ed6d678677d40bd5f",
+                "url": "https://api.github.com/repos/pear/Mail/zipball/f2c5cc6a3afe4c1b11953bbf988d53c5bb7699ed",
+                "reference": "f2c5cc6a3afe4c1b11953bbf988d53c5bb7699ed",
                 "shasum": ""
             },
             "require": {
@@ -548,7 +548,7 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Mail",
                 "source": "https://github.com/pear/Mail"
             },
-            "time": "2024-06-10T05:29:41+00:00"
+            "time": "2026-05-12T21:06:11+00:00"
         },
         {
             "name": "pear/mail_mime",
@@ -766,16 +766,16 @@
         },
         {
             "name": "spojenet/flexibee",
-            "version": "v3.7.2",
+            "version": "v3.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Spoje-NET/php-abraflexi.git",
-                "reference": "b9684279d00c66cd1467d05f96e044079d969b89"
+                "reference": "504cc279b00b8b846182bcd309d2eeedf24a5ed8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Spoje-NET/php-abraflexi/zipball/b9684279d00c66cd1467d05f96e044079d969b89",
-                "reference": "b9684279d00c66cd1467d05f96e044079d969b89",
+                "url": "https://api.github.com/repos/Spoje-NET/php-abraflexi/zipball/504cc279b00b8b846182bcd309d2eeedf24a5ed8",
+                "reference": "504cc279b00b8b846182bcd309d2eeedf24a5ed8",
                 "shasum": ""
             },
             "require": {
@@ -820,9 +820,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Spoje-NET/php-abraflexi/issues",
-                "source": "https://github.com/Spoje-NET/php-abraflexi/tree/v3.7.2"
+                "source": "https://github.com/Spoje-NET/php-abraflexi/tree/v3.7.3"
             },
-            "time": "2026-03-23T20:23:57+00:00"
+            "time": "2026-05-13T05:50:07+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -6794,5 +6794,5 @@
     "prefer-lowest": false,
     "platform": {},
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
