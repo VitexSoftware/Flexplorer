@@ -55,7 +55,6 @@ class User extends \Ease\User
     public function tryToLogin(array $creds): bool
     {
         $loginStatus = false;
-        $this->abraFlexi->disconnect();
         $this->abraFlexi->user = trim($creds['login']);
 
         $this->abraFlexi->password = $creds['password'];
