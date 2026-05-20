@@ -19,8 +19,8 @@ override_dh_install:
 	# Install Debian autoloader
 	install -D -m 0644 debian/autoload.php debian/flexplorer/usr/share/php/flexplorer/autoload.php
 	sed -i -e 's/\.\.\/\//.\/\//g' debian/flexplorer/usr/share/flexplorer/about.php
-	sed -i -e 's/..../\/usr\/share\/php\/flexplorer/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
-	sed -i -e 's/..\/i18n/\/usr\/share\/locale/g' debian/flexplorer/usr/share/flexplorer/includes/Init.php
+	sed -i "s|'../vendor/autoload.php'|'/var/lib/flexplorer/autoload.php'|g" debian/flexplorer/usr/share/flexplorer/includes/Init.php
+	sed -i "s|'../i18n'|'/usr/share/locale'|g" debian/flexplorer/usr/share/flexplorer/includes/Init.php
 	sed -i "s|'../.env'|'/etc/flexplorer/.env'|g" debian/flexplorer/usr/share/flexplorer/includes/Init.php
 	sed -i "s|'../configurations/'|'/etc/flexplorer/'|g" debian/flexplorer/usr/share/flexplorer/includes/config.php
 	sed -i "s|'../backups'|'/var/lib/flexplorer/backups'|g" debian/flexplorer/usr/share/flexplorer/includes/config.php
