@@ -18,9 +18,5 @@ debian/flexplorer.desktop	etc/flexplorer/
 i18n/cs_CZ/LC_MESSAGES/*.mo     usr/share/locale/cs_CZ/LC_MESSAGES
 i18n/en_US/LC_MESSAGES/*.mo     usr/share/locale/en_US/LC_MESSAGES
 
-debian/icons/16/flexplorer.png  usr/share/icons/hicolor/16x16/apps
-debian/icons/32/flexplorer.png  usr/share/icons/hicolor/32x32/apps
-debian/icons/48/flexplorer.png  usr/share/icons/hicolor/48x48/apps
-debian/icons/256/flexplorer.png usr/share/icons/hicolor/256x256/apps
 flexplorer.svg                  usr/share/icons/hicolor/scalable/apps/
 debian/io.github.vitexsoftware.flexplorer.metainfo.xml usr/share/metainfo/
