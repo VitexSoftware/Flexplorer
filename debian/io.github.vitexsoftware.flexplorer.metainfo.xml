@@ -5,13 +5,17 @@
   
   <name>Flexplorer</name>
   <summary>Developer&apos;s tool for FlexiBee API JSON/XML </summary>
-  
+  <summary xml:lang="cs">Vývojářský nástroj pro FlexiBee API JSON/XML</summary>
+
   <metadata_license>MIT</metadata_license>
   <project_license>MIT</project_license>
-  
+
   <description>
     <p>
       Provide lowlevel access to AbraFlexi api functions
+    </p>
+    <p xml:lang="cs">
+      Poskytuje nízkoúrovňový přístup k funkcím AbraFlexi API
     </p>
   </description>
   
