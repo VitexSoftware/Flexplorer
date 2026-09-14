@@ -27,6 +27,7 @@ namespace Flexplorer;
 require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
+$oPage->onlyForAdmin();
 
 $company = $_SESSION['company'];
 
