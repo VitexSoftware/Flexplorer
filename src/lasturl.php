@@ -13,5 +13,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+session_set_cookie_params([
+    'httponly' => true,
+    'secure' => !empty($_SERVER['HTTPS']),
+    'samesite' => 'Lax',
+]);
 session_start();
 echo isset($_SESSION['lasturl']) ? urldecode($_SESSION['lasturl']) : null;
