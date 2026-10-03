@@ -53,6 +53,10 @@ distributions.each { distro ->
         node {
             ansiColor('xterm') {
                 stage('Checkout ' + distroName) {
+                    // The branch node reuses the same workspace, and the stash
+                    // contains .git whose pack files are read-only, so untar
+                    // fails with AccessDeniedException unless they are writable.
+                    sh 'chmod -R u+w .git || true'
                     unstash 'src'
                     def imageName = vendor + '/' + distro
                     buildImage = docker.image(imageName)
