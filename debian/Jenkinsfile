@@ -219,6 +219,25 @@ distributions.each { distro ->
                 def t = null
                 try {
                     stage('Checkout ' + distroName) {
+                        // Bare `git fetch origin` has no Jenkins SSH creds. If this
+                        // node was not the SCM bootstrap node, seed its mirror from
+                        // a credentialed checkout on local disk first.
+                        def needSeed = sh(script: """
+                            set -eu
+                            slug=\$(printf '%s' '${gitUrl}' | sed 's/[^A-Za-z0-9._-]/_/g')
+                            mirror="${root}/ref/\${slug}.git"
+                            if [ -d "\$mirror" ] && git -C "\$mirror" cat-file -e '${gitCommit}^{commit}' 2>/dev/null; then
+                                echo no
+                            else
+                                echo yes
+                            fi
+                        """, returnStdout: true).trim()
+                        if (needSeed == 'yes') {
+                            ws(bootstrapWs(root) + '-seed-' + distroCode) {
+                                def sv = checkout scm
+                                seedNodeMirror(root, sv.GIT_URL, sv.GIT_COMMIT, pwd())
+                            }
+                        }
                         t = localBuildTree(root, gitUrl, gitCommit, buildId)
                         echo "Node-local build tree: ${t.tree} (node ${env.NODE_NAME})"
                         buildImage = docker.image(vendor + '/' + distro)
