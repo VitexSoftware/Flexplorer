@@ -556,12 +556,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/Mail_Mime.git",
-                "reference": "a6f9e1dbf10e06c0306d5c9e127a33794817dc1f"
+                "reference": "cda56082cc1a3722d6929caa66abfe95b7406e12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear/Mail_Mime/zipball/a6f9e1dbf10e06c0306d5c9e127a33794817dc1f",
-                "reference": "a6f9e1dbf10e06c0306d5c9e127a33794817dc1f",
+                "url": "https://api.github.com/repos/pear/Mail_Mime/zipball/cda56082cc1a3722d6929caa66abfe95b7406e12",
+                "reference": "cda56082cc1a3722d6929caa66abfe95b7406e12",
                 "shasum": ""
             },
             "require": {
@@ -600,7 +600,7 @@
                 "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Mail_Mime",
                 "source": "https://github.com/pear/Mail_Mime"
             },
-            "time": "2026-01-26T13:34:53+00:00"
+            "time": "2026-08-08T07:08:35+00:00"
         },
         {
             "name": "pear/pear-core-minimal",
@@ -1195,16 +1195,16 @@
         },
         {
             "name": "vitexsoftware/ease-core",
-            "version": "v1.50.1",
+            "version": "v1.50.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VitexSoftware/php-ease-core.git",
-                "reference": "77f160db1e838a3b895dedb3af8597d8673efe0c"
+                "reference": "c57751a1af84f629874f6bf1aa532116a84924fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VitexSoftware/php-ease-core/zipball/77f160db1e838a3b895dedb3af8597d8673efe0c",
-                "reference": "77f160db1e838a3b895dedb3af8597d8673efe0c",
+                "url": "https://api.github.com/repos/VitexSoftware/php-ease-core/zipball/c57751a1af84f629874f6bf1aa532116a84924fa",
+                "reference": "c57751a1af84f629874f6bf1aa532116a84924fa",
                 "shasum": ""
             },
             "require": {
@@ -1218,12 +1218,12 @@
                 "vitexsoftware/ease-framework": "*"
             },
             "require-dev": {
-                "ergebnis/composer-normalize": "^2.48",
-                "ergebnis/php-cs-fixer-config": "^6.58",
+                "ergebnis/composer-normalize": "^2.50",
+                "ergebnis/php-cs-fixer-config": "^6.63",
                 "friendsofphp/php-cs-fixer": "^3.92",
                 "phpstan/phpstan": "*",
                 "phpunit/phpunit": "*",
-                "rector/rector": "^2.3",
+                "rector/rector": "^2.5",
                 "roave/security-advisories": "dev-latest"
             },
             "type": "library",
@@ -1248,7 +1248,7 @@
             "homepage": "http://v.s.cz/ease.php",
             "support": {
                 "issues": "https://github.com/VitexSoftware/php-ease-core/issues",
-                "source": "https://github.com/VitexSoftware/php-ease-core/tree/v1.50.1"
+                "source": "https://github.com/VitexSoftware/php-ease-core/tree/v1.50.2"
             },
             "funding": [
                 {
@@ -1256,7 +1256,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2026-02-04T09:03:54+00:00"
+            "time": "2026-07-20T15:34:43+00:00"
         },
         {
             "name": "vitexsoftware/ease-html",
@@ -1315,28 +1315,28 @@
         },
         {
             "name": "vitexsoftware/ease-html-widgets",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VitexSoftware/php-vitexsoftware-ease-html-widgets.git",
-                "reference": "70ea81e111234fb856be67d0002a17136752ddf6"
+                "reference": "9e4512f7cb7ced1650c9c67bbb2644fb83205959"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VitexSoftware/php-vitexsoftware-ease-html-widgets/zipball/70ea81e111234fb856be67d0002a17136752ddf6",
-                "reference": "70ea81e111234fb856be67d0002a17136752ddf6",
+                "url": "https://api.github.com/repos/VitexSoftware/php-vitexsoftware-ease-html-widgets/zipball/9e4512f7cb7ced1650c9c67bbb2644fb83205959",
+                "reference": "9e4512f7cb7ced1650c9c67bbb2644fb83205959",
                 "shasum": ""
             },
             "require": {
-                "vitexsoftware/ease-html": "^1.32"
+                "vitexsoftware/ease-html": "^1.40"
             },
             "replace": {
                 "vitexsoftware/ease-core-bricks": "*"
             },
             "require-dev": {
-                "ergebnis/composer-normalize": "^2.43",
-                "ergebnis/php-cs-fixer-config": "^6.34",
-                "friendsofphp/php-cs-fixer": "^3.64",
+                "ergebnis/composer-normalize": "^2.49",
+                "ergebnis/php-cs-fixer-config": "^6.59",
+                "friendsofphp/php-cs-fixer": "^3.93",
                 "phpstan/phpstan": "*",
                 "phpunit/phpunit": "*"
             },
@@ -1361,9 +1361,9 @@
             "homepage": "https://github.com/VitexSoftware/php-vitexsoftware-ease-html-widgets",
             "support": {
                 "issues": "https://github.com/VitexSoftware/php-vitexsoftware-ease-html-widgets/issues",
-                "source": "https://github.com/VitexSoftware/php-vitexsoftware-ease-html-widgets/tree/1.1.1"
+                "source": "https://github.com/VitexSoftware/php-vitexsoftware-ease-html-widgets/tree/1.1.2"
             },
-            "time": "2024-11-16T14:25:43+00:00"
+            "time": "2026-09-20T22:11:48+00:00"
         },
         {
             "name": "vitexsoftware/ease-twbootstrap5",
