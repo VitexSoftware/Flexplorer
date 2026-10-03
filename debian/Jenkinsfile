@@ -142,7 +142,9 @@ def localBuildTree(String root, String gitUrl, String gitCommit, String buildId,
             fi
             mkdir -p "$LB_OUT" "$(dirname "$LB_TREE")"
             lock="$LB_ROOT/locks/$(basename "$LB_MIRROR").lock"
-            flock "$lock" git -C "$LB_MIRROR" worktree add --detach --force "$LB_TREE" "$LB_SHA"
+            # clone --shared avoids concurrent worktree metadata races
+            flock "$lock" git clone --shared --no-checkout "$LB_MIRROR" "$LB_TREE"
+            git -C "$LB_TREE" checkout --detach -f "$LB_SHA"
         '''
     }
     return t
@@ -151,11 +153,9 @@ def localBuildTree(String root, String gitUrl, String gitCommit, String buildId,
 // Tear the per-build tree down again. find -delete as jenkins, with chown
 // recovery for root-owned leftovers from buildImage.inside{}.
 def localBuildTreeRelease(Map t) {
-    withEnv(["LB_MIRROR=${t.mirror}", "LB_BASE=${t.base}", "LB_TREE=${t.tree}"]) {
+    withEnv(["LB_BASE=${t.base}"]) {
         sh '''
             set -u
-            git -C "$LB_MIRROR" worktree remove --force "$LB_TREE" 2>/dev/null || true
-            git -C "$LB_MIRROR" worktree prune 2>/dev/null || true
             if [ -n "$LB_BASE" ] && [ -d "$LB_BASE" ]; then
                 sudo chown -R jenkins:jenkins "$LB_BASE" 2>/dev/null || true
                 find "$LB_BASE" -mindepth 1 -delete 2>/dev/null || true
