@@ -20,3 +20,5 @@
 /debian/flexplorer.postrm.debhelper
 /debian/flexplorer.substvars
 /debian/files
+__pycache__/
+.pytest_cache/

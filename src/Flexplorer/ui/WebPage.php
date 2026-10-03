@@ -26,6 +26,11 @@ class WebPage extends \Ease\TWB5\WebPage
     public string $requestURL = '';
 
     /**
+     * Bump when css/vitex.css changes, so browsers fetch the new version.
+     */
+    public const ASSET_VERSION = '1.0.0';
+
+    /**
      * Main block of page.
      */
     public \Ease\Html\DivTag $container;
@@ -55,7 +60,11 @@ class WebPage extends \Ease\TWB5\WebPage
         parent::__construct($pageTitle);
         \Ease\Part::jQueryze();
 
+        $this->head->addItem('<script>(function(){var t="dark";try{t=localStorage.getItem("vsTheme")||t}catch(e){}var d=document.documentElement;d.setAttribute("data-theme",t);d.setAttribute("data-bs-theme",t)})()</script>');
+        $this->head->addItem('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>');
+        $this->includeCss('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=Caveat:wght@400;500&display=swap');
         $this->includeCss('css/default.css');
+        $this->includeCss('css/vitex.css?v='.self::ASSET_VERSION);
         $this->head->addItem('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
         $this->head->addItem('<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="favicon.ico">');
         $this->head->addItem('<link rel="apple-touch-icon-precomposed"  type="image/png" href="images/flexplorer-logo.png">');
