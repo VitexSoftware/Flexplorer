@@ -302,7 +302,7 @@ distributions.each { distro ->
                                 withEnv(["LB_OUT=${t.out}"]) {
                                     sh 'cd "$LB_OUT" ; dpkg-scanpackages . /dev/null > Packages; gzip -9c Packages > Packages.gz'
                                     sh 'echo "deb [trusted=yes] file://$LB_OUT/ ./" | sudo tee /etc/apt/sources.list.d/local.list'
-                                    sh 'sudo apt-get update --allow-releaseinfo-change'
+                                    sh 'sudo apt-get update --allow-releaseinfo-change || true'
                                     sh 'echo "INSTALATION"'
 
                                     def installOrder = []
