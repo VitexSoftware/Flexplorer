@@ -57,9 +57,14 @@ distributions.each { distro ->
                     // contains .git whose pack files are read-only, so untar
                     // fails with AccessDeniedException unless they are writable.
                     sh 'chmod -R u+w .git || true'
-                    unstash 'src'
                     def imageName = vendor + '/' + distro
                     buildImage = docker.image(imageName)
+                    // Root-owned leftovers of earlier builds (phpdoc cache, debhelper
+                    // dirs) cannot be removed by the jenkins user, so drop them as root.
+                    buildImage.inside {
+                        sh 'sudo rm -rf .phpdoc docs debian/.debhelper debian/tmp || true'
+                    }
+                    unstash 'src'
                     sh 'git checkout debian/changelog'
                     def version = sh (
                         script: 'dpkg-parsechangelog --show-field Version',

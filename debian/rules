@@ -13,6 +13,8 @@ override_dh_prep:
 	rm -rf docs; mkdir docs
 	phpdoc -d src --defaultpackagename=MainPackage
 	mv .phpdoc/build/* docs
+	# phpdoc runs as root here; leftovers would block the next Jenkins unstash
+	rm -rf .phpdoc
 	dh_prep
 
 override_dh_install:
