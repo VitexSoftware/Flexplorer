@@ -3,6 +3,9 @@ defined('APP_NAME') || define('APP_NAME', 'spoje.net/flexplorer');
 // Autoloader shim for package: flexplorer
 // Includes dependency autoloaders and registers PSR-4 for Flexplorer classes.
 
+require_once '/usr/share/php/AbraFlexi/autoload.php';
+require_once '/usr/share/php/AbraFlexiBricks/autoload.php';
+require_once '/usr/share/php/AbraFlexiUiDataTables/autoload.php';
 require_once '/usr/share/php/EaseTWB5WidgetsAbraFlexi/autoload.php';
 require_once '/usr/share/php/EaseTWB5Widgets/autoload.php';
 require_once '/usr/share/php/EaseHtmlWidgets/autoload.php';
