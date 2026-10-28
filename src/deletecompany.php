@@ -25,8 +25,10 @@ namespace Flexplorer;
 namespace Flexplorer;
 
 require_once 'includes/Init.php';
+require_once 'includes/csrf.php';
 
 $oPage->onlyForLogged();
+requireCsrfPost($oPage, 'companies.php');
 
 $company = empty($oPage->getRequestValue('company')) ? $_SESSION['company'] : $oPage->getRequestValue('company');
 
