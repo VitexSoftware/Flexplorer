@@ -27,6 +27,7 @@ namespace Flexplorer;
 use Flexplorer\ui\WebPage;
 
 require_once 'includes/Init.php';
+require_once 'includes/csrf.php';
 
 $oPage->onlyForLogged();
 
@@ -53,12 +54,7 @@ if (empty($company)) {
 
     $companyActions->addColumn(
         2,
-        new \Ease\TWB5\LinkButton(
-            'resetcompany.php',
-            '♻️ '._('Reset'),
-            'danger',
-            ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => _('Drop company and create again')],
-        ),
+        csrfButton('resetcompany.php', '♻️ '._('Reset'), 'danger', _('Drop company and create again')),
     );
 
     $companyActions->addColumn(
@@ -95,12 +91,7 @@ if (empty($company)) {
 
     $companyActions->addColumn(
         2,
-        new \Ease\TWB5\LinkButton(
-            'deletecompany.php',
-            '🪦 '._('Remove'),
-            'danger',
-            ['onClick' => "$('#Preloader').css('visibility', 'visible');", 'title' => 'Drop all company data'],
-        ),
+        csrfButton('deletecompany.php', '🪦 '._('Remove'), 'danger', _('Drop all company data')),
     );
 
     $companyActions->addColumn(
