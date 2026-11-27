@@ -26,6 +26,8 @@ Built using the [PHP AbraFlexi](https://github.com/Spoje-NET/php-abraflexi) libr
 
 #### 🔧 API Testing & Debugging
   * **Query Builder** - send direct requests to the server
+    * The request body editor formats JSON/XML on load, paste, and change. Select evidence properties for an individual record using the bundled ABRA Flexi metadata.
+    * JSON/XML conversion supports flat Winstrom records; unsupported nested structures are left unchanged with an error.
   * **Response Viewer** - display server responses with syntax highlighting
   * **Parallel View** - JSON/XML result alongside AbraFlexi GUI
   * **Filtering** - advanced filters by ID, external ID, and other parameters

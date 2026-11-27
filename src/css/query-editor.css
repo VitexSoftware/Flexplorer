@@ -1,0 +1,87 @@
+.query-body-textarea {
+    display: block;
+    width: 100%;
+    height: 15rem;
+    min-height: 6rem;
+    resize: vertical;
+    white-space: pre;
+    overflow: auto;
+}
+
+.query-body-editor {
+    position: relative;
+    width: 100%;
+}
+
+.query-body-editor .query-body-highlight,
+.query-body-editor .query-body-textarea {
+    box-sizing: border-box;
+    padding: .375rem .75rem;
+    border: 1px solid transparent;
+    font: 14px/1.5 monospace;
+    letter-spacing: normal;
+    tab-size: 4;
+}
+
+.query-body-editor .query-body-highlight {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    overflow: hidden;
+    white-space: pre;
+    pointer-events: none;
+    color: var(--text);
+    background: var(--bg-2);
+    border-radius: 12px;
+}
+
+.query-body-editor .query-body-highlight span {
+    font-weight: normal;
+    font-style: normal;
+}
+
+.query-body-editor .query-body-textarea,
+.query-body-editor .query-body-textarea:focus {
+    position: relative;
+    color: transparent;
+    caret-color: var(--text);
+    background: transparent;
+    border-color: var(--border);
+}
+
+.query-body-editor .query-body-textarea:focus {
+    border-color: var(--p1);
+}
+
+.query-body-highlight .hljs-attr,
+.query-body-highlight .hljs-name { color: #5ee7ff; }
+.query-body-highlight .hljs-string { color: #ff9d9f; }
+.query-body-highlight .hljs-number,
+.query-body-highlight .hljs-literal { color: #ffd166; }
+.query-body-highlight .hljs-comment { color: #cdbbe0; }
+
+:root[data-theme="light"] .query-body-highlight .hljs-attr,
+:root[data-theme="light"] .query-body-highlight .hljs-name { color: #005b86; }
+:root[data-theme="light"] .query-body-highlight .hljs-string { color: #a40039; }
+:root[data-theme="light"] .query-body-highlight .hljs-number,
+:root[data-theme="light"] .query-body-highlight .hljs-literal { color: #765000; }
+:root[data-theme="light"] .query-body-highlight .hljs-comment { color: #65566e; }
+
+.query-property-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem;
+}
+
+.query-property-pill {
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    border-radius: .25rem;
+    padding: .15rem .4rem;
+}
+
+.query-property-pill.is-active {
+    background: var(--bg-2);
+    border-color: var(--p5);
+}

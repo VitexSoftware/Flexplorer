@@ -361,8 +361,7 @@ class Flexplorer extends \AbraFlexi\RW
 
         $id = $webPage->getRequestValue('id');
         $url = $webPage->getRequestValue('url');
-        $bodyRaw = $webPage->getRequestValue('body');
-        $body = $bodyRaw !== null ? urldecode($bodyRaw) : null;
+        $body = $webPage->getRequestValue('body');
         $action = $webPage->getRequestValue('action');
         $method = $webPage->getRequestValue('method');
         $format = $webPage->getRequestValue('format');

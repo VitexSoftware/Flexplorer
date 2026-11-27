@@ -59,7 +59,7 @@ class ShowResponse extends \Ease\Html\DivTag
                 case 'json':
                     $format = 'json';
                     $formated = self::jsonpp($this->sender->lastCurlResponse);
-                    $formatedResponse = $formated;
+                    $formatedResponse = $this->sender->lastCurlResponse;
                     $formated = preg_replace(
                         '/ref":"(.*)"/',
                         'ref":"<a href="query.php?show=result&url='.$this->sender->url.'$1">$1</a>"',
@@ -106,7 +106,7 @@ class ShowResponse extends \Ease\Html\DivTag
                 $this->addJavaScript(<<<'EOD'
 
                         function responseToRequest() {
-                            $("textarea[name='body']").val( $("#formatedResponse").html() );
+                            $("textarea[name='body']").val( $("#formatedResponse").text() );
                             var requestTab = new bootstrap.Tab(document.getElementById('Request-Request-tab'));
                             requestTab.show();
                             $("textarea[name='body']").focus();
@@ -122,13 +122,13 @@ EOD.\Ease\Functions::lettersOnly($this->sender->curlInfo['url']).'.'.$format.<<<
 ";
     a.href = "data:
 EOD.$this->sender->curlInfo['content_type'].<<<'EOD'
-," + document.getElementById("formatedResponse").innerHTML; // Grab the HTML
+," + encodeURIComponent(document.getElementById("formatedResponse").textContent);
     a.click(); // Trigger a click on the element
 }
 
 EOD, null, false);
                 $this->addItem(new \Ease\Html\DivTag(
-                    $formatedResponse,
+                    htmlspecialchars($formatedResponse, \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8'),
                     ['id' => 'formatedResponse', 'style' => 'visibility: hidden; height: 0px;'],
                 ));
                 $this->addItem(new \Ease\TWB5\LinkButton(

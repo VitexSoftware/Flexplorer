@@ -45,11 +45,35 @@ class SendForm extends \Ease\TWB5\Form
                 _('URL Compositon'),
             ),
         );
-        $this->addInput(new JsonTextarea(
+        $this->addInput(new \Ease\Html\TextareaTag(
             'body',
-            $body,
-            ['id' => 'editor', 'class' => 'animated'],
+            htmlspecialchars($body, \ENT_QUOTES | \ENT_SUBSTITUTE, 'UTF-8'),
+            ['id' => 'editor', 'class' => 'query-body-textarea', 'wrap' => 'off'],
         ), _('Query body Text'));
+        $propertyPicker = new \Ease\Html\DivTag(null, [
+            'class' => 'query-properties mt-3',
+            'data-loading' => _('Loading evidence properties...'),
+            'data-no-evidence' => _('Enter an evidence URL to select properties.'),
+            'data-invalid-body' => _('The request body is not a supported Winstrom document. Fix it before selecting properties or converting formats.'),
+            'data-conversion-error' => _('This document cannot be converted without losing data. The original format and body have been retained.'),
+            'data-unavailable' => _('Unable to load evidence properties.'),
+            'data-no-record' => _('New record'),
+        ]);
+        $propertyPicker->addItem(new \Ease\Html\H4Tag(_('Evidence properties')));
+        $propertyPicker->addItem(new \Ease\Html\DivTag('', ['class' => 'query-properties-message', 'role' => 'status']));
+        $propertyPicker->addItem(new \Ease\Html\SelectTag('query-record', [], '', ['class' => 'query-record form-select', 'aria-label' => _('Record')]));
+        $propertyPicker->addItem(new \Ease\Html\InputTextTag('query-property-search', '', [
+            'class' => 'query-property-search form-control mt-2',
+            'placeholder' => _('Search properties...'),
+            'aria-label' => _('Search properties'),
+            'autocomplete' => 'off',
+        ]));
+        $propertyPicker->addItem(new \Ease\Html\DivTag(null, ['class' => 'query-property-pills mt-2']));
+        $this->addItem($propertyPicker);
+        WebPage::singleton()->includeCss('css/query-editor.css');
+        WebPage::singleton()->includeJavaScript('js/highlight.min.js');
+        WebPage::singleton()->includeJavaScript('js/query-editor.js');
+        WebPage::singleton()->includeJavaScript('js/query-properties.js');
 
         $this->addInput(
             new \Ease\Html\InputFileTag('upload'),

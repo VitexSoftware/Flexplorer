@@ -23,6 +23,8 @@ Napsáno s využitím knihovny [PHP AbraFlexi](https://github.com/Spoje-NET/php-
 
 #### 🔧 API Testing & Debugging
   * **Query Builder** - odesílání přímých požadavků na server
+    * Editor těla formátuje JSON/XML při načtení, vložení a změně. Vlastnosti jednotlivých záznamů lze vybírat podle metadat dodaných s knihovnou ABRA Flexi.
+    * Převod JSON/XML podporuje ploché záznamy Winstrom; nepodporované vnořené struktury zachová beze změny a zobrazí chybu.
   * **Response Viewer** - zobrazení odpovědí serveru s syntax highlighting
   * **Parallel View** - JSON/XML výsledek vedle AbraFlexi GUI
   * **Filtrování** - pokročilé filtry podle ID, externího ID a dalších parametrů

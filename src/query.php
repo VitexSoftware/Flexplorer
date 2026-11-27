@@ -101,7 +101,8 @@ if (null === $body) {
 }
 
 if (null === $format || !\strlen($format)) {
-    $format = 'json';
+    $extension = strtolower(pathinfo((string) parse_url($url, \PHP_URL_PATH), \PATHINFO_EXTENSION));
+    $format = \in_array($extension, ['json', 'xml', 'csv'], true) ? $extension : 'json';
 }
 
 $oPage->addItem(new ui\PageTop(_('Query').': '.$url));
