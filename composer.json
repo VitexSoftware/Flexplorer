@@ -11,7 +11,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "league/commonmark": "^2.6",
+        "league/commonmark": "^2.10.2",
         "spojenet/flexibee": "^3.6",
         "vitexsoftware/abraflexi-bricks": "*",
         "vitexsoftware/datatables-abraflexi": "dev-main",
@@ -34,7 +34,7 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "*",
+        "phpunit/phpunit": "^13.4.4",
         "phpstan/phpstan": "*",
         "friendsofphp/php-cs-fixer": "^3.71",
         "ergebnis/composer-normalize": "^2.45",

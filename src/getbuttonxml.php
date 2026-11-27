@@ -20,7 +20,8 @@ require_once 'includes/Init.php';
 $type = $oPage->getRequestValue('type');
 $operation = $oPage->getRequestValue('operation');
 
-$appurl = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].\dirname(\Ease\WebPage::getUri()).'/';
+$scheme = $_SERVER['REQUEST_SCHEME'] ?? (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http');
+$appurl = $scheme.'://'.$_SERVER['HTTP_HOST'].rtrim(\dirname(\Ease\WebPage::getUri()), '/').'/';
 
 $xml = new xml\Winstrom();
 
@@ -30,10 +31,7 @@ foreach (\AbraFlexi\EvidenceList::$name as $evidence => $evidenceName) {
     switch ($type) {
         case 'evidence':
             $xml->addItem(new \Flexplorer\xml\FelexiBeeButtonXML(
-                $engine->getKod(
-                    $evidence.'-FLEV',
-                    true,
-                ),
+                xml\FelexiBeeButtonXML::buttonCode($evidence, 'FLEV'),
                 $appurl.'evidence.php?evidence='.$evidence,
                 sprintf(_('Open %s in Flexplorer'), $evidence),
                 $evidenceName,
@@ -43,10 +41,7 @@ foreach (\AbraFlexi\EvidenceList::$name as $evidence => $evidenceName) {
             ));
 
             $xml->addItem(new \Flexplorer\xml\FelexiBeeButtonXML(
-                $engine->getKod(
-                    $evidence.'-FLED',
-                    true,
-                ),
+                xml\FelexiBeeButtonXML::buttonCode($evidence, 'FLED'),
                 $appurl.'editor.php?evidence='.$evidence.'&id=${object.id}',
                 _('Edit Record in Flexplorer'),
                 $evidenceName,
@@ -56,10 +51,7 @@ foreach (\AbraFlexi\EvidenceList::$name as $evidence => $evidenceName) {
             ));
 
             $xml->addItem(new \Flexplorer\xml\FelexiBeeButtonXML(
-                $engine->getKod(
-                    $evidence.'-JSONROW',
-                    true,
-                ),
+                xml\FelexiBeeButtonXML::buttonCode($evidence, 'JSONROW'),
                 $appurl.'query.php?format=json&show=result&evidence='.$evidence.'&id=${objectIds}',
                 _('JSON in Flexplorer'),
                 $evidenceName,
@@ -69,11 +61,8 @@ foreach (\AbraFlexi\EvidenceList::$name as $evidence => $evidenceName) {
             ));
 
             $xml->addItem(new \Flexplorer\xml\FelexiBeeButtonXML(
-                $engine->getKod(
-                    $evidence.'-XMLROW',
-                    true,
-                ),
-                $appurl.'query.php?format=json&show=result&evidence='.$evidence.'&id=${objectIds}',
+                xml\FelexiBeeButtonXML::buttonCode($evidence, 'XMLROW'),
+                $appurl.'query.php?format=xml&show=result&evidence='.$evidence.'&id=${objectIds}',
                 _('XML in Flexplorer'),
                 $evidenceName,
                 $evidence,
