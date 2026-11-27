@@ -420,6 +420,26 @@ msgstr "Desktop"
 msgid "Browser used"
 msgstr "Browser used"
 
+#: ../src/Flexplorer/ui/ButtonForm.php
+msgid "Use an absolute URL. The file:// protocol is not supported. FreeMarker variables such as ${object.ic} and ${objectIds} can be used; do not use both in the same URL."
+msgstr "Use an absolute URL. The file:// protocol is not supported. FreeMarker variables such as ${object.ic} and ${objectIds} can be used; do not use both in the same URL."
+
+#: ../src/Flexplorer/ui/ButtonForm.php
+msgid "Supported variables and button definition"
+msgstr "Supported variables and button definition"
+
+#: ../src/Flexplorer/ui/ButtonForm.php
+msgid "Custom button documentation URL"
+msgstr "https://vitexsoftware.com/abraflexi-api-doc-en/custom_button.html"
+
+#: ../src/Flexplorer/ui/ButtonForm.php
+msgid "Create a separate button definition for each location where it should appear."
+msgstr "Create a separate button definition for each location where it should appear."
+
+#: ../src/Flexplorer/ui/ButtonForm.php
+msgid "The browser setting is ignored in the web interface."
+msgstr "The browser setting is ignored in the web interface."
+
 #: ../src/classes/ui/ButtonForm.php:55
 msgid "Save New Button"
 msgstr "Save New Button"

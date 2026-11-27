@@ -419,6 +419,26 @@ msgstr "Desktop"
 msgid "Browser used"
 msgstr "Použitý prohlížeč"
 
+#: ../src/Flexplorer/ui/ButtonForm.php
+msgid "Use an absolute URL. The file:// protocol is not supported. FreeMarker variables such as ${object.ic} and ${objectIds} can be used; do not use both in the same URL."
+msgstr "Použijte absolutní URL. Protokol file:// není podporován. Lze použít proměnné FreeMarker, například ${object.ic} a ${objectIds}; v jedné URL je však nekombinujte."
+
+#: ../src/Flexplorer/ui/ButtonForm.php
+msgid "Supported variables and button definition"
+msgstr "Podporované proměnné a definice tlačítka"
+
+#: ../src/Flexplorer/ui/ButtonForm.php
+msgid "Custom button documentation URL"
+msgstr "https://vitexsoftware.com/abraflexi-api-doc-cs/uzivatelske_tlacitko.html"
+
+#: ../src/Flexplorer/ui/ButtonForm.php
+msgid "Create a separate button definition for each location where it should appear."
+msgstr "Pro každé místo zobrazení vytvořte samostatnou definici tlačítka."
+
+#: ../src/Flexplorer/ui/ButtonForm.php
+msgid "The browser setting is ignored in the web interface."
+msgstr "Nastavení prohlížeče se ve webovém rozhraní ignoruje."
+
 #: ../src/classes/ui/ButtonForm.php:55
 msgid "Save New Button"
 msgstr "Nové tlačítko"
