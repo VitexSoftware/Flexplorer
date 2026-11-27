@@ -36,7 +36,7 @@ if ($oUser->getUserID()) {
         $oPage->addStatusMessage($message->body, $message->type);
     }
 
-    ui\WebPage::redirect('login.php');
+    $oPage->redirect('login.php');
 }
 
 $oPage->addItem(new ui\PageTop(_('Sign out')));

@@ -95,5 +95,7 @@ class TestLoggedIn:
 
     def test_logout(self, logged_in, wait):
         logged_in.get(f"{BASE}/logout.php")
+        wait.until(EC.url_contains("login.php"))
+        assert not page_errors(logged_in)
         logged_in.get(f"{BASE}/evidences.php")
         assert logged_in.find_elements(By.NAME, "password")
